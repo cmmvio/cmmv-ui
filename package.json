@@ -1,6 +1,6 @@
 {
-	"name": "cmmv-docs",
-	"version": "1.0.0",
+	"name": "@cmmv/ui",
+	"version": "0.0.1",
 	"main": "dist/index.js",
 	"scripts": {
 		"build": "tsc",
@@ -12,17 +12,15 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/andrehrferreira/docs.cmmv.io.git"
+		"url": "git+https://github.com/andrehrferreira/cmmv-ui.git"
 	},
-	"keywords": [
-		"cmmv"
-	],
+	"keywords": ["cmmv", "ui", "components", "reactivity"],
 	"author": "Andre Ferreira",
 	"license": "MIT",
 	"bugs": {
-		"url": "https://github.com/andrehrferreira/docs.cmmv.io/issues"
+		"url": "https://github.com/andrehrferreira/cmmv-ui/issues"
 	},
-	"homepage": "https://github.com/andrehrferreira/docs.cmmv.io#readme",
+	"homepage": "https://github.com/andrehrferreira/cmmv-ui#readme",
 	"description": "",
 	"lint-staged": {
 		"**/*.ts": [
