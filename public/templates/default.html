@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" :data-theme='styles.theme' class="dark" scope>
+<html lang="en" :data-theme="$style.theme" :class="$style.theme" scope>
     <head>
         <headers/>
     </head>
-    <body :class="styles.theme"> 
+    <body> 
         <slot/>
         <scripts/>
     </body>

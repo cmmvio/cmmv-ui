@@ -3,14 +3,10 @@
         :class="buttonClass"
         :type="type"
     >
-        <slot>
-            <span v-if="label" :class="[truncate ? this.$style.button.truncate : '']">
-                {{ label }}
-            </span>
-        </slot>
+        <slot />
     </button>
 
-    {{  variant }}
+    {{ variant }}
 </template>
 
 <script>
@@ -18,71 +14,71 @@ export default {
     props: {
         type: {
             type: String,
-            defaultValue: 'button'
+            default: 'button'
         },
         block: {
             type: Boolean,
-            defaultValue: false
+            default: false
         },
         label: {
             type: String,
-            defaultValue: null
+            default: null
         },
         loading: {
             type: Boolean,
-            defaultValue: false
+            default: false
         },
         disabled: {
             type: Boolean,
-            defaultValue: false
+            default: false
         },
         padded: {
             type: Boolean,
-            defaultValue: true
+            default: true
         },
         size: {
             type: String,
-            defaultValue: "md",
+            default: "md",
         },
         color: {
             type: String,
-            defaultValue: "white",
+            default: "white",
         },
         variant: {
             type: String,
-            defaultValue: "solid",
+            default: "solid",
         },
         icon: {
             type: String,
-            defaultValue: null
+            default: null
         },
         loadingIcon: {
             type: String,
-            defaultValue: null
+            default: null
         },
         leadingIcon: {
             type: String,
-            defaultValue: null
+            default: null
         },
         trailingIcon: {
             type: String,
-            defaultValue: null
+            default: null
         },
         trailing: {
             type: Boolean,
-            defaultValue: false
+            default: false
         },
         leading: {
             type: Boolean,
-            defaultValue: false
+            default: false
         },
         square: {
             type: Boolean,
-            defaultValue: false
+            default: false
         },
         truncate: {
             type: Boolean,
-            defaultValue: false
+            default: false
         },
     },
     
@@ -92,13 +88,12 @@ export default {
         }
     },
 
-    mounted(){
-        console.log(this);
-        //this.refresh();        
+    created(){
+        this.refreshClass();        
     },
 
     methods: {
-        refreshClass(){
+        refreshClass() {
             this.$style = { ...this.$style, ...cmmv.styleSettings };
             const isSquare = this.square || (!this.default && !this.label);
             const variant = this.$style.button.color?.[this.color]?.[this.variant] || this.$style.button.variant[this.variant];

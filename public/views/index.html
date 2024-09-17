@@ -1,15 +1,13 @@
 <div>
     <CButton 
-        color="primary"
-        ref="button" 
-        label="Add"
-        :variant="variant"
-    ></CButton>
+        color="black"
+        ref="btn"
+    >
+        <template>Button</template>
+    </CButton>
 
-    <button @click="variant = 'solid'">Solid</button>
-    <button @click="variant = 'outline'">Outline</button>
-
-    {{ variant }}
+    <button @click="changeVariant('solid')">Solid</button>
+    <button @click="changeVariant('outline')">Outline</button>
 </div>
 
 <script s-setup>
@@ -22,8 +20,7 @@ export default {
 
     data(){
         return {
-            count: 0,
-            variant: "solid"
+            count: 0
         }
     },
 
@@ -33,7 +30,8 @@ export default {
         },
 
         changeVariant(newVariant){
-            this.$refs.button.variant = newVariant;
+            this.$refs.btn.variant = newVariant;
+            this.$refs.btn.refreshClass();
         }
     }
 }
