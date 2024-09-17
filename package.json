@@ -1,0 +1,61 @@
+{
+	"name": "cmmv-docs",
+	"version": "1.0.0",
+	"main": "dist/index.js",
+	"scripts": {
+		"build": "tsc",
+		"dev": "NODE_ENV=dev nodemon",
+		"test": "mocha packages/**/*.spec.ts",
+		"start": "NODE_ENV=prod node dist/index.js",
+		"generate": "./node_modules/.bin/ts-node -r tsconfig-paths/register ./src/generate.ts",
+		"prepare": "husky"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/andrehrferreira/docs.cmmv.io.git"
+	},
+	"keywords": [
+		"cmmv"
+	],
+	"author": "Andre Ferreira",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/andrehrferreira/docs.cmmv.io/issues"
+	},
+	"homepage": "https://github.com/andrehrferreira/docs.cmmv.io#readme",
+	"description": "",
+	"lint-staged": {
+		"**/*.ts": [
+			"prettier --ignore-path ./.prettierignore --write"
+		],
+		"packages/**/*.json": [
+			"prettier --ignore-path ./.prettierignore --write"
+		]
+	},
+	"dependencies": {
+		"@cmmv/core": "^0.3.13",
+		"@cmmv/http": "^0.3.13",
+		"@cmmv/view": "^0.3.13",
+		"dotenv": "^16.4.5",
+		"glob": "^11.0.0"
+	},
+	"devDependencies": {
+		"@commitlint/cli": "^19.4.1",
+		"@commitlint/config-angular": "^19.4.1",
+		"@commitlint/config-conventional": "^19.4.1",
+		"@types/algoliasearch": "^4.0.0",
+		"@types/chai": "^4.3.19",
+		"@types/jest": "^29.5.12",
+		"@types/mocha": "^10.0.7",
+		"@types/node": "^22.5.1",
+		"chai": "^5.1.1",
+		"husky": "^9.1.5",
+		"lint-staged": "^15.2.10",
+		"mocha": "^10.7.3",
+		"nodemon": "^3.1.4",
+		"prettier": "^3.3.3",
+		"ts-node": "^10.9.2",
+		"tsconfig-paths": "^4.2.0",
+		"typescript": "^5.5.4"
+	}
+}

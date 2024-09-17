@@ -1,0 +1,121 @@
+<template>
+    <button 
+        :class="buttonClass"
+        :type="type"
+    >
+        <slot>
+            <span v-if="label" :class="[truncate ? this.$style.button.truncate : '']">
+                {{ label }}
+            </span>
+        </slot>
+    </button>
+
+    {{  variant }}
+</template>
+
+<script>
+export default {
+    props: {
+        type: {
+            type: String,
+            defaultValue: 'button'
+        },
+        block: {
+            type: Boolean,
+            defaultValue: false
+        },
+        label: {
+            type: String,
+            defaultValue: null
+        },
+        loading: {
+            type: Boolean,
+            defaultValue: false
+        },
+        disabled: {
+            type: Boolean,
+            defaultValue: false
+        },
+        padded: {
+            type: Boolean,
+            defaultValue: true
+        },
+        size: {
+            type: String,
+            defaultValue: "md",
+        },
+        color: {
+            type: String,
+            defaultValue: "white",
+        },
+        variant: {
+            type: String,
+            defaultValue: "solid",
+        },
+        icon: {
+            type: String,
+            defaultValue: null
+        },
+        loadingIcon: {
+            type: String,
+            defaultValue: null
+        },
+        leadingIcon: {
+            type: String,
+            defaultValue: null
+        },
+        trailingIcon: {
+            type: String,
+            defaultValue: null
+        },
+        trailing: {
+            type: Boolean,
+            defaultValue: false
+        },
+        leading: {
+            type: Boolean,
+            defaultValue: false
+        },
+        square: {
+            type: Boolean,
+            defaultValue: false
+        },
+        truncate: {
+            type: Boolean,
+            defaultValue: false
+        },
+    },
+    
+    data(){
+        return {
+            buttonClass: ""
+        }
+    },
+
+    mounted(){
+        console.log(this);
+        //this.refresh();        
+    },
+
+    methods: {
+        refreshClass(){
+            this.$style = { ...this.$style, ...cmmv.styleSettings };
+            const isSquare = this.square || (!this.default && !this.label);
+            const variant = this.$style.button.color?.[this.color]?.[this.variant] || this.$style.button.variant[this.variant];
+
+            this.buttonClass = [
+                this.$style.button.base, 
+                this.$style.button.font, 
+                this.$style.button.default,
+                this.$style.button.rounded,
+                this.$style.button.size[this.size],
+                this.$style.button.gap[this.size],
+                this.padded && this.$style.button[isSquare ? 'square' : 'padding'][this.size],
+                this.block ? this.$style.button.block : this.$style.button.inline,
+                variant?.replaceAll("%color%", this.color),
+                this.class
+            ];
+        }
+    }
+}
+</script>

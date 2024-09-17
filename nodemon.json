@@ -1,0 +1,11 @@
+{
+    "watch": ["src", "public", "docs"],
+    "ext": "ts,js,md,html",
+    "ignore": [
+        "src/**/*.spec.ts", "src/app.module.ts", 
+        "public/core/*", "public/assets/**/*", 
+        "public/assets/*", "docs/**/*.html",
+        "docs/*.html"
+    ],
+    "exec": "ts-node -r tsconfig-paths/register ./src/index.ts" 
+}
