@@ -88,8 +88,9 @@ export default {
         }
     },
 
-    created(){
-        this.refreshClass();        
+    mounted(){
+        this.refreshClass();  
+        console.log(this);      
     },
 
     methods: {

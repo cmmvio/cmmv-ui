@@ -7,14 +7,18 @@
 		"dev": "NODE_ENV=dev nodemon",
 		"test": "mocha packages/**/*.spec.ts",
 		"start": "NODE_ENV=prod node dist/index.js",
-		"generate": "./node_modules/.bin/ts-node -r tsconfig-paths/register ./src/generate.ts",
 		"prepare": "husky"
 	},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/andrehrferreira/cmmv-ui.git"
 	},
-	"keywords": ["cmmv", "ui", "components", "reactivity"],
+	"keywords": [
+		"cmmv",
+		"ui",
+		"components",
+		"reactivity"
+	],
 	"author": "Andre Ferreira",
 	"license": "MIT",
 	"bugs": {
@@ -31,9 +35,9 @@
 		]
 	},
 	"dependencies": {
-		"@cmmv/core": "^0.3.13",
-		"@cmmv/http": "^0.3.13",
-		"@cmmv/view": "^0.3.13",
+		"@cmmv/core": "^0.3.19",
+		"@cmmv/http": "^0.3.19",
+		"@cmmv/view": "^0.3.19",
 		"dotenv": "^16.4.5",
 		"glob": "^11.0.0"
 	},
@@ -41,6 +45,9 @@
 		"@commitlint/cli": "^19.4.1",
 		"@commitlint/config-angular": "^19.4.1",
 		"@commitlint/config-conventional": "^19.4.1",
+		"@swc-node/core": "^1.13.3",
+		"@swc-node/register": "^1.10.9",
+		"@swc/core": "^1.7.26",
 		"@types/algoliasearch": "^4.0.0",
 		"@types/chai": "^4.3.19",
 		"@types/jest": "^29.5.12",
