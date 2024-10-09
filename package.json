@@ -35,9 +35,9 @@
 		]
 	},
 	"dependencies": {
-		"@cmmv/core": "^0.3.19",
-		"@cmmv/http": "^0.3.19",
-		"@cmmv/view": "^0.3.19",
+		"@cmmv/core": "^0.4.0",
+		"@cmmv/http": "^0.4.0",
+		"@cmmv/view": "^0.4.0",
 		"dotenv": "^16.4.5",
 		"glob": "^11.0.0"
 	},
@@ -59,8 +59,6 @@
 		"mocha": "^10.7.3",
 		"nodemon": "^3.1.4",
 		"prettier": "^3.3.3",
-		"ts-node": "^10.9.2",
-		"tsconfig-paths": "^4.2.0",
 		"typescript": "^5.5.4"
 	}
 }

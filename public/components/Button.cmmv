@@ -2,11 +2,10 @@
     <button 
         :class="buttonClass"
         :type="type"
+        @click="emit('click')"
     >
         <slot />
     </button>
-
-    {{ variant }}
 </template>
 
 <script>
@@ -89,8 +88,7 @@ export default {
     },
 
     mounted(){
-        this.refreshClass();  
-        console.log(this);      
+        this.refreshClass();      
     },
 
     methods: {

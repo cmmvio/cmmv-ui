@@ -2,6 +2,7 @@
     <CButton 
         color="black"
         ref="btn"
+        @click="onClick"
     >
         <template>Button</template>
     </CButton>
@@ -32,6 +33,10 @@ export default {
         changeVariant(newVariant){
             this.$refs.btn.variant = newVariant;
             this.$refs.btn.refreshClass();
+        },
+
+        onClick(){
+            console.log("Button clicked")
         }
     }
 }
