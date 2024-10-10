@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://cmmv.io/" target="blank"><img src="https://raw.githubusercontent.com/andrehrferreira/cmmv/main/public/assets/logo.png" width="300" alt="CMMV Logo" /></a>
+  <a href="https://cmmv.io/" target="blank"><img src="https://raw.githubusercontent.com/andrehrferreira/cmmv/main/public/assets/logo_CMMV_negativa.svg" width="300" alt="CMMV Logo" /></a>
 </p>
 <p align="center">Contract-Model-Model-View (CMMV) <br/> A minimalistic framework for building scalable and modular applications using TypeScript contracts.</p>
 <p align="center">
@@ -15,14 +15,14 @@
 
 ## Description
 
-
+The ``@cmmv/ui`` project is a set of graphical components designed for building component-based applications. It is developed using ``@cmmv/view`` and ``@cmmv/reactivity``, which provide a solid foundation for creating dynamic and reactive interfaces. Additionally, the project integrates [TailwindCSS](https://tailwindcss.com/), a utility-first CSS framework, to ensure that the styling and visual structure of components are highly customizable and consistent. Inspired by [NuxtUI](https://ui.nuxt.com/), a popular component library for modern interface development, ``@cmmv/ui`` aims to offer a flexible and efficient approach to building modular and reusable graphical interfaces.
 
 ## Installing
 
 Install project dependencies and start a local server with the following terminal commands:
 
 ```bash
-$ npm install @cmmv/ui
+$ pnpm add @cmmv/ui
 ```
 
 Navigate to [`http://localhost:3000/`](http://localhost:3000/).
@@ -31,7 +31,7 @@ All pages are written in [markdown](https://github.com/adam-p/markdown-here/wiki
 
 ## Build
 
-Use `npm run build` for a production build.
+Use `pnpm run build` for a production build.
 
 ## Support
 

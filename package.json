@@ -35,11 +35,11 @@
 		]
 	},
 	"dependencies": {
-		"@cmmv/core": "^0.4.0",
-		"@cmmv/http": "^0.4.0",
-		"@cmmv/view": "^0.4.0",
-		"dotenv": "^16.4.5",
-		"glob": "^11.0.0"
+		"@cmmv/core": "^0.4.1",
+		"@cmmv/http": "^0.4.1",
+		"@cmmv/reactivity": "^0.4.0",
+		"@cmmv/view": "^0.4.1",
+		"dotenv": "^16.4.5"
 	},
 	"devDependencies": {
 		"@commitlint/cli": "^19.4.1",
