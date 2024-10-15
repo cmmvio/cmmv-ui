@@ -9,17 +9,17 @@ importers:
   .:
     dependencies:
       '@cmmv/core':
-        specifier: ^0.4.1
-        version: 0.4.1
+        specifier: ^0.4.4
+        version: 0.4.4
       '@cmmv/http':
-        specifier: ^0.4.1
-        version: 0.4.1
+        specifier: ^0.4.4
+        version: 0.4.4
       '@cmmv/reactivity':
-        specifier: ^0.4.0
-        version: 0.4.0
+        specifier: ^0.4.3
+        version: 0.4.3
       '@cmmv/view':
-        specifier: ^0.4.1
-        version: 0.4.1
+        specifier: ^0.4.4
+        version: 0.4.4
       dotenv:
         specifier: ^16.4.5
         version: 16.4.5
@@ -42,9 +42,6 @@ importers:
       '@swc/core':
         specifier: ^1.7.26
         version: 1.7.26
-      '@types/algoliasearch':
-        specifier: ^4.0.0
-        version: 4.0.0
       '@types/chai':
         specifier: ^4.3.19
         version: 4.3.20
@@ -81,42 +78,6 @@ importers:
 
 packages:
 
-  '@algolia/client-abtesting@5.8.0':
-    resolution: {integrity: sha512-oDJqwHLIuQlmHneja+tvv6Q4XGyhH8bRDhFoQo8NoKcbcQhpbXwTRwE0y6FFjbQY8ovhkiC06j6NvxsURzen1Q==}
-    engines: {node: '>= 14.0.0'}
-
-  '@algolia/client-analytics@5.8.0':
-    resolution: {integrity: sha512-hSUa5922a+DI5gHVgqxx7Jdj1M9t9ozVtrg9fxnO2o+hnS96TT5Fi0QqaZwEH0hIC//t4aqgKN7GrVERKtBETw==}
-    engines: {node: '>= 14.0.0'}
-
-  '@algolia/client-common@5.8.0':
-    resolution: {integrity: sha512-KSnRo4q8Ne9McDKxb1i4mDFNiRt8vT9SzJDitax/2qYYWyhPP0pvQ6jl7f00zovfsBg8lVabDdDAhDgY5PIvvA==}
-    engines: {node: '>= 14.0.0'}
-
-  '@algolia/client-personalization@5.8.0':
-    resolution: {integrity: sha512-yg7BdGa0Y+ZkLdwl9SUyoMEkgVt8UA46rXe5WnEzXDIWxpgISFQI5x/6lHKgnv5Jg0YZKIlt/nk+19nES9Ez7g==}
-    engines: {node: '>= 14.0.0'}
-
-  '@algolia/client-search@5.8.0':
-    resolution: {integrity: sha512-meIT0dIjafbDhZGfXMZ02pKbvNjItH8yZORTLpA2wYWBpRWqGzNDXedD/ayFh/tm5+L0IGlSWIgfhofKfDRsFQ==}
-    engines: {node: '>= 14.0.0'}
-
-  '@algolia/recommend@5.8.0':
-    resolution: {integrity: sha512-I8mx1WOk9SpJunYx8sSeDdAQyGI8iV1Ami76e0E5F0SQNWVCrdKAYTBt0mQZm83Y1Kxd1VQu2GYghjQAFaCl8g==}
-    engines: {node: '>= 14.0.0'}
-
-  '@algolia/requester-browser-xhr@5.8.0':
-    resolution: {integrity: sha512-Gi33fRclktW+zJSmT2Gkntiu+BNkh+50NhfYLALHV4yZ3jH73PYbPNURFa1/NxaUpzPvXrld0BrsHDTS1QBBTQ==}
-    engines: {node: '>= 14.0.0'}
-
-  '@algolia/requester-fetch@5.8.0':
-    resolution: {integrity: sha512-ve7ynA+O0KDrA2AAQ62GKQB+HjdHd0gX3tsXwlcfFOd7CYb2+xc+eOrVXV9mSlGS6Ssrd8V0AQ6BMId5KyypwQ==}
-    engines: {node: '>= 14.0.0'}
-
-  '@algolia/requester-node-http@5.8.0':
-    resolution: {integrity: sha512-2sv9af4Pg58soGj3F0czK8xT2RVh/cX7UmMMjTQwkp7LK7SMW9OoDmg9FSvU5ge6KH0wd1TrxT/4XgRHc1P/NA==}
-    engines: {node: '>= 14.0.0'}
-
   '@babel/code-frame@7.25.7':
     resolution: {integrity: sha512-0xZJFNE5XMpENsgfHYTw8FbX4kv53mFLn2i3XPoq69LyhYSCBJtitaHx9QnsVTrsogI4Z3+HtEfZ2/GFPOtf5g==}
     engines: {node: '>=6.9.0'}
@@ -129,41 +90,41 @@ packages:
     resolution: {integrity: sha512-iYyACpW3iW8Fw+ZybQK+drQre+ns/tKpXbNESfrhNnPLIklLbXr7MYJ6gPEd0iETGLOK+SxMjVvKb/ffmk+FEw==}
     engines: {node: '>=6.9.0'}
 
-  '@cmmv/body-parser@0.4.0':
-    resolution: {integrity: sha512-vzinb/qbxbuKTZIGTnfmT4AZgKFJe/nfgPWXfh9iCqKLuWOT+phH3YcdqxNyS1waPY5eyOUoTuLXU7dvIRd2pg==}
+  '@cmmv/body-parser@0.4.2':
+    resolution: {integrity: sha512-TlTRS8vZH73HN3UuBzLwD3uFPJfwuA06w3vRUKxB6m3m98zPnLOww8Xxxsf/tLlPKNRCTCJCn2Ab8VqMIhls/g==}
 
-  '@cmmv/compression@0.4.0':
-    resolution: {integrity: sha512-tvK4nzzdFxK9ayEz9SRhAGMOnrsrI1J7DZcUch9+zDtSWpKNq8euGTjTBMEt3zZrv/l1a38OhMMbr2GssQngMg==}
+  '@cmmv/compression@0.4.2':
+    resolution: {integrity: sha512-6siORyB/Uo75krQvakZrVL+F7lqML5Yg3TSIDIypj4/NXWItaSgPShfELug7mluAbe5f7dum4EWveMHMePJaXQ==}
 
-  '@cmmv/cookie-parser@0.4.0':
-    resolution: {integrity: sha512-1XgrH5NVUzyxDwG2hcEqDoU/zNr4zKenayb9ENBjQbyqj/WVNd+/rOIS6au9UfX98/8ctHxRELt0ieyPgMLvxw==}
+  '@cmmv/cookie-parser@0.4.2':
+    resolution: {integrity: sha512-bEWu7E6IC2eehhNsx9mdeEMrqUpZRw/TpE6eXZmlDWd3yiEkysG74HwlKUWw8jFIeeEmLNKja9BWQ0Y2b6eLxw==}
 
-  '@cmmv/core@0.4.1':
-    resolution: {integrity: sha512-PIja5fHN1eHBh5imoU6K9Hu6/sfF29uYShdPXOWKq79HtbmMvDGBioqGtnjxdC5yH7NrMVUP3HLiXAu9EkjVGw==}
+  '@cmmv/core@0.4.4':
+    resolution: {integrity: sha512-OhYNKdGbKPoy34Pv9SBHgCUm3IHfhSP64kj5fcLiPlWhGJemqTKngklpVRIqIfR30vp8VoGpaaf69MjIj1wx4Q==}
 
-  '@cmmv/cors@0.4.0':
-    resolution: {integrity: sha512-1ras7lYhuKmjaX4EksnDQo2+hA25RILuypj8400CAP+7T9+zREnOeaNG69S1lsQXpiqhtkA1P3SRtKkX8UJS4w==}
+  '@cmmv/cors@0.4.2':
+    resolution: {integrity: sha512-IpCSUqi+eRHc7xX2oCh20BvkSYINNx8UI45LmpTNEaZRB1SupRtRT2Ymo6vgpbYuL/oKhmusCmY9dDGkLLycEw==}
 
-  '@cmmv/etag@0.4.0':
-    resolution: {integrity: sha512-jcpyobuKGJF/L3pw3xPTfJPlqf17aXmjwCGm9koh2/8zJUF4tVN3v2coefwNhsoXCMVt6ysH6H5WtBF3gnVarQ==}
+  '@cmmv/etag@0.4.2':
+    resolution: {integrity: sha512-X1leT/pWPKxkKT7LzO96UOPRglM16w321q9+WmU+qvwMmBJiCJbxknYn85ekED9xGYbAFFaG8I95h+ZcG0lzWQ==}
 
-  '@cmmv/helmet@0.4.0':
-    resolution: {integrity: sha512-T1t3w8fR29FXcVv33xXNK9TyYDbdK5BqGG3DEox0dgH9dKqdrKtm/pjitoCjIOdHlaJSfWHvFPTodjYDah2lRA==}
+  '@cmmv/helmet@0.4.2':
+    resolution: {integrity: sha512-eyDM4pPuf/A4Ic6WR7R9tbB2j0IMgrXYEanBssN2irf71E5XpeIL1txjGUpnL4RsL55qzpMtvNsdDHztzEXYEg==}
 
-  '@cmmv/http@0.4.1':
-    resolution: {integrity: sha512-PIvljDZ+QY/t8DWC2DH40C7/EprVLHeiKqx9hPaKTd8lWE+N20F3fGvIzm3zMf40J1QXEpUxfXsrM5VduQaSkw==}
+  '@cmmv/http@0.4.4':
+    resolution: {integrity: sha512-TWbcXSi+tSJNfK3HaiRXb+2WoEZBvXDd300OUgddIKXC554n7/l0QaoAoiEtzYSzsrc0P6mUM5bV6jqiIjCfdw==}
 
-  '@cmmv/reactivity@0.4.0':
-    resolution: {integrity: sha512-x9PgD3Ur+jb5QqQ+h22GCGoAOSxAuV6i3BGkvXKDIwZqgf0Tej+/0OOYPW+wlJUB93Nhak+tAp0/ahBFV68J8A==}
+  '@cmmv/reactivity@0.4.3':
+    resolution: {integrity: sha512-8dvH29Ybmcx/KXZ244nVp3EseUyhK9B67pfcnR3bklqAfN70/PwLYnQ0BlNqztM3W2Dbt8NPiKyYu8OJyK+KPA==}
 
-  '@cmmv/server-static@0.4.0':
-    resolution: {integrity: sha512-bF55GKoR7UuQFygbB/EfgMXMTZ2mgjtx44M/mdgVVr4a/axcPJmKFFupLZzig0RynkYx+ATIy3j8+YGwPU68OQ==}
+  '@cmmv/server-static@0.4.2':
+    resolution: {integrity: sha512-RfaKLx8JJ57OoB9Z1Mo7SGogX+0c5NPzUnYKhAKP6QKiH+mXhmFqdOSDfkO+S4H2Ha6tUYvNYlMAR2WIUO8b4Q==}
 
-  '@cmmv/server@0.4.0':
-    resolution: {integrity: sha512-hpSJ6QumpsiU2pLSOs7ZbSzApiAkScRS85fzs76pLBiwhcRoCCtsLA31dUcy3N6xGdakKD48ddBlbKQt1CgOGA==}
+  '@cmmv/server@0.4.2':
+    resolution: {integrity: sha512-E/EOYNCag1WGqTAyKLUjMueU5TBIEvkderkNFFQwFJ8qKl4FSxkFoQSAZXBZMB0VrrXKYR/7CWgtT7kL60mY3g==}
 
-  '@cmmv/view@0.4.1':
-    resolution: {integrity: sha512-HyZOfeP39q6L2zRsoNJbiPqeuQ3zfhk67b6/UTeT4KjS5Gh18PCSL1rjRr0qF0tlk9VEC6uqmGdYy753UgWiFQ==}
+  '@cmmv/view@0.4.4':
+    resolution: {integrity: sha512-oM8kjyW8/ATgbuBrCvZi59TR/Odh7HTk9JrnRbO/ow5vcd5BeH+043rYMFUSBG5RNPD/ty5wPDHHRQAum/7EFQ==}
 
   '@commitlint/cli@19.5.0':
     resolution: {integrity: sha512-gaGqSliGwB86MDmAAKAtV9SV1SHdmN8pnGq4EJU4+hLisQ7IFfx4jvU4s+pk6tl0+9bv6yT+CaZkufOinkSJIQ==}
@@ -510,10 +471,6 @@ packages:
   '@tybys/wasm-util@0.9.0':
     resolution: {integrity: sha512-6+7nlbMVX/PVDCwaIQ8nTOPveOcFLSt8GcXdx8hD0bt39uWxYT88uXzqTd4fTvqta7oeUJqudepapKNt2DYJFw==}
 
-  '@types/algoliasearch@4.0.0':
-    resolution: {integrity: sha512-XMGE0h/dRV7qR6lR/zgGL01esc39pLHNl4m7gKZldrgoov/IaFJGfmmEJGxktlH63esWEtAiXzbjLfvEQXN15Q==}
-    deprecated: This is a stub types definition. algoliasearch provides its own type definitions, so you do not need this installed.
-
   '@types/chai@4.3.20':
     resolution: {integrity: sha512-/pC9HAB5I/xMlc5FP77qjCnI16ChlJfW0tGa0IUcFn38VJrTV6DeZ60NU5KZBtaOZqjdpwTWohz5HU1RrhiYxQ==}
 
@@ -601,10 +558,6 @@ packages:
 
   ajv@8.17.1:
     resolution: {integrity: sha512-B/gBuNg5SiMTrPkC+A2+cW0RszwxYmn6VYxB/inlBStS5nx6xHIt/ehKRhIMhqusl7a8LjQoZnjCs5vhwxOQ1g==}
-
-  algoliasearch@5.8.0:
-    resolution: {integrity: sha512-JsKQ1iLdsdWIByzUDAoU7DLVpD9aT/dfKAgzs1UrW0I4xahgTpuZE4btGZUwim3GLfYxzzYKwz5vYSW1Ptce2A==}
-    engines: {node: '>= 14.0.0'}
 
   ansi-colors@4.1.3:
     resolution: {integrity: sha512-/6w/C21Pm1A7aZitlI5Ni/2J6FFQN8i1Cvz3kHABAAbw93v/NlvKdVOqz7CCWz/3iv/JplRSEEZ83XION15ovw==}
@@ -2295,55 +2248,6 @@ packages:
 
 snapshots:
 
-  '@algolia/client-abtesting@5.8.0':
-    dependencies:
-      '@algolia/client-common': 5.8.0
-      '@algolia/requester-browser-xhr': 5.8.0
-      '@algolia/requester-fetch': 5.8.0
-      '@algolia/requester-node-http': 5.8.0
-
-  '@algolia/client-analytics@5.8.0':
-    dependencies:
-      '@algolia/client-common': 5.8.0
-      '@algolia/requester-browser-xhr': 5.8.0
-      '@algolia/requester-fetch': 5.8.0
-      '@algolia/requester-node-http': 5.8.0
-
-  '@algolia/client-common@5.8.0': {}
-
-  '@algolia/client-personalization@5.8.0':
-    dependencies:
-      '@algolia/client-common': 5.8.0
-      '@algolia/requester-browser-xhr': 5.8.0
-      '@algolia/requester-fetch': 5.8.0
-      '@algolia/requester-node-http': 5.8.0
-
-  '@algolia/client-search@5.8.0':
-    dependencies:
-      '@algolia/client-common': 5.8.0
-      '@algolia/requester-browser-xhr': 5.8.0
-      '@algolia/requester-fetch': 5.8.0
-      '@algolia/requester-node-http': 5.8.0
-
-  '@algolia/recommend@5.8.0':
-    dependencies:
-      '@algolia/client-common': 5.8.0
-      '@algolia/requester-browser-xhr': 5.8.0
-      '@algolia/requester-fetch': 5.8.0
-      '@algolia/requester-node-http': 5.8.0
-
-  '@algolia/requester-browser-xhr@5.8.0':
-    dependencies:
-      '@algolia/client-common': 5.8.0
-
-  '@algolia/requester-fetch@5.8.0':
-    dependencies:
-      '@algolia/client-common': 5.8.0
-
-  '@algolia/requester-node-http@5.8.0':
-    dependencies:
-      '@algolia/client-common': 5.8.0
-
   '@babel/code-frame@7.25.7':
     dependencies:
       '@babel/highlight': 7.25.7
@@ -2358,7 +2262,7 @@ snapshots:
       js-tokens: 4.0.0
       picocolors: 1.1.0
 
-  '@cmmv/body-parser@0.4.0':
+  '@cmmv/body-parser@0.4.2':
     dependencies:
       async_hooks: 1.0.0
       bytes: 3.1.2
@@ -2370,25 +2274,23 @@ snapshots:
       type-is: 1.6.18
       unpipe: 1.0.0
 
-  '@cmmv/compression@0.4.0':
+  '@cmmv/compression@0.4.2':
     dependencies:
       accepts: 1.3.8
       compressible: 2.0.18
       on-headers: 1.0.2
-      safe-buffer: 5.2.1
       vary: 1.1.2
 
-  '@cmmv/cookie-parser@0.4.0':
+  '@cmmv/cookie-parser@0.4.2':
     dependencies:
       accepts: 1.3.8
       compressible: 2.0.18
       cookie: 0.6.0
       cookies: 0.9.1
       on-headers: 1.0.2
-      safe-buffer: 5.2.1
       vary: 1.1.2
 
-  '@cmmv/core@0.4.1':
+  '@cmmv/core@0.4.4':
     dependencies:
       class-transformer: 0.5.1
       class-validator: 0.14.1
@@ -2399,33 +2301,33 @@ snapshots:
       uglify-js: 3.19.3
       uuid: 10.0.0
 
-  '@cmmv/cors@0.4.0':
+  '@cmmv/cors@0.4.2':
     dependencies:
       accepts: 1.3.8
       compressible: 2.0.18
       cookies: 0.9.1
       object-assign: 4.1.1
       on-headers: 1.0.2
-      safe-buffer: 5.2.1
       vary: 1.1.2
 
-  '@cmmv/etag@0.4.0': {}
+  '@cmmv/etag@0.4.2': {}
 
-  '@cmmv/helmet@0.4.0':
+  '@cmmv/helmet@0.4.2':
     dependencies:
       helmet: 8.0.0
 
-  '@cmmv/http@0.4.1':
+  '@cmmv/http@0.4.4':
     dependencies:
-      '@cmmv/body-parser': 0.4.0
-      '@cmmv/compression': 0.4.0
-      '@cmmv/cookie-parser': 0.4.0
-      '@cmmv/cors': 0.4.0
-      '@cmmv/etag': 0.4.0
-      '@cmmv/helmet': 0.4.0
-      '@cmmv/server': 0.4.0
-      '@cmmv/server-static': 0.4.0
-      '@cmmv/view': 0.4.1
+      '@cmmv/body-parser': 0.4.2
+      '@cmmv/compression': 0.4.2
+      '@cmmv/cookie-parser': 0.4.2
+      '@cmmv/cors': 0.4.2
+      '@cmmv/etag': 0.4.2
+      '@cmmv/helmet': 0.4.2
+      '@cmmv/reactivity': 0.4.3
+      '@cmmv/server': 0.4.2
+      '@cmmv/server-static': 0.4.2
+      '@cmmv/view': 0.4.4
       '@fastify/compress': 7.0.3
       '@fastify/cors': 9.0.1
       '@fastify/formbody': 7.4.0
@@ -2447,11 +2349,11 @@ snapshots:
       - debug
       - supports-color
 
-  '@cmmv/reactivity@0.4.0':
+  '@cmmv/reactivity@0.4.3':
     dependencies:
       '@vue/reactivity': 3.5.11
 
-  '@cmmv/server-static@0.4.0':
+  '@cmmv/server-static@0.4.2':
     dependencies:
       '@fastify/accept-negotiator': 1.1.0
       '@fastify/send': 3.1.1
@@ -2463,16 +2365,14 @@ snapshots:
       fast-glob: 3.3.2
       on-headers: 1.0.2
       parseurl: 1.3.3
-      safe-buffer: 5.2.1
-      send: 0.19.0
       vary: 1.1.2
     transitivePeerDependencies:
       - supports-color
 
-  '@cmmv/server@0.4.0':
+  '@cmmv/server@0.4.2':
     dependencies:
-      '@cmmv/body-parser': 0.4.0
-      '@cmmv/server-static': 0.4.0
+      '@cmmv/body-parser': 0.4.2
+      '@cmmv/server-static': 0.4.2
       '@fastify/send': 3.1.1
       accepts: 1.3.8
       after: 0.8.2
@@ -2491,7 +2391,6 @@ snapshots:
       proxy-addr: 2.0.7
       qs: 6.13.0
       rxjs: 7.8.1
-      safe-buffer: 5.2.1
       send: 0.19.0
       statuses: 2.0.1
       type-is: 1.6.18
@@ -2500,9 +2399,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@cmmv/view@0.4.1':
+  '@cmmv/view@0.4.4':
     dependencies:
-      '@cmmv/reactivity': 0.4.0
+      '@cmmv/reactivity': 0.4.3
       fast-glob: 3.3.2
       html-minifier-terser: 7.2.0
       uglify-js: 3.19.3
@@ -2915,10 +2814,6 @@ snapshots:
       tslib: 2.7.0
     optional: true
 
-  '@types/algoliasearch@4.0.0':
-    dependencies:
-      algoliasearch: 5.8.0
-
   '@types/chai@4.3.20': {}
 
   '@types/conventional-commits-parser@5.0.0':
@@ -3001,18 +2896,6 @@ snapshots:
       fast-uri: 3.0.2
       json-schema-traverse: 1.0.0
       require-from-string: 2.0.2
-
-  algoliasearch@5.8.0:
-    dependencies:
-      '@algolia/client-abtesting': 5.8.0
-      '@algolia/client-analytics': 5.8.0
-      '@algolia/client-common': 5.8.0
-      '@algolia/client-personalization': 5.8.0
-      '@algolia/client-search': 5.8.0
-      '@algolia/recommend': 5.8.0
-      '@algolia/requester-browser-xhr': 5.8.0
-      '@algolia/requester-fetch': 5.8.0
-      '@algolia/requester-node-http': 5.8.0
 
   ansi-colors@4.1.3: {}
 

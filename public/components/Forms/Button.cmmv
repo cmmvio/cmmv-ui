@@ -4,11 +4,15 @@
         :type="type"
         @click="emit('click')"
     >
+        <Icon10k></Icon10k>
+
         <slot />
     </button>
 </template>
 
 <script>
+//import Icon10k from "@components/icons/Icon10k.cmmv";
+
 export default {
     props: {
         type: {
@@ -81,6 +85,10 @@ export default {
         },
     },
     
+    /*components: {
+        Icon10k
+    },*/
+
     data(){
         return {
             buttonClass: ""
@@ -88,7 +96,6 @@ export default {
     },
 
     mounted(){
-        console.log(this);
         this.refreshClass();      
     },
 

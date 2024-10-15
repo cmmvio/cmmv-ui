@@ -35,10 +35,10 @@
 		]
 	},
 	"dependencies": {
-		"@cmmv/core": "^0.4.1",
-		"@cmmv/http": "^0.4.1",
-		"@cmmv/reactivity": "^0.4.0",
-		"@cmmv/view": "^0.4.1",
+		"@cmmv/core": "^0.4.4",
+		"@cmmv/http": "^0.4.4",
+		"@cmmv/reactivity": "^0.4.3",
+		"@cmmv/view": "^0.4.4",
 		"dotenv": "^16.4.5"
 	},
 	"devDependencies": {
@@ -48,7 +48,6 @@
 		"@swc-node/core": "^1.13.3",
 		"@swc-node/register": "^1.10.9",
 		"@swc/core": "^1.7.26",
-		"@types/algoliasearch": "^4.0.0",
 		"@types/chai": "^4.3.19",
 		"@types/jest": "^29.5.12",
 		"@types/mocha": "^10.0.7",

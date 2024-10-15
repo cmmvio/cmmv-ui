@@ -5,14 +5,14 @@
         @click="onClick"
     >
         <template>Button</template>
-    </CButton>
+    </CButton>    
 
     <button @click="changeVariant('solid')">Solid</button>
     <button @click="changeVariant('outline')">Outline</button>
 </div>
 
 <script s-setup>
-import CButton from "@components/Button.cmmv";
+import CButton from "@components/forms/Button.cmmv";
     
 export default {
     layout: "default",
@@ -25,17 +25,12 @@ export default {
         }
     },
 
-    mounted(){
-        console.log(this);
-    },
-
     methods: {
         toggleTheme(){
             this.styles.switch((this.styles.theme === "default") ? "dark" : "default");
         },
 
         changeVariant(newVariant){
-            //console.log(this);
             this.$refs.btn.variant = newVariant;
             this.$refs.btn.refreshClass();
         },
