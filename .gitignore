@@ -1,3 +1,6 @@
+# CMMV Settings
+.env
+
 /dist
 /node_modules
 /admin
@@ -14,6 +17,7 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 yarn.lock
+pnpm-lock.yaml
 
 # OS
 .DS_Store
@@ -38,12 +42,16 @@ yarn.lock
 !.vscode/launch.json
 !.vscode/extensions.json
 
-# Settings
-.env
-
 # SQLite
 *.sqlite
 
 # Gsuite
 googleapis.json
 newrelic.js
+docs/algolia.json
+docs/index.json
+docs/indexLinks.json
+docs/index*.json
+public/sitemap.xml
+docs/*.json
+docs/**/*.json

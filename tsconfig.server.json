@@ -29,6 +29,6 @@
         "lib": ["esnext", "dom"],
         "types": ["node", "mocha"],
     },
-    "include": ["packages/**/*", "src/**/*.ts",],
+    "include": ["src/**/*.ts", "vueform.config.ts",],
     "exclude": ["node_modules", "dist", "**/*.spec.ts"]
 }

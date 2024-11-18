@@ -8,10 +8,11 @@
 
 # configuration
 package-lock.json
-pnpm-lock.yaml
 tslint.json
 tsconfig.json
 .prettierrc
 yarn.lock
+pnpm-lock.yaml
 
 *.tsbuildinfo
+.env

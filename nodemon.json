@@ -1,11 +1,11 @@
 {
-    "watch": ["src", "public", "docs"],
+    "watch": ["src", "public"],
     "ext": "ts,js,md,html",
     "ignore": [
         "src/**/*.spec.ts", "src/app.module.ts", 
-        "public/core/*", "public/assets/**/*", 
-        "public/assets/*", "docs/**/*.html",
-        "docs/*.html"
+        "src/**/*", "public/core/*", 
+        "public/assets/**/*", "public/assets/*",
+        "src/controllers"
     ],
-    "exec": "node -r @swc-node/register ./src/index.ts" 
+    "exec": "SWC_NODE_PROJECT=tsconfig.server.json node -r @swc-node/register ./src/server.ts" 
 }
