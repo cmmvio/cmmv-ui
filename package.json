@@ -8,7 +8,7 @@
     "scripts": {
         "clean": "rimraf dist",
         "dev": "vite dev",
-        "build": "vue-tsc --noEmit && vite build",
+        "build": "vue-tsc --declaration --emitDeclarationOnly --outDir dist/types && vite build",
         "postbuild": "./clean_dist.sh",
         "preview": "vite preview",
         "type-check": "vue-tsc --noEmit",
@@ -34,8 +34,15 @@
     },
     "homepage": "https://github.com/andrehrferreira/cmmv-ui#readme",
     "type": "module",
-    "main": "dist/main.js",
-    "types": "./dist/types/index.d.ts",
+    "main": "dist/cmmv-ui.cjs.js",
+	"module": "dist/cmmv-ui.es.js",
+	"types": "dist/types/index.d.ts",
+	"exports": {
+		".": {
+			"import": "./dist/cmmv-ui.es.js",
+			"require": "./dist/cmmv-ui.cjs.js"
+		}
+	},
     "lint-staged": {
         "**/*.{ts,json}": [
             "prettier --write",
