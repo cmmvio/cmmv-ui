@@ -38,8 +38,10 @@ export default defineConfig({
     },
 
     build: {
+        target: 'esnext',
+        minify: 'terser',
         lib: {
-            entry: resolve(__dirname, 'index.ts'),
+            entry: resolve(__dirname, 'src/index.ts'),
             name: 'cmmv-ui',
             fileName: (format) => `cmmv-ui.${format}.js`,
             formats: ['es', 'cjs', 'umd'], 
@@ -51,6 +53,19 @@ export default defineConfig({
                     vue: 'Vue',
                 },
             },
+            preserveEntrySignatures: false,
+            plugins: [
+                {
+                    name: 'exclude-public-folder',
+                    generateBundle(options, bundle) {
+                        Object.keys(bundle).forEach((key) => {
+                            if (key.startsWith('public/')) {
+                                delete bundle[key];
+                            }
+                        });
+                    }
+                }
+            ]
         },
         cssCodeSplit: true, 
     },

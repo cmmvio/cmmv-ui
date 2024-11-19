@@ -4,9 +4,12 @@
 	"description": "",
 	"license": "MIT",
 	"author": "Andre Ferreira",
+	"private": false,
 	"scripts": {
+		"clean": "rimraf dist",
 		"dev": "vite dev",
-		"build": "vue-tsc -b && vite build",
+		"build": "vue-tsc --noEmit && vite build",
+		"postbuild": "./clean_dist.sh",
 		"preview": "vite preview",
 		"type-check": "vue-tsc --noEmit",
 		"start": "node dist/client.js",
@@ -16,10 +19,30 @@
 		"dist",
 		"src"
 	],
+	"keywords": [
+        "cmmv",
+		"ui"
+    ],
+	"repository": {
+        "type": "git",
+        "url": "git+https://github.com/andrehrferreira/cmmv-ui.git"
+    },
+	"bugs": {
+        "url": "https://github.com/andrehrferreira/cmmv-ui/issues"
+    },
+    "homepage": "https://github.com/andrehrferreira/cmmv-ui#readme",
 	"type": "module",
-	"main": "./dist/index.mjs",
-	"module": "./dist/index.mjs",
-	"types": "./types/index.d.ts",
+	"main": "dist/cmmv-ui.cjs.js",
+	"module": "dist/cmmv-ui.es.js",	
+	"unpkg": "dist/cmmv-ui.iife.js",
+    "jsdelivr": "dist/cmmv-ui.iife.js",	
+	"exports": {
+        ".": {
+            "import": "./dist/cmmv-ui.js",
+            "require": "./dist/cmmv-ui.umd.js"
+        }
+    },
+    "types": "./dist/types/index.d.ts",
 	"devDependencies": {
 		"@babel/core": "^7.26.0",
 		"@babel/node": "^7.26.0",
@@ -39,6 +62,7 @@
 		"css-loader": "^7.1.2",
 		"html-loader": "^5.1.0",
 		"nodemon": "^3.1.7",
+		"rimraf": "^6.0.1",
 		"tailwindcss": "^3.4.15",
 		"typescript": "^5.6.3",
 		"unplugin-vue-components": "^0.27.4",
