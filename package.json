@@ -15,7 +15,8 @@
         "start": "node dist/client.js",
         "test": "vitest",
         "release": "node scripts/release.js",
-        "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s"
+        "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
+		"prepare": "husky"
     },
     "files": [
         "dist",
