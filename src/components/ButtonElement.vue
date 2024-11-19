@@ -6,9 +6,12 @@
         :class="[
             'c-btn',
             {
-                // Adicione classes dinâmicas se necessário
+                
             }
         ]"
+        :aria-busy="loading ? true : undefined"
+        :disabled="disabled"
+        :tabindex="disabled || loading ? -1 : undefined"
         @click="emitClick"
     >
         <slot>Button</slot>
@@ -18,10 +21,11 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import BaseElement from "@mixins/BaseElement.ts";
+import BaseForm from "@mixins/BaseForm";
 
 export default defineComponent({
     name: "ButtonElement",
-    mixins: [BaseElement],
+    mixins: [BaseElement, BaseForm],
     emits: [
         "click",
         "beforeCreate",

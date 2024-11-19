@@ -13,21 +13,20 @@ export default defineConfig({
         vue(),
         viteTsconfigPaths(),
         Components({
-            resolvers: [AntDesignVueResolver()], // Mantém os resolvers
-            dirs: ['src/components'], // Diretório de componentes
+            resolvers: [AntDesignVueResolver()],
+            dirs: ['src/components'], 
             extensions: ['vue'],
             include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
             dts: true,
         }),
         dts({
-            outputDir: 'dist/types', // Geração de tipos
-            include: ['src/**/*.ts', 'src/**/*.vue'], // Inclui arquivos Vue e TS
-            insertTypesEntry: true, // Adiciona entrada de tipos
+            include: ['src/**/*.ts', 'src/**/*.vue'], 
+            insertTypesEntry: true, 
         }),
     ],
 
     server: {
-        host: true, // Mantém o servidor
+        host: true, 
         port: 5000,
         cors: {
             origin: 'http://localhost:3000',
@@ -47,18 +46,18 @@ export default defineConfig({
         target: 'esnext',
         minify: 'terser',
         lib: {
-            entry: resolve(__dirname, 'src/index.ts'), // Entrada principal
+            entry: resolve(__dirname, 'src/index.ts'),
             name: 'CmmvUI',
-            fileName: (format) => `cmmv-ui.${format}.js`, // Arquivo gerado por formato
-            formats: ['es', 'umd'], // Formatos ES Modules e UMD
+            fileName: (format) => `cmmv-ui.${format}.js`, 
+            formats: ['es', 'umd'], 
         },
         rollupOptions: {
-            external: ['vue'], // Exclui Vue do bundle
+            external: ['vue'], 
             output: {
                 globals: {
                     vue: 'Vue',
                 },
-                assetFileNames: 'assets/[name].[ext]', // Organiza assets
+                assetFileNames: 'assets/[name].[ext]', 
             },
         },
         cssCodeSplit: true,
@@ -67,7 +66,7 @@ export default defineConfig({
     resolve: {
         alias: {
             '@': resolve(__dirname, 'src'),
-            '@components': resolve(__dirname, 'src/components'), // Mantém resolvers
+            '@components': resolve(__dirname, 'src/components'),
             '@composables': resolve(__dirname, 'src/composables'),
             '@mixins': resolve(__dirname, 'src/mixins'),
             '@services': resolve(__dirname, 'src/services'),

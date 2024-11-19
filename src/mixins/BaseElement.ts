@@ -1,4 +1,8 @@
-import { defineComponent, onBeforeMount, onMounted, onBeforeUpdate, onUpdated, onBeforeUnmount, onUnmounted } from 'vue';
+import { 
+    defineComponent, onBeforeMount, 
+    onMounted, onBeforeUpdate, onUpdated, 
+    onBeforeUnmount, onUnmounted 
+} from 'vue';
 
 export default defineComponent({
     name: "BaseElement",
