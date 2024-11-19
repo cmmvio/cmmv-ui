@@ -6,9 +6,21 @@ import {
 
 export default defineComponent({
     name: "BaseElement",
+
+    data(){
+        return {
+            roundedStyles: {
+                none: "",
+                default: "rounded",
+                md: "rounded-md",
+                full: "rounded-full"   
+            }
+        }
+    },
+
     props: {
         name: {
-            required: true,
+            required: false,
             type: [String, Number],
         },
         onBeforeCreate: {
@@ -52,6 +64,7 @@ export default defineComponent({
             default: null,
         },
     },
+
     setup(props, { emit }) {
         const emitLifecycleEvent = (eventName: string, callback: Function | null) => {
             if (callback) callback();

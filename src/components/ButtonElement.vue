@@ -3,20 +3,42 @@
         :is="buttonType"
         :name="name"
         :type="type"
-        :class="[
-            'c-btn',
-            {
-                
-            }
-        ]"
+        class="c-button font-semibold shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 bg-indigo-400"
+        :class="[sizes[size], roundedStyles[rounded], variantStyles[variant], { 'opacity-50': disabled, 'cursor-not-allowed': disabled }]"
         :aria-busy="loading ? true : undefined"
         :disabled="disabled"
         :tabindex="disabled || loading ? -1 : undefined"
-        @click="emitClick"
+        @click="handleClick"
     >
         <slot>Button</slot>
+        <span class="ripple"></span>
     </component>
 </template>
+
+<style>
+.c-button {
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+    transition: background-color 0.3s;
+}
+
+span.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    transform: scale(0);
+    animation: ripple 0.6s linear;
+    pointer-events: none;
+}
+
+@keyframes ripple {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+</style>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
@@ -25,7 +47,9 @@ import BaseForm from "@mixins/BaseForm";
 
 export default defineComponent({
     name: "ButtonElement",
+
     mixins: [BaseElement, BaseForm],
+
     emits: [
         "click",
         "beforeCreate",
@@ -37,6 +61,27 @@ export default defineComponent({
         "beforeUnmount",
         "unmounted"
     ],
+
+    data(){
+        return {
+            "sizes": {
+                "sm": "px-2 py-1 text-xs",
+                "md": "px-2 py-1 text-sm",
+                "lg": "px-2.5 py-1.5 text-sm",
+                "xl": "px-3 py-2 text-sm",
+                "2xl": "px-3.5 py-2.5 text-sm",
+            },
+            variantStyles: {
+                elevated: "text-black shadow-md", 
+                flat: "text-black hover:bg-gray-100", 
+                tonal: "", 
+                outlined: "border border-gray-300 text-black hover:bg-gray-100", 
+                text: "text-blue-600 hover:underline",
+                plain: "bg-transparent text-black hover:bg-gray-50",
+            },
+        }
+    },
+
     props: {
         type: {
             required: true,
@@ -48,10 +93,45 @@ export default defineComponent({
             type: [String],
             default: "button", // button|anchor
         },
+        size: {
+            required: false,
+            type: [String],
+            default: "lg", // sm|md|lg|xl|2xl
+        },
+        rounded: {
+            required: false,
+            type: [String],
+            default: "default", // none|default|md|full
+        },
+        variant: {
+            required: false,
+            type: [String],
+            default: "elevated", // elevated|flat|tonal|outlined|text|plain
+        },
     },
+
     methods: {
-        emitClick(event) {
+        handleClick(event: MouseEvent) {
+            if (this.disabled) return;
+
             this.$emit("click", event);
+
+            const button: any = event.currentTarget;
+            const circle = document.createElement("span");
+            const diameter = Math.max(button.clientWidth, button.clientHeight);
+            const radius = diameter / 2;
+
+            circle.style.width = circle.style.height = `${diameter}px`;
+            circle.style.left = `${event.clientX - button.offsetLeft - radius}px`;
+            circle.style.top = `${event.clientY - button.offsetTop - radius}px`;
+            circle.classList.add("ripple");
+
+            const ripple = button.getElementsByClassName("ripple")[0];
+
+            if (ripple) 
+                ripple.remove();
+            
+            button.appendChild(circle);
         },
     }
 });

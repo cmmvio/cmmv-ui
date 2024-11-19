@@ -1,8 +1,8 @@
 <template>
     <button-element 
-        text="Click Me" 
-        @click="handleClick"
-    ></button-element>
+        type="button"
+        variant="elevated"
+    >Click Me</button-element>
 </template>
   
 <style scoped>
