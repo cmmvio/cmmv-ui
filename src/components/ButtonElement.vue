@@ -1,6 +1,7 @@
 <template>
     <component
         :is="buttonType"
+        :name="name"
         :type="type"
         :class="[
             'c-btn',
@@ -14,10 +15,11 @@
     </component>
 </template>
 
-<script>
-import BaseElement from "@mixins/BaseElement.js";
+<script lang="ts">
+import { defineComponent } from 'vue';
+import BaseElement from "@mixins/BaseElement.ts";
 
-export default {
+export default defineComponent({
     name: "ButtonElement",
     mixins: [BaseElement],
     emits: [
@@ -48,5 +50,5 @@ export default {
             this.$emit("click", event);
         },
     }
-};
+});
 </script>

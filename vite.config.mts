@@ -1,30 +1,21 @@
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
 import vue from '@vitejs/plugin-vue';
-import postcssNesting from 'postcss-nesting';
 import Components from 'unplugin-vue-components/vite';
+import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers';
+import viteTsconfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig({
     envDir: './',
 
-    css: {
-        preprocessorOptions: {
-            scss: {
-              additionalData: `@import "@vueform/vueform/themes/vueform/scss/index.scss";`
-            }
-        },
-        postcss: {
-            plugins: [
-                postcssNesting
-            ],
-        },
-    },
-
     plugins: [
         vue(), 
+        viteTsconfigPaths(),
         Components({
+            resolvers: [AntDesignVueResolver()],
             dirs: ['src/components'],
             extensions: ['vue'],
+            include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
             dts: true, 
         }),
     ],
@@ -47,22 +38,21 @@ export default defineConfig({
     },
 
     build: {
-        target: 'esnext',
-        minify: 'terser',
         lib: {
-            entry: resolve(__dirname, 'src/index.ts'),
-            name: 'cmmv',
-            fileName: (format) => `cmmv.${format}.js`,
-            formats: ['es', 'cjs', 'umd', 'iife']
+            entry: resolve(__dirname, 'index.ts'),
+            name: 'cmmv-ui',
+            fileName: (format) => `cmmv-ui.${format}.js`,
+            formats: ['es', 'cjs', 'umd'], 
         },
         rollupOptions: {
-            external: ['vue'],                  
+            external: ['vue'],
             output: {
                 globals: {
-                    vue: 'Vue'
-                }
-            }
-        }
+                    vue: 'Vue',
+                },
+            },
+        },
+        cssCodeSplit: true, 
     },
     
     resolve: {
