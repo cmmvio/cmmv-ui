@@ -1,18 +1,27 @@
 <template>
-    <button-element 
-        type="button"
-        variant="elevated"
-    >Click Me</button-element>
+    <main>
+        <RouterView />
+    </main>
 </template>
   
 <style scoped>
   
 </style>
   
-<script setup>
-import ButtonElement from "@components/ButtonElement.vue";
+<script setup lang="ts">
+import { onMounted } from 'vue';
+import { useRouter } from 'vue-router';
 
-function handleClick() {
-    alert('Button clicked!');
-}
+const router = useRouter();
+
+onMounted(() => {
+    const currentPath = window.location.pathname;
+
+    if (currentPath && currentPath !== router.currentRoute.value.path) {
+        router.push(currentPath).catch((err) => {
+            if (err.name !== 'NavigationDuplicated') 
+                console.error(err);
+        });
+    }
+});
 </script>

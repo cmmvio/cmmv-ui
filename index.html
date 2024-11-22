@@ -1,15 +1,51 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-US">
     <head>
-        <title>Odds Trail</title>
-        <meta charset="UTF-8" />
-        <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+        <title>Documentation | CMMV - A minimalistic Node.js framework</title>
+        <meta charset="utf-8" />
+        <meta name="description" content="CMMV is a minimalist Node.js framework focused on contract-driven development, combining automatic code generation, RPC communication, and declarative programming to build efficient, scalable applications with simplified backend and frontend integration."/>
+        <meta name="keywords" content="CMMV, Node.js framework, contract-driven development, RPC communication, TypeScript, automatic code generation, backend, frontend integration, scalable applications, minimalist framework, WebSocket, HTTP, high-performance."/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name="robots" content="index,follow"/>
+        <link rel="icon" type="image/svg+xml" href="/assets/favicon/favicon-32x32.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" type="" href="/assets/bundle.min.css" />
-        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="dns-prefetch" href="https://cmmv.io" />
+        <link rel="preconnect" href="https://cmmv.io" />
+        <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
+        <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/fontawesome.min.css" />
+        <link rel="stylesheet" href="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.css" />
+        <link rel="stylesheet" href="/assets/bundle.min.css" />
+        <link rel="stylesheet" href="/assets/docs.css" />
+        <script src="/assets/tailwind.min.js"></script>
     </head>
-    <body>
+    <body class="bg-gray-200 dark:bg-zinc-900">
         <div id="app"></div>
         <script type="module" src="/public/client.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/highlight.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/highlightjs-vue"></script>
+        <script src="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.js"></script>
+        <script>
+            hljs.registerLanguage("vue", window.hljsDefineVue);
+            hljs.addPlugin(new CopyButtonPlugin());
+            hljs.highlightAll();
+          </script>
+        <!-- Google tag (gtag.js) -->
+        <script type="text/javascript">
+            document.addEventListener("DOMContentLoaded", function() {
+                var script = document.createElement('script');
+                script.async = true;
+                script.src = 'https://googletagmanager.com/gtag/js?id=G-FQLSJYH3LD';
+                document.head.appendChild(script);
+
+                script.onload = function() {
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
+                    gtag('config', 'G-FQLSJYH3LD');
+                };
+            });
+        </script>
     </body>
 </html>

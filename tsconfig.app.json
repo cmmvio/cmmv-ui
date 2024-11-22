@@ -42,6 +42,6 @@
             "@utils/*": ["src/utils/*"]
         }
     },
-    "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "src/shims-vue.d.ts"],
+    "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "src/shims-vue.d.ts", "docs/generate.ts", "public/components/CardDocs.vue"],
     "exclude": ["node_modules", "dist", "public"]
 }

@@ -3,15 +3,14 @@
         :is="buttonType"
         :name="name"
         :type="type"
-        class="c-button font-semibold shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 bg-indigo-400"
-        :class="[sizes[size], roundedStyles[rounded], variantStyles[variant], { 'opacity-50': disabled, 'cursor-not-allowed': disabled }]"
+        class="c-button font-semibold shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 relative"
+        :class="[sizes[size], roundedStyles[rounded], variantStyles[variant], bgColor, textColor, { 'opacity-50': disabled, 'cursor-not-allowed': disabled }]"
         :aria-busy="loading ? true : undefined"
         :disabled="disabled"
         :tabindex="disabled || loading ? -1 : undefined"
         @click="handleClick"
     >
         <slot>Button</slot>
-        <span class="ripple"></span>
     </component>
 </template>
 
@@ -46,7 +45,7 @@ import BaseElement from "@mixins/BaseElement.ts";
 import BaseForm from "@mixins/BaseForm";
 
 export default defineComponent({
-    name: "ButtonElement",
+    name: "CButton",
 
     mixins: [BaseElement, BaseForm],
 
@@ -84,7 +83,7 @@ export default defineComponent({
 
     props: {
         type: {
-            required: true,
+            required: false,
             type: [String],
             default: "button", // button|reset|submit
         },
@@ -108,6 +107,16 @@ export default defineComponent({
             type: [String],
             default: "elevated", // elevated|flat|tonal|outlined|text|plain
         },
+        bgColor: {
+            required: false,
+            type: [String],
+            default: "bg-indigo-600 hover:bg-indigo-500 focus-visible:outline-indigo-600",
+        },
+        textColor: {
+            required: false,
+            type: [String],
+            default: "text-white",
+        }
     },
 
     methods: {
@@ -116,20 +125,27 @@ export default defineComponent({
 
             this.$emit("click", event);
 
-            const button: any = event.currentTarget;
+            const button: HTMLElement | null = event.currentTarget as HTMLElement;
+
+            if (!button) return;
+
             const circle = document.createElement("span");
             const diameter = Math.max(button.clientWidth, button.clientHeight);
             const radius = diameter / 2;
 
+            const rect = button.getBoundingClientRect();
+            const left = event.pageX - rect.left - window.scrollX - radius;
+            const top = event.pageY - rect.top - window.scrollY - radius;
+
             circle.style.width = circle.style.height = `${diameter}px`;
-            circle.style.left = `${event.clientX - button.offsetLeft - radius}px`;
-            circle.style.top = `${event.clientY - button.offsetTop - radius}px`;
+            circle.style.left = `${left}px`;
+            circle.style.top = `${top}px`;
             circle.classList.add("ripple");
 
-            const ripple = button.getElementsByClassName("ripple")[0];
+            const existingRipple = button.querySelector(".ripple");
 
-            if (ripple) 
-                ripple.remove();
+            if (existingRipple) 
+                existingRipple.remove();
             
             button.appendChild(circle);
         },
