@@ -7,7 +7,6 @@
             The <code>CCheckbox</code> (alias: c-checkbox) component in the <code>@cmmv/ui</code> framework provides a customizable and versatile checkbox element. It supports dynamic labels, two-way binding using <code>v-model</code>, and customizable styles for various use cases. With built-in support for sizes, colors, and indeterminate states, the <code>c-checkbox</code> is ideal for forms, filters, and other interactive UI components.
         </p>
 
-        <!-- Basic Example -->
         <h2 class="text-lg font-semibold">Basic Checkbox</h2>
 
         <p>

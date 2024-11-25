@@ -48,16 +48,24 @@ export default defineConfig({
         lib: {
             entry: resolve(__dirname, 'src/index.ts'),
             name: 'CmmvUI',
-            fileName: (format) => `cmmv-ui.${format}.js`, 
-            formats: ['es', 'umd'], 
+            fileName: (format) => `cmmv-ui.${format}.js`,
+            formats: ['es'], 
         },
         rollupOptions: {
-            external: ['vue'], 
+            external: ['vue'],
             output: {
                 globals: {
                     vue: 'Vue',
                 },
-                assetFileNames: 'assets/[name].[ext]', 
+                assetFileNames: 'assets/[name].[ext]',
+                manualChunks(id) {
+                    if (id.includes('icons')) 
+                        return 'icons';                    
+                    else if (id.includes('components')) 
+                        return 'components';                    
+                    else if (id.includes('flags')) 
+                        return 'flags';   
+                },
             },
         },
         cssCodeSplit: true,

@@ -63,6 +63,7 @@ export default defineComponent({
                 isDir: true,
                 children: [
                     { name: "Icon", uri: "/icon" },
+                    { name: "Flags", uri: "/flags" },
                     { name: "Button", uri: "/button" },
                     { name: "Tooltip", uri: "/tooltip" },
                 ],
