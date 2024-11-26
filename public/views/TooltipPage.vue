@@ -4,6 +4,62 @@
 
         <p>The <code>CTooltip</code> (alias: c-tooltip) component in the <code>@cmmv/ui</code> framework provides an elegant way to display contextual information on hover. It supports different positions, customizable styles, and an optional arrow for a more polished look.</p>
 
+        <table class="w-full text-left border-collapse border-0">
+            <thead>
+                <tr>
+                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
+                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Type</th>
+                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Default</th>
+                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="border-b px-4 py-2">content</td>
+                    <td class="border-b px-4 py-2">String</td>
+                    <td class="border-b px-4 py-2">-</td>
+                    <td class="border-b px-4 py-2">The text or content displayed inside the tooltip.</td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">position</td>
+                    <td class="border-b px-4 py-2">String</td>
+                    <td class="border-b px-4 py-2">"top"</td>
+                    <td class="border-b px-4 py-2">Specifies the position of the tooltip relative to the target element. Options: <code>top</code>, <code>bottom</code>, <code>left</code>, <code>right</code>.</td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">opacity</td>
+                    <td class="border-b px-4 py-2">Number</td>
+                    <td class="border-b px-4 py-2">100</td>
+                    <td class="border-b px-4 py-2">Sets the opacity level of the tooltip content.</td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">maxWidth</td>
+                    <td class="border-b px-4 py-2">Number</td>
+                    <td class="border-b px-4 py-2">0</td>
+                    <td class="border-b px-4 py-2">Defines the maximum width of the tooltip in pixels. A value of 0 means no limit.</td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">bgColor</td>
+                    <td class="border-b px-4 py-2">String</td>
+                    <td class="border-b px-4 py-2">"bg-gray-200 dark:bg-zinc-900"</td>
+                    <td class="border-b px-4 py-2">Sets the background color of the tooltip content. Accepts any valid Tailwind CSS background color class.</td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">textColor</td>
+                    <td class="border-b px-4 py-2">String</td>
+                    <td class="border-b px-4 py-2">"text-black dark:text-white"</td>
+                    <td class="border-b px-4 py-2">Sets the text color of the tooltip content. Accepts any valid Tailwind CSS text color class.</td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">arrowColor</td>
+                    <td class="border-b px-4 py-2">String</td>
+                    <td class="border-b px-4 py-2">"zinc-900"</td>
+                    <td class="border-b px-4 py-2">Sets the color of the tooltip's arrow. Accepts any valid Tailwind CSS color class.</td>
+                </tr>
+            </tbody>
+        </table>
+
+
         <!-- Tooltip Positions -->
         <h2>Positions</h2>
         <p>

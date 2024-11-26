@@ -37,7 +37,12 @@ export default defineComponent({
         bgColor: {
             required: false,
             type: [String],
-            default: "bg-white text-slate-800 dark:dark:bg-zinc-800 dark:text-white",
+            default: "bg-white dark:dark:bg-zinc-800",
+        },
+        textColor: {
+            required: false,
+            type: [String],
+            default: "text-slate-800 dark:text-white",
         }
     },
 });

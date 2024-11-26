@@ -69,9 +69,18 @@ export default defineComponent({
                 ],
             },
             {
+                name: "Layout",
+                isDir: true,
+                children: [
+                    { name: "Card", uri: "/card" },
+                ]
+            },
+            {
                 name: "Form",
                 isDir: true,
                 children: [
+                    { name: "Form", uri: "/form" },
+                    { name: "Input", uri: "/input" },
                     { name: "Checkbox", uri: "/checkbox" },
                     { name: "Toggle", uri: "/toggle" },
                 ],

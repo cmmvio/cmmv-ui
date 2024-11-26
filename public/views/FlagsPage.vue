@@ -4,6 +4,43 @@
 
         <p>The <code>CFlag</code> (alias: c-flag) component in the <code>@cmmv/ui</code> framework provides an easy way to use country flags as SVG icons. The flags are imported from the <a href="https://github.com/lipis/flag-icons" target="_blank" rel="noopener noreferrer">flag-icons</a> project and adapted for seamless integration with Vue and the CMMV UI framework. Below is the guide to use the <code>CFlag</code> component.</p>
 
+        <table class="w-full text-left border-collapse border-0">
+            <thead>
+                <tr>
+                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
+                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Type</th>
+                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Default</th>
+                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="border-b px-4 py-2">iso</td>
+                    <td class="border-b px-4 py-2">String</td>
+                    <td class="border-b px-4 py-2">-</td>
+                    <td class="border-b px-4 py-2">The ISO country code (e.g., "br" for Brazil, "us" for the United States). This is used to dynamically load the corresponding flag component.</td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">size</td>
+                    <td class="border-b px-4 py-2">String</td>
+                    <td class="border-b px-4 py-2">"md"</td>
+                    <td class="border-b px-4 py-2">Specifies the size of the flag. Options: <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, <code>2xl</code>.</td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">rounded</td>
+                    <td class="border-b px-4 py-2">String</td>
+                    <td class="border-b px-4 py-2">"md"</td>
+                    <td class="border-b px-4 py-2">Controls the border radius of the flag. Options: <code>none</code>, <code>default</code>, <code>md</code>, <code>full</code>.</td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">ariaLabel</td>
+                    <td class="border-b px-4 py-2">String</td>
+                    <td class="border-b px-4 py-2">"flag"</td>
+                    <td class="border-b px-4 py-2">Sets the accessible label for the flag, used by screen readers.</td>
+                </tr>
+            </tbody>
+        </table>
+
         <!-- Simple Flags -->
         <c-card 
             class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4"
@@ -24,6 +61,9 @@
     &lt;c-flag iso="jp" size="2xl" /&gt;
 &lt;/template&gt;</code>
         </pre>
+
+        
+
 
         <!-- Variants -->
         <h2>Flag Variants</h2>

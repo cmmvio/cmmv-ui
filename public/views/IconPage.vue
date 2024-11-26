@@ -11,8 +11,39 @@
             <a href="https://heroicons.com/" target="_blank" rel="noopener noreferrer">Heroicons</a> library, the <code>CIcon</code> is designed to work with any icon library or custom SVGs. This ensures maximum flexibility and adaptability for your projects.
         </p>
 
+        <table class="w-full text-left border-collapse border-0">
+            <thead>
+                <tr>
+                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
+                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Type</th>
+                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Default</th>
+                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="border-b px-4 py-2">size</td>
+                    <td class="border-b px-4 py-2">String</td>
+                    <td class="border-b px-4 py-2">"md"</td>
+                    <td class="border-b px-4 py-2">Specifies the size of the icon. Options: <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, <code>2xl</code>.</td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">color</td>
+                    <td class="border-b px-4 py-2">String</td>
+                    <td class="border-b px-4 py-2">"text-gray-800"</td>
+                    <td class="border-b px-4 py-2">Defines the text color of the icon. Accepts any valid Tailwind CSS text color class.</td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">ariaLabel</td>
+                    <td class="border-b px-4 py-2">String</td>
+                    <td class="border-b px-4 py-2">"icon"</td>
+                    <td class="border-b px-4 py-2">Sets the accessible label for the icon, used by screen readers.</td>
+                </tr>
+            </tbody>
+        </table>
+
         <!-- Simple Example -->
-        <h2 class="text-lg font-semibold">Simple Example</h2>
+        <h2 class="text-lg font-semibold mt-8">Simple Example</h2>
 
         <p>
             The following example demonstrates the basic usage of the <code>CIcon</code> component with different sizes and colors. You can use it to wrap any SVG or inline icon.

@@ -6,12 +6,12 @@
         <span class="absolute inset-0 z-0" ref="rippleContainer"></span>
 
         <span
-            class="relative z-10 w-12 h-6 flex items-center rounded-full transition-all duration-200"
-            :class="[isChecked ? bgColor : 'bg-gray-300', disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer']"
+            class="relative z-10 flex items-center rounded-full transition-all duration-200"
+            :class="[sizes[size].track, isChecked ? trackColor : 'bg-gray-300', disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer']"
         >
             <span
-                class="absolute w-6 h-6 bg-white rounded-full shadow transition-transform transform"
-                :class="isChecked ? 'translate-x-6' : 'translate-x-0'"
+                class="absolute rounded-full shadow transition-transform transform"
+                :class="[sizes[size].thumb, thumbColor, isChecked ? sizes[size].thumbTranslate : 'translate-x-0']"
             ></span>
         </span>
 
@@ -56,10 +56,15 @@ export default defineComponent({
             required: false,
             default: "md", // sm | md | lg
         },
-        bgColor: {
+        trackColor: {
             type: String,
             required: false,
-            default: "bg-blue-600",
+            default: "bg-blue-600", // Custom color for the track when checked
+        },
+        thumbColor: {
+            type: String,
+            required: false,
+            default: "bg-white", // Custom color for the thumb
         },
     },
 
@@ -67,7 +72,6 @@ export default defineComponent({
 
     setup(props, { emit }) {
         const internalChecked = ref(props.modelValue ?? props.checked);
-
         const rippleContainer = ref<HTMLElement | null>(null);
 
         watch(
@@ -99,7 +103,7 @@ export default defineComponent({
 
             const rect = rippleContainer.value.getBoundingClientRect();
             const ripple = document.createElement("span");
-            const diameter = rect.height * 0.9; 
+            const diameter = rect.height * 0.9;
             const radius = diameter / 2;
 
             ripple.style.width = ripple.style.height = `${diameter}px`;
@@ -115,9 +119,24 @@ export default defineComponent({
         };
 
         const sizes = {
-            sm: { track: "w-10 h-5", thumb: "w-4 h-4", label: "text-sm" },
-            md: { track: "w-12 h-6", thumb: "w-6 h-6", label: "text-base" },
-            lg: { track: "w-14 h-7", thumb: "w-7 h-7", label: "text-lg" },
+            sm: {
+                track: "w-10 h-5",
+                thumb: "w-4 h-4",
+                thumbTranslate: "translate-x-5",
+                label: "text-sm",
+            },
+            md: {
+                track: "w-12 h-6",
+                thumb: "w-6 h-6",
+                thumbTranslate: "translate-x-6",
+                label: "text-base",
+            },
+            lg: {
+                track: "w-14 h-7",
+                thumb: "w-7 h-7",
+                thumbTranslate: "translate-x-7",
+                label: "text-lg",
+            },
         };
 
         return { isChecked, toggle, sizes, rippleContainer };
@@ -140,17 +159,5 @@ export default defineComponent({
         transform: scale(1.5); 
         opacity: 0;
     }
-}
-
-.track {
-    display: flex;
-    align-items: center;
-    transition: background-color 0.2s ease-in-out;
-}
-
-.thumb {
-    background: white;
-    transition: transform 0.2s ease-in-out;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 }
 </style>

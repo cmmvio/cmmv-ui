@@ -7,7 +7,81 @@
             The <code>CCheckbox</code> (alias: c-checkbox) component in the <code>@cmmv/ui</code> framework provides a customizable and versatile checkbox element. It supports dynamic labels, two-way binding using <code>v-model</code>, and customizable styles for various use cases. With built-in support for sizes, colors, and indeterminate states, the <code>c-checkbox</code> is ideal for forms, filters, and other interactive UI components.
         </p>
 
-        <h2 class="text-lg font-semibold">Basic Checkbox</h2>
+        <table class="w-full text-left border-collapse border-0">
+            <thead>
+                <tr>
+                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
+                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Type</th>
+                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Default</th>
+                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="border-b px-4 py-2">modelValue</td>
+                    <td class="border-b px-4 py-2">Boolean | Array</td>
+                    <td class="border-b px-4 py-2">undefined</td>
+                    <td class="border-b px-4 py-2">The value bound to the checkbox, supporting both single and array-based binding for groups of checkboxes.</td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">value</td>
+                    <td class="border-b px-4 py-2">String | Number | Boolean</td>
+                    <td class="border-b px-4 py-2">null</td>
+                    <td class="border-b px-4 py-2">The value used when the checkbox is part of an array-based model.</td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">checked</td>
+                    <td class="border-b px-4 py-2">Boolean</td>
+                    <td class="border-b px-4 py-2">false</td>
+                    <td class="border-b px-4 py-2">Initial checked state for the checkbox when not using <code>v-model</code>.</td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">indeterminate</td>
+                    <td class="border-b px-4 py-2">Boolean</td>
+                    <td class="border-b px-4 py-2">false</td>
+                    <td class="border-b px-4 py-2">Sets the checkbox to an indeterminate state, typically used for mixed selection groups.</td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">label</td>
+                    <td class="border-b px-4 py-2">String</td>
+                    <td class="border-b px-4 py-2">""</td>
+                    <td class="border-b px-4 py-2">Optional label displayed next to the checkbox.</td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">disabled</td>
+                    <td class="border-b px-4 py-2">Boolean</td>
+                    <td class="border-b px-4 py-2">false</td>
+                    <td class="border-b px-4 py-2">Disables the checkbox, making it non-interactive.</td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">size</td>
+                    <td class="border-b px-4 py-2">String</td>
+                    <td class="border-b px-4 py-2">"md"</td>
+                    <td class="border-b px-4 py-2">Specifies the size of the checkbox. Options: <code>sm</code>, <code>md</code>, <code>lg</code>.</td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">bgColor</td>
+                    <td class="border-b px-4 py-2">String</td>
+                    <td class="border-b px-4 py-2">"bg-blue-600"</td>
+                    <td class="border-b px-4 py-2">Background color of the checkbox when checked.</td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">borderColor</td>
+                    <td class="border-b px-4 py-2">String</td>
+                    <td class="border-b px-4 py-2">"border-blue-600"</td>
+                    <td class="border-b px-4 py-2">Border color of the checkbox when checked.</td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">textColor</td>
+                    <td class="border-b px-4 py-2">String</td>
+                    <td class="border-b px-4 py-2">"text-white"</td>
+                    <td class="border-b px-4 py-2">Text color of the check or indeterminate icon.</td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <h2 class="text-lg font-semibold mt-8">Basic Checkbox</h2>
 
         <p>
             The following example demonstrates a basic checkbox with dynamic label support. The label changes based on the <code>v-model</code> binding, reflecting the current state of the checkbox.
@@ -27,16 +101,10 @@
     &lt;c-checkbox v-model=&quot;checked&quot; :label=&quot;checked ? &#39;Checked&#39; : &#39;Unchecked&#39;&quot; /&gt;
 &lt;/template&gt;
 
-&lt;script&gt;
+&lt;script setup&gt;
 import CCheckbox from &quot;@cmmv/ui/components/CCheckbox.vue&quot;;
 import { ref } from &quot;vue&quot;;
-
-export default {
-    setup() {
-        const checked = ref(true);
-        return { checked };
-    },
-};
+const checked = ref(true);
 &lt;/script&gt;</code>
         </pre>
 
@@ -167,6 +235,22 @@ export default {
             </div>
         </card-docs>
         
+<pre>
+    <code class="code-hightlight language-vue">&lt;template&gt;
+    &lt;c-checkbox v-model=&quot;selectedOptions&quot; value=&quot;option1&quot; label=&quot;Option 1&quot; /&gt;
+    &lt;c-checkbox v-model=&quot;selectedOptions&quot; value=&quot;option2&quot; label=&quot;Option 2&quot; /&gt;
+    &lt;c-checkbox v-model=&quot;selectedOptions&quot; value=&quot;option3&quot; label=&quot;Option 3&quot; /&gt;
+
+    &lt;div class=&quot;border-t border-t-zinc-700 mt-4 pt-4 items-center text-center&quot;&gt;
+        Selected Options: {{ selectedOptions }}
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref } from &quot;vue&quot;;
+const selectedOptions = ref([]);
+&lt;/script&gt;</code>
+</pre>
     </BaseLayout>
 </template>
 
