@@ -1,28 +1,42 @@
 <template>
     <div class="c-input relative w-full">
+        <!-- Label -->
         <label 
             :for="id"
-            class="c-input-label absolute left-3 text-sm p-0.5 text-gray-500 dark:text-gray-400  transition-all duration-200 ease-in-out pointer-events-none"
-            :class="{ 
+            class="c-input-label absolute left-3 text-sm p-0.5 transition-all duration-200 ease-in-out pointer-events-none"
+            :class="[{ 
                 'c-input-label--active': isActive, 
-                'top-1/3': modelValue !== undefined && modelValue !== null,
-                'bg-white dark:bg-zinc-900': variant === 'default',
-                'bg-white dark:bg-zinc-800': variant === 'outlined'
-            }"
+                'bg-white dark:bg-zinc-900': variant === 'default' && !disabled && bgColor == '',
+                'bg-white dark:bg-zinc-800': (variant === 'outlined' || variant === 'filled') && !disabled && bgColor == '',
+                'top-[50%] -translate-y-1/2': !isActive && !currentValue && !hasError,
+                'top-[30%]': !isActive && hasError,
+                'top-1/3': currentValue !== undefined && currentValue !== '',
+                'pl-8': hasIcon && !isActive
+            }, bgColor, textColor ? textColor : 'text-gray-500 dark:text-gray-400']"
         >
             {{ label }}
         </label>
 
-        <div class="relative">
+        <!-- Input Wrapper -->
+        <div class="relative flex items-center">
+            <!-- Icon Slot -->
+            <div 
+                v-if="hasIcon" 
+                class="absolute inset-y-0 left-0 flex items-center pl-3 z-50"
+            >
+                <slot name="icon"></slot>
+            </div>
+
+            <!-- Input -->
             <input
                 :id="id"
                 :type="type"
                 :name="name"
                 :placeholder="isActive ? placeholder : ''"
                 :value="modelValue"
-                :class="[sizes[size], roundedStyles[rounded], variantStyles[variant], 
-                    { 'border-red-500': hasError, 'opacity-50': disabled, 'cursor-not-allowed': disabled }]"
-                class="c-input-field text-zinc-950 dark:text-white block w-full border shadow-sm pt-4 pb-2"
+                :class="[sizes[size], roundedStyles[rounded], variantStyles[variant], bgColor ? bgColor : variantColors[variant], textColor, borderColorClass,
+                    { 'ring-red-500 ring-2': hasError, 'opacity-50': disabled, 'cursor-not-allowed': disabled, 'pl-10': hasIcon }]"
+                class="c-input-field block w-full border shadow-sm pt-4 pb-2 outline-none"
                 @keyup="handleInput"
                 @change="handleInput"
                 @focus="activateLabel"
@@ -30,9 +44,10 @@
                 :disabled="disabled"
                 :aria-invalid="hasError"
             />
-            
+
+            <!-- Clear Button -->
             <button
-                v-if="clearable"
+                v-if="clearable && currentValue !== ''"
                 type="button"
                 class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-400 hover:text-gray-600"
                 @click="clearInput"
@@ -42,17 +57,20 @@
                 </svg>
             </button>
         </div>
-       
-        <div class="mt-1 h-6" v-if="!hiddenHint">
+
+        <!-- Hint/Error Message -->
+        <div class="mt-1" v-if="!hiddenHint">
             <p v-if="hasError" class="text-xs text-red-500">{{ errorMessage }}</p>
             <p v-else-if="hint && (hintFixed || isActive)" class="text-xs text-gray-500">{{ hint }}</p>
         </div>
     </div>
 </template>
 
+
 <style scoped>
 .c-input {
     margin-bottom: 1rem;
+    position: relative;
 }
 
 .c-input-label {
@@ -65,17 +83,31 @@
     transform: translate(0, -2rem) scale(0.85);
     top: 1.3rem;
     left: 0.3rem;
-    color: var(--color-indigo-500); 
 }
 
 .c-input-field {
     transition: border-color 0.3s, box-shadow 0.3s, padding-top 0.3s;
     position: relative;
 }
+
+.c-input .c-input-field.pl-10 {
+    padding-left: 2.5rem; 
+}
+
+.c-input [slot="icon"] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
 </style>
 
 <script setup lang="ts">
-import { ref, computed, defineExpose, watch } from 'vue';
+import { ref, computed, defineExpose, watch, useSlots } from 'vue';
+
+const slots = useSlots();
+
+const hasIcon = computed(() => !!slots.icon);
 
 const props = defineProps({
     modelValue: {
@@ -141,6 +173,21 @@ const props = defineProps({
         required: false,
         default: null,
     },
+    bgColor: {
+        type: String,
+        required: false,
+        default: ""
+    },
+    textColor: {
+        type: String,
+        required: false,
+        default: ""
+    },
+    borderColor: {
+        type: String,
+        required: false,
+        default: "focus:ring focus:ring-zinc-700 focus:ring-opacity-50"
+    },
 });
 
 const emit = defineEmits(["update:modelValue"]);
@@ -165,7 +212,7 @@ const id = computed(() => props.id || generatedId);
 const sizes = {
     sm: "px-2 py-1 text-xs",
     md: "px-3 py-2 text-sm",
-    lg: "px-4 py-3 text-base",
+    lg: "px-5 py-4 text-base",
 };
 
 const roundedStyles = {
@@ -175,10 +222,18 @@ const roundedStyles = {
 };
 
 const variantStyles = {
-    default: "bg-zinc-200 dark:bg-zinc-900 border-none ",
-    outlined: "bg-zinc-100 dark:bg-zinc-800 border-2 border-zinc-500",
-    filled: "bg-zinc-200 dark:bg-zinc-800 border-none shadow-md",
+    default: "border-none ",
+    outlined: "border-2 border-zinc-700",
+    filled: "border-1 border-zinc-900 shadow-md",
 };
+
+const variantColors = {
+    default: "bg-zinc-200 dark:bg-zinc-900 text-zinc-950 dark:text-white",
+    outlined: "bg-zinc-100 dark:bg-zinc-800 text-zinc-950 dark:text-white",
+    filled: "bg-zinc-200 dark:bg-zinc-800 text-zinc-950 dark:text-white",
+}
+
+const borderColorClass = computed(() => props.borderColor);
 
 const hasError = computed(() => !!errorMessage.value);
 

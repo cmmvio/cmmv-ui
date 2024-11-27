@@ -141,12 +141,12 @@ const checked = ref(true);
         <card-docs
             class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4"
         >
-            <c-checkbox label="Indeterminate" :indeterminate="true" />
+            <c-checkbox label="Indeterminate" indeterminate />
         </card-docs>
 
         <pre>
             <code class="code-hightlight language-vue">&lt;template&gt;
-    &lt;c-checkbox label=&quot;Indeterminate&quot; :indeterminate=&quot;true&quot; /&gt;
+    &lt;c-checkbox label=&quot;Indeterminate&quot; indeterminate /&gt;
 &lt;/template&gt;</code>
         </pre>
 
@@ -160,12 +160,12 @@ const checked = ref(true);
         <card-docs
             class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4"
         >
-            <c-checkbox label="Disabled" :disabled="true" />
+            <c-checkbox label="Disabled" disabled />
         </card-docs>
 
         <pre>
             <code class="code-hightlight language-vue">&lt;template&gt;
-    &lt;c-checkbox label=&quot;Disabled&quot; :disabled=&quot;true&quot; /&gt;
+    &lt;c-checkbox label=&quot;Disabled&quot; disabled /&gt;
 &lt;/template&gt;</code>
         </pre>
 
@@ -242,7 +242,7 @@ const checked = ref(true);
     &lt;c-checkbox v-model=&quot;selectedOptions&quot; value=&quot;option3&quot; label=&quot;Option 3&quot; /&gt;
 
     &lt;div class=&quot;border-t border-t-zinc-700 mt-4 pt-4 items-center text-center&quot;&gt;
-        Selected Options: {{ selectedOptions }}
+        Selected Options: &#123;&#123; selectedOptions &#125;&#125;
     &lt;/div&gt;
 &lt;/template&gt;
 

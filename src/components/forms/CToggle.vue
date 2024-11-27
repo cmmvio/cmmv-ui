@@ -7,7 +7,7 @@
 
         <span
             class="relative z-10 flex items-center rounded-full transition-all duration-200"
-            :class="[sizes[size].track, isChecked ? trackColor : 'bg-gray-300', disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer']"
+            :class="[sizes[size].track, isChecked ? trackColor : bgColor, disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer']"
         >
             <span
                 class="absolute rounded-full shadow transition-transform transform"
@@ -55,6 +55,11 @@ export default defineComponent({
             type: String,
             required: false,
             default: "md", // sm | md | lg
+        },
+        bgColor: {
+            type: String,
+            required: false,
+            default: "bg-zinc-400", 
         },
         trackColor: {
             type: String,

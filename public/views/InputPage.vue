@@ -142,21 +142,9 @@ import CInput from &quot;@cmmv/ui/components/CInput.vue&quot;;
 
         <pre>
             <code class="code-hightlight language-vue">&lt;template&gt;
-    &lt;c-input 
-        id=&quot;small&quot; 
-        label=&quot;Small Input&quot; 
-        size=&quot;sm&quot; 
-    /&gt;
-    &lt;c-input 
-        id=&quot;medium&quot; 
-        label=&quot;Medium Input&quot; 
-        size=&quot;md&quot; 
-    /&gt;
-    &lt;c-input 
-        id=&quot;large&quot; 
-        label=&quot;Large Input&quot; 
-        size=&quot;lg&quot; 
-    /&gt;
+    &lt;c-input id=&quot;small&quot;  label=&quot;Small Input&quot; size=&quot;sm&quot; /&gt;
+    &lt;c-input id=&quot;medium&quot; label=&quot;Medium Input&quot; size=&quot;md&quot; /&gt;
+    &lt;c-input id=&quot;large&quot; label=&quot;Large Input&quot; size=&quot;lg&quot; /&gt;
 &lt;/template&gt;</code>
         </pre>
 
@@ -189,7 +177,8 @@ import CInput from &quot;@cmmv/ui/components/CInput.vue&quot;;
                 <c-input 
                     id="validation" 
                     label="Input with Validation" 
-                    :rules="[value => (value ? null : 'This field is required')]" 
+                    :rules="[value => (value ? null : 'This field is required')]"
+                    v-model="validableValue" 
                 />
             </div>
         </c-card>
@@ -210,7 +199,7 @@ import CInput from &quot;@cmmv/ui/components/CInput.vue&quot;;
 
         <c-card class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
             <div class="w-2/5">
-                <c-input id="clearable" label="Clearable Input" clearable />
+                <c-input v-model="clearableValue" id="clearable" label="Clearable Input" clearable />
             </div>
         </c-card>
 
@@ -219,6 +208,101 @@ import CInput from &quot;@cmmv/ui/components/CInput.vue&quot;;
     &lt;c-input id=&quot;clearable&quot; label=&quot;Clearable Input&quot; clearable /&gt;
 &lt;/template&gt;</code>
         </pre>
+
+        <!-- Icon -->
+        <h2>Icon</h2>
+
+        <p>The Input component does not include a dedicated <code>icon</code> prop. Instead, it utilizes a slot to allow for greater flexibility in customizing the icon within the input field. This approach provides developers with more control over the design and behavior of the icon. By adding an icon through the icon slot, you can seamlessly align it to the left of the input field, enhancing the user experience with contextual cues, such as a magnifying glass for search fields.</p>
+
+        <c-card class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+            <div class="w-2/5">
+                <c-input id="search" label="Search Input">
+                    <template #icon>
+                        <IconMagnifyingGlass class="w-6 h-6 text-white" aria-hidden="true"  /> 
+                    </template>
+                </c-input>
+            </div>
+        </c-card>
+
+        <pre>
+            <code class="code-hightlight language-vue">&lt;template&gt;
+    &lt;c-input id=&quot;search&quot; label=&quot;Search Input&quot;&gt;
+        &lt;template #icon&gt;
+            &lt;IconMagnifyingGlass class=&quot;w-6 h-6 text-white&quot; aria-hidden=&quot;true&quot; /&gt; 
+        &lt;/template&gt;
+    &lt;/c-input&gt;
+&lt;/template&gt;</code>
+</pre>
+
+        <!-- Custom Colors -->
+        <h2>Custom Colors</h2>
+
+        <p>The <code>CInput</code> component supports <strong>custom colors</strong> for the input field, label, and border. You can use the following props to style the input field as per your application's design requirements:</p>
+        
+        <ul>
+            <li><strong><code>bgColor</code></strong>: Adjusts the background color of the input.</li>
+            <li><strong><code>textColor</code></strong>: Modifies the color of the input text and label.</li>
+            <li><strong><code>borderColor</code></strong>: Sets the color and styles for the input's border during interactions such as focus.</li>
+        </ul>
+
+        <p>This flexibility allows for dynamic and visually appealing designs, tailored to specific use cases or branding guidelines.</p>
+
+        <table class="w-full text-left border-collapse border-0">
+            <thead>
+                <tr>
+                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
+                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Type</th>
+                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Default</th>
+                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="border-b px-4 py-2">bgColor</td>
+                    <td class="border-b px-4 py-2">String</td>
+                    <td class="border-b px-4 py-2">""</td>
+                    <td class="border-b px-4 py-2">Custom background color class for the input.</td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">textColor</td>
+                    <td class="border-b px-4 py-2">String</td>
+                    <td class="border-b px-4 py-2">""</td>
+                    <td class="border-b px-4 py-2">Custom text color class for the input and label.</td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">borderColor</td>
+                    <td class="border-b px-4 py-2">String</td>
+                    <td class="border-b px-4 py-2">""</td>
+                    <td class="border-b px-4 py-2">Custom border color class for the input.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 class="mt-4">Preview</h2>
+
+        <c-card class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+            <div class="w-2/5">
+                <c-input 
+                    id="custom" 
+                    label="Custom Input"
+                    bgColor="bg-blue-600"
+                    textColor="text-white"
+                    borderColor="focus:ring focus:ring-purple-700 focus:ring-opacity-50"
+                ></c-input>
+            </div>
+        </c-card>
+
+        <pre>
+        <code class="code-hightlight language-vue">&lt;template&gt;
+    &lt;c-input 
+        id=&quot;custom&quot; 
+        label=&quot;Custom Input&quot;
+        bgColor=&quot;bg-blue-600&quot;
+        textColor=&quot;text-white&quot;
+        borderColor=&quot;focus:ring focus:ring-purple-700 focus:ring-opacity-50&quot;
+    &gt;&lt;/c-input&gt;
+&lt;/template&gt;</code>
+    </pre>
     </BaseLayout>
 </template>
 
@@ -229,5 +313,8 @@ import CInput from &quot;@cmmv/ui/components/CInput.vue&quot;;
 </style>
 
 <script setup>
+import { ref } from "vue";
 import BaseLayout from "../layout/BaseLayout.vue";
+const clearableValue = ref("");
+const validableValue = ref("")
 </script>
