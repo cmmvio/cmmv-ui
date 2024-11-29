@@ -3,7 +3,9 @@ export { default as CCard } from '@components/layout/CCard.vue';
 
 //Components
 export { default as CButton } from '@components/components/CButton.vue';
+export { default as CFlag } from '@components/components/CFlag.vue';
 export { default as CIcon } from '@components/components/CIcon.vue';
+export { default as CProgressCircular } from '@components/components/CProgressCircular.vue';
 export { default as CTooltip } from '@components/components/CTooltip.vue';
 
 //Form

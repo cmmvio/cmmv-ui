@@ -3,7 +3,7 @@
         <!-- Label -->
         <label 
             :for="id"
-            class="c-input-label absolute left-3 text-sm p-0.5 transition-all duration-200 ease-in-out pointer-events-none"
+            class="c-input-label absolute left-3 text-sm transition-all duration-200 ease-in-out pointer-events-none"
             :class="[{ 
                 'c-input-label--active': isActive, 
                 'bg-white dark:bg-zinc-900': variant === 'default' && !disabled && bgColor == '',
@@ -56,6 +56,19 @@
                     <path fill-rule="evenodd" d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
                 </svg>
             </button>
+
+            <!-- Loading Indicator -->
+            <div 
+                v-if="loading" 
+                class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-400"
+            >
+                <c-progress-circular 
+                    indeterminate 
+                    :size="20" 
+                    :fillColor="'#EFEFEF'" 
+                    :width="2"
+                />
+            </div>
         </div>
 
         <!-- Hint/Error Message -->
@@ -99,6 +112,19 @@
     align-items: center;
     justify-content: center;
     height: 100%;
+}
+
+.c-progress-circular {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 </style>
 
@@ -187,6 +213,10 @@ const props = defineProps({
         type: String,
         required: false,
         default: "focus:ring focus:ring-zinc-700 focus:ring-opacity-50"
+    },
+    loading: {
+        type: Boolean,
+        default: false,
     },
 });
 

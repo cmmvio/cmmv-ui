@@ -7,6 +7,7 @@ import ButtonPage from "./views/ButtonPage.vue";
 import TooltipPage from "./views/TooltipPage.vue";
 import IconPage from "./views/IconPage.vue";
 import FlagsPage from "./views/FlagsPage.vue";
+import ProgressCircularPage from "./views/ProgressCircularPage.vue";
 
 //Layout
 import CardPage from "./views/CardPage.vue";
@@ -23,6 +24,7 @@ const routes = [
     { path: '/icon', component: IconPage },
 	{ path: '/flags', component: FlagsPage },
     { path: '/tooltip', component: TooltipPage },
+    { path: '/progress-circular', component: ProgressCircularPage },
 	
 	//Layout
 	{ path: '/card', component: CardPage },

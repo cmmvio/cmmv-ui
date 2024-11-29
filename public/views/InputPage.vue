@@ -209,6 +209,22 @@ import CInput from &quot;@cmmv/ui/components/CInput.vue&quot;;
 &lt;/template&gt;</code>
         </pre>
 
+        <!-- Loading -->
+        <h2>Loading</h2>
+        <p>The <code>loading</code> property enables a button to clear the input field's content.</p>
+
+        <c-card class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+            <div class="w-2/5">
+                <c-input id="loading" label="Loading Input" loading />
+            </div>
+        </c-card>
+
+        <pre>
+            <code class="code-hightlight language-vue">&lt;template&gt;
+    &lt;c-input id=&quot;loading&quot; label=&quot;Loading Input&quot; loading /&gt;
+&lt;/template&gt;</code>
+        </pre>
+
         <!-- Icon -->
         <h2>Icon</h2>
 
