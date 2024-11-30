@@ -7,15 +7,21 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    CAppBarNav: typeof import('./src/components/layout/CAppBarNav.vue')['default']
     CButton: typeof import('./src/components/components/CButton.vue')['default']
     CCard: typeof import('./src/components/layout/CCard.vue')['default']
     CCheckbox: typeof import('./src/components/forms/CCheckbox.vue')['default']
+    CContainer: typeof import('./src/components/layout/CContainer.vue')['default']
     CFlag: typeof import('./src/components/components/CFlag.vue')['default']
     CForm: typeof import('./src/components/forms/CForm.vue')['default']
     CIcon: typeof import('./src/components/components/CIcon.vue')['default']
     CInput: typeof import('./src/components/forms/CInput.vue')['default']
+    CProgressBar: typeof import('./src/components/components/CProgressBar.vue')['default']
     CProgressCircular: typeof import('./src/components/components/CProgressCircular.vue')['default']
+    CSpacer: typeof import('./src/components/layout/CSpacer.vue')['default']
     CToggle: typeof import('./src/components/forms/CToggle.vue')['default']
+    CToolbar: typeof import('./src/components/layout/CToolbar.vue')['default']
+    CToolbarTitle: typeof import('./src/components/layout/CToolbarTitle.vue')['default']
     CTooltip: typeof import('./src/components/components/CTooltip.vue')['default']
     FlagAD: typeof import('./src/components/flags/FlagAD.vue')['default']
     FlagAE: typeof import('./src/components/flags/FlagAE.vue')['default']

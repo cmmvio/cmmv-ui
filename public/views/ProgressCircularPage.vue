@@ -5,6 +5,56 @@
 
         <p>The <code>CProgressCircular</code> component is a flexible and customizable progress indicator for both determinate and indeterminate states. Below, you'll find examples and detailed usage of all the props supported by this component.</p>
 
+        <table class="w-full text-left border-collapse border-0">
+            <thead>
+                <tr>
+                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
+                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Type</th>
+                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Default</th>
+                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="border-b px-4 py-2">value</td>
+                    <td class="border-b px-4 py-2">Number</td>
+                    <td class="border-b px-4 py-2">0</td>
+                    <td class="border-b px-4 py-2">The progress value ranging from 0 to 100 for determinate mode.</td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">size</td>
+                    <td class="border-b px-4 py-2">Number</td>
+                    <td class="border-b px-4 py-2">100</td>
+                    <td class="border-b px-4 py-2">Specifies the diameter of the progress circle in pixels.</td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">width</td>
+                    <td class="border-b px-4 py-2">Number</td>
+                    <td class="border-b px-4 py-2">10</td>
+                    <td class="border-b px-4 py-2">Defines the thickness of the progress stroke.</td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">bgColor</td>
+                    <td class="border-b px-4 py-2">String</td>
+                    <td class="border-b px-4 py-2">"#d3d3d3"</td>
+                    <td class="border-b px-4 py-2">Sets the background stroke color for the circular progress.</td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">fillColor</td>
+                    <td class="border-b px-4 py-2">String</td>
+                    <td class="border-b px-4 py-2">"#4caf50"</td>
+                    <td class="border-b px-4 py-2">Specifies the color of the progress stroke.</td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">indeterminate</td>
+                    <td class="border-b px-4 py-2">Boolean</td>
+                    <td class="border-b px-4 py-2">false</td>
+                    <td class="border-b px-4 py-2">When true, displays an animated indeterminate progress indicator.</td>
+                </tr>
+            </tbody>
+        </table>
+
+
         <c-card 
             class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4"
         >

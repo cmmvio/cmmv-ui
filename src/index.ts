@@ -1,10 +1,16 @@
 //Layout
+export { default as CAppBarNav } from '@components/layout/CAppBarNav.vue';
 export { default as CCard } from '@components/layout/CCard.vue';
+export { default as CContainer } from '@components/layout/CContainer.vue';
+export { default as CSpacer } from '@components/layout/CSpacer.vue';
+export { default as CToolbar } from '@components/layout/CToolbar.vue';
+export { default as CToolbarTitle } from '@components/layout/CToolbarTitle.vue';
 
 //Components
 export { default as CButton } from '@components/components/CButton.vue';
 export { default as CFlag } from '@components/components/CFlag.vue';
 export { default as CIcon } from '@components/components/CIcon.vue';
+export { default as CProgressBar } from '@components/components/CProgressBar.vue';
 export { default as CProgressCircular } from '@components/components/CProgressCircular.vue';
 export { default as CTooltip } from '@components/components/CTooltip.vue';
 

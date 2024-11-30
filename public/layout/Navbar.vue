@@ -66,6 +66,7 @@ export default defineComponent({
                     { name: "Flags", uri: "/flags" },
                     { name: "Button", uri: "/button" },
                     { name: "Tooltip", uri: "/tooltip" },
+                    { name: "Progress Bar", uri: "/progress-bar" },
                     { name: "Progress Circular", uri: "/progress-circular" },
                 ],
             },
