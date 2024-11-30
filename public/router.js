@@ -3,23 +3,23 @@ import { createMemoryHistory, createRouter } from 'vue-router';
 import IndexPage from "./views/IndexPage.vue";
 
 //Components
-import ButtonPage from "./views/ButtonPage.vue";
-import TooltipPage from "./views/TooltipPage.vue";
-import IconPage from "./views/IconPage.vue";
-import FlagsPage from "./views/FlagsPage.vue";
-import ProgressBarPage from "./views/ProgressBarPage.vue";
-import ProgressCircularPage from "./views/ProgressCircularPage.vue";
-import BadgePage from "./views/BadgePage.vue";
+import ButtonPage from "./views/components/ButtonPage.vue";
+import TooltipPage from "./views/components/TooltipPage.vue";
+import IconPage from "./views/components/IconPage.vue";
+import FlagsPage from "./views/components/FlagsPage.vue";
+import ProgressBarPage from "./views/components/ProgressBarPage.vue";
+import ProgressCircularPage from "./views/components/ProgressCircularPage.vue";
+import BadgePage from "./views/components/BadgePage.vue";
 
 //Layout
-import CardPage from "./views/CardPage.vue";
-import ToolbarPage from "./views/ToolbarPage.vue";
+import CardPage from "./views/layout/CardPage.vue";
+import ToolbarPage from "./views/layout/ToolbarPage.vue";
 
 //Form
-import FormPage from "./views/FormPage.vue";
-import InputPage from "./views/InputPage.vue";
-import CheckboxPage from "./views/CheckboxPage.vue";
-import TogglePage from "./views/TogglePage.vue";
+import FormPage from "./views/form/FormPage.vue";
+import InputPage from "./views/form/InputPage.vue";
+import CheckboxPage from "./views/form/CheckboxPage.vue";
+import TogglePage from "./views/form/TogglePage.vue";
 
 //Overlays
 import NotificationPage from "./views/NotificationPage.vue";

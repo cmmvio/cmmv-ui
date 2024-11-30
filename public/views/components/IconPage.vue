@@ -151,10 +151,9 @@
 
 <script setup>
 
-import { shallowRef, ref, markRaw, reactive, onMounted } from "vue";
+import { ref, markRaw, reactive, onMounted } from "vue";
 import IconsList from "@composables/IconsList.ts";
-import BaseLayout from "../layout/BaseLayout.vue";
-import IconDocs from "../components/IconDocs.vue";
+import BaseLayout from "../../layout/BaseLayout.vue";
 import CCard from "@components/layout/CCard.vue";
 import CIcon from "@components/components/CIcon.vue";
 import IconCheck from "@components/icons/IconCheck.vue";
@@ -165,7 +164,7 @@ const resolvedIcons = reactive([]);
 
 onMounted(async () => {
     for (const icon of icons) {
-        const component = await import(icon.path);
+        const component = await import(`../../../src/${icon.path}`);
         resolvedIcons.push({
             ...icon,
             component: markRaw(component.default),

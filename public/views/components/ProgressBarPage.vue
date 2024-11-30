@@ -261,7 +261,7 @@ onMounted(() => {
 
 <script setup>
 import { ref, onMounted } from "vue";
-import BaseLayout from "../layout/BaseLayout.vue";
+import BaseLayout from "../../layout/BaseLayout.vue";
 
 const dynamicValue = ref(0);
 const dynamicValueBuffer = ref(20);

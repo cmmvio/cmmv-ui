@@ -179,7 +179,7 @@ const liveToggle = ref(false);
 
 <script setup>
 import { ref } from "vue";
-import BaseLayout from "../layout/BaseLayout.vue";
+import BaseLayout from "../../layout/BaseLayout.vue";
 import CCard from "@components/layout/CCard.vue";
 const liveToggle = ref(false);
 </script>

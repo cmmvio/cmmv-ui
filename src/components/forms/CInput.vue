@@ -30,7 +30,7 @@
             <!-- Input -->
             <input
                 :id="id"
-                :type="type"
+                :type="inputType"
                 :name="name"
                 :placeholder="isActive ? placeholder : ''"
                 :value="modelValue"
@@ -69,6 +69,26 @@
                     :width="2"
                 />
             </div>
+
+            <!-- Password Toggle -->
+            <button
+                v-if="type === 'password'"
+                type="button"
+                class="absolute inset-y-0 right-0 flex items-center px-2"
+                @click="togglePasswordVisibility"
+                :aria-pressed="showPassword" 
+                aria-label="Toggle password visibility" 
+                role="switch"
+            >
+                <icon-eye-slash 
+                    :class="[textColor ? textColor : 'text-gray-500 dark:text-gray-400 hover:text-gray-200']" 
+                    v-if="showPassword"
+                ></icon-eye-slash>
+                <icon-eye 
+                    :class="[textColor ? textColor : 'text-gray-500 dark:text-gray-400 hover:text-gray-200']" 
+                    v-else
+                ></icon-eye>
+            </button> 
         </div>
 
         <!-- Hint/Error Message -->
@@ -223,6 +243,7 @@ const props = defineProps({
 const emit = defineEmits(["update:modelValue"]);
 
 const currentValue = ref(props.modelValue);
+const showPassword = ref(false);
 
 watch(() => props.modelValue, (newValue) => {
     currentValue.value = newValue;
@@ -232,6 +253,7 @@ watch(currentValue, (newValue) => {
     emit("update:modelValue", newValue);
 });
 
+const inputType = computed(() => (props.type === "password" && showPassword.value ? "text" : props.type));
 const errorMessage = ref<string | null>(null);
 const isActive = ref(false);
 const changed = ref(false);
@@ -290,6 +312,7 @@ const validateShowError = () => {
     if(!changed.value) return false;
 
     for (const rule of props.rules) {
+        //@ts-ignore
         const error = rule(currentValue.value);
 
         if (error) 
@@ -301,6 +324,7 @@ const validate = () => {
     errorMessage.value = null;
 
     for (const rule of props.rules) {
+        //@ts-ignore
         const error = rule(currentValue.value);
 
         if (error) {
@@ -319,6 +343,10 @@ const activateLabel = () => {
 const deactivateLabel = () => {
     if (!currentValue.value) 
         isActive.value = false;
+};
+
+const togglePasswordVisibility = () => {
+    showPassword.value = !showPassword.value;
 };
 
 defineExpose({

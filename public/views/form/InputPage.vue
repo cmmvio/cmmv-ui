@@ -98,7 +98,7 @@
 
         <!-- Basic Examples -->
         <c-card class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-            <div class="w-2/5">
+            <div class="lg:w-2/5 w-full">
                 <c-input id="example1" label="Basic Input" />
                 <c-input id="example2" label="Input with Placeholder" placeholder="Enter text..." />
                 <c-input id="example3" label="Disabled Input" disabled />
@@ -133,7 +133,7 @@ import CInput from &quot;@cmmv/ui/components/CInput.vue&quot;;
         <p>The <code>CInput</code> component supports size variations for better responsiveness and design adaptability. Available sizes include <code>sm</code>, <code>md</code>, and <code>lg</code>.</p>
 
         <c-card class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-            <div class="w-2/5">
+            <div class="lg:w-2/5 w-full">
                 <c-input id="small" label="Small Input" size="sm" />
                 <c-input id="medium" label="Medium Input" size="md" />
                 <c-input id="large" label="Large Input" size="lg" />
@@ -153,7 +153,7 @@ import CInput from &quot;@cmmv/ui/components/CInput.vue&quot;;
         <p>The <code>CInput</code> component supports visual <code>variant</code> styles, including <code>default</code>, <code>outlined</code>, and <code>filled</code>. These styles allow you to align the input field with your application's design language.</p>
 
         <c-card class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-            <div class="w-2/5">
+            <div class="lg:w-2/5 w-full">
                 <c-input id="default" label="Default Variant" variant="default" />
                 <c-input id="outlined" label="Outlined Variant" variant="outlined" />
                 <c-input id="filled" label="Filled Variant" variant="filled" />
@@ -173,7 +173,7 @@ import CInput from &quot;@cmmv/ui/components/CInput.vue&quot;;
         <p>The <code>CInput</code> component supports custom validation rules. Error messages are displayed below the input field if a rule fails.</p>
 
         <c-card class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-            <div class="w-2/5">
+            <div class="lg:w-2/5 w-full">
                 <c-input 
                     id="validation" 
                     label="Input with Validation" 
@@ -193,12 +193,40 @@ import CInput from &quot;@cmmv/ui/components/CInput.vue&quot;;
 &lt;/template&gt;</code>
         </pre>
 
+        <!-- Password -->
+        <h2>Password</h2>
+
+        <p>The <code>CInput</code> component supports password fields with an optional visibility toggle. By specifying the type="password" prop, the input field will display an eye icon for toggling the visibility of the password. This feature uses the IconEye and IconEyeSlash components to provide a seamless user experience.</p>
+
+        <c-card class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+            <div class="lg:w-2/5 w-full">
+                <c-input 
+                    v-model="passwordValue"
+                    id="password" 
+                    label="Password" 
+                    type="password" 
+                />
+            </div>
+        </c-card>
+        
+        <pre>
+            <code class="code-hightlight language-vue">&lt;template&gt;
+    &lt;c-input 
+        v-model="passwordValue"
+        id="password" 
+        label="Password" 
+        type="password" 
+    /&gt;
+&lt;/template&gt;</code>
+        </pre>
+
         <!-- Clearable -->
         <h2>Clearable</h2>
+
         <p>The <code>clearable</code> property enables a button to clear the input field's content.</p>
 
         <c-card class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-            <div class="w-2/5">
+            <div class="lg:w-2/5 w-full">
                 <c-input v-model="clearableValue" id="clearable" label="Clearable Input" clearable />
             </div>
         </c-card>
@@ -214,7 +242,7 @@ import CInput from &quot;@cmmv/ui/components/CInput.vue&quot;;
         <p>The <code>loading</code> property enables a button to clear the input field's content.</p>
 
         <c-card class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-            <div class="w-2/5">
+            <div class="lg:w-2/5 w-full">
                 <c-input id="loading" label="Loading Input" loading />
             </div>
         </c-card>
@@ -231,10 +259,10 @@ import CInput from &quot;@cmmv/ui/components/CInput.vue&quot;;
         <p>The Input component does not include a dedicated <code>icon</code> prop. Instead, it utilizes a slot to allow for greater flexibility in customizing the icon within the input field. This approach provides developers with more control over the design and behavior of the icon. By adding an icon through the icon slot, you can seamlessly align it to the left of the input field, enhancing the user experience with contextual cues, such as a magnifying glass for search fields.</p>
 
         <c-card class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-            <div class="w-2/5">
+            <div class="lg:w-2/5 w-full">
                 <c-input id="search" label="Search Input">
                     <template #icon>
-                        <IconMagnifyingGlass class="w-6 h-6 text-white" aria-hidden="true"  /> 
+                        <IconMagnifyingGlass class="w-6  h-6 text-white" aria-hidden="true"  /> 
                     </template>
                 </c-input>
             </div>
@@ -297,7 +325,7 @@ import CInput from &quot;@cmmv/ui/components/CInput.vue&quot;;
         <h2 class="mt-4">Preview</h2>
 
         <c-card class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-            <div class="w-2/5">
+            <div class="lg:w-2/5 w-full">
                 <c-input 
                     id="custom" 
                     label="Custom Input"
@@ -330,7 +358,8 @@ import CInput from &quot;@cmmv/ui/components/CInput.vue&quot;;
 
 <script setup>
 import { ref } from "vue";
-import BaseLayout from "../layout/BaseLayout.vue";
+import BaseLayout from "../../layout/BaseLayout.vue";
 const clearableValue = ref("");
-const validableValue = ref("")
+const validableValue = ref("");
+const passwordValue = ref("");
 </script>

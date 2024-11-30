@@ -3,7 +3,7 @@
         :class="[sizes[size], color]"
         role="img"
         :aria-label="ariaLabel"
-        class="c-icon inline-flex items-center justify-center w-[2em] min-w-[1em]"
+        class="c-icon inline-flex items-center justify-center  min-w-[1em]"
     >
         <slot></slot>
     </span>

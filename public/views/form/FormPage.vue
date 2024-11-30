@@ -170,7 +170,7 @@ const handleSubmit = () =&gt; {
 </style>
 
 <script setup>
-import BaseLayout from "../layout/BaseLayout.vue";
+import BaseLayout from "../../layout/BaseLayout.vue";
 import CCard from "@components/layout/CCard.vue";
 import CForm from "@components/forms/CForm.vue";
 import CInput from "@components/forms/CInput.vue";

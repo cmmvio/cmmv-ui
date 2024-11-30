@@ -62,13 +62,13 @@ export default defineComponent({
                 name: "Components",
                 isDir: true,
                 children: [
-                    { name: "Icon", uri: "/icon" },
-                    { name: "Flags", uri: "/flags" },
+                    { name: "Badge", uri: "/badge" },
                     { name: "Button", uri: "/button" },
-                    { name: "Tooltip", uri: "/tooltip" },
+                    { name: "Flags", uri: "/flags" },
+                    { name: "Icon", uri: "/icon" },
                     { name: "Progress Bar", uri: "/progress-bar" },
                     { name: "Progress Circular", uri: "/progress-circular" },
-                    { name: "Badge", uri: "/badge" },
+                    { name: "Tooltip", uri: "/tooltip" },                    
                 ],
             },
             {
@@ -76,6 +76,7 @@ export default defineComponent({
                 isDir: true,
                 children: [
                     { name: "Card", uri: "/card" },
+                    { name: "Container", uri: "/container" },
                     { name: "Toolbar", uri: "/toolbar" },
                 ]
             },
@@ -83,9 +84,9 @@ export default defineComponent({
                 name: "Form",
                 isDir: true,
                 children: [
-                    { name: "Form", uri: "/form" },
-                    { name: "Input", uri: "/input" },
                     { name: "Checkbox", uri: "/checkbox" },
+                    { name: "Form", uri: "/form" },
+                    { name: "Input", uri: "/input" },                    
                     { name: "Toggle", uri: "/toggle" },
                 ],
             },

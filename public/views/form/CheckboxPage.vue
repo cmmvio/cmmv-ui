@@ -256,8 +256,8 @@ const selectedOptions = ref([]);
 
 <script setup>
 import { ref } from "vue";
-import BaseLayout from "../layout/BaseLayout.vue";
-import CardDocs from "../components/CardDocs.vue";
+import BaseLayout from "../../layout/BaseLayout.vue";
+import CardDocs from "../../components/CardDocs.vue";
 import CCheckbox from "@components/forms/CCheckbox.vue";
 
 const checked = ref(true);

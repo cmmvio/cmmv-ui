@@ -174,7 +174,7 @@
 
 <script setup>
 import Countries from "@composables/CountriesList.ts";
-import BaseLayout from "../layout/BaseLayout.vue";
+import BaseLayout from "../../layout/BaseLayout.vue";
 import CCard from "@components/layout/CCard.vue";
 import CButton from "@components/components/CButton.vue";
 const countries = Countries;

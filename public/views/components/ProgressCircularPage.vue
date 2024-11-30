@@ -310,7 +310,7 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
-import BaseLayout from "../layout/BaseLayout.vue";
+import BaseLayout from "../../layout/BaseLayout.vue";
 const value = ref(90);
 const dynamicValue = ref(0);
 

@@ -179,6 +179,6 @@
 </template>
 
 <script setup>
-import BaseLayout from "../layout/BaseLayout.vue";
-import CardDocs from "../components/CardDocs.vue";
+import BaseLayout from "../../layout/BaseLayout.vue";
+import CardDocs from "../../components/CardDocs.vue";
 </script>

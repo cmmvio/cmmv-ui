@@ -536,7 +536,7 @@ import { CheckCircleIcon } from &quot;@heroicons/vue/20/solid&quot;;
 </style>
 
 <script setup>
-import BaseLayout from "../layout/BaseLayout.vue";
+import BaseLayout from "../../layout/BaseLayout.vue";
 import CCard from "@components/layout/CCard.vue";
 import CButton from "@components/components/CButton.vue";
 import { CheckCircleIcon } from '@heroicons/vue/20/solid';

@@ -196,8 +196,8 @@
 </style>
 
 <script setup>
-import BaseLayout from "../layout/BaseLayout.vue";
-import CardDocs from "../components/CardDocs.vue";
+import BaseLayout from "../../layout/BaseLayout.vue";
+import CardDocs from "../../components/CardDocs.vue";
 import CCard from "@components/layout/CCard.vue";
 import CTooltip from "@components/components/CTooltip.vue";
 </script>
