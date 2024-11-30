@@ -1,7 +1,6 @@
 <template>
     <component
         :is="buttonType"
-        :name="name"
         :type="type"
         class="c-button font-semibold shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 relative"
         :class="[sizes[size], roundedStyles[rounded], variantStyles[variant], bgColor, textColor, { 'opacity-50': disabled, 'cursor-not-allowed': disabled }]"
@@ -40,7 +39,7 @@ span.ripple {
 </style>
 
 <script lang="ts" setup>
-import { ref, reactive, defineEmits, defineProps } from "vue";
+import { reactive, defineEmits, defineProps } from "vue";
 
 // Emit events
 const emit = defineEmits([
