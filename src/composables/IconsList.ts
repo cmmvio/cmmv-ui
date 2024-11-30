@@ -474,6 +474,196 @@ const Icons = [
         path: "../../src/components/icons/IconChevronDoubleUp.vue",
         code: `<icon-chevron-double-up class="w-8 h-8 text-white" aria-hidden="true" />`
     },
+    {
+        name: "icon-chevron-down",
+        path: "../../src/components/icons/IconChevronDown.vue",
+        code: `<icon-chevron-down class="w-8 h-8 text-white" aria-hidden="true" />`
+    },
+    {
+        name: "icon-chevron-left",
+        path: "../../src/components/icons/IconChevronLeft.vue",
+        code: `<icon-chevron-left class="w-8 h-8 text-white" aria-hidden="true" />`
+    },
+    {
+        name: "icon-chevron-right",
+        path: "../../src/components/icons/IconChevronRight.vue",
+        code: `<icon-chevron-right class="w-8 h-8 text-white" aria-hidden="true" />`
+    },
+    {
+        name: "icon-chevron-up",
+        path: "../../src/components/icons/IconChevronUp.vue",
+        code: `<icon-chevron-up class="w-8 h-8 text-white" aria-hidden="true" />`
+    },
+    {
+        name: "icon-circle-stack",
+        path: "../../src/components/icons/IconCircleStack.vue",
+        code: `<icon-circle-stack class="w-8 h-8 text-white" aria-hidden="true" />`
+    },
+    {
+        name: "icon-clipboard-document-check",
+        path: "../../src/components/icons/IconClipboardDocumentCheck.vue",
+        code: `<icon-clipboard-document-check class="w-8 h-8 text-white" aria-hidden="true" />`
+    },
+    {
+        name: "icon-clipboard-document-list",
+        path: "../../src/components/icons/IconClipboardDocumentList.vue",
+        code: `<icon-clipboard-document-list class="w-8 h-8 text-white" aria-hidden="true" />`
+    },
+    {
+        name: "icon-clipboard-document",
+        path: "../../src/components/icons/IconClipboardDocument.vue",
+        code: `<icon-clipboard-document class="w-8 h-8 text-white" aria-hidden="true" />`
+    },
+    {
+        name: "icon-clipboard",
+        path: "../../src/components/icons/IconClipboard.vue",
+        code: `<icon-clipboard class="w-8 h-8 text-white" aria-hidden="true" />`
+    },
+    {
+        name: "icon-clock",
+        path: "../../src/components/icons/IconClock.vue",
+        code: `<icon-clock class="w-8 h-8 text-white" aria-hidden="true" />`
+    },
+    {
+        name: "icon-cloud-arrow-down",
+        path: "../../src/components/icons/IconCloudArrowDown.vue",
+        code: `<icon-cloud-arrow-down class="w-8 h-8 text-white" aria-hidden="true" />`
+    },
+    {
+        name: "icon-cloud-arrow-up",
+        path: "../../src/components/icons/IconCloudArrowUp.vue",
+        code: `<icon-cloud-arrow-up class="w-8 h-8 text-white" aria-hidden="true" />`
+    },
+    {
+        name: "icon-cloud",
+        path: "../../src/components/icons/IconCloud.vue",
+        code: `<icon-cloud class="w-8 h-8 text-white" aria-hidden="true" />`
+    },
+    {
+        name: "icon-code-bracket-square",
+        path: "../../src/components/icons/IconCodeBracketSquare.vue",
+        code: `<icon-code-bracket-square class="w-8 h-8 text-white" aria-hidden="true" />`
+    },
+    {
+        name: "icon-code-bracket",
+        path: "../../src/components/icons/IconCodeBracket.vue",
+        code: `<icon-code-bracket class="w-8 h-8 text-white" aria-hidden="true" />`
+    },
+    {
+        name: "icon-cog-6-tooth",
+        path: "../../src/components/icons/IconCog6Tooth.vue",
+        code: `<icon-cog-6-tooth class="w-8 h-8 text-white" aria-hidden="true" />`
+    },
+    {
+        name: "icon-cog-8-tooth",
+        path: "../../src/components/icons/IconCog8Tooth.vue",
+        code: `<icon-cog-8-tooth class="w-8 h-8 text-white" aria-hidden="true" />`
+    },
+    {
+        name: "icon-cog",
+        path: "../../src/components/icons/IconCog.vue",
+        code: `<icon-cog class="w-8 h-8 text-white" aria-hidden="true" />`
+    },
+    {
+        name: "icon-command-line",
+        path: "../../src/components/icons/IconCommandLine.vue",
+        code: `<icon-command-line class="w-8 h-8 text-white" aria-hidden="true" />`
+    },
+    {
+        name: "icon-computer-desktop",
+        path: "../../src/components/icons/IconComputerDesktop.vue",
+        code: `<icon-computer-desktop class="w-8 h-8 text-white" aria-hidden="true" />`
+    },
+    {
+        name: "icon-cpu-chip",
+        path: "../../src/components/icons/IconCpuChip.vue",
+        code: `<icon-cpu-chip class="w-8 h-8 text-white" aria-hidden="true" />`
+    },
+    {
+        name: "icon-credit-card",
+        path: "../../src/components/icons/IconCreditCard.vue",
+        code: `<icon-credit-card class="w-8 h-8 text-white" aria-hidden="true" />`
+    },
+    {
+        name: "icon-cube-transparent",
+        path: "../../src/components/icons/IconCubeTransparent.vue",
+        code: `<icon-cube-transparent class="w-8 h-8 text-white" aria-hidden="true" />`
+    },
+    {
+        name: "icon-cube",
+        path: "../../src/components/icons/IconCube.vue",
+        code: `<icon-cube class="w-8 h-8 text-white" aria-hidden="true" />`
+    },
+    {
+        name: "icon-currency-bangladeshi",
+        path: "../../src/components/icons/IconCurrencyBangladeshi.vue",
+        code: `<icon-currency-bangladeshi class="w-8 h-8 text-white" aria-hidden="true" />`
+    },
+    {
+        name: "icon-currency-dollar",
+        path: "../../src/components/icons/IconCurrencyDollar.vue",
+        code: `<icon-currency-dollar class="w-8 h-8 text-white" aria-hidden="true" />`
+    },
+    {
+        name: "icon-currency-euro",
+        path: "../../src/components/icons/IconCurrencyEuro.vue",
+        code: `<icon-currency-euro class="w-8 h-8 text-white" aria-hidden="true" />`
+    },
+    {
+        name: "icon-currency-pound",
+        path: "../../src/components/icons/IconCurrencyPound.vue",
+        code: `<icon-currency-pound class="w-8 h-8 text-white" aria-hidden="true" />`
+    },
+    {
+        name: "icon-currency-rupee",
+        path: "../../src/components/icons/IconCurrencyRupee.vue",
+        code: `<icon-currency-rupee class="w-8 h-8 text-white" aria-hidden="true" />`
+    },
+    {
+        name: "icon-currency-yen",
+        path: "../../src/components/icons/IconCurrencyYen.vue",
+        code: `<icon-currency-yen class="w-8 h-8 text-white" aria-hidden="true" />`
+    },
+    {
+        name: "icon-cursor-arrow-rays",
+        path: "../../src/components/icons/IconCursorArrowRays.vue",
+        code: `<icon-cursor-arrow-rays class="w-8 h-8 text-white" aria-hidden="true" />`
+    },
+    {
+        name: "icon-cursor-arrow-ripple",
+        path: "../../src/components/icons/IconCursorArrowRipple.vue",
+        code: `<icon-cursor-arrow-ripple class="w-8 h-8 text-white" aria-hidden="true" />`
+    },
+    {
+        name: "icon-device-phone-mobile",
+        path: "../../src/components/icons/IconDevicePhoneMobile.vue",
+        code: `<icon-device-phone-mobile class="w-8 h-8 text-white" aria-hidden="true" />`
+    },
+    {
+        name: "icon-device-tablet",
+        path: "../../src/components/icons/IconDeviceTablet.vue",
+        code: `<icon-device-tablet class="w-8 h-8 text-white" aria-hidden="true" />`
+    },
+    {
+        name: "icon-document-chart-bar",
+        path: "../../src/components/icons/IconDocumentChartBar.vue",
+        code: `<icon-document-chart-bar class="w-8 h-8 text-white" aria-hidden="true" />`
+    },
+    {
+        name: "icon-document-check",
+        path: "../../src/components/icons/IconDocumentCheck.vue",
+        code: `<icon-document-check class="w-8 h-8 text-white" aria-hidden="true" />`
+    },
+    {
+        name: "icon-document-duplicate",
+        path: "../../src/components/icons/IconDocumentDuplicate.vue",
+        code: `<icon-document-duplicate class="w-8 h-8 text-white" aria-hidden="true" />`
+    },
+    {
+        name: "icon-document-magnifying-glass",
+        path: "../../src/components/icons/IconDocumentMagnifyingGlass.vue",
+        code: `<icon-document-magnifying-glass class="w-8 h-8 text-white" aria-hidden="true" />`
+    },
 ]
 
 export default Icons;
