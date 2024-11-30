@@ -17,7 +17,7 @@
             bgColor="bg-white dark:bg-zinc-800 w-6/12 m-auto"
             class="p-8"
         >
-            <div class="m-auto w-6/12">
+            <div class="m-auto w-6/12 mb-8">
                 <h1 class="mb-4">Login</h1>
 
                 <c-form 

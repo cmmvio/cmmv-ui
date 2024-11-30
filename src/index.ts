@@ -13,10 +13,14 @@ export { default as CIcon } from '@components/components/CIcon.vue';
 export { default as CProgressBar } from '@components/components/CProgressBar.vue';
 export { default as CProgressCircular } from '@components/components/CProgressCircular.vue';
 export { default as CTooltip } from '@components/components/CTooltip.vue';
+export { default as CBagde } from '@components/components/CBagde.vue';
 
 //Form
 export { default as CCheckbox } from '@components/forms/CCheckbox.vue';
 export { default as CToggle } from '@components/forms/CToggle.vue';
+
+//Overlays
+export { default as CNotification } from '@components/overlays/CNotification.vue';
 
 //Flags
 export { default as FlagBr } from '@components/flags/FlagBr.vue';

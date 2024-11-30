@@ -19,7 +19,7 @@ defineProps({
     align-items: center;
     width: 100%;
     height: 64px;
-    padding: 0 8px;
+    padding: 0 16px;
     box-shadow: var(--c-toolbar-shadow, 0px 2px 4px rgba(0, 0, 0, 0.1));
 }
 

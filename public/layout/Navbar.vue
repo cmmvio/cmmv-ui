@@ -68,6 +68,7 @@ export default defineComponent({
                     { name: "Tooltip", uri: "/tooltip" },
                     { name: "Progress Bar", uri: "/progress-bar" },
                     { name: "Progress Circular", uri: "/progress-circular" },
+                    { name: "Badge", uri: "/badge" },
                 ],
             },
             {
@@ -75,6 +76,7 @@ export default defineComponent({
                 isDir: true,
                 children: [
                     { name: "Card", uri: "/card" },
+                    { name: "Toolbar", uri: "/toolbar" },
                 ]
             },
             {
@@ -85,6 +87,13 @@ export default defineComponent({
                     { name: "Input", uri: "/input" },
                     { name: "Checkbox", uri: "/checkbox" },
                     { name: "Toggle", uri: "/toggle" },
+                ],
+            },
+            {
+                name: "Overlays",
+                isDir: true,
+                children: [
+                    { name: "Notification", uri: "/notification" },
                 ],
             },
         ];

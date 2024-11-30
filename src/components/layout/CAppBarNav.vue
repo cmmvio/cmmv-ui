@@ -24,6 +24,7 @@
     cursor: pointer;
     color: inherit;
     outline: none;
+    left: -8px
 }
 
 .c-app-bar-nav-icon {
