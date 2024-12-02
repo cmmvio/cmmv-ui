@@ -18,7 +18,7 @@ export default defineConfig(({ mode }) => {
                 dirs: ['src/components'],
                 extensions: ['vue'],
                 include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
-                dts: !isDocs, // Gerar declarações de tipo apenas para o build do módulo
+                dts: !isDocs,
             }),
             ...(isDocs ? [] : [dts({ include: ['src/**/*.ts', 'src/**/*.vue'], insertTypesEntry: true })]),
         ],
@@ -34,22 +34,27 @@ export default defineConfig(({ mode }) => {
             },
         },
 
+        server: {
+            host: true, 
+            port: 4173, 
+        },
+
         build: isDocs
             ? {
-                  outDir: 'dist', // Diretório de saída para a documentação
+                  outDir: 'dist',
                   rollupOptions: {
-                      input: 'index.html', // Entrada do HTML da documentação
+                      input: 'index.html', 
                   },
               }
             : {
                   lib: {
-                      entry: 'src/index.ts', // Entrada para o pacote do módulo
+                      entry: 'src/index.ts', 
                       name: 'CmmvUI',
                       fileName: (format) => `cmmv-ui.${format}.js`,
                       formats: ['es', 'cjs'],
                   },
                   rollupOptions: {
-                      external: ['vue'], // Excluir Vue do bundle do módulo
+                      external: ['vue'], 
                       output: {
                           globals: {
                               vue: 'Vue',
