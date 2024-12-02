@@ -160,6 +160,7 @@ import BaseLayout from "../../layout/BaseLayout.vue";
 import CCard from "@components/layout/CCard.vue";
 import CIcon from "@components/components/CIcon.vue";
 import IconCheck from "@components/icons/IconCheck.vue";
+import * as Icons from "../../../src";
 
 const notification = ref(null);
 const icons = IconsList;
@@ -167,11 +168,20 @@ const resolvedIcons = reactive([]);
 
 onMounted(async () => {
     for (const icon of icons) {
-        const component = await import(`../../../src/${icon.path}`);
-        resolvedIcons.push({
-            ...icon,
-            component: markRaw(component.default),
-        });
+        if(process.env.NODE_ENV === "production"){
+            resolvedIcons.push({
+                ...icon,
+                component: markRaw(Icons[icon.path.replace("components/icons/", "").replace(".vue", "")]),
+            });
+        }
+        else {
+            const component = await import(`../../../src/${icon.path}`);
+
+            resolvedIcons.push({
+                ...icon,
+                component: markRaw(component.default),
+            });
+        }        
     }
 });
 

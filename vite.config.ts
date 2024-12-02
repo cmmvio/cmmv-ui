@@ -26,7 +26,7 @@ export default defineConfig(({ mode }) => {
         resolve: {
             alias: {
                 '@': fileURLToPath(new URL('./src', import.meta.url)),
-                '@components': fileURLToPath(new URL('./src/components', import.meta.url)),
+                '@components': fileURLToPath(new URL('./src/components', import.meta.url)), // Ajuste para produção
                 '@composables': fileURLToPath(new URL('./src/composables', import.meta.url)),
                 '@mixins': fileURLToPath(new URL('./src/mixins', import.meta.url)),
                 '@services': fileURLToPath(new URL('./src/services', import.meta.url)),
@@ -35,26 +35,26 @@ export default defineConfig(({ mode }) => {
         },
 
         server: {
-            host: true, 
-            port: 4173, 
+            host: true,
+            port: 4173,
         },
 
         build: isDocs
             ? {
                   outDir: 'dist',
                   rollupOptions: {
-                      input: 'index.html', 
+                      input: 'index.html',
                   },
               }
             : {
                   lib: {
-                      entry: 'src/index.ts', 
+                      entry: 'src/index.ts',
                       name: 'CmmvUI',
                       fileName: (format) => `cmmv-ui.${format}.js`,
                       formats: ['es', 'cjs'],
                   },
                   rollupOptions: {
-                      external: ['vue'], 
+                      external: ['vue'],
                       output: {
                           globals: {
                               vue: 'Vue',

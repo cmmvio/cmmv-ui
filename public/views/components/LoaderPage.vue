@@ -132,8 +132,8 @@
 import { ref, markRaw, reactive, onMounted } from "vue";
 import LoaderList from "@composables/LoaderList.ts";
 import BaseLayout from "../../layout/BaseLayout.vue";
-import CardDocs from "../../components/CardDocs.vue";
 import IconCheck from "@components/icons/IconCheck.vue";
+import * as Icons from "../../../src";
 
 const notification = ref(null);
 const loaders = LoaderList;
@@ -141,11 +141,20 @@ const resolvedIcons = reactive([]);
 
 onMounted(async () => {
     for (const loader of loaders) {
-        const component = await import(`../../../src/${loader.path}`);
-        resolvedIcons.push({
-            ...loader,
-            component: markRaw(component.default),
-        });
+        if(process.env.NODE_ENV === "production"){
+            resolvedIcons.push({
+                ...loader,
+                component: markRaw(Icons[loader.path.replace("components/loader/", "").replace(".vue", "")]),
+            });
+        }
+        else {
+            const component = await import(`../../../src/${loader.path}`);
+
+            resolvedIcons.push({
+                ...loader,
+                component: markRaw(component.default),
+            });
+        } 
     }
 });
 
