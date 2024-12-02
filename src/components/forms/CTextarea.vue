@@ -4,79 +4,92 @@
         <label 
             :for="id"
             class="c-textarea-label absolute left-3 text-sm transition-all duration-200 ease-in-out pointer-events-none"
-            :class="[
-                {
-                    'c-textarea-label--active': isActive,
-                    'top-[50%] -translate-y-1/2': !isActive && !currentValue,
-                    'top-1': currentValue !== undefined && currentValue !== '',
-                },
-                textColor ? textColor : 'text-gray-500 dark:text-gray-400'
-            ]"
+            :class="[{ 
+                'c-textarea-label--active': isActive, 
+                'bg-white dark:bg-zinc-900': variant === 'default' && !disabled && bgColor === '',
+                'bg-white dark:bg-zinc-800': (variant === 'outlined' || variant === 'filled') && !disabled && bgColor === '',
+                'top-[50%] -translate-y-1/2': !isActive && !currentValue && !hasError,
+                'top-[30%]': !isActive && hasError,
+                'top-1/3': currentValue !== undefined && currentValue !== ''
+            }, bgColor, textColor ? textColor : 'text-gray-500 dark:text-gray-400']"
         >
             {{ label }}
         </label>
-    
+
         <!-- Textarea -->
         <textarea
+            ref="textarea"
             :id="id"
             :name="name"
             :placeholder="isActive ? placeholder : ''"
             :maxlength="maxlength"
             :value="currentValue"
-            :class="[
-                sizes[size], roundedStyles[rounded], variantStyles[variant], 
-                bgColor, textColor, borderColorClass, { 'opacity-50': disabled, 'resize-none': !resize }
+            :class="[ 
+                sizes[size], 
+                roundedStyles[rounded], 
+                variantStyles[variant], 
+                bgColor ? bgColor : variantColors[variant], 
+                textColor, 
+                borderColorClass,
+                { 
+                    'ring-red-500 ring-2': hasError, 
+                    'opacity-50': disabled, 
+                    'resize-none': !resize
+                }
             ]"
-            class="c-textarea-field block w-full shadow-sm pt-4 pb-2 outline-none"
+            class="c-textarea-field block w-full pt-4 pb-2 outline-none border-none"
             @input="handleInput"
             @focus="activateLabel"
             @blur="deactivateLabel"
             :disabled="disabled"
-        ></textarea>
-    
+            :aria-invalid="hasError"
+        />
+
         <!-- Character Counter -->
         <div v-if="lengthCount" class="absolute bottom-1 right-3 text-xs text-gray-500">
             {{ currentValue.length }} / {{ maxlength }}
+        </div>
+
+        <!-- Hint/Error Message -->
+        <div class="mt-1" v-if="!hiddenHint">
+            <p v-if="hasError" class="text-xs text-red-500">{{ errorMessage }}</p>
+            <p v-else-if="hint && (hintFixed || isActive)" class="text-xs text-gray-500">{{ hint }}</p>
         </div>
     </div>
 </template>
 
 <style scoped>
 .c-textarea {
-  margin-bottom: 1rem;
-  position: relative;
+    margin-bottom: 1rem;
+    position: relative;
 }
 
 .c-textarea-label {
-  transform: translate(0, -50%);
-  z-index: 1;
-  left: 0.75rem;
+    transform: translate(0, -50%);
+    z-index: 1;
+    left: 0.75rem;
 }
 
 .c-textarea-label--active {
-  transform: translate(0, -2rem) scale(0.85);
-  top: 0.75rem;
-  left: 0.3rem;
+    transform: translate(0, -2rem) scale(0.85);
+    top: 1.3rem;
+    left: 0.3rem;
 }
 
 .c-textarea-field {
-  transition: border-color 0.3s, box-shadow 0.3s, padding-top 0.3s;
-  position: relative;
-}
-
-.c-textarea-field.resize-none {
-  resize: none;
+    transition: box-shadow 0.3s, padding-top 0.3s;
+    position: relative;
 }
 </style>
-  
+
 <script setup lang="ts">
-import { ref, computed, watch } from 'vue';
-  
+import { ref, computed, watch, defineExpose } from 'vue';
+
 const props = defineProps({
     modelValue: {
         type: String,
         required: false,
-        default: "",
+        default: undefined,
     },
     label: {
         type: String,
@@ -92,102 +105,160 @@ const props = defineProps({
     },
     size: {
         type: String,
-        default: "md", // sm | md | lg
+        default: "md"
     },
     rounded: {
         type: String,
-        default: "default", // none | default | full
+        default: "default"
     },
     variant: {
         type: String,
-        default: "default", // default | outlined | filled
-    },
-    bgColor: {
-        type: String,
-        required: false,
-        default: "bg-zinc-200 dark:bg-zinc-900",
-    },
-    textColor: {
-        type: String,
-        required: false,
-        default: "text-zinc-950 dark:text-white",
-    },
-    borderColor: {
-        type: String,
-        required: false,
-        default: "focus:ring focus:ring-zinc-700 focus:ring-opacity-50",
+        default: "default"
     },
     disabled: {
         type: Boolean,
-        default: false,
-    },
-    resize: {
-        type: Boolean,
-        default: true, // Enables or disables textarea resizing
+        default: false
     },
     maxlength: {
         type: Number,
         required: false,
-        default: 255, // Maximum character length
+        default: 255,
     },
     lengthCount: {
         type: Boolean,
-        default: false, // Displays character count
+        default: false
+    },
+    resize: {
+        type: Boolean,
+        default: true,
+    },
+    autoresize: {
+        type: Boolean,
+        default: true
+    },
+    rules: {
+        type: Array,
+        default: () => []
+    },
+    hint: {
+        type: String,
+        required: false,
+        default: null
+    },
+    hintFixed: {
+        type: Boolean,
+        default: false
+    },
+    hiddenHint: {
+        type: Boolean,
+        default: false
+    },
+    bgColor: {
+        type: String,
+        required: false,
+        default: ""
+    },
+    textColor: {
+        type: String,
+        required: false,
+        default: ""
+    },
+    borderColor: {
+        type: String,
+        required: false,
+        default: "focus:ring focus:ring-zinc-700 focus:ring-opacity-50"
     },
 });
-  
-// Emits
+
 const emit = defineEmits(["update:modelValue"]);
 
-// Reactive Variables
-const currentValue = ref(props.modelValue);
+const textarea = ref<HTMLTextAreaElement | null>(null);
+const currentValue = ref(props.modelValue ?? "");
+const errorMessage = ref<string | null>(null);
 const isActive = ref(false);
+
 const generatedId = `c-textarea-${Math.random().toString(36).substr(2, 9)}`;
 const id = computed(() => props.name || generatedId);
-  
-// Computed Classes
+
 const sizes = {
     sm: "px-2 py-1 text-xs",
     md: "px-3 py-2 text-sm",
     lg: "px-5 py-4 text-base",
 };
-  
+
 const roundedStyles = {
     none: "rounded-none",
     default: "rounded-md",
     full: "rounded-full",
 };
-  
+
 const variantStyles = {
-    default: "border border-gray-300",
+    default: "border-none",
     outlined: "border-2 border-zinc-700",
     filled: "bg-gray-100 dark:bg-zinc-800 border-none",
 };
-  
+
+const variantColors = {
+    default: "bg-zinc-200 dark:bg-zinc-900 text-zinc-950 dark:text-white",
+    outlined: "bg-zinc-100 dark:bg-zinc-800 text-zinc-950 dark:text-white",
+    filled: "bg-zinc-200 dark:bg-zinc-800 text-zinc-950 dark:text-white",
+};
+
 const borderColorClass = computed(() => props.borderColor);
-  
-// Watchers
+
+const hasError = computed(() => !!errorMessage.value);
+
 watch(() => props.modelValue, (newValue) => {
-    currentValue.value = newValue;
+    if (newValue !== undefined) {
+        currentValue.value = newValue;
+    }
+    autoresizeTextarea();
 });
-  
+
 watch(currentValue, (newValue) => {
     emit("update:modelValue", newValue);
 });
-  
-// Methods
+
 const handleInput = (event: Event) => {
     currentValue.value = (event.target as HTMLTextAreaElement).value;
+    autoresizeTextarea();
+    validate();
 };
-  
+
+const autoresizeTextarea = () => {
+    if (props.autoresize && textarea.value) {
+        textarea.value.style.height = "auto";
+        textarea.value.style.height = `${textarea.value.scrollHeight}px`;
+    }
+};
+
+const validate = () => {
+    errorMessage.value = null;
+
+    for (const rule of props.rules) {
+        //@ts-ignore
+        const error = rule(currentValue.value);
+
+        if (error) {
+            errorMessage.value = error;
+            return false;
+        }
+    }
+
+    return true;
+};
+
 const activateLabel = () => {
     isActive.value = true;
 };
-  
+
 const deactivateLabel = () => {
-    if (!currentValue.value) {
+    if (!currentValue.value) 
         isActive.value = false;
-    }
 };
+
+defineExpose({
+    validate,
+    value: currentValue,
+});
 </script>
-  
