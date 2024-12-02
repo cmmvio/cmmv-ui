@@ -143,7 +143,7 @@ const createRipple = () => {
 };
 
 // Sizes
-const sizes = {
+const sizes: Record<string, { box: string, label: string }> = {
     sm: { box: "w-4 h-4 border-2", label: "text-sm" },
     md: { box: "w-5 h-5 border-2", label: "text-base" },
     lg: { box: "w-6 h-6 border-2", label: "text-lg" },

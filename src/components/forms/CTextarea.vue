@@ -180,25 +180,25 @@ const isActive = ref(false);
 const generatedId = `c-textarea-${Math.random().toString(36).substr(2, 9)}`;
 const id = computed(() => props.name || generatedId);
 
-const sizes = {
+const sizes: Record<string, string> = {
     sm: "px-2 py-1 text-xs",
     md: "px-3 py-2 text-sm",
     lg: "px-5 py-4 text-base",
 };
 
-const roundedStyles = {
+const roundedStyles: Record<string, string> = {
     none: "rounded-none",
     default: "rounded-md",
     full: "rounded-full",
 };
 
-const variantStyles = {
+const variantStyles: Record<string, string> = {
     default: "border-none",
     outlined: "border-2 border-zinc-700",
     filled: "bg-gray-100 dark:bg-zinc-800 border-none",
 };
 
-const variantColors = {
+const variantColors: Record<string, string> = {
     default: "bg-zinc-200 dark:bg-zinc-900 text-zinc-950 dark:text-white",
     outlined: "bg-zinc-100 dark:bg-zinc-800 text-zinc-950 dark:text-white",
     filled: "bg-zinc-200 dark:bg-zinc-800 text-zinc-950 dark:text-white",

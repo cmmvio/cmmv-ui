@@ -21,7 +21,7 @@
         ></div>
         
         <!-- Slot Content -->
-        <div class="absolute inset-0 flex items-center justify-center z-10">
+        <div class="absolute inset-0 flex items-center justify-center z-10 select-none">
             <slot></slot>
         </div>
     </div>

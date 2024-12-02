@@ -101,14 +101,14 @@ const hideTooltip = () => {
     visible.value = false;
 };
 
-const positionClasses = {
+const positionClasses: Record<string, string> = {
     top: "bottom-full left-1/2 transform -translate-x-1/2 mb-2",
     bottom: "top-full left-1/2 transform -translate-x-1/2 mt-2",
     left: "right-full top-1/2 transform -translate-y-1/2 mr-2",
     right: "left-full top-1/2 transform -translate-y-1/2 ml-2",
 };
 
-const arrowClasses = computed(() => ({
+const arrowClasses = computed<Record<string, string>>(() => ({
     top: `bottom-[-13px] left-1/2 transform -translate-x-1/2 border-[8px] border-l-transparent border-r-transparent border-b-transparent border-t-${props.arrowColor}`,
     bottom: `top-[-13px] left-1/2 transform -translate-x-1/2 border-[8px] border-l-transparent border-r-transparent border-t-transparent border-b-${props.arrowColor}`,
     left: `right-[-13px] top-1/2 transform -translate-y-1/2 border-[8px] border-t-transparent border-b-transparent border-r-transparent border-l-${props.arrowColor}`,

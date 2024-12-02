@@ -95,7 +95,7 @@ const props = defineProps({
 });
 
 // Data
-const sizes = reactive({
+const sizes: Record<string, string> = reactive({
     sm: "px-2 py-1 text-xs",
     md: "px-2 py-1 text-sm",
     lg: "px-2.5 py-1.5 text-sm",
@@ -103,14 +103,14 @@ const sizes = reactive({
     "2xl": "px-3.5 py-2.5 text-sm"
 });
 
-const roundedStyles = reactive({
+const roundedStyles: Record<string, string> = reactive({
     none: "rounded-none",
     default: "rounded",
     md: "rounded-md",
     full: "rounded-full"
 });
 
-const variantStyles = reactive({
+const variantStyles: Record<string, string> = reactive({
     elevated: "text-black shadow-md", 
     flat: "text-black", 
     tonal: "", 

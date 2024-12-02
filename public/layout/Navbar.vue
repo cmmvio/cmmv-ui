@@ -89,6 +89,7 @@ export default defineComponent({
                     { name: "Form", uri: "/form" },
                     { name: "Input", uri: "/input" },  
                     { name: "Radio", uri: "/radio" },
+                    { name: "Slider", uri: "/slider" },
                     { name: "Textarea", uri: "/textarea" },                  
                     { name: "Toggle", uri: "/toggle" },
                 ],

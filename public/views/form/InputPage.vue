@@ -95,7 +95,6 @@
             </tbody>
         </table>
 
-
         <!-- Basic Examples -->
         <c-card class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
             <div class="lg:w-2/5 w-full">
@@ -126,6 +125,31 @@
 &lt;script&gt;
 import CInput from &quot;@cmmv/ui/components/CInput.vue&quot;;
 &lt;/script&gt;</code>
+        </pre>
+
+        <!-- Validation -->
+        <h2>Validation</h2>
+        <p>The <code>CInput</code> component supports custom validation rules. Error messages are displayed below the input field if a rule fails.</p>
+
+        <c-card class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+            <div class="lg:w-2/5 w-full">
+                <c-input 
+                    id="validation" 
+                    label="Input with Validation" 
+                    :rules="[value => (value ? null : 'This field is required')]"
+                    v-model="validableValue" 
+                />
+            </div>
+        </c-card>
+
+        <pre>
+            <code class="code-hightlight language-vue">&lt;template&gt;
+    &lt;c-input 
+        id=&quot;validation&quot; 
+        label=&quot;Input with Validation&quot; 
+        :rules=&quot;[value =&gt; (value ? null : 'This field is required')]&quot; 
+    /&gt;
+&lt;/template&gt;</code>
         </pre>
 
         <!-- Size Variants -->
@@ -165,31 +189,6 @@ import CInput from &quot;@cmmv/ui/components/CInput.vue&quot;;
     &lt;c-input id=&quot;default&quot; label=&quot;Default Variant&quot; variant=&quot;default&quot; /&gt;
     &lt;c-input id=&quot;outlined&quot; label=&quot;Outlined Variant&quot; variant=&quot;outlined&quot; /&gt;
     &lt;c-input id=&quot;filled&quot; label=&quot;Filled Variant&quot; variant=&quot;filled&quot; /&gt;
-&lt;/template&gt;</code>
-        </pre>
-
-        <!-- Validation -->
-        <h2>Validation</h2>
-        <p>The <code>CInput</code> component supports custom validation rules. Error messages are displayed below the input field if a rule fails.</p>
-
-        <c-card class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-            <div class="lg:w-2/5 w-full">
-                <c-input 
-                    id="validation" 
-                    label="Input with Validation" 
-                    :rules="[value => (value ? null : 'This field is required')]"
-                    v-model="validableValue" 
-                />
-            </div>
-        </c-card>
-
-        <pre>
-            <code class="code-hightlight language-vue">&lt;template&gt;
-    &lt;c-input 
-        id=&quot;validation&quot; 
-        label=&quot;Input with Validation&quot; 
-        :rules=&quot;[value =&gt; (value ? null : 'This field is required')]&quot; 
-    /&gt;
 &lt;/template&gt;</code>
         </pre>
 

@@ -63,7 +63,7 @@ const props = defineProps({
 
 const Flag = shallowRef(null);
 
-const sizes = {
+const sizes: Record<string, string> = {
     sm: "w-8",
     md: "w-10",
     lg: "w-12",
@@ -71,7 +71,7 @@ const sizes = {
     "2xl": "w-24",
 };
 
-const roundedStyles = {
+const roundedStyles: Record<string, string> = {
     none: "rounded-none",
     default: "rounded",
     md: "rounded-md",

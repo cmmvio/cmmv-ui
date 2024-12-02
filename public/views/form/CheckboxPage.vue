@@ -80,7 +80,6 @@
             </tbody>
         </table>
 
-
         <h2 class="text-lg font-semibold mt-8">Basic Checkbox</h2>
 
         <p>
@@ -107,6 +106,37 @@ import { ref } from &quot;vue&quot;;
 const checked = ref(true);
 &lt;/script&gt;</code>
         </pre>
+
+        <h2 class="text-lg font-semibold">Validation</h2>
+
+        <p>
+            The <code>CCheckbox</code> component supports custom validation rules using the <code>rules</code> prop. These rules allow you to define custom logic for validating the checkbox state. If a rule fails, an error message is displayed below the checkbox. Validation can be useful for ensuring that specific options are selected or to enforce other custom behaviors.
+        </p>
+
+        <card-docs
+            class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4"
+        >
+            <c-checkbox 
+                v-model="isChecked" 
+                label="I accept the terms and conditions" 
+                :rules="[value => value ? null : 'You must accept the terms and conditions.']"
+            />
+        </card-docs>
+
+        <pre>
+    <code class="code-hightlight language-vue">&lt;template&gt;
+    &lt;c-checkbox 
+        v-model="isChecked" 
+        label="I accept the terms and conditions" 
+        :rules="[value => value ? null : 'You must accept the terms and conditions.']"
+    /&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref } from "vue";
+const isChecked = ref(false);
+&lt;/script&gt;</code>
+</pre>
 
         <!-- Size Variants -->
         <h2 class="text-lg font-semibold">Size Variants</h2>

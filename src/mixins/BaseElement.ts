@@ -14,7 +14,7 @@ export default defineComponent({
                 default: "rounded",
                 md: "rounded-md",
                 full: "rounded-full"   
-            }
+            } as Record<string, string>
         }
     },
 

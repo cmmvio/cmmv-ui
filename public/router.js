@@ -23,6 +23,7 @@ import CheckboxPage from "./views/form/CheckboxPage.vue";
 import TextareaPage from "./views/form/TextareaPage.vue";
 import TogglePage from "./views/form/TogglePage.vue";
 import RadioPage from "./views/form/RadioPage.vue";
+import SliderPage from "./views/form/SliderPage.vue";
 
 //Overlays
 import NotificationPage from "./views/NotificationPage.vue";
@@ -49,6 +50,7 @@ const routes = [
     { path: '/textarea', component: TextareaPage },
     { path: '/toggle', component: TogglePage },
     { path: '/radio', component: RadioPage },
+    { path: '/slider', component: SliderPage },
 
     //Overlays
     { path: '/notification', component: NotificationPage },

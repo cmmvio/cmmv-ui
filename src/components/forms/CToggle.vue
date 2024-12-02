@@ -126,20 +126,25 @@ const createRipple = () => {
 };
 
 // Sizes
-const sizes = {
-    sm: {
+const sizes: Record<string, { 
+    track: string, 
+    thumb: string, 
+    thumbTranslate: string, 
+    label: string 
+}> = {
+    "sm": {
         track: "w-10 h-5",
         thumb: "w-4 h-4",
         thumbTranslate: "translate-x-5",
         label: "text-sm",
     },
-    md: {
+    "md": {
         track: "w-12 h-6",
         thumb: "w-6 h-6",
         thumbTranslate: "translate-x-6",
         label: "text-base",
     },
-    lg: {
+    "lg": {
         track: "w-14 h-7",
         thumb: "w-7 h-7",
         thumbTranslate: "translate-x-7",
