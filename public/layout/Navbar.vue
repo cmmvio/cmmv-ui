@@ -88,6 +88,7 @@ export default defineComponent({
                     { name: "Checkbox", uri: "/checkbox" },
                     { name: "Form", uri: "/form" },
                     { name: "Input", uri: "/input" },  
+                    { name: "Radio", uri: "/radio" },
                     { name: "Textare", uri: "/textarea" },                  
                     { name: "Toggle", uri: "/toggle" },
                 ],

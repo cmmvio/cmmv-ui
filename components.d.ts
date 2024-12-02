@@ -26,6 +26,7 @@ declare module 'vue' {
     copy: typeof import('./src/components/loader/LoaderWifi copy.vue')['default']
     CProgressBar: typeof import('./src/components/components/CProgressBar.vue')['default']
     CProgressCircular: typeof import('./src/components/components/CProgressCircular.vue')['default']
+    CRadio: typeof import('./src/components/forms/CRadio.vue')['default']
     CSpacer: typeof import('./src/components/layout/CSpacer.vue')['default']
     CTextarea: typeof import('./src/components/forms/CTextarea.vue')['default']
     CToggle: typeof import('./src/components/forms/CToggle.vue')['default']
