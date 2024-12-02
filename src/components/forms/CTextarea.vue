@@ -27,7 +27,7 @@
                 sizes[size], roundedStyles[rounded], variantStyles[variant], 
                 bgColor, textColor, borderColorClass, { 'opacity-50': disabled, 'resize-none': !resize }
             ]"
-            class="c-textarea-field block w-full border shadow-sm pt-4 pb-2 outline-none"
+            class="c-textarea-field block w-full shadow-sm pt-4 pb-2 outline-none"
             @input="handleInput"
             @focus="activateLabel"
             @blur="deactivateLabel"
@@ -105,12 +105,12 @@ const props = defineProps({
     bgColor: {
         type: String,
         required: false,
-        default: "",
+        default: "bg-zinc-200 dark:bg-zinc-900",
     },
     textColor: {
         type: String,
         required: false,
-        default: "",
+        default: "text-zinc-950 dark:text-white",
     },
     borderColor: {
         type: String,

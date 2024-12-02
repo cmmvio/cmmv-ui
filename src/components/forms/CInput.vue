@@ -274,7 +274,7 @@ const roundedStyles = {
 };
 
 const variantStyles = {
-    default: "border-none ",
+    default: "border-none",
     outlined: "border-2 border-zinc-700",
     filled: "border-1 border-zinc-900 shadow-md",
 };

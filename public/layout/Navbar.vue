@@ -66,9 +66,10 @@ export default defineComponent({
                     { name: "Button", uri: "/button" },
                     { name: "Flags", uri: "/flags" },
                     { name: "Icon", uri: "/icon" },
+                    { name: "Loader", uri: "/loader" },   
                     { name: "Progress Bar", uri: "/progress-bar" },
                     { name: "Progress Circular", uri: "/progress-circular" },
-                    { name: "Tooltip", uri: "/tooltip" },                    
+                    { name: "Tooltip", uri: "/tooltip" }
                 ],
             },
             {
@@ -86,7 +87,8 @@ export default defineComponent({
                 children: [
                     { name: "Checkbox", uri: "/checkbox" },
                     { name: "Form", uri: "/form" },
-                    { name: "Input", uri: "/input" },                    
+                    { name: "Input", uri: "/input" },  
+                    { name: "Textare", uri: "/textarea" },                  
                     { name: "Toggle", uri: "/toggle" },
                 ],
             },
