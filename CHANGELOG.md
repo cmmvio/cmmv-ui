@@ -1,3 +1,25 @@
+## [0.0.6](https://github.com/andrehrferreira/cmmv-ui/compare/v0.0.5...v0.0.6) (2024-12-02)
+
+
+### Bug Fixes
+
+* doc host ([1d2c637](https://github.com/andrehrferreira/cmmv-ui/commit/1d2c637465e15f4468a1b79065a311ec2e0432bf))
+* icons and loaders ([2c48247](https://github.com/andrehrferreira/cmmv-ui/commit/2c48247b9bc9c502cbb16fa4bcfadb2b5defc669))
+* module ([7fb4603](https://github.com/andrehrferreira/cmmv-ui/commit/7fb4603b6a92052a24a6af11b642eae41dc2bcce))
+* package ([aded363](https://github.com/andrehrferreira/cmmv-ui/commit/aded3638ddaa811dfec5bbc8e146448a592b3904))
+* package ([a5f2cfb](https://github.com/andrehrferreira/cmmv-ui/commit/a5f2cfbe3653cd7155539fa09a79b7d999089283))
+* pm2 ([dbf5995](https://github.com/andrehrferreira/cmmv-ui/commit/dbf5995ebd99800556b46f182db8ed6ba04c0306))
+* pm2 ([1377229](https://github.com/andrehrferreira/cmmv-ui/commit/1377229a7c675999a989694b20f7f3e76f709d70))
+* readme ([40515ba](https://github.com/andrehrferreira/cmmv-ui/commit/40515baa147e2272331b0526ea8382a3db4b3582))
+* remove module ([544ee33](https://github.com/andrehrferreira/cmmv-ui/commit/544ee33247a81f6f59917f54eda60a6c8496994f))
+
+
+### Features
+
+* pm2 ([aa62d94](https://github.com/andrehrferreira/cmmv-ui/commit/aa62d94369fb0d649ed1a6e86674ba3112cfe9ac))
+
+
+
 ## [0.0.5](https://github.com/andrehrferreira/cmmv-ui/compare/v0.0.3...v0.0.5) (2024-12-02)
 
 
