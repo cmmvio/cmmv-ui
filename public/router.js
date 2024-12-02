@@ -26,7 +26,7 @@ import RadioPage from "./views/form/RadioPage.vue";
 import SliderPage from "./views/form/SliderPage.vue";
 
 //Overlays
-import NotificationPage from "./views/NotificationPage.vue";
+import NotificationPage from "./views/overlays/NotificationPage.vue";
 
 const routes = [
     { path: '/', component: IndexPage },

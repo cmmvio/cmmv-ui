@@ -128,8 +128,8 @@ function triggerNotification() {
 
 <script setup>
 import { ref } from "vue";
-import BaseLayout from "../layout/BaseLayout.vue";
-import CardDocs from "../components/CardDocs.vue";
+import BaseLayout from "../../layout/BaseLayout.vue";
+import CardDocs from "../../components/CardDocs.vue";
 import IconCheck from "@components/icons/IconCheck.vue";
 
 const notification = ref(null);

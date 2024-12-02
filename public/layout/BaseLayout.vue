@@ -37,42 +37,48 @@
                         <ul class="flex gap-x-8 items-center lg:flex">                        
                             <li class="relative">
                                 <a 
-                                    href="/docs/overview/first-steps" 
+                                    href="https://cmmv.io/docs/overview/first-steps" 
                                     class="text-sm/6 font-semibold flex items-center gap-1 hover:text-blue-700"
                                     title="Server"
                                 >Getting Started</a>
                             </li>
                             <li class="relative">
                                 <a 
-                                    href="/docs/server/overview" 
+                                    href="https://cmmv.io/docs/server/overview" 
                                     class="text-sm/6 font-semibold flex items-center gap-1 hover:text-blue-700"
                                     title="Server"
                                 >Server</a>
                             </li>
                             <li class="relative"> 
                                 <a 
-                                    href="/docs/contracts/overview" 
+                                    href="https://cmmv.io/docs/contracts/overview" 
                                     class="text-sm/6 font-semibold flex items-center gap-1 hover:text-blue-700"
                                     title="Contracts"
                                 >Contracts</a>
                             </li>
                             <li class="relative"> 
                                 <a 
-                                    href="/docs/rpc/overview" 
+                                    href="https://cmmv.io/docs/rpc/overview" 
                                     class="text-sm/6 font-semibold flex items-center gap-1 hover:text-blue-700"
                                     title="RPC"
                                 >RPC</a>
                             </li>
                             <li class="relative"> 
                                 <a 
-                                    href="/docs/view/overview" 
+                                    href="https://cmmv.io/docs/view/overview" 
                                     class="text-sm/6 font-semibold flex items-center gap-1 hover:text-blue-700"
                                     title="View"
                                 >View</a>
                             </li>
+                            <li class="relative"> 
+                                <a 
+                                    href="https://ui.cmmv.io" 
+                                    class="text-sm/6 font-semibold flex items-center gap-1 hover:text-blue-700"
+                                    title="UI"
+                                >UI</a>
+                            </li>
                         </ul>
                     </div>
-                    
                 </div>
 
                 <div class="relative text-right hover:cursor-pointer group float-right">
