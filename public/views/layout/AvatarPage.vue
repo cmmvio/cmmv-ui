@@ -121,20 +121,6 @@
             <code class="code-highlight language-html">&lt;c-avatar initials="EY" bgColor="bg-blue-500" size="md" /&gt;</code>
         </pre>
 
-        <h2>Avatar with Icon</h2>
-
-        <p>
-            The <code>icon</code> prop allows you to display an icon inside the avatar container. This is helpful for generic or default avatar placeholders.
-        </p>
-
-        <card-docs>
-            <c-avatar class="m-auto" icon="IconUser" bgColor="bg-green-500" size="lg" />
-        </card-docs>
-
-        <pre>
-            <code class="code-highlight language-html">&lt;c-avatar icon="IconUser" bgColor="bg-green-500" size="lg" /&gt;</code>
-        </pre>
-
         <h2>Advanced Example</h2>
 
         <p>

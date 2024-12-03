@@ -79,7 +79,6 @@ export default defineComponent({
                     { name: "Alert", uri: "/alert" },
                     { name: "Avatar", uri: "/avatar" },
                     { name: "Card", uri: "/card" },
-                    { name: "Container", uri: "/container" },
                     { name: "Toolbar", uri: "/toolbar" },
                 ]
             },
@@ -102,6 +101,7 @@ export default defineComponent({
                 isDir: true,
                 children: [
                     { name: "Notification", uri: "/notification" },
+                    { name: "Overlay", uri: "/overlay" },
                 ],
             },
         ];

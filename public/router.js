@@ -30,6 +30,7 @@ import SliderPage from "./views/form/SliderPage.vue";
 
 //Overlays
 import NotificationPage from "./views/overlays/NotificationPage.vue";
+import OverlayPage from "./views/overlays/OverlayPage.vue";
 
 const routes = [
     { path: '/', component: IndexPage },
@@ -60,6 +61,7 @@ const routes = [
 
     //Overlays
     { path: '/notification', component: NotificationPage },
+    { path: '/overlay', component: OverlayPage },
 ]
 
 const router = createRouter({

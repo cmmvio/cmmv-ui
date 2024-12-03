@@ -69,7 +69,6 @@
 
         <h2>Examples</h2>
 
-        <h3>Basic Badge</h3>
         <p>A simple badge with default styles, typically used to indicate counts or notifications.</p>
 
         <card-docs>
@@ -96,12 +95,18 @@
 &lt;/c-button&gt;</code>
         </pre>
 
-        <h3>Dot Badge</h3>
+        <h2>Dot Badge</h2>
+
         <p>Use the <code>dot</code> prop to display a badge as a small circular dot, ideal for status indicators.</p>
 
         <card-docs>
-            <c-button type="button" class="relative">
-                Messages
+            <c-button 
+                type="button" 
+                variant="plain" 
+                bgColor="bg-zinc-800-600 hover:bg-zinc-900"
+                class="m-auto"
+            >
+                <IconBell class="text-white" />
                 <c-badge dot floating bgColor="bg-green-500" class="absolute top-0 right-0" />
             </c-button>
         </card-docs>
@@ -113,64 +118,66 @@
 &lt;/c-button&gt;</code>
         </pre>
 
-        <h3>Custom Badge Colors</h3>
+        <h2>Custom Colors</h2>
+
         <p>Badges support fully customizable background and text colors using Tailwind classes.</p>
 
         <card-docs>
-            <c-button type="button" class="relative">
-                Updates
-                <c-badge content="99+" bgColor="bg-blue-600" textColor="text-white" class="absolute top-0 right-0" />
+            <c-button 
+                type="button" 
+                variant="plain" 
+                bgColor="bg-zinc-800-600 hover:bg-zinc-900"
+                class="px-6 m-auto"
+            >
+                <IconBell class="text-white" />
+                <c-badge 
+                    content="99+" 
+                    bgColor="bg-blue-600" 
+                    textColor="text-white" 
+                    class="absolute"
+                    style="right: 0px; top: 0px;"
+                />
             </c-button>
         </card-docs>
 
         <pre>
             <code class="code-highlight language-html">&lt;c-button type="button" class="relative"&gt;
-    Updates
+    &lt;IconBell class="text-white" /&gt;
     &lt;c-badge 
         content="99+" 
         bgColor="bg-blue-600" 
         textColor="text-white" 
-        class="absolute top-0 right-0" 
+        class="absolute"
+        style="right: 0px; top: 0px;"
     /&gt;
 &lt;/c-button&gt;</code>
         </pre>
 
-        <h3>Inline Badge</h3>
-        <p>Set the <code>inline</code> prop to true to position badges inline with other content.</p>
-
-        <card-docs>
-            <p>
-                Messages 
-                <c-badge inline bgColor="bg-red-500" textColor="text-white">New</c-badge>
-            </p>
-        </card-docs>
-
-        <pre>
-            <code class="code-highlight language-html">&lt;p&gt;
-    Messages 
-    &lt;c-badge inline bgColor="bg-red-500" textColor="text-white"&gt;New&lt;/c-badge&gt;
-&lt;/p&gt;</code>
-        </pre>
-
-        <h3>Floating Badge</h3>
+        <h2>Floating Badge</h2>
+        
         <p>Floating badges can be precisely positioned using <code>offsetX</code> and <code>offsetY</code>.</p>
 
         <card-docs>
-            <c-button type="button" class="relative">
-                Alerts
-                <c-badge content="3" floating offsetX="10px" offsetY="-5px" bgColor="bg-yellow-500" class="absolute" />
+            <c-button 
+                type="button" 
+                variant="plain" 
+                bgColor="bg-zinc-800-600 hover:bg-zinc-900"
+                class="px-6 py-4 m-auto relative"
+            >
+                <IconBell class="text-white" />
+                <c-badge content="3" floating offsetX="10px" offsetY="0px" bgColor="bg-yellow-800" class="absolute" />
             </c-button>
         </card-docs>
 
         <pre>
             <code class="code-highlight language-html">&lt;c-button type="button" class="relative"&gt;
-    Alerts
+    &lt;IconBell class="text-white" /&gt;
     &lt;c-badge 
         content="3" 
         floating 
         offsetX="10px" 
-        offsetY="-5px" 
-        bgColor="bg-yellow-500" 
+        offsetY="0px" 
+        bgColor="bg-yellow-800" 
         class="absolute" 
     /&gt;
 &lt;/c-button&gt;</code>
