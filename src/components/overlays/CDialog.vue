@@ -1,6 +1,6 @@
 <template>
     <div>
-      <slot name="activator" :props="{ activatorProps: { @click: openDialog } }"></slot>
+      <slot name="activator"></slot>
   
       <c-overlay
         :modelValue="showDialog"
@@ -27,7 +27,7 @@
             <template v-if="$slots.content" v-slot:content>
                 <slot name="content"></slot>
             </template>
-            
+
             <template v-if="$slots.actions" v-slot:actions>
                 <slot name="actions"></slot>
             </template>
