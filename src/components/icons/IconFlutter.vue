@@ -1,0 +1,7 @@
+<template>
+    <c-icon>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M3.5 12.5L6.5 15.5 19 3 13 3zM19 12L13 12 8 17 13 22 19 22 14 17z"></path>
+        </svg>
+    </c-icon>
+</template>

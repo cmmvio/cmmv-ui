@@ -16,7 +16,11 @@
         <br/>
 
         <p>
-            <code>@cmmv/ui</code> is a modular UI component library built on top of Vue 3. It offers a collection of pre-designed, customizable components to streamline the development of user interfaces. This library is optimized for modern frontend frameworks, providing developers with tools to quickly build performant, scalable, and accessible web applications.
+            <code>@cmmv/ui</code> is a modular UI component library built on top of Vue 3 and Tailwind CSS. It offers a collection of pre-designed, customizable components to streamline the development of user interfaces. This library is optimized for modern frontend frameworks, providing developers with tools to quickly build performant, scalable, and accessible web applications.
+        </p>
+
+        <p>
+            Since <code>@cmmv/ui</code> is built using <a href="https://tailwindcss.com/" target="_blank">Tailwind CSS</a> and <a href="https://vuejs.org/" target="_blank">Vue 3</a>, it is essential that these dependencies are configured in your project. You can include them via direct imports in your build process or through a CDN for simpler setups.
         </p>
 
         <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 rounded-md my-6">
@@ -27,6 +31,7 @@
                 Please use it for testing or experimental purposes only.
             </p>
         </div>
+
 
         <h2>Features</h2>
 
@@ -42,7 +47,7 @@
         <h2>Installation</h2>
 
         <pre>
-            <code class="code-highlight language-bash">$ pnpm install @cmmv/ui</code>
+            <code class="code-highlight language-bash">$ pnpm install @cmmv/ui vue@latest tailwindcss</code>
         </pre>
 
         <h2>Vite Configuration</h2>

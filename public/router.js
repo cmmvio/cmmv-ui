@@ -21,6 +21,7 @@ import ToolbarPage from "./views/layout/ToolbarPage.vue";
 //Form
 import FormPage from "./views/form/FormPage.vue";
 import InputPage from "./views/form/InputPage.vue";
+import OtpInputPage from "./views/form/OtpInputPage.vue";
 import CheckboxPage from "./views/form/CheckboxPage.vue";
 import TextareaPage from "./views/form/TextareaPage.vue";
 import TogglePage from "./views/form/TogglePage.vue";
@@ -50,6 +51,7 @@ const routes = [
 	//Form
 	{ path: '/form', component: FormPage },
 	{ path: '/input', component: InputPage },
+    { path: '/otp-input', component: OtpInputPage },
 	{ path: '/checkbox', component: CheckboxPage },
     { path: '/textarea', component: TextareaPage },
     { path: '/toggle', component: TogglePage },

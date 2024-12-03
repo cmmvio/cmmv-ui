@@ -90,6 +90,7 @@ export default defineComponent({
                     { name: "Checkbox", uri: "/checkbox" },
                     { name: "Form", uri: "/form" },
                     { name: "Input", uri: "/input" },  
+                    { name: "OTP Input", uri: "/otp-input" },  
                     { name: "Radio", uri: "/radio" },
                     { name: "Slider", uri: "/slider" },
                     { name: "Textarea", uri: "/textarea" },                  

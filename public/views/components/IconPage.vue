@@ -127,11 +127,36 @@
         <!-- All -->
         <h2>All Icons</h2>
 
+        <p>
+            Below is a complete list of all available icons in the library. Clicking on an icon will copy its implementation code to your clipboard, making it easy to integrate into your project.
+        </p>
+
         <c-card 
             class="m-auto mt-4 px-4 py-10 items-center grid grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 2xl:grid-cols-10 gap-4"
         >
             <div 
                 v-for="icon in resolvedIcons" 
+                :key="icon.name" 
+                class="relative flex items-center justify-center cursor-pointer group"
+                @click="copyToClipboard(icon.code)"
+            >
+                <c-tooltip :content="icon.name" position="top">
+                    <component :is="icon.component" class="w-8 h-8 text-white" aria-hidden="true" />
+                </c-tooltip>
+            </div>
+        </c-card>
+
+        <br/>
+
+        <h3>Brands Icons</h3>
+
+        <br/>
+
+        <c-card 
+            class="m-auto mt-4 px-4 py-10 items-center grid grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 2xl:grid-cols-10 gap-4"
+        >
+            <div 
+                v-for="icon in resolvedBrandsIcons" 
                 :key="icon.name" 
                 class="relative flex items-center justify-center cursor-pointer group"
                 @click="copyToClipboard(icon.code)"
@@ -156,6 +181,7 @@
 <script setup>
 import { ref, markRaw, reactive, onMounted } from "vue";
 import IconsList from "@composables/IconsList.ts";
+import IconsBrandsList from "@composables/IconsBrandsList.ts";
 import BaseLayout from "../../layout/BaseLayout.vue";
 import CCard from "@components/layout/CCard.vue";
 import CIcon from "@components/components/CIcon.vue";
@@ -164,7 +190,9 @@ import * as Icons from "../../../src";
 
 const notification = ref(null);
 const icons = IconsList;
+const iconsBrands = IconsBrandsList;
 const resolvedIcons = reactive([]);
+const resolvedBrandsIcons = reactive([]);
 
 onMounted(async () => {
     for (const icon of icons) {
@@ -178,6 +206,23 @@ onMounted(async () => {
             const component = await import(`../../../src/${icon.path}`);
 
             resolvedIcons.push({
+                ...icon,
+                component: markRaw(component.default),
+            });
+        }        
+    }
+
+    for (const icon of iconsBrands) {
+        if(process.env.NODE_ENV === "production"){
+            resolvedBrandsIcons.push({
+                ...icon,
+                component: markRaw(Icons[icon.path.replace("components/icons/", "").replace(".vue", "")]),
+            });
+        }
+        else {
+            const component = await import(`../../../src/${icon.path}`);
+
+            resolvedBrandsIcons.push({
                 ...icon,
                 component: markRaw(component.default),
             });

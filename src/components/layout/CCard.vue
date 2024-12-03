@@ -73,7 +73,7 @@
         </slot>
 
         <slot name="actions">
-            <div v-if="actions" class="flex justify-end space-x-2 px-4 py-3 border-t border-t-slate-300">
+            <div v-if="actions" class="flex justify-end space-x-2 px-4 py-3 border-t" :class="[bgBorderColor ? bgBorderColor : borderColor]">
                 <slot name="action-buttons" />
             </div>
         </slot>
