@@ -993,6 +993,256 @@ const Icons = [
         name: "icon-newspaper",
         path: "components/icons/IconNewspaper.vue",
         code: `<icon-newspaper class="w-8 h-8 text-white" aria-hidden="true" />`
+    },
+    {
+        "name": "icon-no-symbol",
+        "path": "components/icons/IconNoSymbol.vue",
+        "code": "<icon-no-symbol class=\"w-8 h-8 text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-paint-brush",
+        "path": "components/icons/IconPaintBrush.vue",
+        "code": "<icon-paint-brush class=\"w-8 h-8 text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-paper-airplane",
+        "path": "components/icons/IconPaperAirplane.vue",
+        "code": "<icon-paper-airplane class=\"w-8 h-8 text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-paper-clip",
+        "path": "components/icons/IconPaperClip.vue",
+        "code": "<icon-paper-clip class=\"w-8 h-8 text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-pause",
+        "path": "components/icons/IconPause.vue",
+        "code": "<icon-pause class=\"w-8 h-8 text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-pencil",
+        "path": "components/icons/IconPencil.vue",
+        "code": "<icon-pencil class=\"w-8 h-8 text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-phone",
+        "path": "components/icons/IconPhone.vue",
+        "code": "<icon-phone class=\"w-8 h-8 text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-photo",
+        "path": "components/icons/IconPhoto.vue",
+        "code": "<icon-photo class=\"w-8 h-8 text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-play",
+        "path": "components/icons/IconPlay.vue",
+        "code": "<icon-play class=\"w-8 h-8 text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-plus",
+        "path": "components/icons/IconPlus.vue",
+        "code": "<icon-plus class=\"w-8 h-8 text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-printer",
+        "path": "components/icons/IconPrinter.vue",
+        "code": "<icon-printer class=\"w-8 h-8 text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-puzzle-piece",
+        "path": "components/icons/IconPuzzlePiece.vue",
+        "code": "<icon-puzzle-piece class=\"w-8 h-8 text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-qrcode",
+        "path": "components/icons/IconQrcode.vue",
+        "code": "<icon-qrcode class=\"w-8 h-8 text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-question-mark-circle",
+        "path": "components/icons/IconQuestionMarkCircle.vue",
+        "code": "<icon-question-mark-circle class=\"w-8 h-8 text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-queue-list",
+        "path": "components/icons/IconQueueList.vue",
+        "code": "<icon-queue-list class=\"w-8 h-8 text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-radio",
+        "path": "components/icons/IconRadio.vue",
+        "code": "<icon-radio class=\"w-8 h-8 text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-receipt-percent",
+        "path": "components/icons/IconReceiptPercent.vue",
+        "code": "<icon-receipt-percent class=\"w-8 h-8 text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-rectangle-group",
+        "path": "components/icons/IconRectangleGroup.vue",
+        "code": "<icon-rectangle-group class=\"w-8 h-8 text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-rocket-launch",
+        "path": "components/icons/IconRocketLaunch.vue",
+        "code": "<icon-rocket-launch class=\"w-8 h-8 text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-rss",
+        "path": "components/icons/IconRss.vue",
+        "code": "<icon-rss class=\"w-8 h-8 text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-scale",
+        "path": "components/icons/IconScale.vue",
+        "code": "<icon-scale class=\"w-8 h-8 text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-scissors",
+        "path": "components/icons/IconScissors.vue",
+        "code": "<icon-scissors class=\"w-8 h-8 text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-server",
+        "path": "components/icons/IconServer.vue",
+        "code": "<icon-server class=\"w-8 h-8 text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-share",
+        "path": "components/icons/IconShare.vue",
+        "code": "<icon-share class=\"w-8 h-8 text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-shield-check",
+        "path": "components/icons/IconShieldCheck.vue",
+        "code": "<icon-shield-check class=\"w-8 h-8 text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-shopping-bag",
+        "path": "components/icons/IconShoppingBag.vue",
+        "code": "<icon-shopping-bag class=\"w-8 h-8 text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-signal",
+        "path": "components/icons/IconSignal.vue",
+        "code": "<icon-signal class=\"w-8 h-8 text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-sparkles",
+        "path": "components/icons/IconSparkles.vue",
+        "code": "<icon-sparkles class=\"w-8 h-8 text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-speaker-wave",
+        "path": "components/icons/IconSpeakerWave.vue",
+        "code": "<icon-speaker-wave class=\"w-8 h-8 text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-star",
+        "path": "components/icons/IconStar.vue",
+        "code": "<icon-star class=\"w-8 h-8 text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-stop",
+        "path": "components/icons/IconStop.vue",
+        "code": "<icon-stop class=\"w-8 h-8 text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-stop",
+        "path": "components/icons/IconStop.vue",
+        "code": "<icon-stop class=\"w-8 h-8 text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-sun",
+        "path": "components/icons/IconSun.vue",
+        "code": "<icon-sun class=\"w-8 h-8 text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-swatch",
+        "path": "components/icons/IconSwatch.vue",
+        "code": "<icon-swatch class=\"w-8 h-8 text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-table-cells",
+        "path": "components/icons/IconTableCells.vue",
+        "code": "<icon-table-cells class=\"w-8 h-8 text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-tag",
+        "path": "components/icons/IconTag.vue",
+        "code": "<icon-tag class=\"w-8 h-8 text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-ticket",
+        "path": "components/icons/IconTicket.vue",
+        "code": "<icon-ticket class=\"w-8 h-8 text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-trash",
+        "path": "components/icons/IconTrash.vue",
+        "code": "<icon-trash class=\"w-8 h-8 text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-trophy",
+        "path": "components/icons/IconTrophy.vue",
+        "code": "<icon-trophy class=\"w-8 h-8 text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-truck",
+        "path": "components/icons/IconTruck.vue",
+        "code": "<icon-truck class=\"w-8 h-8 text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-user-circle",
+        "path": "components/icons/IconUserCircle.vue",
+        "code": "<icon-user-circle class=\"w-8 h-8 text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-user-group",
+        "path": "components/icons/IconUserGroup.vue",
+        "code": "<icon-user-group class=\"w-8 h-8 text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-user",
+        "path": "components/icons/IconUser.vue",
+        "code": "<icon-user class=\"w-8 h-8 text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-users",
+        "path": "components/icons/IconUsers.vue",
+        "code": "<icon-users class=\"w-8 h-8 text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-video-camera",
+        "path": "components/icons/IconVideoCamera.vue",
+        "code": "<icon-video-camera class=\"w-8 h-8 text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-wallet",
+        "path": "components/icons/IconWallet.vue",
+        "code": "<icon-wallet class=\"w-8 h-8 text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-wifi",
+        "path": "components/icons/IconWifi.vue",
+        "code": "<icon-wifi class=\"w-8 h-8 text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-wrench",
+        "path": "components/icons/IconWrench.vue",
+        "code": "<icon-wrench class=\"w-8 h-8 text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-x-circle",
+        "path": "components/icons/IconXCircle.vue",
+        "code": "<icon-x-circle class=\"w-8 h-8 text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-x-mark",
+        "path": "components/icons/IconXMark.vue",
+        "code": "<icon-x-mark class=\"w-8 h-8 text-white\" aria-hidden=\"true\" />"
     }
 ]
 

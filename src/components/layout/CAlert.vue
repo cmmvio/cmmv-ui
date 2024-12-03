@@ -32,10 +32,10 @@
             aria-label="Close alert"
         >
             <slot name="close-icon">
-                <icon-chevron-double-down 
+                <icon-x-mark 
                     class="w-6 h-6" 
                     :class="[props.textColor || `text-${colorByType[props.type]}-700`]" 
-                    aria-label="Close" 
+                    aria-label="Close"
                 />
             </slot>
         </button>

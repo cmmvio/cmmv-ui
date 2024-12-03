@@ -14,6 +14,7 @@ import LoaderPage from "./views/components/LoaderPage.vue";
 
 //Layout
 import AlertPage from "./views/layout/AlertPage.vue";
+import AvatarPage from "./views/layout/AvatarPage.vue";
 import CardPage from "./views/layout/CardPage.vue";
 import ToolbarPage from "./views/layout/ToolbarPage.vue";
 
@@ -42,6 +43,7 @@ const routes = [
 	
 	//Layout
     { path: '/alert', component: AlertPage },
+    { path: '/avatar', component: AvatarPage },
 	{ path: '/card', component: CardPage },
     { path: '/toolbar', component: ToolbarPage },
 

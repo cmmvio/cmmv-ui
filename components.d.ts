@@ -9,6 +9,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     CAlert: typeof import('./src/components/layout/CAlert.vue')['default']
     CAppBarNav: typeof import('./src/components/layout/CAppBarNav.vue')['default']
+    CAvatar: typeof import('./src/components/layout/CAvatar.vue')['default']
     CBadge: typeof import('./src/components/components/CBadge.vue')['default']
     CButton: typeof import('./src/components/components/CButton.vue')['default']
     CCard: typeof import('./src/components/layout/CCard.vue')['default']
@@ -551,6 +552,7 @@ declare module 'vue' {
     IconTrophy: typeof import('./src/components/icons/IconTrophy.vue')['default']
     IconTruck: typeof import('./src/components/icons/IconTruck.vue')['default']
     IconTv: typeof import('./src/components/icons/IconTv.vue')['default']
+    IconTwitter: typeof import('./src/components/icons/IconTwitter.vue')['default']
     IconUnderline: typeof import('./src/components/icons/IconUnderline.vue')['default']
     IconUser: typeof import('./src/components/icons/IconUser.vue')['default']
     IconUserCircle: typeof import('./src/components/icons/IconUserCircle.vue')['default']
