@@ -427,7 +427,7 @@ export { default as IconRadio } from '@components/icons/IconRadio.vue';
 export { default as IconReceiptPercent } from '@components/icons/IconReceiptPercent.vue';
 export { default as IconRectangleGroup } from '@components/icons/IconRectangleGroup.vue';
 export { default as IconRocketLaunch } from '@components/icons/IconRocketLaunch.vue';
-export { default as IconRss } from '@components/icons/IconRss.vue';
+export { default as IconRSS } from '@components/icons/IconRSS.vue';
 export { default as IconScale } from '@components/icons/IconScale.vue';
 export { default as IconScissors } from '@components/icons/IconScissors.vue';
 export { default as IconServer } from '@components/icons/IconServer.vue';
