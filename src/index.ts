@@ -420,7 +420,7 @@ export { default as IconPlay } from '@components/icons/IconPlay.vue';
 export { default as IconPlus } from '@components/icons/IconPlus.vue';
 export { default as IconPrinter } from '@components/icons/IconPrinter.vue';
 export { default as IconPuzzlePiece } from '@components/icons/IconPuzzlePiece.vue';
-export { default as IconQrcode } from '@components/icons/IconQrcode.vue';
+export { default as IconQrCode } from '@components/icons/IconQrCode.vue';
 export { default as IconQuestionMarkCircle } from '@components/icons/IconQuestionMarkCircle.vue';
 export { default as IconQueueList } from '@components/icons/IconQueueList.vue';
 export { default as IconRadio } from '@components/icons/IconRadio.vue';
