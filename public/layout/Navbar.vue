@@ -76,6 +76,7 @@ export default defineComponent({
                 name: "Layout",
                 isDir: true,
                 children: [
+                    { name: "Alert", uri: "/alert" },
                     { name: "Card", uri: "/card" },
                     { name: "Container", uri: "/container" },
                     { name: "Toolbar", uri: "/toolbar" },

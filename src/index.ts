@@ -1,6 +1,7 @@
 //@ts-nocheck
 
 //Layout
+export { default as CAlert } from '@components/layout/CAlert.vue';
 export { default as CAppBarNav } from '@components/layout/CAppBarNav.vue';
 export { default as CCard } from '@components/layout/CCard.vue';
 export { default as CContainer } from '@components/layout/CContainer.vue';

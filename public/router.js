@@ -13,6 +13,7 @@ import BadgePage from "./views/components/BadgePage.vue";
 import LoaderPage from "./views/components/LoaderPage.vue";
 
 //Layout
+import AlertPage from "./views/layout/AlertPage.vue";
 import CardPage from "./views/layout/CardPage.vue";
 import ToolbarPage from "./views/layout/ToolbarPage.vue";
 
@@ -40,6 +41,7 @@ const routes = [
     { path: '/loader', component: LoaderPage },
 	
 	//Layout
+    { path: '/alert', component: AlertPage },
 	{ path: '/card', component: CardPage },
     { path: '/toolbar', component: ToolbarPage },
 
