@@ -1,7 +1,7 @@
 {
     "name": "@cmmv/ui",
     "version": "0.0.7",
-    "description": "",
+    "description": "CMMV (@ui)",
     "license": "MIT",
     "author": "Andre Ferreira",
     "private": false,
@@ -26,7 +26,9 @@
     ],
     "keywords": [
         "cmmv",
-        "ui"
+        "ui",
+        "vue",
+        "components"
     ],
     "repository": {
         "type": "git",
