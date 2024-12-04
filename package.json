@@ -54,9 +54,9 @@
     },
     "pnpm": {
         "overrides": {
-            "lodash": "4.17.11",
+            "lodash": "4.17.21",
             "ws": "6.2.2",
-            "moment": "2.29.2",
+            "moment": "2.29.4",
             "qs": "6.5.3",
             "jsonwebtoken": "9.0.0",
             "express": "4.19.2",
