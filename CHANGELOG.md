@@ -1,3 +1,23 @@
+## [0.0.7](https://github.com/andrehrferreira/cmmv-ui/compare/v0.0.6...v0.0.7) (2024-12-04)
+
+
+### Bug Fixes
+
+* build ([16ea7c4](https://github.com/andrehrferreira/cmmv-ui/commit/16ea7c4fbaca92e8436ffc411dca48332c61cb01))
+* build ([342b75f](https://github.com/andrehrferreira/cmmv-ui/commit/342b75ff19ac6faf3aaca952c3d69ee46c4c0352))
+* build ([fa8d072](https://github.com/andrehrferreira/cmmv-ui/commit/fa8d072169d1ef8a1225f345f1615e131b529bc9))
+* vulnerabilities ([6a6efb6](https://github.com/andrehrferreira/cmmv-ui/commit/6a6efb648fd5472285d36dd1f8c4d0a2ee712e14))
+
+
+### Features
+
+* avatar, card page ([32519ec](https://github.com/andrehrferreira/cmmv-ui/commit/32519ecf1674152ae470d94669419b835cdd55eb))
+* more icons ([b83dca8](https://github.com/andrehrferreira/cmmv-ui/commit/b83dca8d331fdb28be3939a0bc899839b8384471))
+* otp input ([2f4e3a5](https://github.com/andrehrferreira/cmmv-ui/commit/2f4e3a526a88de2dc3af9b46f75a045e6592d8d0))
+* overlay ([59ee6bb](https://github.com/andrehrferreira/cmmv-ui/commit/59ee6bb8fa644132af32c035e05495439dd87dc8))
+
+
+
 ## [0.0.6](https://github.com/andrehrferreira/cmmv-ui/compare/v0.0.5...v0.0.6) (2024-12-02)
 
 
