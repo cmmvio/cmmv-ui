@@ -1,7 +1,7 @@
 {
     "name": "@cmmv/ui",
     "version": "0.0.8",
-    "description": "CMMV (@ui)",
+    "description": "Vue3 UI Component + TailwindCSS for CMMV",
     "license": "MIT",
     "author": "Andre Ferreira",
     "private": false,
