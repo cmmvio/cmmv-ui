@@ -16,7 +16,7 @@
         "test": "vitest",
         "build-only": "vite build",
         "type-check": "vue-tsc --build",
-        "release": "pnpm run build && pnpm run clean:server && node scripts/release.js",
+        "release": "pnpm run build:module && pnpm run clean:server && node scripts/release.js",
         "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
         "prepare": "husky"
     },
