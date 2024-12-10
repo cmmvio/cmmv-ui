@@ -1,3 +1,13 @@
+## [0.0.9](https://github.com/andrehrferreira/cmmv-ui/compare/v0.0.8...v0.0.9) (2024-12-10)
+
+
+### Bug Fixes
+
+* build ([e27b823](https://github.com/andrehrferreira/cmmv-ui/commit/e27b823512f40399aedefcc4f3a42e6dfaeea6a9))
+* description ([53db3c1](https://github.com/andrehrferreira/cmmv-ui/commit/53db3c1dd85b2049484e384ba697b47ac4985ca4))
+
+
+
 ## [0.0.8](https://github.com/andrehrferreira/cmmv-ui/compare/v0.0.7...v0.0.8) (2024-12-04)
 
 
