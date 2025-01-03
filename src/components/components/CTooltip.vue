@@ -57,7 +57,6 @@
 </style>
 
 <script lang="ts" setup>
-// Props
 const props = defineProps({
     content: {
         type: String,
@@ -65,7 +64,7 @@ const props = defineProps({
     },
     position: {
         type: String,
-        default: "top", // top, bottom, left, right
+        default: "top",
     },
     opacity: {
         type: Number,

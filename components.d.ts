@@ -9,6 +9,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     CAlert: typeof import('./src/components/layout/CAlert.vue')['default']
     CAppBarNav: typeof import('./src/components/layout/CAppBarNav.vue')['default']
+    CAutocomplete: typeof import('./src/components/forms/CAutocomplete.vue')['default']
     CAvatar: typeof import('./src/components/layout/CAvatar.vue')['default']
     CBadge: typeof import('./src/components/components/CBadge.vue')['default']
     CButton: typeof import('./src/components/components/CButton.vue')['default']

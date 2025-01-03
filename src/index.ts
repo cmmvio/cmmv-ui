@@ -21,9 +21,11 @@ export { default as CTooltip } from '@components/components/CTooltip.vue';
 export { default as CBadge } from '@components/components/CBadge.vue';
 
 //Form
+export { default as CAutocomplete } from '@components/forms/CAutocomplete.vue';
 export { default as CCheckbox } from '@components/forms/CCheckbox.vue';
 export { default as CForm } from '@components/forms/CForm.vue';
 export { default as CInput } from '@components/forms/CInput.vue';
+export { default as COtpInput } from '@components/forms/COtpInput.vue';
 export { default as CRadio } from '@components/forms/CRadio.vue';
 export { default as CSlider } from '@components/forms/CSlider.vue';
 export { default as CTextarea } from '@components/forms/CTextarea.vue';

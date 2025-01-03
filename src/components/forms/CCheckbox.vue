@@ -3,7 +3,6 @@
         class="relative inline-flex items-center cursor-pointer select-none"
         @click="toggle"
     >
-        <!-- Ripple Effect Container -->
         <span class="absolute inset-0 z-0" ref="rippleContainer"></span>
 
         <span
@@ -16,7 +15,6 @@
                 hasError ? 'ring-2 ring-red-500 border-red-500 bg-red-300' : '' 
             ]"
         >
-            <!-- Check Icon -->
             <svg
                 v-if="isChecked && !indeterminate"
                 xmlns="http://www.w3.org/2000/svg"
@@ -30,7 +28,6 @@
                 <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
             </svg>
 
-            <!-- Indeterminate Icon -->
             <svg
                 v-if="indeterminate"
                 xmlns="http://www.w3.org/2000/svg"
@@ -45,7 +42,6 @@
             </svg>
         </span>
 
-        <!-- Label -->
         <span
             v-if="label"
             :class="[
@@ -62,22 +58,21 @@
 <script setup lang="ts">
 import { ref, computed, watch } from "vue";
 
-// Props
 const props = defineProps({
     modelValue: {
         type: [Boolean, Array],
         required: false,
-        default: undefined, // undefined allows usage without v-model
+        default: undefined,
     },
     value: {
         type: [String, Number, Boolean],
         required: false,
-        default: null, // Value for array-based v-model
+        default: null,
     },
     checked: {
         type: Boolean,
         required: false,
-        default: false, // Initial value if not using v-model
+        default: false, 
     },
     indeterminate: {
         type: Boolean,
@@ -120,10 +115,7 @@ const props = defineProps({
     },
 });
 
-// Emits
 const emit = defineEmits(["update:modelValue"]);
-
-// Reactive Variables
 const rippleContainer = ref<HTMLElement | null>(null);
 const internalChecked = ref(
     Array.isArray(props.modelValue)
@@ -139,11 +131,10 @@ watch(
         } else if (newValue !== undefined) {
             internalChecked.value = newValue;
         }
-        validate(); // Revalidate on modelValue changes
+        validate();
     }
 );
 
-// Computed Properties
 const isChecked = computed({
     get: () => internalChecked.value,
     set: (value) => {
@@ -165,7 +156,6 @@ const isChecked = computed({
 
 const hasError = ref(false);
 
-// Methods
 const toggle = () => {
     if (!props.disabled) {
         isChecked.value = !isChecked.value;
@@ -210,7 +200,6 @@ const createRipple = () => {
     }, 500);
 };
 
-// Size Configurations
 const sizes: Record<string, { box: string, label: string }> = {
     sm: { box: "w-4 h-4 border-2", label: "text-sm" },
     md: { box: "w-5 h-5 border-2", label: "text-base" },

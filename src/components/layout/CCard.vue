@@ -1,6 +1,6 @@
 <template>
     <div
-        class="overflow-hidden rounded-lg shadow w-full m-auto transition duration-200"
+        class="rounded-lg shadow w-full m-auto transition duration-200"
         :class="[ 
             roundedStyles[rounded],
             bgColor,
@@ -14,7 +14,7 @@
         v-bind="href ? { role: 'link', tabindex: 0 } : {}"
     >
         <c-progress-bar 
-            class="top-0 absolute"
+            class="top-0 absolute rounded-t-md"
             indeterminate 
             :height="5"
             :fillColor="loadingFillColor"
@@ -24,7 +24,7 @@
         <slot name="header">
             <div 
                 v-if="title || subtitle || closable" 
-                class="px-4 py-3 pb-0 flex justify-between items-center relative"
+                class="px-4 py-3 pb-0 flex justify-between items-center relative rounded-t-md"
                 :class="[bgHeaderColor ? bgHeaderColor : bgColor, bgBorderColor]"
             >
                 <div>

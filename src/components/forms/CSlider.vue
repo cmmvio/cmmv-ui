@@ -3,12 +3,9 @@
         class="relative w-full"
         :class="[thumb ? 'mt-10' : '']"
     >
-        <!-- Slider Container -->
         <div class="relative flex items-center">
-            <!-- Icon Before -->
             <slot name="icon-before" />
 
-            <!-- Track -->
             <div
                 ref="track"
                 class="relative flex-1 h-2 rounded-full transition-all shadow-md"
@@ -16,14 +13,12 @@
                 @mousedown="startDrag"
                 @touchstart="startDrag"
             >
-                <!-- Active Track -->
                 <div
                     class="absolute h-full rounded-full transition-all"
                     :style="{ width: `${percentage}%` }"
                     :class="disabled ? 'bg-blue-300' : activeTrackColor"
                 ></div>
 
-                <!-- Tick Marks -->
                 <template v-if="showTicks">
                     <div
                         v-for="tick in tickPositions"
@@ -34,7 +29,6 @@
                     ></div>
                 </template>
 
-                <!-- Thumb -->
                 <div
                     ref="thumb"
                     class="absolute w-5 h-5 rounded-full flex items-center justify-center transition-all select-none transform"
@@ -53,14 +47,11 @@
                 </div>
             </div>
 
-            <!-- Icon After -->
             <slot name="icon-after" />
         </div>
 
-        <!-- Append Slot -->
         <slot name="append" />
 
-        <!-- Error Message -->
         <p v-if="hasError" class="text-xs text-red-500 mt-1">{{ errorMessage }}</p>
     </div>
 </template>
@@ -87,7 +78,6 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onBeforeUnmount } from "vue";
 
-// Props
 const props = defineProps({
     modelValue: { type: Number, default: 0 },
     min: { type: Number, default: 0 },
@@ -105,16 +95,12 @@ const props = defineProps({
     rules: { type: Array, default: () => [] },
 });
 
-// Emits
 const emit = defineEmits(["update:modelValue"]);
-
-// Refs
 const track = ref<HTMLElement | null>(null);
 const dragging = ref(false);
 const hasError = ref(false);
 const errorMessage = ref<string | null>(null);
 
-// Computed
 const currentValue = computed({
     get: () => props.modelValue,
     set: (value) => {
@@ -139,12 +125,11 @@ const tickPositions = computed(() => {
           );
 });
 
-// Methods
 const startDrag = (event: MouseEvent | TouchEvent) => {
     if (props.disabled) return;
     dragging.value = true;
 
-    moveThumb(event); // Initial adjustment
+    moveThumb(event); 
     document.addEventListener("mousemove", moveThumb);
     document.addEventListener("touchmove", moveThumb);
     document.addEventListener("mouseup", stopDrag);
@@ -172,7 +157,6 @@ const moveThumb = (event: MouseEvent | TouchEvent) => {
     currentValue.value = Math.round(rawValue / props.step) * props.step;
 };
 
-// Validation
 const validate = () => {
     hasError.value = false;
     errorMessage.value = null;

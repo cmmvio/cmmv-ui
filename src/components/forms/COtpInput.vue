@@ -1,6 +1,5 @@
 <template>
     <div class="relative flex flex-col items-center space-y-4">
-        <!-- Loader overlay -->
         <div
             v-if="loading"
             class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center z-10 "
@@ -8,7 +7,6 @@
             <Loader90Ring />
         </div>
 
-        <!-- OTP input -->
         <div class="flex space-x-2 mt-0 p-2" style="margin-top: 0px;">
             <input
                 v-for="(char, index) in inputValues"

@@ -86,6 +86,7 @@ export default defineComponent({
                 name: "Form",
                 isDir: true,
                 children: [
+                    { name: "Autocomplete", uri: "/autocomplete" },
                     { name: "Checkbox", uri: "/checkbox" },
                     { name: "Form", uri: "/form" },
                     { name: "Input", uri: "/input" },  

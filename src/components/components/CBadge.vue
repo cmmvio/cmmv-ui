@@ -54,11 +54,11 @@ const props = defineProps({
     },
     offsetX: {
         type: String,
-        default: "0.3rem", // Default offset for X-axis
+        default: "0.3rem", 
     },
     offsetY: {
         type: String,
-        default: "0.3rem", // Default offset for Y-axis
+        default: "0.3rem", 
     },
 });
 

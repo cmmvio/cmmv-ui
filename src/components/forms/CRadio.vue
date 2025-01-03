@@ -3,10 +3,8 @@
         class="relative inline-flex items-center cursor-pointer select-none"
         @click="toggle"
     >
-        <!-- Ripple Effect Container -->
         <span class="absolute inset-0 z-0" ref="rippleContainer"></span>
 
-        <!-- Radio Circle -->
         <div
             class="relative z-10 flex items-center justify-center border rounded-full transition-all duration-200 overflow-hidden text-center"
             :class="[ 
@@ -16,7 +14,6 @@
                 disabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer' 
             ]"
         >
-            <!-- Checked Circle -->
             <div 
                 v-if="isChecked"
                 class="absolute inset-0 m-auto rounded-full transition-all duration-200"
@@ -29,7 +26,6 @@
             ></div>
         </div>
 
-        <!-- Label -->
         <span
             v-if="label"
             :class="['ml-2', sizes[size].label]"
@@ -42,21 +38,20 @@
 <script lang="ts" setup>
 import { ref, computed, defineProps, defineEmits } from "vue";
 
-// Props
 const props = defineProps({
     modelValue: {
         type: [String, Number],
         required: false,
-        default: undefined, // undefined allows usage without v-model
+        default: undefined, 
     },
     value: {
         type: [String, Number],
-        required: true, // Value to identify the radio button
+        required: true,
     },
     checked: {
         type: Boolean,
         required: false,
-        default: false, // Initial state without v-model
+        default: false,
     },
     label: {
         type: String,
@@ -71,7 +66,7 @@ const props = defineProps({
     size: {
         type: String,
         required: false,
-        default: "md", // sm | md | lg
+        default: "md",
     },
     bgColor: {
         type: String,
@@ -86,40 +81,30 @@ const props = defineProps({
     textColor: {
         type: String,
         required: false,
-        default: "text-white", // Fill color for the center when selected
+        default: "text-white", 
     },
 });
 
-// Emit
 const emit = defineEmits(["update:modelValue"]);
-
-// Internal state
 const internalModel = ref(props.checked ? props.value : undefined);
 
-// Computed for checked state
 const isChecked = computed(() => {
     return props.modelValue !== undefined
         ? props.modelValue === props.value
         : internalModel.value === props.value;
 });
 
-// Ripple reference
 const rippleContainer = ref<HTMLElement | null>(null);
 
-// Handlers
 const toggle = () => {
     if (props.disabled) return;
 
-    // Ripple effect
     createRipple();
 
-    if (props.modelValue !== undefined) {
-        // Emit for v-model
+    if (props.modelValue !== undefined) 
         emit("update:modelValue", props.value);
-    } else {
-        // Update internal model
+    else 
         internalModel.value = props.value;
-    }
 };
 
 const createRipple = () => {
@@ -127,11 +112,11 @@ const createRipple = () => {
 
     const rect = rippleContainer.value.getBoundingClientRect();
     const ripple = document.createElement("span");
-    const diameter = Math.max(rect.width, rect.height);
+    const diameter = rect.width * 0.5;
     const radius = diameter / 2;
 
     ripple.style.width = ripple.style.height = `${diameter}px`;
-    ripple.style.left = `${rect.width / 2 - radius}px`;
+    ripple.style.left = `${radius}px`;
     ripple.style.top = `${rect.height / 2 - radius}px`;
     ripple.classList.add("ripple");
 
@@ -142,7 +127,6 @@ const createRipple = () => {
     }, 500);
 };
 
-// Sizes
 const sizes: Record<string, { box: string, label: string }> = {
     sm: { box: "w-4 h-4 border-2", label: "text-sm" },
     md: { box: "w-5 h-5 border-2", label: "text-base" },
@@ -162,7 +146,7 @@ const sizes: Record<string, { box: string, label: string }> = {
 
 @keyframes ripple-animation {
     to {
-        transform: scale(4);
+        transform: scale(0.1);
         opacity: 0;
     }
 }

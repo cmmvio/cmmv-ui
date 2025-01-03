@@ -44,16 +44,16 @@ import { shallowRef, watch } from "vue";
 const props = defineProps({
     iso: {
         type: String,
-        required: true, // ISO country code (e.g., "br", "us", "fr")
+        required: true,
     },
     size: {
         type: String,
-        default: "md", // sm|md|lg|xl|2xl
+        default: "md",
     },
     rounded: {
         required: false,
         type: [String],
-        default: "md", // none|default|md|full
+        default: "md", 
     },
     ariaLabel: {
         type: String,

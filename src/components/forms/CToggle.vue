@@ -27,17 +27,16 @@
 <script lang="ts" setup>
 import { ref, computed, watch } from "vue";
 
-// Props
 const props = defineProps({
     modelValue: {
         type: [Boolean],
         required: false,
-        default: undefined, // undefined allows usage without v-model
+        default: undefined,
     },
     checked: {
         type: Boolean,
         required: false,
-        default: false, // Initial value if not using v-model
+        default: false, 
     },
     label: {
         type: String,
@@ -62,23 +61,19 @@ const props = defineProps({
     trackColor: {
         type: String,
         required: false,
-        default: "bg-blue-600", // Custom color for the track when checked
+        default: "bg-blue-600",
     },
     thumbColor: {
         type: String,
         required: false,
-        default: "bg-white", // Custom color for the thumb
+        default: "bg-white", 
     },
 });
 
-// Emit
 const emit = defineEmits(["update:modelValue"]);
-
-// Reactive State
 const internalChecked = ref(props.modelValue ?? props.checked);
 const rippleContainer = ref<HTMLElement | null>(null);
 
-// Watchers
 watch(
     () => props.modelValue,
     (newValue) => {
@@ -88,7 +83,6 @@ watch(
     }
 );
 
-// Computed Properties
 const isChecked = computed({
     get: () => internalChecked.value,
     set: (value) => {
@@ -97,7 +91,6 @@ const isChecked = computed({
     },
 });
 
-// Methods
 const toggle = () => {
     if (!props.disabled) {
         isChecked.value = !isChecked.value;
@@ -125,7 +118,6 @@ const createRipple = () => {
     }, 500);
 };
 
-// Sizes
 const sizes: Record<string, { 
     track: string, 
     thumb: string, 

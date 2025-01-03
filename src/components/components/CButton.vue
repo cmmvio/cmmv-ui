@@ -41,7 +41,6 @@ span.ripple {
 <script lang="ts" setup>
 import { reactive, defineEmits, defineProps } from "vue";
 
-// Emit events
 const emit = defineEmits([
     "click",
     "beforeCreate",
@@ -54,27 +53,26 @@ const emit = defineEmits([
     "unmounted"
 ]);
 
-// Define props
 const props = defineProps({
     type: {
         type: String,
-        default: "button" // button|reset|submit
+        default: "button"
     },
     buttonType: {
         type: String,
-        default: "button" // button|anchor
+        default: "button"
     },
     size: {
         type: String,
-        default: "lg" // sm|md|lg|xl|2xl
+        default: "lg"
     },
     rounded: {
         type: String,
-        default: "default" // none|default|md|full
+        default: "default"
     },
     variant: {
         type: String,
-        default: "elevated" // elevated|flat|tonal|outlined|text|plain
+        default: "elevated"
     },
     bgColor: {
         type: String,
@@ -94,7 +92,6 @@ const props = defineProps({
     }
 });
 
-// Data
 const sizes: Record<string, string> = reactive({
     sm: "px-2 py-1 text-xs",
     md: "px-2 py-1 text-sm",
@@ -119,7 +116,6 @@ const variantStyles: Record<string, string> = reactive({
     plain: "bg-transparent text-black"
 });
 
-// Methods
 function handleClick(event: MouseEvent) {
     if (props.disabled) return;
 

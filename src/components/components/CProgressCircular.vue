@@ -11,7 +11,6 @@
             :height="size"
             viewBox="0 0 100 100"
         >
-            <!-- Background circle -->
             <circle
                 class="c-progress-circular-bg"
                 cx="50"
@@ -21,7 +20,7 @@
                 fill="none"
                 :stroke-width="width"
             />
-            <!-- Progress circle -->
+
             <circle
                 class="c-progress-circular-fill"
                 cx="50"
@@ -147,31 +146,31 @@ import { computed } from "vue";
 const props = defineProps({
     value: {
         type: Number,
-        default: 0, // Progress value (0-100)
+        default: 0,
     },
     size: {
         type: Number,
-        default: 100, // Total diameter of the circular progress
+        default: 100, 
     },
     width: {
         type: Number,
-        default: 10, // Stroke width
+        default: 10, 
     },
     bgColor: {
         type: String,
-        default: "#d3d3d3", // Background stroke color
+        default: "#d3d3d3", 
     },
     fillColor: {
         type: String,
-        default: "#4caf50", // Progress stroke color
+        default: "#4caf50", 
     },
     indeterminate: {
         type: Boolean,
-        default: false, // Indeterminate mode
+        default: false, 
     },
 });
 
-const radius = computed(() => (50 - props.width)); // Adjust radius to account for stroke width
-const circumference = computed(() => 2 * Math.PI * radius.value); // Full circumference
-const strokeDashOffset = computed(() => circumference.value * (1 - props.value / 100)); // Offset based on progress
+const radius = computed(() => (50 - props.width)); 
+const circumference = computed(() => 2 * Math.PI * radius.value); 
+const strokeDashOffset = computed(() => circumference.value * (1 - props.value / 100)); 
 </script>

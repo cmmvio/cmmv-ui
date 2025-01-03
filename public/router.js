@@ -19,6 +19,7 @@ import CardPage from "./views/layout/CardPage.vue";
 import ToolbarPage from "./views/layout/ToolbarPage.vue";
 
 //Form
+import AutocompletePage from "./views/form/AutocompletePage.vue";
 import FormPage from "./views/form/FormPage.vue";
 import InputPage from "./views/form/InputPage.vue";
 import OtpInputPage from "./views/form/OtpInputPage.vue";
@@ -50,6 +51,7 @@ const routes = [
     { path: '/toolbar', component: ToolbarPage },
 
 	//Form
+    { path: '/autocomplete', component: AutocompletePage },
 	{ path: '/form', component: FormPage },
 	{ path: '/input', component: InputPage },
     { path: '/otp-input', component: OtpInputPage },

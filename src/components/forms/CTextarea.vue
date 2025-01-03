@@ -1,6 +1,5 @@
 <template>
     <div class="c-textarea relative w-full">
-        <!-- Label -->
         <label 
             :for="id"
             class="c-textarea-label absolute left-3 text-sm transition-all duration-200 ease-in-out pointer-events-none"
@@ -16,7 +15,6 @@
             {{ label }}
         </label>
 
-        <!-- Textarea -->
         <textarea
             ref="textarea"
             :id="id"
@@ -45,12 +43,10 @@
             :aria-invalid="hasError"
         />
 
-        <!-- Character Counter -->
         <div v-if="lengthCount" class="absolute bottom-1 right-3 text-xs text-gray-500">
             {{ currentValue.length }} / {{ maxlength }}
         </div>
 
-        <!-- Hint/Error Message -->
         <div class="mt-1" v-if="!hiddenHint">
             <p v-if="hasError" class="text-xs text-red-500">{{ errorMessage }}</p>
             <p v-else-if="hint && (hintFixed || isActive)" class="text-xs text-gray-500">{{ hint }}</p>
@@ -171,7 +167,6 @@ const props = defineProps({
 });
 
 const emit = defineEmits(["update:modelValue"]);
-
 const textarea = ref<HTMLTextAreaElement | null>(null);
 const currentValue = ref(props.modelValue ?? "");
 const errorMessage = ref<string | null>(null);

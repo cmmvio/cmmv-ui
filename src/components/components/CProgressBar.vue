@@ -3,14 +3,12 @@
         class="relative w-full overflow-hidden"
         :style="{ height: `${height}px`, backgroundColor: bgColor }"
     >
-        <!-- Buffering Bar -->
         <div
             v-if="buffering"
             class="absolute inset-0"
             :style="{ width: `${bufferValue}%`, backgroundColor: bufferColor }"
         ></div>
         
-        <!-- Progress Bar -->
         <div
             class="absolute h-full progress-bar"
             :class="{ striped, indeterminate }"
@@ -19,8 +17,7 @@
                 backgroundColor: fillColor,
             }"
         ></div>
-        
-        <!-- Slot Content -->
+
         <div class="absolute inset-0 flex items-center justify-center z-10 select-none">
             <slot></slot>
         </div>
@@ -28,7 +25,6 @@
 </template>
 
 <style scoped>
-/* Striped Pattern */
 .progress-bar.striped {
     background-image: linear-gradient(
         45deg,
@@ -44,12 +40,10 @@
     animation: progress-stripes 1s linear infinite;
 }
 
-/* Indeterminate Animation */
 .progress-bar.indeterminate {
     animation: indeterminate-progress 2s infinite linear;
 }
 
-/* Stripes Animation */
 @keyframes progress-stripes {
     from {
         background-position: 20px 0;
@@ -59,7 +53,6 @@
     }
 }
 
-/* Indeterminate Animation */
 @keyframes indeterminate-progress {
     0% {
         transform: translateX(-100%);
@@ -79,39 +72,39 @@ import { defineProps } from "vue";
 defineProps({
     value: {
         type: Number,
-        default: 0, // Progress value (0-100)
+        default: 0,
     },
     bufferValue: {
         type: Number,
-        default: 100, // Buffer value (0-100)
+        default: 100, 
     },
     height: {
         type: Number,
-        default: 20, // Height of the progress bar
+        default: 20, 
     },
     bgColor: {
         type: String,
-        default: "#e0e0e0", // Background color of the progress bar
+        default: "#e0e0e0",
     },
     bufferColor: {
         type: String,
-        default: "#c0c0c0", // Background color of the buffer bar
+        default: "#c0c0c0",
     },
     fillColor: {
         type: String,
-        default: "#4caf50", // Color of the progress bar fill
+        default: "#4caf50",
     },
     striped: {
         type: Boolean,
-        default: false, // Adds a striped pattern to the progress bar
+        default: false,
     },
     indeterminate: {
         type: Boolean,
-        default: false, // Activates indeterminate animation
+        default: false,
     },
     buffering: {
         type: Boolean,
-        default: false, // Enables the buffering bar
+        default: false,
     },
 });
 </script>

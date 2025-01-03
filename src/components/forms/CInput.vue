@@ -1,6 +1,5 @@
 <template>
     <div class="c-input relative w-full">
-        <!-- Label -->
         <label 
             :for="id"
             class="c-input-label absolute left-3 text-sm transition-all duration-200 ease-in-out pointer-events-none"
@@ -17,9 +16,7 @@
             {{ label }}
         </label>
 
-        <!-- Input Wrapper -->
         <div class="relative flex items-center">
-            <!-- Icon Slot -->
             <div 
                 v-if="hasIcon" 
                 class="absolute inset-y-0 left-0 flex items-center pl-3 z-50"
@@ -27,7 +24,6 @@
                 <slot name="icon"></slot>
             </div>
 
-            <!-- Input -->
             <input
                 :id="id"
                 :type="inputType"
@@ -45,7 +41,6 @@
                 :aria-invalid="hasError"
             />
 
-            <!-- Clear Button -->
             <button
                 v-if="clearable && currentValue !== ''"
                 type="button"
@@ -57,7 +52,6 @@
                 </svg>
             </button>
 
-            <!-- Loading Indicator -->
             <div 
                 v-if="loading" 
                 class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-400"
@@ -70,7 +64,6 @@
                 />
             </div>
 
-            <!-- Password Toggle -->
             <button
                 v-if="type === 'password'"
                 type="button"
@@ -91,7 +84,6 @@
             </button> 
         </div>
 
-        <!-- Hint/Error Message -->
         <div class="mt-1" v-if="!hiddenHint">
             <p v-if="hasError" class="text-xs text-red-500">{{ errorMessage }}</p>
             <p v-else-if="hint && (hintFixed || isActive)" class="text-xs text-gray-500">{{ hint }}</p>

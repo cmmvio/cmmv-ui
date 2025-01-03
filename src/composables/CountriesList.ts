@@ -210,8 +210,6 @@ const Countries = [
     { name: "Yemen", iso: "ye", alpha3: "YEM", numeric: "887" },
     { name: "Zambia", iso: "zm", alpha3: "ZMB", numeric: "894" },
     { name: "Zimbabwe", iso: "zw", alpha3: "ZWE", numeric: "716" }
-
-
 ];
   
 export default Countries;
