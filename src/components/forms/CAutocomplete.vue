@@ -8,8 +8,8 @@
                     'c-autocomplete-label--active': isActive, 
                     'bg-white dark:bg-zinc-900': variant === 'default' && !disabled && bgColor == '',
                     'bg-white dark:bg-zinc-800': (variant === 'outlined' || variant === 'filled') && !disabled && bgColor == '',
-                    'top-[50%] -translate-y-1/2': !isFocus && !currentValue,
-                    'top-1/3': currentValue !== undefined && currentValue !== '',
+                    'top-[50%] -translate-y-1/2': !isFocus && !currentInput,
+                    'top-1/3': currentInput !== undefined && currentInput !== '',
                     'pl-8': hasIcon && !isActive
                 }, bgColor, textColor ? textColor : 'text-gray-500 dark:text-gray-400']"
             >
@@ -29,7 +29,7 @@
                     type="text"
                     :class="[sizes[size], roundedStyles[rounded], variantStyles[variant], bgColor ? bgColor : variantColors[variant], textColor, borderColorClass,
                         { 'ring-red-500 ring-2': hasError, 'opacity-50': disabled, 'cursor-not-allowed': disabled, 'pl-10': hasIcon }]"
-                    class="c-autocomplete-field block w-full border shadow-sm pt-4 pb-2 outline-none"
+                    class="c-autocomplete-field block w-full border shadow-sm pt-3 pb-2 outline-none"
                     :placeholder="isActive ? placeholder : ''"
                     :value="currentInput"
                     @input="handleInput"
@@ -41,7 +41,7 @@
                 />
 
                 <button
-                    v-if="clearable && currentValue !== ''"
+                    v-if="clearable && currentInput && currentValue"
                     type="button"
                     class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-400 hover:text-gray-600"
                     @click="clearInput"
@@ -126,6 +126,10 @@ const props = defineProps({
         required: false,
         default: null,
     },
+    hintFixed: {
+        type: Boolean,
+        default: false
+    },
     hiddenHint: {
         type: Boolean,
         default: false,
@@ -167,13 +171,16 @@ const errorMessage = ref<string | null>(null);
   
 watch(() => props.modelValue, (newValue) => {
     currentValue.value = newValue;
+    //@ts-ignore
     const selectedOption = props.options.find((option) => option.value === newValue);
+    //@ts-ignore
     currentInput.value = selectedOption ? selectedOption.label : "";
 });
   
-const filteredOptions = computed(() => {
-    if (!currentInput.value) return props.options;
-    return props.options.filter((option) =>
+const filteredOptions = computed<{ value: string | number; label: string }[]>(() => {
+    if (!currentInput.value) return props.options as { value: string | number; label: string }[];
+
+    return (props.options as { value: string | number; label: string }[]).filter((option) =>
         option.label.toLowerCase().includes(currentInput.value.toLowerCase())
     );
 });
@@ -210,27 +217,31 @@ const handleInput = (event: Event) => {
 
     let currentValueCheck = null;
 
-    for(const option of props.options){
-        if(option.label === currentInput.value)
+    for(const option of props.options){//@ts-ignore
+        if(option.label === currentInput.value)//@ts-ignore
             currentValueCheck = option.value;
     }
 
     currentValue.value = (currentValueCheck) ? currentValueCheck : undefined;
 
+    if(!currentValue.value)
+        emit("update:modelValue", currentValue.value);
+    
     if(!validate() || !changed.value)
         errorMessage.value = null;
-
+        
     changed.value = true;
 
     if (currentValue.value || currentInput.value) isActive.value = true;
 };
 
 const clearInput = () => {
-    currentValue.value = "";
     currentInput.value = "";
+    currentValue.value = "";
     errorMessage.value = null;
     isActive.value = false;
-    isFocus.value = true;
+    isFocus.value = false;
+    emit("update:modelValue", null);
 };
 
 const validateShowError = () => {
