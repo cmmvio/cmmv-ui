@@ -91,7 +91,6 @@
     </div>
 </template>
 
-
 <style scoped>
 .c-input {
     margin-bottom: 1rem;

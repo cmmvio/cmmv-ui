@@ -2,32 +2,59 @@
     <div class="c-autocomplete relative w-full">
         <div class="relative">
             <label 
-                :for="id" 
-                class="c-input-label absolute left-3 text-sm transition-all duration-200 ease-in-out pointer-events-none"
+                :for="id"
+                class="c-autocomplete-label absolute left-3 text-sm transition-all duration-200 ease-in-out pointer-events-none"
                 :class="[{ 
-                    'c-input-label--active': isActive || currentValue,
-                    'bg-white dark:bg-zinc-900': variant === 'default' && !disabled && bgColor === '',
+                    'c-autocomplete-label--active': isActive, 
+                    'bg-white dark:bg-zinc-900': variant === 'default' && !disabled && bgColor == '',
+                    'bg-white dark:bg-zinc-800': (variant === 'outlined' || variant === 'filled') && !disabled && bgColor == '',
+                    'top-[50%] -translate-y-1/2': !isFocus && !currentValue,
+                    'top-1/3': currentValue !== undefined && currentValue !== '',
+                    'pl-8': hasIcon && !isActive
                 }, bgColor, textColor ? textColor : 'text-gray-500 dark:text-gray-400']"
             >
                 {{ label }}
             </label>
-  
-            <input
-                :id="id"
-                type="text"
-                :class="[sizes[size], roundedStyles[rounded], variantStyles[variant], bgColor ? bgColor : variantColors[variant], textColor, borderColorClass]"
-                class="c-input-field block w-full border shadow-sm pt-4 pb-2 outline-none"
-                :placeholder="placeholder"
-                :value="currentInput"
-                @input="handleInput"
-                @focus="activateLabel"
-                @blur="deactivateLabel"
-                :disabled="disabled"
-            />
-  
+
+            <div class="relative flex items-center">
+                <div 
+                    v-if="hasIcon" 
+                    class="absolute inset-y-0 left-0 flex items-center pl-3 z-50"
+                >
+                    <slot name="icon"></slot>
+                </div>
+
+                <input
+                    :id="id"
+                    type="text"
+                    :class="[sizes[size], roundedStyles[rounded], variantStyles[variant], bgColor ? bgColor : variantColors[variant], textColor, borderColorClass,
+                        { 'ring-red-500 ring-2': hasError, 'opacity-50': disabled, 'cursor-not-allowed': disabled, 'pl-10': hasIcon }]"
+                    class="c-autocomplete-field block w-full border shadow-sm pt-4 pb-2 outline-none"
+                    :placeholder="isActive ? placeholder : ''"
+                    :value="currentInput"
+                    @input="handleInput"
+                    @change="handleInput"
+                    @focus="activateLabel"
+                    @blur="deactivateLabel"
+                    :disabled="disabled"
+                    :aria-invalid="hasError"
+                />
+
+                <button
+                    v-if="clearable && currentValue !== ''"
+                    type="button"
+                    class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-400 hover:text-gray-600"
+                    @click="clearInput"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                        <path fill-rule="evenodd" d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+                    </svg>
+                </button>
+            </div>
+    
             <ul 
-                v-if="isActive && filteredOptions.length > 0" 
-                class="absolute z-50 z-50 w-full bg-white border border-gray-300 dark:bg-zinc-800 dark:border-zinc-700 mt-1 max-h-40 overflow-auto"
+                v-if="isActive && isFocus && filteredOptions.length > 0" 
+                class="absolute z-50 w-full bg-white border border-gray-300 dark:bg-zinc-800 dark:border-zinc-700 mt-1 max-h-40 overflow-auto"
             >
                 <li 
                     v-for="option in filteredOptions" 
@@ -48,7 +75,11 @@
 </template>
   
 <script setup lang="ts">
-import { ref, computed, defineExpose, watch } from 'vue';
+import { ref, computed, defineExpose, watch, useSlots } from 'vue';
+
+const slots = useSlots();
+
+const hasIcon = computed(() => !!slots.icon);
   
 const props = defineProps({
     modelValue: {
@@ -86,6 +117,10 @@ const props = defineProps({
         type: Boolean,
         default: false,
     },
+    clearable: {
+        type: Boolean,
+        default: false
+    },
     hint: {
         type: String,
         required: false,
@@ -115,6 +150,10 @@ const props = defineProps({
         required: false,
         default: "focus:ring focus:ring-zinc-700 focus:ring-opacity-50",
     },
+    rules: {
+        type: Array,
+        default: () => []
+    },
 });
   
 const emit = defineEmits(["update:modelValue"]);
@@ -122,6 +161,8 @@ const emit = defineEmits(["update:modelValue"]);
 const currentValue = ref(props.modelValue);
 const currentInput = ref("");
 const isActive = ref(false);
+const isFocus = ref(false);
+const changed = ref(false);
 const errorMessage = ref<string | null>(null);
   
 watch(() => props.modelValue, (newValue) => {
@@ -166,22 +207,87 @@ const hasError = computed(() => !!errorMessage.value);
   
 const handleInput = (event: Event) => {
     currentInput.value = (event.target as HTMLInputElement).value;
+
+    let currentValueCheck = null;
+
+    for(const option of props.options){
+        if(option.label === currentInput.value)
+            currentValueCheck = option.value;
+    }
+
+    currentValue.value = (currentValueCheck) ? currentValueCheck : undefined;
+
+    if(!validate() || !changed.value)
+        errorMessage.value = null;
+
+    changed.value = true;
+
+    if (currentValue.value || currentInput.value) isActive.value = true;
+};
+
+const clearInput = () => {
+    currentValue.value = "";
+    currentInput.value = "";
+    errorMessage.value = null;
+    isActive.value = false;
+    isFocus.value = true;
+};
+
+const validateShowError = () => {
+    errorMessage.value = null;
+
+    if(!changed.value) return false;
+
+    for (const rule of props.rules) {
+        //@ts-ignore
+        const error = rule(currentValue.value);
+
+        if (error) 
+            errorMessage.value = error;
+    }
+};
+
+const validate = () => {
+    errorMessage.value = null;
+
+    for (const rule of props.rules) {
+        //@ts-ignore
+        const error = rule(currentValue.value);
+
+        if (error) {
+            validateShowError();
+            return true;
+        }
+    }
+
+    return false;
 };
   
 const selectOption = (option: { value: string | number; label: string }) => {
     currentValue.value = option.value;
     currentInput.value = option.label;
     emit("update:modelValue", option.value);
-    isActive.value = false;
+
+    if(!validate() || !changed.value)
+        errorMessage.value = null;
+
+    changed.value = true;
+
+    isActive.value = true;
+    isFocus.value = false;
 };
   
 const activateLabel = () => {
     isActive.value = true;
+    isFocus.value = true;
 };
   
 const deactivateLabel = () => {
     setTimeout(() => {
-        if (!currentInput.value) isActive.value = false;
+        if (!currentValue.value && !currentInput.value) 
+            isActive.value = false;
+
+        isFocus.value = false;
     }, 100);
 };
   
@@ -210,6 +316,18 @@ defineExpose({
     transition: background-color 0.2s;
     list-style: none;
     margin: 0;
+}
+
+.c-autocomplete-label {
+    transform: translate(0, -50%);
+    z-index: 1;
+    left: 0.75rem;
+}
+
+.c-autocomplete-label--active {
+    transform: translate(0, -2rem) scale(0.85);
+    top: 1.3rem;
+    left: 0.3rem;
 }
 </style>
   

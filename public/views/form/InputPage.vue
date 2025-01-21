@@ -98,9 +98,9 @@
         <!-- Basic Examples -->
         <c-card class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
             <div class="lg:w-2/5 w-full">
-                <c-input id="example1" label="Basic Input" />
-                <c-input id="example2" label="Input with Placeholder" placeholder="Enter text..." />
-                <c-input id="example3" label="Disabled Input" disabled />
+                <c-input v-model="example1" id="example1" label="Basic Input" />
+                <c-input v-model="example2" id="example2" label="Input with Placeholder" placeholder="Enter text..." />
+                <c-input v-model="example3" id="example3" label="Disabled Input" disabled />
             </div>
         </c-card>
 
@@ -158,9 +158,9 @@ import CInput from &quot;@cmmv/ui/components/CInput.vue&quot;;
 
         <c-card class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
             <div class="lg:w-2/5 w-full">
-                <c-input id="small" label="Small Input" size="sm" />
-                <c-input id="medium" label="Medium Input" size="md" />
-                <c-input id="large" label="Large Input" size="lg" />
+                <c-input v-model="example4" id="small" label="Small Input" size="sm" />
+                <c-input v-model="example5" id="medium" label="Medium Input" size="md" />
+                <c-input v-model="example6" id="large" label="Large Input" size="lg" />
             </div>
         </c-card>
 
@@ -358,6 +358,12 @@ import CInput from &quot;@cmmv/ui/components/CInput.vue&quot;;
 <script setup>
 import { ref } from "vue";
 import BaseLayout from "../../layout/BaseLayout.vue";
+const example1 = ref("");
+const example2 = ref("");
+const example3 = ref("");
+const example4 = ref("");
+const example5 = ref("");
+const example6 = ref("");
 const clearableValue = ref("");
 const validableValue = ref("");
 const passwordValue = ref("");
