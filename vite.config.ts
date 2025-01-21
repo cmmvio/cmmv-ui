@@ -39,6 +39,10 @@ export default defineConfig(({ mode }) => {
             port: 4173,
         },
 
+        preview: {
+            allowedHosts: ["ui.cmmv.io"],
+        },
+
         build: isDocs
             ? {
                   outDir: 'dist',
