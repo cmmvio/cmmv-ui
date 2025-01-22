@@ -23,10 +23,7 @@ module.exports = {
 
     view: {
         extractInlineScript: false,
-        minifyHTML: true,
-        vue3: true,
-tailwind: true
-
+        minifyHTML: true
     },
     
     i18n: {
@@ -58,11 +55,4 @@ tailwind: true
             defer: "defer" 
         }
     ],
-
-    repository: { 
-        type: 'sqlite', 
-        database: './database.sqlite',
-        synchronize: true,
-        logging: true,  
-    },
 };

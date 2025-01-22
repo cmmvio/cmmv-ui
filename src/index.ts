@@ -32,7 +32,9 @@ export { default as CTextarea } from '@components/forms/CTextarea.vue';
 export { default as CToggle } from '@components/forms/CToggle.vue';
 
 //Overlays
+export { default as CDialog } from '@components/overlays/CDialog.vue';
 export { default as CNotification } from '@components/overlays/CNotification.vue';
+export { default as COverlay } from '@components/overlays/COverlay.vue';
 
 //Flags
 export { default as FlagAD } from '@components/flags/FlagAD.vue';

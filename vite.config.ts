@@ -10,6 +10,10 @@ export default defineConfig(({ mode }) => {
     const isDocs = mode === 'docs';
 
     return {
+        define: {
+            'process.env.NODE_ENV': JSON.stringify(mode === 'docs' ? 'production' : 'development'),
+        },
+
         plugins: [
             vue(),
             viteTsconfigPaths(),
@@ -26,7 +30,7 @@ export default defineConfig(({ mode }) => {
         resolve: {
             alias: {
                 '@': fileURLToPath(new URL('./src', import.meta.url)),
-                '@components': fileURLToPath(new URL('./src/components', import.meta.url)), // Ajuste para produção
+                '@components': fileURLToPath(new URL('./src/components', import.meta.url)),
                 '@composables': fileURLToPath(new URL('./src/composables', import.meta.url)),
                 '@mixins': fileURLToPath(new URL('./src/mixins', import.meta.url)),
                 '@services': fileURLToPath(new URL('./src/services', import.meta.url)),
@@ -41,14 +45,26 @@ export default defineConfig(({ mode }) => {
 
         preview: {
             allowedHosts: ["ui.cmmv.io"],
+            port: 4173,
         },
 
         build: isDocs
             ? {
-                  outDir: 'dist',
-                  rollupOptions: {
-                      input: 'index.html',
-                  },
+                outDir: 'dist',
+                manifest: true,
+                cssCodeSplit: true,
+                rtl: true,
+                lib: {
+                    entry: 'src/index.ts',
+                    fileName: (format) => `cmmv-ui.${format}.js`,
+                    formats: ['es'],
+                },
+                rollupOptions: {
+                    input: 'index.html',
+                    output: {
+                        preserveModules: true,
+                    },
+                },
               }
             : {
                   lib: {
@@ -60,10 +76,12 @@ export default defineConfig(({ mode }) => {
                   rollupOptions: {
                       external: ['vue'],
                       output: {
-                          globals: {
-                              vue: 'Vue',
-                          },
-                      },
+                        globals: {
+                            vue: 'Vue',
+                        },
+                        preserveModules: true,
+                        preserveModulesRoot: 'dist',
+                      },                      
                   },
                   cssCodeSplit: true,
               },

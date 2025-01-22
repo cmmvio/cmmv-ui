@@ -195,38 +195,48 @@ const resolvedIcons = reactive([]);
 const resolvedBrandsIcons = reactive([]);
 
 onMounted(async () => {
-    for (const icon of icons) {
-        if(process.env.NODE_ENV === "production"){
-            resolvedIcons.push({
-                ...icon,
-                component: markRaw(Icons[icon.path.replace("components/icons/", "").replace(".vue", "")]),
-            });
-        }
-        else {
-            const component = await import(`../../../src/${icon.path}`);
+    for (const icon of iconsBrands) {       
+        if(icon.path){
+            try{
+                if(process.env.NODE_ENV === "production"){
+                    resolvedBrandsIcons.push({
+                        ...icon,
+                        component: markRaw(Icons[icon.path.replace("components/icons/", "").replace(".vue", "")]),
+                    });
+                }
+                else {
+                    const component = await import(`../../../src/${icon.path}`);
 
-            resolvedIcons.push({
-                ...icon,
-                component: markRaw(component.default),
-            });
-        }        
+                    resolvedBrandsIcons.push({
+                        ...icon,
+                        component: markRaw(component.default),
+                    });
+                }  
+            }
+            catch{}
+        }  
     }
 
-    for (const icon of iconsBrands) {
-        if(process.env.NODE_ENV === "production"){
-            resolvedBrandsIcons.push({
-                ...icon,
-                component: markRaw(Icons[icon.path.replace("components/icons/", "").replace(".vue", "")]),
-            });
-        }
-        else {
-            const component = await import(`../../../src/${icon.path}`);
+    for (const icon of icons) {
+        if(icon.path){
+            try{
+                if(process.env.NODE_ENV === "production"){
+                    resolvedIcons.push({
+                        ...icon,
+                        component: markRaw(Icons[icon.path.replace("components/icons/", "").replace(".vue", "")]),
+                    });
+                }
+                else {
+                    const component = await import(`../../../src/${icon.path}`);
 
-            resolvedBrandsIcons.push({
-                ...icon,
-                component: markRaw(component.default),
-            });
-        }        
+                    resolvedIcons.push({
+                        ...icon,
+                        component: markRaw(component.default),
+                    });
+                }  
+            }
+            catch{}   
+        } 
     }
 });
 
