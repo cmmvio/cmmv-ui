@@ -1,3 +1,20 @@
+## [0.0.10](https://github.com/andrehrferreira/cmmv-ui/compare/v0.0.9...v0.0.10) (2025-01-22)
+
+
+### Bug Fixes
+
+* allowed hosts ([fa56039](https://github.com/andrehrferreira/cmmv-ui/commit/fa560398a2ea5a8d4cfd1186a0812dd03ac1d51e))
+* autocomplete ([211caa0](https://github.com/andrehrferreira/cmmv-ui/commit/211caa0ec254067e499e38c83edc35329717699a))
+* build, icons ([4dd0f2d](https://github.com/andrehrferreira/cmmv-ui/commit/4dd0f2dacc4c392077c4eab61d9c25d075eb3bd9))
+* style ([31aff8c](https://github.com/andrehrferreira/cmmv-ui/commit/31aff8c4dd5c03cbaad2ad37fc5e153328111e85))
+
+
+### Features
+
+* autocomplete ([932acee](https://github.com/andrehrferreira/cmmv-ui/commit/932aceec7d28f8548f2cb484576fe44b4a595b29))
+
+
+
 ## [0.0.9](https://github.com/andrehrferreira/cmmv-ui/compare/v0.0.8...v0.0.9) (2024-12-10)
 
 
