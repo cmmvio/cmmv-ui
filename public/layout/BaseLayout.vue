@@ -99,10 +99,10 @@
             </div>
         </nav>
 
-        <main class="flex flex-wrap mx-auto">
+        <main class="flex flex-wrap mx-auto dark">
             <div 
                 id="sidebar-menu" 
-                :class="[{ show: isMenuVisible }, 'w-60 fixed z-40 overflow-auto text-slate-800 leftbar h-screen lg:block bg-neutral-800']"
+                :class="[{ show: isMenuVisible }, 'dark w-60 fixed z-40 overflow-auto text-slate-800 leftbar h-screen lg:block bg-neutral-800']"
             >
                 <Navbar ref="navbar"></Navbar> 
             </div>

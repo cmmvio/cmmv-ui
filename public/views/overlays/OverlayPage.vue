@@ -102,23 +102,23 @@
 
         <pre>
             <code class="code-highlight language-vue">&lt;template&gt;
-        &lt;div&gt;
-            &lt;c-overlay v-model=&quot;isOverlayVisible&quot;&gt;
+    &lt;div&gt;
+        &lt;c-overlay v-model=&quot;isOverlayVisible&quot;&gt;
             &lt;div class=&quot;text-center&quot;&gt;
                 &lt;h1 class=&quot;text-2xl font-bold&quot;&gt;Overlay Content&lt;/h1&gt;
                 &lt;p&gt;This is a customizable overlay.&lt;/p&gt;
                 &lt;c-button @click=&quot;isOverlayVisible = false&quot;&gt;Close Overlay&lt;/c-button&gt;
             &lt;/div&gt;
-            &lt;/c-overlay&gt;
+        &lt;/c-overlay&gt;
 
-            &lt;c-button @click=&quot;isOverlayVisible = true&quot;&gt;Show Overlay&lt;/c-button&gt;
-        &lt;/div&gt;
-        &lt;/template&gt;
+        &lt;c-button @click=&quot;isOverlayVisible = true&quot;&gt;Show Overlay&lt;/c-button&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
 
-        &lt;script setup&gt;
-        import { ref } from &quot;vue&quot;;
-        const isOverlayVisible = ref(false);
-        &lt;/script&gt;</code>
+&lt;script setup&gt;
+import { ref } from &quot;vue&quot;;
+const isOverlayVisible = ref(false);
+&lt;/script&gt;</code>
         </pre>
     </BaseLayout>
 </template>
