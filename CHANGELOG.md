@@ -1,3 +1,12 @@
+## [0.0.11](https://github.com/cmmvio/cmmv-ui/compare/v0.0.10...v0.0.11) (2025-01-24)
+
+
+### Bug Fixes
+
+* repository ([f534272](https://github.com/cmmvio/cmmv-ui/commit/f5342720b95f0e7f2af1221f02bad58d81e0996d))
+
+
+
 ## [0.0.10](https://github.com/cmmvio/cmmv-ui/compare/v0.0.9...v0.0.10) (2025-01-22)
 
 
