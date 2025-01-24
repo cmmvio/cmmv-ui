@@ -88,7 +88,7 @@
                 <div class="justify-between align-middle text-center mr-2 text-white flex">
                     <!-- GitHub Link -->
                     <a 
-                        href="https://github.com/andrehrferreira/cmmv" 
+                        href="https://github.com/cmmvio/cmmv" 
                         title="Github" 
                         target="_blank"
                         class="mr-2"

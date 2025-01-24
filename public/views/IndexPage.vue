@@ -1,14 +1,14 @@
 <template>
     <BaseLayout>
         <p align="center">
-        <img src="https://raw.githubusercontent.com/andrehrferreira/docs.cmmv.io/main/public/assets/logo_CMMV2_icon.png" width="300" alt="CMMV Logo" />
+        <img src="https://raw.githubusercontent.com/cmmvio/docs.cmmv.io/main/public/assets/logo_CMMV2_icon.png" width="300" alt="CMMV Logo" />
         </p>
         <p align="center">Contract-Model-Model-View (CMMV) <br/> Building scalable and modular applications using contracts.</p>
         <div class="flex flex-container">
             <a href="https://www.npmjs.com/package/@cmmv/ui" target="_blank" rel="nofollow">
                 <img src="https://img.shields.io/npm/v/@cmmv/ui.svg" alt="NPM Version" />
             </a>
-            <a href="https://github.com/andrehrferreira/cmmv/blob/main/LICENSE" target="_blank" rel="nofollow">
+            <a href="https://github.com/cmmvio/cmmv/blob/main/LICENSE" target="_blank" rel="nofollow">
                 <img src="https://img.shields.io/npm/l/@cmmv/ui.svg" alt="Package License" />
             </a>
         </div>
@@ -137,7 +137,7 @@ export default defineConfig({
         <p>If you wish to contribute or customize the library, clone the repository and install dependencies:</p>
     
     <pre>
-<code class="code-highlight language-bash">git clone https://github.com/andrehrferreira/cmmv-ui.git
+<code class="code-highlight language-bash">git clone https://github.com/cmmvio/cmmv-ui.git
 cd cmmv-ui
 pnpm install
 </code>

@@ -71,10 +71,6 @@ img {
     background-color: #BFBFBF;
 }
 
-.dark div {
-    border-color: #2e3035;
-}
-
 .dark .navbar * {
     background-color: transparent !important;
 }
