@@ -5,6 +5,7 @@ import Components from 'unplugin-vue-components/vite';
 import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers';
 import viteTsconfigPaths from 'vite-tsconfig-paths';
 import dts from 'vite-plugin-dts';
+import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig(({ mode }) => {
     const isDocs = mode === 'docs';
@@ -17,6 +18,7 @@ export default defineConfig(({ mode }) => {
         plugins: [
             vue(),
             viteTsconfigPaths(),
+            tailwindcss(),
             Components({
                 resolvers: [AntDesignVueResolver()],
                 dirs: ['src/components'],
@@ -68,7 +70,7 @@ export default defineConfig(({ mode }) => {
               }
             : {
                   lib: {
-                      entry: 'src/index.ts',
+                      entry: 'src/plugin.ts',
                       name: 'CmmvUI',
                       fileName: (format) => `cmmv-ui.${format}.js`,
                       formats: ['es', 'cjs'],
