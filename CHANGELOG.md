@@ -1,3 +1,17 @@
+## [0.0.12](https://github.com/cmmvio/cmmv-ui/compare/v0.0.11...v0.0.12) (2025-02-10)
+
+
+### Bug Fixes
+
+* security alert ([200c8e4](https://github.com/cmmvio/cmmv-ui/commit/200c8e4b3d399b956d40d9b3a5ea567a67d5e163))
+
+
+### Features
+
+* update tailwind 4 ([49b0a33](https://github.com/cmmvio/cmmv-ui/commit/49b0a337f1f2bd31bb83344ae92516717e73ae0e))
+
+
+
 ## [0.0.11](https://github.com/cmmvio/cmmv-ui/compare/v0.0.10...v0.0.11) (2025-01-24)
 
 
