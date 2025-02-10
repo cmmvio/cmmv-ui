@@ -12,6 +12,8 @@ fi
 rm -rf "$TARGET_DIR/core"
 rm -rf "$TARGET_DIR/assets"
 rm -rf "$TARGET_DIR/views"
+rm -rf "$TARGET_DIR/layout"
+rm -rf "$TARGET_DIR/src"
 
 # Remove specific files
 rm -f "$TARGET_DIR/client.js"
@@ -29,6 +31,6 @@ find "$TARGET_DIR" -type f ! \( \
 \) -exec rm -f {} +
 
 # Remove empty directories after cleanup
-find "$TARGET_DIR" -type d -empty -exec rm -rf {} +
+#find "$TARGET_DIR" -type d -empty -exec rm -rf {} +
 
 echo "Cleanup completed. Necessary files have been preserved, and unwanted files and directories have been removed."

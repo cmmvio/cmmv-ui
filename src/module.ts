@@ -1,5 +1,3 @@
-import { App } from 'vue';
-
 const modules = import.meta.glob('./components/**/*.vue', { eager: true });
 
 const components: Record<string, any> = {};
@@ -8,7 +6,7 @@ for (const path in modules) {
     components[name] = (modules[path] as any).default;
 }
 
-const install = (app: App) => {
+const install = (app: any) => {
     for (const [name, component] of Object.entries(components)) {
         app.component(name, component);
     }

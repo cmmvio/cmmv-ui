@@ -10,7 +10,7 @@
                 <component 
                     :is="computedIcon" 
                     class="h-6 w-6" 
-                    :class="[props.textColor || `text-${colorByType[props.type]}-700`]" 
+                    :class="textColorClass"
                 />
             </slot>
         </div>
@@ -27,14 +27,13 @@
         <button
             v-if="closable"
             class="ml-4 p-2 rounded-md focus:outline-none"
-            :class="closeButtonClasses"
+            :class="textColorClass"
             @click="$emit('close')"
             aria-label="Close alert"
         >
             <slot name="close-icon">
                 <icon-x-mark 
-                    class="w-6 h-6" 
-                    :class="[props.textColor || `text-${colorByType[props.type]}-700`]" 
+                    class="w-6 h-6 text-black"  
                     aria-label="Close"
                 />
             </slot>
@@ -47,12 +46,13 @@ button:hover {
     opacity: 0.8;
 }
 </style>
-    
+
 <script lang="ts" setup>
 import { computed } from 'vue';
 import IconCheckCircle from "@components/icons/IconCheckCircle.vue";
 import IconInformationCircle from "@components/icons/IconInformationCircle.vue";
-//import IconExclamationTriangle from "@components/icons/IconExclamationTriangle.vue";
+import IconExclamationTriangle from "@components/icons/IconExclamationTriangle.vue";
+import IconXCircle from "@components/icons/IconXCircle.vue"; 
 
 const props = defineProps({
     title: {
@@ -98,30 +98,28 @@ const colorByType: Record<string, string> = {
     error: "red"
 }
 
+// Ajustando para Tailwind v4
 const computedClasses = computed(() => {
-    const baseClasses = [
-        !props.outlined ? props.bgColor || `bg-${colorByType[props.type]}-100` : '',
-        props.textColor || `text-${colorByType[props.type]}-700`,
+    return [
+        !props.outlined ? props.bgColor || `bg-${colorByType[props.type]}-400` : '',
         props.outlined
-            ? `border border-${colorByType[props.type]}-500`
+            ? `border border-${colorByType[props.type]}-400`
             : `border-l-4 border-${colorByType[props.type]}-500`,
-    ];
+    ].join(' ');
+});
 
-    return baseClasses.join(' ');
+const textColorClass = computed(() => {
+    return props.textColor || `text-${colorByType[props.type]}-600`;
 });
 
 const computedIcon = computed(() => {
     const icons: Record<string, object> = {
         success: IconCheckCircle,
         info: IconInformationCircle,
-        //warning: IconExclamationTriangle,
-        //error: IconXCircle,
+        warning: IconExclamationTriangle,
+        error: IconXCircle,
     };
-    return icons[props.type] || 'IconInformationCircle';
-});
-
-const closeButtonClasses = computed(() => {
-    return props.textColor || `text-${colorByType[props.type]}-700`;
+    return icons[props.type] || IconInformationCircle;
 });
 
 const defaultMessage = computed(() => {
@@ -134,4 +132,3 @@ const defaultMessage = computed(() => {
     return messages[props.type] || 'This is a default alert.';
 });
 </script>
-    

@@ -1,11 +1,12 @@
 import { fileURLToPath, URL } from 'node:url';
+import fs from 'fs-extra';
+import path from 'path';
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import Components from 'unplugin-vue-components/vite';
 import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers';
 import viteTsconfigPaths from 'vite-tsconfig-paths';
 import dts from 'vite-plugin-dts';
-import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig(({ mode }) => {
     const isDocs = mode === 'docs';
@@ -18,7 +19,6 @@ export default defineConfig(({ mode }) => {
         plugins: [
             vue(),
             viteTsconfigPaths(),
-            tailwindcss(),
             Components({
                 resolvers: [AntDesignVueResolver()],
                 dirs: ['src/components'],
@@ -70,7 +70,7 @@ export default defineConfig(({ mode }) => {
               }
             : {
                   lib: {
-                      entry: 'src/plugin.ts',
+                      entry: 'src/module.ts',
                       name: 'CmmvUI',
                       fileName: (format) => `cmmv-ui.${format}.js`,
                       formats: ['es', 'cjs'],
@@ -82,10 +82,19 @@ export default defineConfig(({ mode }) => {
                             vue: 'Vue',
                         },
                         preserveModules: true,
-                        preserveModulesRoot: 'dist',
+                        preserveModulesRoot: 'src',
                       },                      
                   },
                   cssCodeSplit: true,
               },
+
+        async closeBundle() {
+            const srcIndex = path.resolve(__dirname, 'src/index.js');
+            const destIndex = path.resolve(__dirname, 'dist/index.js');
+            if (fs.existsSync(srcIndex)) {
+                await fs.copy(srcIndex, destIndex);
+                console.log('✅ index.js copiado para dist/');
+            }
+        }
     };
 });
