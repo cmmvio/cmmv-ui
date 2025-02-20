@@ -3,7 +3,7 @@
     <BaseLayout>
         <h1>Progress Circlar</h1>
 
-        <p>The <code>CProgressCircular</code> component is a flexible and customizable progress indicator for both determinate and indeterminate states. Below, you'll find examples and detailed usage of all the props supported by this component.</p>
+        <p>The <code>CProgressCircular (alias: c-progress-circular)</code> component is a flexible and customizable progress indicator for both determinate and indeterminate states. Below, you'll find examples and detailed usage of all the props supported by this component.</p>
 
         <table class="w-full text-left border-collapse border-0">
             <thead>

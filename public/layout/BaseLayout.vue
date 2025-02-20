@@ -25,7 +25,7 @@
                         title="CMMV - Contract Model Model View Framework" 
                         class="text-white ml-4 flex items-center"
                     >
-                        <img src="/assets/favicon/android-chrome-192x192.png" alt="CMMV Logo" height="32" width="32">
+                        <img src="/assets/android-chrome-192x192.png" alt="CMMV Logo" height="32" width="32">
                         <span class="ml-2 text-lg text-slate-700 dark:text-slate-200 font-semibold">CMMV</span>
                     </a>
                 </div>           

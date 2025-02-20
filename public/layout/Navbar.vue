@@ -101,6 +101,7 @@ export default defineComponent({
                 name: "Overlays",
                 isDir: true,
                 children: [
+                    { name: "Dialog", uri: "/dialog" },
                     { name: "Notification", uri: "/notification" },
                     { name: "Overlay", uri: "/overlay" },
                 ],

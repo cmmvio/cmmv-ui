@@ -9,7 +9,7 @@
             variants[variant],
             { 'hover:brightness-110': hover && !disabled, 'opacity-50 cursor-not-allowed': disabled },
         ]"
-        :style="{ maxWidth, minHeight }"
+        :style="{ maxWidth, minWidth, minHeight }"
         :href="href"
         v-bind="href ? { role: 'link', tabindex: 0 } : {}"
     >
@@ -56,8 +56,6 @@
                         <IconXMark :class="closeColor ? closeColor : 'text-white'" />
                     </c-button>
                 </div>
-
-                
             </div>
         </slot>
 
@@ -73,7 +71,11 @@
         </slot>
 
         <slot name="actions">
-            <div v-if="actions" class="flex justify-end space-x-2 px-4 py-3 border-t" :class="[bgBorderColor ? bgBorderColor : borderColor]">
+            <div 
+                v-if="actions" 
+                class="flex justify-end space-x-2 px-4 py-3 border-t" 
+                :class="[bgBorderColor ? bgBorderColor : borderColor]"
+            >
                 <slot name="action-buttons" />
             </div>
         </slot>
@@ -82,6 +84,7 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
+import IconXMark from "@components/icons/IconXMark.vue";
 
 defineProps({
     title: {
@@ -158,6 +161,11 @@ defineProps({
         type: Boolean,
         required: false,
         default: false,
+    },
+    minWidth: {
+        type: String,
+        required: false,
+        default: "350px",
     },
     maxWidth: {
         type: String,

@@ -3,7 +3,7 @@
         <h1>Form</h1>
 
         <p>
-            The <code>CForm</code> (alias: c-form) component in the <code>@cmmv/ui</code> framework provides an easy-to-use form container with built-in support for validation, submission handling, and data binding via <code>v-model</code>. It is designed to work seamlessly with input components like <code>CInput</code>, allowing developers to create robust forms with minimal effort.
+            The <code>CForm (alias: c-form)</code> component in the <code>@cmmv/ui</code> framework provides an easy-to-use form container with built-in support for validation, submission handling, and data binding via <code>v-model</code>. It is designed to work seamlessly with input components like <code>CInput</code>, allowing developers to create robust forms with minimal effort.
         </p>
 
         <!-- Basic Example -->

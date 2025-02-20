@@ -3,7 +3,7 @@
         <h1>Notification</h1>
 
         <p>
-            The <code>CNotification</code> is designed to display temporary or persistent notifications with optional icons, titles, and progress bars. Notifications are positioned in the top-right corner by default and can be dismissed manually or automatically after a set duration. The component supports transitions for smooth appearance and dismissal.
+            The <code>CNotification (alias: c-notification)</code> is designed to display temporary or persistent notifications with optional icons, titles, and progress bars. Notifications are positioned in the top-right corner by default and can be dismissed manually or automatically after a set duration. The component supports transitions for smooth appearance and dismissal.
         </p>
 
         <h2>Props</h2>

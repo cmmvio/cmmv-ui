@@ -3,7 +3,7 @@
         <h1>Slider</h1>
 
         <p>
-            The <code>CSlider</code> (alias: c-slider) component in the <code>@cmmv/ui</code> framework provides a customizable and versatile slider element. It supports dynamic value binding using <code>v-model</code>, validation, ticks, and customization options for colors, step size, and thumb visibility. The <code>c-slider</code> is ideal for forms, range selectors, and other interactive UI components.
+            The <code>CSlider (alias: c-slider)</code> component in the <code>@cmmv/ui</code> framework provides a customizable and versatile slider element. It supports dynamic value binding using <code>v-model</code>, validation, ticks, and customization options for colors, step size, and thumb visibility. The <code>c-slider</code> is ideal for forms, range selectors, and other interactive UI components.
         </p>
 
         <table class="w-full text-left border-collapse border-0">

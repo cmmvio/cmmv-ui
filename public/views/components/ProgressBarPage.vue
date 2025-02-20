@@ -2,7 +2,7 @@
     <BaseLayout>
         <h1>Progress Bar</h1>
 
-        <p>The <code>CProgressBar</code> component is a flexible and customizable progress indicator for determinate, indeterminate, buffering, and striped states. Below, you'll find examples and detailed usage of all the props supported by this component.</p>
+        <p>The <code>CProgressBar (alias: c-progress-bar)</code> component is a flexible and customizable progress indicator for determinate, indeterminate, buffering, and striped states. Below, you'll find examples and detailed usage of all the props supported by this component.</p>
 
         <table class="w-full text-left border-collapse border-0 rounded-md">
             <thead>

@@ -3,7 +3,7 @@
         <h1>Avatar</h1>
 
         <p>
-            The <code>CAvatar</code> (alias c-avatar) component provides a customizable and responsive way to display user avatars. 
+            The <code>CAvatar (alias: c-avatar)</code> component provides a customizable and responsive way to display user avatars. 
             It supports images, icons, and text initials with various styling options for size, shape, and colors.
         </p>
 

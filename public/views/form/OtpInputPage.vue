@@ -2,7 +2,7 @@
     <BaseLayout>
         <h1>OTP Input</h1>
         
-        <p>The <code>COtpInput</code> (alias: c-otp-input) component in the <code>@cmmv/ui</code> framework provides a multi-digit input field, designed for OTP (One-Time Password) or similar use cases. It offers customization for length, validation, error states, loading overlays, and seamless interaction via keyboard.</p>
+        <p>The <code>COtpInput (alias: c-otp-input)</code> component in the <code>@cmmv/ui</code> framework provides a multi-digit input field, designed for OTP (One-Time Password) or similar use cases. It offers customization for length, validation, error states, loading overlays, and seamless interaction via keyboard.</p>
 
         <table class="w-full text-left border-collapse border-0">
             <thead>

@@ -2,7 +2,7 @@
     <BaseLayout>
         <h1>Input</h1>
         
-        <p>The <code>CInput</code> (alias: c-input) component in the <code>@cmmv/ui</code> framework provides a flexible input field with advanced customization options for size, variants, rounding, and interaction states. It also supports validation, clearable functionality, and dynamic hints or error messages.</p>
+        <p>The <code>CInput (alias: c-input)</code> component in the <code>@cmmv/ui</code> framework provides a flexible input field with advanced customization options for size, variants, rounding, and interaction states. It also supports validation, clearable functionality, and dynamic hints or error messages.</p>
 
         <table class="w-full text-left border-collapse border-0">
             <thead>

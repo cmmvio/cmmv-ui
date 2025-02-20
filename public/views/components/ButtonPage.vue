@@ -2,7 +2,7 @@
     <BaseLayout>
         <h1>Button</h1>
 
-        <p>The <code>CButton</code> (alias: c-button) component in the <code>@cmmv/ui</code> framework provides a versatile button element with customizable properties, styling, and behavior. It supports different sizes, variants, and interaction states while offering a ripple effect for visual feedback on clicks.</p>
+        <p>The <code>CButton (alias: c-button)</code> component in the <code>@cmmv/ui</code> framework provides a versatile button element with customizable properties, styling, and behavior. It supports different sizes, variants, and interaction states while offering a ripple effect for visual feedback on clicks.</p>
 
         <table class="w-full text-left border-collapse border-0">
             <thead>

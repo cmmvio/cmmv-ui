@@ -3,7 +3,7 @@
         :is="buttonType"
         :type="type"
         class="c-button font-semibold shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 relative"
-        :class="[sizes[size], roundedStyles[rounded], variantStyles[variant], bgColor, textColor, { 'opacity-50': disabled, 'cursor-not-allowed': disabled }]"
+        :class="[sizes[size], roundedStyles[rounded], variantStyles[variant], computedBgColor, textColor, { 'opacity-50': disabled, 'cursor-not-allowed': disabled }]"
         :aria-busy="loading ? true : undefined"
         :disabled="disabled"
         :tabindex="disabled || loading ? -1 : undefined"
@@ -39,7 +39,7 @@ span.ripple {
 </style>
 
 <script lang="ts" setup>
-import { reactive, defineEmits, defineProps } from "vue";
+import { reactive, defineEmits, defineProps, computed } from "vue";
 
 const emit = defineEmits([
     "click",
@@ -75,7 +75,7 @@ const props = defineProps({
         default: "elevated"
     },
     bgColor: {
-        type: String,
+        type: [String, Array],
         default: "bg-indigo-600 hover:bg-indigo-500 focus-visible:outline-indigo-600"
     },
     textColor: {
@@ -90,6 +90,10 @@ const props = defineProps({
         type: Boolean,
         default: false
     }
+});
+
+const computedBgColor = computed(() => {
+    return Array.isArray(props.bgColor) ? props.bgColor.join(' ') : props.bgColor;
 });
 
 const sizes: Record<string, string> = reactive({

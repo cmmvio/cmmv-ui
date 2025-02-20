@@ -2,7 +2,7 @@
     <BaseLayout>
         <h1>Alert</h1>
 
-        <p>The <code>CAlert</code> (c-alert) component provides a customizable alert message box for your application. It supports multiple types, styles, and interactive options for various use cases like success messages, warnings, or error notifications.</p>
+        <p>The <code>CAlert (alias: c-alert)</code> component provides a customizable alert message box for your application. It supports multiple types, styles, and interactive options for various use cases like success messages, warnings, or error notifications.</p>
 
         <table class="w-full text-left border-collapse border-0 rounded-md">
             <thead>
