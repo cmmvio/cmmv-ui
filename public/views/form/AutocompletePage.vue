@@ -2,7 +2,7 @@
     <BaseLayout>
         <h1>Autocomplete</h1>
 
-        <p>The <code>CAutocomplete</code> (alias: c-autocomplete) component in the <code>@cmmv/ui</code> framework provides a user-friendly autocomplete input field with advanced customization options for size, variants, rounding, and interaction states. It supports real-time filtering, selection, and displays a dropdown for suggested values.</p>
+        <p>The <code>CAutocomplete (alias: c-autocomplete)</code> component in the <code>@cmmv/ui</code> framework provides a user-friendly autocomplete input field with advanced customization options for size, variants, rounding, and interaction states. It supports real-time filtering, selection, and displays a dropdown for suggested values.</p>
 
         <table class="w-full text-left border-collapse border-0">
             <thead>

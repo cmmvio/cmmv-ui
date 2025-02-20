@@ -3,7 +3,7 @@
         <h1>Badge</h1>
 
         <p>
-            The <code>CBadge</code> component is a versatile utility for adding small count indicators, status dots, or labels to elements like buttons, icons, or other components. It offers extensive customization options for appearance and placement.
+            The <code>CBadge (alias: c-badge)</code> component is a versatile utility for adding small count indicators, status dots, or labels to elements like buttons, icons, or other components. It offers extensive customization options for appearance and placement.
         </p>
 
         <table class="w-full text-left border-collapse border-0 rounded-md">
@@ -75,7 +75,8 @@
             <c-button 
                 type="button" 
                 variant="plain" 
-                bgColor="bg-zinc-800-600 hover:bg-zinc-900"
+                bgColor="bg-zinc-800 hover:bg-zinc-700"
+                rounded="full"
                 class="m-auto"
             >
                 <IconBell class="text-white" />
@@ -87,7 +88,8 @@
             <code class="code-highlight language-html">&lt;c-button 
     type="button" 
     variant="plain" 
-    bgColor="bg-zinc-800-600 hover:bg-zinc-900"
+    bgColor="bg-zinc-800 hover:bg-zinc-700"
+    rounded="full"
     class="m-auto"
 &gt;
     Notifications
@@ -103,7 +105,8 @@
             <c-button 
                 type="button" 
                 variant="plain" 
-                bgColor="bg-zinc-800-600 hover:bg-zinc-900"
+                bgColor="bg-zinc-800 hover:bg-zinc-700"
+                rounded="full"
                 class="m-auto"
             >
                 <IconBell class="text-white" />
@@ -126,7 +129,7 @@
             <c-button 
                 type="button" 
                 variant="plain" 
-                bgColor="bg-zinc-800-600 hover:bg-zinc-900"
+                bgColor="bg-zinc-800"
                 class="px-6 m-auto"
             >
                 <IconBell class="text-white" />
@@ -161,7 +164,7 @@
             <c-button 
                 type="button" 
                 variant="plain" 
-                bgColor="bg-zinc-800-600 hover:bg-zinc-900"
+                bgColor="bg-zinc-800"
                 class="px-6 py-4 m-auto relative"
             >
                 <IconBell class="text-white" />

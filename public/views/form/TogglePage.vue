@@ -2,7 +2,7 @@
     <BaseLayout>
         <h1>Toggle</h1>
 
-        <p>The <code>CToggle</code> (alias: c-toggle) component in the <code>@cmmv/ui</code> framework provides a customizable switch element with various sizes, states, and interactive ripple effects. It supports binding via <code>v-model</code> and is ideal for enabling or disabling settings.</p>
+        <p>The <code>CToggle (alias: c-toggle)</code> component in the <code>@cmmv/ui</code> framework provides a customizable switch element with various sizes, states, and interactive ripple effects. It supports binding via <code>v-model</code> and is ideal for enabling or disabling settings.</p>
 
         <table class="w-full text-left border-collapse border-0">
             <thead>

@@ -37,20 +37,21 @@
 
                             <!-- Close Button -->
                             <div class="ml-4 flex shrink-0">
-                            <button
-                                v-if="!permanent"
-                                type="button"
-                                @click="closeNotification"
-                                class="inline-flex rounded-md text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                            >
-                                <span class="sr-only">Close</span>
-                                <XMarkIcon class="h-5 w-5" aria-hidden="true" />
-                            </button>
+                                <c-button
+                                    v-if="!permanent"
+                                    type="button"
+                                    variant="plain"
+                                    @click="closeNotification"
+                                    class="inline-flex rounded-md  focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                                >
+                                    <span class="sr-only">Close</span>
+                                    <IconXMark class="h-5 w-5 text-gray-400 dark:text-white hover:text-gray-500" aria-hidden="true" />
+                                </c-button>
                             </div>
                         </div>
 
                         <!-- Progress Bar -->
-                        <div v-if="!permanent && duration" class="relative mt-3 h-1 w-full bg-gray-200 dark:bg-gray-700 rounded">
+                        <div v-if="!permanent && duration" class="relative mt-3 h-1 w-full bg-gray-200 dark:bg-gray-500 rounded">
                             <div
                             :style="{ width: `${progress}%` }"
                             class="absolute h-full bg-indigo-500 dark:bg-indigo-400 rounded transition-all duration-100"
@@ -80,9 +81,9 @@
 </style>
   
 <script setup>
-import { ref, onMounted, onUnmounted } from "vue";
-import { XMarkIcon } from "@heroicons/vue/20/solid";
-  
+import { ref, onUnmounted, markRaw } from "vue";
+import IconXMark from "@components/icons/IconXMark.vue";
+
 const props = defineProps({
     maxWidth: {
         type: Number,
@@ -94,7 +95,7 @@ const props = defineProps({
     },
     bgColor: {
         type: String,
-        default: "bg-gray-200 dark:bg-zinc-900",
+        default: "bg-gray-200 dark:bg-zinc-700",
     },
     textColor: {
         type: String,
@@ -102,7 +103,7 @@ const props = defineProps({
     },
     iconColor: {
         type: String,
-        default: "text-blue-800",
+        default: "text-black dark:text-white",
     },
     permanent: {
         type: Boolean,
@@ -131,7 +132,7 @@ function setNotification({ newTitle, newContent, newIcon, newDuration }) {
         content.value = newContent;
 
     if(newIcon)
-        icon.value = newIcon;
+        icon.value = markRaw(newIcon);
 
     if(newDuration)
         duration.value = newDuration;
@@ -149,7 +150,7 @@ function startTimer() {
     clearInterval(interval);
     progress.value = 100;
   
-    const step = (100 / duration.value) * 100; // Calculate progress decrement step
+    const step = (100 / duration.value) * 100;
     interval = setInterval(() => {
       if (progress.value <= 0) {
         closeNotification();

@@ -3,7 +3,7 @@
         <h1>Loader</h1>
 
         <p>
-            The <code>CLoader</code>(alias: c-loader) component is a flexible wrapper designed for displaying custom loading animations or SVGs. 
+            The <code>CLoader (alias: c-loader)</code> component is a flexible wrapper designed for displaying custom loading animations or SVGs. 
             It provides properties for controlling the width, height, and color of the content, with a dynamic slot to adapt custom loading designs.
             The default SVG animations used in examples are taken from the <a href="https://github.com/n3r4zzurr0/svg-spinners" target="_blank" rel="noopener noreferrer">SVG Spinners</a> project.
         </p>

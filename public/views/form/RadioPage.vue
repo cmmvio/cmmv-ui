@@ -3,7 +3,7 @@
         <h1>Radio</h1>
 
         <p>
-            The <code>CRadio</code> (alias: c-radio) component in the <code>@cmmv/ui</code> framework provides a flexible and customizable radio button element. It supports dynamic labels, two-way binding using <code>v-model</code>, and customizable styles for various use cases. With built-in support for sizes, colors, and accessibility features, the <code>CRadio</code> is ideal for forms, filters, and other interactive UI components.
+            The <code>CRadio (alias: c-radio)</code> component in the <code>@cmmv/ui</code> framework provides a flexible and customizable radio button element. It supports dynamic labels, two-way binding using <code>v-model</code>, and customizable styles for various use cases. With built-in support for sizes, colors, and accessibility features, the <code>CRadio</code> is ideal for forms, filters, and other interactive UI components.
         </p>
 
         <table class="w-full text-left border-collapse border-0">

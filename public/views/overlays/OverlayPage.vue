@@ -3,7 +3,7 @@
 
         <h1>Overlay</h1>
         <p>
-            The <code>COverlay</code>(alias c-overlay) component provides a full-screen overlay that can be used for modals, loading states, or any scenario requiring a dimmed background. It is highly customizable and integrates seamlessly with other components.
+            The <code>COverlay (alias c-overlay)</code> component provides a full-screen overlay that can be used for modals, loading states, or any scenario requiring a dimmed background. It is highly customizable and integrates seamlessly with other components.
         </p>
 
         <h2>Props</h2>

@@ -2,7 +2,7 @@
     <BaseLayout>
         <h1>Flags</h1>
 
-        <p>The <code>CFlag</code> (alias: c-flag) component in the <code>@cmmv/ui</code> framework provides an easy way to use country flags as SVG icons. The flags are imported from the <a href="https://github.com/lipis/flag-icons" target="_blank" rel="noopener noreferrer">flag-icons</a> project and adapted for seamless integration with Vue and the CMMV UI framework. Below is the guide to use the <code>CFlag</code> component.</p>
+        <p>The <code>CFlag (alias: c-flag)</code> component in the <code>@cmmv/ui</code> framework provides an easy way to use country flags as SVG icons. The flags are imported from the <a href="https://github.com/lipis/flag-icons" target="_blank" rel="noopener noreferrer">flag-icons</a> project and adapted for seamless integration with Vue and the CMMV UI framework. Below is the guide to use the <code>CFlag</code> component.</p>
 
         <table class="w-full text-left border-collapse border-0">
             <thead>

@@ -82,7 +82,7 @@ const props = defineProps({
     modelValue: { type: Number, default: 0 },
     min: { type: Number, default: 0 },
     max: { type: Number, default: 100 },
-    step: { type: Number, default: 1 },
+    step: { type: [Number, String], default: 1 },
     showTicks: { type: Boolean, default: false },
     tickSize: { type: Number, default: 10 },
     ticks: { type: Array, default: () => [] },
@@ -100,6 +100,12 @@ const track = ref<HTMLElement | null>(null);
 const dragging = ref(false);
 const hasError = ref(false);
 const errorMessage = ref<string | null>(null);
+
+const stepValue = computed(() => {
+    const parsedStep = Number(props.step);
+    return isNaN(parsedStep) || parsedStep <= 0 ? 1 : parsedStep;
+});
+
 
 const currentValue = computed({
     get: () => props.modelValue,
@@ -120,8 +126,8 @@ const tickPositions = computed(() => {
     return props.ticks.length//@ts-ignore
         ? props.ticks.map((tick) => ((tick - props.min) / range) * 100)
         : Array.from(
-              { length: Math.floor(range / props.step) + 1 },
-              (_, i) => (i * props.step) / range * 100
+              { length: Math.floor(range / stepValue.value) + 1 },
+              (_, i) => (i * stepValue.value) / range * 100
           );
 });
 
@@ -154,7 +160,7 @@ const moveThumb = (event: MouseEvent | TouchEvent) => {
     const percent = Math.min(1, Math.max(0, (clientX - rect.left) / rect.width));
     const rawValue = props.min + percent * (props.max - props.min);
 
-    currentValue.value = Math.round(rawValue / props.step) * props.step;
+    currentValue.value = Math.round(rawValue / stepValue.value) * stepValue.value;
 };
 
 const validate = () => {

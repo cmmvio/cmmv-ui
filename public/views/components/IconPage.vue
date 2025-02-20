@@ -3,7 +3,7 @@
         <h1>Icon</h1>
 
         <p>
-            The <code>CIcon</code> (alias: c-icon) component in the <code>@cmmv/ui</code> framework provides a flexible way to display icons with customizable sizes, colors, and accessibility features. This component is ideal for use in buttons, menus, or as standalone elements in your UI.
+            The <code>CIcon (alias: c-icon)</code> component in the <code>@cmmv/ui</code> framework provides a flexible way to display icons with customizable sizes, colors, and accessibility features. This component is ideal for use in buttons, menus, or as standalone elements in your UI.
         </p>
 
         <p>

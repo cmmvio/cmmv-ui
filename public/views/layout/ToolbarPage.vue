@@ -2,7 +2,7 @@
     <BaseLayout>
         <h1>Toolbar</h1>
 
-        <p>The <code>CToolbar</code> component provides a structured layout for application toolbars. It is versatile and integrates seamlessly with subcomponents like <code>CAppBarNav</code>, <code>CToolbarTitle</code>, and <code>CSpacer</code>, enabling customizable and responsive designs.</p>
+        <p>The <code>CToolbar (alias: c-toolbar)</code> component provides a structured layout for application toolbars. It is versatile and integrates seamlessly with subcomponents like <code>CAppBarNav</code>, <code>CToolbarTitle</code>, and <code>CSpacer</code>, enabling customizable and responsive designs.</p>
 
         <table class="w-full text-left border-collapse border-0 rounded-md">
             <thead>

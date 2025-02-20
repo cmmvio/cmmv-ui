@@ -82,6 +82,7 @@
         "conventional-changelog": "^6.0.0",
         "conventional-changelog-cli": "^5.0.0",
         "enquirer": "^2.4.1",
+        "esbuild": "^0.25.0",
         "execa": "^9.5.2",
         "husky": "^9.1.7",
         "jsdom": "^25.0.1",

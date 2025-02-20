@@ -16,6 +16,12 @@ export default defineConfig(({ mode }) => {
             'process.env.NODE_ENV': JSON.stringify(mode === 'docs' ? 'production' : 'development'),
         },
 
+        vue: {
+            compilerOptions: {//@ts-ignore
+              isCustomElement: tag => tag.startsWith('icon-'),
+            },
+        },
+
         plugins: [
             vue(),
             viteTsconfigPaths(),

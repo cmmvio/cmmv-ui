@@ -2,7 +2,7 @@
     <BaseLayout>
         <h1>Tooltip</h1>
 
-        <p>The <code>CTooltip</code> (alias: c-tooltip) component in the <code>@cmmv/ui</code> framework provides an elegant way to display contextual information on hover. It supports different positions, customizable styles, and an optional arrow for a more polished look.</p>
+        <p>The <code>CTooltip (alias: c-tooltip)</code> component in the <code>@cmmv/ui</code> framework provides an elegant way to display contextual information on hover. It supports different positions, customizable styles, and an optional arrow for a more polished look.</p>
 
         <table class="w-full text-left border-collapse border-0">
             <thead>

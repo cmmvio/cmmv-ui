@@ -2,7 +2,7 @@
     <BaseLayout>
         <h1>Textarea</h1>
 
-        <p>The <code>CTextarea</code> (alias: c-textarea) component in the <code>@cmmv/ui</code> framework provides a flexible, multi-line input field with advanced customization options for size, variants, rounding, and interaction states. It supports features like dynamic labels, character counters, and hints or error messages for enhanced user experience.</p>
+        <p>The <code>CTextarea (alias: c-textarea)</code> component in the <code>@cmmv/ui</code> framework provides a flexible, multi-line input field with advanced customization options for size, variants, rounding, and interaction states. It supports features like dynamic labels, character counters, and hints or error messages for enhanced user experience.</p>
 
         <table class="w-full text-left border-collapse border-0">
             <thead>

@@ -3,7 +3,7 @@
         <h1>Card</h1>
 
         <p>
-            The <code>CCard</code> component provides a versatile and visually appealing container for grouping content. 
+            The <code>CCard (alias: c-card)</code> component provides a versatile and visually appealing container for grouping content. 
             It supports titles, subtitles, actions, and various customization options for layout, colors, and styles.
         </p>
 

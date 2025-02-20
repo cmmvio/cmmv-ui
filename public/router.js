@@ -30,6 +30,7 @@ import RadioPage from "./views/form/RadioPage.vue";
 import SliderPage from "./views/form/SliderPage.vue";
 
 //Overlays
+import DialogPage from "./views/overlays/DialogPage.vue";
 import NotificationPage from "./views/overlays/NotificationPage.vue";
 import OverlayPage from "./views/overlays/OverlayPage.vue";
 
@@ -62,6 +63,7 @@ const routes = [
     { path: '/slider', component: SliderPage },
 
     //Overlays
+    { path: '/dialog', component: DialogPage },
     { path: '/notification', component: NotificationPage },
     { path: '/overlay', component: OverlayPage },
 ]
