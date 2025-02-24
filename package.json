@@ -1,6 +1,6 @@
 {
     "name": "@cmmv/ui",
-    "version": "0.0.12",
+    "version": "0.0.13",
     "description": "Vue3 UI Component + TailwindCSS 4 for CMMV",
     "license": "MIT",
     "author": "Andre Ferreira",

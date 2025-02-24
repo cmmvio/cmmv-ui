@@ -1,3 +1,14 @@
+## [0.0.13](https://github.com/cmmvio/cmmv-ui/compare/v0.0.12...v0.0.13) (2025-02-24)
+
+
+### Bug Fixes
+
+* css scoped ([8bfc989](https://github.com/cmmvio/cmmv-ui/commit/8bfc98915468a4701bb2b49799c6553e198413a2))
+* esbuild ([c8f1547](https://github.com/cmmvio/cmmv-ui/commit/c8f1547af17fc4d181b894cb755cd80433d3dce4))
+* tailwind ([efadc7f](https://github.com/cmmvio/cmmv-ui/commit/efadc7f193cc20ce27df7aada9a23ebd602460c8))
+
+
+
 ## [0.0.12](https://github.com/cmmvio/cmmv-ui/compare/v0.0.11...v0.0.12) (2025-02-10)
 
 
