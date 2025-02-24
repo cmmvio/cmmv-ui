@@ -4,7 +4,7 @@
 
         <p>The <code>CToolbar (alias: c-toolbar)</code> component provides a structured layout for application toolbars. It is versatile and integrates seamlessly with subcomponents like <code>CAppBarNav</code>, <code>CToolbarTitle</code>, and <code>CSpacer</code>, enabling customizable and responsive designs.</p>
 
-        <table class="w-full text-left border-collapse border-0 rounded-md">
+        <table class="w-full text-left border-collapse border-0 rounded-md doc-table">
             <thead>
                 <tr>
                     <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
@@ -59,13 +59,18 @@
             <code class="code-highlight language-html">&lt;c-spacer /&gt;</code>
         </pre>
 
-        <h2>Examples</h2>
+        <h3>Examples</h3>
+
+        <p>
+            The following examples showcase how the <code>CToolbar</code> component can be used to structure a navigation bar effectively.
+            It provides a clean, responsive design that seamlessly integrates into different layouts, making it ideal for application headers.
+        </p>
 
         <card-docs>
             <c-toolbar class="bg-blue-500 text-white">
                 <c-toolbar-title>My Application</c-toolbar-title>
             </c-toolbar>
-        </card-docs>       
+        </card-docs>
 
         <pre>
             <code class="code-highlight language-html">&lt;c-toolbar class="bg-blue-500 text-white"&gt;
@@ -75,31 +80,36 @@
 
         <h3>Toolbar with Buttons</h3>
 
+        <p>
+            This example demonstrates how to enhance the <code>CToolbar</code> by incorporating interactive elements like navigation toggles, buttons, and icons.
+            These additions improve user interaction while maintaining a clean and structured UI.
+        </p>
+
         <card-docs>
             <c-toolbar class="bg-purple-800 text-white">
                 <c-app-bar-nav />
                 <c-toolbar-title>My App</c-toolbar-title>
                 <c-spacer />
-                <c-button 
-                    type="button" 
-                    variant="plain" 
-                    rounded="full" 
+                <c-button
+                    type="button"
+                    variant="plain"
+                    rounded="full"
                     bgColor="bg-purple-700 hover:bg-purple-500"
                 >
                     <IconMagnifyingGlass class="text-white" />
                 </c-button>
             </c-toolbar>
-        </card-docs> 
+        </card-docs>
 
         <pre>
             <code class="code-highlight language-html">&lt;c-toolbar class="bg-purple-800 text-white"&gt;
     &lt;c-app-bar-nav /&gt;
     &lt;c-toolbar-title&gt;My App&lt;/c-toolbar-title&gt;
     &lt;c-spacer /&gt;
-    &lt;c-button 
-        type="button" 
-        variant="plain" 
-        rounded="full" 
+    &lt;c-button
+        type="button"
+        variant="plain"
+        rounded="full"
         bgColor="bg-purple-700 hover:bg-purple-500"
     &gt;
         &lt;IconMagnifyingGlass class="text-white" /&gt;
@@ -114,7 +124,7 @@
         </p>
 
         <card-docs>
-            <div class="bg-gray-100 dark:bg-gray-800 min-h-[600px] flex flex-col lg:w-6/12 sm:w-full m-auto">
+            <div class="bg-gray-100 dark:bg-gray-800 min-h-[600px] max-w-[500px] flex flex-col lg:w-6/12 sm:w-full m-auto">
                 <!-- Toolbar -->
                 <c-toolbar class="bg-blue-600 text-white rounded-t-md shadow-md">
                     <!-- Navigation Icon -->
@@ -138,9 +148,9 @@
 
                     <!-- Theme Switch -->
                     <c-button
-                        type="button" 
-                        variant="plain" 
-                        rounded="full" 
+                        type="button"
+                        variant="plain"
+                        rounded="full"
                         bgColor="bg-blue-600 hover:bg-blue-800"
                     >
                         <IconBell class="text-white"></IconBell>

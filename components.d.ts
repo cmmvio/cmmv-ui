@@ -32,6 +32,7 @@ declare module 'vue' {
     CRadio: typeof import('./src/components/forms/CRadio.vue')['default']
     CSlider: typeof import('./src/components/forms/CSlider.vue')['default']
     CSpacer: typeof import('./src/components/layout/CSpacer.vue')['default']
+    CTable: typeof import('./src/components/data/CTable.vue')['default']
     CTextarea: typeof import('./src/components/forms/CTextarea.vue')['default']
     CToggle: typeof import('./src/components/forms/CToggle.vue')['default']
     CToolbar: typeof import('./src/components/layout/CToolbar.vue')['default']

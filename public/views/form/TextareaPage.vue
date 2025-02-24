@@ -4,7 +4,7 @@
 
         <p>The <code>CTextarea (alias: c-textarea)</code> component in the <code>@cmmv/ui</code> framework provides a flexible, multi-line input field with advanced customization options for size, variants, rounding, and interaction states. It supports features like dynamic labels, character counters, and hints or error messages for enhanced user experience.</p>
 
-        <table class="w-full text-left border-collapse border-0">
+        <table class="w-full text-left border-collapse border-0 doc-table">
             <thead>
                 <tr>
                     <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
@@ -107,22 +107,20 @@
             </tbody>
         </table>
 
-        <h2>Basic Examples</h2>
-
         <c-card class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
             <div class="lg:w-2/5 w-full">
-                <c-textarea 
-                    label="Input with Placeholder" 
+                <c-textarea
+                    label="Input with Placeholder"
                     placeholder="Enter the text..."
                 ></c-textarea>
             </div>
         </c-card>
-        
+
         <pre>
             <code class="code-hightlight language-vue">&lt;template&gt;
-    &lt;c-textarea 
-        label=&quot;Textarea with Placeholder&quot; 
-        placeholder=&quot;Enter text here...&quot; 
+    &lt;c-textarea
+        label=&quot;Textarea with Placeholder&quot;
+        placeholder=&quot;Enter text here...&quot;
     /&gt;
 &lt;/template&gt;</code>
     </pre>
@@ -135,10 +133,10 @@
 
         <c-card class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
             <div class="lg:w-2/5 w-full">
-                <c-textarea 
-                    label="Textarea with Validation" 
+                <c-textarea
+                    label="Textarea with Validation"
                     :rules="[value => (value ? null : 'This field is required')]"
-                    v-model="validableValue" 
+                    v-model="validableValue"
                     placeholder="Enter text here..."
                 />
             </div>
@@ -146,10 +144,10 @@
 
         <pre>
     <code class="code-hightlight language-vue">&lt;template&gt;
-    &lt;c-textarea 
-        label="Textarea with Validation" 
-        :rules="[value =&gt; (value ? null : 'This field is required')]" 
-        v-model="validableValue" 
+    &lt;c-textarea
+        label="Textarea with Validation"
+        :rules="[value =&gt; (value ? null : 'This field is required')]"
+        v-model="validableValue"
         placeholder="Enter text here..."
     /&gt;
 &lt;/template&gt;</code>
@@ -161,9 +159,9 @@
 
         <c-card class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
             <div class="lg:w-2/5 w-full">
-                <c-textarea label="Small Textarea" placeholder="Small Textarea" size="sm" />
-                <c-textarea label="Medium Textarea" placeholder="Medium Textarea" size="md" />
-                <c-textarea label="Large Textarea" placeholder="Large Textarea" size="lg" />
+                <c-textarea label="Small Textarea" placeholder="Enter text here..." size="sm" />
+                <c-textarea label="Medium Textarea" placeholder="Enter text here..." size="md" />
+                <c-textarea label="Large Textarea" placeholder="Enter text here..." size="lg" />
             </div>
         </c-card>
 
@@ -174,7 +172,7 @@
     &lt;c-textarea label=&quot;Large Textarea&quot; size=&quot;lg&quot; /&gt;
 &lt;/template&gt;</code>
         </pre>
-        
+
         <!-- Length Count -->
         <h2>Length Count</h2>
 
@@ -184,10 +182,10 @@
 
         <c-card class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
             <div class="lg:w-2/5 w-full">
-                <c-textarea 
-                    label="Textarea with Length Count" 
-                    lengthCount 
-                    maxlength="100" 
+                <c-textarea
+                    label="Textarea with Length Count"
+                    lengthCount
+                    maxlength="100"
                     placeholder="Enter up to 100 characters..."
                 />
             </div>
@@ -195,11 +193,11 @@
 
         <pre>
             <code class="code-hightlight language-vue">&lt;template&gt;
-    &lt;c-textarea 
-        label=&quot;Textarea with Length Count&quot; 
-        lengthCount 
-        maxlength=&quot;100&quot; 
-        placeholder=&quot;Enter up to 100 characters...&quot; 
+    &lt;c-textarea
+        label=&quot;Textarea with Length Count&quot;
+        lengthCount
+        maxlength=&quot;100&quot;
+        placeholder=&quot;Enter up to 100 characters...&quot;
     /&gt;
 &lt;/template&gt;</code>
         </pre>
@@ -208,21 +206,21 @@
         <h2>Auto Resize</h2>
 
         <p>
-            The <code>autoresize</code> property enables dynamic height adjustment for the 
-            <code>CTextarea</code> component. This ensures that the textarea expands vertically to fit the content as the user types, avoiding scrollbars and improving readability. 
+            The <code>autoresize</code> property enables dynamic height adjustment for the
+            <code>CTextarea</code> component. This ensures that the textarea expands vertically to fit the content as the user types, avoiding scrollbars and improving readability.
             By default, <code>autoresize</code> is enabled, but it can be disabled if fixed-height behavior is required.
         </p>
 
         <c-card class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
             <div class="lg:w-2/5 w-full">
-                <c-textarea 
-                    label="Autoresize Enabled" 
-                    placeholder="Type something..." 
+                <c-textarea
+                    label="Autoresize Enabled"
+                    placeholder="Type something..."
                 />
 
-                <c-textarea 
-                    label="Autoresize Disabled" 
-                    placeholder="Fixed height textarea" 
+                <c-textarea
+                    label="Autoresize Disabled"
+                    placeholder="Fixed height textarea"
                     :autoresize="false"
                 />
             </div>
@@ -233,15 +231,15 @@
     &lt;c-card class=&quot;mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4&quot;&gt;
         &lt;div class=&quot;lg:w-2/5 w-full&quot;&gt;
             &lt;!-- Default autoresize enabled --&gt;
-            &lt;c-textarea 
-                label=&quot;Autoresize Enabled&quot; 
-                placeholder=&quot;Type something...&quot; 
+            &lt;c-textarea
+                label=&quot;Autoresize Enabled&quot;
+                placeholder=&quot;Type something...&quot;
             /&gt;
 
             &lt;!-- Explicitly disabling autoresize --&gt;
-            &lt;c-textarea 
-                label=&quot;Autoresize Disabled&quot; 
-                placeholder=&quot;Fixed height textarea&quot; 
+            &lt;c-textarea
+                label=&quot;Autoresize Disabled&quot;
+                placeholder=&quot;Fixed height textarea&quot;
                 :autoresize=&quot;false&quot;
             /&gt;
         &lt;/div&gt;
@@ -268,24 +266,24 @@
 
         <c-card class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
             <div class="lg:w-2/5 w-full">
-                <c-textarea 
-                    label="Custom Background" 
-                    placeholder="Custom Background" 
-                    bgColor="bg-blue-100 dark:bg-blue-900" 
+                <c-textarea
+                    label="Custom Background"
+                    placeholder="Custom Background"
+                    bgColor="bg-blue-100 dark:bg-blue-900"
                     textColor="text-blue-700 dark:text-blue-300"
                     borderColor="focus:ring focus:ring-blue-500"
                 />
-                <c-textarea 
-                    label="Custom Text Color" 
-                    placeholder="Custom Text Color" 
-                    bgColor="bg-gray-100 dark:bg-gray-800" 
+                <c-textarea
+                    label="Custom Text Color"
+                    placeholder="Custom Text Color"
+                    bgColor="bg-gray-100 dark:bg-gray-800"
                     textColor="text-green-600 dark:text-green-400"
                     borderColor="focus:ring focus:ring-green-600"
                 />
-                <c-textarea 
-                    label="Custom Border" 
-                    placeholder="Custom Border" 
-                    bgColor="bg-yellow-50 dark:bg-yellow-900" 
+                <c-textarea
+                    label="Custom Border"
+                    placeholder="Custom Border"
+                    bgColor="bg-yellow-50 dark:bg-yellow-900"
                     textColor="text-yellow-700 dark:text-yellow-300"
                     borderColor="focus:ring focus:ring-yellow-500"
                 />
@@ -294,23 +292,23 @@
 
         <pre>
         <code class="code-hightlight language-vue">&lt;template&gt;
-    &lt;c-textarea 
-        label=&quot;Custom Background&quot; 
-        bgColor=&quot;bg-blue-100 dark:bg-blue-900&quot; 
-        textColor=&quot;text-blue-700 dark:text-blue-300&quot; 
-        borderColor=&quot;focus:ring focus:ring-blue-500&quot; 
+    &lt;c-textarea
+        label=&quot;Custom Background&quot;
+        bgColor=&quot;bg-blue-100 dark:bg-blue-900&quot;
+        textColor=&quot;text-blue-700 dark:text-blue-300&quot;
+        borderColor=&quot;focus:ring focus:ring-blue-500&quot;
     /&gt;
-    &lt;c-textarea 
-        label=&quot;Custom Text Color&quot; 
-        bgColor=&quot;bg-gray-100 dark:bg-gray-800&quot; 
-        textColor=&quot;text-green-600 dark:text-green-400&quot; 
-        borderColor=&quot;focus:ring focus:ring-green-600&quot; 
+    &lt;c-textarea
+        label=&quot;Custom Text Color&quot;
+        bgColor=&quot;bg-gray-100 dark:bg-gray-800&quot;
+        textColor=&quot;text-green-600 dark:text-green-400&quot;
+        borderColor=&quot;focus:ring focus:ring-green-600&quot;
     /&gt;
-    &lt;c-textarea 
-        label=&quot;Custom Border&quot; 
-        bgColor=&quot;bg-yellow-50 dark:bg-yellow-900&quot; 
-        textColor=&quot;text-yellow-700 dark:text-yellow-300&quot; 
-        borderColor=&quot;focus:ring focus:ring-yellow-500&quot; 
+    &lt;c-textarea
+        label=&quot;Custom Border&quot;
+        bgColor=&quot;bg-yellow-50 dark:bg-yellow-900&quot;
+        textColor=&quot;text-yellow-700 dark:text-yellow-300&quot;
+        borderColor=&quot;focus:ring focus:ring-yellow-500&quot;
     /&gt;
 &lt;/template&gt;</code>
         </pre>

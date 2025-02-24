@@ -6,8 +6,9 @@
             The <code>COverlay (alias c-overlay)</code> component provides a full-screen overlay that can be used for modals, loading states, or any scenario requiring a dimmed background. It is highly customizable and integrates seamlessly with other components.
         </p>
 
-        <h2>Props</h2>
-        <table class="w-full text-left border-collapse border-0">
+        <h3>Props</h3>
+
+        <table class="w-full text-left border-collapse border-0 doc-table">
             <thead>
             <tr>
                 <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
@@ -60,11 +61,12 @@
             </tbody>
         </table>
 
-        <h2>Slots</h2>
+        <h3>Slots</h3>
+
         <p>The <code>COverlay</code> component includes a default slot for placing custom content inside the overlay.</p>
 
         <h2>Events</h2>
-        <table class="w-full text-left border-collapse border-0">
+        <table class="w-full text-left border-collapse border-0 doc-table">
             <thead>
             <tr>
                 <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Event</th>
@@ -81,13 +83,14 @@
             </tbody>
         </table>
 
-        <h2>Example Usage</h2>
+        <h3>Example Usage</h3>
+
         <p>The following example demonstrates how to use <code>COverlay</code> for a basic full-screen overlay.</p>
 
         <card-docs>
-            <c-button 
+            <c-button
                 size="2xl"
-                @click="isOverlayVisible = true" 
+                @click="isOverlayVisible = true"
                 class="w-6/12 py-6 m-auto"
             >Show Overlay</c-button>
         </card-docs>

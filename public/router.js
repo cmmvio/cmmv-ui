@@ -12,6 +12,9 @@ import ProgressCircularPage from "./views/components/ProgressCircularPage.vue";
 import BadgePage from "./views/components/BadgePage.vue";
 import LoaderPage from "./views/components/LoaderPage.vue";
 
+//Data
+import TablePage from "./views/data/TablePage.vue";
+
 //Layout
 import AlertPage from "./views/layout/AlertPage.vue";
 import AvatarPage from "./views/layout/AvatarPage.vue";
@@ -35,6 +38,7 @@ import NotificationPage from "./views/overlays/NotificationPage.vue";
 import OverlayPage from "./views/overlays/OverlayPage.vue";
 
 const routes = [
+    //Components
     { path: '/', component: IndexPage },
     { path: '/button', component: ButtonPage },
     { path: '/icon', component: IconPage },
@@ -44,7 +48,10 @@ const routes = [
     { path: '/progress-circular', component: ProgressCircularPage },
     { path: '/badge', component: BadgePage },
     { path: '/loader', component: LoaderPage },
-	
+
+    //Data
+    { path: '/table', component: TablePage },
+
 	//Layout
     { path: '/alert', component: AlertPage },
     { path: '/avatar', component: AvatarPage },

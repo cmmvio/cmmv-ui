@@ -6,7 +6,7 @@
             The <code>CSlider (alias: c-slider)</code> component in the <code>@cmmv/ui</code> framework provides a customizable and versatile slider element. It supports dynamic value binding using <code>v-model</code>, validation, ticks, and customization options for colors, step size, and thumb visibility. The <code>c-slider</code> is ideal for forms, range selectors, and other interactive UI components.
         </p>
 
-        <table class="w-full text-left border-collapse border-0">
+        <table class="w-full text-left border-collapse border-0 doc-table">
             <thead>
                 <tr>
                     <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
@@ -110,9 +110,9 @@ const sliderValue = ref(5);
         </card-docs>
         <pre>
             <code class="code-hightlight language-vue">&lt;template&gt;
-    &lt;c-slider 
-        v-model="validatedValue" 
-        :rules="[value => value >= 50 ? null : 'Value must be at least 50.']" 
+    &lt;c-slider
+        v-model="validatedValue"
+        :rules="[value => value >= 50 ? null : 'Value must be at least 50.']"
     /&gt;
 &lt;/template&gt;
 
@@ -146,10 +146,10 @@ const sliderTicks = ref(50);
         </p>
 
         <card-docs>
-            <c-slider 
-                v-model="customColorValue" 
-                bgColor="bg-yellow-300" 
-                thumbColor="bg-yellow-500" 
+            <c-slider
+                v-model="customColorValue"
+                bgColor="bg-yellow-300"
+                thumbColor="bg-yellow-500"
                 activeTrackColor="bg-yellow-700"
             />
             <div class="m-auto text-center pt-4">Current Value: {{ customColorValue }}</div>
@@ -157,10 +157,10 @@ const sliderTicks = ref(50);
 
         <pre>
             <code class="code-hightlight language-vue">&lt;template&gt;
-    &lt;c-slider 
-        v-model="customColorValue" 
-        bgColor="bg-green-600" 
-        thumbColor="bg-yellow-500" 
+    &lt;c-slider
+        v-model="customColorValue"
+        bgColor="bg-green-600"
+        thumbColor="bg-yellow-500"
     /&gt;
 &lt;/template&gt;
 

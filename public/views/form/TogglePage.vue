@@ -4,7 +4,7 @@
 
         <p>The <code>CToggle (alias: c-toggle)</code> component in the <code>@cmmv/ui</code> framework provides a customizable switch element with various sizes, states, and interactive ripple effects. It supports binding via <code>v-model</code> and is ideal for enabling or disabling settings.</p>
 
-        <table class="w-full text-left border-collapse border-0">
+        <table class="w-full text-left border-collapse border-0 doc-table">
             <thead>
                 <tr>
                     <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
@@ -65,8 +65,6 @@
             </tbody>
         </table>
 
-        <!-- Live Value Update -->
-        <h2>Live Value Display</h2>
         <c-card class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
             <c-toggle v-model="liveToggle" label="Live Update Toggle" />
             <p class="text-gray-700 dark:text-white">Toggle Value: <span class="font-bold" v-html="liveToggle?.toString()"></span></p>
@@ -120,50 +118,50 @@ const liveToggle = ref(false);
         <p>The <code>CToggle</code> component allows customization of the track and thumb colors through the <code>bgColor</code> and <code>thumbColor</code> props, respectively.</p>
 
         <c-card class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-            <c-toggle 
-                v-model="toggleCustom1" 
-                label="Custom Blue Track" 
-                bgColor="bg-blue-900" 
-                trackColor="bg-blue-700" 
-                thumbColor="bg-blue-500" 
+            <c-toggle
+                v-model="toggleCustom1"
+                label="Custom Blue Track"
+                bgColor="bg-blue-900"
+                trackColor="bg-blue-700"
+                thumbColor="bg-blue-500"
             />
-            <c-toggle 
-                v-model="toggleCustom2" 
-                label="Custom Red Track" 
-                bgColor="bg-red-900" 
-                trackColor="bg-red-700" 
-                thumbColor="bg-red-500" 
+            <c-toggle
+                v-model="toggleCustom2"
+                label="Custom Red Track"
+                bgColor="bg-red-900"
+                trackColor="bg-red-700"
+                thumbColor="bg-red-500"
             />
-            <c-toggle 
-                v-model="toggleCustom3" 
-                label="Custom Thumb" 
-                bgColor="bg-purple-900" 
-                trackColor="bg-purple-700" 
+            <c-toggle
+                v-model="toggleCustom3"
+                label="Custom Thumb"
+                bgColor="bg-purple-900"
+                trackColor="bg-purple-700"
                 thumbColor="bg-purple-500"
             />
         </c-card>
 
         <pre>
             <code class="code-hightlight language-vue">&lt;template&gt;
-    &lt;c-toggle 
-        v-model=&quot;toggleCustom1&quot; 
-        label=&quot;Custom Blue Track&quot; 
-        bgColor=&quot;bg-blue-900&quot; 
-        trackColor=&quot;bg-blue-700&quot; 
-        thumbColor=&quot;bg-blue-500&quot; 
+    &lt;c-toggle
+        v-model=&quot;toggleCustom1&quot;
+        label=&quot;Custom Blue Track&quot;
+        bgColor=&quot;bg-blue-900&quot;
+        trackColor=&quot;bg-blue-700&quot;
+        thumbColor=&quot;bg-blue-500&quot;
     /&gt;
-    &lt;c-toggle 
-        v-model=&quot;toggleCustom2&quot; 
-        label=&quot;Custom Red Track&quot; 
-        bgColor=&quot;bg-red-900&quot; 
-        trackColor=&quot;bg-red-700&quot; 
-        thumbColor=&quot;bg-red-500&quot; 
+    &lt;c-toggle
+        v-model=&quot;toggleCustom2&quot;
+        label=&quot;Custom Red Track&quot;
+        bgColor=&quot;bg-red-900&quot;
+        trackColor=&quot;bg-red-700&quot;
+        thumbColor=&quot;bg-red-500&quot;
     /&gt;
-    &lt;c-toggle 
-        v-model=&quot;toggleCustom3&quot; 
-        label=&quot;Custom Thumb&quot; 
-        bgColor=&quot;bg-purple-900&quot; 
-        trackColor=&quot;bg-purple-700&quot; 
+    &lt;c-toggle
+        v-model=&quot;toggleCustom3&quot;
+        label=&quot;Custom Thumb&quot;
+        bgColor=&quot;bg-purple-900&quot;
+        trackColor=&quot;bg-purple-700&quot;
         thumbColor=&quot;bg-purple-500&quot;
     /&gt;
 &lt;/template&gt;</code>

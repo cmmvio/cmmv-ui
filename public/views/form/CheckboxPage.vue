@@ -7,7 +7,7 @@
             The <code>CCheckbox (alias: c-checkbox)</code> component in the <code>@cmmv/ui</code> framework provides a customizable and versatile checkbox element. It supports dynamic labels, two-way binding using <code>v-model</code>, and customizable styles for various use cases. With built-in support for sizes, colors, and indeterminate states, the <code>c-checkbox</code> is ideal for forms, filters, and other interactive UI components.
         </p>
 
-        <table class="w-full text-left border-collapse border-0">
+        <table class="w-full text-left border-collapse border-0 doc-table">
             <thead>
                 <tr>
                     <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
@@ -116,18 +116,18 @@ const checked = ref(true);
         <card-docs
             class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4"
         >
-            <c-checkbox 
-                v-model="isChecked" 
-                label="I accept the terms and conditions" 
+            <c-checkbox
+                v-model="isChecked"
+                label="I accept the terms and conditions"
                 :rules="[value => value ? null : 'You must accept the terms and conditions.']"
             />
         </card-docs>
 
         <pre>
     <code class="code-hightlight language-vue">&lt;template&gt;
-    &lt;c-checkbox 
-        v-model="isChecked" 
-        label="I accept the terms and conditions" 
+    &lt;c-checkbox
+        v-model="isChecked"
+        label="I accept the terms and conditions"
         :rules="[value => value ? null : 'You must accept the terms and conditions.']"
     /&gt;
 &lt;/template&gt;
@@ -217,32 +217,32 @@ const isChecked = ref(false);
 
 <pre>
     <code class="code-hightlight language-vue">&lt;template&gt;
-    &lt;c-checkbox 
-        label="Blue" 
-        bgColor="bg-blue-600" 
-        borderColor="border-blue-800" 
-        textColor="text-white" 
+    &lt;c-checkbox
+        label="Blue"
+        bgColor="bg-blue-600"
+        borderColor="border-blue-800"
+        textColor="text-white"
     /&gt;
 
-    &lt;c-checkbox 
-        label="Green" 
-        bgColor="bg-green-600" 
-        borderColor="border-green-800" 
-        textColor="text-white" 
+    &lt;c-checkbox
+        label="Green"
+        bgColor="bg-green-600"
+        borderColor="border-green-800"
+        textColor="text-white"
     /&gt;
 
-    &lt;c-checkbox 
-        label="Red" 
-        bgColor="bg-red-600" 
-        borderColor="border-red-800" 
-        textColor="text-white" 
+    &lt;c-checkbox
+        label="Red"
+        bgColor="bg-red-600"
+        borderColor="border-red-800"
+        textColor="text-white"
     /&gt;
 
-    &lt;c-checkbox 
-        label="Yellow" 
-        bgColor="bg-yellow-500" 
-        borderColor="border-yellow-800" 
-        textColor="text-white" 
+    &lt;c-checkbox
+        label="Yellow"
+        bgColor="bg-yellow-500"
+        borderColor="border-yellow-800"
+        textColor="text-white"
     /&gt;
 &lt;/template&gt;</code>
 </pre>
@@ -264,7 +264,7 @@ const isChecked = ref(false);
                 Selected Options: {{ selectedOptions }}
             </div>
         </card-docs>
-        
+
 <pre>
     <code class="code-hightlight language-vue">&lt;template&gt;
     &lt;c-checkbox v-model=&quot;selectedOptions&quot; value=&quot;option1&quot; label=&quot;Option 1&quot; /&gt;

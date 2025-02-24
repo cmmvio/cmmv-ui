@@ -1,24 +1,22 @@
 <template>
     <div class="c-input relative w-full">
-        <label 
+        <label
             :for="id"
-            class="c-input-label absolute left-3 text-sm transition-all duration-200 ease-in-out pointer-events-none"
-            :class="[{ 
-                'c-input-label--active': isActive, 
-                'bg-white dark:bg-zinc-900': variant === 'default' && !disabled && bgColor == '',
-                'bg-white dark:bg-zinc-800': (variant === 'outlined' || variant === 'filled') && !disabled && bgColor == '',
+            class="c-input-label absolute left-3 text-sm transition-all duration-200 ease-in-out drop-shadow-xs pointer-events-none"
+            :class="[{
+                'c-input-label--active': isActive,
                 'top-[50%] -translate-y-1/2': !isActive && !currentValue && !hasError,
                 'top-[30%]': !isActive && hasError,
                 'top-1/3': currentValue !== undefined && currentValue !== '',
                 'pl-8': hasIcon && !isActive
-            }, bgColor, textColor ? textColor : 'text-gray-500 dark:text-gray-400']"
+            }, textColor ? textColor : 'text-gray-500 dark:text-gray-400']"
         >
             {{ label }}
         </label>
 
         <div class="relative flex items-center">
-            <div 
-                v-if="hasIcon" 
+            <div
+                v-if="hasIcon"
                 class="absolute inset-y-0 left-0 flex items-center pl-3 z-50"
             >
                 <slot name="icon"></slot>
@@ -52,14 +50,14 @@
                 </svg>
             </button>
 
-            <div 
-                v-if="loading" 
+            <div
+                v-if="loading"
                 class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-400"
             >
-                <c-progress-circular 
-                    indeterminate 
-                    :size="20" 
-                    :fillColor="'#EFEFEF'" 
+                <c-progress-circular
+                    indeterminate
+                    :size="20"
+                    :fillColor="'#EFEFEF'"
                     :width="2"
                 />
             </div>
@@ -69,19 +67,22 @@
                 type="button"
                 class="absolute inset-y-0 right-0 flex items-center px-2"
                 @click="togglePasswordVisibility"
-                :aria-pressed="showPassword" 
-                aria-label="Toggle password visibility" 
+                :aria-pressed="showPassword"
+                aria-label="Toggle password visibility"
                 role="switch"
             >
-                <icon-eye-slash 
-                    :class="[textColor ? textColor : 'text-gray-500 dark:text-gray-400 hover:text-gray-200']" 
+                <icon-eye-slash
+                    :class="[textColor ? textColor : 'text-gray-500 dark:text-gray-400 hover:text-gray-200']"
+                    tabindex="-1"
                     v-if="showPassword"
                 ></icon-eye-slash>
-                <icon-eye 
-                    :class="[textColor ? textColor : 'text-gray-500 dark:text-gray-400 hover:text-gray-200']" 
+
+                <icon-eye
+                    :class="[textColor ? textColor : 'text-gray-500 dark:text-gray-400 hover:text-gray-200']"
+                    tabindex="-1"
                     v-else
                 ></icon-eye>
-            </button> 
+            </button>
         </div>
 
         <div class="mt-1" v-if="!hiddenHint">
@@ -115,7 +116,7 @@
 }
 
 .c-input .c-input-field.pl-10 {
-    padding-left: 2.5rem; 
+    padding-left: 2.5rem;
 }
 
 .c-input [slot="icon"] {
@@ -306,7 +307,7 @@ const validateShowError = () => {
         //@ts-ignore
         const error = rule(currentValue.value);
 
-        if (error) 
+        if (error)
             errorMessage.value = error;
     }
 };
@@ -332,7 +333,7 @@ const activateLabel = () => {
 };
 
 const deactivateLabel = () => {
-    if (!currentValue.value) 
+    if (!currentValue.value)
         isActive.value = false;
 };
 

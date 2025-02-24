@@ -7,12 +7,12 @@
 
         <span
             class="relative z-10 flex items-center justify-center border rounded transition-all duration-200 overflow-hidden"
-            :class="[ 
-                sizes[size].box, 
-                isChecked && !hasError ? bgColor : 'bg-white', 
+            :class="[
+                sizes[size].box,
+                isChecked && !hasError ? bgColor : 'bg-white',
                 isChecked ? borderColor : 'border-gray-300',
                 disabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer',
-                hasError ? 'ring-2 ring-red-500 border-red-500 bg-red-300' : '' 
+                hasError ? 'ring-2 ring-red-500 border-red-500 bg-red-300' : ''
             ]"
         >
             <svg
@@ -45,8 +45,8 @@
         <span
             v-if="label"
             :class="[
-                'ml-2', 
-                sizes[size].label, 
+                'ml-2',
+                sizes[size].label,
                 hasError ? 'text-red-500' : ''
             ]"
         >
@@ -72,7 +72,7 @@ const props = defineProps({
     checked: {
         type: Boolean,
         required: false,
-        default: false, 
+        default: false,
     },
     indeterminate: {
         type: Boolean,
@@ -92,7 +92,7 @@ const props = defineProps({
     size: {
         type: String,
         required: false,
-        default: "md", // sm | md | lg
+        default: "md",
     },
     bgColor: {
         type: String,
@@ -137,19 +137,23 @@ watch(
 
 const isChecked = computed({
     get: () => internalChecked.value,
+
     set: (value) => {
         if (Array.isArray(props.modelValue)) {
             const updatedValue = [...props.modelValue];
-            if (value && !updatedValue.includes(props.value)) {
+
+            if (value && !updatedValue.includes(props.value))
                 updatedValue.push(props.value);
-            } else if (!value && updatedValue.includes(props.value)) {
+            else if (!value && updatedValue.includes(props.value))
                 updatedValue.splice(updatedValue.indexOf(props.value), 1);
-            }
+
             emit("update:modelValue", updatedValue);
         } else {
             emit("update:modelValue", value);
         }
+
         internalChecked.value = value;
+
         validate();
     },
 });
@@ -186,7 +190,7 @@ const createRipple = () => {
     const rect = rippleContainer.value.getBoundingClientRect();
     const ripple = document.createElement("span");
     const diameter = rect.width * 0.5;
-    const radius = diameter / 2;
+    const radius = (diameter < 100 ? diameter : 100) / 2;
 
     ripple.style.width = ripple.style.height = `${diameter}px`;
     ripple.style.left = `${radius}px`;
@@ -213,13 +217,14 @@ const sizes: Record<string, { box: string, label: string }> = {
     border-radius: 50%;
     background-color: rgba(0, 0, 0, 0.1);
     transform: scale(0);
-    animation: ripple-animation 0.4s ease-out;
+    animation: ripple-animation 0.1s ease-out;
     pointer-events: none;
+    max-width: 100px;
 }
 
 @keyframes ripple-animation {
     to {
-        transform: scale(0.8);
+        transform: scale(0.1);
         opacity: 0;
     }
 }

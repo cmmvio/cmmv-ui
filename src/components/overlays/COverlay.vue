@@ -31,19 +31,19 @@ const props = defineProps({
     },
     bgColor: {
         type: String,
-        default: "#FFF", // Default semi-transparent black background
+        default: "#FFF",
     },
     opacity: {
         type: Number,
-        default: 50, // Opacity from 0 to 100
+        default: 50,
     },
     closeOnClick: {
         type: Boolean,
-        default: true, // Allow closing by clicking on the overlay
+        default: true,
     },
     zIndex: {
         type: Number,
-        default: 50, // Define stacking order
+        default: 50,
     },
 });
 
@@ -57,7 +57,6 @@ const handleClose = () => {
 </script>
 
 <style scoped>
-/* Fade-in/out for overlay */
 .fade-overlay-enter-active,
 .fade-overlay-leave-active {
     transition: opacity 0.3s ease;

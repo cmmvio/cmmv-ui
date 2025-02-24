@@ -66,11 +66,18 @@ export default defineComponent({
                     { name: "Button", uri: "/button" },
                     { name: "Flags", uri: "/flags" },
                     { name: "Icon", uri: "/icon" },
-                    { name: "Loader", uri: "/loader" },   
+                    { name: "Loader", uri: "/loader" },
                     { name: "Progress Bar", uri: "/progress-bar" },
                     { name: "Progress Circular", uri: "/progress-circular" },
                     { name: "Tooltip", uri: "/tooltip" }
                 ],
+            },
+            {
+                name: "Data",
+                isDir: true,
+                children: [
+                    { name: "Table", uri: "/table" },
+                ]
             },
             {
                 name: "Layout",
@@ -89,11 +96,11 @@ export default defineComponent({
                     { name: "Autocomplete", uri: "/autocomplete" },
                     { name: "Checkbox", uri: "/checkbox" },
                     { name: "Form", uri: "/form" },
-                    { name: "Input", uri: "/input" },  
-                    { name: "OTP Input", uri: "/otp-input" },  
+                    { name: "Input", uri: "/input" },
+                    { name: "OTP Input", uri: "/otp-input" },
                     { name: "Radio", uri: "/radio" },
                     { name: "Slider", uri: "/slider" },
-                    { name: "Textarea", uri: "/textarea" },                  
+                    { name: "Textarea", uri: "/textarea" },
                     { name: "Toggle", uri: "/toggle" },
                 ],
             },
@@ -115,7 +122,7 @@ export default defineComponent({
         onMounted(() => {
             const savedState = localStorage.getItem("navbarState");
 
-            if (savedState) 
+            if (savedState)
                 Object.assign(navbar, JSON.parse(savedState));
         });
 

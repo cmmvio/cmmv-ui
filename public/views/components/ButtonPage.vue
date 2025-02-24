@@ -4,7 +4,7 @@
 
         <p>The <code>CButton (alias: c-button)</code> component in the <code>@cmmv/ui</code> framework provides a versatile button element with customizable properties, styling, and behavior. It supports different sizes, variants, and interaction states while offering a ripple effect for visual feedback on clicks.</p>
 
-        <table class="w-full text-left border-collapse border-0">
+        <table class="w-full text-left border-collapse border-0 doc-table">
             <thead>
                 <tr>
                     <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
@@ -61,7 +61,7 @@
 
 
         <!-- Simple -->
-        <c-card 
+        <c-card
             class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4"
         >
             <c-button size="sm" type="button">
@@ -96,7 +96,7 @@
 import CButton from &quot;@cmmv/ui/components/CButton.vue&quot;;
 &lt;/script&gt;</code>
         </pre>
- 
+
         <!-- Button with Icons -->
         <h2 class="text-lg font-semibold">Button with Icons</h2>
 
@@ -104,7 +104,7 @@ import CButton from &quot;@cmmv/ui/components/CButton.vue&quot;;
 
         <p>This approach ensures that the c-button remains lightweight, reusable, and framework-agnostic. Developers can seamlessly integrate icons from any library or source, such as <a href="https://fontawesome.com/" target="_blank" rel="noopener noreferrer">FontAwesome</a>, <a href="https://fonts.google.com/icons" target="_blank" rel="noopener noreferrer">Material Icons</a>, custom SVGs, or even <a href="https://heroicons.com/" target="_blank" rel="noopener noreferrer">@heroicons</a>, as shown in this example.</p>
 
-        <c-card 
+        <c-card
             class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4"
         >
             <c-button
@@ -178,7 +178,7 @@ import { CheckCircleIcon } from &quot;@heroicons/vue/20/solid&quot;;
             >
                 Purple Button
             </c-button>
-          
+
             <c-button
                 size="lg"
                 type="button"
@@ -210,7 +210,7 @@ import { CheckCircleIcon } from &quot;@heroicons/vue/20/solid&quot;;
             </c-button>
         </c-card>
 
-        <table class="w-full text-left border-collapse border-0">
+        <table class="w-full text-left border-collapse border-0 doc-table">
             <thead>
                 <tr>
                     <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Variant</th>
@@ -222,10 +222,10 @@ import { CheckCircleIcon } from &quot;@heroicons/vue/20/solid&quot;;
                 <tr>
                     <td class="border-b px-4 py-2">elevated</td>
                     <td class="border-b px-4 py-2">
-                        <c-button 
-                            size="md" 
-                            variant="elevated" 
-                            bgColor="bg-blue-600 hover:bg-blue-500" 
+                        <c-button
+                            size="md"
+                            variant="elevated"
+                            bgColor="bg-blue-600 hover:bg-blue-500"
                             textColor="text-white">
                             Elevated
                         </c-button>
@@ -237,10 +237,10 @@ import { CheckCircleIcon } from &quot;@heroicons/vue/20/solid&quot;;
                 <tr>
                     <td class="border-b px-4 py-2">flat</td>
                     <td class="border-b px-4 py-2">
-                        <c-button 
-                            size="md" 
-                            variant="flat" 
-                            bgColor="bg-gray-200 hover:bg-gray-300" 
+                        <c-button
+                            size="md"
+                            variant="flat"
+                            bgColor="bg-gray-200 hover:bg-gray-300"
                             textColor="text-gray-800">
                             Flat
                         </c-button>
@@ -252,10 +252,10 @@ import { CheckCircleIcon } from &quot;@heroicons/vue/20/solid&quot;;
                 <tr>
                     <td class="border-b px-4 py-2">tonal</td>
                     <td class="border-b px-4 py-2">
-                        <c-button 
-                            size="md" 
-                            variant="tonal" 
-                            bgColor="bg-blue-200 hover:bg-blue-300" 
+                        <c-button
+                            size="md"
+                            variant="tonal"
+                            bgColor="bg-blue-200 hover:bg-blue-300"
                             textColor="text-blue-800">
                             Tonal
                         </c-button>
@@ -267,10 +267,10 @@ import { CheckCircleIcon } from &quot;@heroicons/vue/20/solid&quot;;
                 <tr>
                     <td class="border-b px-4 py-2">outlined</td>
                     <td class="border-b px-4 py-2">
-                        <c-button 
-                            size="md" 
-                            variant="outlined" 
-                            bgColor="bg-transparent" 
+                        <c-button
+                            size="md"
+                            variant="outlined"
+                            bgColor="bg-transparent"
                             textColor="text-white">
                             Outlined
                         </c-button>
@@ -282,9 +282,9 @@ import { CheckCircleIcon } from &quot;@heroicons/vue/20/solid&quot;;
                 <tr>
                     <td class="border-b px-4 py-2">text</td>
                     <td class="border-b px-4 py-2">
-                        <c-button 
-                            size="md" 
-                            variant="text" 
+                        <c-button
+                            size="md"
+                            variant="text"
                             textColor="text-white hover:underline">
                             Text
                         </c-button>
@@ -296,9 +296,9 @@ import { CheckCircleIcon } from &quot;@heroicons/vue/20/solid&quot;;
                 <tr>
                     <td class="border-b px-4 py-2">plain</td>
                     <td class="border-b px-4 py-2">
-                        <c-button 
-                            size="md" 
-                            variant="plain" 
+                        <c-button
+                            size="md"
+                            variant="plain"
                             textColor="text-white">
                             Plain
                         </c-button>
@@ -315,7 +315,7 @@ import { CheckCircleIcon } from &quot;@heroicons/vue/20/solid&quot;;
 
         <p>The <code>CButton</code> component supports multiple sizes, making it adaptable for different contexts, from compact UI elements to prominent call-to-action buttons. The <code>size</code> property controls the dimensions of the button, allowing you to choose from predefined options such as <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, and <code>2xl</code>. These sizes adjust the button's padding and font size to create a visually balanced appearance. Below is a detailed explanation and preview of each size variant:</p>
 
-        <table class="w-full text-left border-collapse border-0">
+        <table class="w-full text-left border-collapse border-0 doc-table">
             <thead>
                 <tr>
                     <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Size</th>
@@ -468,15 +468,15 @@ import { CheckCircleIcon } from &quot;@heroicons/vue/20/solid&quot;;
 
         <p>The <code>CButton</code> component can be styled as an icon button, where the button serves as a container for an icon. This is particularly useful for actions that are commonly represented by icons, such as menu toggles, closing modals, or navigation shortcuts. By combining the <code>rounded="full"</code> property with custom sizes and padding, the button becomes a perfectly circular container for the icon.</p>
 
-        <c-card 
+        <c-card
             class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4"
         >
-            <c-button 
-                type="button" 
-                rounded="full" 
-                size="sm" 
-                bgColor="bg-blue-600 hover:bg-blue-500" 
-                textColor="text-white" 
+            <c-button
+                type="button"
+                rounded="full"
+                size="sm"
+                bgColor="bg-blue-600 hover:bg-blue-500"
+                textColor="text-white"
                 class="py-4 px-4 flex items-center justify-center"
             >
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -484,12 +484,12 @@ import { CheckCircleIcon } from &quot;@heroicons/vue/20/solid&quot;;
                 </svg>
             </c-button>
 
-            <c-button 
-                type="button" 
-                rounded="full" 
-                size="sm" 
-                bgColor="bg-green-600 hover:bg-green-500" 
-                textColor="text-white" 
+            <c-button
+                type="button"
+                rounded="full"
+                size="sm"
+                bgColor="bg-green-600 hover:bg-green-500"
+                textColor="text-white"
                 class="py-4 px-4 flex items-center justify-center"
             >
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
@@ -498,12 +498,12 @@ import { CheckCircleIcon } from &quot;@heroicons/vue/20/solid&quot;;
                 </svg>
             </c-button>
 
-            <c-button 
-                type="button" 
-                rounded="full" 
-                size="sm" 
-                bgColor="bg-red-600 hover:bg-red-500" 
-                textColor="text-white" 
+            <c-button
+                type="button"
+                rounded="full"
+                size="sm"
+                bgColor="bg-red-600 hover:bg-red-500"
+                textColor="text-white"
                 class="py-4 px-4 flex items-center justify-center"
             >
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
@@ -511,13 +511,13 @@ import { CheckCircleIcon } from &quot;@heroicons/vue/20/solid&quot;;
                 </svg>
             </c-button>
 
-            <c-button 
-                type="button" 
-                rounded="full" 
-                size="sm" 
+            <c-button
+                type="button"
+                rounded="full"
+                size="sm"
                 variant="flat"
-                bgColor="bg-yellow-600 hover:bg-yellow-500" 
-                textColor="text-white" 
+                bgColor="bg-yellow-600 hover:bg-yellow-500"
+                textColor="text-white"
                 class="py-4 px-4 flex items-center justify-center"
             >
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">

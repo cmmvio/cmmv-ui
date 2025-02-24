@@ -3,11 +3,11 @@
         <h1>Card</h1>
 
         <p>
-            The <code>CCard (alias: c-card)</code> component provides a versatile and visually appealing container for grouping content. 
+            The <code>CCard (alias: c-card)</code> component provides a versatile and visually appealing container for grouping content.
             It supports titles, subtitles, actions, and various customization options for layout, colors, and styles.
         </p>
 
-        <table class="w-full text-left border-collapse border-0 rounded-md">
+        <table class="w-full text-left border-collapse border-0 rounded-md doc-table">
             <thead>
                 <tr>
                     <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
@@ -148,15 +148,15 @@
             </tbody>
         </table>
 
-        <h2>Basic Card</h2>
+        <h3>Basic Card</h3>
 
         <p>
             The <strong>Basic Card</strong> demonstrates the default functionality of the <code>CCard</code> component. This example includes a title and subtitle, along with some placeholder content. The card is styled with a clean white background, a subtle header color, and rounded corners to enhance its visual appeal. It showcases how the card can adapt to different content sizes while maintaining a professional layout.
         </p>
 
         <card-docs>
-            <c-card 
-                title="Basic Card" 
+            <c-card
+                title="Basic Card"
                 subtitle="This is a basic card example."
                 bgColor="bg-white"
                 bgHeaderColor="bg-zinc-200"
@@ -172,8 +172,8 @@
         </card-docs>
 
         <pre>
-            <code class="code-highlight language-html">&lt;c-card 
-    title="Basic Card" 
+            <code class="code-highlight language-html">&lt;c-card
+    title="Basic Card"
     subtitle="This is a basic card example."
     bgColor="bg-white"
     bgHeaderColor="bg-zinc-200"
@@ -188,7 +188,7 @@
 &lt;/c-card&gt;</code>
         </pre>
 
-        <h2>Loading</h2>
+        <h3>Loading</h3>
 
         <p>
             The example illustrates the use of the <code>loading</code> prop. When enabled, the card content is temporarily replaced by a loading indicator, making it suitable for scenarios where data is being fetched or processed.
@@ -196,7 +196,7 @@
 
         <card-docs>
             <c-card
-                title="Loading Card" 
+                title="Loading Card"
                 subtitle="This is a loading card example."
                 bgColor="bg-white"
                 textColor="text-black"
@@ -204,15 +204,15 @@
                 minHeight="150px"
                 loading
             >
-                <template v-slot:default> 
+                <template v-slot:default>
                     Content will be replaced by a loader until loading is false.
                 </template>
             </c-card>
         </card-docs>
 
         <pre>
-            <code class="code-highlight language-html">&lt;c-card 
-    title="Loading Card" 
+            <code class="code-highlight language-html">&lt;c-card
+    title="Loading Card"
     subtitle="This is a loading card example."
     bgColor="bg-white"
     textColor="text-black"
@@ -224,16 +224,16 @@
 &lt;/c-card&gt;</code>
         </pre>
 
-        <h2>Custom Colors</h2>
+        <h3>Custom Colors</h3>
 
         <p>
             The example demonstrates the customization capabilities of the <code>CCard</code> component. By applying specific <code>bgColor</code> and <code>textColor</code> values, developers can create visually distinct cards that align with application design requirements.
         </p>
 
         <card-docs>
-            <c-card 
-                bgColor="bg-purple-500" 
-                textColor="text-white" 
+            <c-card
+                bgColor="bg-purple-500"
+                textColor="text-white"
                 title="Custom Colors"
                 maxWidth="500px"
                 minHeight="150px"
@@ -248,15 +248,15 @@
 &lt;/c-card&gt;</code>
         </pre>
 
-        <h2>Outlined</h2>
+        <h3>Outlined</h3>
 
         <p>
             The <code>Outlined</code> example shows the <code>outlined</code> variant of the <code>CCard</code> component. This variant applies a transparent background and a defined border, offering a lightweight and minimalistic visual style.
         </p>
 
         <card-docs>
-            <c-card 
-                variant="outlined" 
+            <c-card
+                variant="outlined"
                 title="Outlined Card"
                 maxWidth="500px"
                 minHeight="150px"
@@ -271,15 +271,15 @@
 &lt;/c-card&gt;</code>
         </pre>
 
-        <h2>Card with Actions</h2>
+        <h3>Card with Actions</h3>
 
         <p>
             Usage of the <code>actions</code> slot. This configuration allows for interactive buttons or other elements to be added within the card footer, enabling developers to create cards with user interaction capabilities.
         </p>
 
         <card-docs>
-            <c-card 
-                title="Card with Actions" 
+            <c-card
+                title="Card with Actions"
                 subtitle="This is a loading card example."
                 bgColor="bg-white"
                 borderColor="border-gray-200"
@@ -289,14 +289,14 @@
                 actions
             >
                 <template #action-buttons>
-                    <c-button 
-                        type="button" 
+                    <c-button
+                        type="button"
                         variant="text"
                     >Accept</c-button>
 
-                    <c-button 
-                        type="button" 
-                        variant="text" 
+                    <c-button
+                        type="button"
+                        variant="text"
                         class="bg-red-800 hover:bg-red-700"
                     >Cancel</c-button>
                 </template>
@@ -304,8 +304,8 @@
         </card-docs>
 
         <pre>
-            <code class="code-highlight language-html">&lt;c-card 
-    title="Card with Actions" 
+            <code class="code-highlight language-html">&lt;c-card
+    title="Card with Actions"
     subtitle="This is a loading card example."
     bgColor="bg-white"
     borderColor="border-gray-200"
@@ -321,10 +321,10 @@
 &lt;/c-card&gt;</code>
         </pre>
 
-    <h2>Closable</h2>
+    <h3>Closable</h3>
 
     <p>
-        The <code>Closable</code> example demonstrates the use of the <code>closable</code> prop in the <code>CCard</code> component. 
+        The <code>Closable</code> example demonstrates the use of the <code>closable</code> prop in the <code>CCard</code> component.
         This feature adds a close button to the card's header and emits a <code>close</code> event when clicked, enabling dynamic card dismissal.
     </p>
 
@@ -344,8 +344,8 @@
     </card-docs>
 
     <pre>
-        <code class="code-highlight language-html">&lt;c-card 
-    title="Closable Card" 
+        <code class="code-highlight language-html">&lt;c-card
+    title="Closable Card"
     subtitle="This card can be closed."
     bgColor="bg-white"
     textColor="text-black"
@@ -358,12 +358,12 @@
 &lt;/c-card&gt;</code>
 </pre>
 
-    <h2>Advanced Example</h2>
+    <h3>Advanced Example</h3>
 
     <p>
-        This example demonstrates the comprehensive use of the <code>CCard</code> component, combining multiple configurations like 
-        <code>title</code>, <code>subtitle</code>, <code>actions</code>, <code>loading</code>, <code>hover</code>, and various styling options 
-        such as <code>bgColor</code>, <code>textColor</code>, <code>variant</code>, and <code>closable</code>. It showcases the flexibility and 
+        This example demonstrates the comprehensive use of the <code>CCard</code> component, combining multiple configurations like
+        <code>title</code>, <code>subtitle</code>, <code>actions</code>, <code>loading</code>, <code>hover</code>, and various styling options
+        such as <code>bgColor</code>, <code>textColor</code>, <code>variant</code>, and <code>closable</code>. It showcases the flexibility and
         power of the <code>CCard</code> component to create complex and interactive UI designs.
     </p>
 
@@ -399,13 +399,13 @@
                 </ul>
             </template>
             <template #action-buttons>
-                <c-button 
-                    type="button" 
+                <c-button
+                    type="button"
                     class="text-white border-green-700 bg-green-700 hover:bg-green-500"
                 >Accept</c-button>
 
-                <c-button 
-                    type="button" 
+                <c-button
+                    type="button"
                     class="text-white border-red-700 bg-red-700 hover:bg-red-500"
                 >Decline</c-button>
             </template>
@@ -413,7 +413,7 @@
     </card-docs>
 
     <pre>
-        <code class="code-highlight language-html">&lt;c-card 
+        <code class="code-highlight language-html">&lt;c-card
     title="Advanced Card"
     subtitle="This card demonstrates all configurations."
     bgColor="bg-white"
@@ -444,12 +444,12 @@
         &lt;/ul&gt;
     &lt;/template&gt;
     &lt;template #action-buttons&gt;
-        &lt;c-button 
-            type="button" 
+        &lt;c-button
+            type="button"
             class="text-white border-green-700 bg-green-700 hover:bg-green-500"
         &gt;Accept&lt;/c-button&gt;
-        &lt;c-button 
-            type="button" 
+        &lt;c-button
+            type="button"
             class="text-white border-red-700 bg-red-700 hover:bg-red-500"
         &gt;Decline&lt;/c-button&gt;
     &lt;/template&gt;

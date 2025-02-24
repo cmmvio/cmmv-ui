@@ -3,12 +3,12 @@
         <h1>Dialog</h1>
 
         <p>
-            The <code>CDialog</code> component provides a flexible and accessible modal dialog. 
-            It supports customization of background color, text color, border color, and more. 
+            The <code>CDialog</code> component provides a flexible and accessible modal dialog.
+            It supports customization of background color, text color, border color, and more.
             The dialog can be opened programmatically or via a slot activator.
         </p>
 
-        <table class="w-full text-left border-collapse border-0 rounded-md">
+        <table class="w-full text-left border-collapse border-0 rounded-md doc-table">
             <thead>
                 <tr>
                     <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
@@ -57,7 +57,8 @@
             </tbody>
         </table>
 
-        <h2>Basic Dialog</h2>
+        <h3>Basic Dialog</h3>
+
         <p>
             The <strong>Basic Dialog</strong> example demonstrates how to use the <code>CDialog</code> component with an activator slot.
         </p>
@@ -79,11 +80,11 @@
                 </template>
 
                 <template #actions>
-                    <c-button 
+                    <c-button
                         @click="showDialog = false"
                     >Close</c-button>
                 </template>
-            </c-dialog>  
+            </c-dialog>
         </card-docs>
 
         <pre>
@@ -106,20 +107,21 @@
 &lt;/c-dialog&gt;</code>
         </pre>
 
-        <h2>Fullscreen Dialog</h2>
+        <h3>Fullscreen Dialog</h3>
+
         <p>
             The <code>fullscreen</code> prop expands the dialog to cover the entire screen.
         </p>
 
         <card-docs>
-            <c-dialog 
-                v-model="fullscreenDialog" 
+            <c-dialog
+                v-model="fullscreenDialog"
                 class="m-auto"
-                fullscreen 
+                fullscreen
                 closable
             >
                 <template #activator>
-                    <c-button 
+                    <c-button
                         @click="fullscreenDialog = true"
                     >Open Fullscreen Dialog</c-button>
                 </template>

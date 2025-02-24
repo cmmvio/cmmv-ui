@@ -1,18 +1,18 @@
 <template>
-    <div 
-        s:docs="docs" 
+    <div
+        s:docs="docs"
         class="bg-gray-200 dark:bg-zinc-900"
         v-cloak
     >
         <nav class="navbar bg-neutral-800 h-16 top-0 w-full fixed flex z-50 shadow-lg">
-            <div 
-                class="w-full mx-auto flex items-center" 
+            <div
+                class="w-full mx-auto flex items-center"
                 style="background-color: transparent !important;"
             >
-                <button 
-                    id="menu-toggle" 
+                <button
+                    id="menu-toggle"
                     name="Navbar Button"
-                    aria-label="Navbar Button" 
+                    aria-label="Navbar Button"
                     class="text-slate-700 dark:text-slate-200 text-2xl p-2 lg:hidden ml-2"
                     @click="toggleMenu"
                 >
@@ -20,59 +20,59 @@
                 </button>
 
                 <div class="w-60">
-                    <a 
-                        href="https://cmmv.io/docs" 
-                        title="CMMV - Contract Model Model View Framework" 
+                    <a
+                        href="https://cmmv.io/docs"
+                        title="CMMV - Contract Model Model View Framework"
                         class="text-white ml-4 flex items-center"
                     >
                         <img src="/assets/android-chrome-192x192.png" alt="CMMV Logo" height="32" width="32">
                         <span class="ml-2 text-lg text-slate-700 dark:text-slate-200 font-semibold">CMMV</span>
                     </a>
-                </div>           
+                </div>
 
                 <div class="justify-between w-full text mr-2 flex">
-                    <div 
+                    <div
                         class="text-black dark:text-slate-50 relative text-left items-center gap-x-8 lg:flex hidden"
                     >
-                        <ul class="flex gap-x-8 items-center lg:flex">                        
+                        <ul class="flex gap-x-8 items-center lg:flex">
                             <li class="relative">
-                                <a 
-                                    href="https://cmmv.io/docs/overview/first-steps" 
+                                <a
+                                    href="https://cmmv.io/docs/overview/first-steps"
                                     class="text-sm/6 font-semibold flex items-center gap-1 hover:text-blue-700"
                                     title="Server"
                                 >Getting Started</a>
                             </li>
                             <li class="relative">
-                                <a 
-                                    href="https://cmmv.io/docs/server/overview" 
+                                <a
+                                    href="https://cmmv.io/docs/server/overview"
                                     class="text-sm/6 font-semibold flex items-center gap-1 hover:text-blue-700"
                                     title="Server"
                                 >Server</a>
                             </li>
-                            <li class="relative"> 
-                                <a 
-                                    href="https://cmmv.io/docs/contracts/overview" 
+                            <li class="relative">
+                                <a
+                                    href="https://cmmv.io/docs/contracts/overview"
                                     class="text-sm/6 font-semibold flex items-center gap-1 hover:text-blue-700"
                                     title="Contracts"
                                 >Contracts</a>
                             </li>
-                            <li class="relative"> 
-                                <a 
-                                    href="https://cmmv.io/docs/rpc/overview" 
+                            <li class="relative">
+                                <a
+                                    href="https://cmmv.io/docs/rpc/overview"
                                     class="text-sm/6 font-semibold flex items-center gap-1 hover:text-blue-700"
                                     title="RPC"
                                 >RPC</a>
                             </li>
-                            <li class="relative"> 
-                                <a 
-                                    href="https://cmmv.io/docs/view/overview" 
+                            <li class="relative">
+                                <a
+                                    href="https://cmmv.io/docs/view/overview"
                                     class="text-sm/6 font-semibold flex items-center gap-1 hover:text-blue-700"
                                     title="View"
                                 >View</a>
                             </li>
-                            <li class="relative"> 
-                                <a 
-                                    href="https://ui.cmmv.io" 
+                            <li class="relative">
+                                <a
+                                    href="https://ui.cmmv.io"
                                     class="text-sm/6 font-semibold flex items-center gap-1 hover:text-blue-700"
                                     title="UI"
                                 >UI</a>
@@ -87,9 +87,9 @@
 
                 <div class="justify-between align-middle text-center mr-2 text-white flex">
                     <!-- GitHub Link -->
-                    <a 
-                        href="https://github.com/cmmvio/cmmv" 
-                        title="Github" 
+                    <a
+                        href="https://github.com/cmmvio/cmmv-ui"
+                        title="Github"
                         target="_blank"
                         class="mr-2"
                     >
@@ -100,15 +100,15 @@
         </nav>
 
         <main class="flex flex-wrap mx-auto dark">
-            <div 
-                id="sidebar-menu" 
-                :class="[{ show: isMenuVisible }, 'dark w-60 fixed z-40 overflow-auto text-slate-800 leftbar h-screen lg:block bg-neutral-800']"
+            <div
+                id="sidebar-menu"
+                :class="[{ show: isMenuVisible }, 'dark w-60 fixed z-40 overflow-auto text-slate-800 leftbar h-screen lg:block pb-10']"
             >
-                <Navbar ref="navbar"></Navbar> 
+                <Navbar ref="navbar"></Navbar>
             </div>
 
-            <div class="mt-16 lg:ml-64 sm:ml-4 ml-4 text-justify relative m-auto w-full">
-                <div class="pl-2 m-4 px-10 mx-auto xl:ml-0 container">
+            <div class="mt-16 lg:ml-64 sm:ml-4 ml-4 text-justify relative m-auto lg:max-w-[calc(100%-16rem)] max-w-[calc(100%-1rem)]" >
+                <div class="pl-2 m-auto px-6 mt-4 w-full">
                     <div class="text-slate-800 relative dark:text-white mb-20 context-html">
                         <slot />
                     </div>

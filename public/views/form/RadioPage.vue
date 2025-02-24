@@ -6,7 +6,7 @@
             The <code>CRadio (alias: c-radio)</code> component in the <code>@cmmv/ui</code> framework provides a flexible and customizable radio button element. It supports dynamic labels, two-way binding using <code>v-model</code>, and customizable styles for various use cases. With built-in support for sizes, colors, and accessibility features, the <code>CRadio</code> is ideal for forms, filters, and other interactive UI components.
         </p>
 
-        <table class="w-full text-left border-collapse border-0">
+        <table class="w-full text-left border-collapse border-0 doc-table">
             <thead>
                 <tr>
                     <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>

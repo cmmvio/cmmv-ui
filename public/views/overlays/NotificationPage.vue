@@ -6,9 +6,9 @@
             The <code>CNotification (alias: c-notification)</code> is designed to display temporary or persistent notifications with optional icons, titles, and progress bars. Notifications are positioned in the top-right corner by default and can be dismissed manually or automatically after a set duration. The component supports transitions for smooth appearance and dismissal.
         </p>
 
-        <h2>Props</h2>
+        <h3>Props</h3>
 
-        <table class="w-full text-left border-collapse border-0">
+        <table class="w-full text-left border-collapse border-0 doc-table">
             <thead>
                 <tr>
                     <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
@@ -57,9 +57,9 @@
             </tbody>
         </table>
 
-        <h2>Slots</h2>
+        <h3>Slots</h3>
 
-        <table class="w-full text-left border-collapse border-0">
+        <table class="w-full text-left border-collapse border-0 doc-table">
             <thead>
                 <tr>
                     <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Slot</th>
@@ -82,15 +82,15 @@
             </tbody>
         </table>
 
-        <h2>Usage</h2>
+        <h3>Usage</h3>
 
         <p>
             Below is an example of how to use the <code>CNotification</code> component to show a notification with an icon, title, and content.
         </p>
 
         <card-docs>
-            <c-button 
-                type="button" 
+            <c-button
+                type="button"
                 size="2xl"
                 class="m-auto"
                 @click="triggerNotification"
@@ -122,7 +122,7 @@ function triggerNotification() {
 &lt;/script&gt;</code>
         </pre>
 
-        
+
     </BaseLayout>
 </template>
 

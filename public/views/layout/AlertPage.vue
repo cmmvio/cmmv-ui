@@ -4,7 +4,7 @@
 
         <p>The <code>CAlert (alias: c-alert)</code> component provides a customizable alert message box for your application. It supports multiple types, styles, and interactive options for various use cases like success messages, warnings, or error notifications.</p>
 
-        <table class="w-full text-left border-collapse border-0 rounded-md">
+        <table class="w-full text-left border-collapse border-0 rounded-md doc-table">
             <thead>
                 <tr>
                     <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
@@ -67,10 +67,10 @@
 
         <!-- Basic Usage -->
 
-        <h2>Basic Usage</h2>
+        <h3>Basic Usage</h3>
 
         <p>Using the default setup, you can quickly create alerts for user feedback. These alerts integrate seamlessly into your application's UI with minimal configuration.</p>
-        
+
         <card-docs>
             <c-alert type="success" title="Success" icon>
                 Operation completed successfully.
@@ -83,10 +83,10 @@
         </pre>
 
         <!-- Closable -->
-        <h2>Closable</h2>
+        <h3>Closable</h3>
 
         <p>Add interactivity to your alerts by enabling the close button. This allows users to dismiss messages after reading them.</p>
-        
+
         <card-docs>
             <c-alert type="error" title="Error" closable>
                 Something went wrong. Please try again.
@@ -98,14 +98,14 @@
 &lt;/c-alert&gt;</code>
         </pre>
 
-        <h2>Custom Colors</h2>
+        <h3>Custom Colors</h3>
 
         <p>For unique branding or design requirements, you can define custom background and text colors to match your application's theme.</p>
-        
+
         <card-docs>
-            <c-alert 
-                title="Custom Alert" 
-                bgColor="bg-purple-500" 
+            <c-alert
+                title="Custom Alert"
+                bgColor="bg-purple-500"
                 textColor="text-white"
                 icon
             >
@@ -114,9 +114,9 @@
         </card-docs>
 
         <pre>
-            <code class="code-highlight language-html">&lt;c-alert 
-    title="Custom Alert" 
-    bgColor="bg-purple-500" 
+            <code class="code-highlight language-html">&lt;c-alert
+    title="Custom Alert"
+    bgColor="bg-purple-500"
     textColor="text-white"
     icon
 &gt;
@@ -125,7 +125,7 @@
         </pre>
 
         <!-- Outlined -->
-        <h2>Outlined</h2>
+        <h3>Outlined</h3>
 
         <p>Use outlined styles for a minimalist design. These alerts are subtle yet clear, ideal for less intrusive notifications.</p>
 
@@ -167,12 +167,15 @@
 
         <!-- Icon -->
         <h3>Icon</h3>
+
         <p>Icons enhance visual feedback and help users quickly identify the purpose of an alert. They can be customized or hidden as needed.</p>
+
         <card-docs>
             <c-alert type="info" title="Information" icon>
                 This alert includes an informational icon for better context.
             </c-alert>
         </card-docs>
+
         <pre>
             <code class="code-highlight language-html">&lt;c-alert type="info" title="Information" icon&gt;
     This alert includes an informational icon for better context.
@@ -181,12 +184,15 @@
 
         <!-- Accessibility -->
         <h3>Accessibility</h3>
+
         <p>The <code>CAlert</code> component includes built-in ARIA support to ensure alerts are accessible to all users, including those relying on screen readers.</p>
+
         <card-docs>
             <c-alert aria-label="Important alert" type="error" title="Critical Error">
                 A critical error has occurred. Please contact support.
             </c-alert>
         </card-docs>
+
         <pre>
             <code class="code-highlight language-html">&lt;c-alert aria-label="Important alert" type="error" title="Critical Error"&gt;
     A critical error has occurred. Please contact support.

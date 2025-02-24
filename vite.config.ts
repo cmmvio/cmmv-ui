@@ -1,5 +1,4 @@
 import { fileURLToPath, URL } from 'node:url';
-import fs from 'fs-extra';
 import path from 'path';
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
@@ -95,14 +94,5 @@ export default defineConfig(({ mode }) => {
                       },
                   },
               },
-
-        async closeBundle() {
-            const srcIndex = path.resolve(__dirname, 'src/index.js');
-            const destIndex = path.resolve(__dirname, 'dist/index.js');
-            if (fs.existsSync(srcIndex)) {
-                await fs.copy(srcIndex, destIndex);
-                console.log('✅ index.js copiado para dist/');
-            }
-        }
     };
 });

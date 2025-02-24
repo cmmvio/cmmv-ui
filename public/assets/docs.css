@@ -84,28 +84,28 @@ img {
     border-radius: 5px;
     background-color: #2E3035;
 }
-  
+
 .dark *::-webkit-scrollbar-track:hover {
     background-color: #4C4C4C;
 }
-  
+
 .dark *::-webkit-scrollbar-track:active {
     background-color: #4C4C4C;
 }
-  
+
 .dark *::-webkit-scrollbar-thumb {
     border-radius: 5px;
     background-color: #5B5B5B;
 }
-  
+
 .dark *::-webkit-scrollbar-thumb:hover {
     background-color: #777777;
 }
-  
+
 .dark *::-webkit-scrollbar-thumb:active {
     background-color: #777777;
 }
-  
+
 hr{
     border-top: 1px solid rgb(107 114 128/var(--tw-text-opacity)) !important;
     border-color: rgb(30 41 59);
@@ -122,17 +122,17 @@ hr{
 
 @media (max-width: 1024px) {
     #sidebar-menu {
-        position: fixed; 
-        top: 0; 
+        position: fixed;
+        top: 0;
         left: 0;
-        width: 250px; 
-        height: 100%; 
+        width: 250px;
+        height: 100%;
         transform: translateX(-100%);
         transition: transform 0.3s ease-in-out;
-        z-index: 50; 
-        overflow-y: auto; 
+        z-index: 50;
+        overflow-y: auto;
     }
-    
+
     #sidebar-menu.show {
         transform: translateX(0) !important;
     }
@@ -146,7 +146,7 @@ hr{
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px; 
+    gap: 10px;
     margin: auto;
 }
 
@@ -294,13 +294,13 @@ p {
 }
 
 .leftbar{
-    height: calc(100% - 64px); 
+    height: calc(100% - 64px);
     margin-top: 64px;
 }
 
 .navbar-item h3 {
     text-transform: uppercase;
-    font-weight: 700 !important; 
+    font-weight: 700 !important;
     font-size: 15px !important;
     margin: 10px 0;
     margin-top: 0px !important;
@@ -334,25 +334,25 @@ p {
 }
 
 code {
-    background-color: #43464c; 
-    color: #EFEFFF; 
+    background-color: #43464c;
+    color: #EFEFFF;
     padding: 2px 4px;
-    border-radius: 4px; 
-    font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace; 
-    font-size: 0.9em; 
-    word-break: break-word; 
+    border-radius: 4px;
+    font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+    font-size: 0.9em;
+    word-break: break-word;
     text-align: left !important;
 }
 
 pre code {
     display: block;
-    max-height: 400px; 
+    max-height: 400px;
     padding: 10px;
     background-color: #1d1d1d;
     border: 1px solid #2e3035;
     border-radius: 6px;
     overflow-y: auto;
-    white-space: pre-wrap; 
+    white-space: pre-wrap;
 }
 
 pre code::-webkit-scrollbar {
@@ -408,7 +408,7 @@ pre code.hljs{display:block;overflow-x:auto;padding:1em}code.hljs{padding:3px 5p
     border: 1px solid var(--vt-c-brand)
 }
 
-table {
+.doc-table {
     width: 100%;
     border-collapse: collapse;
     margin: 20px 0;
@@ -417,12 +417,12 @@ table {
     border-radius: 6px;
 }
 
-table thead {
+.doc-table thead {
     background-color: #2e3035;
     color: #f7f7f7;
 }
 
-table th, table td {
+.doc-table th, table td {
     padding: 12px 15px;
     text-align: left;
     border-bottom: 1px solid #2e3035;
@@ -430,39 +430,39 @@ table th, table td {
     font-family: 'Source Sans Pro', Helvetica Neue, sans-serif;
 }
 
-table th {
+.doc-table th {
     font-weight: bold;
     background-color: #3b3b3d;
     color: #f7f7f7;
 }
 
-table tbody tr {
+.doc-table tbody tr {
     transition: background-color 0.3s;
 }
 
-table tbody tr:nth-child(even) {
+.doc-table tbody tr:nth-child(even) {
     background-color: #242427;
 }
 
-table tbody tr:hover {
+.doc-table tbody tr:hover {
     background-color: #2a2a2d;
 }
 
-table tbody td {
+.doc-table tbody td {
     color: #d0d0d4;
 }
 
-table tbody td a {
+.doc-table tbody td a {
     color: cornflowerblue;
     text-decoration: none;
 }
 
-table tbody td a:hover {
+.doc-table tbody td a:hover {
     color: #6495ED;
     text-decoration: underline;
 }
 
-table tbody td code {
+.doc-table tbody td code {
     background-color: #43464c;
     color: #EFEFFF;
     padding: 2px 4px;
@@ -471,11 +471,11 @@ table tbody td code {
     font-size: 0.9em;
 }
 
-table thead th {
+.doc-table thead th {
     font-size: 16px;
 }
 
-table tbody td {
+.doc-table tbody td {
     font-size: 14px;
 }
 
@@ -487,7 +487,7 @@ h2 code {
 .footer a {
     text-decoration: none;
     border: 1px solid rgb(107 114 128/var(--tw-text-opacity));
-    
+
 }
 
 .footer a:hover {

@@ -1,10 +1,10 @@
 <template>
     <BaseLayout>
         <h1>OTP Input</h1>
-        
+
         <p>The <code>COtpInput (alias: c-otp-input)</code> component in the <code>@cmmv/ui</code> framework provides a multi-digit input field, designed for OTP (One-Time Password) or similar use cases. It offers customization for length, validation, error states, loading overlays, and seamless interaction via keyboard.</p>
 
-        <table class="w-full text-left border-collapse border-0">
+        <table class="w-full text-left border-collapse border-0 doc-table">
             <thead>
                 <tr>
                     <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
@@ -60,7 +60,7 @@
         </table>
 
         <!-- Basic -->
-        <h2>Basic</h2>
+        <h3>Basic</h3>
 
         <p>The <code>COTPInput</code> component is easy to use with minimal configuration.</p>
 
@@ -83,7 +83,7 @@ const otpValue = ref(&quot;&quot;);
         </pre>
 
         <!-- Custom Length -->
-        <h2>Custom Length</h2>
+        <h3>Custom Length</h3>
 
         <p>You can customize the OTP length to match specific requirements, ranging from 4 to 8 digits.</p>
 
@@ -104,7 +104,8 @@ const otpValueLength8 = ref(&quot;&quot;);
         </pre>
 
         <!-- Error State -->
-        <h2>Error State</h2>
+        <h3>Error State</h3>
+
         <p>The <code>isError</code> property highlights the input fields in red when validation fails.</p>
 
         <c-card class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
@@ -124,26 +125,31 @@ const otpErrorValue = ref(&quot;&quot;);
         </pre>
 
         <!-- Custom Colors -->
-        <h2>Custom Colors</h2>
+        <h3>Custom Colors</h3>
+
+        <p>
+            Customize the component’s appearance by changing background, text, and border colors
+            to fit your application's design.
+        </p>
 
         <c-card class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
             <div class="lg:w-2/5 w-full">
-                <c-otp-input 
-                    v-model="otpCustomValue" 
-                    bgColor="bg-blue-100" 
-                    textColor="text-blue-800" 
-                    borderColor="focus:ring-blue-400 border-blue-200" 
+                <c-otp-input
+                    v-model="otpCustomValue"
+                    bgColor="bg-blue-100"
+                    textColor="text-blue-800"
+                    borderColor="focus:ring-blue-400 border-blue-200"
                 />
             </div>
         </c-card>
 
         <pre>
             <code class="code-highlight language-vue">&lt;template&gt;
-    &lt;c-otp-input 
-        v-model=&quot;otpCustomValue&quot; 
-        bgColor=&quot;bg-blue-100&quot; 
-        textColor=&quot;text-blue-800&quot; 
-        borderColor=&quot;focus:ring-blue-400 border-blue-200&quot; 
+    &lt;c-otp-input
+        v-model=&quot;otpCustomValue&quot;
+        bgColor=&quot;bg-blue-100&quot;
+        textColor=&quot;text-blue-800&quot;
+        borderColor=&quot;focus:ring-blue-400 border-blue-200&quot;
     /&gt;
 &lt;/template&gt;
 
@@ -153,7 +159,12 @@ const otpCustomValue = ref(&quot;&quot;);
         </pre>
 
         <!-- Multiple Instances -->
-        <h2>Multiple Instances</h2>
+        <h3>Multiple Instances</h3>
+
+        <p>
+            Multiple OTP inputs can be used on a single page, each with independent values and styling.
+            This is useful for multi-step authentication flows.
+        </p>
 
         <c-card class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
             <div class="lg:w-2/5 w-full">
@@ -165,11 +176,11 @@ const otpCustomValue = ref(&quot;&quot;);
         <pre>
             <code class="code-highlight language-vue">&lt;template&gt;
     &lt;c-otp-input v-model=&quot;otpInstance1&quot; /&gt;
-    &lt;c-otp-input 
-        v-model=&quot;otpInstance2&quot; 
-        :length=&quot;8&quot; 
-        bgColor=&quot;bg-gray-100&quot; 
-        textColor=&quot;text-gray-800&quot; 
+    &lt;c-otp-input
+        v-model=&quot;otpInstance2&quot;
+        :length=&quot;8&quot;
+        bgColor=&quot;bg-gray-100&quot;
+        textColor=&quot;text-gray-800&quot;
     /&gt;
 &lt;/template&gt;
 
@@ -201,10 +212,10 @@ const otpInstance2 = ref(&quot;&quot;);
                         <div class="mb-2">
                             A verification code has been sent to and..@gmail.com. Please check your inbox and enter the code below to verify your email address.
                         </div>
-                    
+
                         <c-otp-input v-model="otpValue" />
 
-                        <c-button 
+                        <c-button
                             size="2xl"
                             type="button"
                             class="w-8/12 my-4"
@@ -237,13 +248,13 @@ const otpInstance2 = ref(&quot;&quot;);
             &lt;template #content&gt;
                 &lt;div class=&quot;py-10 pt-4 text-sm px-8 text-center&quot;&gt;
                     &lt;div class=&quot;mb-2&quot;&gt;
-                        A verification code has been sent to and..@gmail.com. 
+                        A verification code has been sent to and..@gmail.com.
                         Please check your inbox and enter the code below to verify your email address.
                     &lt;/div&gt;
 
                     &lt;c-otp-input v-model=&quot;otpValue&quot; /&gt;
 
-                    &lt;c-button 
+                    &lt;c-button
                         size=&quot;2xl&quot;
                         type=&quot;button&quot;
                         class=&quot;w-8/12 my-4&quot;

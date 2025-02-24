@@ -7,11 +7,11 @@
         </p>
 
         <p>
-            While the default icons provided in the examples are from the 
+            While the default icons provided in the examples are from the
             <a href="https://heroicons.com/" target="_blank" rel="noopener noreferrer">Heroicons</a> library, the <code>CIcon</code> is designed to work with any icon library or custom SVGs. This ensures maximum flexibility and adaptability for your projects.
         </p>
 
-        <table class="w-full text-left border-collapse border-0">
+        <table class="w-full text-left border-collapse border-0 doc-table">
             <thead>
                 <tr>
                     <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
@@ -49,7 +49,7 @@
             The following example demonstrates the basic usage of the <code>CIcon</code> component with different sizes and colors. You can use it to wrap any SVG or inline icon.
         </p>
 
-        <c-card 
+        <c-card
             class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4"
         >
             <c-icon size="sm" color="text-blue-600">
@@ -96,12 +96,12 @@
             The <code>ariaLabel</code> prop ensures that the <code>CIcon</code> is accessible for screen readers. Use this prop to provide a descriptive label for your icon.
         </p>
 
-        <c-card 
+        <c-card
             class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4"
         >
-            <c-icon 
-                size="lg" 
-                color="text-white" 
+            <c-icon
+                size="lg"
+                color="text-white"
                 ariaLabel="User Icon"
             >
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-32 w-32" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -113,9 +113,9 @@
         <pre>
             <code class="code-hightlight language-vue">&lt;template&gt;
     &lt;c-icon aria-hidden="Icon Menu"&gt;
-        &lt;svg 
-            xmlns="http://www.w3.org/2000/svg" 
-            class="h-6 w-6" viewBox="0 0 24 24" 
+        &lt;svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6" viewBox="0 0 24 24"
             fill="currentColor"
         &gt;
             &lt;path d="M12 2a10 10 0 11-7.071 17.071A10 10 0 0112 2zm0 18a8 8 0 100-16 8 8 0 000 16z" /&gt;
@@ -131,12 +131,12 @@
             Below is a complete list of all available icons in the library. Clicking on an icon will copy its implementation code to your clipboard, making it easy to integrate into your project.
         </p>
 
-        <c-card 
+        <c-card
             class="m-auto mt-4 px-4 py-10 items-center grid grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 2xl:grid-cols-10 gap-4"
         >
-            <div 
-                v-for="icon in resolvedIcons" 
-                :key="icon.name" 
+            <div
+                v-for="icon in resolvedIcons"
+                :key="icon.name"
                 class="relative flex items-center justify-center cursor-pointer group"
                 @click="copyToClipboard(icon.code)"
             >
@@ -152,12 +152,12 @@
 
         <br/>
 
-        <c-card 
+        <c-card
             class="m-auto mt-4 px-4 py-10 items-center grid grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 2xl:grid-cols-10 gap-4"
         >
-            <div 
-                v-for="icon in resolvedBrandsIcons" 
-                :key="icon.name" 
+            <div
+                v-for="icon in resolvedBrandsIcons"
+                :key="icon.name"
                 class="relative flex items-center justify-center cursor-pointer group"
                 @click="copyToClipboard(icon.code)"
             >
@@ -195,7 +195,7 @@ const resolvedIcons = reactive([]);
 const resolvedBrandsIcons = reactive([]);
 
 onMounted(async () => {
-    for (const icon of iconsBrands) {       
+    for (const icon of iconsBrands) {
         if(icon.path){
             try{
                 if(process.env.NODE_ENV === "production"){
@@ -211,10 +211,10 @@ onMounted(async () => {
                         ...icon,
                         component: markRaw(component.default),
                     });
-                }  
+                }
             }
             catch{}
-        }  
+        }
     }
 
     for (const icon of icons) {
@@ -233,10 +233,10 @@ onMounted(async () => {
                         ...icon,
                         component: markRaw(component.default),
                     });
-                }  
+                }
             }
-            catch{}   
-        } 
+            catch{}
+        }
     }
 });
 

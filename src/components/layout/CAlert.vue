@@ -7,9 +7,9 @@
     >
         <div v-if="icon" class="mr-3">
             <slot name="icon">
-                <component 
-                    :is="computedIcon" 
-                    class="h-6 w-6" 
+                <component
+                    :is="computedIcon"
+                    class="h-6 w-6"
                     :class="textColorClass"
                 />
             </slot>
@@ -32,8 +32,8 @@
             aria-label="Close alert"
         >
             <slot name="close-icon">
-                <icon-x-mark 
-                    class="w-6 h-6 text-black"  
+                <icon-x-mark
+                    class="w-6 h-6 text-white"
                     aria-label="Close"
                 />
             </slot>
@@ -52,7 +52,7 @@ import { computed } from 'vue';
 import IconCheckCircle from "@components/icons/IconCheckCircle.vue";
 import IconInformationCircle from "@components/icons/IconInformationCircle.vue";
 import IconExclamationTriangle from "@components/icons/IconExclamationTriangle.vue";
-import IconXCircle from "@components/icons/IconXCircle.vue"; 
+import IconXCircle from "@components/icons/IconXCircle.vue";
 
 const props = defineProps({
     title: {

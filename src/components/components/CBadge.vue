@@ -1,6 +1,6 @@
 <template>
     <div
-        class=" inline-flex items-center justify-center"
+        class="inline-flex items-center justify-center"
         :class="{
             'inline-block': inline,
             'absolute': floating,
@@ -13,7 +13,7 @@
             class="text-xs rounded-md font-semibold flex items-center justify-center px-1 py-0.2"
             :class="[bgColor, textColor]"
         >
-            <slot>{{ content }}</slot>
+            {{ content || ($slots.default ? $slots.default()[0]?.children : "") }}
         </span>
 
         <span
@@ -54,11 +54,11 @@ const props = defineProps({
     },
     offsetX: {
         type: String,
-        default: "0.3rem", 
+        default: "0.3rem",
     },
     offsetY: {
         type: String,
-        default: "0.3rem", 
+        default: "0.3rem",
     },
 });
 

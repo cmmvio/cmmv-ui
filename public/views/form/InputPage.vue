@@ -1,10 +1,10 @@
 <template>
     <BaseLayout>
         <h1>Input</h1>
-        
+
         <p>The <code>CInput (alias: c-input)</code> component in the <code>@cmmv/ui</code> framework provides a flexible input field with advanced customization options for size, variants, rounding, and interaction states. It also supports validation, clearable functionality, and dynamic hints or error messages.</p>
 
-        <table class="w-full text-left border-collapse border-0">
+        <table class="w-full text-left border-collapse border-0 doc-table">
             <thead>
                 <tr>
                     <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
@@ -106,19 +106,19 @@
 
         <pre>
             <code class="code-hightlight language-vue">&lt;template&gt;
-    &lt;c-input 
-        id=&quot;example1&quot; 
-        label=&quot;Basic Input&quot; 
+    &lt;c-input
+        id=&quot;example1&quot;
+        label=&quot;Basic Input&quot;
     /&gt;
-    &lt;c-input 
-        id=&quot;example2&quot; 
-        label=&quot;Input with Placeholder&quot; 
-        placeholder=&quot;Enter text...&quot; 
+    &lt;c-input
+        id=&quot;example2&quot;
+        label=&quot;Input with Placeholder&quot;
+        placeholder=&quot;Enter text...&quot;
     /&gt;
-    &lt;c-input 
-        id=&quot;example3&quot; 
-        label=&quot;Disabled Input&quot; 
-        disabled 
+    &lt;c-input
+        id=&quot;example3&quot;
+        label=&quot;Disabled Input&quot;
+        disabled
     /&gt;
 &lt;/template&gt;
 
@@ -133,21 +133,21 @@ import CInput from &quot;@cmmv/ui/components/CInput.vue&quot;;
 
         <c-card class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
             <div class="lg:w-2/5 w-full">
-                <c-input 
-                    id="validation" 
-                    label="Input with Validation" 
+                <c-input
+                    id="validation"
+                    label="Input with Validation"
                     :rules="[value => (value ? null : 'This field is required')]"
-                    v-model="validableValue" 
+                    v-model="validableValue"
                 />
             </div>
         </c-card>
 
         <pre>
             <code class="code-hightlight language-vue">&lt;template&gt;
-    &lt;c-input 
-        id=&quot;validation&quot; 
-        label=&quot;Input with Validation&quot; 
-        :rules=&quot;[value =&gt; (value ? null : 'This field is required')]&quot; 
+    &lt;c-input
+        id=&quot;validation&quot;
+        label=&quot;Input with Validation&quot;
+        :rules=&quot;[value =&gt; (value ? null : 'This field is required')]&quot;
     /&gt;
 &lt;/template&gt;</code>
         </pre>
@@ -199,22 +199,22 @@ import CInput from &quot;@cmmv/ui/components/CInput.vue&quot;;
 
         <c-card class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
             <div class="lg:w-2/5 w-full">
-                <c-input 
+                <c-input
                     v-model="passwordValue"
-                    id="password" 
-                    label="Password" 
-                    type="password" 
+                    id="password"
+                    label="Password"
+                    type="password"
                 />
             </div>
         </c-card>
-        
+
         <pre>
             <code class="code-hightlight language-vue">&lt;template&gt;
-    &lt;c-input 
+    &lt;c-input
         v-model="passwordValue"
-        id="password" 
-        label="Password" 
-        type="password" 
+        id="password"
+        label="Password"
+        type="password"
     /&gt;
 &lt;/template&gt;</code>
         </pre>
@@ -261,7 +261,7 @@ import CInput from &quot;@cmmv/ui/components/CInput.vue&quot;;
             <div class="lg:w-2/5 w-full">
                 <c-input id="search" label="Search Input">
                     <template #icon>
-                        <IconMagnifyingGlass class="w-6  h-6 text-white" aria-hidden="true"  /> 
+                        <IconMagnifyingGlass class="w-6  h-6 text-white" aria-hidden="true"  />
                     </template>
                 </c-input>
             </div>
@@ -271,7 +271,7 @@ import CInput from &quot;@cmmv/ui/components/CInput.vue&quot;;
             <code class="code-hightlight language-vue">&lt;template&gt;
     &lt;c-input id=&quot;search&quot; label=&quot;Search Input&quot;&gt;
         &lt;template #icon&gt;
-            &lt;IconMagnifyingGlass class=&quot;w-6 h-6 text-white&quot; aria-hidden=&quot;true&quot; /&gt; 
+            &lt;IconMagnifyingGlass class=&quot;w-6 h-6 text-white&quot; aria-hidden=&quot;true&quot; /&gt;
         &lt;/template&gt;
     &lt;/c-input&gt;
 &lt;/template&gt;</code>
@@ -281,7 +281,7 @@ import CInput from &quot;@cmmv/ui/components/CInput.vue&quot;;
         <h2>Custom Colors</h2>
 
         <p>The <code>CInput</code> component supports <strong>custom colors</strong> for the input field, label, and border. You can use the following props to style the input field as per your application's design requirements:</p>
-        
+
         <ul>
             <li><strong><code>bgColor</code></strong>: Adjusts the background color of the input.</li>
             <li><strong><code>textColor</code></strong>: Modifies the color of the input text and label.</li>
@@ -290,7 +290,7 @@ import CInput from &quot;@cmmv/ui/components/CInput.vue&quot;;
 
         <p>This flexibility allows for dynamic and visually appealing designs, tailored to specific use cases or branding guidelines.</p>
 
-        <table class="w-full text-left border-collapse border-0">
+        <table class="w-full text-left border-collapse border-0 doc-table">
             <thead>
                 <tr>
                     <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
@@ -321,12 +321,10 @@ import CInput from &quot;@cmmv/ui/components/CInput.vue&quot;;
             </tbody>
         </table>
 
-        <h2 class="mt-4">Preview</h2>
-
         <c-card class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
             <div class="lg:w-2/5 w-full">
-                <c-input 
-                    id="custom" 
+                <c-input
+                    id="custom"
                     label="Custom Input"
                     bgColor="bg-blue-600"
                     textColor="text-white"
@@ -337,8 +335,8 @@ import CInput from &quot;@cmmv/ui/components/CInput.vue&quot;;
 
         <pre>
         <code class="code-hightlight language-vue">&lt;template&gt;
-    &lt;c-input 
-        id=&quot;custom&quot; 
+    &lt;c-input
+        id=&quot;custom&quot;
         label=&quot;Custom Input&quot;
         bgColor=&quot;bg-blue-600&quot;
         textColor=&quot;text-white&quot;

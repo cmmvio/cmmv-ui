@@ -3,12 +3,12 @@
         <h1>Loader</h1>
 
         <p>
-            The <code>CLoader (alias: c-loader)</code> component is a flexible wrapper designed for displaying custom loading animations or SVGs. 
+            The <code>CLoader (alias: c-loader)</code> component is a flexible wrapper designed for displaying custom loading animations or SVGs.
             It provides properties for controlling the width, height, and color of the content, with a dynamic slot to adapt custom loading designs.
             The default SVG animations used in examples are taken from the <a href="https://github.com/n3r4zzurr0/svg-spinners" target="_blank" rel="noopener noreferrer">SVG Spinners</a> project.
         </p>
 
-        <table class="w-full text-left border-collapse border-0">
+        <table class="w-full text-left border-collapse border-0 doc-table">
             <thead>
                 <tr style="border-bottom: 1px solid #ccc;">
                     <th style="text-align: left; padding: 8px;">Prop</th>
@@ -40,7 +40,7 @@
         </table>
 
         <h2>Slots</h2>
-        <table class="w-full text-left border-collapse border-0">
+        <table class="w-full text-left border-collapse border-0 doc-table">
             <thead>
                 <tr style="border-bottom: 1px solid #ccc;">
                     <th style="text-align: left; padding: 8px;">Slot Name</th>
@@ -51,7 +51,7 @@
                 <tr>
                     <td style="padding: 8px;">default</td>
                     <td style="padding: 8px;">
-                    The default slot accepts custom loading animations or content. 
+                    The default slot accepts custom loading animations or content.
                     It provides scoped properties: <code>color</code>, <code>width</code>, and <code>height</code> to dynamically adapt the content.
                     </td>
                 </tr>
@@ -60,7 +60,11 @@
 
         <h3>Basic Usage</h3>
 
-        <c-card 
+        <p>
+            The basic usage example demonstrates how to quickly integrate the <code>CLoader</code> component with minimal configuration. By setting properties like <code>width</code>, <code>height</code>, and <code>color</code>, you can easily customize the appearance of the loading animation to fit your design needs.
+        </p>
+
+        <c-card
             class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4"
         >
             <Loader90Ring width="64" height="64"></Loader90Ring>
@@ -78,13 +82,13 @@
 &lt;/c-loading&gt;</code>
   </pre>
 
-        <h2>Custom</h2>
+        <h3>Custom</h3>
 
         <p>
             The <code>CLoader</code> component allows you to integrate custom loading animations effortlessly. Below are a few examples using different loaders, which can be styled dynamically through the component's properties. These examples demonstrate how to utilize the scoped slot to render tailored SVG-based animations with varying colors, sizes, and designs.
         </p>
 
-        <c-card 
+        <c-card
             class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4"
         >
             <Loader270Ring width="24" height="24" color="text-slate-500"></Loader270Ring>
@@ -107,14 +111,22 @@
     </pre>
 
         <!-- All -->
-        <h2>All Loading</h2>
-            
-        <c-card 
+        <h3>All Loading</h3>
+
+        <p>
+            This section provides a complete list of available loaders, allowing developers to quickly browse and select the most suitable animation for their applications. Each loader is optimized for performance and fully supports dynamic customization through properties like <code>width</code>, <code>height</code>, and <code>color</code>.
+        </p>
+
+        <p>
+            By clicking on a loader, its implementation code is automatically copied to the clipboard, making it easy to integrate into your project. This feature streamlines the development workflow, ensuring a seamless experience when working with loading indicators across different UI components.
+        </p>
+
+        <c-card
             class="m-auto mt-4 px-4 py-10 items-center grid grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 2xl:grid-cols-10 gap-4"
         >
-            <div 
-                v-for="loader in resolvedIcons" 
-                :key="loader.name" 
+            <div
+                v-for="loader in resolvedIcons"
+                :key="loader.name"
                 class="relative flex items-center justify-center cursor-pointer group"
                 @click="copyToClipboard(loader.code)"
             >
@@ -154,7 +166,7 @@ onMounted(async () => {
                 ...loader,
                 component: markRaw(component.default),
             });
-        } 
+        }
     }
 });
 

@@ -53,15 +53,16 @@
                         <!-- Progress Bar -->
                         <div v-if="!permanent && duration" class="relative mt-3 h-1 w-full bg-gray-200 dark:bg-gray-500 rounded">
                             <div
-                            :style="{ width: `${progress}%` }"
-                            class="absolute h-full bg-indigo-500 dark:bg-indigo-400 rounded transition-all duration-100"
-                            />
-                        </div>
+                                :style="{ width: `${progress}%` }"
+                                class="absolute h-full bg-indigo-500 dark:bg-indigo-400 rounded transition-all duration-100"
+                            >
+                            </div>
                         </div>
                     </div>
-                </transition>
-            </div>
+                </div>
+            </transition>
         </div>
+    </div>
 </template>
 
 <style scoped>
@@ -79,7 +80,7 @@
     transform: translateY(2rem);
 }
 </style>
-  
+
 <script setup>
 import { ref, onUnmounted, markRaw } from "vue";
 import IconXMark from "@components/icons/IconXMark.vue";
@@ -110,7 +111,7 @@ const props = defineProps({
         default: false,
     },
 });
-  
+
 const visible = ref(false);
 const title = ref("");
 const content = ref("");
@@ -118,12 +119,12 @@ const icon = ref(null);
 const duration = ref(5000);
 const progress = ref(100);
 let interval = null;
-  
+
 function closeNotification() {
     clearInterval(interval);
     visible.value = false;
 }
-  
+
 function setNotification({ newTitle, newContent, newIcon, newDuration }) {
     if(newTitle)
         title.value = newTitle;
@@ -137,19 +138,19 @@ function setNotification({ newTitle, newContent, newIcon, newDuration }) {
     if(newDuration)
         duration.value = newDuration;
 }
-  
+
 function showNotification(options) {
     setNotification(options);
     visible.value = true;
-  
-    if (duration.value && !props.permanent) 
+
+    if (duration.value && !props.permanent)
         startTimer();
 }
-  
+
 function startTimer() {
     clearInterval(interval);
     progress.value = 100;
-  
+
     const step = (100 / duration.value) * 100;
     interval = setInterval(() => {
       if (progress.value <= 0) {
@@ -159,14 +160,13 @@ function startTimer() {
       }
     }, 100);
 }
-  
+
 onUnmounted(() => {
     clearInterval(interval);
 });
-  
+
 defineExpose({
     showNotification,
 });
 </script>
-  
-  
+

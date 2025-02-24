@@ -17,10 +17,10 @@
             bgColor="bg-white dark:bg-zinc-800 w-6/12 m-auto"
             class="p-8"
         >
-            <div class="m-auto w-6/12 mb-8">
+            <div class="m-auto w-6/12 mb-8 max-w-[500px]">
                 <h1 class="mb-4">Login</h1>
 
-                <c-form 
+                <c-form
                     v-model="form"
                     @submit.prevent="handleSubmit"
                 >
@@ -124,7 +124,7 @@ const handleSubmit = () =&gt; {
         <!-- Props -->
         <h2 class="text-lg font-semibold mt-8">Props</h2>
 
-        <table class="w-full text-left border-collapse border-0">
+        <table class="w-full text-left border-collapse border-0 doc-table">
             <thead>
                 <tr>
                     <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
@@ -146,7 +146,7 @@ const handleSubmit = () =&gt; {
         <!-- Events -->
         <h2 class="text-lg font-semibold mt-8">Events</h2>
 
-        <table class="w-full text-left border-collapse border-0">
+        <table class="w-full text-left border-collapse border-0 doc-table">
             <thead>
                 <tr>
                     <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Event</th>

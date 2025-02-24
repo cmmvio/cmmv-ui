@@ -6,7 +6,7 @@
             The <code>CBadge (alias: c-badge)</code> component is a versatile utility for adding small count indicators, status dots, or labels to elements like buttons, icons, or other components. It offers extensive customization options for appearance and placement.
         </p>
 
-        <table class="w-full text-left border-collapse border-0 rounded-md">
+        <table class="w-full text-left border-collapse border-0 rounded-md doc-table">
             <thead>
                 <tr>
                     <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
@@ -72,9 +72,9 @@
         <p>A simple badge with default styles, typically used to indicate counts or notifications.</p>
 
         <card-docs>
-            <c-button 
-                type="button" 
-                variant="plain" 
+            <c-button
+                type="button"
+                variant="plain"
                 bgColor="bg-zinc-800 hover:bg-zinc-700"
                 rounded="full"
                 class="m-auto"
@@ -85,9 +85,9 @@
         </card-docs>
 
         <pre>
-            <code class="code-highlight language-html">&lt;c-button 
-    type="button" 
-    variant="plain" 
+            <code class="code-highlight language-html">&lt;c-button
+    type="button"
+    variant="plain"
     bgColor="bg-zinc-800 hover:bg-zinc-700"
     rounded="full"
     class="m-auto"
@@ -102,9 +102,9 @@
         <p>Use the <code>dot</code> prop to display a badge as a small circular dot, ideal for status indicators.</p>
 
         <card-docs>
-            <c-button 
-                type="button" 
-                variant="plain" 
+            <c-button
+                type="button"
+                variant="plain"
                 bgColor="bg-zinc-800 hover:bg-zinc-700"
                 rounded="full"
                 class="m-auto"
@@ -126,17 +126,17 @@
         <p>Badges support fully customizable background and text colors using Tailwind classes.</p>
 
         <card-docs>
-            <c-button 
-                type="button" 
-                variant="plain" 
+            <c-button
+                type="button"
+                variant="plain"
                 bgColor="bg-zinc-800"
                 class="px-6 m-auto"
             >
                 <IconBell class="text-white" />
-                <c-badge 
-                    content="99+" 
-                    bgColor="bg-blue-600" 
-                    textColor="text-white" 
+                <c-badge
+                    content="99+"
+                    bgColor="bg-blue-600"
+                    textColor="text-white"
                     class="absolute"
                     style="right: 0px; top: 0px;"
                 />
@@ -146,10 +146,10 @@
         <pre>
             <code class="code-highlight language-html">&lt;c-button type="button" class="relative"&gt;
     &lt;IconBell class="text-white" /&gt;
-    &lt;c-badge 
-        content="99+" 
-        bgColor="bg-blue-600" 
-        textColor="text-white" 
+    &lt;c-badge
+        content="99+"
+        bgColor="bg-blue-600"
+        textColor="text-white"
         class="absolute"
         style="right: 0px; top: 0px;"
     /&gt;
@@ -157,13 +157,13 @@
         </pre>
 
         <h2>Floating Badge</h2>
-        
+
         <p>Floating badges can be precisely positioned using <code>offsetX</code> and <code>offsetY</code>.</p>
 
         <card-docs>
-            <c-button 
-                type="button" 
-                variant="plain" 
+            <c-button
+                type="button"
+                variant="plain"
                 bgColor="bg-zinc-800"
                 class="px-6 py-4 m-auto relative"
             >
@@ -175,13 +175,13 @@
         <pre>
             <code class="code-highlight language-html">&lt;c-button type="button" class="relative"&gt;
     &lt;IconBell class="text-white" /&gt;
-    &lt;c-badge 
-        content="3" 
-        floating 
-        offsetX="10px" 
-        offsetY="0px" 
-        bgColor="bg-yellow-800" 
-        class="absolute" 
+    &lt;c-badge
+        content="3"
+        floating
+        offsetX="10px"
+        offsetY="0px"
+        bgColor="bg-yellow-800"
+        class="absolute"
     /&gt;
 &lt;/c-button&gt;</code>
         </pre>

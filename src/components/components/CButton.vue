@@ -112,16 +112,20 @@ const roundedStyles: Record<string, string> = reactive({
 });
 
 const variantStyles: Record<string, string> = reactive({
-    elevated: "text-black shadow-md", 
-    flat: "text-black", 
-    tonal: "", 
-    outlined: "border border-gray-300 text-black", 
+    elevated: "text-black shadow-md",
+    flat: "text-black",
+    tonal: "",
+    outlined: "border border-gray-300 text-black",
     text: "text-blue-600 hover:underline",
     plain: "bg-transparent text-black"
 });
 
 function handleClick(event: MouseEvent) {
-    if (props.disabled) return;
+    if (props.disabled) {
+        event.preventDefault();
+        event.stopPropagation();
+        return;
+    }
 
     emit("click", event);
 
@@ -145,7 +149,7 @@ function handleClick(event: MouseEvent) {
     const existingRipple = button.querySelector(".ripple");
 
     if (existingRipple) existingRipple.remove();
-    
+
     button.appendChild(circle);
 }
 </script>
