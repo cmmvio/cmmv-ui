@@ -9,6 +9,8 @@ if [ ! -d "$TARGET_DIR" ]; then
 fi
 
 # Remove specific directories
+rm -rf "$TARGET_DIR/components"
+rm -rf "$TARGET_DIR/types"
 rm -rf "$TARGET_DIR/core"
 rm -rf "$TARGET_DIR/assets"
 rm -rf "$TARGET_DIR/views"

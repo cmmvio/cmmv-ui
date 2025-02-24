@@ -3,7 +3,7 @@
         <slot></slot>
     </header>
 </template>
-  
+
 <script setup lang="ts">
 defineProps({
     dense: {
@@ -12,8 +12,8 @@ defineProps({
     },
 });
 </script>
-  
-<style scoped>
+
+<style>
 .c-toolbar {
     display: flex;
     align-items: center;
@@ -27,4 +27,3 @@ defineProps({
     height: 48px;
 }
 </style>
-  

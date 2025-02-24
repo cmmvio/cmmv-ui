@@ -6,6 +6,7 @@ import vue from '@vitejs/plugin-vue';
 import Components from 'unplugin-vue-components/vite';
 import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers';
 import viteTsconfigPaths from 'vite-tsconfig-paths';
+import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js'
 import dts from 'vite-plugin-dts';
 
 export default defineConfig(({ mode }) => {
@@ -25,6 +26,7 @@ export default defineConfig(({ mode }) => {
         plugins: [
             vue(),
             viteTsconfigPaths(),
+            cssInjectedByJsPlugin(),
             Components({
                 resolvers: [AntDesignVueResolver()],
                 dirs: ['src/components'],
@@ -75,6 +77,7 @@ export default defineConfig(({ mode }) => {
                 },
               }
             : {
+                cssCodeSplit: true,
                   lib: {
                       entry: 'src/module.ts',
                       name: 'CmmvUI',
@@ -89,9 +92,8 @@ export default defineConfig(({ mode }) => {
                         },
                         preserveModules: true,
                         preserveModulesRoot: 'src',
-                      },                      
+                      },
                   },
-                  cssCodeSplit: true,
               },
 
         async closeBundle() {
