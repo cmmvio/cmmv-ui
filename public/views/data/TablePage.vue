@@ -6,7 +6,7 @@
             The <code>CTable</code> (alias: <code>c-table</code>) component in the <code>@cmmv/ui</code> framework allows the creation of dynamic and customizable tables. It supports custom styling, rounded borders, and theme-based colors for better adaptation to the application's design.
         </p>
 
-        <table class="w-full text-left border-collapse border-0 doc-table">
+        <table-docs>
             <thead>
                 <tr>
                     <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
@@ -59,7 +59,9 @@
                     <td class="border-b px-4 py-2">Defines the text color for the table.</td>
                 </tr>
             </tbody>
-        </table>
+        </table-docs>
+
+        <br/>
 
         <!-- Basic Example -->
         <h3>Basic Example</h3>
@@ -68,7 +70,7 @@
             The Basic Example demonstrates how to use the <code>CTable</code> component with a simple dataset. It defines a list of column headers and an array of items, where each row corresponds to an object in the <code>tableData</code> array. This example shows how easy it is to render structured data dynamically without manually creating table rows and columns.
         </p>
 
-        <c-card class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+        <c-card variant="flat" class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
             <c-table
                 :items="items"
                 :headers="headers"
@@ -104,7 +106,7 @@ const tableData = [
             The <code>checked</code> property allows users to select multiple rows using checkboxes. The selected items can be retrieved using <code>@update:selected</code> event, which emits an array of selected rows.
         </p>
 
-        <c-card class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+        <c-card variant="flat" class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
             <c-table
                 :items="items"
                 :headers="headers"
@@ -155,12 +157,21 @@ const onSelectionChange = (selected) => {
 };
 &lt;/script&gt;</code>
         </pre>
+
+        <PagePagination
+            previous="Tooltip"
+            previousLink="/tooltip"
+            next=""
+            nextLink=""
+        />
     </BaseLayout>
 </template>
 
 <script setup>
 import { ref } from "vue";
 import BaseLayout from "../../layout/BaseLayout.vue";
+import TableDocs from "../../components/TableDocs.vue";
+import PagePagination from "../../layout/PagePagination.vue";
 
 const headers = ref([
     { label: "ID", key: "id" },

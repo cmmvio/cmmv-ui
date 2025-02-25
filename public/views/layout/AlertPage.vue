@@ -198,10 +198,18 @@
     A critical error has occurred. Please contact support.
 &lt;/c-alert&gt;</code>
         </pre>
+
+        <PagePagination
+            previous="Accordion"
+            previousLink="/accordion"
+            next="Avatar"
+            nextLink="/avatar"
+        />
     </BaseLayout>
 </template>
 
 <script setup>
 import BaseLayout from "../../layout/BaseLayout.vue";
+import PagePagination from "../../layout/PagePagination.vue";
 import CardDocs from "../../components/CardDocs.vue";
 </script>

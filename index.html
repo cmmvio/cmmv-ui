@@ -18,8 +18,13 @@
         <link rel="stylesheet" href="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.css" />
         <link rel="stylesheet" href="/assets/docs.css" />
         <script src="/assets/tailwind.min.js"></script>
+        <script>
+            tailwind.config = {
+                darkMode: 'class',
+            }
+        </script>
     </head>
-    <body class="bg-gray-200 dark:bg-zinc-900 dark">
+    <body class="bg-gray-200 dark:bg-zinc-900">
         <div id="app"></div>
         <script type="module" src="/public/client.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/highlight.min.js"></script>
@@ -29,7 +34,7 @@
             hljs.registerLanguage("vue", window.hljsDefineVue);
             hljs.addPlugin(new CopyButtonPlugin());
             hljs.highlightAll();
-          </script>
+        </script>
         <!-- Google tag (gtag.js) -->
         <script type="text/javascript">
             document.addEventListener("DOMContentLoaded", function() {

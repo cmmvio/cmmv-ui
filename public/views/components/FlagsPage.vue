@@ -4,7 +4,7 @@
 
         <p>The <code>CFlag (alias: c-flag)</code> component in the <code>@cmmv/ui</code> framework provides an easy way to use country flags as SVG icons. The flags are imported from the <a href="https://github.com/lipis/flag-icons" target="_blank" rel="noopener noreferrer">flag-icons</a> project and adapted for seamless integration with Vue and the CMMV UI framework. Below is the guide to use the <code>CFlag</code> component.</p>
 
-        <table class="w-full text-left border-collapse border-0 doc-table">
+        <table-docs>
             <thead>
                 <tr>
                     <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
@@ -39,10 +39,11 @@
                     <td class="border-b px-4 py-2">Sets the accessible label for the flag, used by screen readers.</td>
                 </tr>
             </tbody>
-        </table>
+        </table-docs>
 
         <!-- Simple Flags -->
         <c-card
+            variant="flat"
             class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4"
         >
             <c-flag iso="br" size="sm" />
@@ -62,17 +63,14 @@
 &lt;/template&gt;</code>
         </pre>
 
-
-
-
         <!-- Variants -->
-        <h2>Flag Variants</h2>
+        <h3>Flag Variants</h3>
 
         <p>
             The <code>CFlag</code> component supports a variety of sizes and styling options. By default, the component uses the ISO 3166-1 alpha-2 country codes to identify flags, ensuring compatibility with international standards. You can combine this with utility classes for additional customization.
         </p>
 
-        <table class="w-full text-left border-collapse border-0 doc-table">
+        <table-docs>
             <thead>
                 <tr>
                     <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Country</th>
@@ -95,7 +93,7 @@
                     <td class="border-b px-4 py-2">{{ country.numeric }}</td>
                 </tr>
             </tbody>
-        </table>
+        </table-docs>
 
         <pre>
             <code class="code-highlight language-vue">&lt;template&gt;
@@ -108,11 +106,12 @@
         </pre>
 
         <!-- Icon Buttons -->
-        <h2>Icon Buttons with Flags</h2>
+        <h3>Icon Buttons with Flags</h3>
 
         <p>The <code>CFlag</code> component can also be used within button components to create flag-based interactions. By combining the <code>CFlag</code> component with <code>CButton</code>, you can easily build buttons that visually represent countries.</p>
 
         <c-card
+            variant="flat"
             class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:justify-around sm:space-y-0 sm:space-x-4"
         >
             <c-button
@@ -163,6 +162,13 @@
     &lt;/c-button&gt;
 &lt;/template&gt;</code>
         </pre>
+
+        <PagePagination
+            previous="Button"
+            previousLink="/button"
+            next="Icon"
+            nextLink="/icon"
+        />
     </BaseLayout>
 </template>
 
@@ -175,6 +181,8 @@
 <script setup>
 import Countries from "@composables/CountriesList.ts";
 import BaseLayout from "../../layout/BaseLayout.vue";
+import TableDocs from "../../components/TableDocs.vue";
+import PagePagination from "../../layout/PagePagination.vue";
 import CCard from "@components/layout/CCard.vue";
 import CButton from "@components/components/CButton.vue";
 const countries = Countries;

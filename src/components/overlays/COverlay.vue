@@ -1,8 +1,8 @@
 <template>
     <div
         v-if="modelValue"
-        class="fixed inset-0 z-[var(--z-index)] flex items-center justify-center transition-opacity"
-        style="--z-index: 50;"
+        class="fixed inset-0 z-[var(--z-index)] flex items-center justify-center transition-opacity c-overlay"
+        style="--z-index: 50; transition-timing-function: cubic-bezier(.4,0,.2,1)"
     >
         <!-- Background -->
         <div
@@ -20,6 +20,13 @@
         </div>
     </div>
 </template>
+
+<style scoped>
+.c-overlay {
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+}
+</style>
 
 <script setup lang="ts">
 import { defineProps, defineEmits } from "vue";

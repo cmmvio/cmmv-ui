@@ -5,7 +5,7 @@
 
         <p>The <code>CProgressCircular (alias: c-progress-circular)</code> component is a flexible and customizable progress indicator for both determinate and indeterminate states. Below, you'll find examples and detailed usage of all the props supported by this component.</p>
 
-        <table class="w-full text-left border-collapse border-0 doc-table">
+        <table-docs>
             <thead>
                 <tr>
                     <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
@@ -52,10 +52,10 @@
                     <td class="border-b px-4 py-2">When true, displays an animated indeterminate progress indicator.</td>
                 </tr>
             </tbody>
-        </table>
-
+        </table-docs>
 
         <c-card
+            variant="flat"
             class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4"
         >
             <c-progress-circular :value="20" :size="50" :fillColor="'#4caf50'" :width="10"></c-progress-circular>
@@ -107,6 +107,7 @@
         <p>Use the default slot to add custom content inside the progress circle.</p>
 
         <c-card
+            variant="flat"
             class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4"
         >
             <c-progress-circular :value="75" :size="100" :fillColor="'#4caf50'" :width="8">
@@ -137,6 +138,7 @@
         <p>The <code>indeterminate</code> prop creates an animated loading indicator, ideal for scenarios where the progress is unknown.</p>
 
         <c-card
+            variant="flat"
             class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4"
         >
             <c-progress-circular
@@ -163,6 +165,7 @@
         <p>The <code>size</code> prop defines the diameter of the progress circle in pixels.</p>
 
         <c-card
+            variant="flat"
             class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4"
         >
             <c-progress-circular :value="50" :size="80" :fillColor="'#ff5722'" :width="10"></c-progress-circular>
@@ -200,6 +203,7 @@
         <p>The <code>rotate</code> prop adjusts the starting position of the progress arc. It ranges from 0 to 360 degrees.</p>
 
         <c-card
+            variant="flat"
             class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4"
         >
             <c-progress-circular :value="25" :rotate="0" :fillColor="'#ff9800'" :size="100" :width="8"></c-progress-circular>
@@ -240,6 +244,7 @@
         <p>The <code>bgColor</code> prop sets the background circle's stroke color.</p>
 
         <c-card
+            variant="flat"
             class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4"
         >
             <c-progress-circular
@@ -268,6 +273,7 @@
         <p>This example demonstrates a real-time progress animation. The progress value updates dynamically, and when it reaches 100%, it resets to 0 and starts again.</p>
 
         <c-card
+            variant="flat"
             class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center justify-center space-y-4"
         >
             <c-progress-circular
@@ -310,12 +316,21 @@
     });
 &lt;/script&gt;</code>
         </pre>
+
+        <PagePagination
+            previous="Progress Bar"
+            previousLink="/progress-bar"
+            next="Tooltip"
+            nextLink="/tooltip"
+        />
     </BaseLayout>
 </template>
 
 <script setup>
 import { ref, onMounted } from "vue";
 import BaseLayout from "../../layout/BaseLayout.vue";
+import PagePagination from "../../layout/PagePagination.vue";
+import TableDocs from "../../components/TableDocs.vue";
 const value = ref(90);
 const dynamicValue = ref(0);
 

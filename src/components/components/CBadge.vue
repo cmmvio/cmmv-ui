@@ -1,6 +1,6 @@
 <template>
     <div
-        class="inline-flex items-center justify-center "
+        class="inline-flex items-center justify-center select-none"
         :class="{
             'inline-flex': inline,
             'absolute': floating === true,
@@ -26,7 +26,7 @@
 </template>
 
 <script setup>
-import { computed } from "vue";
+import { computed, defineProps } from "vue";
 
 const props = defineProps({
     content: {
@@ -71,7 +71,6 @@ const props = defineProps({
         default: "0.3rem",
     },
 });
-
 
 const badgeStyle = computed(() => ({
     top: props.floating ? props.offsetY : undefined,

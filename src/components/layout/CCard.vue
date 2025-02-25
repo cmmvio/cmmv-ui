@@ -1,6 +1,6 @@
 <template>
     <div
-        class="rounded-lg shadow w-full m-auto transition duration-200"
+        class="rounded-lg w-full m-auto transition duration-200"
         :class="[
             roundedStyles[rounded],
             bgColor,

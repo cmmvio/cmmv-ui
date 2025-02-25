@@ -85,6 +85,8 @@
                 </div>
 
                 <div class="justify-between align-middle text-center mr-2 text-white flex">
+                    <SwitchTheme />
+
                     <!-- GitHub Link -->
                     <a
                         href="https://github.com/cmmvio/cmmv-ui"
@@ -92,16 +94,16 @@
                         target="_blank"
                         class="mr-2"
                     >
-                        <IconGithub class="text-black w-8 h-8 dark:text-slate-50 text-2xl p-1 hover:text-neutral-300"></IconGithub>
+                        <IconGithub class="text-black w-8 h-8 dark:text-slate-50 text-2xl p-1 hover:text-neutral-300 dar:hover:text-neutral-800"></IconGithub>
                     </a>
                 </div>
             </div>
         </nav>
 
-        <main class="flex flex-wrap mx-auto dark">
+        <main class="flex flex-wrap mx-auto">
             <div
                 id="sidebar-menu"
-                :class="[{ show: isMenuVisible }, 'dark bg-gray-200 dark:bg-zinc-900 w-60 fixed z-40 overflow-auto text-slate-800 leftbar h-screen lg:block pb-10']"
+                :class="[{ show: isMenuVisible }, 'bg-gray-200 dark:bg-zinc-900 w-60 fixed z-40 overflow-auto text-slate-800 leftbar h-screen lg:block pb-10']"
             >
                 <Navbar ref="navbar"></Navbar>
             </div>
@@ -120,6 +122,7 @@
 <script setup>
 import { ref } from 'vue';
 import Navbar from "./Navbar.vue";
+import SwitchTheme from "./SwitchTheme.vue";
 import IconGithub from "@components/icons/IconGithub.vue";
 import IconBars3 from "@components/icons/IconBars3.vue";
 

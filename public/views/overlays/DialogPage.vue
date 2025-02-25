@@ -8,7 +8,7 @@
             The dialog can be opened programmatically or via a slot activator.
         </p>
 
-        <table class="w-full text-left border-collapse border-0 rounded-md doc-table">
+        <table-docs>
             <thead>
                 <tr>
                     <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
@@ -55,7 +55,7 @@
                     <td class="border-b px-4 py-2">Opacity of the overlay background.</td>
                 </tr>
             </tbody>
-        </table>
+        </table-docs>
 
         <h3>Basic Dialog</h3>
 
@@ -166,6 +166,8 @@
 import { ref } from 'vue';
 import BaseLayout from "../../layout/BaseLayout.vue";
 import CardDocs from "../../components/CardDocs.vue";
+import TableDocs from "../../components/TableDocs.vue";
+import PagePagination from "../../layout/PagePagination.vue";
 
 const showDialog = ref(false);
 const fullscreenDialog = ref(false);

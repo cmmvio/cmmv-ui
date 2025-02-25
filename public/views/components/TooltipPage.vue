@@ -4,7 +4,7 @@
 
         <p>The <code>CTooltip (alias: c-tooltip)</code> component in the <code>@cmmv/ui</code> framework provides an elegant way to display contextual information on hover. It supports different positions, customizable styles, and an optional arrow for a more polished look.</p>
 
-        <table class="w-full text-left border-collapse border-0 doc-table">
+        <table-docs>
             <thead>
                 <tr>
                     <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
@@ -57,8 +57,7 @@
                     <td class="border-b px-4 py-2">Sets the color of the tooltip's arrow. Accepts any valid Tailwind CSS color class.</td>
                 </tr>
             </tbody>
-        </table>
-
+        </table-docs>
 
         <!-- Tooltip Positions -->
         <h3>Positions</h3>
@@ -68,6 +67,7 @@
         </p>
 
         <c-card
+            variant="flat"
             class="mx-auto mt-4 px-4 py-20 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4"
         >
             <div class="flex flex-col items-start space-y-4">
@@ -125,6 +125,7 @@
         </p>
 
         <c-card
+            variant="flat"
             class="mx-auto mt-4 px-4 py-20 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4"
         >
             <c-tooltip
@@ -162,6 +163,7 @@
         </p>
 
         <c-card
+            variant="flat"
             class="mx-auto mt-4 px-4 py-20 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4"
         >
             <c-tooltip
@@ -188,6 +190,12 @@
 &lt;/template&gt;</code>
         </pre>
 
+        <PagePagination
+            previous="Progress Circlar"
+            previousLink="/progress-circular"
+            next="Table"
+            nextLink="/table"
+        />
     </BaseLayout>
 </template>
 
@@ -200,6 +208,8 @@
 <script setup>
 import BaseLayout from "../../layout/BaseLayout.vue";
 import CardDocs from "../../components/CardDocs.vue";
+import TableDocs from "../../components/TableDocs.vue";
+import PagePagination from "../../layout/PagePagination.vue";
 import CCard from "@components/layout/CCard.vue";
 import CTooltip from "@components/components/CTooltip.vue";
 </script>

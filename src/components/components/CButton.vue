@@ -2,8 +2,8 @@
     <component
         :is="buttonType"
         :type="type"
-        class="c-button font-semibold shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 relative"
-        :class="[sizes[size], roundedStyles[rounded], variantStyles[variant], computedBgColor, textColor, { 'opacity-50': disabled, 'cursor-not-allowed': disabled }]"
+        class="c-button font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 relative"
+        :class="[sizes[size], roundedStyles[rounded], variantStyles[variant], computedBgColor, textColor, shadow, { 'opacity-50': disabled, 'cursor-not-allowed': disabled }]"
         :aria-busy="loading ? true : undefined"
         :disabled="disabled"
         :tabindex="disabled || loading ? -1 : undefined"
@@ -81,6 +81,10 @@ const props = defineProps({
     textColor: {
         type: String,
         default: "text-white"
+    },
+    shadow: {
+        type: String,
+        default: "shadow-sm"
     },
     disabled: {
         type: Boolean,

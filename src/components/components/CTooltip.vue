@@ -107,10 +107,23 @@ const positionClasses: Record<string, string> = {
     right: "left-full top-1/2 transform -translate-y-1/2 ml-2",
 };
 
-const arrowClasses = computed<Record<string, string>>(() => ({
-    top: `bottom-[-13px] left-1/2 transform -translate-x-1/2 border-[8px] border-l-transparent border-r-transparent border-b-transparent border-t-${props.arrowColor}`,
-    bottom: `top-[-13px] left-1/2 transform -translate-x-1/2 border-[8px] border-l-transparent border-r-transparent border-t-transparent border-b-${props.arrowColor}`,
-    left: `right-[-13px] top-1/2 transform -translate-y-1/2 border-[8px] border-t-transparent border-b-transparent border-r-transparent border-l-${props.arrowColor}`,
-    right: `left-[-13px] top-1/2 transform -translate-y-1/2 border-[8px] border-t-transparent border-b-transparent border-l-transparent border-r-${props.arrowColor}`,
-}));
+const arrowClasses = computed<Record<string, string>>(() => {
+    const customColor = props.arrowColor !== "zinc-900" ? props.arrowColor : "";
+
+    return {
+        top: `bottom-[-13px] left-1/2 transform -translate-x-1/2 border-[8px] border-l-transparent border-r-transparent border-b-transparent ${
+            customColor ? `border-t-${customColor}` : `dark:border-t-${props.arrowColor}`
+        }`,
+        bottom: `top-[-13px] left-1/2 transform -translate-x-1/2 border-[8px] border-l-transparent border-r-transparent border-t-transparent ${
+            customColor ? `border-b-${customColor}` : `dark:border-b-${props.arrowColor}`
+        }`,
+        left: `right-[-13px] top-1/2 transform -translate-y-1/2 border-[8px] border-t-transparent border-b-transparent border-r-transparent ${
+            customColor ? `border-l-${customColor}` : `dark:border-l-${props.arrowColor}`
+        }`,
+        right: `left-[-13px] top-1/2 transform -translate-y-1/2 border-[8px] border-t-transparent border-b-transparent border-l-transparent ${
+            customColor ? `border-r-${customColor}` : `dark:border-r-${props.arrowColor}`
+        }`,
+    };
+});
+
 </script>

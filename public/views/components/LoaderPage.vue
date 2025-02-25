@@ -8,7 +8,7 @@
             The default SVG animations used in examples are taken from the <a href="https://github.com/n3r4zzurr0/svg-spinners" target="_blank" rel="noopener noreferrer">SVG Spinners</a> project.
         </p>
 
-        <table class="w-full text-left border-collapse border-0 doc-table">
+        <table-docs>
             <thead>
                 <tr style="border-bottom: 1px solid #ccc;">
                     <th style="text-align: left; padding: 8px;">Prop</th>
@@ -37,13 +37,16 @@
                     <td style="padding: 8px;">Specifies the color of the loading animation. This value is passed to the slot as a scoped property.</td>
                 </tr>
             </tbody>
-        </table>
+        </table-docs>
 
-        <h2>Slots</h2>
-        <table class="w-full text-left border-collapse border-0 doc-table">
+        <br/>
+
+        <h3>Slots</h3>
+
+        <table-docs>
             <thead>
                 <tr style="border-bottom: 1px solid #ccc;">
-                    <th style="text-align: left; padding: 8px;">Slot Name</th>
+                    <th style="text-align: left; padding: 8px;">Name</th>
                     <th style="text-align: left; padding: 8px;">Description</th>
                 </tr>
             </thead>
@@ -56,7 +59,9 @@
                     </td>
                 </tr>
             </tbody>
-        </table>
+        </table-docs>
+
+        <br/>
 
         <h3>Basic Usage</h3>
 
@@ -65,9 +70,10 @@
         </p>
 
         <c-card
+            variant="flat"
             class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4"
         >
-            <Loader90Ring width="64" height="64"></Loader90Ring>
+            <Loader90Ring width="64" height="64" color="text-neutral-800 dark:text-white"></Loader90Ring>
         </c-card>
 
         <pre>
@@ -89,6 +95,7 @@
         </p>
 
         <c-card
+            variant="flat"
             class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4"
         >
             <Loader270Ring width="24" height="24" color="text-slate-500"></Loader270Ring>
@@ -131,12 +138,21 @@
                 @click="copyToClipboard(loader.code)"
             >
                 <c-tooltip :content="loader.name" position="top">
-                    <component :is="loader.component" width="32" height="32" aria-hidden="true" />
+                    <component :is="loader.component" width="32" height="32" color="text-neutral-600 dark:text-white" aria-hidden="true" />
                 </c-tooltip>
             </div>
         </c-card>
 
         <c-notification ref="notification" iconColor="text-green-500"></c-notification>
+
+        <br/>
+
+        <PagePagination
+            previous="Icon"
+            previousLink="/icon"
+            next="Progress Bar"
+            nextLink="/progress-bar"
+        />
     </BaseLayout>
 </template>
 
@@ -144,6 +160,8 @@
 import { ref, markRaw, reactive, onMounted } from "vue";
 import LoaderList from "@composables/LoaderList.ts";
 import BaseLayout from "../../layout/BaseLayout.vue";
+import TableDocs from "../../components/TableDocs.vue";
+import PagePagination from "../../layout/PagePagination.vue";
 import IconCheck from "@components/icons/IconCheck.vue";
 import * as Icons from "../../../src";
 

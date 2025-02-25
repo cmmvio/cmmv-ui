@@ -11,7 +11,7 @@
             <a href="https://heroicons.com/" target="_blank" rel="noopener noreferrer">Heroicons</a> library, the <code>CIcon</code> is designed to work with any icon library or custom SVGs. This ensures maximum flexibility and adaptability for your projects.
         </p>
 
-        <table class="w-full text-left border-collapse border-0 doc-table">
+        <table-docs>
             <thead>
                 <tr>
                     <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
@@ -40,16 +40,17 @@
                     <td class="border-b px-4 py-2">Sets the accessible label for the icon, used by screen readers.</td>
                 </tr>
             </tbody>
-        </table>
+        </table-docs>
 
         <!-- Simple Example -->
-        <h2 class="text-lg font-semibold mt-8">Simple Example</h2>
+        <h3 class="text-lg font-semibold mt-8">Simple Example</h3>
 
         <p>
             The following example demonstrates the basic usage of the <code>CIcon</code> component with different sizes and colors. You can use it to wrap any SVG or inline icon.
         </p>
 
         <c-card
+            variant="flat"
             class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4"
         >
             <c-icon size="sm" color="text-blue-600">
@@ -90,18 +91,19 @@
         </pre>
 
         <!-- Accessibility -->
-        <h2>Accessibility</h2>
+        <h3>Accessibility</h3>
 
         <p>
             The <code>ariaLabel</code> prop ensures that the <code>CIcon</code> is accessible for screen readers. Use this prop to provide a descriptive label for your icon.
         </p>
 
         <c-card
-            class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4"
+            variant="flat"
+            class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4"
         >
             <c-icon
                 size="lg"
-                color="text-white"
+                color="text-neutral-600 dark:text-white"
                 ariaLabel="User Icon"
             >
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-32 w-32" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -125,13 +127,14 @@
         </pre>
 
         <!-- All -->
-        <h2>All Icons</h2>
+        <h3>All Icons</h3>
 
         <p>
             Below is a complete list of all available icons in the library. Clicking on an icon will copy its implementation code to your clipboard, making it easy to integrate into your project.
         </p>
 
         <c-card
+            variant="flat"
             class="m-auto mt-4 px-4 py-10 items-center grid grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 2xl:grid-cols-10 gap-4"
         >
             <div
@@ -141,7 +144,7 @@
                 @click="copyToClipboard(icon.code)"
             >
                 <c-tooltip :content="icon.name" position="top">
-                    <component :is="icon.component" class="w-8 h-8 text-white" aria-hidden="true" />
+                    <component :is="icon.component" class="w-8 h-8 text-neutral-600 dark:text-white" aria-hidden="true" />
                 </c-tooltip>
             </div>
         </c-card>
@@ -153,6 +156,7 @@
         <br/>
 
         <c-card
+            variant="flat"
             class="m-auto mt-4 px-4 py-10 items-center grid grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 2xl:grid-cols-10 gap-4"
         >
             <div
@@ -162,12 +166,21 @@
                 @click="copyToClipboard(icon.code)"
             >
                 <c-tooltip :content="icon.name" position="top">
-                    <component :is="icon.component" class="w-8 h-8 text-white" aria-hidden="true" />
+                    <component :is="icon.component" class="w-8 h-8 text-neutral-600 dark:text-white" aria-hidden="true" />
                 </c-tooltip>
             </div>
         </c-card>
 
         <c-notification ref="notification" iconColor="text-green-500"></c-notification>
+
+        <br/>
+
+        <PagePagination
+            previous="Flags"
+            previousLink="/flags"
+            next="Loader"
+            nextLink="/loader"
+        />
     </BaseLayout>
 </template>
 
@@ -183,6 +196,8 @@ import { ref, markRaw, reactive, onMounted } from "vue";
 import IconsList from "@composables/IconsList.ts";
 import IconsBrandsList from "@composables/IconsBrandsList.ts";
 import BaseLayout from "../../layout/BaseLayout.vue";
+import PagePagination from "../../layout/PagePagination.vue";
+import TableDocs from "../../components/TableDocs.vue";
 import CCard from "@components/layout/CCard.vue";
 import CIcon from "@components/components/CIcon.vue";
 import IconCheck from "@components/icons/IconCheck.vue";

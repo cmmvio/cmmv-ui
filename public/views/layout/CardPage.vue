@@ -7,7 +7,7 @@
             It supports titles, subtitles, actions, and various customization options for layout, colors, and styles.
         </p>
 
-        <table class="w-full text-left border-collapse border-0 rounded-md doc-table">
+        <table-docs>
             <thead>
                 <tr>
                     <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
@@ -146,7 +146,7 @@
                     </td>
                 </tr>
             </tbody>
-        </table>
+        </table-docs>
 
         <h3>Basic Card</h3>
 
@@ -736,6 +736,7 @@
 import { ref } from 'vue';
 import BaseLayout from "../../layout/BaseLayout.vue";
 import CardDocs from "../../components/CardDocs.vue";
+import TableDocs from "../../components/TableDocs.vue";
 import IconSun from "@components/icons/IconSun.vue";
 import IconCloud from "@components/icons/IconCloud.vue";
 import IconBolt from "@components/icons/IconBolt.vue";

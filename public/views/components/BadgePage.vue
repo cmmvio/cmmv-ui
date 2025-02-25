@@ -6,7 +6,7 @@
             The <code>CBadge (alias: c-badge)</code> component is a versatile utility for adding small count indicators, status dots, or labels to elements like buttons, icons, or other components. It offers extensive customization options for appearance and placement.
         </p>
 
-        <table class="w-full text-left border-collapse border-0 rounded-md doc-table">
+        <table-docs>
             <thead>
                 <tr>
                     <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
@@ -65,7 +65,7 @@
                     <td class="border-b px-4 py-2">Sets the vertical offset for floating badges.</td>
                 </tr>
             </tbody>
-        </table>
+        </table-docs>
 
         <h3>Examples</h3>
 
@@ -75,11 +75,11 @@
             <c-button
                 type="button"
                 variant="plain"
-                bgColor="bg-zinc-800 hover:bg-zinc-700"
                 rounded="full"
-                class="m-auto"
+                shadow=""
+                class="m-auto shadow-none"
             >
-                <IconBell class="text-white" />
+                <IconBell class="text-neutral-600 dark:text-white" />
                 <c-badge content="5" />
             </c-button>
         </card-docs>
@@ -88,11 +88,10 @@
             <code class="code-highlight language-html">&lt;c-button
     type="button"
     variant="plain"
-    bgColor="bg-zinc-800 hover:bg-zinc-700"
     rounded="full"
-    class="m-auto"
+    class="m-auto shadow-none"
 &gt;
-    Notifications
+    &lt;IconBell class="text-neutral-600 dark:text-white" /&gt;
     &lt;c-badge content="5" class="absolute top-0 right-0" /&gt;
 &lt;/c-button&gt;</code>
         </pre>
@@ -183,35 +182,75 @@
 
         <pre>
     <code class="code-highlight language-html">&lt;div class="flex items-center justify-center gap-x-4"&gt;
-    &lt;c-badge bgColor="bg-blue-100 dark:bg-blue-900" textColor="text-blue-800 dark:text-blue-300" rounded="rounded-md" customClass="me-2 px-2.5 py-0.5"&gt;
+    &lt;c-badge
+        bgColor="bg-blue-100 dark:bg-blue-900"
+        textColor="text-blue-800 dark:text-blue-300"
+        rounded="rounded-md"
+        customClass="me-2 px-2.5 py-0.5"
+    &gt;
         Blue
     &lt;/c-badge&gt;
 
-    &lt;c-badge bgColor="bg-neutral-100 dark:bg-neutral-900" textColor="text-neutral-800 dark:text-neutral-300" rounded="rounded-md" customClass="me-2 px-2.5 py-0.5"&gt;
+    &lt;c-badge
+        bgColor="bg-neutral-100 dark:bg-neutral-900"
+        textColor="text-neutral-800 dark:text-neutral-300"
+        rounded="rounded-md"
+        customClass="me-2 px-2.5 py-0.5"
+    &gt;
         Dark
     &lt;/c-badge&gt;
 
-    &lt;c-badge bgColor="bg-red-100 dark:bg-red-900" textColor="text-red-800 dark:text-red-300" rounded="rounded-md" customClass="me-2 px-2.5 py-0.5"&gt;
+    &lt;c-badge
+        bgColor="bg-red-100 dark:bg-red-900"
+        textColor="text-red-800 dark:text-red-300"
+        rounded="rounded-md"
+        customClass="me-2 px-2.5 py-0.5"
+    &gt;
         Red
     &lt;/c-badge&gt;
 
-    &lt;c-badge bgColor="bg-green-100 dark:bg-green-900" textColor="text-green-800 dark:text-green-300" rounded="rounded-md" customClass="me-2 px-2.5 py-0.5"&gt;
+    &lt;c-badge
+        bgColor="bg-green-100 dark:bg-green-900"
+        textColor="text-green-800 dark:text-green-300"
+        rounded="rounded-md"
+        customClass="me-2 px-2.5 py-0.5"
+    &gt;
         Green
     &lt;/c-badge&gt;
 
-    &lt;c-badge bgColor="bg-yellow-100 dark:bg-yellow-900" textColor="text-yellow-800 dark:text-yellow-300" rounded="rounded-md" customClass="me-2 px-2.5 py-0.5"&gt;
+    &lt;c-badge
+        bgColor="bg-yellow-100 dark:bg-yellow-900"
+        textColor="text-yellow-800 dark:text-yellow-300"
+        rounded="rounded-md"
+        customClass="me-2 px-2.5 py-0.5"
+    &gt;
         Yellow
     &lt;/c-badge&gt;
 
-    &lt;c-badge bgColor="bg-indigo-100 dark:bg-indigo-900" textColor="text-indigo-800 dark:text-indigo-300" rounded="rounded-md" customClass="me-2 px-2.5 py-0.5"&gt;
+    &lt;c-badge
+        bgColor="bg-indigo-100 dark:bg-indigo-900"
+        textColor="text-indigo-800 dark:text-indigo-300"
+        rounded="rounded-md"
+        customClass="me-2 px-2.5 py-0.5"
+    &gt;
         Indigo
     &lt;/c-badge&gt;
 
-    &lt;c-badge bgColor="bg-purple-100 dark:bg-purple-900" textColor="text-purple-800 dark:text-purple-300" rounded="rounded-md" customClass="me-2 px-2.5 py-0.5"&gt;
+    &lt;c-badge
+        bgColor="bg-purple-100 dark:bg-purple-900"
+        textColor="text-purple-800 dark:text-purple-300"
+        rounded="rounded-md"
+        customClass="me-2 px-2.5 py-0.5"
+    &gt;
         Purple
     &lt;/c-badge&gt;
 
-    &lt;c-badge bgColor="bg-pink-100 dark:bg-pink-900" textColor="text-pink-800 dark:text-pink-300" rounded="rounded-md" customClass="me-2 px-2.5 py-0.5"&gt;
+    &lt;c-badge
+        bgColor="bg-pink-100 dark:bg-pink-900"
+        textColor="text-pink-800 dark:text-pink-300"
+        rounded="rounded-md"
+        customClass="me-2 px-2.5 py-0.5"
+    &gt;
         Pink
     &lt;/c-badge&gt;
 &lt;/div&gt;</code>
@@ -225,11 +264,10 @@
             <c-button
                 type="button"
                 variant="plain"
-                bgColor="bg-zinc-800 hover:bg-zinc-700"
                 rounded="full"
-                class="m-auto"
+                class="m-auto shadow-none"
             >
-                <IconBell class="text-white" />
+                <IconBell class="text-neutral-800 dark:text-white" />
                 <c-badge dot floating bgColor="bg-green-500" class="absolute top-0 right-0" />
             </c-button>
         </card-docs>
@@ -249,10 +287,10 @@
             <c-button
                 type="button"
                 variant="plain"
-                bgColor="bg-zinc-800"
+                shadow=""
                 class="px-6 m-auto"
             >
-                <IconBell class="text-white" />
+                <IconBell class="text-neutral-800 dark:text-white" />
                 <c-badge
                     content="99+"
                     bgColor="bg-blue-600"
@@ -284,10 +322,10 @@
             <c-button
                 type="button"
                 variant="plain"
-                bgColor="bg-zinc-800"
+                shadow=""
                 class="px-6 py-4 m-auto relative"
             >
-                <IconBell class="text-white" />
+                <IconBell class="text-neutral-800 dark:text-white" />
                 <c-badge content="3" floating offsetX="10px" offsetY="0px" bgColor="bg-yellow-800" class="absolute" />
             </c-button>
         </card-docs>
@@ -390,12 +428,20 @@
 &lt;/div&gt;</code>
 </pre>
 
+        <PagePagination
+            previous="Index"
+            previousLink="/"
+            next="Button"
+            nextLink="/button"
+        />
     </BaseLayout>
 </template>
 
 <script setup>
 import BaseLayout from "../../layout/BaseLayout.vue";
+import PagePagination from "../../layout/PagePagination.vue";
 import CardDocs from "../../components/CardDocs.vue";
+import TableDocs from "../../components/TableDocs.vue";
 import IconCheck from '@components/icons/IconCheck.vue';
 import IconBolt from '@components/icons/IconBolt.vue';
 import IconCog from '@components/icons/IconCog.vue';

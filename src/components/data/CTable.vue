@@ -21,10 +21,10 @@
                     <th
                         v-if="checked"
                         :class="[
-                            textColor,
-                            borderColor,
+                            textColor,,
                             bgHeaderColor,
-                            'border p-3'
+                            borderColor,
+                            'border-b p-3'
                         ]"
                     >
                         <c-checkbox
@@ -40,9 +40,9 @@
                     <th
                         :class="[
                             textColor,
-                            borderColor,
                             bgHeaderColor,
-                            'border p-4'
+                            borderColor,
+                            'border-b p-4'
                         ]"
                         v-for="item in headers"
                     >{{ item.label }}</th>

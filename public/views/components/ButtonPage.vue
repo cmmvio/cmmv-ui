@@ -4,7 +4,7 @@
 
         <p>The <code>CButton (alias: c-button)</code> component in the <code>@cmmv/ui</code> framework provides a versatile button element with customizable properties, styling, and behavior. It supports different sizes, variants, and interaction states while offering a ripple effect for visual feedback on clicks.</p>
 
-        <table class="w-full text-left border-collapse border-0 doc-table">
+        <table-docs>
             <thead>
                 <tr>
                     <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
@@ -57,11 +57,11 @@
                     <td class="border-b px-4 py-2">Custom text color for the button.</td>
                 </tr>
             </tbody>
-        </table>
-
+        </table-docs>
 
         <!-- Simple -->
         <c-card
+            variant="flat"
             class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4"
         >
             <c-button size="sm" type="button">
@@ -98,13 +98,14 @@ import CButton from &quot;@cmmv/ui/components/CButton.vue&quot;;
         </pre>
 
         <!-- Button with Icons -->
-        <h2 class="text-lg font-semibold">Button with Icons</h2>
+        <h3 class="text-lg font-semibold">Button with Icons</h3>
 
         <p>In this example, the <code>CButton</code> component demonstrates its flexibility by allowing the integration of icons directly within its template. Instead of having a predefined functionality to handle icons internally, the component relies on the developer's freedom to include any icon library or custom SVGs as part of the button content.</p>
 
         <p>This approach ensures that the c-button remains lightweight, reusable, and framework-agnostic. Developers can seamlessly integrate icons from any library or source, such as <a href="https://fontawesome.com/" target="_blank" rel="noopener noreferrer">FontAwesome</a>, <a href="https://fonts.google.com/icons" target="_blank" rel="noopener noreferrer">Material Icons</a>, custom SVGs, or even <a href="https://heroicons.com/" target="_blank" rel="noopener noreferrer">@heroicons</a>, as shown in this example.</p>
 
         <c-card
+            variant="flat"
             class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4"
         >
             <c-button
@@ -155,9 +156,7 @@ import { CheckCircleIcon } from &quot;@heroicons/vue/20/solid&quot;;
 &lt;/script&gt;</code>
         </pre>
 
-        <h2>
-            Variants
-        </h2>
+        <h3>Variants</h3>
 
         <p>
             The <code>CButton</code> component supports a variety of style <code>variants</code>, making it highly adaptable to different design requirements. Each variant is defined through the variant property, which allows you to choose the button's visual style. For instance, the "elevated" variant adds a subtle shadow to give the button a sense of depth, making it stand out on the page. The "outlined" variant applies a clear border around the button, creating a clean and lightweight look without a filled background. On the other hand, the "flat" variant removes all shadows and borders, focusing purely on the background and text colors for a minimalistic appearance.
@@ -166,6 +165,7 @@ import { CheckCircleIcon } from &quot;@heroicons/vue/20/solid&quot;;
         <p>For content-heavy layouts or subtle interactions, the "text" style provides a button that looks like a simple text link, seamlessly blending into its surroundings. Similarly, the "plain" variant ensures a very clean and unobtrusive button, with a transparent background that highlights the content within. The combination of these variants with custom properties such as <code>bgColor</code> and <code>textColor</code> provides infinite possibilities for styling.</p>
 
         <c-card
+            variant="flat"
             class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4"
         >
             <c-button
@@ -210,7 +210,7 @@ import { CheckCircleIcon } from &quot;@heroicons/vue/20/solid&quot;;
             </c-button>
         </c-card>
 
-        <table class="w-full text-left border-collapse border-0 doc-table">
+        <table-docs>
             <thead>
                 <tr>
                     <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Variant</th>
@@ -271,7 +271,7 @@ import { CheckCircleIcon } from &quot;@heroicons/vue/20/solid&quot;;
                             size="md"
                             variant="outlined"
                             bgColor="bg-transparent"
-                            textColor="text-white">
+                            textColor="text-neutral-500 dark:text-white">
                             Outlined
                         </c-button>
                     </td>
@@ -299,7 +299,7 @@ import { CheckCircleIcon } from &quot;@heroicons/vue/20/solid&quot;;
                         <c-button
                             size="md"
                             variant="plain"
-                            textColor="text-white">
+                            textColor="text-neutral-500 hover:text-neutral-100 dark:text-white dark:hover:text-neutral-200">
                             Plain
                         </c-button>
                     </td>
@@ -308,14 +308,14 @@ import { CheckCircleIcon } from &quot;@heroicons/vue/20/solid&quot;;
                     </td>
                 </tr>
             </tbody>
-        </table>
+        </table-docs>
 
         <!-- Size -->
-        <h2>Size Variants</h2>
+        <h3>Size Variants</h3>
 
         <p>The <code>CButton</code> component supports multiple sizes, making it adaptable for different contexts, from compact UI elements to prominent call-to-action buttons. The <code>size</code> property controls the dimensions of the button, allowing you to choose from predefined options such as <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, and <code>2xl</code>. These sizes adjust the button's padding and font size to create a visually balanced appearance. Below is a detailed explanation and preview of each size variant:</p>
 
-        <table class="w-full text-left border-collapse border-0 doc-table">
+        <table-docs>
             <thead>
                 <tr>
                     <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Size</th>
@@ -380,10 +380,9 @@ import { CheckCircleIcon } from &quot;@heroicons/vue/20/solid&quot;;
                     </td>
                 </tr>
             </tbody>
-        </table>
+        </table-docs>
 
-        <pre>
-    <code class="code-hightlight language-vue">&lt;template&gt;
+        <pre><code class="code-hightlight language-vue">&lt;template&gt;
     &lt;c-button size=&quot;sm&quot; type=&quot;button&quot;&gt;Click Me&lt;/c-button&gt;
     &lt;c-button size=&quot;md&quot; type=&quot;button&quot;&gt;Click Me&lt;/c-button&gt;
     &lt;c-button size=&quot;lg&quot; type=&quot;button&quot;&gt;Click Me&lt;/c-button&gt;
@@ -393,11 +392,11 @@ import { CheckCircleIcon } from &quot;@heroicons/vue/20/solid&quot;;
 </pre>
 
         <!-- Rounded -->
-        <h2>Rounded Styles</h2>
+        <h3>Rounded Styles</h3>
 
         <p>The <code>CButton</code> also supports customization of its corner radius using the <code>rounded</code> property. This property allows you to define the button's appearance, ranging from sharp corners to fully rounded edges. The available options are <code>none</code>, <code>default</code>, <code>md</code>, and <code>full</code>.</p>
 
-        <table class="w-full text-left border-collapse border-0 doc-table">
+        <table-docs>
             <thead>
                 <tr>
                     <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Rounded</th>
@@ -451,10 +450,9 @@ import { CheckCircleIcon } from &quot;@heroicons/vue/20/solid&quot;;
                     </td>
                 </tr>
             </tbody>
-        </table>
+        </table-docs>
 
-        <pre>
-    <code class="code-hightlight language-vue">&lt;template&gt;
+        <pre><code class="code-hightlight language-vue">&lt;template&gt;
     &lt;c-button rounded=&quot;none&quot; type=&quot;button&quot;&gt;No Rounded&lt;/c-button&gt;
     &lt;c-button rounded=&quot;default&quot; type=&quot;button&quot;&gt;Default&lt;/c-button&gt;
     &lt;c-button rounded=&quot;md&quot; type=&quot;button&quot;&gt;Medium&lt;/c-button&gt;
@@ -463,11 +461,12 @@ import { CheckCircleIcon } from &quot;@heroicons/vue/20/solid&quot;;
 </pre>
 
         <!-- Icon -->
-        <h2>Icon Buttons</h2>
+        <h3>Icon Buttons</h3>
 
         <p>The <code>CButton</code> component can be styled as an icon button, where the button serves as a container for an icon. This is particularly useful for actions that are commonly represented by icons, such as menu toggles, closing modals, or navigation shortcuts. By combining the <code>rounded="full"</code> property with custom sizes and padding, the button becomes a perfectly circular container for the icon.</p>
 
         <c-card
+            variant="flat"
             class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4"
         >
             <c-button
@@ -525,6 +524,14 @@ import { CheckCircleIcon } from &quot;@heroicons/vue/20/solid&quot;;
             </c-button>
         </c-card>
 
+        <br/>
+
+        <PagePagination
+            previous="Badge"
+            previousLink="/badge"
+            next="Flags"
+            nextLink="/flags"
+        />
     </BaseLayout>
 </template>
 
@@ -536,6 +543,8 @@ import { CheckCircleIcon } from &quot;@heroicons/vue/20/solid&quot;;
 
 <script setup>
 import BaseLayout from "../../layout/BaseLayout.vue";
+import TableDocs from "../../components/TableDocs.vue";
+import PagePagination from "../../layout/PagePagination.vue";
 import CCard from "@components/layout/CCard.vue";
 import CButton from "@components/components/CButton.vue";
 import { CheckCircleIcon } from '@heroicons/vue/20/solid';
