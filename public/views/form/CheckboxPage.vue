@@ -87,7 +87,7 @@
         </p>
 
         <card-docs
-            class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4"
+            class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4"
         >
             <c-checkbox
                 v-model="checked"
@@ -114,7 +114,7 @@ const checked = ref(true);
         </p>
 
         <card-docs
-            class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4"
+            class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4"
         >
             <c-checkbox
                 v-model="isChecked"
@@ -146,7 +146,7 @@ const isChecked = ref(false);
         </p>
 
         <card-docs
-            class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4"
+            class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4"
         >
             <c-checkbox label="Small" size="sm" />
             <c-checkbox label="Medium" size="md" />
@@ -169,7 +169,7 @@ const isChecked = ref(false);
         </p>
 
         <card-docs
-            class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4"
+            class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4"
         >
             <c-checkbox label="Indeterminate" indeterminate />
         </card-docs>
@@ -188,7 +188,7 @@ const isChecked = ref(false);
         </p>
 
         <card-docs
-            class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4"
+            class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4"
         >
             <c-checkbox label="Disabled" disabled />
         </card-docs>
@@ -200,20 +200,20 @@ const isChecked = ref(false);
         </pre>
 
         <!-- Color Variations -->
-<h2>Color Variations</h2>
+        <h2>Color Variations</h2>
 
-<p>
-    The <code>CCheckbox</code> supports color customization to align with your application's design. Use the <code>bgColor</code> and <code>textColor</code> props to style the checkbox with any desired color. Below are examples of checkboxes with different color themes.
-</p>
+        <p>
+            The <code>CCheckbox</code> supports color customization to align with your application's design. Use the <code>bgColor</code> and <code>textColor</code> props to style the checkbox with any desired color. Below are examples of checkboxes with different color themes.
+        </p>
 
-<card-docs
-    class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4"
->
-    <c-checkbox label="Blue" bgColor="bg-blue-600" borderColor="border-blue-800" textColor="text-white" checked />
-    <c-checkbox label="Green" bgColor="bg-green-600" borderColor="border-green-800" textColor="text-white" checked />
-    <c-checkbox label="Red" bgColor="bg-red-600" borderColor="border-red-800" textColor="text-white" checked />
-    <c-checkbox label="Yellow" bgColor="bg-yellow-500" borderColor="border-yellow-800" textColor="text-white" checked />
-</card-docs>
+        <card-docs
+            class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4"
+        >
+            <c-checkbox label="Blue" bgColor="bg-blue-600" borderColor="border-blue-800" textColor="text-white" checked />
+            <c-checkbox label="Green" bgColor="bg-green-600" borderColor="border-green-800" textColor="text-white" checked />
+            <c-checkbox label="Red" bgColor="bg-red-600" borderColor="border-red-800" textColor="text-white" checked />
+            <c-checkbox label="Yellow" bgColor="bg-yellow-500" borderColor="border-yellow-800" textColor="text-white" checked />
+        </card-docs>
 
 <pre>
     <code class="code-hightlight language-vue">&lt;template&gt;
@@ -254,7 +254,7 @@ const isChecked = ref(false);
         </p>
 
         <card-docs>
-            <div class="mx-auto px-4 py-6 flex flex-col  justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4">
+            <div class="mx-auto  pb-4 flex flex-col justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4">
                 <c-checkbox v-model="selectedOptions" value="option1" label="Option 1" />
                 <c-checkbox v-model="selectedOptions" value="option2" label="Option 2" />
                 <c-checkbox v-model="selectedOptions" value="option3" label="Option 3" />

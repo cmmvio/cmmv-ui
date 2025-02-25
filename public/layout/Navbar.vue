@@ -83,6 +83,7 @@ export default defineComponent({
                 name: "Layout",
                 isDir: true,
                 children: [
+                    { name: "Accordion", uri: "/accordion" },
                     { name: "Alert", uri: "/alert" },
                     { name: "Avatar", uri: "/avatar" },
                     { name: "Card", uri: "/card" },

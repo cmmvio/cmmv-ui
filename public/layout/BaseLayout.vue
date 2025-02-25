@@ -1,6 +1,5 @@
 <template>
     <div
-        s:docs="docs"
         class="bg-gray-200 dark:bg-zinc-900"
         v-cloak
     >
@@ -102,7 +101,7 @@
         <main class="flex flex-wrap mx-auto dark">
             <div
                 id="sidebar-menu"
-                :class="[{ show: isMenuVisible }, 'dark w-60 fixed z-40 overflow-auto text-slate-800 leftbar h-screen lg:block pb-10']"
+                :class="[{ show: isMenuVisible }, 'dark bg-gray-200 dark:bg-zinc-900 w-60 fixed z-40 overflow-auto text-slate-800 leftbar h-screen lg:block pb-10']"
             >
                 <Navbar ref="navbar"></Navbar>
             </div>

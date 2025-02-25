@@ -67,7 +67,7 @@
             The following example demonstrates a basic radio button with a dynamic label. The label changes based on the <code>v-model</code> binding, reflecting the current state of the selected option.
         </p>
 
-        <card-docs class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4">
+        <card-docs class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4">
             <c-radio
                 v-model="selectedOption"
                 value="option1"
@@ -82,8 +82,16 @@
 
         <pre>
             <code class="code-hightlight language-vue">&lt;template&gt;
-    &lt;c-radio v-model=&quot;selectedOption&quot; value=&quot;option1&quot; label=&quot;Option 1&quot; /&gt;
-    &lt;c-radio v-model=&quot;selectedOption&quot; value=&quot;option2&quot; label=&quot;Option 2&quot; /&gt;
+    &lt;c-radio
+        v-model=&quot;selectedOption&quot;
+        value=&quot;option1&quot;
+        label=&quot;Option 1&quot;
+    /&gt;
+    &lt;c-radio
+        v-model=&quot;selectedOption&quot;
+        value=&quot;option2&quot;
+        label=&quot;Option 2&quot;
+    /&gt;
 &lt;/template&gt;
 
 &lt;script setup&gt;
@@ -100,7 +108,7 @@ const selectedOption = ref(&quot;option1&quot;);
             The <code>CRadio</code> supports multiple sizes to fit different UI contexts. Use the <code>size</code> prop to customize the radio button dimensions. Available sizes include <code>sm</code>, <code>md</code>, and <code>lg</code>.
         </p>
 
-        <card-docs class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4">
+        <card-docs class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4">
             <c-radio label="Small" size="sm" value="small" checked />
             <c-radio label="Medium" size="md" value="medium" checked />
             <c-radio label="Large" size="lg" value="large" checked />
@@ -121,7 +129,7 @@ const selectedOption = ref(&quot;option1&quot;);
             The <code>disabled</code> prop can be used to disable the radio button, making it non-interactive.
         </p>
 
-        <card-docs class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4">
+        <card-docs class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4">
             <c-radio label="Disabled" checked disabled />
         </card-docs>
 
@@ -138,7 +146,7 @@ const selectedOption = ref(&quot;option1&quot;);
             The <code>CRadio</code> supports color customization. Use the <code>bgColor</code> and <code>borderColor</code> props to style the radio button with custom colors.
         </p>
 
-        <card-docs class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4">
+        <card-docs class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4">
             <c-radio label="Blue" bgColor="bg-blue-600" borderColor="border-blue-800" value="blue" checked />
             <c-radio label="Green" bgColor="bg-green-600" borderColor="border-green-800" value="green" checked />
             <c-radio label="Red" bgColor="bg-red-600" borderColor="border-red-800" value="red" checked />
@@ -146,9 +154,24 @@ const selectedOption = ref(&quot;option1&quot;);
 
         <pre>
             <code class="code-hightlight language-vue">&lt;template&gt;
-    &lt;c-radio label=&quot;Blue&quot; bgColor=&quot;bg-blue-600&quot; borderColor=&quot;border-blue-800&quot; value=&quot;blue&quot; /&gt;
-    &lt;c-radio label=&quot;Green&quot; bgColor=&quot;bg-green-600&quot; borderColor=&quot;border-green-800&quot; value=&quot;green&quot; /&gt;
-    &lt;c-radio label=&quot;Red&quot; bgColor=&quot;bg-red-600&quot; borderColor=&quot;border-red-800&quot; value=&quot;red&quot; /&gt;
+    &lt;c-radio
+        label=&quot;Blue&quot;
+        bgColor=&quot;bg-blue-600&quot;
+        borderColor=&quot;border-blue-800&quot;
+        value=&quot;blue&quot;
+    /&gt;
+    &lt;c-radio
+        label=&quot;Green&quot;
+        bgColor=&quot;bg-green-600&quot;
+        borderColor=&quot;border-green-800&quot;
+        value=&quot;green&quot;
+    /&gt;
+    &lt;c-radio
+        label=&quot;Red&quot;
+        bgColor=&quot;bg-red-600&quot;
+        borderColor=&quot;border-red-800&quot;
+        value=&quot;red&quot;
+    /&gt;
 &lt;/template&gt;</code>
         </pre>
     </BaseLayout>

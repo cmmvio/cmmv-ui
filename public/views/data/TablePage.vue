@@ -129,7 +129,7 @@ const tableData = [
 
     &lt;div&gt;
         Selected Items:
-        &lt;pre&gt;{{ selectedItems }}&lt;/pre&gt;
+        &lt;pre&gt;&#123;&#123; selectedItems &#125;&#125;&lt;/pre&gt;
     &lt;/div&gt;
 &lt;/template&gt;
 
@@ -161,7 +161,6 @@ const onSelectionChange = (selected) => {
 <script setup>
 import { ref } from "vue";
 import BaseLayout from "../../layout/BaseLayout.vue";
-import CardDocs from "../../components/CardDocs.vue";
 
 const headers = ref([
     { label: "ID", key: "id" },

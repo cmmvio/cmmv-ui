@@ -91,17 +91,22 @@
         </p>
 
         <card-docs>
-            <c-avatar
-                src="https://avatar.iran.liara.run/public/12"
-                alt="User Avatar"
-                size="lg"
-                class="m-auto"
-            />
+            <div class="flex items-center justify-center gap-x-4">
+                <c-avatar
+                    alt="User Avatar"
+                    size="lg"
+                />
+
+                <c-avatar
+                    alt="User Avatar"
+                    rounded="md"
+                    size="lg"
+                />
+            </div>
         </card-docs>
 
         <pre>
             <code class="code-highlight language-html">&lt;c-avatar
-    src="https://avatar.iran.liara.run/public/12"
     alt="User Avatar"
     size="lg"
 /&gt;</code>
@@ -156,6 +161,135 @@
     &lt;/div&gt;
 &lt;/div&gt;</code>
         </pre>
+
+        <h3>Dot Indicator</h3>
+
+        <p>
+            The <code>dotIndicator</code> feature allows you to display a small status indicator at the bottom right of the avatar.
+            This is useful for showing a user's availability in chat applications, dashboards, or contact lists.
+        </p>
+
+        <ul>
+            <li><strong><code>online</code></strong> Displays a green dot, indicating the user is online.</li>
+            <li><strong><code>busy</code></strong> Displays a red dot, indicating the user is busy.</li>
+            <li><strong><code>offline</code></strong> Displays a gray dot, indicating the user is offline.</li>
+            <li><strong><code>custom</code></strong> Allows customizing the dot color using TailwindCSS classes.</li>
+        </ul>
+
+        <card-docs>
+            <div class="flex items-center justify-center gap-x-4">
+                <c-avatar
+                    src="https://i.pravatar.cc/150?img=1"
+                    alt="User Avatar"
+                    size="lg"
+                    borderColor="border-2 border-blue-500"
+                    dotIndicator="online"
+                />
+
+                <c-avatar
+                    src="https://i.pravatar.cc/150?img=1"
+                    alt="User Avatar"
+                    size="lg"
+                    borderColor="border-2 border-blue-500"
+                    dotIndicator="busy"
+                />
+
+                <c-avatar
+                    src="https://i.pravatar.cc/150?img=1"
+                    alt="User Avatar"
+                    size="lg"
+                    borderColor="border-2 border-blue-500"
+                    dotIndicator="offline"
+                />
+            </div>
+        </card-docs>
+
+        <pre>
+
+<code class="code-highlight language-html">&lt;c-avatar
+    src="https://i.pravatar.cc/150?img=1"
+    alt="User Avatar"
+    size="lg"
+    borderColor="border-2 border-blue-500"
+    dotIndicator="online"
+/&gt;
+
+&lt;c-avatar
+    src="https://i.pravatar.cc/150?img=1"
+    alt="User Avatar"
+    size="lg"
+    borderColor="border-2 border-blue-500"
+    dotIndicator="busy"
+/&gt;
+
+&lt;c-avatar
+    src="https://i.pravatar.cc/150?img=1"
+    alt="User Avatar"
+    size="lg"
+    borderColor="border-2 border-blue-500"
+    dotIndicator="offline"
+/&gt;
+</code>
+</pre>
+
+        <h3>Stacked</h3>
+
+        <p>
+            The <code>stacked</code> option allows multiple avatars to be displayed in an overlapping format, creating a group effect.
+            This is ideal for representing teams, participants, or social interactions.
+        </p>
+
+        <card-docs>
+            <div class="flex items-center justify-center gap-x-4">
+                <c-avatar
+                    src="https://i.pravatar.cc/150?img=1"
+                    alt="User Avatar"
+                    size="lg"
+                    borderColor="border-2 border-blue-500"
+                    stacked
+                >
+                    <img class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800" src="https://i.pravatar.cc/150?img=1" alt="">
+                    <img class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800" src="https://i.pravatar.cc/150?img=2" alt="">
+                    <img class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800" src="https://i.pravatar.cc/150?img=3" alt="">
+                    <img class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800" src="https://i.pravatar.cc/150?img=4" alt="">
+                    <div class="flex items-center justify-center w-10 h-10 text-xs font-medium text-white bg-gray-700 border-2 border-white rounded-full dark:border-gray-800">+99</div>
+                </c-avatar>
+            </div>
+        </card-docs>
+
+        <pre>
+
+<code class="code-highlight language-html">&lt;div class="flex items-center justify-center"&gt;
+    &lt;c-avatar stacked&gt;
+        &lt;img
+            class="w-10 h-10 border-2 border-white rounded-full"
+            src="https://i.pravatar.cc/150?img=1"
+            alt=""
+        &gt;
+        &lt;img
+            class="w-10 h-10 border-2 border-white rounded-full"
+            src="https://i.pravatar.cc/150?img=2"
+            alt=""
+        &gt;
+        &lt;img
+            class="w-10 h-10 border-2 border-white rounded-full"
+            src="https://i.pravatar.cc/150?img=3"
+            alt=""
+        &gt;
+        &lt;img
+            class="w-10 h-10 border-2 border-white rounded-full"
+            src="https://i.pravatar.cc/150?img=4"
+            alt=""
+        &gt;
+        &lt;div
+            class="flex items-center justify-center w-10 h-10 text-xs font-medium text-white bg-gray-700 border-2 border-white rounded-full dark:border-gray-800"
+        &gt;
+            +99
+        &lt;/div&gt;
+    &lt;/c-avatar&gt;
+&lt;/div&gt;
+</code>
+</pre>
     </BaseLayout>
 </template>
 

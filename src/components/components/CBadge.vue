@@ -1,19 +1,20 @@
 <template>
     <div
-        class="inline-flex items-center justify-center"
+        class="inline-flex items-center justify-center "
         :class="{
-            'inline-block': inline,
-            'absolute': floating,
+            'inline-flex': inline,
+            'absolute': floating === true,
             'rounded-full': dot,
         }"
-        :style="badgeStyle"
+        :style="!inline ? badgeStyle : {}"
     >
         <span
             v-if="!dot"
-            class="text-xs rounded-md font-semibold flex items-center justify-center px-1 py-0.2"
-            :class="[bgColor, textColor]"
+            class="text-xs font-semibold flex items-center justify-center px-1 py-0.2"
+            :class="[bgColor, textColor, rounded, customClass]"
         >
-            {{ content || ($slots.default ? $slots.default()[0]?.children : "") }}
+            <span v-if="!$slots.default">{{ content }}</span>
+            <slot v-else></slot>
         </span>
 
         <span
@@ -32,6 +33,11 @@ const props = defineProps({
         type: String,
         default: "",
     },
+    rounded: {
+        type: String,
+        required: false,
+        default: "rounded-full",
+    },
     bgColor: {
         type: String,
         default: "bg-red-500",
@@ -46,7 +52,7 @@ const props = defineProps({
     },
     floating: {
         type: Boolean,
-        default: true,
+        default: false,
     },
     dot: {
         type: Boolean,
@@ -60,7 +66,12 @@ const props = defineProps({
         type: String,
         default: "0.3rem",
     },
+    customClass: {
+        type: String,
+        default: "0.3rem",
+    },
 });
+
 
 const badgeStyle = computed(() => ({
     top: props.floating ? props.offsetY : undefined,

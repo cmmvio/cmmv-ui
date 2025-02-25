@@ -9,8 +9,8 @@
             class="relative z-10 flex items-center justify-center border rounded transition-all duration-200 overflow-hidden"
             :class="[
                 sizes[size].box,
-                isChecked && !hasError ? bgColor : 'bg-white',
-                isChecked ? borderColor : 'border-gray-300',
+                (isChecked && !hasError) || indeterminate ? bgColor : 'bg-white',
+                isChecked || indeterminate ? borderColor : 'border-gray-300',
                 disabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer',
                 hasError ? 'ring-2 ring-red-500 border-red-500 bg-red-300' : ''
             ]"
@@ -29,7 +29,7 @@
             </svg>
 
             <svg
-                v-if="indeterminate"
+                v-else-if="indeterminate"
                 xmlns="http://www.w3.org/2000/svg"
                 class="w-4 h-4"
                 :class="textColor"
@@ -93,6 +93,11 @@ const props = defineProps({
         type: String,
         required: false,
         default: "md",
+    },
+    ignoreClick: {
+        type: Boolean,
+        required: false,
+        default: false,
     },
     bgColor: {
         type: String,
@@ -161,7 +166,7 @@ const isChecked = computed({
 const hasError = ref(false);
 
 const toggle = () => {
-    if (!props.disabled) {
+    if (!props.disabled && !props.ignoreClick) {
         isChecked.value = !isChecked.value;
         validate();
         createRipple();

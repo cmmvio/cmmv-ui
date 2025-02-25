@@ -7,6 +7,7 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    CAccordion: typeof import('./src/components/layout/CAccordion.vue')['default']
     CAlert: typeof import('./src/components/layout/CAlert.vue')['default']
     CAppBarNav: typeof import('./src/components/layout/CAppBarNav.vue')['default']
     CAutocomplete: typeof import('./src/components/forms/CAutocomplete.vue')['default']

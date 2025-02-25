@@ -43,7 +43,7 @@
 
         <!-- Simple Flags -->
         <c-card
-            class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4"
+            class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4"
         >
             <c-flag iso="br" size="sm" />
             <c-flag iso="us" size="md" />
@@ -72,7 +72,7 @@
             The <code>CFlag</code> component supports a variety of sizes and styling options. By default, the component uses the ISO 3166-1 alpha-2 country codes to identify flags, ensuring compatibility with international standards. You can combine this with utility classes for additional customization.
         </p>
 
-        <table class="w-full text-left border-collapse border-0">
+        <table class="w-full text-left border-collapse border-0 doc-table">
             <thead>
                 <tr>
                     <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Country</th>

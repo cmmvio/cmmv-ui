@@ -81,11 +81,14 @@
 
         <!-- Basic Example -->
         <h2 class="text-lg font-semibold mt-8">Basic Slider</h2>
+
         <p>The following example demonstrates a basic slider with two-way binding using <code>v-model</code>.</p>
+
         <card-docs>
             <c-slider v-model="sliderValue" class="mt-10" thumb />
             <div class="m-auto text-center pt-4">Current Value: {{ sliderValue }}</div>
         </card-docs>
+
         <pre>
             <code class="code-hightlight language-vue">&lt;template&gt;
     &lt;c-slider v-model="sliderValue" thumb /&gt;
@@ -99,15 +102,18 @@ const sliderValue = ref(5);
 
         <!-- Validation -->
         <h2 class="text-lg font-semibold">Validation</h2>
+
         <p>
             The <code>CSlider</code> component supports validation using the <code>rules</code> prop. These rules allow you to define custom logic for validating the slider value.
         </p>
+
         <card-docs>
             <c-slider
                 v-model="validatedValue"
                 :rules="[value => value >= 50 ? null : 'Value must be at least 50.']"
             />
         </card-docs>
+
         <pre>
             <code class="code-hightlight language-vue">&lt;template&gt;
     &lt;c-slider
@@ -126,16 +132,20 @@ const validatedValue = ref(40);
         <h2 class="text-lg font-semibold">Tick Marks</h2>
         <p>The slider can display tick marks for each step or custom positions defined by the <code>ticks</code> prop.</p>
         <card-docs>
-            <c-slider v-model="sliderTicks" :show-ticks="true" />
+            <c-slider v-model="sliderTicks" step="10" :show-ticks="true" />
         </card-docs>
         <pre>
             <code class="code-hightlight language-vue">&lt;template&gt;
-    &lt;c-slider v-model="sliderTicks" :show-ticks="true" /&gt;
+    &lt;c-slider
+        v-model="sliderTicks"
+        step="10"
+        :show-ticks="true"
+    /&gt;
 &lt;/template&gt;
 
 &lt;script setup&gt;
 import { ref } from "vue";
-const sliderTicks = ref(50);
+const sliderTicks = ref(40);
 &lt;/script&gt;</code>
         </pre>
 
@@ -179,7 +189,7 @@ import CardDocs from "../../components/CardDocs.vue";
 
 const sliderValue = ref(5);
 const validatedValue = ref(40);
-const sliderTicks = ref(50);
+const sliderTicks = ref(40);
 const customColorValue = ref(30);
 const iconValue = ref(50);
 const appendValue = ref(20);

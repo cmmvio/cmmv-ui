@@ -1,5 +1,5 @@
 <template>
-    <div 
+    <div
         class="relative w-full"
         :class="[thumb ? 'mt-10' : '']"
     >
@@ -31,7 +31,7 @@
 
                 <div
                     ref="thumb"
-                    class="absolute w-5 h-5 rounded-full flex items-center justify-center transition-all select-none transform"
+                    class="absolute w-5 h-5 rounded-full flex items-center justify-center transition-all select-none transform shadow-lg"
                     :class="[disabled ? 'bg-gray-500 cursor-not-allowed' : thumbColor || bgColor, hasError ? 'bg-red-500' : '', 'cursor-pointer']"
                     :style="{ left: `${percentage - 1}%`, top: '-70%' }"
                     @mousedown="startDrag"
@@ -39,7 +39,7 @@
                 >
                     <div
                         v-if="thumb"
-                        class="absolute -top-10 px-2 py-1 rounded-md text-sm shadow-md"
+                        class="absolute -top-10 px-2 py-1 rounded-md text-sm shadow-lg"
                         :class="[disabled ? 'bg-blue-300' : activeTrackColor]"
                     >
                         {{ currentValue }}
@@ -52,7 +52,10 @@
 
         <slot name="append" />
 
-        <p v-if="hasError" class="text-xs text-red-500 mt-1">{{ errorMessage }}</p>
+        <div
+            v-if="hasError"
+            class="text-xs text-center text-red-500 mt-4 mb-0 pb-0"
+        >{{ errorMessage }}</div>
     </div>
 </template>
 
@@ -106,7 +109,6 @@ const stepValue = computed(() => {
     return isNaN(parsedStep) || parsedStep <= 0 ? 1 : parsedStep;
 });
 
-
 const currentValue = computed({
     get: () => props.modelValue,
     set: (value) => {
@@ -135,7 +137,7 @@ const startDrag = (event: MouseEvent | TouchEvent) => {
     if (props.disabled) return;
     dragging.value = true;
 
-    moveThumb(event); 
+    moveThumb(event);
     document.addEventListener("mousemove", moveThumb);
     document.addEventListener("touchmove", moveThumb);
     document.addEventListener("mouseup", stopDrag);

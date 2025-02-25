@@ -27,8 +27,14 @@
                             'border p-3'
                         ]"
                     >
-                        <c-checkbox v-model="selectAll" :indeterminate="items.length != selectedItems.length" />
-                        {{ items.length != selectedItems.length }}
+                        <c-checkbox
+                            v-model="selectAll"
+                            :indeterminate="items.length != selectedItems.length && selectedItems.length > 0"
+                            :checked="items.length === selectedItems.length && selectedItems.length > 0"
+                            size="sm"
+                            ignoreClick
+                            @click="toggleSelectAll"
+                        />
                     </th>
 
                     <th
@@ -44,7 +50,7 @@
             </thead>
             <tbody>
                 <tr
-                    v-for="(item, index) in items"
+                    v-for="(item) in items"
                     :class="[bgColor]"
                 >
                     <td
@@ -57,7 +63,8 @@
                     >
                         <c-checkbox
                             v-model="selectedItems"
-                            :value="index"
+                            size="sm"
+                            :value="item"
                         />
                     </td>
 
@@ -95,7 +102,6 @@ interface TableHeader {
 }
 
 interface TableItem {
-    id: string | number;
     [key: string]: unknown;
 }
 
@@ -143,15 +149,23 @@ const props = defineProps({
     },
 });
 
-const selectedItems = ref([]);
+const selectedItems = ref<TableItem[]>([]);
 const selectAll = ref(false);
 const emit = defineEmits(["update:selected"]);
 
-/*const toggleSelectAll = () => {
-    selectedItems.value = (selectAll.value) ? [...props.items] : [];
-};*/
+const toggleSelectAll = () => {
+    if(selectedItems.value.length > 0){
+        selectedItems.value = [];
+        selectAll.value = false;
+    }
+    else{
+        selectedItems.value = [...props.items];
+        selectAll.value = true;
+    }
+};
 
 watch(selectedItems, (newSelection) => {
+    selectAll.value = (selectedItems.value.length === props.items.length && selectedItems.value.length > 0);
     emit("update:selected", selectedItems.value);
 });
 
