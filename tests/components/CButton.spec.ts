@@ -1,6 +1,6 @@
 import { mount } from "@vue/test-utils";
 import { describe, it, expect, vi } from "vitest";
-import CButton from "@components/components/CButton.vue";
+import CButton from "../../src/components/components/CButton.vue";
 
 describe("CButton Component", () => {
     it("renders correctly with default props", () => {

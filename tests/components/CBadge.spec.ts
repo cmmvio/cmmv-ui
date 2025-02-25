@@ -1,6 +1,6 @@
 import { mount } from "@vue/test-utils";
 import { describe, it, expect } from "vitest";
-import CBadge from "@components/components/CBadge.vue";
+import CBadge from "../../src/components/components/CBadge.vue";
 
 describe("CBadge Component", () => {
     it("renders correctly with default props", () => {
@@ -130,7 +130,7 @@ describe("CBadge Component", () => {
             props: { content: "50" },
             slots: { default: "Slot Content" },
         });
-        expect(wrapper.text()).toBe("50"); // `content` tem prioridade sobre o slot
+        expect(wrapper.text()).toBe("50");
     });
 
     it("renders as a badge when `dot` prop is false", () => {

@@ -10,7 +10,6 @@ fi
 
 # Remove specific directories
 rm -rf "$TARGET_DIR/components"
-rm -rf "$TARGET_DIR/types"
 rm -rf "$TARGET_DIR/core"
 rm -rf "$TARGET_DIR/assets"
 rm -rf "$TARGET_DIR/views"
@@ -20,6 +19,10 @@ rm -rf "$TARGET_DIR/src"
 # Remove specific files
 rm -f "$TARGET_DIR/client.js"
 rm -f "$TARGET_DIR/router.js"
+rm -f "$TARGET_DIR/app.vue"
+rm -f "$TARGET_DIR/favicon.ico"
+rm -f "$TARGET_DIR/robots.txt"
+rm -f "$TARGET_DIR/tailwind.css"
 
 # Preserve files with relevant names and extensions
 find "$TARGET_DIR" -type f ! \( \
@@ -29,7 +32,7 @@ find "$TARGET_DIR" -type f ! \( \
     -name "*.umd.js" -o \
     -name "*.vue.js" -o \
     -name "*.js" -o \
-    -name "*.d.ts" \
+    -name "*.vue" -o \
 \) -exec rm -f {} +
 
 # Remove empty directories after cleanup
