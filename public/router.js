@@ -20,6 +20,7 @@ import AccordionPage from "./views/layout/AccordionPage.vue";
 import AlertPage from "./views/layout/AlertPage.vue";
 import AvatarPage from "./views/layout/AvatarPage.vue";
 import CardPage from "./views/layout/CardPage.vue";
+import TabsPage from "./views/layout/TabsPage.vue";
 import ToolbarPage from "./views/layout/ToolbarPage.vue";
 
 //Form
@@ -58,6 +59,7 @@ const routes = [
     { path: '/alert', component: AlertPage },
     { path: '/avatar', component: AvatarPage },
 	{ path: '/card', component: CardPage },
+    { path: '/tabs', component: TabsPage },
     { path: '/toolbar', component: ToolbarPage },
 
 	//Form

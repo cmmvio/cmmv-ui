@@ -15,7 +15,7 @@
             </slot>
         </div>
 
-        <div class="flex-1">
+        <div :class="[outlined ? textColorClass : textColor, 'flex-1']">
             <div v-if="title" class="font-bold text-lg">
                 {{ title }}
             </div>
@@ -79,7 +79,7 @@ const props = defineProps({
     },
     textColor: {
         type: String,
-        default: '',
+        default: 'text-white',
     },
     outlined: {
         type: Boolean,
@@ -109,7 +109,7 @@ const computedClasses = computed(() => {
 });
 
 const textColorClass = computed(() => {
-    return props.textColor || `text-${colorByType[props.type]}-600`;
+    return props.outlined ? `text-${colorByType[props.type]}-600` : props.textColor || `text-${colorByType[props.type]}-600`;
 });
 
 const computedIcon = computed(() => {

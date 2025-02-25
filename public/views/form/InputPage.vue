@@ -4,7 +4,7 @@
 
         <p>The <code>CInput (alias: c-input)</code> component in the <code>@cmmv/ui</code> framework provides a flexible input field with advanced customization options for size, variants, rounding, and interaction states. It also supports validation, clearable functionality, and dynamic hints or error messages.</p>
 
-        <table class="w-full text-left border-collapse border-0 doc-table">
+        <table-docs>
             <thead>
                 <tr>
                     <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
@@ -93,10 +93,10 @@
                     <td class="border-b px-4 py-2">Ensures the hint text remains visible regardless of focus.</td>
                 </tr>
             </tbody>
-        </table>
+        </table-docs>
 
         <!-- Basic Examples -->
-        <c-card class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+        <c-card variant="flat" class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
             <div class="lg:w-2/5 w-full">
                 <c-input v-model="example1" id="example1" label="Basic Input" />
                 <c-input v-model="example2" id="example2" label="Input with Placeholder" placeholder="Enter text..." />
@@ -128,10 +128,11 @@ import CInput from &quot;@cmmv/ui/components/CInput.vue&quot;;
         </pre>
 
         <!-- Validation -->
-        <h2>Validation</h2>
+        <h3>Validation</h3>
+
         <p>The <code>CInput</code> component supports custom validation rules. Error messages are displayed below the input field if a rule fails.</p>
 
-        <c-card class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+        <c-card variant="flat" class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
             <div class="lg:w-2/5 w-full">
                 <c-input
                     id="validation"
@@ -153,10 +154,11 @@ import CInput from &quot;@cmmv/ui/components/CInput.vue&quot;;
         </pre>
 
         <!-- Size Variants -->
-        <h2>Size Variants</h2>
+        <h3>Size Variants</h3>
+
         <p>The <code>CInput</code> component supports size variations for better responsiveness and design adaptability. Available sizes include <code>sm</code>, <code>md</code>, and <code>lg</code>.</p>
 
-        <c-card class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+        <c-card variant="flat" class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
             <div class="lg:w-2/5 w-full">
                 <c-input v-model="example4" id="small" label="Small Input" size="sm" />
                 <c-input v-model="example5" id="medium" label="Medium Input" size="md" />
@@ -173,10 +175,11 @@ import CInput from &quot;@cmmv/ui/components/CInput.vue&quot;;
         </pre>
 
         <!-- Variants -->
-        <h2>Variants</h2>
+        <h3>Variants</h3>
+
         <p>The <code>CInput</code> component supports visual <code>variant</code> styles, including <code>default</code>, <code>outlined</code>, and <code>filled</code>. These styles allow you to align the input field with your application's design language.</p>
 
-        <c-card class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+        <c-card variant="flat" class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
             <div class="lg:w-2/5 w-full">
                 <c-input id="default" label="Default Variant" variant="default" />
                 <c-input id="outlined" label="Outlined Variant" variant="outlined" />
@@ -193,11 +196,11 @@ import CInput from &quot;@cmmv/ui/components/CInput.vue&quot;;
         </pre>
 
         <!-- Password -->
-        <h2>Password</h2>
+        <h3>Password</h3>
 
         <p>The <code>CInput</code> component supports password fields with an optional visibility toggle. By specifying the type="password" prop, the input field will display an eye icon for toggling the visibility of the password. This feature uses the IconEye and IconEyeSlash components to provide a seamless user experience.</p>
 
-        <c-card class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+        <c-card variant="flat" class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
             <div class="lg:w-2/5 w-full">
                 <c-input
                     v-model="passwordValue"
@@ -220,11 +223,11 @@ import CInput from &quot;@cmmv/ui/components/CInput.vue&quot;;
         </pre>
 
         <!-- Clearable -->
-        <h2>Clearable</h2>
+        <h3>Clearable</h3>
 
         <p>The <code>clearable</code> property enables a button to clear the input field's content.</p>
 
-        <c-card class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+        <c-card variant="flat" class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
             <div class="lg:w-2/5 w-full">
                 <c-input v-model="clearableValue" id="clearable" label="Clearable Input" clearable />
             </div>
@@ -237,10 +240,11 @@ import CInput from &quot;@cmmv/ui/components/CInput.vue&quot;;
         </pre>
 
         <!-- Loading -->
-        <h2>Loading</h2>
+        <h3>Loading</h3>
+
         <p>The <code>loading</code> property enables a button to clear the input field's content.</p>
 
-        <c-card class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+        <c-card variant="flat" class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
             <div class="lg:w-2/5 w-full">
                 <c-input id="loading" label="Loading Input" loading />
             </div>
@@ -253,15 +257,15 @@ import CInput from &quot;@cmmv/ui/components/CInput.vue&quot;;
         </pre>
 
         <!-- Icon -->
-        <h2>Icon</h2>
+        <h3>Icon</h3>
 
         <p>The Input component does not include a dedicated <code>icon</code> prop. Instead, it utilizes a slot to allow for greater flexibility in customizing the icon within the input field. This approach provides developers with more control over the design and behavior of the icon. By adding an icon through the icon slot, you can seamlessly align it to the left of the input field, enhancing the user experience with contextual cues, such as a magnifying glass for search fields.</p>
 
-        <c-card class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+        <c-card variant="flat" class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
             <div class="lg:w-2/5 w-full">
                 <c-input id="search" label="Search Input">
                     <template #icon>
-                        <IconMagnifyingGlass class="w-6  h-6 text-white" aria-hidden="true"  />
+                        <IconMagnifyingGlass class="w-6  h-6 text-neutral-600 dark:text-white" aria-hidden="true"  />
                     </template>
                 </c-input>
             </div>
@@ -271,14 +275,14 @@ import CInput from &quot;@cmmv/ui/components/CInput.vue&quot;;
             <code class="code-hightlight language-vue">&lt;template&gt;
     &lt;c-input id=&quot;search&quot; label=&quot;Search Input&quot;&gt;
         &lt;template #icon&gt;
-            &lt;IconMagnifyingGlass class=&quot;w-6 h-6 text-white&quot; aria-hidden=&quot;true&quot; /&gt;
+            &lt;IconMagnifyingGlass class=&quot;w-6 h-6 text-neutral-600 dark:text-white&quot; aria-hidden=&quot;true&quot; /&gt;
         &lt;/template&gt;
     &lt;/c-input&gt;
 &lt;/template&gt;</code>
 </pre>
 
         <!-- Custom Colors -->
-        <h2>Custom Colors</h2>
+        <h3>Custom Colors</h3>
 
         <p>The <code>CInput</code> component supports <strong>custom colors</strong> for the input field, label, and border. You can use the following props to style the input field as per your application's design requirements:</p>
 
@@ -290,7 +294,7 @@ import CInput from &quot;@cmmv/ui/components/CInput.vue&quot;;
 
         <p>This flexibility allows for dynamic and visually appealing designs, tailored to specific use cases or branding guidelines.</p>
 
-        <table class="w-full text-left border-collapse border-0 doc-table">
+        <table-docs>
             <thead>
                 <tr>
                     <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
@@ -319,9 +323,9 @@ import CInput from &quot;@cmmv/ui/components/CInput.vue&quot;;
                     <td class="border-b px-4 py-2">Custom border color class for the input.</td>
                 </tr>
             </tbody>
-        </table>
+        </table-docs>
 
-        <c-card class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+        <c-card variant="flat" class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
             <div class="lg:w-2/5 w-full">
                 <c-input
                     id="custom"
@@ -344,6 +348,13 @@ import CInput from &quot;@cmmv/ui/components/CInput.vue&quot;;
     &gt;&lt;/c-input&gt;
 &lt;/template&gt;</code>
     </pre>
+
+        <PagePagination
+            previous="Form"
+            previousLink="/form"
+            next="OTP Input"
+            nextLink="/otp-input"
+        />
     </BaseLayout>
 </template>
 
@@ -356,6 +367,9 @@ import CInput from &quot;@cmmv/ui/components/CInput.vue&quot;;
 <script setup>
 import { ref } from "vue";
 import BaseLayout from "../../layout/BaseLayout.vue";
+import TableDocs from "../../components/TableDocs.vue";
+import PagePagination from "../../layout/PagePagination.vue";
+
 const example1 = ref("");
 const example2 = ref("");
 const example3 = ref("");

@@ -4,7 +4,7 @@
 
         <p>The <code>CAlert (alias: c-alert)</code> component provides a customizable alert message box for your application. It supports multiple types, styles, and interactive options for various use cases like success messages, warnings, or error notifications.</p>
 
-        <table class="w-full text-left border-collapse border-0 rounded-md doc-table">
+        <table-docs>
             <thead>
                 <tr>
                     <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
@@ -63,7 +63,7 @@
                     <td class="border-b px-4 py-2">Defines the ARIA label for accessibility purposes.</td>
                 </tr>
             </tbody>
-        </table>
+        </table-docs>
 
         <!-- Basic Usage -->
 
@@ -76,6 +76,7 @@
                 Operation completed successfully.
             </c-alert>
         </card-docs>
+
         <pre>
             <code class="code-highlight language-html">&lt;c-alert type="success" title="Success" icon&gt;
     Operation completed successfully.
@@ -92,6 +93,7 @@
                 Something went wrong. Please try again.
             </c-alert>
         </card-docs>
+
         <pre>
             <code class="code-highlight language-html">&lt;c-alert type="error" title="Error" closable&gt;
     Something went wrong. Please try again.
@@ -129,7 +131,7 @@
 
         <p>Use outlined styles for a minimalist design. These alerts are subtle yet clear, ideal for less intrusive notifications.</p>
 
-        <c-card class="px-6 mt-4">
+        <c-card variant="flat" class="px-6 mt-4">
             <c-alert type="warning" outlined>
                 This is an outlined warning alert.
             </c-alert>
@@ -211,5 +213,6 @@
 <script setup>
 import BaseLayout from "../../layout/BaseLayout.vue";
 import PagePagination from "../../layout/PagePagination.vue";
+import TableDocs from "../../components/TableDocs.vue";
 import CardDocs from "../../components/CardDocs.vue";
 </script>

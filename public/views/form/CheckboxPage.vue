@@ -7,7 +7,7 @@
             The <code>CCheckbox (alias: c-checkbox)</code> component in the <code>@cmmv/ui</code> framework provides a customizable and versatile checkbox element. It supports dynamic labels, two-way binding using <code>v-model</code>, and customizable styles for various use cases. With built-in support for sizes, colors, and indeterminate states, the <code>c-checkbox</code> is ideal for forms, filters, and other interactive UI components.
         </p>
 
-        <table class="w-full text-left border-collapse border-0 doc-table">
+        <table-docs>
             <thead>
                 <tr>
                     <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
@@ -78,9 +78,9 @@
                     <td class="border-b px-4 py-2">Text color of the check or indeterminate icon.</td>
                 </tr>
             </tbody>
-        </table>
+        </table-docs>
 
-        <h2 class="text-lg font-semibold mt-8">Basic Checkbox</h2>
+        <h3>Basic Checkbox</h3>
 
         <p>
             The following example demonstrates a basic checkbox with dynamic label support. The label changes based on the <code>v-model</code> binding, reflecting the current state of the checkbox.
@@ -107,7 +107,7 @@ const checked = ref(true);
 &lt;/script&gt;</code>
         </pre>
 
-        <h2 class="text-lg font-semibold">Validation</h2>
+        <h3>Validation</h3>
 
         <p>
             The <code>CCheckbox</code> component supports custom validation rules using the <code>rules</code> prop. These rules allow you to define custom logic for validating the checkbox state. If a rule fails, an error message is displayed below the checkbox. Validation can be useful for ensuring that specific options are selected or to enforce other custom behaviors.
@@ -139,7 +139,7 @@ const isChecked = ref(false);
 </pre>
 
         <!-- Size Variants -->
-        <h2 class="text-lg font-semibold">Size Variants</h2>
+        <h3>Size Variants</h3>
 
         <p>
             The <code>CCheckbox</code> supports multiple sizes to fit different UI contexts. Use the <code>size</code> prop to customize the checkbox dimensions. Available sizes include <code>sm</code>, <code>md</code>, and <code>lg</code>.
@@ -162,7 +162,7 @@ const isChecked = ref(false);
         </pre>
 
         <!-- Indeterminate State -->
-        <h2 class="text-lg font-semibold">Indeterminate State</h2>
+        <h3>Indeterminate State</h3>
 
         <p>
             The <code>indeterminate</code> prop allows the checkbox to be displayed in an indeterminate state. This is useful for multi-selection scenarios where only some options are selected.
@@ -181,7 +181,7 @@ const isChecked = ref(false);
         </pre>
 
         <!-- Disabled State -->
-        <h2 class="text-lg font-semibold">Disabled</h2>
+        <h3>Disabled</h3>
 
         <p>
             The <code>disabled</code> prop can be used to disable the checkbox, making it non-interactive. This is useful for scenarios where the checkbox state should not be modified by the user.
@@ -200,7 +200,7 @@ const isChecked = ref(false);
         </pre>
 
         <!-- Color Variations -->
-        <h2>Color Variations</h2>
+        <h3>Color Variations</h3>
 
         <p>
             The <code>CCheckbox</code> supports color customization to align with your application's design. Use the <code>bgColor</code> and <code>textColor</code> props to style the checkbox with any desired color. Below are examples of checkboxes with different color themes.
@@ -247,7 +247,7 @@ const isChecked = ref(false);
 &lt;/template&gt;</code>
 </pre>
 
-        <h2 class="text-lg font-semibold">Multiple Selection with Arrays</h2>
+        <h3>Multiple Selection with Arrays</h3>
 
         <p>
             The <code>CCheckbox</code> now supports array-based bindings for managing multiple selections. Using the <code>v-model</code> directive with an array allows you to bind multiple checkboxes to a single model, making it easy to manage grouped options.
@@ -260,7 +260,7 @@ const isChecked = ref(false);
                 <c-checkbox v-model="selectedOptions" value="option3" label="Option 3" />
             </div>
 
-            <div class="border-t border-t-zinc-700 mt-4 pt-4 items-center text-center">
+            <div class="mt-4 pt-4 items-center text-center">
                 Selected Options: {{ selectedOptions }}
             </div>
         </card-docs>
@@ -281,6 +281,13 @@ import { ref } from &quot;vue&quot;;
 const selectedOptions = ref([]);
 &lt;/script&gt;</code>
 </pre>
+
+        <PagePagination
+            previous="Autocomplete"
+            previousLink="/autocomplete"
+            next="Form"
+            nextLink="/form"
+        />
     </BaseLayout>
 </template>
 
@@ -288,6 +295,8 @@ const selectedOptions = ref([]);
 import { ref } from "vue";
 import BaseLayout from "../../layout/BaseLayout.vue";
 import CardDocs from "../../components/CardDocs.vue";
+import TableDocs from "../../components/TableDocs.vue";
+import PagePagination from "../../layout/PagePagination.vue";
 import CCheckbox from "@components/forms/CCheckbox.vue";
 
 const checked = ref(true);

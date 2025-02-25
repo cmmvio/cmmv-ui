@@ -6,7 +6,7 @@
             The <code>CRadio (alias: c-radio)</code> component in the <code>@cmmv/ui</code> framework provides a flexible and customizable radio button element. It supports dynamic labels, two-way binding using <code>v-model</code>, and customizable styles for various use cases. With built-in support for sizes, colors, and accessibility features, the <code>CRadio</code> is ideal for forms, filters, and other interactive UI components.
         </p>
 
-        <table class="w-full text-left border-collapse border-0 doc-table">
+        <table-docs>
             <thead>
                 <tr>
                     <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
@@ -59,9 +59,11 @@
                     <td class="border-b px-4 py-2">Border color of the radio button when selected.</td>
                 </tr>
             </tbody>
-        </table>
+        </table-docs>
 
-        <h2 class="text-lg font-semibold mt-8">Basic Radio</h2>
+        <br/>
+
+        <h3>Basic Radio</h3>
 
         <p>
             The following example demonstrates a basic radio button with a dynamic label. The label changes based on the <code>v-model</code> binding, reflecting the current state of the selected option.
@@ -102,7 +104,7 @@ const selectedOption = ref(&quot;option1&quot;);
         </pre>
 
         <!-- Size Variants -->
-        <h2 class="text-lg font-semibold">Size Variants</h2>
+        <h3>Size Variants</h3>
 
         <p>
             The <code>CRadio</code> supports multiple sizes to fit different UI contexts. Use the <code>size</code> prop to customize the radio button dimensions. Available sizes include <code>sm</code>, <code>md</code>, and <code>lg</code>.
@@ -123,7 +125,7 @@ const selectedOption = ref(&quot;option1&quot;);
         </pre>
 
         <!-- Disabled -->
-        <h2 class="text-lg font-semibold">Disabled</h2>
+        <h3>Disabled</h3>
 
         <p>
             The <code>disabled</code> prop can be used to disable the radio button, making it non-interactive.
@@ -140,7 +142,7 @@ const selectedOption = ref(&quot;option1&quot;);
         </pre>
 
         <!-- Color Variations -->
-        <h2 class="text-lg font-semibold">Color Variations</h2>
+        <h3>Color Variations</h3>
 
         <p>
             The <code>CRadio</code> supports color customization. Use the <code>bgColor</code> and <code>borderColor</code> props to style the radio button with custom colors.
@@ -174,6 +176,13 @@ const selectedOption = ref(&quot;option1&quot;);
     /&gt;
 &lt;/template&gt;</code>
         </pre>
+
+        <PagePagination
+            previous="OTP Input"
+            previousLink="/otp-input"
+            next="Slider"
+            nextLink="/slider"
+        />
     </BaseLayout>
 </template>
 
@@ -181,6 +190,8 @@ const selectedOption = ref(&quot;option1&quot;);
 import { ref } from "vue";
 import BaseLayout from "../../layout/BaseLayout.vue";
 import CardDocs from "../../components/CardDocs.vue";
+import TableDocs from "../../components/TableDocs.vue";
+import PagePagination from "../../layout/PagePagination.vue";
 import CRadio from "@components/forms/CRadio.vue";
 
 const selectedOption = ref("option1");

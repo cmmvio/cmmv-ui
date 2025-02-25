@@ -4,7 +4,7 @@
 
         <p>The <code>CToolbar (alias: c-toolbar)</code> component provides a structured layout for application toolbars. It is versatile and integrates seamlessly with subcomponents like <code>CAppBarNav</code>, <code>CToolbarTitle</code>, and <code>CSpacer</code>, enabling customizable and responsive designs.</p>
 
-        <table class="w-full text-left border-collapse border-0 rounded-md doc-table">
+        <table-docs>
             <thead>
                 <tr>
                     <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
@@ -33,7 +33,7 @@
                     <td class="border-b px-4 py-2">Controls the rounded corners of the toolbar.</td>
                 </tr>
             </tbody>
-        </table>
+        </table-docs>
 
         <h3>CAppBarNav</h3>
 
@@ -138,23 +138,18 @@
 
                     <!-- Search Input -->
                     <div class="relative">
-                        <input
-                            type="text"
-                            placeholder="Search"
-                            class="bg-white text-black placeholder-gray-500 px-3 py-2 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
-                        />
-                        <IconMagnifyingGlass class="absolute top-1/2 right-3 transform -translate-y-1/2 text-gray-500" />
+                        <IconMagnifyingGlass class="absolute top-1/2 right-3 transform -translate-y-1/2 text-white" />
                     </div>
 
-                    <!-- Theme Switch -->
                     <c-button
                         type="button"
                         variant="plain"
                         rounded="full"
                         bgColor="bg-blue-600 hover:bg-blue-800"
+                        class="py-1"
                     >
                         <IconBell class="text-white"></IconBell>
-                        <c-badge>5</c-badge>
+                        <c-badge floating >5</c-badge>
                     </c-button>
                 </c-toolbar>
 
@@ -172,10 +167,21 @@
                 </c-container>
             </div>
         </card-docs>
+
+        <br/>
+
+        <PagePagination
+            previous="Carc"
+            previousLink="/card"
+            next="Autocomplete"
+            nextLink="/autocomplete"
+        />
     </BaseLayout>
 </template>
 
 <script setup>
 import BaseLayout from "../../layout/BaseLayout.vue";
 import CardDocs from "../../components/CardDocs.vue";
+import TableDocs from "../../components/TableDocs.vue";
+import PagePagination from "../../layout/PagePagination.vue";
 </script>

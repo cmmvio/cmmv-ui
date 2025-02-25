@@ -16,7 +16,7 @@
                 <div
                     class="absolute h-full rounded-full transition-all"
                     :style="{ width: `${percentage}%` }"
-                    :class="disabled ? 'bg-blue-300' : activeTrackColor"
+                    :class="[disabled ? 'bg-blue-300' : activeTrackColor, activeTrackTextColor]"
                 ></div>
 
                 <template v-if="showTicks">
@@ -25,13 +25,13 @@
                         :key="tick"
                         class="absolute border-l"
                         :style="{ left: `${tick}%`, height: `${tickSize}px` }"
-                        :class="disabled ? 'border-gray-400' : tickMarkColor"
+                        :class="[disabled ? 'border-gray-400' : tickMarkColor]"
                     ></div>
                 </template>
 
                 <div
                     ref="thumb"
-                    class="absolute w-5 h-5 rounded-full flex items-center justify-center transition-all select-none transform shadow-lg"
+                    class="absolute w-5 h-5 rounded-full flex items-center justify-center transition-all select-none transform shadow-md border border-neutral-200"
                     :class="[disabled ? 'bg-gray-500 cursor-not-allowed' : thumbColor || bgColor, hasError ? 'bg-red-500' : '', 'cursor-pointer']"
                     :style="{ left: `${percentage - 1}%`, top: '-70%' }"
                     @mousedown="startDrag"
@@ -40,7 +40,7 @@
                     <div
                         v-if="thumb"
                         class="absolute -top-10 px-2 py-1 rounded-md text-sm shadow-lg"
-                        :class="[disabled ? 'bg-blue-300' : activeTrackColor]"
+                        :class="[disabled ? 'bg-blue-300' : activeTrackColor, activeTrackTextColor]"
                     >
                         {{ currentValue }}
                     </div>
@@ -87,13 +87,14 @@ const props = defineProps({
     max: { type: Number, default: 100 },
     step: { type: [Number, String], default: 1 },
     showTicks: { type: Boolean, default: false },
-    tickSize: { type: Number, default: 10 },
+    tickSize: { type: Number, default: 8 },
     ticks: { type: Array, default: () => [] },
     thumb: { type: Boolean, default: false },
     disabled: { type: Boolean, default: false },
     bgColor: { type: String, default: "bg-white" },
     activeTrackColor: { type: String, default: "bg-blue-600" },
-    tickMarkColor: { type: String, default: "border-blue-700" },
+    activeTrackTextColor: { type: String, default: "text-white" },
+    tickMarkColor: { type: String, default: "border-neutral-200" },
     thumbColor: { type: String, default: null },
     rules: { type: Array, default: () => [] },
 });

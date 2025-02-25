@@ -34,6 +34,7 @@ declare module 'vue' {
     CSlider: typeof import('./src/components/forms/CSlider.vue')['default']
     CSpacer: typeof import('./src/components/layout/CSpacer.vue')['default']
     CTable: typeof import('./src/components/data/CTable.vue')['default']
+    CTabs: typeof import('./src/components/layout/CTabs.vue')['default']
     CTextarea: typeof import('./src/components/forms/CTextarea.vue')['default']
     CToggle: typeof import('./src/components/forms/CToggle.vue')['default']
     CToolbar: typeof import('./src/components/layout/CToolbar.vue')['default']

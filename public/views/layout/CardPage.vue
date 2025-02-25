@@ -728,7 +728,12 @@
 </code>
 </pre>
 
-
+        <PagePagination
+            previous="Avatar"
+            previousLink="/avatar"
+            next="Tabs"
+            nextLink="/tabs"
+        />
     </BaseLayout>
 </template>
 
@@ -737,6 +742,7 @@ import { ref } from 'vue';
 import BaseLayout from "../../layout/BaseLayout.vue";
 import CardDocs from "../../components/CardDocs.vue";
 import TableDocs from "../../components/TableDocs.vue";
+import PagePagination from "../../layout/PagePagination.vue";
 import IconSun from "@components/icons/IconSun.vue";
 import IconCloud from "@components/icons/IconCloud.vue";
 import IconBolt from "@components/icons/IconBolt.vue";

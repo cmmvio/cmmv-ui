@@ -4,7 +4,7 @@
 
         <p>The <code>CToggle (alias: c-toggle)</code> component in the <code>@cmmv/ui</code> framework provides a customizable switch element with various sizes, states, and interactive ripple effects. It supports binding via <code>v-model</code> and is ideal for enabling or disabling settings.</p>
 
-        <table class="w-full text-left border-collapse border-0 doc-table">
+        <table-docs>
             <thead>
                 <tr>
                     <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
@@ -63,9 +63,10 @@
                     <td class="border-b px-4 py-2">Custom color for the track when checked.</td>
                 </tr>
             </tbody>
-        </table>
+        </table-docs>
 
-        <c-card class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+
+        <c-card variant="flat" class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
             <c-toggle v-model="liveToggle" label="Live Update Toggle" />
             <p class="text-gray-700 dark:text-white">Toggle Value: <span class="font-bold" v-html="liveToggle?.toString()"></span></p>
         </c-card>
@@ -82,10 +83,11 @@ const liveToggle = ref(false);
 &lt;/script&gt;</code>
         </pre>
 
-        <h2>Disabled</h2>
+        <h3>Disabled</h3>
 
         <p>The <code>CToggle</code> component includes a <code>disabled</code> property that prevents user interaction with the toggle. When the <code>disabled</code> state is active, the toggle appears dimmed and its cursor changes to indicate that it is non-interactive. This is useful for situations where the toggle represents a feature or setting that cannot currently be modified.</p>
-        <c-card class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+
+        <c-card variant="flat" class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
             <c-toggle v-model="toggle2" label="Disabled Toggle" disabled />
         </c-card>
 
@@ -96,10 +98,11 @@ const liveToggle = ref(false);
         </pre>
 
         <!-- Size Variants -->
-        <h2>Size Variants</h2>
+        <h3>Size Variants</h3>
+
         <p>The <code>CToggle</code> component supports multiple sizes for better adaptability in different contexts. Available sizes include <code>sm</code>, <code>md</code>, and <code>lg</code>.</p>
 
-        <c-card class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+        <c-card variant="flat" class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
             <c-toggle v-model="toggleSmall" size="sm" label="Small Toggle" />
             <c-toggle v-model="toggleMedium" size="md" label="Medium Toggle" />
             <c-toggle v-model="toggleLarge" size="lg" label="Large Toggle" />
@@ -114,16 +117,18 @@ const liveToggle = ref(false);
         </pre>
 
         <!-- Custom Colors -->
-        <h2>Custom Colors</h2>
+        <h3>Custom Colors</h3>
+
         <p>The <code>CToggle</code> component allows customization of the track and thumb colors through the <code>bgColor</code> and <code>thumbColor</code> props, respectively.</p>
 
-        <c-card class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+        <c-card variant="flat" class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
             <c-toggle
                 v-model="toggleCustom1"
                 label="Custom Blue Track"
-                bgColor="bg-blue-900"
-                trackColor="bg-blue-700"
-                thumbColor="bg-blue-500"
+                bgColor="bg-blue-600 dark:bg-blue-900"
+                trackColor="bg-blue-500 dark:bg-blue-700"
+                thumbColor="bg-blue-400 dark:bg-blue-500"
+                thumbBorderColor="border-blue-500"
             />
             <c-toggle
                 v-model="toggleCustom2"
@@ -131,6 +136,7 @@ const liveToggle = ref(false);
                 bgColor="bg-red-900"
                 trackColor="bg-red-700"
                 thumbColor="bg-red-500"
+                thumbBorderColor="border-red-500"
             />
             <c-toggle
                 v-model="toggleCustom3"
@@ -138,6 +144,7 @@ const liveToggle = ref(false);
                 bgColor="bg-purple-900"
                 trackColor="bg-purple-700"
                 thumbColor="bg-purple-500"
+                thumbBorderColor="border-purple-500"
             />
         </c-card>
 
@@ -146,9 +153,9 @@ const liveToggle = ref(false);
     &lt;c-toggle
         v-model=&quot;toggleCustom1&quot;
         label=&quot;Custom Blue Track&quot;
-        bgColor=&quot;bg-blue-900&quot;
-        trackColor=&quot;bg-blue-700&quot;
-        thumbColor=&quot;bg-blue-500&quot;
+        bgColor=&quot;bg-blue-600 dark:bg-blue-900&quot;
+        trackColor=&quot;bg-blue-500 dark:bg-blue-700&quot;
+        thumbColor=&quot;bg-blue-400 dark:bg-blue-500&quot;
     /&gt;
     &lt;c-toggle
         v-model=&quot;toggleCustom2&quot;
@@ -166,6 +173,13 @@ const liveToggle = ref(false);
     /&gt;
 &lt;/template&gt;</code>
         </pre>
+
+        <PagePagination
+            previous="Textarea"
+            previousLink="/textarea"
+            next="Dialog"
+            nextLink="/dialog"
+        />
     </BaseLayout>
 </template>
 
@@ -178,6 +192,8 @@ const liveToggle = ref(false);
 <script setup>
 import { ref } from "vue";
 import BaseLayout from "../../layout/BaseLayout.vue";
+import TableDocs from "../../components/TableDocs.vue";
+import PagePagination from "../../layout/PagePagination.vue";
 import CCard from "@components/layout/CCard.vue";
 const liveToggle = ref(false);
 </script>

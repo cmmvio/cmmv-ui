@@ -8,8 +8,10 @@
                 'top-[50%] -translate-y-1/2': !isActive && !currentValue && !hasError,
                 'top-[30%]': !isActive && hasError,
                 'top-1/3': currentValue !== undefined && currentValue !== '',
-                'pl-8': hasIcon && !isActive
-            }, textColor ? textColor : 'text-gray-500 dark:text-gray-400']"
+                'pl-8': hasIcon && !isActive,
+            },
+            textColor ? textColor : 'text-gray-500 dark:text-gray-400',
+            !disabled ? (bgColor ? bgColor : variantColors[variant]) : '', 'px-1']"
         >
             {{ label }}
         </label>
@@ -52,12 +54,12 @@
 
             <div
                 v-if="loading"
-                class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-400"
+                class="absolute inset-y-0 right-0 flex items-center px-2 mr-1 text-gray-400"
             >
                 <c-progress-circular
                     indeterminate
                     :size="20"
-                    :fillColor="'#EFEFEF'"
+                    :fillColor="'#666'"
                     :width="2"
                 />
             </div>

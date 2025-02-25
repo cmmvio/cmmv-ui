@@ -4,7 +4,7 @@
 
         <p>The <code>CAutocomplete (alias: c-autocomplete)</code> component in the <code>@cmmv/ui</code> framework provides a user-friendly autocomplete input field with advanced customization options for size, variants, rounding, and interaction states. It supports real-time filtering, selection, and displays a dropdown for suggested values.</p>
 
-        <table class="w-full text-left border-collapse border-0 doc-table">
+        <table-docs>
             <thead>
                 <tr>
                     <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
@@ -81,7 +81,7 @@
                     <td class="border-b px-4 py-2">Custom text color class for the autocomplete and label.</td>
                 </tr>
             </tbody>
-        </table>
+        </table-docs>
 
         <!-- Basic Examples -->
         <h3>Basic Examples</h3>
@@ -91,7 +91,7 @@
             Below are basic examples demonstrating its functionality with minimal configuration.
         </p>
 
-        <c-card class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+        <c-card variant="flat" class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
             <div class="lg:w-2/5 w-full max-w-[400px]">
                 <c-autocomplete
                     id="example1"
@@ -146,7 +146,7 @@ const basicOptions = [
             Choose between small, medium, or large sizes to provide the best user experience based on your application’s needs.
         </p>
 
-        <c-card class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+        <c-card variant="flat" class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
             <div class="lg:w-2/5 w-full max-w-[400px]">
                 <c-autocomplete
                     id="small"
@@ -190,14 +190,14 @@ const basicOptions = [
         </pre>
 
         <!-- Validation -->
-        <h2>Validation</h2>
+        <h3>Validation</h3>
 
         <p>
             The <code>CAutocomplete</code> component allows validation rules to be applied, ensuring users enter the correct data.
             Custom validation messages can be displayed when the field is left empty or contains invalid values.
         </p>
 
-        <c-card class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+        <c-card variant="flat" class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
             <div class="lg:w-2/5 w-full max-w-[400px]">
                 <c-autocomplete
                     id="validation"
@@ -221,11 +221,11 @@ const basicOptions = [
         </pre>
 
         <!-- Clearable -->
-        <h2>Clearable</h2>
+        <h3>Clearable</h3>
 
         <p>The <code>clearable</code> property enables a button to clear the input field's content.</p>
 
-        <c-card class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+        <c-card class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
             <div class="lg:w-2/5 w-full max-w-[400px]">
                 <c-autocomplete
                     v-model="clearableValue"
@@ -249,11 +249,11 @@ const basicOptions = [
         </pre>
 
         <!-- Icon -->
-        <h2>Icon</h2>
+        <h3>Icon</h3>
 
         <p>The Input component does not include a dedicated <code>icon</code> prop. Instead, it utilizes a slot to allow for greater flexibility in customizing the icon within the input field. This approach provides developers with more control over the design and behavior of the icon. By adding an icon through the icon slot, you can seamlessly align it to the left of the input field, enhancing the user experience with contextual cues, such as a magnifying glass for search fields.</p>
 
-        <c-card class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+        <c-card variant="flat" class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
             <div class="lg:w-2/5 w-full max-w-[400px]">
                 <c-autocomplete
                     v-model="search"
@@ -261,7 +261,7 @@ const basicOptions = [
                     :options="basicOptions"
                 >
                     <template #icon>
-                        <IconMagnifyingGlass class="w-6  h-6 text-white" aria-hidden="true"  />
+                        <IconMagnifyingGlass class="w-6 h-6 text-neutral-600 dark:text-white" aria-hidden="true"  />
                     </template>
                 </c-autocomplete>
             </div>
@@ -271,11 +271,21 @@ const basicOptions = [
             <code class="code-hightlight language-vue">&lt;template&gt;
     &lt;c-autocomplete v-model=&quot;search&quot; label=&quot;Search Input&quot;&gt;
         &lt;template #icon&gt;
-            &lt;IconMagnifyingGlass class=&quot;w-6 h-6 text-white&quot; aria-hidden=&quot;true&quot; /&gt;
+            &lt;IconMagnifyingGlass
+                class=&quot;w-6 h-6 text-neutral-600 dark:text-white&quot;
+                aria-hidden=&quot;true&quot;
+            /&gt;
         &lt;/template&gt;
     &lt;/c-autocomplete&gt;
 &lt;/template&gt;</code>
 </pre>
+
+        <PagePagination
+            previous="Toolbar"
+            previousLink="/toolbar"
+            next="Checkbox"
+            nextLink="/checkbox"
+        />
     </BaseLayout>
 </template>
 
@@ -288,6 +298,8 @@ const basicOptions = [
 <script setup>
 import { ref } from "vue";
 import BaseLayout from "../../layout/BaseLayout.vue";
+import TableDocs from "../../components/TableDocs.vue";
+import PagePagination from "../../layout/PagePagination.vue";
 
 const basicOptions = [
     { value: 1, label: "Option 1" },

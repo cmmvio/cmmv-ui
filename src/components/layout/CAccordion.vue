@@ -3,13 +3,13 @@
         <div
             :class="[
                 flush ? 'border-none' : borderColor,
-                'border rounded-lg w-full overflow-x-auto c-accordion'
+                flush ? '' : 'rounded-lg',
+                'border w-full overflow-x-auto c-accordion'
             ]"
         >
             <div
                 v-for="(item, index) in items"
                 :key="index"
-
                 :class="flush ? 'border-none' : borderColor"
             >
                 <button
@@ -55,7 +55,7 @@
 </style>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, defineProps } from "vue";
 import IconChevronDown from "@components/icons/IconChevronDown.vue";
 
 const props = defineProps({

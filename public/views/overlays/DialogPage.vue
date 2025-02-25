@@ -159,6 +159,13 @@
     &lt;/template&gt;
 &lt;/c-dialog&gt;</code>
         </pre>
+
+        <PagePagination
+            previous="Toggle"
+            previousLink="/toggle"
+            next="Notification"
+            nextLink="/notification"
+        />
     </BaseLayout>
 </template>
 

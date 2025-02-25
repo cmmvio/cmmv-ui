@@ -8,7 +8,7 @@
 
         <h3>Props</h3>
 
-        <table class="w-full text-left border-collapse border-0 doc-table">
+        <table-docs>
             <thead>
                 <tr>
                     <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
@@ -55,11 +55,12 @@
                     <td class="border-b px-4 py-2">Determines whether the notification persists until manually dismissed.</td>
                 </tr>
             </tbody>
-        </table>
+        </table-docs>
+
 
         <h3>Slots</h3>
 
-        <table class="w-full text-left border-collapse border-0 doc-table">
+        <table-docs>
             <thead>
                 <tr>
                     <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Slot</th>
@@ -80,7 +81,8 @@
                     <td class="border-b px-4 py-2">Slot for the main content of the notification.</td>
                 </tr>
             </tbody>
-        </table>
+        </table-docs>
+
 
         <h3>Usage</h3>
 
@@ -122,7 +124,12 @@ function triggerNotification() {
 &lt;/script&gt;</code>
         </pre>
 
-
+        <PagePagination
+            previous="Dialog"
+            previousLink="/dialog"
+            next="Overlay"
+            nextLink="/overlay"
+        />
     </BaseLayout>
 </template>
 
@@ -130,6 +137,8 @@ function triggerNotification() {
 import { ref } from "vue";
 import BaseLayout from "../../layout/BaseLayout.vue";
 import CardDocs from "../../components/CardDocs.vue";
+import TableDocs from "../../components/TableDocs.vue";
+import PagePagination from "../../layout/PagePagination.vue";
 import IconCheck from "@components/icons/IconCheck.vue";
 
 const notification = ref(null);

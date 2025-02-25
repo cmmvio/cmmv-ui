@@ -7,7 +7,7 @@
             It supports images, icons, and text initials with various styling options for size, shape, and colors.
         </p>
 
-        <table class="w-full text-left border-collapse border-0 rounded-md doc-table">
+        <table-docs>
             <thead>
                 <tr>
                     <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
@@ -82,7 +82,7 @@
                     </td>
                 </tr>
             </tbody>
-        </table>
+        </table-docs>
 
         <h3>Basic Usage</h3>
 
@@ -290,10 +290,19 @@
 &lt;/div&gt;
 </code>
 </pre>
+
+        <PagePagination
+            previous="Alert"
+            previousLink="/alert"
+            next="Card"
+            nextLink="/card"
+        />
     </BaseLayout>
 </template>
 
 <script setup>
 import BaseLayout from "../../layout/BaseLayout.vue";
 import CardDocs from "../../components/CardDocs.vue";
+import PagePagination from "../../layout/PagePagination.vue";
+import TableDocs from "../../components/TableDocs.vue";
 </script>

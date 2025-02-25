@@ -8,7 +8,9 @@
                 'top-[50%] -translate-y-1/2': !isActive && !currentValue && !hasError,
                 'top-[30%]': !isActive && hasError,
                 'top-1/3': currentValue !== undefined && currentValue !== ''
-            }, textColor ? textColor : 'text-gray-500 dark:text-gray-400']"
+            },
+            textColor ? textColor : 'text-gray-500 dark:text-gray-400',
+            bgColor ? bgColor : variantColors[variant], 'px-1']"
         >
             {{ label }}
         </label>

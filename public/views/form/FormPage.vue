@@ -7,13 +7,14 @@
         </p>
 
         <!-- Basic Example -->
-        <h2 class="text-lg font-semibold mt-8">Example</h2>
+        <h3 class="text-lg font-semibold mt-8">Example</h3>
 
         <p>
             Below is a basic example of using the <code>CForm</code> component to create a login form. It demonstrates the integration with <code>CInput</code> for validation and <code>CButton</code> for form submission.
         </p>
 
         <c-card
+            variant="flat"
             bgColor="bg-white dark:bg-zinc-800 w-6/12 m-auto"
             class="p-8"
         >
@@ -107,10 +108,10 @@ const handleSubmit = () =&gt; {
     console.log(&quot;Form Submitted&quot;, data.value);
 };
 &lt;/script&gt;</code>
-        </pre>
+</pre>
 
         <!-- Features -->
-        <h2 class="text-lg font-semibold">Features</h2>
+        <h3>Features</h3>
 
         <br/>
 
@@ -122,9 +123,9 @@ const handleSubmit = () =&gt; {
         </ul>
 
         <!-- Props -->
-        <h2 class="text-lg font-semibold mt-8">Props</h2>
+        <h3>Props</h3>
 
-        <table class="w-full text-left border-collapse border-0 doc-table">
+        <table-docs>
             <thead>
                 <tr>
                     <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
@@ -141,12 +142,12 @@ const handleSubmit = () =&gt; {
                     <td class="border-b px-4 py-2">Tracks the validation state of the form.</td>
                 </tr>
             </tbody>
-        </table>
+        </table-docs>
 
         <!-- Events -->
-        <h2 class="text-lg font-semibold mt-8">Events</h2>
+        <h3>Events</h3>
 
-        <table class="w-full text-left border-collapse border-0 doc-table">
+        <table-docs>
             <thead>
                 <tr>
                     <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Event</th>
@@ -159,7 +160,14 @@ const handleSubmit = () =&gt; {
                     <td class="border-b px-4 py-2">Emitted when the form is submitted.</td>
                 </tr>
             </tbody>
-        </table>
+        </table-docs>
+
+        <PagePagination
+            previous="Checkbox"
+            previousLink="/checkbox"
+            next="Input"
+            nextLink="/input"
+        />
     </BaseLayout>
 </template>
 
@@ -171,6 +179,8 @@ const handleSubmit = () =&gt; {
 
 <script setup>
 import BaseLayout from "../../layout/BaseLayout.vue";
+import TableDocs from "../../components/TableDocs.vue";
+import PagePagination from "../../layout/PagePagination.vue";
 import CCard from "@components/layout/CCard.vue";
 import CForm from "@components/forms/CForm.vue";
 import CInput from "@components/forms/CInput.vue";

@@ -10,8 +10,8 @@
             :class="[sizes[size].track, isChecked ? trackColor : bgColor, disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer']"
         >
             <span
-                class="absolute rounded-full shadow transition-transform transform"
-                :class="[sizes[size].thumb, thumbColor, isChecked ? sizes[size].thumbTranslate : 'translate-x-0']"
+                class="absolute rounded-full shadow transition-transform transform border"
+                :class="[sizes[size].thumb, thumbColor, thumbBorderColor, isChecked ? sizes[size].thumbTranslate : 'translate-x-0']"
             ></span>
         </span>
 
@@ -36,7 +36,7 @@ const props = defineProps({
     checked: {
         type: Boolean,
         required: false,
-        default: false, 
+        default: false,
     },
     label: {
         type: String,
@@ -56,7 +56,7 @@ const props = defineProps({
     bgColor: {
         type: String,
         required: false,
-        default: "bg-zinc-400", 
+        default: "bg-neutral-300 dark:bg-neutral-400",
     },
     trackColor: {
         type: String,
@@ -66,7 +66,12 @@ const props = defineProps({
     thumbColor: {
         type: String,
         required: false,
-        default: "bg-white", 
+        default: "bg-white",
+    },
+    thumbBorderColor: {
+        type: String,
+        required: false,
+        default: "border-neutral-200",
     },
 });
 
@@ -118,11 +123,11 @@ const createRipple = () => {
     }, 500);
 };
 
-const sizes: Record<string, { 
-    track: string, 
-    thumb: string, 
-    thumbTranslate: string, 
-    label: string 
+const sizes: Record<string, {
+    track: string,
+    thumb: string,
+    thumbTranslate: string,
+    label: string
 }> = {
     "sm": {
         track: "w-10 h-5",
@@ -149,15 +154,15 @@ const sizes: Record<string, {
 .ripple {
     position: absolute;
     border-radius: 50%;
-    background-color: rgba(0, 0, 0, 0.1); 
+    background-color: rgba(0, 0, 0, 0.1);
     transform: scale(0);
-    animation: ripple-animation 0.4s ease-out; 
+    animation: ripple-animation 0.4s ease-out;
     pointer-events: none;
 }
 
 @keyframes ripple-animation {
     to {
-        transform: scale(1.5); 
+        transform: scale(1.5);
         opacity: 0;
     }
 }

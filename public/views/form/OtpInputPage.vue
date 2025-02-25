@@ -4,7 +4,7 @@
 
         <p>The <code>COtpInput (alias: c-otp-input)</code> component in the <code>@cmmv/ui</code> framework provides a multi-digit input field, designed for OTP (One-Time Password) or similar use cases. It offers customization for length, validation, error states, loading overlays, and seamless interaction via keyboard.</p>
 
-        <table class="w-full text-left border-collapse border-0 doc-table">
+        <table-docs>
             <thead>
                 <tr>
                     <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
@@ -57,14 +57,14 @@
                     <td class="border-b px-4 py-2">Sets the border and focus ring color of the input boxes. Accepts TailwindCSS classes.</td>
                 </tr>
             </tbody>
-        </table>
+        </table-docs>
 
         <!-- Basic -->
         <h3>Basic</h3>
 
         <p>The <code>COTPInput</code> component is easy to use with minimal configuration.</p>
 
-        <c-card class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+        <c-card variant="flat" class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
             <div class="lg:w-2/5 w-full">
                 <c-otp-input v-model="otpValue" />
 
@@ -87,7 +87,7 @@ const otpValue = ref(&quot;&quot;);
 
         <p>You can customize the OTP length to match specific requirements, ranging from 4 to 8 digits.</p>
 
-        <c-card class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+        <c-card variant="flat" class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
             <div class="lg:w-2/5 w-full">
                 <c-otp-input v-model="otpValueLength8" :length="8" />
             </div>
@@ -108,7 +108,7 @@ const otpValueLength8 = ref(&quot;&quot;);
 
         <p>The <code>isError</code> property highlights the input fields in red when validation fails.</p>
 
-        <c-card class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+        <c-card variant="flat" class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
             <div class="lg:w-2/5 w-full">
                 <c-otp-input v-model="otpErrorValue" error />
             </div>
@@ -132,7 +132,7 @@ const otpErrorValue = ref(&quot;&quot;);
             to fit your application's design.
         </p>
 
-        <c-card class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+        <c-card variant="flat" class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
             <div class="lg:w-2/5 w-full">
                 <c-otp-input
                     v-model="otpCustomValue"
@@ -166,7 +166,7 @@ const otpCustomValue = ref(&quot;&quot;);
             This is useful for multi-step authentication flows.
         </p>
 
-        <c-card class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+        <c-card variant="flat" class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
             <div class="lg:w-2/5 w-full">
                 <c-otp-input v-model="otpInstance1" />
                 <c-otp-input v-model="otpInstance2" :length="8" bgColor="bg-gray-100" textColor="text-gray-800" />
@@ -190,14 +190,14 @@ const otpInstance2 = ref(&quot;&quot;);
 &lt;/script&gt;</code>
         </pre>
 
-        <h2>Exemples</h2>
+        <h3>Exemples</h3>
 
         <p>Here is an example of using the <code>c-otp-input</code> component within a card layout to create a verification screen. The card contains a title, instructions for entering a verification code, and a button to proceed with the verification. Additionally, it includes a link for users to resend the code if they didn’t receive it. This implementation demonstrates a practical use case of combining multiple <code>@cmmv/ui</code> components to create an interactive and visually appealing UI.</p>
 
         <card-docs>
             <c-card
-                bgColor="bg-zinc-900"
-                textColor="text-white"
+                bgColor="bg-neutral-100 dark:bg-neutral-900"
+                textColor="text-neutral-600 dark:text-white"
                 maxWidth="400px"
                 rounded="md"
             >
@@ -276,6 +276,12 @@ const otpValue = ref(&quot;&quot;);
 &lt;/script&gt;</code>
 </pre>
 
+        <PagePagination
+            previous="Input"
+            previousLink="/input"
+            next="Radio"
+            nextLink="/radio"
+        />
     </BaseLayout>
 </template>
 
@@ -289,6 +295,8 @@ const otpValue = ref(&quot;&quot;);
 import { ref } from "vue";
 import BaseLayout from "../../layout/BaseLayout.vue";
 import CardDocs from "../../components/CardDocs.vue";
+import TableDocs from "../../components/TableDocs.vue";
+import PagePagination from "../../layout/PagePagination.vue";
 
 const otpValue = ref("");
 const otpValueLength8 = ref("");

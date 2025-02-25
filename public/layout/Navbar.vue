@@ -87,6 +87,7 @@ export default defineComponent({
                     { name: "Alert", uri: "/alert" },
                     { name: "Avatar", uri: "/avatar" },
                     { name: "Card", uri: "/card" },
+                    { name: "Tabs", uri: "/tabs" },
                     { name: "Toolbar", uri: "/toolbar" },
                 ]
             },

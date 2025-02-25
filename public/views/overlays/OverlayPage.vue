@@ -1,14 +1,14 @@
 <template>
     <BaseLayout>
-
         <h1>Overlay</h1>
+
         <p>
             The <code>COverlay (alias c-overlay)</code> component provides a full-screen overlay that can be used for modals, loading states, or any scenario requiring a dimmed background. It is highly customizable and integrates seamlessly with other components.
         </p>
 
         <h3>Props</h3>
 
-        <table class="w-full text-left border-collapse border-0 doc-table">
+        <table-docs>
             <thead>
             <tr>
                 <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
@@ -59,14 +59,15 @@
                 </td>
             </tr>
             </tbody>
-        </table>
+        </table-docs>
 
         <h3>Slots</h3>
 
         <p>The <code>COverlay</code> component includes a default slot for placing custom content inside the overlay.</p>
 
-        <h2>Events</h2>
-        <table class="w-full text-left border-collapse border-0 doc-table">
+        <h3>Events</h3>
+
+        <table-docs>
             <thead>
             <tr>
                 <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Event</th>
@@ -81,7 +82,7 @@
                 </td>
             </tr>
             </tbody>
-        </table>
+        </table-docs>
 
         <h3>Example Usage</h3>
 
@@ -123,6 +124,11 @@ import { ref } from &quot;vue&quot;;
 const isOverlayVisible = ref(false);
 &lt;/script&gt;</code>
         </pre>
+
+        <PagePagination
+            previous="Notification"
+            previousLink="/notification"
+        />
     </BaseLayout>
 </template>
 
@@ -130,5 +136,7 @@ const isOverlayVisible = ref(false);
 import { ref } from "vue";
 import BaseLayout from "../../layout/BaseLayout.vue";
 import CardDocs from "../../components/CardDocs.vue";
+import TableDocs from "../../components/TableDocs.vue";
+import PagePagination from "../../layout/PagePagination.vue";
 const isOverlayVisible = ref(false);
 </script>

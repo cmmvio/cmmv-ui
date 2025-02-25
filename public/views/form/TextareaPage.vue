@@ -4,7 +4,7 @@
 
         <p>The <code>CTextarea (alias: c-textarea)</code> component in the <code>@cmmv/ui</code> framework provides a flexible, multi-line input field with advanced customization options for size, variants, rounding, and interaction states. It supports features like dynamic labels, character counters, and hints or error messages for enhanced user experience.</p>
 
-        <table class="w-full text-left border-collapse border-0 doc-table">
+        <table-docs>
             <thead>
                 <tr>
                     <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
@@ -105,9 +105,9 @@
                     <td class="border-b px-4 py-2">Automatically adjusts the height of the textarea to fit the content dynamically.</td>
                 </tr>
             </tbody>
-        </table>
+        </table-docs>
 
-        <c-card class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+        <c-card variant="flat" class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
             <div class="lg:w-2/5 w-full">
                 <c-textarea
                     label="Input with Placeholder"
@@ -125,13 +125,13 @@
 &lt;/template&gt;</code>
     </pre>
 
-        <h2>Validation</h2>
+        <h3>Validation</h3>
 
         <p>
             The <code>CTextarea</code> component supports custom validation rules. Error messages are displayed below the textarea if a rule fails. Use the <code>rules</code> prop to define an array of validation functions. Each function receives the current value as a parameter and should return an error message or <code>null</code>.
         </p>
 
-        <c-card class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+        <c-card variant="flat" class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
             <div class="lg:w-2/5 w-full">
                 <c-textarea
                     label="Textarea with Validation"
@@ -153,11 +153,11 @@
 &lt;/template&gt;</code>
 </pre>
 
-        <h2>Size Variants</h2>
+        <h3>Size Variants</h3>
 
         <p>The <code>CTextarea</code> component supports size variations: <code>sm</code>, <code>md</code>, and <code>lg</code>.</p>
 
-        <c-card class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+        <c-card variant="flat" class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
             <div class="lg:w-2/5 w-full">
                 <c-textarea label="Small Textarea" placeholder="Enter text here..." size="sm" />
                 <c-textarea label="Medium Textarea" placeholder="Enter text here..." size="md" />
@@ -174,13 +174,13 @@
         </pre>
 
         <!-- Length Count -->
-        <h2>Length Count</h2>
+        <h3>Length Count</h3>
 
         <p>
             The <code>lengthCount</code> property enables a character counter below the textarea. The counter displays the number of characters entered relative to the maximum allowed length, defined by the <code>maxlength</code> property.
         </p>
 
-        <c-card class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+        <c-card variant="flat" class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
             <div class="lg:w-2/5 w-full">
                 <c-textarea
                     label="Textarea with Length Count"
@@ -203,7 +203,7 @@
         </pre>
 
         <!-- Custom Colors -->
-        <h2>Auto Resize</h2>
+        <h3>Auto Resize</h3>
 
         <p>
             The <code>autoresize</code> property enables dynamic height adjustment for the
@@ -211,7 +211,7 @@
             By default, <code>autoresize</code> is enabled, but it can be disabled if fixed-height behavior is required.
         </p>
 
-        <c-card class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+        <c-card variant="flat" class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
             <div class="lg:w-2/5 w-full">
                 <c-textarea
                     label="Autoresize Enabled"
@@ -248,7 +248,7 @@
 </pre>
 
         <!-- Custom Colors -->
-        <h2>Custom Colors</h2>
+        <h3>Custom Colors</h3>
 
         <p>
             The <code>CTextarea</code> component supports <strong>custom colors</strong> for the background, text, and border. Use the following props to style the textarea:
@@ -264,7 +264,7 @@
             This flexibility allows for dynamic and visually appealing designs tailored to your application's branding.
         </p>
 
-        <c-card class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+        <c-card variant="flat" class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
             <div class="lg:w-2/5 w-full">
                 <c-textarea
                     label="Custom Background"
@@ -312,6 +312,13 @@
     /&gt;
 &lt;/template&gt;</code>
         </pre>
+
+        <PagePagination
+            previous="Slider"
+            previousLink="/slider"
+            next="Toggle"
+            nextLink="/toggle"
+        />
     </BaseLayout>
 </template>
 
@@ -319,4 +326,6 @@
 import { ref } from "vue";
 import BaseLayout from "../../layout/BaseLayout.vue";
 import CardDocs from "../../components/CardDocs.vue";
+import TableDocs from "../../components/TableDocs.vue";
+import PagePagination from "../../layout/PagePagination.vue";
 </script>

@@ -7,8 +7,6 @@
             It supports multiple configurations, such as always open mode, color customization, flush styling, and different arrow styles.
         </p>
 
-        <h3>Basic Accordion</h3>
-
         <card-docs>
             <c-accordion :items="accordionItems" />
         </card-docs>
@@ -81,21 +79,20 @@
 /&gt;</code>
         </pre>
 
-        <h3>Arrow Style</h3>
-
-        <p>
-            The <code>arrowStyle</code> prop changes the icon used to expand/retract the accordion. Available options: <code>default</code>, <code>chevron</code>, and <code>plus</code>.
-        </p>
-
-        <card-docs>
-            <c-accordion :items="accordionItems" arrowStyle="plus" />
-        </card-docs>
+        <PagePagination
+            previous="Table"
+            previousLink="/table"
+            next="Alert"
+            nextLink="/alert"
+        />
     </BaseLayout>
 </template>
 
 <script setup>
 import BaseLayout from "../../layout/BaseLayout.vue";
 import CardDocs from "../../components/CardDocs.vue";
+import TableDocs from "../../components/TableDocs.vue";
+import PagePagination from "../../layout/PagePagination.vue";
 
 const accordionItems = [
     { title: "First Item", content: "This is the first item's content." },

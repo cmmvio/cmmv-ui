@@ -3,13 +3,15 @@
         <div class="relative">
             <label
                 :for="id"
-                class="c-autocomplete-label absolute left-3 text-sm transition-all duration-200 ease-in-out drop-shadow-sm pointer-events-none"
+                class="c-autocomplete-label absolute left-3 text-sm transition-all duration-200 ease-in-out pointer-events-none"
                 :class="[{
                     'c-autocomplete-label--active': isActive,
                     'top-[50%] -translate-y-1/2': !isFocus && !currentInput,
                     'top-1/3': currentInput !== undefined && currentInput !== '',
                     'pl-8': hasIcon && !isActive
-                }, textColor ? textColor : 'text-gray-500 dark:text-gray-400']"
+                },
+                textColor ? textColor : 'text-gray-500 dark:text-gray-400',
+                bgColor ? bgColor : variantColors[variant], 'px-1']"
             >
                 {{ label }}
             </label>
@@ -17,7 +19,7 @@
             <div class="relative flex items-center">
                 <div
                     v-if="hasIcon"
-                    class="absolute inset-y-0 left-0 flex items-center pl-3 z-50"
+                    class="absolute inset-y-0 left-0 flex items-center pl-3 z-30"
                 >
                     <slot name="icon"></slot>
                 </div>
