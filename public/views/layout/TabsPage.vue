@@ -98,6 +98,44 @@ const tabs = ref([
             <code class="code-highlight language-vue">&lt;c-tabs :tabs="tabs" fullWidth /&gt;</code>
         </pre>
 
+        <h3>Tabs with icons</h3>
+
+        <p>
+            The <code>CTabs</code> component supports icons alongside text labels, making it visually appealing and easier to navigate.
+            You can provide an icon for each tab by adding an <code>icon</code> property to the <code>tabs</code> array.
+            The icon will be displayed before the tab label.
+        </p>
+
+        <p>
+            Icons can help users quickly identify sections, improving the overall user experience. Below is an example of tabs
+            with icons:
+        </p>
+
+        <card-docs>
+            <c-tabs :tabs="tabsWithIcons"></c-tabs>
+        </card-docs>
+
+        <pre>
+    <code class="code-highlight language-vue">&lt;template&gt;
+    &lt;c-tabs :tabs="tabsWithIcons" /&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref } from 'vue';
+import IconUser from '@components/icons/IconUser.vue';
+import IconCog6Tooth from '@components/icons/IconCog6Tooth.vue';
+import IconRectangleGroup from '@components/icons/IconRectangleGroup.vue';
+import IconUserGroup from '@components/icons/IconUserGroup.vue';
+
+const tabsWithIcons = ref([
+    { title: "Profile", id: "profile", icon: IconUser },
+    { title: "Dashboard", id: "dashboard", icon: IconRectangleGroup },
+    { title: "Settings", id: "settings", icon: IconCog6Tooth },
+    { title: "Contacts", id: "contacts", icon: IconUserGroup }
+]);
+&lt;/script&gt;</code>
+</pre>
+
         <h3>Pills</h3>
 
         <p>
@@ -249,11 +287,24 @@ import BaseLayout from "../../layout/BaseLayout.vue";
 import CardDocs from "../../components/CardDocs.vue";
 import TableDocs from "../../components/TableDocs.vue";
 import PagePagination from "../../layout/PagePagination.vue";
+import IconUser from "../../../src/components/icons/IconUser.vue";
+import IconCog6Tooth from "../../../src/components/icons/IconCog6Tooth.vue";
+import IconRectangleGroup from "../../../src/components/icons/IconRectangleGroup.vue";
+import IconUserGroup from "../../../src/components/icons/IconUserGroup.vue";
+
+//<icon-rectangle-group class="w-8 h-8 text-white" aria-hidden="true" />
 
 const tabs = ref([
     { title: "Profile", id: "profile" },
     { title: "Dashboard", id: "dashboard" },
     { title: "Settings", id: "settings" },
     { title: "Contacts", id: "contacts" }
+]);
+
+const tabsWithIcons = ref([
+    { title: "Profile", id: "profile", icon: IconUser },
+    { title: "Dashboard", id: "dashboard", icon: IconRectangleGroup },
+    { title: "Settings", id: "settings", icon: IconCog6Tooth  },
+    { title: "Contacts", id: "contacts", icon: IconUserGroup  }
 ]);
 </script>

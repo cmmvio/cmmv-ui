@@ -76,6 +76,7 @@ export default defineComponent({
                 name: "Data",
                 isDir: true,
                 children: [
+                    { name: "Pagination", uri: "/pagination" },
                     { name: "Table", uri: "/table" },
                 ]
             },

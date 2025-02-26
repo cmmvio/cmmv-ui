@@ -29,13 +29,25 @@
                     :class="[getTabClass(index), fullWidth ? 'flex-1 group text-center' : '']"
                     class="cursor-pointer select-none"
                 >
-                    <component :is="tab.icon" v-if="tab.icon" class="w-4 h-4 mr-1 inline-block" />
+                    <div :class="[tab.icon ? 'flex' : 'flex-1']">
+                        <div class="mt-0.5">
+                            <component
+                                :is="tab.icon"
+                                :class="[isSelected(index) ? textActiveColor : textColor, 'w-4 h-4 mr-2 -pt-1 inline-block']"
+                                v-if="tab.icon"
+                                size="sm"
+                            />
+                        </div>
 
-                    {{ tab.title }}
+                        <div>
 
-                    <span v-if="styleType === 'bar'" aria-hidden="true"
-                        :class="[isSelected(index) ? barBorderActive : 'bg-transparent', 'absolute inset-x-0 bottom-0 h-0.5']">
-                    </span>
+                            {{ tab.title }}
+
+                            <span v-if="styleType === 'bar'" aria-hidden="true"
+                                :class="[isSelected(index) ? barBorderActive : 'bg-transparent', 'absolute inset-x-0 bottom-0 h-0.5']">
+                            </span>
+                        </div>
+                    </div>
                 </span>
             </nav>
         </div>
@@ -59,6 +71,14 @@ const props = defineProps({
     styleType: {
         type: String,
         default: "default",
+    },
+    textColor: {
+        type: String,
+        default: "text-neutral-400 hover:text-neutral-700",
+    },
+    textActiveColor: {
+        type: String,
+        default: "text-indigo-600",
     },
     fullWidth: {
         type: Boolean,
@@ -88,8 +108,8 @@ const selectTab = (index: number) => (selectedTab.value = index);
 const getTabClass = (index: number) => {
     if (props.styleType === "default") {
         return isSelected(index)
-            ? "border-indigo-500 text-indigo-600 whitespace-nowrap border-b-2 px-3 py-4 text-sm font-medium"
-            : "border-transparent text-neutral-400 hover:border-gray-300 hover:text-neutral-700 whitespace-nowrap border-b-2 px-3 py-4 text-sm font-medium";
+            ? "border-indigo-500 whitespace-nowrap border-b-2 px-3 py-4 text-sm font-medium " + props.textActiveColor
+            : "border-transparent hover:border-gray-300 whitespace-nowrap border-b-2 px-3 py-4 text-sm font-medium " + props.textColor;
     }
 
     if (props.styleType === "pills") {

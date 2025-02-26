@@ -1,7 +1,7 @@
 <template>
     <button
         @click="toggleTheme"
-        class="mt-0.5"
+        class="mt-0.5 mr-1"
     >
             <icon-sun v-if="theme === 'dark'" class="w-8 h-8 text-white dark:text-slate-50 text-2xl p-1 hover:text-neutral-300" aria-hidden="true" />
             <icon-moon v-else class="w-8 h-8 text-black dark:text-slate-50 text-2xl p-1 hover:text-neutral-600" aria-hidden="true" />

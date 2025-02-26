@@ -13,6 +13,7 @@ import BadgePage from "./views/components/BadgePage.vue";
 import LoaderPage from "./views/components/LoaderPage.vue";
 
 //Data
+import PaginationPage from "./views/data/PaginationPage.vue";
 import TablePage from "./views/data/TablePage.vue";
 
 //Layout
@@ -52,6 +53,7 @@ const routes = [
     { path: '/loader', component: LoaderPage },
 
     //Data
+    { path: '/pagination', component: PaginationPage },
     { path: '/table', component: TablePage },
 
 	//Layout

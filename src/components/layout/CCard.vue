@@ -1,16 +1,16 @@
 <template>
     <div
-        class="rounded-lg w-full m-auto transition duration-200 overflow-hidden"
+        class="rounded-lg w-full m-auto transition duration-200"
         :class="[
             roundedStyles[rounded],
             bgColor,
             borderColor,
             textColor,
             variants[variant],
+            customClass,
             { 'hover:brightness-110': hover && !disabled, 'opacity-50 cursor-not-allowed': disabled },
         ]"
         :style="{ maxWidth, minWidth, minHeight }"
-        :href="href"
         v-bind="href ? { role: 'link', tabindex: 0 } : {}"
     >
         <c-progress-bar
@@ -196,6 +196,10 @@ defineProps({
         type: String,
         required: false,
         default: "text-black",
+    },
+    customClass: {
+        type: String,
+        required: false
     },
 });
 

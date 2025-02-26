@@ -371,6 +371,7 @@
         <c-card
             title="Advanced Card"
             subtitle="This card demonstrates all configurations."
+            customClass="overflow-hidden"
             bgColor="bg-white"
             bgHeaderColor="bg-blue-500 text-white"
             bgBorderColor="border-b border-gray-300"

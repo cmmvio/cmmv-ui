@@ -75,7 +75,14 @@
                             'whitespace-nowrap'
                         ]"
                         v-for="itemHeader in headers"
-                    >{{ item[itemHeader.key] }}</td>
+                    >
+                        <span v-if="$slots[itemHeader.key]">
+                            <slot :name="itemHeader.key" :item="item"></slot>
+                        </span>
+                        <span v-else>
+                            {{ item[itemHeader.key] }}
+                        </span>
+                    </td>
                 </tr>
             </tbody>
         </table>

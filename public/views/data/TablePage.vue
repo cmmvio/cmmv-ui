@@ -158,11 +158,154 @@ const onSelectionChange = (selected) => {
 &lt;/script&gt;</code>
         </pre>
 
+        <h3>Customizing Table Columns</h3>
+
+        <p>
+            The <code>CTable</code> component allows developers to customize how specific fields are rendered in the table using Vue slots.
+            This is useful when you want to format dates, apply styles based on the field value, or display icons, badges, and other UI elements dynamically.
+        </p>
+
+        <p>
+            In the example below, we format the <code>createAt</code> field to display a localized date and time instead of a timestamp.
+            Additionally, the <code>active</code> field is rendered using badges to indicate whether the user is active or inactive.
+        </p>
+
+        <c-card variant="flat" class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+            <c-table
+                :items="itemsWithCreateAt"
+                :headers="headersWithCreateAt"
+                @update:selected="onSelectionChange"
+            >
+                <template #createAt="{ item }">
+                    {{ formatDate(item.createAt) }}
+                </template>
+
+                <template #active="{ item }">
+                    <c-badge
+                        bgColor="bg-green-100 dark:bg-green-900"
+                        textColor="text-green-800 dark:text-green-300"
+                        rounded="rounded-md"
+                        customClass="me-2 px-2.5 py-0.5"
+                        v-if="item.active"
+                    >
+                        Active
+                    </c-badge>
+
+                    <c-badge
+                        bgColor="bg-red-100 dark:bg-red-900"
+                        textColor="text-red-800 dark:text-red-300"
+                        rounded="rounded-md"
+                        customClass="me-2 px-2.5 py-0.5"
+                        v-else
+                    >
+                        Inactive
+                    </c-badge>
+                </template>
+            </c-table>
+        </c-card>
+
+        <pre>
+    <code class="code-highlight language-vue">&lt;template&gt;
+    &lt;c-table
+        :headers="headersWithCreateAt"
+        :items="itemsWithCreateAt"
+        @update:selected="onSelectionChange"
+    &gt;
+        &lt;!-- Custom Date Formatting --&gt;
+        &lt;template #createAt="{ item }"&gt;
+            &#123;&#123; formatDate(item.createAt) &#125;&#125;
+        &lt;/template&gt;
+
+        &lt;!-- Custom Status Badge --&gt;
+        &lt;template #active="{ item }"&gt;
+            &lt;c-badge
+                bgColor="bg-green-100 dark:bg-green-900"
+                textColor="text-green-800 dark:text-green-300"
+                rounded="rounded-md"
+                customClass="me-2 px-2.5 py-0.5"
+                v-if="item.active"
+            &gt;
+                Active
+            &lt;/c-badge&gt;
+
+            &lt;c-badge
+                bgColor="bg-red-100 dark:bg-red-900"
+                textColor="text-red-800 dark:text-red-300"
+                rounded="rounded-md"
+                customClass="me-2 px-2.5 py-0.5"
+                v-else
+            &gt;
+                Inactive
+            &lt;/c-badge&gt;
+        &lt;/template&gt;
+    &lt;/c-table&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref } from "vue";
+
+const headersWithCreateAt = ref([
+    { label: "ID", key: "id" },
+    { label: "Name", key: "name" },
+    { label: "Email", key: "email" },
+    { label: "Created At", key: "createAt" },
+    { label: "Status", key: "active" }
+]);
+
+const itemsWithCreateAt = ref([
+    {
+        id: 1,
+        name: "Alice Johnson",
+        email: "alice@example.com",
+        createAt: 1740539034483,
+        active: true
+    },
+    {
+        id: 2,
+        name: "Bob Smith",
+        email: "bob@example.com",
+        createAt: 1740539045274,
+        active: false
+    },
+    {
+        id: 3,
+        name: "Charlie Brown",
+        email: "charlie@example.com",
+        createAt: 1740539063385,
+        active: true
+    }
+]);
+
+const onSelectionChange = (selected) => {
+    console.log("Selected Items:", selected);
+};
+
+const formatDate = (timestamp) => {
+    if (!timestamp) return "N/A";
+
+    try {
+        return new Intl.DateTimeFormat(navigator.language, {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+            hour12: false,
+        }).format(new Date(timestamp));
+    } catch (error) {
+        return "Invalid Date";
+    }
+};
+&lt;/script&gt;
+</code>
+</pre>
+
         <PagePagination
-            previous="Tooltip"
-            previousLink="/tooltip"
-            next=""
-            nextLink=""
+            previous="Pagination"
+            previousLink="/pagination"
+            next="Accordion"
+            nextLink="/accordion"
         />
     </BaseLayout>
 </template>
@@ -179,15 +322,64 @@ const headers = ref([
     { label: "Email", key: "email" }
 ]);
 
+const headersWithCreateAt = ref([
+    { label: "ID", key: "id" },
+    { label: "Name", key: "name" },
+    { label: "Email", key: "email" },
+    { label: "Create At", key: "createAt" },
+    { label: "Status", key: "active" }
+]);
+
 const items = ref([
     { id: 1, name: "Alice Johnson", email: "alice@example.com" },
     { id: 2, name: "Bob Smith", email: "bob@example.com" },
     { id: 3, name: "Charlie Brown", email: "charlie@example.com" }
 ]);
 
+const itemsWithCreateAt = ref([
+    { id: 1,
+        name: "Alice Johnson",
+        email: "alice@example.com",
+        createAt: 1740539034483,
+        active: true
+    },
+    {
+        id: 2,
+        name: "Bob Smith",
+        email: "bob@example.com",
+        createAt: 1740539045274,
+        active: false
+    },
+    {
+        id: 3,
+        name: "Charlie Brown",
+        email: "charlie@example.com",
+        createAt: 1740539063385,
+        active: true
+    }
+]);
+
 const selectedItems = ref([]);
 
 const onSelectionChange = (selected) => {
     selectedItems.value = selected;
+};
+
+const formatDate = (dateString) => {
+    if (!dateString) return "N/A";
+
+    try {
+        return new Intl.DateTimeFormat(navigator.language, {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+            hour12: false,
+        }).format(new Date(dateString));
+    } catch (error) {
+        return "Invalid Date";
+    }
 };
 </script>
