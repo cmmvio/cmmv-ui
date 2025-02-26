@@ -119,7 +119,9 @@
         </p>
 
         <card-docs>
-            <c-avatar class="m-auto" initials="EY" bgColor="bg-blue-500" size="md" />
+            <div class="m-auto">
+                <c-avatar initials="EY" bgColor="bg-blue-500" size="md" />
+            </div>
         </card-docs>
 
         <pre>

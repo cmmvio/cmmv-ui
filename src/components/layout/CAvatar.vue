@@ -1,5 +1,5 @@
 <template>
-    <div :class="class">
+    <div v-bind="$attrs">
         <div
             v-if="!stacked"
             :class="[

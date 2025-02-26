@@ -1,5 +1,5 @@
 <template>
-    <div :class="class">
+    <div v-bind="$attrs">
         <div
             :class="[
                 flush ? 'border-none' : borderColor,

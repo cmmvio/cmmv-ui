@@ -164,11 +164,17 @@ h3 {
     font-weight: 200 !important;
 }
 
-p {
+.context-html p {
     line-height: 26px;
     display: block;
     margin-top: 1em !important;
     margin-bottom: 1em !important;
+}
+
+.context-html .c-card p {
+    line-height: auto;
+    margin-top: 0em !important;
+    margin-bottom: 0em !important;
 }
 
 .language-markup {
@@ -195,84 +201,9 @@ p {
     hyphens: none;
 }
 
-.anchor {
-    width: 250px;
-    padding-left: 45px;
-    box-sizing: border-box;
-    position: fixed;
-    top: 90px;
-    right: 20px;
-    overflow: hidden;
-}
-
-.anchor ul:not(:first-child):not(:last-child) {
-    content: "";
-    left: 0;
-    width: 2px;
-    background: #efefef;
-    list-style-type: disc;
-    padding: 0;
-}
-
-.anchor ul:first-child {
-    background: none;
-}
-
-.anchor ul:last-child {
-    background: none;
-}
-
-.anchor ul {
-    content: "";
-    left: 0;
-    width: 2px;
-    background: #efefef;
-    list-style-type: disc;
-    padding: 0;
-}
-
-.anchor li {
-    display: block;
-    position: relative;
-    padding-left: 30px;
-    font-size: 14px;
-    line-height: 24px;
-    margin-bottom: 6px;
-    text-align: -webkit-match-parent;
-}
-
-.anchor li :before {
-    border-radius: 50%;
-    transform: translateY(-50%);
-    content: "";
-    background: #1F1F22;
-    border: 2px solid #efefef;
-    left: -4px;
-    width: 10px;
-    height: 10px;
-    top: 50%;
-    display: inline-block;
-    position: absolute;
-}
-
-.anchor li a {
-    display: block;
-    text-decoration: none;
-    margin-top: -20px;
-    font-size: 12px !important;
-    text-decoration: none;
-    min-width: 200px;
-    height: 40px;
-    padding-top: 12px;
-}
-
 .current a {
     color: cornflowerblue !important;
     font-weight: 600;
-}
-
-.anchor li a:hover {
-    color: cornflowerblue;
 }
 
 .current a:before {
@@ -322,6 +253,12 @@ p {
     margin-bottom: 20px;
     margin-left: 20px;
     text-align: left;
+}
+
+.context-html .c-card li {
+    list-style: none;
+    margin-bottom: 0px;
+    margin-left: 0px;
 }
 
 .context-html a {

@@ -76,6 +76,7 @@ export default defineComponent({
                 name: "Data",
                 isDir: true,
                 children: [
+                    { name: "List", uri: "/list" },
                     { name: "Pagination", uri: "/pagination" },
                     { name: "Table", uri: "/table" },
                 ]
@@ -98,6 +99,7 @@ export default defineComponent({
                 children: [
                     { name: "Autocomplete", uri: "/autocomplete" },
                     { name: "Checkbox", uri: "/checkbox" },
+                    { name: "Dropdown", uri: "/dropdown" },
                     { name: "Form", uri: "/form" },
                     { name: "Input", uri: "/input" },
                     { name: "OTP Input", uri: "/otp-input" },

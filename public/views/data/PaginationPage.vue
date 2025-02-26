@@ -5,8 +5,8 @@
         <c-pagination v-model="selected" totalPages="10"></c-pagination>
 
         <PagePagination
-            previous="Tooltip"
-            previousLink="/tooltip"
+            previous="List"
+            previousLink="/list"
             next="Table"
             nextLink="/table"
         />

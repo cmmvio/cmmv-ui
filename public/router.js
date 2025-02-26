@@ -13,6 +13,7 @@ import BadgePage from "./views/components/BadgePage.vue";
 import LoaderPage from "./views/components/LoaderPage.vue";
 
 //Data
+import ListPage from "./views/data/ListPage.vue";
 import PaginationPage from "./views/data/PaginationPage.vue";
 import TablePage from "./views/data/TablePage.vue";
 
@@ -34,6 +35,7 @@ import TextareaPage from "./views/form/TextareaPage.vue";
 import TogglePage from "./views/form/TogglePage.vue";
 import RadioPage from "./views/form/RadioPage.vue";
 import SliderPage from "./views/form/SliderPage.vue";
+import DropdownPage from "./views/form/DropdownPage.vue";
 
 //Overlays
 import DialogPage from "./views/overlays/DialogPage.vue";
@@ -53,6 +55,7 @@ const routes = [
     { path: '/loader', component: LoaderPage },
 
     //Data
+    { path: '/list', component: ListPage },
     { path: '/pagination', component: PaginationPage },
     { path: '/table', component: TablePage },
 
@@ -66,14 +69,15 @@ const routes = [
 
 	//Form
     { path: '/autocomplete', component: AutocompletePage },
+    { path: '/checkbox', component: CheckboxPage },
+    { path: '/dropdown', component: DropdownPage },
 	{ path: '/form', component: FormPage },
 	{ path: '/input', component: InputPage },
     { path: '/otp-input', component: OtpInputPage },
-	{ path: '/checkbox', component: CheckboxPage },
+	{ path: '/radio', component: RadioPage },
+    { path: '/slider', component: SliderPage },
     { path: '/textarea', component: TextareaPage },
     { path: '/toggle', component: TogglePage },
-    { path: '/radio', component: RadioPage },
-    { path: '/slider', component: SliderPage },
 
     //Overlays
     { path: '/dialog', component: DialogPage },
