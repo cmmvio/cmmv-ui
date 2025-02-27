@@ -28,14 +28,13 @@
                 variantStyles[variant],
                 bgColor ? bgColor : variantColors[variant],
                 textColor,
-                borderColorClass,
                 {
                     'ring-red-500 ring-2': hasError,
                     'opacity-50': disabled,
                     'resize-none': !resize
                 }
             ]"
-            class="c-textarea-field block w-full pt-4 pb-2 outline-none border-none"
+            class="c-textarea-field block w-full pt-4 pb-2 outline-none"
             @input="handleInput"
             @focus="activateLabel"
             @blur="deactivateLabel"
@@ -152,7 +151,7 @@ const props = defineProps({
     bgColor: {
         type: String,
         required: false,
-        default: ""
+        default: "bg-white dark:bg-neutral-900"
     },
     textColor: {
         type: String,
@@ -188,7 +187,7 @@ const roundedStyles: Record<string, string> = {
 };
 
 const variantStyles: Record<string, string> = {
-    default: "border-none",
+    default: "border border-gray-300 dark:border-gray-700",
     outlined: "border-2 border-zinc-700",
     filled: "bg-gray-100 dark:bg-zinc-800 border-none",
 };

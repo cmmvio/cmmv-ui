@@ -1,7 +1,6 @@
 <template>
     <div class="p-4 select-none top-16 text-slate-700 dark:text-slate-200">
         <div v-for="(item, key) in navbarItems" :key="key">
-            <!-- Navbar Root Item -->
             <div
                 class="flex hover:text-blue-700 itemRoot"
                 :id="item?.name.replace(/\s/g, '_')"
@@ -14,13 +13,11 @@
 
                 <div class="justify-between cursor-pointer" v-if="item?.isDir">
                     <div v-if="navbar[item?.name.replace(/\s/g, '_')] === true">
-                        <!-- Down Arrow Icon -->
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                         </svg>
                     </div>
                     <div v-else>
-                        <!-- Up Arrow Icon -->
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
                         </svg>
@@ -28,7 +25,6 @@
                 </div>
             </div>
 
-            <!-- Navbar Children -->
             <transition name="toggle">
                 <div
                     v-if="item?.children && item.children.length > 0 && navbar[item?.name.replace(/\s/g, '_')]"
@@ -89,6 +85,7 @@ export default defineComponent({
                     { name: "Alert", uri: "/alert" },
                     { name: "Avatar", uri: "/avatar" },
                     { name: "Card", uri: "/card" },
+                    { name: "Sidebar", uri: "/sidebar" },
                     { name: "Tabs", uri: "/tabs" },
                     { name: "Toolbar", uri: "/toolbar" },
                 ]
@@ -108,6 +105,14 @@ export default defineComponent({
                     { name: "Textarea", uri: "/textarea" },
                     { name: "Toggle", uri: "/toggle" },
                 ],
+            },
+            {
+                name: "Graph",
+                isDir: true,
+                children: [
+                    { name: "Box", uri: "/graph-box" },
+                    { name: "Node", uri: "/graph-node" },
+                ]
             },
             {
                 name: "Overlays",

@@ -3,7 +3,7 @@
         class="bg-gray-200 dark:bg-zinc-900"
         v-cloak
     >
-        <nav class="navbar bg-neutral-800 h-16 top-0 w-full fixed flex z-50 shadow-lg">
+        <nav class="navbar bg-neutral-800 h-16 top-0 w-full fixed flex z-40 shadow-lg">
             <div
                 class="w-full mx-auto flex items-center"
                 style="background-color: transparent !important;"

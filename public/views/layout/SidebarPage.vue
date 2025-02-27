@@ -1,0 +1,232 @@
+<template>
+    <BaseLayout>
+        <h1>Sidebar</h1>
+
+        <p>
+            The <code>c-sidebar</code> component provides a flexible sidebar panel with optional overlay.
+            It supports both left and right placement, customizable width, background color, and a closable overlay.
+        </p>
+
+        <table-docs>
+            <thead>
+                <tr>
+                    <th>Prop</th>
+                    <th>Type</th>
+                    <th>Default</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>modelValue</code></td>
+                    <td>Boolean</td>
+                    <td><code>false</code></td>
+                    <td>Controls whether the sidebar is open or closed.</td>
+                </tr>
+                <tr>
+                    <td><code>side</code></td>
+                    <td>String</td>
+                    <td><code>'left'</code></td>
+                    <td>Determines if the sidebar appears on the <code>'left'</code> or <code>'right'</code>.</td>
+                </tr>
+                <tr>
+                    <td><code>fixed</code></td>
+                    <td>Boolean</td>
+                    <td><code>false</code></td>
+                    <td>If <code>true</code>, the sidebar stays fixed above all content.</td>
+                </tr>
+                <tr>
+                    <td><code>width</code></td>
+                    <td>String</td>
+                    <td><code>'w-64'</code></td>
+                    <td>Custom width for the sidebar.</td>
+                </tr>
+                <tr>
+                    <td><code>bgColor</code></td>
+                    <td>String</td>
+                    <td><code>'bg-white dark:bg-zinc-900'</code></td>
+                    <td>Background color of the sidebar.</td>
+                </tr>
+                <tr>
+                    <td><code>bgColorOverlay</code></td>
+                    <td>String</td>
+                    <td><code>'bg-black/50'</code></td>
+                    <td>Background color of the overlay.</td>
+                </tr>
+            </tbody>
+        </table-docs>
+
+        <h3>Basic Example</h3>
+
+        <p>
+            Below is a basic usage example of the <code>c-sidebar</code> component.
+            Clicking the button will toggle the sidebar.
+        </p>
+
+        <c-card variant="flat" class="mx-auto p-4 flex flex-col items-center">
+            <c-sidebar v-model="showSidebar" side="left" bgColor="bg-white dark:bg-neutral-900" fixed>
+                <template #title>
+                    Navigation
+                </template>
+
+                <ul class="space-y-2 text-gray-700 dark:text-gray-300">
+                    <li><a href="#" class="block p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">Dashboard</a></li>
+                    <li><a href="#" class="block p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">Settings</a></li>
+                    <li><a href="#" class="block p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">Logout</a></li>
+                </ul>
+
+                <template #footer>
+                    <p class="text-center text-gray-500 text-sm">© 2025 MyApp</p>
+                </template>
+            </c-sidebar>
+
+            <button
+                @click="showSidebar = true"
+                class="bg-blue-500 text-white px-4 py-2 rounded-md  hover:bg-blue-600 transition"
+            >
+                Open Sidebar
+            </button>
+        </c-card>
+
+        <pre>
+            <code>&lt;c-sidebar v-model="showSidebar" side="left" bgColor="bg-white dark:bg-neutral-900" fixed&gt;
+    &lt;template #title&gt;Navigation&lt;/template&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Dashboard&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Settings&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;template #footer&gt;© 2025 MyApp&lt;/template&gt;
+&lt;/c-sidebar&gt;
+
+&lt;button @click="showSidebar = true"&gt;Open Sidebar&lt;/button&gt;
+</code>
+</pre>
+
+        <h3>Right Sidebar</h3>
+
+        <p>
+            You can place the sidebar on the right side by setting <code>side="right"</code>.
+        </p>
+
+        <c-card variant="flat" class="mx-auto p-4 sm:p-6 flex flex-col items-center">
+            <c-sidebar v-model="showRightSidebar" side="right" bgColor="bg-gray-100 dark:bg-zinc-800">
+                <template #title>
+                    Right Sidebar
+                </template>
+
+                <p class="text-gray-700 dark:text-gray-300">Content inside the sidebar...</p>
+
+                <template #footer>
+                    <p class="text-center text-gray-500 text-sm">Footer content</p>
+                </template>
+            </c-sidebar>
+
+            <button
+                @click="showRightSidebar = true"
+                class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition"
+            >
+                Open Right Sidebar
+            </button>
+        </c-card>
+
+        <pre>
+            <code>&lt;c-sidebar v-model="showRightSidebar" side="right" bgColor="bg-gray-100 dark:bg-zinc-800"&gt;
+    &lt;template #title&gt;Right Sidebar&lt;/template&gt;
+    &lt;p&gt;Content inside the sidebar...&lt;/p&gt;
+    &lt;template #footer&gt;Footer content&lt;/template&gt;
+&lt;/c-sidebar&gt;
+
+&lt;button @click="showRightSidebar = true"&gt;Open Right Sidebar&lt;/button&gt;
+</code>
+</pre>
+
+        <h3>Custom Width & Overlay</h3>
+
+        <p>
+            You can customize the sidebar width and overlay background color using <code>width</code> and <code>bgColorOverlay</code>.
+        </p>
+
+        <c-card variant="flat" class="mx-auto p-4 sm:p-6 flex flex-col items-center">
+            <c-sidebar v-model="showWideSidebar" side="left" width="w-96" bgColor="bg-gray-100 dark:bg-zinc-800" bgColorOverlay="bg-black/70">
+                <template #title>
+                    Wide Sidebar
+                </template>
+
+                <p class="text-gray-700 dark:text-gray-300">This sidebar is wider than usual.</p>
+            </c-sidebar>
+
+            <button
+                @click="showWideSidebar = true"
+                class="bg-purple-500 text-white px-4 py-2 rounded-md hover:bg-purple-600 transition"
+            >
+                Open Wide Sidebar
+            </button>
+        </c-card>
+
+        <pre>
+            <code>&lt;c-sidebar v-model="showWideSidebar" width="w-96" bgColorOverlay="bg-black/70"&gt;
+    &lt;template #title&gt;Wide Sidebar&lt;/template&gt;
+    &lt;p&gt;This sidebar is wider than usual.&lt;/p&gt;
+&lt;/c-sidebar&gt;
+
+&lt;button @click="showWideSidebar = true"&gt;Open Wide Sidebar&lt;/button&gt;</code>
+</pre>
+
+        <h3>Sidebar Inside a Card</h3>
+
+        <p>
+            The sidebar can be used inside a <code>c-card</code> by setting <code>relative</code>.
+            This makes the sidebar behave like a floating panel inside the container.
+        </p>
+
+        <c-card
+            variant="flat"
+            padding=""
+            class="relative mx-auto flex flex-col justify-center items-center w-full min-h-[400px] overflow-hidden"
+        >
+            <c-sidebar ref="cardSidebar" absolute shadow="" rounded="md" width="w-48" class="rounded-l-md">
+                <template #title>Panel</template>
+                <p class="text-gray-700 dark:text-gray-300">This is a floating sidebar inside the card.</p>
+            </c-sidebar>
+
+            <button
+                @click="openCardSidebar"
+                class="bg-blue-500 text-white px-4 py-2 rounded-md mt-4 hover:bg-blue-600 transition"
+            >
+                Open Sidebar Inside Card
+            </button>
+        </c-card>
+
+        <pre>
+            <code>&lt;c-sidebar ref="cardSidebar" absolute shadow="" width="w-48"&gt;
+    &lt;template #title&gt;Panel&lt;/template&gt;
+    &lt;p&gt;This is a floating sidebar inside the card.&lt;/p&gt;
+&lt;/c-sidebar&gt;
+
+&lt;button @click="openCardSidebar"&gt;Open Sidebar Inside Card&lt;/button&gt;</code>
+</pre>
+
+        <PagePagination previous="Dialog" previousLink="/dialog" next="Graph Box" nextLink="/graph-box" />
+    </BaseLayout>
+</template>
+
+<script setup>
+import { ref } from "vue";
+import BaseLayout from "../../layout/BaseLayout.vue";
+import TableDocs from "../../components/TableDocs.vue";
+import PagePagination from "../../layout/PagePagination.vue";
+
+const showSidebar = ref(false);
+const showRightSidebar = ref(false);
+const showWideSidebar = ref(false);
+const cardSidebar = ref(null);
+const methodSidebar = ref(null);
+
+const openCardSidebar = () => {
+    cardSidebar.value.open();
+};
+
+const openMethodSidebar = () => {
+    methodSidebar.value.open();
+};
+</script>

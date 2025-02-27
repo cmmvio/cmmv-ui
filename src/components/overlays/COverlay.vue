@@ -4,7 +4,6 @@
         class="fixed inset-0 z-[var(--z-index)] flex items-center justify-center transition-opacity c-overlay"
         style="--z-index: 50; transition-timing-function: cubic-bezier(.4,0,.2,1)"
     >
-        <!-- Background -->
         <div
             class="absolute inset-0"
             :style="{
@@ -14,7 +13,6 @@
             @click.self="handleClose"
         ></div>
 
-        <!-- Slot Content -->
         <div class="relative z-[calc(var(--z-index)+1)]">
             <slot></slot>
         </div>

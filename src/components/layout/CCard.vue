@@ -61,8 +61,8 @@
 
         <slot name="content" class="relative">
             <div
-                class="px-4 py-3 w-full"
-                :class="textSizes[textSize]"
+                class="w-full"
+                :class="[textSizes[textSize], padding]"
             >
                 <div :class="class">
                     <slot></slot>
@@ -201,6 +201,10 @@ defineProps({
         type: String,
         required: false
     },
+    padding: {
+        type: String,
+        default: "px-4 py-3"
+    }
 });
 
 const roundedStyles = computed((): Record<string, string> => ({

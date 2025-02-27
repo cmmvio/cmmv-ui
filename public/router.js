@@ -22,6 +22,7 @@ import AccordionPage from "./views/layout/AccordionPage.vue";
 import AlertPage from "./views/layout/AlertPage.vue";
 import AvatarPage from "./views/layout/AvatarPage.vue";
 import CardPage from "./views/layout/CardPage.vue";
+import SidebarPage from "./views/layout/SidebarPage.vue";
 import TabsPage from "./views/layout/TabsPage.vue";
 import ToolbarPage from "./views/layout/ToolbarPage.vue";
 
@@ -36,6 +37,10 @@ import TogglePage from "./views/form/TogglePage.vue";
 import RadioPage from "./views/form/RadioPage.vue";
 import SliderPage from "./views/form/SliderPage.vue";
 import DropdownPage from "./views/form/DropdownPage.vue";
+
+//Graph
+import GraphBoxPage from "./views/graph/GraphBoxPage.vue";
+import GraphNodePage from "./views/graph/GraphNodePage.vue";
 
 //Overlays
 import DialogPage from "./views/overlays/DialogPage.vue";
@@ -64,6 +69,7 @@ const routes = [
     { path: '/alert', component: AlertPage },
     { path: '/avatar', component: AvatarPage },
 	{ path: '/card', component: CardPage },
+    { path: '/sidebar', component: SidebarPage },
     { path: '/tabs', component: TabsPage },
     { path: '/toolbar', component: ToolbarPage },
 
@@ -78,6 +84,10 @@ const routes = [
     { path: '/slider', component: SliderPage },
     { path: '/textarea', component: TextareaPage },
     { path: '/toggle', component: TogglePage },
+
+    //Graph
+    { path: '/graph-box', component: GraphBoxPage },
+    { path: '/graph-node', component: GraphNodePage },
 
     //Overlays
     { path: '/dialog', component: DialogPage },

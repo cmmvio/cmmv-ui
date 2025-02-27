@@ -285,8 +285,8 @@ const selectedOptions = ref([]);
         <PagePagination
             previous="Autocomplete"
             previousLink="/autocomplete"
-            next="Form"
-            nextLink="/form"
+            next="Dropdown"
+            nextLink="/dropdown"
         />
     </BaseLayout>
 </template>

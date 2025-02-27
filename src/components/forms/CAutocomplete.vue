@@ -27,9 +27,9 @@
                 <input
                     :id="id"
                     type="text"
-                    :class="[sizes[size], roundedStyles[rounded], variantStyles[variant], bgColor ? bgColor : variantColors[variant], textColor, borderColorClass,
+                    :class="[sizes[size], roundedStyles[rounded], variantStyles[variant], bgColor ? bgColor : variantColors[variant], textColor,
                         { 'ring-red-500 ring-2': hasError, 'opacity-50': disabled, 'cursor-not-allowed': disabled, 'pl-10': hasIcon }]"
-                    class="c-autocomplete-field block w-full border shadow-sm pt-3 pb-2 outline-none"
+                    class="c-autocomplete-field block w-full shadow-sm pt-3 pb-2 outline-none"
                     :placeholder="isActive ? placeholder : ''"
                     :value="currentInput"
                     @input="handleInput"
@@ -43,8 +43,11 @@
                 <button
                     v-if="clearable && currentInput && currentValue"
                     type="button"
-                    class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-400 hover:text-gray-600"
+                    :class="[sizes[size], roundedStyles[rounded], variantStyles[variant], bgColor ? bgColor : variantColors[variant], textColor,
+                        { 'opacity-50': disabled, 'cursor-not-allowed': disabled, 'pl-10': hasIcon }]"
+                    class="c-dropdown-field block w-full border shadow-sm pt-3 pb-2 outline-none text-left"
                     @click="clearInput"
+                    :disabled="disabled"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
                         <path fill-rule="evenodd" d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
@@ -52,21 +55,24 @@
                 </button>
             </div>
 
-            <ul
-                v-if="isActive && isFocus && filteredOptions.length > 0"
-                class="absolute z-50 w-full bg-white border border-gray-300 dark:bg-zinc-800 dark:border-zinc-700 mt-1 max-h-40 overflow-auto"
-            >
-                <li
-                    v-for="option in filteredOptions"
-                    :key="option.value"
-                    @click="selectOption(option)"
-                    class="px-4 py-2 cursor-pointer hover:bg-gray-200 dark:hover:bg-zinc-700">
-                    {{ option.label }}
-                </li>
-            </ul>
+            <transition name="fade">
+                <div
+                    v-if="isActive && isFocus && filteredOptions.length > 0"
+                    class="absolute z-50 w-full bg-white border border-gray-300 dark:bg-zinc-800 dark:border-zinc-700 mt-2 max-h-40 overflow-auto shadow-lg rounded-md"
+                >
+                    <ul>
+                        <li
+                            v-for="option in filteredOptions"
+                            :key="option.value"
+                            @click="selectOption(option)"
+                            class="px-4 py-2 cursor-pointer hover:bg-gray-200 dark:hover:bg-zinc-700">
+                            {{ option.label }}
+                        </li>
+                    </ul>
+                </div>
+            </transition>
         </div>
 
-        <!-- Hint/Error Message -->
         <div class="mt-1" v-if="!hiddenHint">
             <p v-if="hasError" class="text-xs text-red-500">{{ errorMessage }}</p>
             <p v-else-if="hint && (hintFixed || isActive)" class="text-xs text-gray-500">{{ hint }}</p>
@@ -142,7 +148,7 @@ const props = defineProps({
     bgColor: {
         type: String,
         required: false,
-        default: "",
+        default: "bg-white dark:bg-neutral-900",
     },
     textColor: {
         type: String,
@@ -198,7 +204,7 @@ const roundedStyles: Record<string, string> = {
 };
 
 const variantStyles: Record<string, string> = {
-    default: "border-none",
+    default: "border border-gray-300 dark:border-gray-700",
     outlined: "border-2 border-zinc-700",
     filled: "border-1 border-zinc-900 shadow-md",
 };

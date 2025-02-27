@@ -172,7 +172,7 @@ const liveToggle = ref(false);
         thumbColor=&quot;bg-purple-500&quot;
     /&gt;
 &lt;/template&gt;</code>
-        </pre>
+</pre>
 
         <PagePagination
             previous="Textarea"

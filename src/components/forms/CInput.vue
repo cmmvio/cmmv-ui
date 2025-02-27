@@ -30,8 +30,8 @@
                 :name="name"
                 :placeholder="isActive ? placeholder : ''"
                 :value="modelValue"
-                :class="[sizes[size], roundedStyles[rounded], variantStyles[variant], bgColor ? bgColor : variantColors[variant], textColor, borderColorClass,
-                    { 'ring-red-500 ring-2': hasError, 'opacity-50': disabled, 'cursor-not-allowed': disabled, 'pl-10': hasIcon }]"
+                :class="[sizes[size], roundedStyles[rounded], variantStyles[variant], bgColor ? bgColor : variantColors[variant], textColor,
+                    { 'ring-red-500 ring-2': hasError, 'opacity-30': disabled, 'cursor-not-allowed': disabled, 'pl-10': hasIcon }]"
                 class="c-input-field block w-full border shadow-sm pt-4 pb-2 outline-none"
                 @keyup="handleInput"
                 @change="handleInput"
@@ -74,13 +74,13 @@
                 role="switch"
             >
                 <icon-eye-slash
-                    :class="[textColor ? textColor : 'text-gray-500 dark:text-gray-400 hover:text-gray-200']"
+                    :class="[textColor ? textColor : 'text-neutral-400 dark:text-neutral-400 hover:text-neutral-200']"
                     tabindex="-1"
                     v-if="showPassword"
                 ></icon-eye-slash>
 
                 <icon-eye
-                    :class="[textColor ? textColor : 'text-gray-500 dark:text-gray-400 hover:text-gray-200']"
+                    :class="[textColor ? textColor : 'text-neutral-400 dark:text-neutral-400 hover:text-neutral-200']"
                     tabindex="-1"
                     v-else
                 ></icon-eye>
@@ -216,7 +216,7 @@ const props = defineProps({
     bgColor: {
         type: String,
         required: false,
-        default: ""
+        default: "bg-white dark:bg-neutral-900"
     },
     textColor: {
         type: String,
@@ -268,7 +268,7 @@ const roundedStyles: Record<string, string> = {
 };
 
 const variantStyles: Record<string, string> = {
-    default: "border-none",
+    default: "border border-gray-300 dark:border-gray-700",
     outlined: "border-2 border-zinc-700",
     filled: "border-1 border-zinc-900 shadow-md",
 };

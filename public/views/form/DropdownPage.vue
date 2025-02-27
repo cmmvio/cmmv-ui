@@ -252,10 +252,10 @@ const languageValue = ref(1);
 </pre>
 
         <PagePagination
-            previous="Button"
-            previousLink="/button"
-            next="Tooltip"
-            nextLink="/tooltip"
+            previous="Checkbox"
+            previousLink="/checkbox"
+            next="Form"
+            nextLink="/form"
         />
     </BaseLayout>
 </template>

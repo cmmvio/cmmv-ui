@@ -8,7 +8,10 @@
             ></div>
 
             <div class="relative flex items-center z-30" @click="toggleDropdown">
-                <div v-if="hasIcon" class="absolute inset-y-0 left-0 flex items-center pl-3 z-30">
+                <div
+                    v-if="hasIcon"
+                    class="absolute inset-y-0 left-0 flex items-center pl-3 z-30"
+                >
                     <slot name="icon"></slot>
                 </div>
 
@@ -32,18 +35,17 @@
                 </button>
 
                 <div
-                    class="absolute inset-y-0 right-0 flex items-center px-2 transition-transform duration-300"
+                    class="absolute inset-y-0 right-0 flex items-center px-2 transition-transform duration-300 cursor-pointer"
                     :class="{ 'rotate-180': isActive, 'opacity-50': disabled, 'cursor-not-allowed': disabled }"
                 >
-                    <icon-chevron-down class="w-6 h-6 text-neutral-800 dark:text-white" aria-hidden="true" />
+                    <icon-chevron-down class="w-6 h-6 text-neutral-800 dark:text-white" size="sm" aria-hidden="true" />
                 </div>
             </div>
 
-            <!-- Lista de Opções com transição -->
             <transition name="fade">
                 <div
                     v-if="isActive"
-                    class="absolute z-50 w-full bg-white border border-gray-300 dark:bg-zinc-800 dark:border-zinc-700 mt-2 max-h-40 overflow-auto shadow-lg rounded-md"
+                    class="absolute z-50 w-full bg-white border border-gray-300 dark:border-gray-700 dark:bg-zinc-800 mt-2 max-h-40 overflow-auto shadow-lg rounded-md"
                 >
                     <ul>
                         <li
@@ -112,7 +114,7 @@
 </style>
 
 <script setup lang="ts">
-import { ref, computed, defineExpose, useSlots } from 'vue';
+import { ref, computed, defineExpose, useSlots, defineProps } from 'vue';
 import type { PropType } from "vue";
 
 const slots = useSlots();
