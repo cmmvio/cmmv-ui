@@ -133,7 +133,7 @@ const props = defineProps({
     rounded: {
         type: String,
         required: false,
-        default: "none", // none | default | md | full
+        default: "none",
     },
 });
 

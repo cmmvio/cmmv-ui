@@ -98,7 +98,6 @@ const colorByType: Record<string, string> = {
     error: "red"
 }
 
-// Ajustando para Tailwind v4
 const computedClasses = computed(() => {
     return [
         !props.outlined ? props.bgColor || `bg-${colorByType[props.type]}-400` : '',

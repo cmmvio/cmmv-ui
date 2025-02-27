@@ -8,7 +8,7 @@
 defineProps({
     dense: {
         type: Boolean,
-        default: false, // Reduces the height of the toolbar
+        default: false,
     },
 });
 </script>

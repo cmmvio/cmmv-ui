@@ -3,6 +3,7 @@ import { createMemoryHistory, createRouter } from 'vue-router';
 import IndexPage from "./views/IndexPage.vue";
 
 //Components
+import AIChatPage from "./views/components/AIChatPage.vue";
 import ButtonPage from "./views/components/ButtonPage.vue";
 import TooltipPage from "./views/components/TooltipPage.vue";
 import IconPage from "./views/components/IconPage.vue";
@@ -42,6 +43,8 @@ import RadioPage from "./views/form/RadioPage.vue";
 import SliderPage from "./views/form/SliderPage.vue";
 import ComboboxPage from "./views/form/ComboboxPage.vue";
 import TimepickerPage from "./views/form/TimepickerPage.vue";
+import DatepickerPage from "./views/form/DatepickerPage.vue";
+import FileUploadPage from "./views/form/FileUploadPage.vue";
 
 //Graph
 import GraphBoxPage from "./views/graph/GraphBoxPage.vue";
@@ -55,6 +58,7 @@ import OverlayPage from "./views/overlays/OverlayPage.vue";
 const routes = [
     //Components
     { path: '/', component: IndexPage },
+    { path: '/ai-chat', component: AIChatPage },
     { path: '/badge', component: BadgePage },
     { path: '/button', component: ButtonPage },
     { path: '/flags', component: FlagsPage },
@@ -85,6 +89,8 @@ const routes = [
     { path: '/autocomplete', component: AutocompletePage },
     { path: '/checkbox', component: CheckboxPage },
     { path: '/combobox', component: ComboboxPage },
+    { path: '/datepicker', component: DatepickerPage },
+    { path: '/file-upload', component: FileUploadPage },
 	{ path: '/form', component: FormPage },
 	{ path: '/input', component: InputPage },
     { path: '/number-input', component: NumberInputPage },

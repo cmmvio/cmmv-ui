@@ -55,7 +55,7 @@
 import { computed } from "vue";
 
 const props = defineProps({
-    size: { // sm | md | lg | xl | 2xl
+    size: {
         type: String,
         default: "md"
     },
@@ -75,7 +75,7 @@ const props = defineProps({
         type: String,
         default: ""
     },
-    rounded: { // none | md | full
+    rounded: {
         type: String,
         default: "full"
     },
@@ -99,7 +99,7 @@ const props = defineProps({
         type: String,
         default: "text-2xl"
     },
-    dotIndicator: { // online | busy | offline | custom
+    dotIndicator: {
         type: String,
         default: null,
         validator: (value: string) => ["online", "busy", "offline", "custom"].includes(value)

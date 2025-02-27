@@ -104,6 +104,9 @@ const track = ref<HTMLElement | null>(null);
 const dragging = ref(false);
 const hasError = ref(false);
 const errorMessage = ref<string | null>(null);
+const lastMoveTime = ref(0);
+const animationFrameId = ref<number | null>(null);
+const lastEvent = ref<MouseEvent | TouchEvent | null>(null);
 
 const stepValue = computed(() => {
     const parsedStep = Number(props.step);
@@ -138,9 +141,11 @@ const startDrag = (event: MouseEvent | TouchEvent) => {
     if (props.disabled) return;
     dragging.value = true;
 
-    moveThumb(event);
-    document.addEventListener("mousemove", moveThumb);
-    document.addEventListener("touchmove", moveThumb);
+    // Processa o evento inicial
+    handleMoveEvent(event);
+
+    document.addEventListener("mousemove", handleMoveEvent);
+    document.addEventListener("touchmove", handleMoveEvent);
     document.addEventListener("mouseup", stopDrag);
     document.addEventListener("touchend", stopDrag);
 };
@@ -148,21 +153,54 @@ const startDrag = (event: MouseEvent | TouchEvent) => {
 const stopDrag = () => {
     dragging.value = false;
 
-    document.removeEventListener("mousemove", moveThumb);
-    document.removeEventListener("touchmove", moveThumb);
+    // Limpa o animation frame pendente
+    if (animationFrameId.value !== null) {
+        cancelAnimationFrame(animationFrameId.value);
+        animationFrameId.value = null;
+    }
+
+    document.removeEventListener("mousemove", handleMoveEvent);
+    document.removeEventListener("touchmove", handleMoveEvent);
     document.removeEventListener("mouseup", stopDrag);
     document.removeEventListener("touchend", stopDrag);
 };
 
-const moveThumb = (event: MouseEvent | TouchEvent) => {
-    if (!track.value) return;
+// Função que recebe os eventos de movimento
+const handleMoveEvent = (event: MouseEvent | TouchEvent) => {
+    // Armazena o último evento
+    lastEvent.value = event;
+
+    // Throttling para limitar a frequência de atualizações
+    const now = performance.now();
+    if (now - lastMoveTime.value < 16) { // ~60fps
+        if (animationFrameId.value === null) {
+            animationFrameId.value = requestAnimationFrame(updateThumbPosition);
+        }
+        return;
+    }
+
+    lastMoveTime.value = now;
+    updateThumbPosition();
+};
+
+// Função que atualiza a posição do thumb (separada para melhor performance)
+const updateThumbPosition = () => {
+    animationFrameId.value = null;
+
+    if (!track.value || !lastEvent.value) return;
 
     const rect = track.value.getBoundingClientRect();
-    const clientX =
-        event instanceof MouseEvent ? event.clientX : event.touches[0].clientX;
+    let clientX: number;
+
+    if (lastEvent.value instanceof MouseEvent) {
+        clientX = lastEvent.value.clientX;
+    } else {
+        // Tratamento seguro para eventos de toque
+        clientX = (lastEvent.value as TouchEvent).touches[0].clientX;
+    }
+
     const percent = Math.min(1, Math.max(0, (clientX - rect.left) / rect.width));
     const rawValue = props.min + percent * (props.max - props.min);
-
     currentValue.value = Math.round(rawValue / stepValue.value) * stepValue.value;
 };
 

@@ -104,33 +104,28 @@ const props = defineProps({
 
 const emit = defineEmits(["update:modelValue", "change"]);
 
-// 🚀 Estado interno para o input
 const internalValue = ref(props.modelValue);
 const valueInput = ref(props.modelValue.toString());
 
-// 🕵️‍♂️ Observa mudanças externas na `modelValue` e sincroniza o input
 watch(() => props.modelValue, (newValue) => {
     internalValue.value = newValue;
     valueInput.value = newValue.toString();
 });
 
-// 🚀 Observa mudanças no input e emite um valor validado
 watch(valueInput, (newValue) => {
     let parsed = parseInt(newValue.replace(/\D/g, ""), 10);
 
-    if (isNaN(parsed)) {
-        parsed = props.min; // Se estiver vazio, assume `min`
-    } else if (parsed < props.min) {
+    if (isNaN(parsed))
         parsed = props.min;
-    } else if (parsed > props.max) {
+    else if (parsed < props.min)
+        parsed = props.min;
+    else if (parsed > props.max)
         parsed = props.max;
-    }
 
     internalValue.value = parsed;
     emit("update:modelValue", parsed);
 });
 
-// ✅ Incrementa respeitando o `max`
 const increment = () => {
     if (props.disabled || internalValue.value >= props.max) return;
     internalValue.value = Math.min(internalValue.value + props.step, props.max);
@@ -138,7 +133,6 @@ const increment = () => {
     emit("update:modelValue", internalValue.value);
 };
 
-// ✅ Decrementa respeitando o `min`
 const decrement = () => {
     if (props.disabled || internalValue.value <= props.min) return;
     internalValue.value = Math.max(internalValue.value - props.step, props.min);
@@ -146,7 +140,6 @@ const decrement = () => {
     emit("update:modelValue", internalValue.value);
 };
 
-// 🔥 Corrige valores inválidos no input quando perde foco
 const applyLimits = () => {
     let parsed = parseInt(valueInput.value, 10);
 

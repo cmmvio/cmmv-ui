@@ -61,6 +61,7 @@ export default defineComponent({
                 name: "Components",
                 isDir: true,
                 children: [
+                    { name: "AI Chat", uri: "/ai-chat" },
                     { name: "Badge", uri: "/badge" },
                     { name: "Button", uri: "/button" },
                     { name: "Flags", uri: "/flags" },
@@ -82,27 +83,14 @@ export default defineComponent({
                 ]
             },
             {
-                name: "Layout",
-                isDir: true,
-                children: [
-                    { name: "Accordion", uri: "/accordion" },
-                    { name: "Alert", uri: "/alert" },
-                    { name: "Avatar", uri: "/avatar" },
-                    { name: "Card", uri: "/card" },
-                    { name: "Dropdown", uri: "/dropdown" },
-                    { name: "Sidebar", uri: "/sidebar" },
-                    { name: "Speed Dial", uri: "/speed-dial" },
-                    { name: "Tabs", uri: "/tabs" },
-                    { name: "Toolbar", uri: "/toolbar" },
-                ]
-            },
-            {
                 name: "Form",
                 isDir: true,
                 children: [
                     { name: "Autocomplete", uri: "/autocomplete" },
                     { name: "Checkbox", uri: "/checkbox" },
                     { name: "Combobox", uri: "/combobox" },
+                    { name: "Datepicker", uri: "/datepicker" },
+                    { name: "File Upload", uri: "/file-upload" },
                     { name: "Form", uri: "/form" },
                     { name: "Input", uri: "/input" },
                     { name: "Number Input", uri: "/number-input" },
@@ -120,6 +108,21 @@ export default defineComponent({
                 children: [
                     { name: "Box", uri: "/graph-box" },
                     { name: "Node", uri: "/graph-node" },
+                ]
+            },
+            {
+                name: "Layout",
+                isDir: true,
+                children: [
+                    { name: "Accordion", uri: "/accordion" },
+                    { name: "Alert", uri: "/alert" },
+                    { name: "Avatar", uri: "/avatar" },
+                    { name: "Card", uri: "/card" },
+                    { name: "Dropdown", uri: "/dropdown" },
+                    { name: "Sidebar", uri: "/sidebar" },
+                    { name: "Speed Dial", uri: "/speed-dial" },
+                    { name: "Tabs", uri: "/tabs" },
+                    { name: "Toolbar", uri: "/toolbar" },
                 ]
             },
             {

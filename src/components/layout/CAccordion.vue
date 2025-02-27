@@ -97,7 +97,7 @@ const props = defineProps({
     },
     arrowStyle: {
         type: String,
-        default: "default", // default | chevron | plus
+        default: "default",
     },
     class: {
         type: String,

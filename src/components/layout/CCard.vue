@@ -110,7 +110,7 @@ defineProps({
     rounded: {
         type: String,
         required: false,
-        default: "default", // none | default | md | full
+        default: "default",
     },
     bgColor: {
         type: String,
@@ -140,12 +140,12 @@ defineProps({
     textSize: {
         type: String,
         required: false,
-        default: "md", // sm | md | lg | xl | 2xl
+        default: "md",
     },
     variant: {
         type: String,
         required: false,
-        default: "elevated", // elevated | flat | tonal | outlined | text | plain
+        default: "elevated",
     },
     href: {
         type: String,

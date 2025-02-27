@@ -51,7 +51,7 @@ const props = defineProps({
     size: {
         type: String,
         required: false,
-        default: "md", // sm | md | lg
+        default: "md",
     },
     bgColor: {
         type: String,

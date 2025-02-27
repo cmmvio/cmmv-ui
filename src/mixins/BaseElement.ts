@@ -1,7 +1,7 @@
-import { 
-    defineComponent, onBeforeMount, 
-    onMounted, onBeforeUpdate, onUpdated, 
-    onBeforeUnmount, onUnmounted 
+import {
+    defineComponent, onBeforeMount,
+    onMounted, onBeforeUpdate, onUpdated,
+    onBeforeUnmount, onUnmounted
 } from 'vue';
 
 export default defineComponent({
@@ -13,7 +13,7 @@ export default defineComponent({
                 none: "",
                 default: "rounded",
                 md: "rounded-md",
-                full: "rounded-full"   
+                full: "rounded-full"
             } as Record<string, string>
         }
     },
@@ -71,8 +71,6 @@ export default defineComponent({
             emit(eventName);
         };
 
-        //onBeforeCreate(() => emitLifecycleEvent("beforeCreate", props.onBeforeCreate));
-        //onCreated(() => emitLifecycleEvent("created", props.onCreated));
         onBeforeMount(() => emitLifecycleEvent("beforeMount", props.onBeforeMount));
         onMounted(() => emitLifecycleEvent("mounted", props.onMounted));
         onBeforeUpdate(() => emitLifecycleEvent("beforeUpdate", props.onBeforeUpdate));

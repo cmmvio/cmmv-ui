@@ -225,7 +225,7 @@ const basicOptions = [
 
         <p>The <code>clearable</code> property enables a button to clear the input field's content.</p>
 
-        <c-card class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+        <c-card variant="flat" class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
             <div class="lg:w-2/5 w-full max-w-[400px]">
                 <c-autocomplete
                     v-model="clearableValue"

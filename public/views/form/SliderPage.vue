@@ -126,15 +126,15 @@ const sliderValue = ref(5);
 import { ref } from "vue";
 const validatedValue = ref(40);
 &lt;/script&gt;</code>
-        </pre>
+</pre>
 
         <!-- Tick Marks -->
-        <h3>Tick Marks</h3>
+        <h3>Step</h3>
 
-        <p>The slider can display tick marks for each step or custom positions defined by the <code>ticks</code> prop.</p>
+        <p>The slider can step or custom positions defined by the <code>step</code> prop.</p>
 
         <card-docs>
-            <c-slider v-model="sliderTicks" step="10" :show-ticks="true" />
+            <c-slider v-model="sliderTicks" step="10" />
         </card-docs>
 
         <pre>
@@ -142,7 +142,6 @@ const validatedValue = ref(40);
     &lt;c-slider
         v-model="sliderTicks"
         step="10"
-        :show-ticks="true"
     /&gt;
 &lt;/template&gt;
 
@@ -150,7 +149,7 @@ const validatedValue = ref(40);
 import { ref } from "vue";
 const sliderTicks = ref(40);
 &lt;/script&gt;</code>
-        </pre>
+</pre>
 
         <!-- Color Variations -->
         <h3>Custom Colors</h3>
