@@ -41,6 +41,12 @@
                     <td class="border-b px-4 py-2">"AI Assistant"</td>
                     <td class="border-b px-4 py-2">Name of the AI assistant displayed in the chat.</td>
                 </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">autoScroll</td>
+                    <td class="border-b px-4 py-2">Boolean</td>
+                    <td class="border-b px-4 py-2">true</td>
+                    <td class="border-b px-4 py-2">Whether to automatically scroll to the bottom when new messages are added.</td>
+                </tr>
             </tbody>
         </table-docs>
 
@@ -80,23 +86,26 @@
             and a message input area. This example shows the basic usage with default settings.
         </p>
 
-        <c-card variant="flat">
-            <div class="h-[600px]">
-                <CAIChat
-                    :initial-messages="basicExampleMessages"
-                    :suggestions="['Tell me about Vue.js', 'How do I use this component?', 'Show me a code example']"
-                    @message-sent="handleMessageSent"
-                    @message-completed="handleMessageCompleted"
-                    @stop-generating="handleStopGenerating"
-                />
-            </div>
-        </c-card>
+        <card-docs>
+            <c-card variant="flat">
+                <div class="h-[600px]">
+                    <CAIChat
+                        :initial-messages="basicExampleMessages"
+                        :suggestions="['Tell me about Vue.js', 'How do I use this component?', 'Show me a code example']"
+                        :auto-scroll="false"
+                        @message-sent="handleMessageSent"
+                        @message-completed="handleMessageCompleted"
+                        @stop-generating="handleStopGenerating"
+                    />
+                </div>
+            </c-card>
 
-        <pre>
-            <code class="code-hightlight language-vue">&lt;template&gt;
+            <template #code>
+<pre><code class="code-highlight language-vue">&lt;template&gt;
     &lt;c-ai-chat
         :initial-messages="messages"
         :suggestions="['Tell me about Vue.js', 'How do I use this component?', 'Show me a code example']"
+        :auto-scroll="false"
         @message-sent="handleMessageSent"
         @message-completed="handleMessageCompleted"
         @stop-generating="handleStopGenerating"
@@ -104,7 +113,7 @@
 &lt;/template&gt;
 
 &lt;script setup&gt;
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 
 const messages = ref([
     {
@@ -125,8 +134,15 @@ const handleMessageCompleted = (message) => {
 const handleStopGenerating = () => {
     console.log('User stopped the generation');
 };
-&lt;/script&gt;</code>
-</pre>
+
+// Prevent auto-scrolling when the page loads
+onMounted(() => {
+    // Reset scroll position to top when component mounts
+    window.scrollTo(0, 0);
+});
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <h3>Integration with AI APIs</h3>
 
@@ -135,16 +151,14 @@ const handleStopGenerating = () => {
             you would connect it to an actual AI API. Here's an example of how you might integrate it with an API:
         </p>
 
-        <pre>
-            <code class="code-hightlight language-javascript">// Example of connecting to an AI API
-const sendMessageToAI = async (userMessage) => {
-    // Add user message to the chat
+        <card-docs>
+            <template #code><pre><code class="code-highlight language-javascript">&lt;script&gt;
+    const sendMessageToAI = async (userMessage) => {
     messages.value.push({
         role: 'user',
         content: userMessage
     });
 
-    // Add typing indicator
     messages.value.push({
         role: 'assistant',
         content: '',
@@ -152,7 +166,6 @@ const sendMessageToAI = async (userMessage) => {
     });
 
     try {
-        // Call your AI API
         const response = await fetch('https://your-ai-api.com/chat', {
             method: 'POST',
             headers: {
@@ -166,12 +179,10 @@ const sendMessageToAI = async (userMessage) => {
             })
         });
 
-        // Get streaming response
         const reader = response.body.getReader();
         const decoder = new TextDecoder();
         let aiResponse = '';
 
-        // Replace typing indicator with actual message
         const messageIndex = messages.value.length - 1;
         messages.value[messageIndex] = {
             role: 'assistant',
@@ -179,22 +190,21 @@ const sendMessageToAI = async (userMessage) => {
             isTyping: false
         };
 
-        // Process the stream
         while (true) {
             const { done, value } = await reader.read();
             if (done) break;
 
-            // Decode the chunk and append to the message
             const chunk = decoder.decode(value);
             aiResponse += chunk;
             messages.value[messageIndex].content = aiResponse;
         }
     } catch (error) {
         console.error('Error calling AI API:', error);
-        // Handle error in UI
     }
-};</code>
-</pre>
+};
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <h3>Customization</h3>
 
@@ -203,8 +213,9 @@ const sendMessageToAI = async (userMessage) => {
             You can adjust the typing speed, provide initial messages, and customize the suggestions.
         </p>
 
-        <pre>
-            <code class="code-hightlight language-vue">&lt;c-ai-chat
+        <card-docs>
+            <template #code>
+<pre><code class="code-highlight language-vue">&lt;c-ai-chat
     :initial-messages="[
         { role: 'assistant', content: 'Welcome to our support chat! How can I help you today?' }
     ]"
@@ -214,9 +225,27 @@ const sendMessageToAI = async (userMessage) => {
         'Where can I find pricing information?'
     ]"
     :typing-speed="50"
+    :auto-scroll="false"
     ai-name="Support Bot"
-/&gt;</code>
-</pre>
+/&gt;</code></pre>
+            </template>
+        </card-docs>
+
+        <h3>Preventing Auto-Scroll</h3>
+
+        <p>
+            By default, the chat component automatically scrolls to the bottom when new messages are added.
+            If you want to disable this behavior, you can set the <code>autoScroll</code> prop to <code>false</code>.
+        </p>
+
+        <card-docs>
+            <template #code>
+<pre><code class="code-highlight language-vue">&lt;c-ai-chat
+    :initial-messages="messages"
+    :auto-scroll="false"
+/&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <PagePagination
             previous="Badge"
@@ -228,11 +257,13 @@ const sendMessageToAI = async (userMessage) => {
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import BaseLayout from "../../layout/BaseLayout.vue";
 import TableDocs from "../../components/TableDocs.vue";
+import CardDocs from "../../components/CardDocs.vue";
 import PagePagination from "../../layout/PagePagination.vue";
 import CAIChat from "@components/components/CAIChat.vue";
+import CCard from "@components/layout/CCard.vue";
 
 // Example messages for the demo
 const basicExampleMessages = ref([
@@ -254,10 +285,16 @@ const handleMessageCompleted = (message) => {
 const handleStopGenerating = () => {
     console.log('Generation stopped');
 };
+
+// Prevent auto-scrolling when the page loads
+onMounted(() => {
+    // Reset scroll position to top when component mounts
+    window.scrollTo(0, 0);
+});
 </script>
 
 <style scoped>
-.code-hightlight {
+.code-highlight {
     white-space: pre;
 }
 </style>

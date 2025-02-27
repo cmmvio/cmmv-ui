@@ -58,47 +58,45 @@
 
         <p>The simplest implementation of the pagination component requires only the current page and total number of items. By default, it displays 10 items per page.</p>
 
-        <c-card variant="flat" class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-            <div class="lg:w-2/5 w-full max-w-[400px]">
-                <c-pagination
-                    v-model="currentPage"
-                    :totalItems="100"
-                ></c-pagination>
-            </div>
-        </c-card>
+        <card-docs>
+            <c-pagination
+                v-model="currentPage"
+                :totalItems="100"
+            ></c-pagination>
 
-        <pre>
-            <code class="code-hightlight language-vue">&lt;template&gt;
+            <template #code>
+<pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;c-pagination
         v-model="currentPage"
         :totalItems="100"
     &gt;&lt;/c-pagination&gt;
 &lt;/template&gt;
 
-&lt;script&gt;
-import CPagination from "@cmmv/ui/components/CPagination.vue";
-&lt;/script&gt;</code>
-        </pre>
+&lt;script setup&gt;
+import { ref } from 'vue';
+import CPagination from "@components/components/CPagination.vue";
+
+const currentPage = ref(1);
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <!-- With Items Per Page Selector -->
         <h3>With Items Per Page Selector</h3>
 
         <p>You can enable the items per page selector by setting the <code>showPerPageSelect</code> property to true. This allows users to choose how many items they want to see on each page.</p>
 
-        <c-card variant="flat" class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-            <div class="lg:w-2/5 w-full">
-                <c-pagination
-                    v-model="perPageSelectorPage"
-                    :totalItems="100"
-                    :perPage="perPage"
-                    :showPerPageSelect="true"
-                    @update:perPage="perPage = $event"
-                ></c-pagination>
-            </div>
-        </c-card>
+        <card-docs>
+            <c-pagination
+                v-model="perPageSelectorPage"
+                :totalItems="100"
+                :perPage="perPage"
+                :showPerPageSelect="true"
+                @update:perPage="perPage = $event"
+            ></c-pagination>
 
-        <pre>
-            <code class="code-hightlight language-vue">&lt;template&gt;
+            <template #code>
+<pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;c-pagination
         v-model="currentPage"
         :totalItems="100"
@@ -106,31 +104,37 @@ import CPagination from "@cmmv/ui/components/CPagination.vue";
         :showPerPageSelect="true"
         @update:perPage="perPage = $event"
     &gt;&lt;/c-pagination&gt;
-&lt;/template&gt;</code>
-        </pre>
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref } from 'vue';
+import CPagination from "@components/components/CPagination.vue";
+
+const currentPage = ref(1);
+const perPage = ref(10);
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <!-- Customization -->
         <h3>Customization</h3>
 
         <p>The pagination component can be customized with different options for items per page and the number of visible page buttons. You can also listen to page change events to perform actions when the user navigates.</p>
 
-        <c-card variant="flat" class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-            <div class="lg:w-2/5 w-full">
-                <c-pagination
-                    v-model="customPage"
-                    :totalItems="500"
-                    :perPage="customPerPage"
-                    :perPageOptions="[5, 10, 20, 50, 100]"
-                    :visiblePages="7"
-                    :showPerPageSelect="true"
-                    @update:perPage="customPerPage = $event"
-                    @pageChange="handlePageChange"
-                ></c-pagination>
-            </div>
-        </c-card>
+        <card-docs>
+            <c-pagination
+                v-model="customPage"
+                :totalItems="500"
+                :perPage="customPerPage"
+                :perPageOptions="[5, 10, 20, 50, 100]"
+                :visiblePages="5"
+                :showPerPageSelect="true"
+                @update:perPage="customPerPage = $event"
+                @pageChange="handlePageChange"
+            ></c-pagination>
 
-        <pre>
-            <code class="code-hightlight language-vue">&lt;template&gt;
+            <template #code>
+<pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;c-pagination
         v-model="customPage"
         :totalItems="500"
@@ -144,59 +148,73 @@ import CPagination from "@cmmv/ui/components/CPagination.vue";
 &lt;/template&gt;
 
 &lt;script setup&gt;
+import { ref } from 'vue';
+import CPagination from "@components/components/CPagination.vue";
+
+const customPage = ref(1);
+const customPerPage = ref(20);
+
 const handlePageChange = (event) => {
     console.log(`Page changed to ${event.page}, showing ${event.perPage} items per page`);
+    // You can fetch new data here based on the page and perPage values
 };
-&lt;/script&gt;</code>
-        </pre>
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <!-- Few Pages -->
         <h3>Few Pages</h3>
 
         <p>When there are only a few pages, the pagination component automatically adjusts its display to show only the necessary page buttons.</p>
 
-        <c-card variant="flat" class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-            <c-pagination
-                v-model="fewPagesCurrentPage"
-                :totalItems="30"
-                :perPage="10"
-            ></c-pagination>
-        </c-card>
+        <card-docs>
+            <div class="mx-auto">
+                <c-pagination
+                    v-model="fewPagesCurrentPage"
+                    :totalItems="30"
+                    :perPage="10"
+                ></c-pagination>
+            </div>
 
-        <pre>
-            <code class="code-hightlight language-vue">&lt;template&gt;
+            <template #code>
+<pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;c-pagination
         v-model="fewPagesCurrentPage"
         :totalItems="30"
         :perPage="10"
     &gt;&lt;/c-pagination&gt;
-&lt;/template&gt;</code>
-        </pre>
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref } from 'vue';
+import CPagination from "@components/components/CPagination.vue";
+
+const fewPagesCurrentPage = ref(1);
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <!-- Internationalization -->
         <h3>Internationalization</h3>
 
         <p>The pagination component supports internationalization through text props. You can customize all text labels to support different languages.</p>
 
-        <c-card variant="flat" class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-            <div class="lg:w-2/5 w-full">
-                <c-pagination
-                    v-model="i18nPage"
-                    :totalItems="100"
-                    :showPerPageSelect="true"
-                    showingText="Mostrando"
-                    ofText="de"
-                    itemsText="itens"
-                    firstPageText="Primeira página"
-                    previousPageText="Página anterior"
-                    nextPageText="Próxima página"
-                    lastPageText="Última página"
-                ></c-pagination>
-            </div>
-        </c-card>
+        <card-docs>
+            <c-pagination
+                v-model="i18nPage"
+                :totalItems="100"
+                :showPerPageSelect="true"
+                showingText="Mostrando"
+                ofText="de"
+                itemsText="itens"
+                firstPageText="Primeira página"
+                previousPageText="Página anterior"
+                nextPageText="Próxima página"
+                lastPageText="Última página"
+            ></c-pagination>
 
-        <pre>
-            <code class="code-hightlight language-vue">&lt;template&gt;
+            <template #code>
+<pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;c-pagination
         v-model="currentPage"
         :totalItems="100"
@@ -209,8 +227,16 @@ const handlePageChange = (event) => {
         nextPageText="Próxima página"
         lastPageText="Última página"
     &gt;&lt;/c-pagination&gt;
-&lt;/template&gt;</code>
-        </pre>
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref } from 'vue';
+import CPagination from "@components/components/CPagination.vue";
+
+const currentPage = ref(1);
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <!-- Internationalization Props -->
         <h3>Internationalization Props</h3>
@@ -333,7 +359,7 @@ const handlePageChange = (event) => {
 
         <p>The pagination component is frequently used with tables to navigate through large datasets. Below is an example of how you can integrate pagination with the <code>CTable</code> component:</p>
 
-        <c-card variant="flat" class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+        <card-docs>
             <div class="w-full">
                 <c-table
                     :headers="tableHeaders"
@@ -350,10 +376,9 @@ const handlePageChange = (event) => {
                     @pageChange="onTablePageChange"
                 ></c-pagination>
             </div>
-        </c-card>
 
-        <pre>
-            <code class="code-hightlight language-vue">&lt;template&gt;
+            <template #code>
+<pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;div&gt;
         &lt;c-table
             :headers="tableHeaders"
@@ -374,12 +399,14 @@ const handlePageChange = (event) => {
 
 &lt;script setup&gt;
 import { ref, onMounted } from 'vue';
+import CPagination from "@components/components/CPagination.vue";
+import CTable from "@components/data/CTable.vue";
 
-const tableHeaders = [
+const tableHeaders = ref([
     { label: "ID", key: "id", width: "80px" },
     { label: "Name", key: "name", width: "180px" },
     { label: "Email", key: "email" }
-];
+]);
 
 const tableItems = ref([]);
 const currentPage = ref(1);
@@ -432,8 +459,9 @@ const fetchDataFromAPI = async (page, perPage) => {
 onMounted(() => {
     loadData({ page: 1, perPage: 10 });
 });
-&lt;/script&gt;</code>
-</pre>
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <PagePagination
             previous="List"
@@ -445,8 +473,9 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.code-hightlight {
+.code-highlight {
     white-space: pre;
+    font-family: monospace;
 }
 </style>
 
@@ -454,6 +483,7 @@ onMounted(() => {
 import { ref, onMounted } from "vue";
 import BaseLayout from "../../layout/BaseLayout.vue";
 import TableDocs from "../../components/TableDocs.vue";
+import CardDocs from "../../components/CardDocs.vue";
 import PagePagination from "../../layout/PagePagination.vue";
 
 const currentPage = ref(1);

@@ -1,4 +1,4 @@
-import CAIChat from '@components/CAIChat.vue';
+import { CAIChat } from '@components';
 
 export default {
     install(app) {

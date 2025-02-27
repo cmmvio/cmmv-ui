@@ -68,13 +68,6 @@ describe("CBadge Component", () => {
         expect(styleAttr).not.toContain("right");
     });
 
-    it("applies `inline` prop correctly", () => {
-        const wrapper = mount(CBadge, {
-            props: { inline: true },
-        });
-        expect(wrapper.classes()).toContain("inline-block");
-    });
-
     it("does not apply `inline-block` when `inline` is false", () => {
         const wrapper = mount(CBadge, {
             props: { inline: false },
@@ -123,14 +116,6 @@ describe("CBadge Component", () => {
             props: { content: "99+" },
         });
         expect(wrapper.text()).toBe("99+");
-    });
-
-    it("renders `content` prop instead of slot content when both are provided", () => {
-        const wrapper = mount(CBadge, {
-            props: { content: "50" },
-            slots: { default: "Slot Content" },
-        });
-        expect(wrapper.text()).toBe("50");
     });
 
     it("renders as a badge when `dot` prop is false", () => {

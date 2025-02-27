@@ -3,61 +3,84 @@
         <h1>Combobox</h1>
 
         <p>
-            The <code>CCombobox (alias: c-combobox)</code> component in the <code>@cmmv/ui</code> framework provides a customizable dropdown menu.
-            It supports various sizes, styles, and advanced interaction features to enhance user experience in forms and navigation.
+            The <code>CCombobox (alias: c-combobox)</code> component in the <code>@cmmv/ui</code> framework provides a customizable dropdown menu for selecting options from a list. It supports dynamic data binding, custom styling, and advanced interaction features, making it ideal for forms, filters, and navigation menus.
         </p>
 
         <table-docs>
             <thead>
                 <tr>
-                    <th>Prop</th>
-                    <th>Type</th>
-                    <th>Default</th>
-                    <th>Description</th>
+                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
+                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Type</th>
+                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Default</th>
+                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Description</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>modelValue</td>
-                    <td>String | Number</td>
-                    <td>""</td>
-                    <td>The value bound to the dropdown field using <code>v-model</code>.</td>
+                    <td class="border-b px-4 py-2">modelValue</td>
+                    <td class="border-b px-4 py-2">String | Number</td>
+                    <td class="border-b px-4 py-2"><code>""</code></td>
+                    <td class="border-b px-4 py-2">The value bound to the dropdown field using <code>v-model</code>.</td>
                 </tr>
                 <tr>
-                    <td>options</td>
-                    <td>Array</td>
-                    <td>[]</td>
-                    <td>The list of options formatted as <code>{ value: '', label: '' }</code>.</td>
+                    <td class="border-b px-4 py-2">options</td>
+                    <td class="border-b px-4 py-2">Array</td>
+                    <td class="border-b px-4 py-2"><code>[]</code></td>
+                    <td class="border-b px-4 py-2">The list of options formatted as <code>{ value: '', label: '' }</code>.</td>
                 </tr>
                 <tr>
-                    <td>label</td>
-                    <td>String</td>
-                    <td>undefined</td>
-                    <td>The label displayed above the dropdown field.</td>
+                    <td class="border-b px-4 py-2">label</td>
+                    <td class="border-b px-4 py-2">String</td>
+                    <td class="border-b px-4 py-2"><code>undefined</code></td>
+                    <td class="border-b px-4 py-2">The label displayed above the dropdown field.</td>
                 </tr>
                 <tr>
-                    <td>size</td>
-                    <td>String</td>
-                    <td>"md"</td>
-                    <td>Controls the dropdown size. Options: <code>sm</code>, <code>md</code>, <code>lg</code>.</td>
+                    <td class="border-b px-4 py-2">placeholder</td>
+                    <td class="border-b px-4 py-2">String</td>
+                    <td class="border-b px-4 py-2"><code>"Select an option"</code></td>
+                    <td class="border-b px-4 py-2">Placeholder text shown when no option is selected.</td>
                 </tr>
                 <tr>
-                    <td>rounded</td>
-                    <td>String</td>
-                    <td>"default"</td>
-                    <td>Defines the border radius. Options: <code>none</code>, <code>default</code>, <code>full</code>.</td>
+                    <td class="border-b px-4 py-2">size</td>
+                    <td class="border-b px-4 py-2">String</td>
+                    <td class="border-b px-4 py-2"><code>"md"</code></td>
+                    <td class="border-b px-4 py-2">Controls the dropdown size. Options: <code>sm</code>, <code>md</code>, <code>lg</code>.</td>
                 </tr>
                 <tr>
-                    <td>variant</td>
-                    <td>String</td>
-                    <td>"default"</td>
-                    <td>Defines the dropdown style. Options: <code>default</code>, <code>outlined</code>, <code>filled</code>.</td>
+                    <td class="border-b px-4 py-2">rounded</td>
+                    <td class="border-b px-4 py-2">String</td>
+                    <td class="border-b px-4 py-2"><code>"default"</code></td>
+                    <td class="border-b px-4 py-2">Defines the border radius. Options: <code>none</code>, <code>default</code>, <code>full</code>.</td>
                 </tr>
                 <tr>
-                    <td>disabled</td>
-                    <td>Boolean</td>
-                    <td>false</td>
-                    <td>Disables the dropdown field.</td>
+                    <td class="border-b px-4 py-2">variant</td>
+                    <td class="border-b px-4 py-2">String</td>
+                    <td class="border-b px-4 py-2"><code>"default"</code></td>
+                    <td class="border-b px-4 py-2">Defines the dropdown style. Options: <code>default</code>, <code>outlined</code>, <code>filled</code>.</td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">disabled</td>
+                    <td class="border-b px-4 py-2">Boolean</td>
+                    <td class="border-b px-4 py-2"><code>false</code></td>
+                    <td class="border-b px-4 py-2">Disables the dropdown field, making it non-interactive.</td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">bgColor</td>
+                    <td class="border-b px-4 py-2">String</td>
+                    <td class="border-b px-4 py-2"><code>"bg-white dark:bg-neutral-900"</code></td>
+                    <td class="border-b px-4 py-2">Custom background color class for the dropdown.</td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">textColor</td>
+                    <td class="border-b px-4 py-2">String</td>
+                    <td class="border-b px-4 py-2"><code>""</code></td>
+                    <td class="border-b px-4 py-2">Custom text color class for the dropdown text.</td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">borderColor</td>
+                    <td class="border-b px-4 py-2">String</td>
+                    <td class="border-b px-4 py-2"><code>"focus:ring focus:ring-zinc-700 focus:ring-opacity-50"</code></td>
+                    <td class="border-b px-4 py-2">Custom border and focus ring styles for the dropdown.</td>
                 </tr>
             </tbody>
         </table-docs>
@@ -69,31 +92,36 @@
             you can dynamically update and retrieve the selected value. The component also supports labels and a set of predefined options.
         </p>
 
-        <c-card variant="flat" class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-            <div class="lg:w-2/5 w-full max-w-[400px] text-center">
-                <c-combobox v-model="basicValue" label="Select an option" :options="basicOptions" />
-                <p>Selected: {{ basicValue }}</p>
+        <card-docs>
+            <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+                <div class="lg:w-2/5 w-full max-w-[400px]">
+                    <c-combobox v-model="basicValue" label="Select an option" :options="basicOptions" />
+                    <p class="mt-2 text-gray-600 dark:text-gray-300">Selected: {{ basicValue }}</p>
+                </div>
             </div>
-        </c-card>
 
-        <pre>
-            <code>&lt;c-combobox
-    v-model="basicValue"
-    label="Select an option"
-    :options="basicOptions"
-/&gt;
+            <template #code>
+<pre><code class="code-highlight language-html">&lt;template&gt;
+    &lt;c-combobox
+        v-model="basicValue"
+        label="Select an option"
+        :options="basicOptions"
+    /&gt;
+&lt;/template&gt;
 
 &lt;script setup&gt;
+import { ref } from "vue";
+
 const basicOptions = [
     { value: 1, label: "Option 1" },
     { value: 2, label: "Option 2" },
     { value: 3, label: "Option 3" }
 ];
 
-const basicValue = ref("");
-&lt;/script&gt;
-</code>
-</pre>
+const basicValue = ref(1);
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <h3>Size Variants</h3>
 
@@ -103,63 +131,123 @@ const basicValue = ref("");
             Use <code>size="sm"</code> for compact elements and <code>size="lg"</code> for prominent dropdowns.
         </p>
 
-        <c-card variant="flat" class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-            <div class="lg:w-2/5 w-full max-w-[400px] text-center space-y-4">
-                <c-combobox v-model="sizeSm" label="Small" size="sm" :options="basicOptions" />
-                <c-combobox v-model="sizeMd" label="Medium" size="md" :options="basicOptions" />
-                <c-combobox v-model="sizeLg" label="Large" size="lg" :options="basicOptions" />
+        <card-docs>
+            <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+                <div class="lg:w-2/5 w-full max-w-[400px] space-y-4">
+                    <c-combobox v-model="sizeSm" label="Small" size="sm" :options="basicOptions" />
+                    <c-combobox v-model="sizeMd" label="Medium" size="md" :options="basicOptions" />
+                    <c-combobox v-model="sizeLg" label="Large" size="lg" :options="basicOptions" />
+                </div>
             </div>
-        </c-card>
 
-        <pre>
-            <code>&lt;c-combobox v-model="sizeSm" label="Small" size="sm" :options="basicOptions" /&gt;
-&lt;c-combobox v-model="sizeMd" label="Medium" size="md" :options="basicOptions" /&gt;
-&lt;c-combobox v-model="sizeLg" label="Large" size="lg" :options="basicOptions" /&gt;</code>
-</pre>
+            <template #code>
+<pre><code class="code-highlight language-html">&lt;template&gt;
+    &lt;c-combobox v-model="sizeSm" label="Small" size="sm" :options="basicOptions" /&gt;
+    &lt;c-combobox v-model="sizeMd" label="Medium" size="md" :options="basicOptions" /&gt;
+    &lt;c-combobox v-model="sizeLg" label="Large" size="lg" :options="basicOptions" /&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref } from "vue";
+
+const basicOptions = [
+    { value: 1, label: "Option 1" },
+    { value: 2, label: "Option 2" },
+    { value: 3, label: "Option 3" }
+];
+
+const sizeSm = ref(1);
+const sizeMd = ref(1);
+const sizeLg = ref(1);
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <h3>Variants</h3>
 
         <p>
             You can customize the appearance of the dropdown using the <code>variant</code> prop.
-            The available styles include:
+            The available styles include <code>default</code>, <code>outlined</code>, and <code>filled</code>,
+            each providing a different visual style to match your application's design.
         </p>
 
-        <ul>
-            <li><strong>Default</strong>: A simple style with no additional borders.</li>
-            <li><strong>Outlined</strong>: Adds a border around the dropdown for better contrast.</li>
-            <li><strong>Filled</strong>: Provides a shaded background for a more pronounced look.</li>
-        </ul>
-
-        <c-card variant="flat" class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-            <div class="lg:w-2/5 w-full max-w-[400px] text-center space-y-4">
-                <c-combobox v-model="variantDefault" label="Default" variant="default" :options="basicOptions" />
-                <c-combobox v-model="variantOutlined" label="Outlined" variant="outlined" :options="basicOptions" />
-                <c-combobox v-model="variantFilled" label="Filled" variant="filled" :options="basicOptions" />
+        <card-docs>
+            <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+                <div class="lg:w-2/5 w-full max-w-[400px] space-y-4">
+                    <c-combobox v-model="variantDefault" label="Default" variant="default" :options="basicOptions" />
+                    <c-combobox v-model="variantOutlined" label="Outlined" variant="outlined" :options="basicOptions" />
+                    <c-combobox v-model="variantFilled" label="Filled" variant="filled" :options="basicOptions" />
+                </div>
             </div>
-        </c-card>
 
-        <pre>
-            <code>&lt;c-combobox
-    v-model="variantDefault"
-    label="Default"
-    variant="default"
-    :options="basicOptions"
-/&gt;
+            <template #code>
+<pre><code class="code-highlight language-html">&lt;template&gt;
+    &lt;c-combobox
+        v-model="variantDefault"
+        label="Default"
+        variant="default"
+        :options="basicOptions"
+    /&gt;
 
-&lt;c-combobox
-    v-model="variantOutlined"
-    label="Outlined"
-    variant="outlined"
-    :options="basicOptions"
-/&gt;
+    &lt;c-combobox
+        v-model="variantOutlined"
+        label="Outlined"
+        variant="outlined"
+        :options="basicOptions"
+    /&gt;
 
-&lt;c-combobox
-    v-model="variantFilled"
-    label="Filled"
-    variant="filled"
-    :options="basicOptions"
-/&gt;</code>
-</pre>
+    &lt;c-combobox
+        v-model="variantFilled"
+        label="Filled"
+        variant="filled"
+        :options="basicOptions"
+    /&gt;
+&lt;/template&gt;</code></pre>
+            </template>
+        </card-docs>
+
+        <h3>Rounded Corners</h3>
+
+        <p>
+            The <code>rounded</code> prop allows you to control the border radius of the combobox.
+            Choose from <code>none</code> (square corners), <code>default</code> (slightly rounded),
+            or <code>full</code> (fully rounded) to match your design preferences.
+        </p>
+
+        <card-docs>
+            <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+                <div class="lg:w-2/5 w-full max-w-[400px] space-y-4">
+                    <c-combobox v-model="roundedNone" label="No Rounding" rounded="none" :options="basicOptions" />
+                    <c-combobox v-model="roundedDefault" label="Default Rounding" rounded="default" :options="basicOptions" />
+                    <c-combobox v-model="roundedFull" label="Full Rounding" rounded="full" :options="basicOptions" />
+                </div>
+            </div>
+
+            <template #code>
+<pre><code class="code-highlight language-html">&lt;template&gt;
+    &lt;c-combobox
+        v-model="roundedNone"
+        label="No Rounding"
+        rounded="none"
+        :options="basicOptions"
+    /&gt;
+
+    &lt;c-combobox
+        v-model="roundedDefault"
+        label="Default Rounding"
+        rounded="default"
+        :options="basicOptions"
+    /&gt;
+
+    &lt;c-combobox
+        v-model="roundedFull"
+        label="Full Rounding"
+        rounded="full"
+        :options="basicOptions"
+    /&gt;
+&lt;/template&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <h3>Disabled State</h3>
 
@@ -169,13 +257,30 @@ const basicValue = ref("");
             conditional input scenarios.
         </p>
 
-        <c-card variant="flat" class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-            <div class="lg:w-2/5 w-full max-w-[400px] text-center">
-                <c-combobox v-model="disabledExample" label="Disabled Dropdown" :options="basicOptions" disabled />
+        <card-docs>
+            <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+                <div class="lg:w-2/5 w-full max-w-[400px]">
+                    <c-combobox v-model="disabledExample" label="Disabled Dropdown" :options="basicOptions" disabled />
+                </div>
             </div>
-        </c-card>
 
-        <br/>
+            <template #code>
+<pre><code class="code-highlight language-html">&lt;template&gt;
+    &lt;c-combobox
+        v-model="disabledExample"
+        label="Disabled Dropdown"
+        :options="basicOptions"
+        disabled
+    /&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref } from "vue";
+
+const disabledExample = ref(1);
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <h3>Custom Template</h3>
 
@@ -186,43 +291,38 @@ const basicValue = ref("");
             and how each option is rendered in the dropdown.
         </p>
 
-        <p>
-            In this example, the dropdown is customized to display a flag icon alongside the language code.
-            The <code>#selected</code> slot defines how the selected language appears, while the <code>#option</code> slot
-            customizes each option inside the dropdown list.
-        </p>
+        <card-docs>
+            <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+                <div class="lg:w-2/5 w-full max-w-[400px]">
+                    <c-combobox
+                        v-model="languageValue"
+                        label="Languages Dropdown"
+                        :options="languageOptions"
+                    >
+                        <template #selected="{ data }">
+                            <div class="flex flex-1 -mt-1">
+                                <c-flag :iso="data.iso" size="sm" riyb />
+                                <div class="ml-2 mt-0.5">{{ data.label }}</div>
+                            </div>
+                        </template>
 
-        <c-card variant="flat" class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-            <div class="lg:w-2/5 w-full max-w-[400px] text-center">
-                <c-combobox
-                    v-model="languageValue"
-                    label="Languages Dropdown"
-                    :options="languageOptions"
-                >
-                    <template #selected="{ data }">
-                        <div class="flex flex-1 -mt-1">
-                            <c-flag :iso="data.iso" size="sm" riyb />
-                            <div class="ml-2 mt-0.5">{{ data.label }}</div>
-                        </div>
-                    </template>
-
-                    <template #option="{ data }">
-                        <div class="flex flex-1">
-                            <c-flag :iso="data.iso" size="sm" riyb />
-                            <div class="ml-2 mt-0.5">{{ data.label }}</div>
-                        </div>
-                    </template>
-                </c-combobox>
+                        <template #option="{ data }">
+                            <div class="flex flex-1">
+                                <c-flag :iso="data.iso" size="sm" riyb />
+                                <div class="ml-2 mt-0.5">{{ data.label }}</div>
+                            </div>
+                        </template>
+                    </c-combobox>
+                </div>
             </div>
-        </c-card>
 
-        <pre>
-    <code>&lt;template&gt;
+            <template #code>
+<pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;c-combobox
-    v-model="languageValue"
-    label="Languages Dropdown"
-    :options="languageOptions"
-&gt;
+        v-model="languageValue"
+        label="Languages Dropdown"
+        :options="languageOptions"
+    &gt;
         &lt;template #selected="{ data }"&gt;
             &lt;div class="flex items-center"&gt;
                 &lt;c-flag :iso="data.iso" size="sm" /&gt;
@@ -240,6 +340,8 @@ const basicValue = ref("");
 &lt;/template&gt;
 
 &lt;script setup&gt;
+import { ref } from "vue";
+
 const languageOptions = [
     { value: 1, label: "English", iso: "us" },
     { value: 2, label: "Português (Brasil)", iso: "br" },
@@ -247,9 +349,10 @@ const languageOptions = [
 ];
 
 const languageValue = ref(1);
-&lt;/script&gt;
-</code>
-</pre>
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
+
 
         <PagePagination
             previous="Checkbox"
@@ -265,6 +368,7 @@ import { ref } from "vue";
 import BaseLayout from "../../layout/BaseLayout.vue";
 import TableDocs from "../../components/TableDocs.vue";
 import PagePagination from "../../layout/PagePagination.vue";
+import CardDocs from "../../components/CardDocs.vue";
 
 const basicOptions = [
     { value: 1, label: "Option 1" },
@@ -278,6 +382,18 @@ const languageOptions = [
     { value: 3, label: "Español", iso: "es" }
 ];
 
+const categoryOptions = [
+    { value: 1, label: "Electronics" },
+    { value: 2, label: "Clothing" },
+    { value: 3, label: "Home & Garden" }
+];
+
+const productOptions = [
+    { value: 1, label: "Smartphone" },
+    { value: 2, label: "Laptop" },
+    { value: 3, label: "Headphones" }
+];
+
 const basicValue = ref(1);
 const sizeSm = ref(1);
 const sizeMd = ref(1);
@@ -286,4 +402,11 @@ const variantDefault = ref(1);
 const variantOutlined = ref(1);
 const variantFilled = ref(1);
 const languageValue = ref(1);
+const disabledExample = ref(1);
+const roundedNone = ref(1);
+const roundedDefault = ref(1);
+const roundedFull = ref(1);
+const orderCategory = ref(null);
+const orderProduct = ref(null);
+const orderQuantity = ref(1);
 </script>

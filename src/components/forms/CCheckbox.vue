@@ -3,8 +3,6 @@
         class="relative inline-flex items-center cursor-pointer select-none"
         @click="toggle"
     >
-        <span class="absolute inset-0 z-0" ref="rippleContainer"></span>
-
         <span
             class="relative z-10 flex items-center justify-center border rounded transition-all duration-200 overflow-hidden"
             :class="[
@@ -121,7 +119,6 @@ const props = defineProps({
 });
 
 const emit = defineEmits(["update:modelValue"]);
-const rippleContainer = ref<HTMLElement | null>(null);
 const internalChecked = ref(
     Array.isArray(props.modelValue)
         ? props.modelValue.includes(props.value)
@@ -169,7 +166,6 @@ const toggle = () => {
     if (!props.disabled && !props.ignoreClick) {
         isChecked.value = !isChecked.value;
         validate();
-        createRipple();
     }
 };
 
@@ -189,48 +185,9 @@ const validate = () => {
     return true;
 };
 
-const createRipple = () => {
-    if (!rippleContainer.value) return;
-
-    const rect = rippleContainer.value.getBoundingClientRect();
-    const ripple = document.createElement("span");
-    const diameter = rect.width * 0.5;
-    const radius = (diameter < 100 ? diameter : 100) / 2;
-
-    ripple.style.width = ripple.style.height = `${diameter}px`;
-    ripple.style.left = `${radius}px`;
-    ripple.style.top = `${rect.height / 2 - radius}px`;
-    ripple.classList.add("ripple");
-
-    rippleContainer.value.appendChild(ripple);
-
-    setTimeout(() => {
-        ripple.remove();
-    }, 500);
-};
-
 const sizes: Record<string, { box: string, label: string }> = {
     sm: { box: "w-4 h-4 border-2", label: "text-sm" },
     md: { box: "w-5 h-5 border-2", label: "text-base" },
     lg: { box: "w-6 h-6 border-2", label: "text-lg" },
 };
 </script>
-
-<style scoped>
-.ripple {
-    position: absolute;
-    border-radius: 50%;
-    background-color: rgba(0, 0, 0, 0.1);
-    transform: scale(0);
-    animation: ripple-animation 0.1s ease-out;
-    pointer-events: none;
-    max-width: 100px;
-}
-
-@keyframes ripple-animation {
-    to {
-        transform: scale(0.1);
-        opacity: 0;
-    }
-}
-</style>

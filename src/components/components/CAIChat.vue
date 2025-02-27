@@ -143,6 +143,10 @@ const props = defineProps({
     aiName: {
         type: String,
         default: 'AI Assistant'
+    },
+    autoScroll: {
+        type: Boolean,
+        default: true
     }
 });
 
@@ -156,6 +160,7 @@ const inputField = ref(null);
 const showScrollButton = ref(false);
 const currentResponseIndex = ref(0);
 const stopTyping = ref(false);
+const isInitialLoad = ref(true);
 
 // Compute input rows based on content
 const inputRows = computed(() => {
@@ -196,9 +201,11 @@ const sendMessage = async () => {
         inputField.value.focus();
     }
 
-    // Scroll to bottom
+    // Scroll to bottom if enabled
     await nextTick();
-    scrollToBottom();
+    if (props.autoScroll) {
+        scrollToBottom();
+    }
 
     // Simulate AI response
     simulateAIResponse();
@@ -276,7 +283,9 @@ const typeNextCharacter = (fullResponse, messageIndex) => {
         // Schedule next character
         setTimeout(() => {
             typeNextCharacter(fullResponse, messageIndex);
-            scrollToBottomIfNearEnd();
+            if (props.autoScroll) {
+                scrollToBottomIfNearEnd();
+            }
         }, props.typingSpeed);
     } else {
         // Finished typing
@@ -349,27 +358,41 @@ const checkScrollPosition = () => {
     }
 };
 
-// Watch for new messages to scroll down
+// Watch for new messages to scroll down only if autoScroll is enabled
 watch(() => messages.value.length, () => {
-    nextTick(() => {
-        scrollToBottom();
-    });
+    // Removido o auto-scroll automático ao adicionar mensagens
+    // Só rola para baixo quando o usuário envia uma mensagem explicitamente
 });
 
 // Setup scroll event listener
 onMounted(() => {
     if (chatContainer.value) {
         chatContainer.value.addEventListener('scroll', checkScrollPosition);
-        scrollToBottom();
+
+        // Removido o scrollToBottom no carregamento inicial
+        // Não queremos nenhum comportamento de auto-scroll na montagem
     }
 
     // Focus input field and initialize height
     nextTick(() => {
         if (inputField.value) {
-            inputField.value.focus();
+            // Removido o foco automático que pode causar scroll
+            // inputField.value.focus();
             autoresizeTextarea();
         }
+
+        // After initial setup, mark as no longer in initial load
+        isInitialLoad.value = false;
     });
+
+    // Prevent the component from affecting the page scroll
+    const preventPageScroll = (e) => {
+        e.stopPropagation();
+    };
+
+    if (chatContainer.value) {
+        chatContainer.value.addEventListener('scroll', preventPageScroll);
+    }
 });
 </script>
 

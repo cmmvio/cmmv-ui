@@ -73,34 +73,35 @@
         Below are basic examples demonstrating its functionality with minimal configuration.
     </p>
 
-    <c-card variant="flat" class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-        <div class="lg:w-2/5 w-full max-w-[400px]">
-            <c-datepicker
-                id="example1"
-                label="Basic Datepicker"
-                v-model="basicDate"
-            />
+    <card-docs>
+        <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+            <div class="lg:w-2/5 w-full max-w-[400px]">
+                <c-datepicker
+                    id="example1"
+                    label="Basic Datepicker"
+                    v-model="basicDate"
+                />
+            </div>
+
+            <p class="text-gray-600 dark:text-gray-300">Value: {{ basicDate ? formatDateFn(basicDate, 'dd/MM/yyyy') : 'No date selected' }}</p>
         </div>
 
-        Value: {{ basicDate ? formatDateFn(basicDate, 'dd/MM/yyyy') : 'No date selected' }}
-    </c-card>
-
-    <pre>
-        <code class="code-hightlight language-vue">&lt;template&gt;
+        <template #code>
+<pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;c-datepicker
-        id=&quot;example1&quot;
-        label=&quot;Basic Datepicker&quot;
-        v-model=&quot;date&quot;
+        id="example1"
+        label="Basic Datepicker"
+        v-model="date"
     /&gt;
 &lt;/template&gt;
 
-&lt;script&gt;
+&lt;script setup&gt;
 import { ref } from 'vue';
-import CDatepicker from &quot;@cmmv/ui/components/CDatepicker.vue&quot;;
 
 const date = ref(null);
-&lt;/script&gt;</code>
-    </pre>
+&lt;/script&gt;</code></pre>
+        </template>
+    </card-docs>
 
     <!-- Custom Format -->
     <h3>Custom Format</h3>
@@ -110,27 +111,35 @@ const date = ref(null);
         Use the <code>format</code> prop to specify your preferred date format.
     </p>
 
-    <c-card variant="flat" class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-        <div class="lg:w-2/5 w-full max-w-[400px]">
-            <c-datepicker
-                id="format"
-                label="Custom Format"
-                format="MM/dd/yyyy"
-                v-model="customFormatDate"
-            />
+    <card-docs>
+        <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+            <div class="lg:w-2/5 w-full max-w-[400px]">
+                <c-datepicker
+                    id="format"
+                    label="Custom Format"
+                    format="MM/dd/yyyy"
+                    v-model="customFormatDate"
+                />
+            </div>
         </div>
-    </c-card>
 
-    <pre>
-        <code class="code-hightlight language-vue">&lt;template&gt;
+        <template #code>
+<pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;c-datepicker
-        id=&quot;format&quot;
-        label=&quot;Custom Format&quot;
-        format=&quot;MM/dd/yyyy&quot;
-        v-model=&quot;date&quot;
+        id="format"
+        label="Custom Format"
+        format="MM/dd/yyyy"
+        v-model="date"
     /&gt;
-&lt;/template&gt;</code>
-    </pre>
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref } from 'vue';
+
+const date = ref(null);
+&lt;/script&gt;</code></pre>
+        </template>
+    </card-docs>
 
     <!-- Min and Max Dates -->
     <h3>Minimum and Maximum Dates</h3>
@@ -140,38 +149,40 @@ const date = ref(null);
         This is useful for scenarios like preventing selection of past dates or limiting selection to a specific range.
     </p>
 
-    <c-card variant="flat" class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-        <div class="lg:w-2/5 w-full max-w-[400px]">
-            <c-datepicker
-                id="minmax"
-                label="Date Range (This month only)"
-                v-model="rangeDate"
-                :min="minDate"
-                :max="maxDate"
-            />
+    <card-docs>
+        <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+            <div class="lg:w-2/5 w-full max-w-[400px]">
+                <c-datepicker
+                    id="minmax"
+                    label="Date Range (This month only)"
+                    v-model="rangeDate"
+                    :min="minDate"
+                    :max="maxDate"
+                />
+            </div>
         </div>
-    </c-card>
 
-    <pre>
-        <code class="code-hightlight language-vue">&lt;template&gt;
+        <template #code>
+<pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;c-datepicker
-        id=&quot;minmax&quot;
-        label=&quot;Date Range (This month only)&quot;
-        v-model=&quot;date&quot;
-        :min=&quot;minDate&quot;
-        :max=&quot;maxDate&quot;
+        id="minmax"
+        label="Date Range (This month only)"
+        v-model="date"
+        :min="minDate"
+        :max="maxDate"
     /&gt;
 &lt;/template&gt;
 
-&lt;script&gt;
+&lt;script setup&gt;
 import { ref } from 'vue';
 
 const date = ref(null);
 const today = new Date();
 const minDate = new Date(today.getFullYear(), today.getMonth(), 1);
 const maxDate = new Date(today.getFullYear(), today.getMonth() + 1, 0);
-&lt;/script&gt;</code>
-    </pre>
+&lt;/script&gt;</code></pre>
+        </template>
+    </card-docs>
 
     <!-- Validation -->
     <h3>Validation</h3>
@@ -181,27 +192,35 @@ const maxDate = new Date(today.getFullYear(), today.getMonth() + 1, 0);
         You can provide custom validation messages when a date is required or doesn't meet specific criteria.
     </p>
 
-    <c-card variant="flat" class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-        <div class="lg:w-2/5 w-full max-w-[400px]">
-            <c-datepicker
-                id="validation"
-                label="Required Date"
-                v-model="validationDate"
-                :rules="[value => (value ? null : 'Please select a date')]"
-            />
+    <card-docs>
+        <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+            <div class="lg:w-2/5 w-full max-w-[400px]">
+                <c-datepicker
+                    id="validation"
+                    label="Required Date"
+                    v-model="validationDate"
+                    :rules="[value => (value ? null : 'Please select a date')]"
+                />
+            </div>
         </div>
-    </c-card>
 
-    <pre>
-        <code class="code-hightlight language-vue">&lt;template&gt;
+        <template #code>
+<pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;c-datepicker
-        id=&quot;validation&quot;
-        label=&quot;Required Date&quot;
-        v-model=&quot;date&quot;
-        :rules=&quot;[value =&gt; (value ? null : 'Please select a date')]&quot;
+        id="validation"
+        label="Required Date"
+        v-model="date"
+        :rules="[value => (value ? null : 'Please select a date')]"
     /&gt;
-&lt;/template&gt;</code>
-    </pre>
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref } from 'vue';
+
+const date = ref(null);
+&lt;/script&gt;</code></pre>
+        </template>
+    </card-docs>
 
     <!-- Disabled State -->
     <h3>Disabled State</h3>
@@ -211,26 +230,35 @@ const maxDate = new Date(today.getFullYear(), today.getMonth() + 1, 0);
         preventing user interaction when needed.
     </p>
 
-    <c-card variant="flat" class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-        <div class="lg:w-2/5 w-full max-w-[400px]">
-            <c-datepicker
-                id="disabled"
-                label="Disabled Datepicker"
-                disabled
-                v-model="disabledDate"
-            />
+    <card-docs>
+        <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+            <div class="lg:w-2/5 w-full max-w-[400px]">
+                <c-datepicker
+                    id="disabled"
+                    label="Disabled Datepicker"
+                    disabled
+                    v-model="disabledDate"
+                />
+            </div>
         </div>
-    </c-card>
 
-    <pre>
-        <code class="code-hightlight language-vue">&lt;template&gt;
+        <template #code>
+<pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;c-datepicker
-        id=&quot;disabled&quot;
-        label=&quot;Disabled Datepicker&quot;
+        id="disabled"
+        label="Disabled Datepicker"
         disabled
+        v-model="date"
     /&gt;
-&lt;/template&gt;</code>
-    </pre>
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref } from 'vue';
+
+const date = ref(new Date());
+&lt;/script&gt;</code></pre>
+        </template>
+    </card-docs>
 
     <!-- Date Range Selection -->
     <h3>Date Range Selection</h3>
@@ -240,40 +268,42 @@ const maxDate = new Date(today.getFullYear(), today.getMonth() + 1, 0);
         Use the <code>range</code> prop to enable this feature. The component ensures that the return date cannot be before the departure date.
     </p>
 
-    <c-card variant="flat" class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-        <div class="lg:w-2/5 w-full max-w-[400px]">
-            <c-datepicker
-                id="range"
-                label="Travel Dates"
-                v-model="travelDates"
-                range
-                placeholder="Select departure and return dates"
-            />
+    <card-docs>
+        <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+            <div class="lg:w-2/5 w-full max-w-[400px]">
+                <c-datepicker
+                    id="range"
+                    label="Travel Dates"
+                    v-model="travelDates"
+                    range
+                    placeholder="Select departure and return dates"
+                />
+            </div>
+
+            <div v-if="travelDates && travelDates.length" class="text-sm text-gray-600 dark:text-gray-300">
+                <div v-if="travelDates.length >= 1">Departure: {{ formatDateFn(travelDates[0], 'dd/MM/yyyy') }}</div>
+                <div v-if="travelDates.length >= 2">Return: {{ formatDateFn(travelDates[1], 'dd/MM/yyyy') }}</div>
+            </div>
         </div>
 
-        <div v-if="travelDates && travelDates.length" class="text-sm">
-            <div v-if="travelDates.length >= 1">Departure: {{ formatDateFn(travelDates[0], 'dd/MM/yyyy') }}</div>
-            <div v-if="travelDates.length >= 2">Return: {{ formatDateFn(travelDates[1], 'dd/MM/yyyy') }}</div>
-        </div>
-    </c-card>
-
-    <pre>
-        <code class="code-hightlight language-vue">&lt;template&gt;
+        <template #code>
+<pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;c-datepicker
-        id=&quot;range&quot;
-        label=&quot;Travel Dates&quot;
-        v-model=&quot;travelDates&quot;
+        id="range"
+        label="Travel Dates"
+        v-model="travelDates"
         range
-        placeholder=&quot;Select departure and return dates&quot;
+        placeholder="Select departure and return dates"
     /&gt;
 &lt;/template&gt;
 
-&lt;script&gt;
+&lt;script setup&gt;
 import { ref } from 'vue';
 
 const travelDates = ref([]);
-&lt;/script&gt;</code>
-    </pre>
+&lt;/script&gt;</code></pre>
+        </template>
+    </card-docs>
 
     <PagePagination
       previous="Combobox"
@@ -285,7 +315,7 @@ const travelDates = ref([]);
 </template>
 
 <style scoped>
-.code-hightlight {
+.code-highlight {
   white-space: pre;
 }
 </style>
@@ -295,6 +325,7 @@ import { ref } from "vue";
 import BaseLayout from "../../layout/BaseLayout.vue";
 import TableDocs from "../../components/TableDocs.vue";
 import PagePagination from "../../layout/PagePagination.vue";
+import CardDocs from "../../components/CardDocs.vue";
 
 const basicDate = ref(null);
 const customFormatDate = ref(null);

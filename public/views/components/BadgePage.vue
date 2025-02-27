@@ -83,7 +83,7 @@
 
         <p>A simple badge with default styles, typically used to indicate counts or notifications.</p>
 
-        <card-docs class="lg:w-2/5 w-full max-w-[400px]">
+        <card-docs>
             <div class="flex justify-center">
                 <c-button
                     type="button"
@@ -96,10 +96,9 @@
                     <c-badge content="5" class="absolute top-0 right-0" />
                 </c-button>
             </div>
-        </card-docs>
 
-        <pre>
-            <code class="code-highlight language-html">&lt;c-button
+            <template #code>
+<pre><code class="code-highlight language-html">&lt;c-button
     type="button"
     variant="plain"
     rounded="full"
@@ -107,8 +106,9 @@
 &gt;
     &lt;IconBell class="text-neutral-600 dark:text-white" /&gt;
     &lt;c-badge content="5" class="absolute top-0 right-0" /&gt;
-&lt;/c-button&gt;</code>
-        </pre>
+&lt;/c-button&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <h3>Text Badge</h3>
 
@@ -118,7 +118,7 @@
             This type of badge is ideal for displaying categories, tags, or status labels within your UI.
         </p>
 
-        <card-docs class="lg:w-2/5 w-full max-w-[400px]">
+        <card-docs>
             <div class="flex flex-wrap items-center justify-center gap-2">
                 <c-badge
                     bgColor="bg-blue-100 dark:bg-blue-900"
@@ -165,10 +165,10 @@
                     Yellow
                 </c-badge>
             </div>
-        </card-docs>
 
-        <pre>
-    <code class="code-highlight language-html">&lt;c-badge
+            <template #code>
+<pre><code class="code-highlight language-html">&lt;!-- Blue Badge --&gt;
+&lt;c-badge
     bgColor="bg-blue-100 dark:bg-blue-900"
     textColor="text-blue-800 dark:text-blue-300"
     rounded="rounded-md"
@@ -177,6 +177,7 @@
     Blue
 &lt;/c-badge&gt;
 
+&lt;!-- Dark Badge --&gt;
 &lt;c-badge
     bgColor="bg-neutral-100 dark:bg-neutral-900"
     textColor="text-neutral-800 dark:text-neutral-300"
@@ -184,14 +185,17 @@
     customClass="px-2.5 py-0.5"
 &gt;
     Dark
-&lt;/c-badge&gt;</code>
-</pre>
+&lt;/c-badge&gt;
+
+&lt;!-- Add more badges as needed --&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <h3>Dot Badge</h3>
 
         <p>Use the <code>dot</code> prop to display a badge as a small circular dot, ideal for status indicators.</p>
 
-        <card-docs class="lg:w-2/5 w-full max-w-[400px]">
+        <card-docs>
             <div class="flex justify-center gap-4">
                 <c-button
                     type="button"
@@ -213,20 +217,27 @@
                     <c-badge dot floating bgColor="bg-red-500" class="absolute top-0 right-0" />
                 </c-button>
             </div>
-        </card-docs>
 
-        <pre>
-            <code class="code-highlight language-html">&lt;c-button type="button" class="relative shadow-none"&gt;
+            <template #code>
+<pre><code class="code-highlight language-html">&lt;!-- Green Dot Badge (Status: Active) --&gt;
+&lt;c-button type="button" class="relative shadow-none"&gt;
     &lt;IconBell class="text-neutral-800 dark:text-white" /&gt;
     &lt;c-badge dot floating bgColor="bg-green-500" class="absolute top-0 right-0" /&gt;
-&lt;/c-button&gt;</code>
-        </pre>
+&lt;/c-button&gt;
+
+&lt;!-- Red Dot Badge (Status: Alert) --&gt;
+&lt;c-button type="button" class="relative shadow-none"&gt;
+    &lt;IconBell class="text-neutral-800 dark:text-white" /&gt;
+    &lt;c-badge dot floating bgColor="bg-red-500" class="absolute top-0 right-0" /&gt;
+&lt;/c-button&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <h3>Custom Colors</h3>
 
         <p>Badges support fully customizable background and text colors using Tailwind classes.</p>
 
-        <card-docs class="lg:w-2/5 w-full max-w-[400px]">
+        <card-docs>
             <div class="flex justify-center">
                 <c-button
                     type="button"
@@ -244,10 +255,9 @@
                     />
                 </c-button>
             </div>
-        </card-docs>
 
-        <pre>
-            <code class="code-highlight language-html">&lt;c-button type="button" class="relative"&gt;
+            <template #code>
+<pre><code class="code-highlight language-html">&lt;c-button type="button" class="px-6 relative"&gt;
     &lt;IconBell class="text-neutral-800 dark:text-white" /&gt;
     &lt;c-badge
         content="99+"
@@ -256,14 +266,15 @@
         class="absolute"
         style="right: 0px; top: 0px;"
     /&gt;
-&lt;/c-button&gt;</code>
-        </pre>
+&lt;/c-button&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <h3>Floating Badge</h3>
 
         <p>Floating badges can be precisely positioned using <code>offsetX</code> and <code>offsetY</code>.</p>
 
-        <card-docs class="lg:w-2/5 w-full max-w-[400px]">
+        <card-docs>
             <div class="flex justify-center">
                 <c-button
                     type="button"
@@ -275,10 +286,9 @@
                     <c-badge content="3" floating offsetX="10px" offsetY="0px" bgColor="bg-yellow-800" class="absolute" />
                 </c-button>
             </div>
-        </card-docs>
 
-        <pre>
-            <code class="code-highlight language-html">&lt;c-button type="button" class="relative"&gt;
+            <template #code>
+<pre><code class="code-highlight language-html">&lt;c-button type="button" class="px-6 py-4 relative"&gt;
     &lt;IconBell class="text-neutral-800 dark:text-white" /&gt;
     &lt;c-badge
         content="3"
@@ -288,8 +298,9 @@
         bgColor="bg-yellow-800"
         class="absolute"
     /&gt;
-&lt;/c-button&gt;</code>
-        </pre>
+&lt;/c-button&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <h3>Button with Badge</h3>
 
@@ -298,7 +309,7 @@
             This setup is useful for indicating updates or alerts within interactive elements.
         </p>
 
-        <card-docs class="lg:w-2/5 w-full max-w-[400px]">
+        <card-docs>
             <div class="flex justify-center">
                 <c-button
                     type="button"
@@ -313,18 +324,18 @@
                     />
                 </c-button>
             </div>
-        </card-docs>
 
-        <pre>
-    <code class="code-highlight language-html">&lt;c-button type="button" class="px-6 py-2" inline&gt;
+            <template #code>
+<pre><code class="code-highlight language-html">&lt;c-button type="button" class="px-6 py-2" inline&gt;
     Messages
     &lt;c-badge
         content="3"
         bgColor="bg-indigo-500"
         customClass="inline-flex ml-1 items-center justify-center px-2 py-0.5 text-xs font-semibold"
     /&gt;
-&lt;/c-button&gt;</code>
-</pre>
+&lt;/c-button&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <h3>Badge with Icon</h3>
 
@@ -333,7 +344,7 @@
             This is ideal for representing statuses, alerts, or action indicators.
         </p>
 
-        <card-docs class="lg:w-2/5 w-full max-w-[400px]">
+        <card-docs>
             <div class="flex items-center justify-center gap-x-4">
                 <c-badge
                     bgColor="bg-gray-500"
@@ -356,23 +367,26 @@
                     <IconCog class="w-4 h-3 text-gray-800" aria-hidden="true" />
                 </c-badge>
             </div>
-        </card-docs>
 
-        <pre>
-    <code class="code-highlight language-html">&lt;c-badge
+            <template #code>
+<pre><code class="code-highlight language-html">&lt;!-- Badge with check icon --&gt;
+&lt;c-badge
     bgColor="bg-gray-500"
     customClass="inline-flex items-center justify-center w-6 h-6 text-sm font-semibold rounded-full"
 &gt;
     &lt;IconCheck class="w-4 h-3 text-white" aria-hidden="true" /&gt;
 &lt;/c-badge&gt;
 
+&lt;!-- Badge with bolt icon --&gt;
 &lt;c-badge
     bgColor="bg-gray-500"
     customClass="inline-flex items-center justify-center w-6 h-6 text-sm font-semibold rounded-full"
 &gt;
     &lt;IconBolt class="w-4 h-3 text-yellow-500" aria-hidden="true" /&gt;
-&lt;/c-badge&gt;</code>
-</pre>
+&lt;/c-badge&gt;</code></pre>
+            </template>
+        </card-docs>
+
 
         <PagePagination
             previous="Index"
@@ -391,4 +405,12 @@ import TableDocs from "../../components/TableDocs.vue";
 import IconCheck from '@components/icons/IconCheck.vue';
 import IconBolt from '@components/icons/IconBolt.vue';
 import IconCog from '@components/icons/IconCog.vue';
+import IconBell from '@components/icons/IconBell.vue';
 </script>
+
+<style scoped>
+.code-highlight {
+    white-space: pre;
+    font-family: monospace;
+}
+</style>

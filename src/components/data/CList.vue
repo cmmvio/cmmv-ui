@@ -1,12 +1,12 @@
 <template>
     <div
-        :class="['overflow-auto', width, height, rounded]"
+        :class="['overflow-auto', width, height, rounded, customClass]"
     >
         <ul role="list" :class="['divide-y list-none', divideColor]">
             <li
                 v-for="(item, index) in modelValue"
                 :key="index"
-                class='p-0 m-0 flex justify-between gap-x-6 py-5'
+                :class="['p-0 m-0 flex justify-between gap-x-6', itemPadding]"
             >
                 <slot :item="item" :index="index"></slot>
             </li>
@@ -48,5 +48,15 @@ const props = defineProps({
         required: false,
         default: "h-auto"
     },
+    itemPadding: {
+        type: String,
+        required: false,
+        default: "py-5"
+    },
+    customClass: {
+        type: String,
+        required: false,
+        default: ""
+    }
 });
 </script>

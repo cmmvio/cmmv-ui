@@ -1,5 +1,18 @@
 <template>
-    <c-card variant="flat" class="mx-auto px-3 py-4 sm:p-6 flex flex-col space-y-4 sm:space-y-0 sm:space-x-4 center">
-        <slot></slot>
-    </c-card>
+  <code-preview :default-view="hasDefaultSlot ? 'preview' : 'code'" :show-preview-button="hasDefaultSlot">
+    <template #preview v-if="hasDefaultSlot">
+      <slot></slot>
+    </template>
+    <template #code>
+      <slot name="code"></slot>
+    </template>
+  </code-preview>
 </template>
+
+<script setup>
+import { useSlots, computed } from 'vue';
+import CodePreview from './CodePreview.vue';
+
+const slots = useSlots();
+const hasDefaultSlot = computed(() => !!slots.default);
+</script>

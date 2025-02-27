@@ -23,7 +23,7 @@ body {
     overflow-x: hidden !important;
 }
 
-body, ol ol, ol ul, ul ol, ul ul {
+body > *, .context-html > ol ol, .context-html > ol ul, .context-html > ul ol, .context-html > ul ul {
     margin: 0;
 }
 
@@ -36,7 +36,7 @@ iframe {
     color-scheme: auto;
 }
 
-img {
+.context-html > img {
     border-radius: 10px;
 }
 
@@ -164,17 +164,19 @@ h3 {
     font-weight: 200 !important;
 }
 
-.context-html p {
+.context-html > p {
     line-height: 26px;
     display: block;
     margin-top: 1em !important;
     margin-bottom: 1em !important;
 }
 
-.context-html .c-card p {
-    line-height: auto;
-    margin-top: 0em !important;
-    margin-bottom: 0em !important;
+.context-html .c-card p,
+.card-docs p,
+.c-list p {
+    line-height: inherit;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
 }
 
 .language-markup {
@@ -247,7 +249,8 @@ h3 {
     margin: auto;
 }
 
-.context-html li {
+.context-html > ul > li,
+.context-html > ol > li {
     display: list-item;
     list-style: disc;
     margin-bottom: 20px;
@@ -255,10 +258,12 @@ h3 {
     text-align: left;
 }
 
-.context-html .c-card li {
+.context-html .c-card li,
+.card-docs li,
+.c-list li {
     list-style: none;
-    margin-bottom: 0px;
-    margin-left: 0px;
+    margin-bottom: 0;
+    margin-left: 0;
 }
 
 .context-html a {
@@ -270,7 +275,7 @@ h3 {
     color: #4263a1;
 }
 
-code {
+.context-html code:not(.c-card code):not(.card-docs code):not(.c-list code) {
     background-color: #CCC;
     color: #2d2d2d;
     padding: 2px 4px;
@@ -281,7 +286,7 @@ code {
     text-align: left !important;
 }
 
-pre code {
+.context-html pre code:not(.c-card pre code):not(.card-docs pre code):not(.c-list pre code) {
     display: block;
     max-height: 400px;
     padding: 10px;
@@ -346,7 +351,7 @@ pre code::-webkit-scrollbar-thumb:hover {
 .light .hljs-deletion { background-color: #ffdddd; display: inline-block; width: 100%; }
 
 
-.dark code {
+.dark .context-html code:not(.c-card code):not(.card-docs code):not(.c-list code) {
     background-color: #43464c;
     color: #EFEFFF;
     padding: 2px 4px;
@@ -357,7 +362,7 @@ pre code::-webkit-scrollbar-thumb:hover {
     text-align: left !important;
 }
 
-.dark pre code {
+.dark .context-html pre code:not(.c-card pre code):not(.card-docs pre code):not(.c-list pre code) {
     display: block;
     max-height: 400px;
     padding: 10px;
@@ -619,4 +624,39 @@ h2 code {
 
 .copy-code-btn:hover {
     background-color: #373739;
+}
+
+/* Regras específicas para componentes de lista */
+.c-list {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.c-list * {
+    margin: 0;
+    padding: 0;
+}
+
+.c-list li {
+    list-style: none !important;
+    margin-left: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+/* Garantir que os componentes dentro de card-docs não sejam afetados */
+.card-docs .c-list,
+.card-docs .c-table,
+.card-docs .c-card,
+.card-docs .c-button,
+.card-docs .c-badge {
+    /* Resetar estilos que possam interferir */
+    all: revert;
+    /* Manter apenas transições */
+    transition: background-color 0.1s ease, color 0.1s ease, border-color 0.1s ease;
+}
+
+/* Garantir que os componentes dentro de exemplos não sejam afetados */
+.example-container * {
+    all: revert;
+    transition: background-color 0.1s ease, color 0.1s ease, border-color 0.1s ease;
 }
