@@ -732,8 +732,8 @@
         <PagePagination
             previous="Avatar"
             previousLink="/avatar"
-            next="Tabs"
-            nextLink="/tabs"
+            next="Dropdown"
+            nextLink="/dropdown"
         />
     </BaseLayout>
 </template>
@@ -750,6 +750,7 @@ import IconBolt from "@components/icons/IconBolt.vue";
 
 const expand = ref(true);
 const time = ref(0);
+
 const forecast = [
     { day: 'Monday', temp: '66°F', icon: IconSun },
     { day: 'Tuesday', temp: '63°F', icon: IconCloud },

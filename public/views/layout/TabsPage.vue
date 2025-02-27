@@ -273,8 +273,8 @@ const tabs = ref([
 </pre>
 
         <PagePagination
-            previous="Card"
-            previousLink="/card"
+            previous="Sidebar"
+            previousLink="/sidebar"
             next="Toolbar"
             nextLink="/toolbar"
         />
@@ -291,8 +291,6 @@ import IconUser from "../../../src/components/icons/IconUser.vue";
 import IconCog6Tooth from "../../../src/components/icons/IconCog6Tooth.vue";
 import IconRectangleGroup from "../../../src/components/icons/IconRectangleGroup.vue";
 import IconUserGroup from "../../../src/components/icons/IconUserGroup.vue";
-
-//<icon-rectangle-group class="w-8 h-8 text-white" aria-hidden="true" />
 
 const tabs = ref([
     { title: "Profile", id: "profile" },

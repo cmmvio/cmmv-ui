@@ -347,13 +347,13 @@ import CInput from &quot;@cmmv/ui/components/CInput.vue&quot;;
         borderColor=&quot;focus:ring focus:ring-purple-700 focus:ring-opacity-50&quot;
     &gt;&lt;/c-input&gt;
 &lt;/template&gt;</code>
-    </pre>
+</pre>
 
         <PagePagination
             previous="Form"
             previousLink="/form"
-            next="OTP Input"
-            nextLink="/otp-input"
+            next="Number Input"
+            nextLink="/number-input"
         />
     </BaseLayout>
 </template>

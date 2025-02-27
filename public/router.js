@@ -11,6 +11,7 @@ import ProgressBarPage from "./views/components/ProgressBarPage.vue";
 import ProgressCircularPage from "./views/components/ProgressCircularPage.vue";
 import BadgePage from "./views/components/BadgePage.vue";
 import LoaderPage from "./views/components/LoaderPage.vue";
+import RatingPage from "./views/components/RatingPage.vue";
 
 //Data
 import ListPage from "./views/data/ListPage.vue";
@@ -22,7 +23,9 @@ import AccordionPage from "./views/layout/AccordionPage.vue";
 import AlertPage from "./views/layout/AlertPage.vue";
 import AvatarPage from "./views/layout/AvatarPage.vue";
 import CardPage from "./views/layout/CardPage.vue";
+import DropdownPage from "./views/layout/DropdownPage.vue";
 import SidebarPage from "./views/layout/SidebarPage.vue";
+import SpeedDialPage from "./views/layout/SpeedDialPage.vue";
 import TabsPage from "./views/layout/TabsPage.vue";
 import ToolbarPage from "./views/layout/ToolbarPage.vue";
 
@@ -30,13 +33,15 @@ import ToolbarPage from "./views/layout/ToolbarPage.vue";
 import AutocompletePage from "./views/form/AutocompletePage.vue";
 import FormPage from "./views/form/FormPage.vue";
 import InputPage from "./views/form/InputPage.vue";
+import NumberInputPage from "./views/form/NumberInputPage.vue";
 import OtpInputPage from "./views/form/OtpInputPage.vue";
 import CheckboxPage from "./views/form/CheckboxPage.vue";
 import TextareaPage from "./views/form/TextareaPage.vue";
 import TogglePage from "./views/form/TogglePage.vue";
 import RadioPage from "./views/form/RadioPage.vue";
 import SliderPage from "./views/form/SliderPage.vue";
-import DropdownPage from "./views/form/DropdownPage.vue";
+import ComboboxPage from "./views/form/ComboboxPage.vue";
+import TimepickerPage from "./views/form/TimepickerPage.vue";
 
 //Graph
 import GraphBoxPage from "./views/graph/GraphBoxPage.vue";
@@ -50,14 +55,15 @@ import OverlayPage from "./views/overlays/OverlayPage.vue";
 const routes = [
     //Components
     { path: '/', component: IndexPage },
+    { path: '/badge', component: BadgePage },
     { path: '/button', component: ButtonPage },
+    { path: '/flags', component: FlagsPage },
     { path: '/icon', component: IconPage },
-	{ path: '/flags', component: FlagsPage },
-    { path: '/tooltip', component: TooltipPage },
+	{ path: '/loader', component: LoaderPage },
     { path: '/progress-bar', component: ProgressBarPage },
     { path: '/progress-circular', component: ProgressCircularPage },
-    { path: '/badge', component: BadgePage },
-    { path: '/loader', component: LoaderPage },
+    { path: '/rating', component: RatingPage },
+    { path: '/tooltip', component: TooltipPage },
 
     //Data
     { path: '/list', component: ListPage },
@@ -69,20 +75,24 @@ const routes = [
     { path: '/alert', component: AlertPage },
     { path: '/avatar', component: AvatarPage },
 	{ path: '/card', component: CardPage },
+    { path: '/dropdown', component: DropdownPage },
     { path: '/sidebar', component: SidebarPage },
+    { path: '/speed-dial', component: SpeedDialPage },
     { path: '/tabs', component: TabsPage },
     { path: '/toolbar', component: ToolbarPage },
 
 	//Form
     { path: '/autocomplete', component: AutocompletePage },
     { path: '/checkbox', component: CheckboxPage },
-    { path: '/dropdown', component: DropdownPage },
+    { path: '/combobox', component: ComboboxPage },
 	{ path: '/form', component: FormPage },
 	{ path: '/input', component: InputPage },
+    { path: '/number-input', component: NumberInputPage },
     { path: '/otp-input', component: OtpInputPage },
 	{ path: '/radio', component: RadioPage },
     { path: '/slider', component: SliderPage },
     { path: '/textarea', component: TextareaPage },
+    { path: '/timepicker', component: TimepickerPage },
     { path: '/toggle', component: TogglePage },
 
     //Graph

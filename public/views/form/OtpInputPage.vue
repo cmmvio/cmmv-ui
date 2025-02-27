@@ -277,8 +277,8 @@ const otpValue = ref(&quot;&quot;);
 </pre>
 
         <PagePagination
-            previous="Input"
-            previousLink="/input"
+            previous="Number Input"
+            previousLink="/number-input"
             next="Radio"
             nextLink="/radio"
         />

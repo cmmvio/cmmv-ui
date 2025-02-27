@@ -191,8 +191,8 @@
         </pre>
 
         <PagePagination
-            previous="Progress Circlar"
-            previousLink="/progress-circular"
+            previous="Rating"
+            previousLink="/rating"
             next="Table"
             nextLink="/table"
         />

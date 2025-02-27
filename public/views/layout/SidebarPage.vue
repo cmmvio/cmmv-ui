@@ -206,7 +206,77 @@
 &lt;button @click="openCardSidebar"&gt;Open Sidebar Inside Card&lt;/button&gt;</code>
 </pre>
 
-        <PagePagination previous="Dialog" previousLink="/dialog" next="Graph Box" nextLink="/graph-box" />
+        <h3>Sidebar With Toolbar</h3>
+
+        <p>
+            The <code>c-sidebar</code> can be used inside a <code>c-toolbar</code> to create a responsive sidebar that expands when clicking the navigation button.
+            This approach is useful for app panels, navigation menus, and other interfaces that require a sliding panel.
+        </p>
+
+        <c-card
+            variant="flat"
+            padding=""
+            class="relative mx-auto flex flex-col items-center w-full min-h-[400px] overflow-hidden p-4"
+        >
+            <div class="bg-gray-100 dark:bg-gray-800 min-h-[600px] max-w-[500px] flex flex-col lg:w-6/12 sm:w-full m-auto relative overflow-hidden">
+                <c-sidebar
+                    v-model="showSidebarToolbar"
+                    absolute
+                    shadow=""
+                    rounded="md"
+                    width="w-48"
+                    class="rounded-l-md w-full"
+                >
+                    <template #title>Panel</template>
+                    <p class="text-gray-700 dark:text-gray-300">This is a floating sidebar inside the card.</p>
+                </c-sidebar>
+
+                <c-toolbar class="bg-blue-600 text-white rounded-t-md shadow-md">
+                    <c-app-bar-nav @click="showSidebarToolbar = true" />
+                    <c-toolbar-title>My App</c-toolbar-title>
+                    <c-spacer />
+
+                    <div class="relative">
+                        <IconMagnifyingGlass class="absolute top-1/2 right-3 transform -translate-y-1/2 text-white" />
+                    </div>
+
+                    <c-button
+                        type="button"
+                        variant="plain"
+                        rounded="full"
+                        bgColor="bg-blue-600 hover:bg-blue-800"
+                        class="py-1"
+                    >
+                        <IconBell class="text-white"></IconBell>
+                        <c-badge floating >5</c-badge>
+                    </c-button>
+                </c-toolbar>
+            </div>
+        </c-card>
+
+        <pre>
+    <code>&lt;c-sidebar v-model="showSidebarToolbar" absolute shadow="" width="w-48"&gt;
+    &lt;template #title&gt;Panel&lt;/template&gt;
+    &lt;p&gt;This is a floating sidebar inside the card.&lt;/p&gt;
+&lt;/c-sidebar&gt;
+
+&lt;c-toolbar class="bg-blue-600 text-white rounded-t-md shadow-md"&gt;
+    &lt;c-app-bar-nav @click="showSidebarToolbar = true" /&gt;
+    &lt;c-toolbar-title&gt;My App&lt;/c-toolbar-title&gt;
+    &lt;c-spacer /&gt;
+    &lt;c-button type="button" variant="plain" rounded="full" bgColor="bg-blue-600 hover:bg-blue-800" class="py-1"&gt;
+        &lt;IconBell class="text-white"&gt;&lt;/IconBell&gt;
+        &lt;c-badge floating&gt;5&lt;/c-badge&gt;
+    &lt;/c-button&gt;
+&lt;/c-toolbar&gt;</code>
+</pre>
+
+        <PagePagination
+            previous="Dropdown"
+            previousLink="/dropdown"
+            next="Speed Dial"
+            nextLink="/speed-dial"
+        />
     </BaseLayout>
 </template>
 
@@ -219,6 +289,7 @@ import PagePagination from "../../layout/PagePagination.vue";
 const showSidebar = ref(false);
 const showRightSidebar = ref(false);
 const showWideSidebar = ref(false);
+const showSidebarToolbar = ref(false);
 const cardSidebar = ref(null);
 const methodSidebar = ref(null);
 

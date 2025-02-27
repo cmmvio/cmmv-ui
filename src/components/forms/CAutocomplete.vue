@@ -228,6 +228,7 @@ const handleInput = (event: Event) => {
             currentValueCheck = option.value;
     }
 
+    //@ts-ignore
     currentValue.value = (currentValueCheck) ? currentValueCheck : undefined;
 
     if(!currentValue.value)

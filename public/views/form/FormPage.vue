@@ -163,8 +163,8 @@ const handleSubmit = () =&gt; {
         </table-docs>
 
         <PagePagination
-            previous="Dropdown"
-            previousLink="/dropdown"
+            previous="Combobox"
+            previousLink="/combobox"
             next="Input"
             nextLink="/input"
         />

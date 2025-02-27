@@ -316,8 +316,8 @@
         <PagePagination
             previous="Slider"
             previousLink="/slider"
-            next="Toggle"
-            nextLink="/toggle"
+            next="Timepicker"
+            nextLink="/timepicker"
         />
     </BaseLayout>
 </template>
@@ -325,7 +325,6 @@
 <script setup>
 import { ref } from "vue";
 import BaseLayout from "../../layout/BaseLayout.vue";
-import CardDocs from "../../components/CardDocs.vue";
 import TableDocs from "../../components/TableDocs.vue";
 import PagePagination from "../../layout/PagePagination.vue";
 </script>

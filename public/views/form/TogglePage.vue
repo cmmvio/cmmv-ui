@@ -175,8 +175,8 @@ const liveToggle = ref(false);
 </pre>
 
         <PagePagination
-            previous="Textarea"
-            previousLink="/textarea"
+            previous="Timepicker"
+            previousLink="/timepicker"
             next="Dialog"
             nextLink="/dialog"
         />

@@ -320,8 +320,8 @@
         <PagePagination
             previous="Progress Bar"
             previousLink="/progress-bar"
-            next="Tooltip"
-            nextLink="/tooltip"
+            next="Rating"
+            nextLink="/rating"
         />
     </BaseLayout>
 </template>

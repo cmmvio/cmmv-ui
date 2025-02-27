@@ -125,18 +125,11 @@
 
         <card-docs>
             <div class="bg-gray-100 dark:bg-gray-800 min-h-[600px] max-w-[500px] flex flex-col lg:w-6/12 sm:w-full m-auto">
-                <!-- Toolbar -->
                 <c-toolbar class="bg-blue-600 text-white rounded-t-md shadow-md">
-                    <!-- Navigation Icon -->
                     <c-app-bar-nav />
-
-                    <!-- Title -->
                     <c-toolbar-title>My App</c-toolbar-title>
-
-                    <!-- Spacer -->
                     <c-spacer />
 
-                    <!-- Search Input -->
                     <div class="relative">
                         <IconMagnifyingGlass class="absolute top-1/2 right-3 transform -translate-y-1/2 text-white" />
                     </div>
@@ -153,7 +146,6 @@
                     </c-button>
                 </c-toolbar>
 
-                <!-- Main Content Container -->
                 <c-container class="flex-grow bg-gray-50 dark:bg-gray-800 flex flex-col items-center justify-center rounded-t-none shadow-md">
                     <div class="bg-white dark:bg-gray-900 rounded-lg shadow-md p-6 m-8">
                         <h1 class="text-xl font-semibold text-gray-800 dark:text-white mb-4">

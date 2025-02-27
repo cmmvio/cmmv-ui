@@ -45,7 +45,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, onMounted, watch } from "vue";
+import {
+    defineComponent, reactive,
+    onMounted, watch
+} from "vue";
 
 export default defineComponent({
     name: "Navbar",
@@ -65,6 +68,7 @@ export default defineComponent({
                     { name: "Loader", uri: "/loader" },
                     { name: "Progress Bar", uri: "/progress-bar" },
                     { name: "Progress Circular", uri: "/progress-circular" },
+                    { name: "Rating", uri: "/rating" },
                     { name: "Tooltip", uri: "/tooltip" }
                 ],
             },
@@ -85,7 +89,9 @@ export default defineComponent({
                     { name: "Alert", uri: "/alert" },
                     { name: "Avatar", uri: "/avatar" },
                     { name: "Card", uri: "/card" },
+                    { name: "Dropdown", uri: "/dropdown" },
                     { name: "Sidebar", uri: "/sidebar" },
+                    { name: "Speed Dial", uri: "/speed-dial" },
                     { name: "Tabs", uri: "/tabs" },
                     { name: "Toolbar", uri: "/toolbar" },
                 ]
@@ -96,13 +102,15 @@ export default defineComponent({
                 children: [
                     { name: "Autocomplete", uri: "/autocomplete" },
                     { name: "Checkbox", uri: "/checkbox" },
-                    { name: "Dropdown", uri: "/dropdown" },
+                    { name: "Combobox", uri: "/combobox" },
                     { name: "Form", uri: "/form" },
                     { name: "Input", uri: "/input" },
+                    { name: "Number Input", uri: "/number-input" },
                     { name: "OTP Input", uri: "/otp-input" },
                     { name: "Radio", uri: "/radio" },
                     { name: "Slider", uri: "/slider" },
                     { name: "Textarea", uri: "/textarea" },
+                    { name: "Timepicker", uri: "/timepicker" },
                     { name: "Toggle", uri: "/toggle" },
                 ],
             },

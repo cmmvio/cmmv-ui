@@ -1,9 +1,9 @@
 <template>
     <BaseLayout>
-        <h1>Dropdown</h1>
+        <h1>Combobox</h1>
 
         <p>
-            The <code>CDropdown (alias: c-dropdown)</code> component in the <code>@cmmv/ui</code> framework provides a customizable dropdown menu.
+            The <code>CCombobox (alias: c-combobox)</code> component in the <code>@cmmv/ui</code> framework provides a customizable dropdown menu.
             It supports various sizes, styles, and advanced interaction features to enhance user experience in forms and navigation.
         </p>
 
@@ -65,19 +65,19 @@
         <h3>Basic Example</h3>
 
         <p>
-            The basic usage of the <code>CDropdown</code> component is simple and effective. By binding it to a variable using <code>v-model</code>,
+            The basic usage of the <code>CCombobox</code> component is simple and effective. By binding it to a variable using <code>v-model</code>,
             you can dynamically update and retrieve the selected value. The component also supports labels and a set of predefined options.
         </p>
 
         <c-card variant="flat" class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
             <div class="lg:w-2/5 w-full max-w-[400px] text-center">
-                <c-dropdown v-model="basicValue" label="Select an option" :options="basicOptions" />
+                <c-combobox v-model="basicValue" label="Select an option" :options="basicOptions" />
                 <p>Selected: {{ basicValue }}</p>
             </div>
         </c-card>
 
         <pre>
-            <code>&lt;c-dropdown
+            <code>&lt;c-combobox
     v-model="basicValue"
     label="Select an option"
     :options="basicOptions"
@@ -93,29 +93,29 @@ const basicOptions = [
 const basicValue = ref("");
 &lt;/script&gt;
 </code>
-        </pre>
+</pre>
 
         <h3>Size Variants</h3>
 
         <p>
-            The <code>CDropdown</code> component supports multiple size variations to fit different UI layouts.
+            The <code>CCombobox</code> component supports multiple size variations to fit different UI layouts.
             You can choose between small, medium, and large sizes depending on the context of your application.
             Use <code>size="sm"</code> for compact elements and <code>size="lg"</code> for prominent dropdowns.
         </p>
 
         <c-card variant="flat" class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
             <div class="lg:w-2/5 w-full max-w-[400px] text-center space-y-4">
-                <c-dropdown v-model="sizeSm" label="Small" size="sm" :options="basicOptions" />
-                <c-dropdown v-model="sizeMd" label="Medium" size="md" :options="basicOptions" />
-                <c-dropdown v-model="sizeLg" label="Large" size="lg" :options="basicOptions" />
+                <c-combobox v-model="sizeSm" label="Small" size="sm" :options="basicOptions" />
+                <c-combobox v-model="sizeMd" label="Medium" size="md" :options="basicOptions" />
+                <c-combobox v-model="sizeLg" label="Large" size="lg" :options="basicOptions" />
             </div>
         </c-card>
 
         <pre>
-            <code>&lt;c-dropdown v-model="sizeSm" label="Small" size="sm" :options="basicOptions" /&gt;
-&lt;c-dropdown v-model="sizeMd" label="Medium" size="md" :options="basicOptions" /&gt;
-&lt;c-dropdown v-model="sizeLg" label="Large" size="lg" :options="basicOptions" /&gt;</code>
-        </pre>
+            <code>&lt;c-combobox v-model="sizeSm" label="Small" size="sm" :options="basicOptions" /&gt;
+&lt;c-combobox v-model="sizeMd" label="Medium" size="md" :options="basicOptions" /&gt;
+&lt;c-combobox v-model="sizeLg" label="Large" size="lg" :options="basicOptions" /&gt;</code>
+</pre>
 
         <h3>Variants</h3>
 
@@ -132,28 +132,28 @@ const basicValue = ref("");
 
         <c-card variant="flat" class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
             <div class="lg:w-2/5 w-full max-w-[400px] text-center space-y-4">
-                <c-dropdown v-model="variantDefault" label="Default" variant="default" :options="basicOptions" />
-                <c-dropdown v-model="variantOutlined" label="Outlined" variant="outlined" :options="basicOptions" />
-                <c-dropdown v-model="variantFilled" label="Filled" variant="filled" :options="basicOptions" />
+                <c-combobox v-model="variantDefault" label="Default" variant="default" :options="basicOptions" />
+                <c-combobox v-model="variantOutlined" label="Outlined" variant="outlined" :options="basicOptions" />
+                <c-combobox v-model="variantFilled" label="Filled" variant="filled" :options="basicOptions" />
             </div>
         </c-card>
 
         <pre>
-            <code>&lt;c-dropdown
+            <code>&lt;c-combobox
     v-model="variantDefault"
     label="Default"
     variant="default"
     :options="basicOptions"
 /&gt;
 
-&lt;c-dropdown
+&lt;c-combobox
     v-model="variantOutlined"
     label="Outlined"
     variant="outlined"
     :options="basicOptions"
 /&gt;
 
-&lt;c-dropdown
+&lt;c-combobox
     v-model="variantFilled"
     label="Filled"
     variant="filled"
@@ -171,7 +171,7 @@ const basicValue = ref("");
 
         <c-card variant="flat" class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
             <div class="lg:w-2/5 w-full max-w-[400px] text-center">
-                <c-dropdown v-model="disabledExample" label="Disabled Dropdown" :options="basicOptions" disabled />
+                <c-combobox v-model="disabledExample" label="Disabled Dropdown" :options="basicOptions" disabled />
             </div>
         </c-card>
 
@@ -180,7 +180,7 @@ const basicValue = ref("");
         <h3>Custom Template</h3>
 
         <p>
-            The <code>CDropdown</code> component allows full customization of both the selected value display and the options list using Vue slots.
+            The <code>CCombobox</code> component allows full customization of both the selected value display and the options list using Vue slots.
             This is useful for presenting complex data such as country flags, icons, or formatted text.
             By using the <code>#selected</code> and <code>#option</code> slots, you can define how the selected value appears
             and how each option is rendered in the dropdown.
@@ -194,7 +194,7 @@ const basicValue = ref("");
 
         <c-card variant="flat" class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
             <div class="lg:w-2/5 w-full max-w-[400px] text-center">
-                <c-dropdown
+                <c-combobox
                     v-model="languageValue"
                     label="Languages Dropdown"
                     :options="languageOptions"
@@ -212,13 +212,13 @@ const basicValue = ref("");
                             <div class="ml-2 mt-0.5">{{ data.label }}</div>
                         </div>
                     </template>
-                </c-dropdown>
+                </c-combobox>
             </div>
         </c-card>
 
         <pre>
     <code>&lt;template&gt;
-    &lt;c-dropdown
+    &lt;c-combobox
     v-model="languageValue"
     label="Languages Dropdown"
     :options="languageOptions"
@@ -236,7 +236,7 @@ const basicValue = ref("");
                 &lt;div class="ml-2"&gt;&#123;&#123; data.label &#125;&#125;&lt;/div&gt;
             &lt;/div&gt;
         &lt;/template&gt;
-    &lt;/c-dropdown&gt;
+    &lt;/c-combobox&gt;
 &lt;/template&gt;
 
 &lt;script setup&gt;
