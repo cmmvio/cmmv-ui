@@ -795,42 +795,6 @@ const deleteUser = (user) => {
             </template>
         </card-docs>
 
-        <h3>Accessibility Considerations</h3>
-
-        <p>
-            The <code>CTable</code> component is designed with accessibility in mind, following WCAG guidelines to ensure that tables are usable by everyone, including people with disabilities.
-            Here are some key accessibility features and best practices to consider when using tables:
-        </p>
-
-        <card-docs>
-            <div class="w-full max-w-[780px] mx-auto">
-                <ul class="list-disc pl-6 space-y-2">
-                    <li><strong>Proper Headers</strong>: Always define clear column headers using the <code>headers</code> prop to provide context for screen readers.</li>
-                    <li><strong>Keyboard Navigation</strong>: The table supports keyboard navigation, allowing users to navigate through cells using the Tab key.</li>
-                    <li><strong>Semantic Markup</strong>: The component uses proper HTML table elements (<code>&lt;table&gt;</code>, <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code>, etc.) for better screen reader compatibility.</li>
-                    <li><strong>Color Contrast</strong>: Ensure sufficient color contrast between text and background colors for better readability.</li>
-                    <li><strong>Responsive Design</strong>: The table adapts to different screen sizes, making it usable on mobile devices.</li>
-                    <li><strong>ARIA Attributes</strong>: The component uses appropriate ARIA attributes to enhance accessibility for screen reader users.</li>
-                </ul>
-            </div>
-
-            <template #code>
-<pre><code class="code-highlight language-html">&lt;!-- Example of accessible table with ARIA attributes --&gt;
-&lt;c-table
-    :headers="tableHeaders"
-    :items="tableData"
-    aria-label="User Information Table"
-    aria-describedby="table-description"
-&gt;
-    &lt;template #caption&gt;
-        &lt;div id="table-description" class="sr-only"&gt;
-            Table containing user information including name, email, and status.
-        &lt;/div&gt;
-    &lt;/template&gt;
-&lt;/c-table&gt;</code></pre>
-            </template>
-        </card-docs>
-
         <h3>Integration with Pagination</h3>
 
         <p>
@@ -926,8 +890,8 @@ onMounted(() => {
         <PagePagination
             previous="Pagination"
             previousLink="/pagination"
-            next="Accordion"
-            nextLink="/accordion"
+            next="Autocomplete"
+            nextLink="/autocomplete"
         />
     </BaseLayout>
 </template>

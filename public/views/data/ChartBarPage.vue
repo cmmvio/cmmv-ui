@@ -718,8 +718,8 @@ onUnmounted(() => {
     <PagePagination
         previous="Tooltip"
         previousLink="/tooltip"
-        next="Pagination"
-        nextLink="/pagination"
+        next="Chart Line"
+        nextLink="/chart-line"
     />
   </BaseLayout>
 </template>

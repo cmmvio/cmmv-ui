@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="flex flex-col sm:flex-row items-center gap-4" :class="centered ? 'justify-center' : 'justify-between'">
         <div v-if="showPerPageSelect" class="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300">
             <span>{{ texts.showing }}</span>
             <select
@@ -13,7 +13,7 @@
             </select>
             <span>{{ texts.of }} {{ totalItems }} {{ texts.items }}</span>
         </div>
-        <div v-else class="sm:flex-1"></div>
+        <div v-else-if="!centered" class="sm:flex-1"></div>
 
         <nav class="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
             <button
@@ -117,6 +117,10 @@ const props = defineProps({
         default: 5,
     },
     showPerPageSelect: {
+        type: Boolean,
+        default: false
+    },
+    centered: {
         type: Boolean,
         default: false
     },

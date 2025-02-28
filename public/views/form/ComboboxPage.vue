@@ -93,7 +93,7 @@
         </p>
 
         <card-docs>
-            <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+            <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4 h-[300px]">
                 <div class="lg:w-2/5 w-full max-w-[400px]">
                     <c-combobox v-model="basicValue" label="Select an option" :options="basicOptions" />
                     <p class="mt-2 text-gray-600 dark:text-gray-300">Selected: {{ basicValue }}</p>
@@ -132,7 +132,7 @@ const basicValue = ref(1);
         </p>
 
         <card-docs>
-            <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+            <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4 h-[300px]">
                 <div class="lg:w-2/5 w-full max-w-[400px] space-y-4">
                     <c-combobox v-model="sizeSm" label="Small" size="sm" :options="basicOptions" />
                     <c-combobox v-model="sizeMd" label="Medium" size="md" :options="basicOptions" />
@@ -172,7 +172,7 @@ const sizeLg = ref(1);
         </p>
 
         <card-docs>
-            <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+            <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4 h-[300px]">
                 <div class="lg:w-2/5 w-full max-w-[400px] space-y-4">
                     <c-combobox v-model="variantDefault" label="Default" variant="default" :options="basicOptions" />
                     <c-combobox v-model="variantOutlined" label="Outlined" variant="outlined" :options="basicOptions" />
@@ -215,7 +215,7 @@ const sizeLg = ref(1);
         </p>
 
         <card-docs>
-            <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+            <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4 h-[300px]">
                 <div class="lg:w-2/5 w-full max-w-[400px] space-y-4">
                     <c-combobox v-model="roundedNone" label="No Rounding" rounded="none" :options="basicOptions" />
                     <c-combobox v-model="roundedDefault" label="Default Rounding" rounded="default" :options="basicOptions" />
@@ -292,7 +292,7 @@ const disabledExample = ref(1);
         </p>
 
         <card-docs>
-            <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+            <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4 h-[300px]">
                 <div class="lg:w-2/5 w-full max-w-[400px]">
                     <c-combobox
                         v-model="languageValue"
@@ -357,8 +357,8 @@ const languageValue = ref(1);
         <PagePagination
             previous="Checkbox"
             previousLink="/checkbox"
-            next="Form"
-            nextLink="/form"
+            next="Datepicker"
+            nextLink="/datepicker"
         />
     </BaseLayout>
 </template>

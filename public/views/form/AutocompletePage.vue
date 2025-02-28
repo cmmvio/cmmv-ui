@@ -106,7 +106,7 @@
         </p>
 
         <card-docs>
-            <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+            <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4 h-[300px]">
                 <div class="lg:w-2/5 w-full max-w-[400px]">
                     <c-autocomplete
                         id="example1"
@@ -167,7 +167,7 @@ const basicOptions = [
         </p>
 
         <card-docs>
-            <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+            <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4 h-[300px]">
                 <div class="lg:w-2/5 w-full max-w-[400px]">
                     <c-autocomplete
                         id="small"
@@ -220,7 +220,7 @@ const basicOptions = [
         </p>
 
         <card-docs>
-            <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+            <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4 h-[300px]">
                 <div class="lg:w-2/5 w-full max-w-[400px]">
                     <c-autocomplete
                         id="validation"
@@ -250,7 +250,7 @@ const basicOptions = [
         <p>The <code>clearable</code> property enables a button to clear the input field's content.</p>
 
         <card-docs>
-            <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+            <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4 h-[300px]">
                 <div class="lg:w-2/5 w-full max-w-[400px]">
                     <c-autocomplete
                         v-model="clearableValue"
@@ -280,7 +280,7 @@ const basicOptions = [
         <p>The Autocomplete component provides an <code>icon</code> slot to allow for greater flexibility in customizing the icon within the input field. This approach provides developers with more control over the design and behavior of the icon. By adding an icon through the icon slot, you can seamlessly align it to the left of the input field, enhancing the user experience with contextual cues, such as a magnifying glass for search fields.</p>
 
         <card-docs>
-            <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+            <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4 h-[300px]">
                 <div class="lg:w-2/5 w-full max-w-[400px]">
                     <c-autocomplete
                         v-model="search"
@@ -317,7 +317,7 @@ const basicOptions = [
         </p>
 
         <card-docs>
-            <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+            <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4 h-[300px]">
                 <div class="lg:w-2/5 w-full max-w-[400px]">
                     <c-autocomplete
                         v-model="customStyle"
@@ -345,8 +345,8 @@ const basicOptions = [
         </card-docs>
 
         <PagePagination
-            previous="Toolbar"
-            previousLink="/toolbar"
+            previous="Table"
+            previousLink="/table"
             next="Checkbox"
             nextLink="/checkbox"
         />

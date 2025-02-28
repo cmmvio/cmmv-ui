@@ -1,6 +1,6 @@
 <template>
     <div
-        :class="[roundedStyles[rounded], shadow, borderColor, 'w-full relative border c-table overflow-auto']"
+        :class="[roundedStyles[rounded], shadow, borderColor, textSize, 'w-full relative border c-table overflow-auto']"
         ref="tableContainer"
     >
         <table :class="[textColor, 'border-none table-auto m-0 w-full relative']">
@@ -194,6 +194,10 @@ const props = defineProps({
     textColor: {
         type: String,
         default: "text-black dark:text-white",
+    },
+    textSize: {
+        type: String,
+        default: "text-sm"
     },
     enableSort: {
         type: Boolean,

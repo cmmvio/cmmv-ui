@@ -824,8 +824,8 @@ const deleteItem = (item) => {
         </card-docs>
 
         <PagePagination
-            previous="Tooltip"
-            previousLink="/tooltip"
+            previous="Chart Line"
+            previousLink="/chart-line"
             next="Pagination"
             nextLink="/pagination"
         />

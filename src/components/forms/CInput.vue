@@ -2,13 +2,13 @@
     <div class="c-input relative w-full">
         <label
             :for="id"
-            class="c-input-label absolute left-3 text-sm transition-all duration-200 ease-in-out drop-shadow-xs pointer-events-none"
+            class="c-input-label absolute text-sm transition-all duration-200 ease-in-out drop-shadow-xs pointer-events-none"
             :class="[{
-                'c-input-label--active': isActive,
-                'top-[50%] -translate-y-1/2': !isActive && !currentValue && !hasError,
+                'c-input-label--active': floatingLabel && (isActive || currentValue),
+                'top-[50%] -translate-y-1/2 left-3': (!isActive && !currentValue),
                 'top-[30%]': !isActive && hasError,
-                'top-1/3': currentValue !== undefined && currentValue !== '',
-                'pl-8': hasIcon && !isActive,
+                'scale-75 origin-left text-xs top-1 left-3': (isActive || (currentValue !== undefined && currentValue !== '')) && !floatingLabel,
+                'pl-10': hasIcon && (!isActive && !currentValue)
             },
             textColor ? textColor : 'text-gray-500 dark:text-gray-400',
             !disabled ? (bgColor ? bgColor : variantColors[variant]) : '', 'px-1']"
@@ -103,13 +103,16 @@
 .c-input-label {
     transform: translate(0, -50%);
     z-index: 1;
-    left: 0.75rem;
 }
 
 .c-input-label--active {
     transform: translate(0, -2rem) scale(0.85);
     top: 1.3rem;
     left: 0.3rem;
+}
+
+.scale-75 {
+    transform: scale(0.75);
 }
 
 .c-input-field {
@@ -229,6 +232,10 @@ const props = defineProps({
         default: "focus:ring focus:ring-zinc-700 focus:ring-opacity-50"
     },
     loading: {
+        type: Boolean,
+        default: false,
+    },
+    floatingLabel: {
         type: Boolean,
         default: false,
     },

@@ -124,7 +124,6 @@ const messages = ref([
 
 const handleMessageSent = (message) => {
     console.log('User sent:', message);
-    // In a real app, you would send this to your AI API
 };
 
 const handleMessageCompleted = (message) => {
@@ -135,9 +134,7 @@ const handleStopGenerating = () => {
     console.log('User stopped the generation');
 };
 
-// Prevent auto-scrolling when the page loads
 onMounted(() => {
-    // Reset scroll position to top when component mounts
     window.scrollTo(0, 0);
 });
 &lt;/script&gt;</code></pre>
@@ -248,10 +245,10 @@ onMounted(() => {
         </card-docs>
 
         <PagePagination
-            previous="Badge"
-            previousLink="/badge"
-            next="Button"
-            nextLink="/button"
+            previous="Index"
+            previousLink="/"
+            next="Badge"
+            nextLink="/badge"
         />
     </BaseLayout>
 </template>

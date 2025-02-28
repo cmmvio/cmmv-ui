@@ -485,10 +485,10 @@ onUnmounted(() => {
     </card-docs>
 
     <PagePagination
-        previous="Tooltip"
-        previousLink="/tooltip"
-        next="Pagination"
-        nextLink="/pagination"
+        previous="Chart Bar"
+        previousLink="/chart-bar"
+        next="List"
+        nextLink="/list"
     />
   </BaseLayout>
 </template>

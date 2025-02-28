@@ -354,8 +354,8 @@
         <PagePagination
             previous="Rating"
             previousLink="/rating"
-            next="Table"
-            nextLink="/table"
+            next="Chart Bar"
+            nextLink="/chart-bar"
         />
     </BaseLayout>
 </template>

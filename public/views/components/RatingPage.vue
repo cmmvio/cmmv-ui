@@ -59,6 +59,18 @@
                     <td class="border-b px-4 py-2">false</td>
                     <td class="border-b px-4 py-2">If <code>true</code>, the rating is fixed and cannot be changed.</td>
                 </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">precision</td>
+                    <td class="border-b px-4 py-2">Number</td>
+                    <td class="border-b px-4 py-2">0.5</td>
+                    <td class="border-b px-4 py-2">The precision of the rating. Options: 0.1, 0.25, 0.5, 1.</td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">showValue</td>
+                    <td class="border-b px-4 py-2">Boolean</td>
+                    <td class="border-b px-4 py-2">false</td>
+                    <td class="border-b px-4 py-2">Whether to display the numeric rating value.</td>
+                </tr>
             </tbody>
         </table-docs>
 
@@ -270,6 +282,87 @@ const rating10 = ref(7);
             </template>
         </card-docs>
 
+        <h3>Partial Ratings</h3>
+
+        <p>
+            You can use partial ratings (like 4.5) by setting the <code>precision</code> property. The default precision is 0.5 (half stars).
+        </p>
+
+        <card-docs>
+            <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center gap-4">
+                <div class="flex items-center gap-4">
+                    <span class="w-40 text-right text-sm text-gray-600 dark:text-gray-300">Precision 0.5 (default):</span>
+                    <c-rating v-model="ratingHalf" :precision="0.5" :showValue="true" />
+                </div>
+                <div class="flex items-center gap-4">
+                    <span class="w-40 text-right text-sm text-gray-600 dark:text-gray-300">Precision 0.1:</span>
+                    <c-rating v-model="ratingTenth" :precision="0.1" :showValue="true" />
+                </div>
+                <div class="flex items-center gap-4">
+                    <span class="w-40 text-right text-sm text-gray-600 dark:text-gray-300">Precision 0.25:</span>
+                    <c-rating v-model="ratingQuarter" :precision="0.25" :showValue="true" />
+                </div>
+                <div class="flex items-center gap-4">
+                    <span class="w-40 text-right text-sm text-gray-600 dark:text-gray-300">Precision 1 (whole stars):</span>
+                    <c-rating v-model="ratingWhole" :precision="1" :showValue="true" />
+                </div>
+            </div>
+
+            <template #code>
+<pre><code class="code-highlight language-html">&lt;template&gt;
+    &lt;div&gt;
+        &lt;span&gt;Precision 0.5 (default):&lt;/span&gt;
+        &lt;c-rating v-model="ratingHalf" :precision="0.5" :showValue="true" /&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+        &lt;span&gt;Precision 0.1:&lt;/span&gt;
+        &lt;c-rating v-model="ratingTenth" :precision="0.1" :showValue="true" /&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+        &lt;span&gt;Precision 0.25:&lt;/span&gt;
+        &lt;c-rating v-model="ratingQuarter" :precision="0.25" :showValue="true" /&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+        &lt;span&gt;Precision 1 (whole stars only):&lt;/span&gt;
+        &lt;c-rating v-model="ratingWhole" :precision="1" :showValue="true" /&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref } from 'vue';
+
+const ratingHalf = ref(3.5);
+const ratingTenth = ref(3.7);
+const ratingQuarter = ref(3.75);
+const ratingWhole = ref(4);
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
+
+        <h3>Show Numeric Value</h3>
+
+        <p>
+            You can display the numeric rating value alongside the stars by setting the <code>showValue</code> property to <code>true</code>.
+        </p>
+
+        <card-docs>
+            <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center">
+                <c-rating v-model="ratingWithValue" :showValue="true" />
+            </div>
+
+            <template #code>
+<pre><code class="code-highlight language-html">&lt;template&gt;
+    &lt;c-rating v-model="rating" :showValue="true" /&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref } from 'vue';
+
+const rating = ref(3.5);
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
+
         <h3>Event Handling</h3>
 
         <p>
@@ -317,7 +410,7 @@ const handleChange = (value) => {
                             <label class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2">
                                 Your Rating
                             </label>
-                            <c-rating v-model="reviewRating" size="lg" />
+                            <c-rating v-model="reviewRating" size="lg" :precision="0.5" :showValue="true" />
                         </div>
                         <div class="mb-4">
                             <label class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2">
@@ -359,7 +452,7 @@ const handleChange = (value) => {
                 &lt;label class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2"&gt;
                     Your Rating
                 &lt;/label&gt;
-                &lt;c-rating v-model="reviewRating" size="lg" /&gt;
+                &lt;c-rating v-model="reviewRating" size="lg" :precision="0.5" :showValue="true" /&gt;
             &lt;/div&gt;
             &lt;div class="mb-4"&gt;
                 &lt;label class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2"&gt;
@@ -422,6 +515,13 @@ const rating3 = ref(2);
 const rating5 = ref(3);
 const rating10 = ref(7);
 const reviewRating = ref(0);
+
+// New variables for partial ratings
+const ratingHalf = ref(3.5);
+const ratingTenth = ref(3.7);
+const ratingQuarter = ref(3.75);
+const ratingWhole = ref(4);
+const ratingWithValue = ref(3.5);
 
 const handleChange = (value) => {
     lastChanged.value = `User selected ${value}`;

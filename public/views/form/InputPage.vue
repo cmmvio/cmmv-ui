@@ -92,6 +92,12 @@
                     <td class="border-b px-4 py-2">false</td>
                     <td class="border-b px-4 py-2">Ensures the hint text remains visible regardless of focus.</td>
                 </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">floatingLabel</td>
+                    <td class="border-b px-4 py-2">Boolean</td>
+                    <td class="border-b px-4 py-2">false</td>
+                    <td class="border-b px-4 py-2">Determines if the label floats outside the input when it receives focus.</td>
+                </tr>
             </tbody>
         </table-docs>
 
@@ -298,15 +304,69 @@ const clearableValue = ref("");
             </template>
         </card-docs>
 
+        <!-- Floating Label -->
+        <h3>Floating Label</h3>
+
+        <p>The <code>CInput</code> component supports two different label behavior styles. By default, the label stays inside the input and scales down when the input receives focus. Alternatively, with <code>floatingLabel</code> set to <code>true</code>, the label completely moves out of the input, floating above it when it receives focus.</p>
+
+        <p><strong>Note:</strong> When an icon is added to the input using the <code>#icon</code> slot, the label should use the floating behavior to prevent overlapping with the icon.</p>
+
+        <card-docs>
+            <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+                <div class="lg:w-2/5 w-full">
+                    <c-input
+                        v-model="defaultLabel"
+                        id="default-label"
+                        label="Default Label (inside)"
+                        class="mb-4"
+                    />
+                    <c-input
+                        v-model="floatingLabelValue"
+                        id="floating-label"
+                        label="Floating Label (outside)"
+                        floatingLabel
+                    />
+                </div>
+            </div>
+
+            <template #code>
+<pre><code class="code-highlight language-html">&lt;template&gt;
+    &lt;!-- Default label (stays inside the input when focused) --&gt;
+    &lt;c-input
+        v-model="defaultLabel"
+        id="default-label"
+        label="Default Label (inside)"
+    /&gt;
+
+    &lt;!-- Floating label (moves outside the input when focused) --&gt;
+    &lt;c-input
+        v-model="floatingLabelValue"
+        id="floating-label"
+        label="Floating Label (outside)"
+        floatingLabel
+    /&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref } from "vue";
+
+const defaultLabel = ref("");
+const floatingLabelValue = ref("");
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
+
         <!-- Icon -->
         <h3>Icon</h3>
 
         <p>The Input component does not include a dedicated <code>icon</code> prop. Instead, it utilizes a slot to allow for greater flexibility in customizing the icon within the input field. This approach provides developers with more control over the design and behavior of the icon. By adding an icon through the icon slot, you can seamlessly align it to the left of the input field, enhancing the user experience with contextual cues, such as a magnifying glass for search fields.</p>
 
+        <p><strong>Note:</strong> When an icon is present, it's recommended to use the <code>floatingLabel</code> property to ensure the label doesn't overlap with the icon.</p>
+
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
                 <div class="lg:w-2/5 w-full">
-                    <c-input id="search" label="Search Input">
+                    <c-input id="search" label="Search Input" floatingLabel>
                         <template #icon>
                             <IconMagnifyingGlass class="w-6 h-6 text-gray-600 dark:text-white" aria-hidden="true" />
                         </template>
@@ -316,7 +376,7 @@ const clearableValue = ref("");
 
             <template #code>
 <pre><code class="code-highlight language-html">&lt;template&gt;
-    &lt;c-input id="search" label="Search Input"&gt;
+    &lt;c-input id="search" label="Search Input" floatingLabel&gt;
         &lt;template #icon&gt;
             &lt;IconMagnifyingGlass class="w-6 h-6 text-gray-600 dark:text-white" aria-hidden="true" /&gt;
         &lt;/template&gt;
@@ -426,4 +486,6 @@ const example6 = ref("");
 const clearableValue = ref("");
 const validableValue = ref("");
 const passwordValue = ref("");
+const defaultLabel = ref("");
+const floatingLabelValue = ref("");
 </script>

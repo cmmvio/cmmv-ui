@@ -120,15 +120,76 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted, onBeforeUnmount, nextTick } from 'vue';
+import { useRoute } from 'vue-router';
 import Navbar from "./Navbar.vue";
 import SwitchTheme from "./SwitchTheme.vue";
 import IconGithub from "@components/icons/IconGithub.vue";
 import IconBars3 from "@components/icons/IconBars3.vue";
 
+const route = useRoute();
 const isMenuVisible = ref(false);
+let navbarScrollWatcher = null;
 
 const toggleMenu = () => {
     isMenuVisible.value = !isMenuVisible.value;
 };
+
+const saveNavbarScrollPosition = () => {
+    // Obtem o elemento da navbar
+    const navbarElement = document.getElementById('sidebar-menu');
+    if (navbarElement) {
+        // Salva a posição do scrollbar da navbar
+        const navbarScrollPosition = {
+            y: navbarElement.scrollTop
+        };
+        localStorage.setItem('navbar_scroll_position', JSON.stringify(navbarScrollPosition));
+    }
+};
+
+const setupNavbarScrollWatcher = () => {
+    // Watcher para o scroll da navbar
+    const navbarElement = document.getElementById('sidebar-menu');
+    if (navbarElement) {
+        navbarScrollWatcher = () => {
+            saveNavbarScrollPosition();
+        };
+        navbarElement.addEventListener('scroll', navbarScrollWatcher, { passive: true });
+    }
+};
+
+const restoreNavbarScrollPosition = () => {
+    // Recupera a posição armazenada para a navbar
+    const savedNavbarPosition = localStorage.getItem('navbar_scroll_position');
+
+    if (savedNavbarPosition) {
+        const { y } = JSON.parse(savedNavbarPosition);
+        // Restaura a posição do scroll da navbar
+        nextTick(() => {
+            const navbarElement = document.getElementById('sidebar-menu');
+            if (navbarElement) {
+                navbarElement.scrollTop = y;
+            }
+        });
+    }
+};
+
+onMounted(() => {
+    setupNavbarScrollWatcher();
+    // Pequeno timeout para garantir que o conteúdo foi renderizado
+    setTimeout(() => {
+        restoreNavbarScrollPosition();
+    }, 100);
+});
+
+onBeforeUnmount(() => {
+    // Remove o event listener da navbar
+    const navbarElement = document.getElementById('sidebar-menu');
+    if (navbarElement && navbarScrollWatcher) {
+        navbarElement.removeEventListener('scroll', navbarScrollWatcher);
+    }
+
+    // Salva a posição da navbar antes de desmontar
+    saveNavbarScrollPosition();
+});
 </script>

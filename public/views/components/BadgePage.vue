@@ -389,8 +389,8 @@
 
 
         <PagePagination
-            previous="Index"
-            previousLink="/"
+            previous="AI Chat"
+            previousLink="/ai-chat"
             next="Button"
             nextLink="/button"
         />

@@ -50,6 +50,12 @@
                     <td class="border-b px-4 py-2">false</td>
                     <td class="border-b px-4 py-2">Whether to show the items per page selector.</td>
                 </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">centered</td>
+                    <td class="border-b px-4 py-2">Boolean</td>
+                    <td class="border-b px-4 py-2">false</td>
+                    <td class="border-b px-4 py-2">Whether to center the pagination controls.</td>
+                </tr>
             </tbody>
         </table-docs>
 
@@ -69,6 +75,36 @@
     &lt;c-pagination
         v-model="currentPage"
         :totalItems="100"
+    &gt;&lt;/c-pagination&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref } from 'vue';
+import CPagination from "@components/components/CPagination.vue";
+
+const currentPage = ref(1);
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
+
+        <!-- Centered Pagination -->
+        <h3>Centered Pagination</h3>
+
+        <p>You can center the pagination controls by setting the <code>centered</code> property to true. This is useful for creating a more balanced layout.</p>
+
+        <card-docs>
+            <c-pagination
+                v-model="centeredPage"
+                :totalItems="100"
+                :centered="true"
+            ></c-pagination>
+
+            <template #code>
+<pre><code class="code-highlight language-html">&lt;template&gt;
+    &lt;c-pagination
+        v-model="currentPage"
+        :totalItems="100"
+        :centered="true"
     &gt;&lt;/c-pagination&gt;
 &lt;/template&gt;
 
@@ -102,6 +138,43 @@ const currentPage = ref(1);
         :totalItems="100"
         :perPage="perPage"
         :showPerPageSelect="true"
+        @update:perPage="perPage = $event"
+    &gt;&lt;/c-pagination&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref } from 'vue';
+import CPagination from "@components/components/CPagination.vue";
+
+const currentPage = ref(1);
+const perPage = ref(10);
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
+
+        <!-- Centered with Items Per Page Selector -->
+        <h3>Centered with Items Per Page Selector</h3>
+
+        <p>You can combine the <code>centered</code> property with the items per page selector for a centered layout with full functionality.</p>
+
+        <card-docs>
+            <c-pagination
+                v-model="centeredWithSelectorPage"
+                :totalItems="100"
+                :perPage="centeredPerPage"
+                :showPerPageSelect="true"
+                :centered="true"
+                @update:perPage="centeredPerPage = $event"
+            ></c-pagination>
+
+            <template #code>
+<pre><code class="code-highlight language-html">&lt;template&gt;
+    &lt;c-pagination
+        v-model="currentPage"
+        :totalItems="100"
+        :perPage="perPage"
+        :showPerPageSelect="true"
+        :centered="true"
         @update:perPage="perPage = $event"
     &gt;&lt;/c-pagination&gt;
 &lt;/template&gt;
@@ -372,6 +445,7 @@ const currentPage = ref(1);
                     :totalItems="totalTableItems"
                     :perPage="tablePerPage"
                     :showPerPageSelect="true"
+                    :centered="true"
                     @update:perPage="onTablePerPageChange"
                     @pageChange="onTablePageChange"
                 ></c-pagination>
@@ -391,6 +465,7 @@ const currentPage = ref(1);
             :totalItems="totalItems"
             :perPage="itemsPerPage"
             :showPerPageSelect="true"
+            :centered="true"
             @update:perPage="onPerPageChange"
             @pageChange="loadData"
         &gt;&lt;/c-pagination&gt;
@@ -463,6 +538,82 @@ onMounted(() => {
             </template>
         </card-docs>
 
+        <card-docs>
+            <div class="mx-auto px-4 py-5 sm:p-6">
+                <c-pagination
+                    v-model="pageSize"
+                    :start-index="startIdx"
+                    :end-index="endIdx"
+                    :total="65"
+                />
+            </div>
+
+            <template #code>
+<pre><code class="code-highlight language-html">&lt;template&gt;
+    &lt;c-pagination
+        v-model="pageSize"
+        :start-index="startIdx"
+        :end-index="endIdx"
+        :total="65"
+    /&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref, computed } from "vue";
+
+const currentPage = ref(1);
+const pageSize = ref(10);
+
+const startIdx = computed(() => {
+    return (currentPage.value - 1) * pageSize.value + 1;
+});
+
+const endIdx = computed(() => {
+    return Math.min(currentPage.value * pageSize.value, 65);
+});
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
+
+        <card-docs>
+            <div class="mx-auto px-4 py-5 sm:p-6">
+                <c-pagination
+                    v-model="pageSizeCentered"
+                    :start-index="startIdxCentered"
+                    :end-index="endIdxCentered"
+                    :total="65"
+                    centered
+                />
+            </div>
+
+            <template #code>
+<pre><code class="code-highlight language-html">&lt;template&gt;
+    &lt;c-pagination
+        v-model="pageSize"
+        :start-index="startIdx"
+        :end-index="endIdx"
+        :total="65"
+        centered
+    /&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref, computed } from "vue";
+
+const currentPage = ref(1);
+const pageSize = ref(10);
+
+const startIdx = computed(() => {
+    return (currentPage.value - 1) * pageSize.value + 1;
+});
+
+const endIdx = computed(() => {
+    return Math.min(currentPage.value * pageSize.value, 65);
+});
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
+
         <PagePagination
             previous="List"
             previousLink="/list"
@@ -487,8 +638,11 @@ import CardDocs from "../../components/CardDocs.vue";
 import PagePagination from "../../layout/PagePagination.vue";
 
 const currentPage = ref(1);
+const centeredPage = ref(1);
 const perPageSelectorPage = ref(1);
+const centeredWithSelectorPage = ref(1);
 const perPage = ref(10);
+const centeredPerPage = ref(10);
 const customPage = ref(1);
 const customPerPage = ref(20);
 const handlePageChange = (event) => {
