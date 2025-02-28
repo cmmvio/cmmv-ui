@@ -75,13 +75,15 @@
             <c-alert type="success" title="Success" icon>
                 Operation completed successfully.
             </c-alert>
-        </card-docs>
 
-        <pre>
-            <code class="code-highlight language-html">&lt;c-alert type="success" title="Success" icon&gt;
-    Operation completed successfully.
-&lt;/c-alert&gt;</code>
-        </pre>
+            <template #code>
+<pre><code class="code-highlight language-vue">&lt;template&gt;
+    &lt;c-alert type="success" title="Success" icon&gt;
+        Operation completed successfully.
+    &lt;/c-alert&gt;
+&lt;/template&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <!-- Closable -->
         <h3>Closable</h3>
@@ -92,13 +94,15 @@
             <c-alert type="error" title="Error" closable>
                 Something went wrong. Please try again.
             </c-alert>
-        </card-docs>
 
-        <pre>
-            <code class="code-highlight language-html">&lt;c-alert type="error" title="Error" closable&gt;
-    Something went wrong. Please try again.
-&lt;/c-alert&gt;</code>
-        </pre>
+            <template #code>
+<pre><code class="code-highlight language-vue">&lt;template&gt;
+    &lt;c-alert type="error" title="Error" closable&gt;
+        Something went wrong. Please try again.
+    &lt;/c-alert&gt;
+&lt;/template&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <h3>Custom Colors</h3>
 
@@ -113,59 +117,65 @@
             >
                 This is a custom alert with overridden colors.
             </c-alert>
-        </card-docs>
 
-        <pre>
-            <code class="code-highlight language-html">&lt;c-alert
-    title="Custom Alert"
-    bgColor="bg-purple-500"
-    textColor="text-white"
-    icon
-&gt;
-    This is a custom alert with overridden colors.
-&lt;/c-alert&gt;</code>
-        </pre>
+            <template #code>
+<pre><code class="code-highlight language-vue">&lt;template&gt;
+    &lt;c-alert
+        title="Custom Alert"
+        bgColor="bg-purple-500"
+        textColor="text-white"
+        icon
+    &gt;
+        This is a custom alert with overridden colors.
+    &lt;/c-alert&gt;
+&lt;/template&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <!-- Outlined -->
         <h3>Outlined</h3>
 
         <p>Use outlined styles for a minimalist design. These alerts are subtle yet clear, ideal for less intrusive notifications.</p>
 
-        <c-card variant="flat" class="px-6 mt-4">
-            <c-alert type="warning" outlined>
-                This is an outlined warning alert.
-            </c-alert>
+        <card-docs>
+            <div class="px-6">
+                <c-alert type="warning" outlined>
+                    This is an outlined warning alert.
+                </c-alert>
 
-            <c-alert type="success" outlined>
-                This is an outlined success alert.
-            </c-alert>
+                <c-alert type="success" outlined>
+                    This is an outlined success alert.
+                </c-alert>
 
-            <c-alert type="error" outlined>
-                This is an outlined error alert.
-            </c-alert>
+                <c-alert type="error" outlined>
+                    This is an outlined error alert.
+                </c-alert>
 
-            <c-alert type="info" outlined>
-                This is an outlined info alert.
-            </c-alert>
-        </c-card>
+                <c-alert type="info" outlined>
+                    This is an outlined info alert.
+                </c-alert>
+            </div>
 
-        <pre>
-            <code class="code-highlight language-html">&lt;c-alert type="warning" outlined&gt;
-    This is an outlined warning alert.
-&lt;/c-alert&gt;
+            <template #code>
+<pre><code class="code-highlight language-vue">&lt;template&gt;
+    &lt;c-alert type="warning" outlined&gt;
+        This is an outlined warning alert.
+    &lt;/c-alert&gt;
 
-&lt;c-alert type="success" outlined&gt;
-    This is an outlined success alert.
-&lt;/c-alert&gt;
+    &lt;c-alert type="success" outlined&gt;
+        This is an outlined success alert.
+    &lt;/c-alert&gt;
 
-&lt;c-alert type="error" outlined&gt;
-    This is an outlined error alert.
-&lt;/c-alert&gt;
+    &lt;c-alert type="error" outlined&gt;
+        This is an outlined error alert.
+    &lt;/c-alert&gt;
 
-&lt;c-alert type="info" outlined&gt;
-    This is an outlined info alert.
-&lt;/c-alert&gt;</code>
-        </pre>
+    &lt;c-alert type="info" outlined&gt;
+        This is an outlined info alert.
+    &lt;/c-alert&gt;
+&lt;/template&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <!-- Icon -->
         <h3>Icon</h3>
@@ -176,13 +186,15 @@
             <c-alert type="info" title="Information" icon>
                 This alert includes an informational icon for better context.
             </c-alert>
-        </card-docs>
 
-        <pre>
-            <code class="code-highlight language-html">&lt;c-alert type="info" title="Information" icon&gt;
-    This alert includes an informational icon for better context.
-&lt;/c-alert&gt;</code>
-        </pre>
+            <template #code>
+<pre><code class="code-highlight language-vue">&lt;template&gt;
+    &lt;c-alert type="info" title="Information" icon&gt;
+        This alert includes an informational icon for better context.
+    &lt;/c-alert&gt;
+&lt;/template&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <!-- Accessibility -->
         <h3>Accessibility</h3>
@@ -193,13 +205,15 @@
             <c-alert aria-label="Important alert" type="error" title="Critical Error">
                 A critical error has occurred. Please contact support.
             </c-alert>
-        </card-docs>
 
-        <pre>
-            <code class="code-highlight language-html">&lt;c-alert aria-label="Important alert" type="error" title="Critical Error"&gt;
-    A critical error has occurred. Please contact support.
-&lt;/c-alert&gt;</code>
-        </pre>
+            <template #code>
+<pre><code class="code-highlight language-vue">&lt;template&gt;
+    &lt;c-alert aria-label="Important alert" type="error" title="Critical Error"&gt;
+        A critical error has occurred. Please contact support.
+    &lt;/c-alert&gt;
+&lt;/template&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <PagePagination
             previous="Accordion"
@@ -216,3 +230,9 @@ import PagePagination from "../../layout/PagePagination.vue";
 import TableDocs from "../../components/TableDocs.vue";
 import CardDocs from "../../components/CardDocs.vue";
 </script>
+
+<style scoped>
+.code-highlight {
+    white-space: pre;
+}
+</style>

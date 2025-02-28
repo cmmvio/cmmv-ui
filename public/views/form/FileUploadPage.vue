@@ -8,19 +8,20 @@
 
         <p>The simplest example of the file upload component allows users to select files by dragging them to the dropzone area or clicking to open the file selector.</p>
 
-        <c-card variant="flat" class="mx-auto mt-4 px-4 py-5 sm:p-6">
-            <div class="lg:w-2/5 w-full max-w-[600px] mx-auto">
-                <c-file-upload
-                    @file-selected="handleFileSelected"
-                    @file-removed="handleFileRemoved"
-                    @upload-start="handleUploadStart"
-                    @upload-complete="handleUploadComplete"
-                ></c-file-upload>
+        <card-docs>
+            <div class="mx-auto px-4 py-5 sm:p-6">
+                <div class="lg:w-2/5 w-full max-w-[600px] mx-auto">
+                    <c-file-upload
+                        @file-selected="handleFileSelected"
+                        @file-removed="handleFileRemoved"
+                        @upload-start="handleUploadStart"
+                        @upload-complete="handleUploadComplete"
+                    ></c-file-upload>
+                </div>
             </div>
-        </c-card>
 
-        <pre>
-            <code class="code-highlight language-vue">&lt;template&gt;
+            <template #code>
+<pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;c-file-upload
         @file-selected="handleFileSelected"
         @file-removed="handleFileRemoved"
@@ -30,6 +31,8 @@
 &lt;/template&gt;
 
 &lt;script setup&gt;
+import { ref } from 'vue';
+
 const handleFileSelected = (event) => {
     console.log('File selected:', event.file.name);
 };
@@ -45,28 +48,30 @@ const handleUploadStart = (files) => {
 const handleUploadComplete = () => {
     console.log('Upload complete');
 };
-&lt;/script&gt;</code>
-        </pre>
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <h3>Image Upload with Preview</h3>
 
         <p>This example shows how to configure the component to accept only images, allowing users to see a preview before uploading.</p>
 
-        <c-card variant="flat" class="mx-auto mt-4 px-4 py-5 sm:p-6">
-            <div class="lg:w-2/5 w-full max-w-[600px] mx-auto">
-                <c-file-upload
-                    accept="image/*"
-                    :maxFileSize="5 * 1024 * 1024"
-                    dropzoneText="Drag and drop images here or click to select"
-                    :showBrowseButton="true"
-                    browseButtonText="Select Images"
-                    uploadButtonText="Upload Images"
-                ></c-file-upload>
+        <card-docs>
+            <div class="mx-auto px-4 py-5 sm:p-6">
+                <div class="lg:w-2/5 w-full max-w-[600px] mx-auto">
+                    <c-file-upload
+                        accept="image/*"
+                        :maxFileSize="5 * 1024 * 1024"
+                        dropzoneText="Drag and drop images here or click to select"
+                        :showBrowseButton="true"
+                        browseButtonText="Select Images"
+                        uploadButtonText="Upload Images"
+                    ></c-file-upload>
+                </div>
             </div>
-        </c-card>
 
-        <pre>
-            <code class="code-highlight language-vue">&lt;template&gt;
+            <template #code>
+<pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;c-file-upload
         accept="image/*"
         :maxFileSize="5 * 1024 * 1024"
@@ -75,29 +80,31 @@ const handleUploadComplete = () => {
         browseButtonText="Select Images"
         uploadButtonText="Upload Images"
     &gt;&lt;/c-file-upload&gt;
-&lt;/template&gt;</code>
-        </pre>
+&lt;/template&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <h3>Automatic Upload</h3>
 
         <p>In this example, files are automatically uploaded as soon as they are selected, without the need to click an upload button.</p>
 
-        <c-card variant="flat" class="mx-auto mt-4 px-4 py-5 sm:p-6">
-            <div class="lg:w-2/5 w-full max-w-[600px] mx-auto">
-                <c-file-upload
-                    :autoUpload="true"
-                    :multiple="true"
-                    :maxFiles="3"
-                    accept=".pdf,.doc,.docx"
-                    dropzoneText="Drag and drop documents here"
-                    @upload-success="handleUploadSuccess"
-                    @upload-error="handleUploadError"
-                ></c-file-upload>
+        <card-docs>
+            <div class="mx-auto px-4 py-5 sm:p-6">
+                <div class="lg:w-2/5 w-full max-w-[600px] mx-auto">
+                    <c-file-upload
+                        :autoUpload="true"
+                        :multiple="true"
+                        :maxFiles="3"
+                        accept=".pdf,.doc,.docx"
+                        dropzoneText="Drag and drop documents here"
+                        @upload-success="handleUploadSuccess"
+                        @upload-error="handleUploadError"
+                    ></c-file-upload>
+                </div>
             </div>
-        </c-card>
 
-        <pre>
-            <code class="code-highlight language-vue">&lt;template&gt;
+            <template #code>
+<pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;c-file-upload
         :autoUpload="true"
         :multiple="true"
@@ -110,6 +117,8 @@ const handleUploadComplete = () => {
 &lt;/template&gt;
 
 &lt;script setup&gt;
+import { ref } from 'vue';
+
 const handleUploadSuccess = (event) => {
     console.log('Upload success:', event.file.name);
 };
@@ -117,28 +126,30 @@ const handleUploadSuccess = (event) => {
 const handleUploadError = (event) => {
     console.error('Upload error:', event.file.name, event.error);
 };
-&lt;/script&gt;</code>
-        </pre>
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <h3>API Integration</h3>
 
         <p>This example shows how to configure the component to send files directly to an API endpoint.</p>
 
-        <c-card variant="flat" class="mx-auto mt-4 px-4 py-5 sm:p-6">
-            <div class="lg:w-2/5 w-full max-w-[600px] mx-auto">
-                <c-file-upload
-                    url="https://api.example.com/upload"
-                    method="POST"
-                    :headers="{ Authorization: 'Bearer token123' }"
-                    formDataName="uploadedFile"
-                    :withCredentials="true"
-                    @upload-progress="handleProgress"
-                ></c-file-upload>
+        <card-docs>
+            <div class="mx-auto px-4 py-5 sm:p-6">
+                <div class="lg:w-2/5 w-full max-w-[600px] mx-auto">
+                    <c-file-upload
+                        url="https://api.example.com/upload"
+                        method="POST"
+                        :headers="{ Authorization: 'Bearer token123' }"
+                        formDataName="uploadedFile"
+                        :withCredentials="true"
+                        @upload-progress="handleProgress"
+                    ></c-file-upload>
+                </div>
             </div>
-        </c-card>
 
-        <pre>
-            <code class="code-highlight language-vue">&lt;template&gt;
+            <template #code>
+<pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;c-file-upload
         url="https://api.example.com/upload"
         method="POST"
@@ -150,31 +161,35 @@ const handleUploadError = (event) => {
 &lt;/template&gt;
 
 &lt;script setup&gt;
+import { ref } from 'vue';
+
 const handleProgress = (event) => {
     console.log(`${event.file.name}: ${event.progress}% uploaded`);
 };
-&lt;/script&gt;</code>
-        </pre>
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <h3>Text Customization</h3>
 
         <p>The component allows you to customize all displayed texts, making internationalization easier.</p>
 
-        <c-card variant="flat" class="mx-auto mt-4 px-4 py-5 sm:p-6">
-            <div class="lg:w-2/5 w-full max-w-[600px] mx-auto">
-                <c-file-upload
-                    dropzoneText="Drag your files here or click to browse"
-                    browseButtonText="Browse"
-                    uploadButtonText="Upload Now"
-                    fileText="file"
-                    filesText="files"
-                    errorText="Upload failed. Please try again."
-                ></c-file-upload>
+        <card-docs>
+            <div class="mx-auto px-4 py-5 sm:p-6">
+                <div class="lg:w-2/5 w-full max-w-[600px] mx-auto">
+                    <c-file-upload
+                        dropzoneText="Drag your files here or click to browse"
+                        browseButtonText="Browse"
+                        uploadButtonText="Upload Now"
+                        fileText="file"
+                        filesText="files"
+                        errorText="Upload failed. Please try again."
+                    ></c-file-upload>
+                </div>
             </div>
-        </c-card>
 
-        <pre>
-            <code class="code-highlight language-vue">&lt;template&gt;
+            <template #code>
+<pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;c-file-upload
         dropzoneText="Drag your files here or click to browse"
         browseButtonText="Browse"
@@ -183,8 +198,9 @@ const handleProgress = (event) => {
         filesText="files"
         errorText="Upload failed. Please try again."
     &gt;&lt;/c-file-upload&gt;
-&lt;/template&gt;</code>
-        </pre>
+&lt;/template&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <h3>Properties</h3>
 
@@ -366,31 +382,32 @@ const handleProgress = (event) => {
 
         <p>This example demonstrates a complete use case of the component, including event handling and customization.</p>
 
-        <c-card variant="flat" class="mx-auto mt-4 px-4 py-5 sm:p-6">
-            <div class="lg:w-2/5 w-full max-w-[600px] mx-auto">
-                <c-file-upload
-                    ref="fileUploadRef"
-                    accept="image/*,.pdf"
-                    :multiple="true"
-                    :maxFiles="5"
-                    :maxFileSize="2 * 1024 * 1024"
-                    :autoUpload="false"
-                    dropzoneText="Drag images or PDFs here"
-                    browseButtonText="Select Files"
-                    uploadButtonText="Upload All"
-                    @file-selected="onFileSelected"
-                    @file-removed="onFileRemoved"
-                    @upload-start="onUploadStart"
-                    @upload-progress="onUploadProgress"
-                    @upload-success="onUploadSuccess"
-                    @upload-error="onUploadError"
-                    @upload-complete="onUploadComplete"
-                ></c-file-upload>
+        <card-docs>
+            <div class="mx-auto px-4 py-5 sm:p-6">
+                <div class="lg:w-2/5 w-full max-w-[600px] mx-auto">
+                    <c-file-upload
+                        ref="fileUploadRef"
+                        accept="image/*,.pdf"
+                        :multiple="true"
+                        :maxFiles="5"
+                        :maxFileSize="2 * 1024 * 1024"
+                        :autoUpload="false"
+                        dropzoneText="Drag images or PDFs here"
+                        browseButtonText="Select Files"
+                        uploadButtonText="Upload All"
+                        @file-selected="onFileSelected"
+                        @file-removed="onFileRemoved"
+                        @upload-start="onUploadStart"
+                        @upload-progress="onUploadProgress"
+                        @upload-success="onUploadSuccess"
+                        @upload-error="onUploadError"
+                        @upload-complete="onUploadComplete"
+                    ></c-file-upload>
+                </div>
             </div>
-        </c-card>
 
-        <pre>
-            <code class="code-highlight language-vue">&lt;template&gt;
+            <template #code>
+<pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;c-file-upload
         ref="fileUploadRef"
         accept="image/*,.pdf"
@@ -427,25 +444,19 @@ const onFileSelected = (event) => {
 
 const onFileRemoved = (file) => {
     console.log(`File removed: ${file.name}`);
-    // Remove from uploaded files array if needed
     uploadedFiles.value = uploadedFiles.value.filter(f => f.name !== file.name);
 };
 
 const onUploadStart = (files) => {
     console.log(`Starting upload of ${files.length} files`);
-    // Clear previous error messages or show loading indicator
 };
 
 const onUploadProgress = (event) => {
     console.log(`Progress for file ${event.file.name}: ${event.progress}%`);
-    // Update UI with progress if needed
 };
 
 const onUploadSuccess = (event) => {
     console.log(`Upload completed: ${event.file.name}`);
-    console.log('Server response:', event.response);
-
-    // Add to uploaded files array
     uploadedFiles.value.push({
         name: event.file.name,
         size: event.file.size,
@@ -457,18 +468,15 @@ const onUploadSuccess = (event) => {
 const onUploadError = (event) => {
     console.error(`Upload error: ${event.file.name}`);
     console.error('Error details:', event.error);
-
-    // Show error message to user
 };
 
 const onUploadComplete = () => {
     console.log('All uploads completed');
     console.log('Uploaded files:', uploadedFiles.value);
-
-    // Update UI or notify user
 };
-&lt;/script&gt;</code>
-        </pre>
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <PagePagination
             previous="Datepicker"
@@ -484,6 +492,7 @@ import { ref } from "vue";
 import BaseLayout from "../../layout/BaseLayout.vue";
 import TableDocs from "../../components/TableDocs.vue";
 import PagePagination from "../../layout/PagePagination.vue";
+import CardDocs from "../../components/CardDocs.vue";
 
 // Handlers for examples
 const handleFileSelected = (event) => {

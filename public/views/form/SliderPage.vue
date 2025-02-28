@@ -85,20 +85,23 @@
         <p>The following example demonstrates a basic slider with two-way binding using <code>v-model</code>.</p>
 
         <card-docs>
-            <c-slider v-model="sliderValue" class="mt-10" thumb />
-            <div class="m-auto text-center pt-4">Current Value: {{ sliderValue }}</div>
-        </card-docs>
+            <div class="px-4 py-5 sm:p-6">
+                <c-slider v-model="sliderValue" class="mt-10" thumb />
+                <div class="m-auto text-center pt-4">Current Value: {{ sliderValue }}</div>
+            </div>
 
-        <pre>
-            <code class="code-hightlight language-vue">&lt;template&gt;
+            <template #code>
+<pre><code class="code-highlight language-vue">&lt;template&gt;
     &lt;c-slider v-model="sliderValue" thumb /&gt;
 &lt;/template&gt;
 
 &lt;script setup&gt;
 import { ref } from "vue";
+
 const sliderValue = ref(5);
-&lt;/script&gt;</code>
-        </pre>
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <!-- Validation -->
         <h3>Validation</h3>
@@ -108,14 +111,15 @@ const sliderValue = ref(5);
         </p>
 
         <card-docs>
-            <c-slider
-                v-model="validatedValue"
-                :rules="[value => value >= 50 ? null : 'Value must be at least 50.']"
-            />
-        </card-docs>
+            <div class="px-4 py-5 sm:p-6">
+                <c-slider
+                    v-model="validatedValue"
+                    :rules="[value => value >= 50 ? null : 'Value must be at least 50.']"
+                />
+            </div>
 
-        <pre>
-            <code class="code-hightlight language-vue">&lt;template&gt;
+            <template #code>
+<pre><code class="code-highlight language-vue">&lt;template&gt;
     &lt;c-slider
         v-model="validatedValue"
         :rules="[value => value >= 50 ? null : 'Value must be at least 50.']"
@@ -124,9 +128,11 @@ const sliderValue = ref(5);
 
 &lt;script setup&gt;
 import { ref } from "vue";
+
 const validatedValue = ref(40);
-&lt;/script&gt;</code>
-</pre>
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <!-- Tick Marks -->
         <h3>Step</h3>
@@ -134,11 +140,12 @@ const validatedValue = ref(40);
         <p>The slider can step or custom positions defined by the <code>step</code> prop.</p>
 
         <card-docs>
-            <c-slider v-model="sliderTicks" step="10" />
-        </card-docs>
+            <div class="px-4 py-5 sm:p-6">
+                <c-slider v-model="sliderTicks" step="10" />
+            </div>
 
-        <pre>
-            <code class="code-hightlight language-vue">&lt;template&gt;
+            <template #code>
+<pre><code class="code-highlight language-vue">&lt;template&gt;
     &lt;c-slider
         v-model="sliderTicks"
         step="10"
@@ -147,9 +154,11 @@ const validatedValue = ref(40);
 
 &lt;script setup&gt;
 import { ref } from "vue";
+
 const sliderTicks = ref(40);
-&lt;/script&gt;</code>
-</pre>
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <!-- Color Variations -->
         <h3>Custom Colors</h3>
@@ -159,29 +168,33 @@ const sliderTicks = ref(40);
         </p>
 
         <card-docs>
-            <c-slider
-                v-model="customColorValue"
-                bgColor="bg-yellow-300"
-                thumbColor="bg-yellow-500"
-                activeTrackColor="bg-yellow-700"
-            />
-            <div class="m-auto text-center pt-4">Current Value: {{ customColorValue }}</div>
-        </card-docs>
+            <div class="px-4 py-5 sm:p-6">
+                <c-slider
+                    v-model="customColorValue"
+                    bgColor="bg-yellow-300"
+                    thumbColor="bg-yellow-500"
+                    activeTrackColor="bg-yellow-700"
+                />
+                <div class="m-auto text-center pt-4">Current Value: {{ customColorValue }}</div>
+            </div>
 
-        <pre>
-            <code class="code-hightlight language-vue">&lt;template&gt;
+            <template #code>
+<pre><code class="code-highlight language-vue">&lt;template&gt;
     &lt;c-slider
         v-model="customColorValue"
-        bgColor="bg-green-600"
+        bgColor="bg-yellow-300"
         thumbColor="bg-yellow-500"
+        activeTrackColor="bg-yellow-700"
     /&gt;
 &lt;/template&gt;
 
 &lt;script setup&gt;
 import { ref } from "vue";
+
 const customColorValue = ref(30);
-&lt;/script&gt;</code>
-        </pre>
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <PagePagination
             previous="Radio"
@@ -191,6 +204,12 @@ const customColorValue = ref(30);
         />
     </BaseLayout>
 </template>
+
+<style scoped>
+.code-highlight {
+    white-space: pre;
+}
+</style>
 
 <script setup>
 import { ref } from "vue";

@@ -217,10 +217,6 @@ h3 {
     font-weight: 600;
 }
 
-.hljs {
-    border-radius: 10px;
-}
-
 .navbar {
     padding: 0;
     z-index: 399;
@@ -279,7 +275,6 @@ h3 {
     background-color: #CCC;
     color: #2d2d2d;
     padding: 2px 4px;
-    border-radius: 4px;
     font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
     font-size: 0.9em;
     word-break: break-word;
@@ -289,10 +284,8 @@ h3 {
 .context-html pre code:not(.c-card pre code):not(.card-docs pre code):not(.c-list pre code) {
     display: block;
     max-height: 400px;
-    padding: 10px;
+    padding: 5px;
     background-color: #ffffff;
-    border: 1px solid #d1d5db;
-    border-radius: 6px;
     overflow-y: auto;
     white-space: pre-wrap;
     color: #2d2d2d;
@@ -365,10 +358,8 @@ pre code::-webkit-scrollbar-thumb:hover {
 .dark .context-html pre code:not(.c-card pre code):not(.card-docs pre code):not(.c-list pre code) {
     display: block;
     max-height: 400px;
-    padding: 10px;
+    padding: 5px;
     background-color: #1d1d1d;
-    border: 1px solid #2e3035;
-    border-radius: 6px;
     overflow-y: auto;
     white-space: pre-wrap;
 }

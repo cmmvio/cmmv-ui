@@ -96,190 +96,234 @@
         </table-docs>
 
         <!-- Basic Examples -->
-        <c-card variant="flat" class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-            <div class="lg:w-2/5 w-full">
-                <c-input v-model="example1" id="example1" label="Basic Input" />
-                <c-input v-model="example2" id="example2" label="Input with Placeholder" placeholder="Enter text..." />
-                <c-input v-model="example3" id="example3" label="Disabled Input" disabled />
+        <card-docs>
+            <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+                <div class="lg:w-2/5 w-full">
+                    <c-input v-model="example1" id="example1" label="Basic Input" />
+                    <c-input v-model="example2" id="example2" label="Input with Placeholder" placeholder="Enter text..." />
+                    <c-input v-model="example3" id="example3" label="Disabled Input" disabled />
+                </div>
             </div>
-        </c-card>
 
-        <pre>
-            <code class="code-hightlight language-vue">&lt;template&gt;
+            <template #code>
+<pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;c-input
-        id=&quot;example1&quot;
-        label=&quot;Basic Input&quot;
+        id="example1"
+        label="Basic Input"
     /&gt;
     &lt;c-input
-        id=&quot;example2&quot;
-        label=&quot;Input with Placeholder&quot;
-        placeholder=&quot;Enter text...&quot;
+        id="example2"
+        label="Input with Placeholder"
+        placeholder="Enter text..."
     /&gt;
     &lt;c-input
-        id=&quot;example3&quot;
-        label=&quot;Disabled Input&quot;
+        id="example3"
+        label="Disabled Input"
         disabled
     /&gt;
 &lt;/template&gt;
 
-&lt;script&gt;
-import CInput from &quot;@cmmv/ui/components/CInput.vue&quot;;
-&lt;/script&gt;</code>
-        </pre>
+&lt;script setup&gt;
+import { ref } from "vue";
+
+const example1 = ref("");
+const example2 = ref("");
+const example3 = ref("");
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <!-- Validation -->
         <h3>Validation</h3>
 
         <p>The <code>CInput</code> component supports custom validation rules. Error messages are displayed below the input field if a rule fails.</p>
 
-        <c-card variant="flat" class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-            <div class="lg:w-2/5 w-full">
-                <c-input
-                    id="validation"
-                    label="Input with Validation"
-                    :rules="[value => (value ? null : 'This field is required')]"
-                    v-model="validableValue"
-                />
+        <card-docs>
+            <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+                <div class="lg:w-2/5 w-full">
+                    <c-input
+                        id="validation"
+                        label="Input with Validation"
+                        :rules="[value => (value ? null : 'This field is required')]"
+                        v-model="validableValue"
+                    />
+                </div>
             </div>
-        </c-card>
 
-        <pre>
-            <code class="code-hightlight language-vue">&lt;template&gt;
+            <template #code>
+<pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;c-input
-        id=&quot;validation&quot;
-        label=&quot;Input with Validation&quot;
-        :rules=&quot;[value =&gt; (value ? null : 'This field is required')]&quot;
+        id="validation"
+        label="Input with Validation"
+        :rules="[value => (value ? null : 'This field is required')]"
+        v-model="validableValue"
     /&gt;
-&lt;/template&gt;</code>
-        </pre>
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref } from "vue";
+
+const validableValue = ref("");
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <!-- Size Variants -->
         <h3>Size Variants</h3>
 
         <p>The <code>CInput</code> component supports size variations for better responsiveness and design adaptability. Available sizes include <code>sm</code>, <code>md</code>, and <code>lg</code>.</p>
 
-        <c-card variant="flat" class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-            <div class="lg:w-2/5 w-full">
-                <c-input v-model="example4" id="small" label="Small Input" size="sm" />
-                <c-input v-model="example5" id="medium" label="Medium Input" size="md" />
-                <c-input v-model="example6" id="large" label="Large Input" size="lg" />
+        <card-docs>
+            <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+                <div class="lg:w-2/5 w-full">
+                    <c-input v-model="example4" id="small" label="Small Input" size="sm" />
+                    <c-input v-model="example5" id="medium" label="Medium Input" size="md" />
+                    <c-input v-model="example6" id="large" label="Large Input" size="lg" />
+                </div>
             </div>
-        </c-card>
 
-        <pre>
-            <code class="code-hightlight language-vue">&lt;template&gt;
-    &lt;c-input id=&quot;small&quot;  label=&quot;Small Input&quot; size=&quot;sm&quot; /&gt;
-    &lt;c-input id=&quot;medium&quot; label=&quot;Medium Input&quot; size=&quot;md&quot; /&gt;
-    &lt;c-input id=&quot;large&quot; label=&quot;Large Input&quot; size=&quot;lg&quot; /&gt;
-&lt;/template&gt;</code>
-        </pre>
+            <template #code>
+<pre><code class="code-highlight language-html">&lt;template&gt;
+    &lt;c-input id="small" label="Small Input" size="sm" /&gt;
+    &lt;c-input id="medium" label="Medium Input" size="md" /&gt;
+    &lt;c-input id="large" label="Large Input" size="lg" /&gt;
+&lt;/template&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <!-- Variants -->
         <h3>Variants</h3>
 
         <p>The <code>CInput</code> component supports visual <code>variant</code> styles, including <code>default</code>, <code>outlined</code>, and <code>filled</code>. These styles allow you to align the input field with your application's design language.</p>
 
-        <c-card variant="flat" class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-            <div class="lg:w-2/5 w-full">
-                <c-input id="default" label="Default Variant" variant="default" />
-                <c-input id="outlined" label="Outlined Variant" variant="outlined" />
-                <c-input id="filled" label="Filled Variant" variant="filled" />
+        <card-docs>
+            <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+                <div class="lg:w-2/5 w-full">
+                    <c-input id="default" label="Default Variant" variant="default" />
+                    <c-input id="outlined" label="Outlined Variant" variant="outlined" />
+                    <c-input id="filled" label="Filled Variant" variant="filled" />
+                </div>
             </div>
-        </c-card>
 
-        <pre>
-            <code class="code-hightlight language-vue">&lt;template&gt;
-    &lt;c-input id=&quot;default&quot; label=&quot;Default Variant&quot; variant=&quot;default&quot; /&gt;
-    &lt;c-input id=&quot;outlined&quot; label=&quot;Outlined Variant&quot; variant=&quot;outlined&quot; /&gt;
-    &lt;c-input id=&quot;filled&quot; label=&quot;Filled Variant&quot; variant=&quot;filled&quot; /&gt;
-&lt;/template&gt;</code>
-        </pre>
+            <template #code>
+<pre><code class="code-highlight language-html">&lt;template&gt;
+    &lt;c-input id="default" label="Default Variant" variant="default" /&gt;
+    &lt;c-input id="outlined" label="Outlined Variant" variant="outlined" /&gt;
+    &lt;c-input id="filled" label="Filled Variant" variant="filled" /&gt;
+&lt;/template&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <!-- Password -->
         <h3>Password</h3>
 
         <p>The <code>CInput</code> component supports password fields with an optional visibility toggle. By specifying the type="password" prop, the input field will display an eye icon for toggling the visibility of the password. This feature uses the IconEye and IconEyeSlash components to provide a seamless user experience.</p>
 
-        <c-card variant="flat" class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-            <div class="lg:w-2/5 w-full">
-                <c-input
-                    v-model="passwordValue"
-                    id="password"
-                    label="Password"
-                    type="password"
-                />
+        <card-docs>
+            <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+                <div class="lg:w-2/5 w-full">
+                    <c-input
+                        v-model="passwordValue"
+                        id="password"
+                        label="Password"
+                        type="password"
+                    />
+                </div>
             </div>
-        </c-card>
 
-        <pre>
-            <code class="code-hightlight language-vue">&lt;template&gt;
+            <template #code>
+<pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;c-input
         v-model="passwordValue"
         id="password"
         label="Password"
         type="password"
     /&gt;
-&lt;/template&gt;</code>
-        </pre>
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref } from "vue";
+
+const passwordValue = ref("");
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <!-- Clearable -->
         <h3>Clearable</h3>
 
         <p>The <code>clearable</code> property enables a button to clear the input field's content.</p>
 
-        <c-card variant="flat" class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-            <div class="lg:w-2/5 w-full">
-                <c-input v-model="clearableValue" id="clearable" label="Clearable Input" clearable />
+        <card-docs>
+            <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+                <div class="lg:w-2/5 w-full">
+                    <c-input v-model="clearableValue" id="clearable" label="Clearable Input" clearable />
+                </div>
             </div>
-        </c-card>
 
-        <pre>
-            <code class="code-hightlight language-vue">&lt;template&gt;
-    &lt;c-input id=&quot;clearable&quot; label=&quot;Clearable Input&quot; clearable /&gt;
-&lt;/template&gt;</code>
-        </pre>
+            <template #code>
+<pre><code class="code-highlight language-html">&lt;template&gt;
+    &lt;c-input
+        v-model="clearableValue"
+        id="clearable"
+        label="Clearable Input"
+        clearable
+    /&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref } from "vue";
+
+const clearableValue = ref("");
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <!-- Loading -->
         <h3>Loading</h3>
 
         <p>The <code>loading</code> property enables a button to clear the input field's content.</p>
 
-        <c-card variant="flat" class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-            <div class="lg:w-2/5 w-full">
-                <c-input id="loading" label="Loading Input" loading />
+        <card-docs>
+            <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+                <div class="lg:w-2/5 w-full">
+                    <c-input id="loading" label="Loading Input" loading />
+                </div>
             </div>
-        </c-card>
 
-        <pre>
-            <code class="code-hightlight language-vue">&lt;template&gt;
-    &lt;c-input id=&quot;loading&quot; label=&quot;Loading Input&quot; loading /&gt;
-&lt;/template&gt;</code>
-        </pre>
+            <template #code>
+<pre><code class="code-highlight language-html">&lt;template&gt;
+    &lt;c-input id="loading" label="Loading Input" loading /&gt;
+&lt;/template&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <!-- Icon -->
         <h3>Icon</h3>
 
         <p>The Input component does not include a dedicated <code>icon</code> prop. Instead, it utilizes a slot to allow for greater flexibility in customizing the icon within the input field. This approach provides developers with more control over the design and behavior of the icon. By adding an icon through the icon slot, you can seamlessly align it to the left of the input field, enhancing the user experience with contextual cues, such as a magnifying glass for search fields.</p>
 
-        <c-card variant="flat" class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-            <div class="lg:w-2/5 w-full">
-                <c-input id="search" label="Search Input">
-                    <template #icon>
-                        <IconMagnifyingGlass class="w-6  h-6 text-neutral-600 dark:text-white" aria-hidden="true"  />
-                    </template>
-                </c-input>
+        <card-docs>
+            <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+                <div class="lg:w-2/5 w-full">
+                    <c-input id="search" label="Search Input">
+                        <template #icon>
+                            <IconMagnifyingGlass class="w-6 h-6 text-gray-600 dark:text-white" aria-hidden="true" />
+                        </template>
+                    </c-input>
+                </div>
             </div>
-        </c-card>
 
-        <pre>
-            <code class="code-hightlight language-vue">&lt;template&gt;
-    &lt;c-input id=&quot;search&quot; label=&quot;Search Input&quot;&gt;
+            <template #code>
+<pre><code class="code-highlight language-html">&lt;template&gt;
+    &lt;c-input id="search" label="Search Input"&gt;
         &lt;template #icon&gt;
-            &lt;IconMagnifyingGlass class=&quot;w-6 h-6 text-neutral-600 dark:text-white&quot; aria-hidden=&quot;true&quot; /&gt;
+            &lt;IconMagnifyingGlass class="w-6 h-6 text-gray-600 dark:text-white" aria-hidden="true" /&gt;
         &lt;/template&gt;
     &lt;/c-input&gt;
-&lt;/template&gt;</code>
-</pre>
+&lt;/template&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <!-- Custom Colors -->
         <h3>Custom Colors</h3>
@@ -325,29 +369,31 @@ import CInput from &quot;@cmmv/ui/components/CInput.vue&quot;;
             </tbody>
         </table-docs>
 
-        <c-card variant="flat" class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-            <div class="lg:w-2/5 w-full">
-                <c-input
-                    id="custom"
-                    label="Custom Input"
-                    bgColor="bg-blue-600"
-                    textColor="text-white"
-                    borderColor="focus:ring focus:ring-purple-700 focus:ring-opacity-50"
-                ></c-input>
+        <card-docs>
+            <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+                <div class="lg:w-2/5 w-full">
+                    <c-input
+                        id="custom"
+                        label="Custom Input"
+                        bgColor="bg-blue-600"
+                        textColor="text-white"
+                        borderColor="focus:ring focus:ring-purple-700 focus:ring-opacity-50"
+                    ></c-input>
+                </div>
             </div>
-        </c-card>
 
-        <pre>
-        <code class="code-hightlight language-vue">&lt;template&gt;
+            <template #code>
+<pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;c-input
-        id=&quot;custom&quot;
-        label=&quot;Custom Input&quot;
-        bgColor=&quot;bg-blue-600&quot;
-        textColor=&quot;text-white&quot;
-        borderColor=&quot;focus:ring focus:ring-purple-700 focus:ring-opacity-50&quot;
+        id="custom"
+        label="Custom Input"
+        bgColor="bg-blue-600"
+        textColor="text-white"
+        borderColor="focus:ring focus:ring-purple-700 focus:ring-opacity-50"
     &gt;&lt;/c-input&gt;
-&lt;/template&gt;</code>
-</pre>
+&lt;/template&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <PagePagination
             previous="Form"
@@ -359,7 +405,7 @@ import CInput from &quot;@cmmv/ui/components/CInput.vue&quot;;
 </template>
 
 <style scoped>
-.code-hightlight {
+.code-highlight {
     white-space: pre;
 }
 </style>
@@ -369,6 +415,7 @@ import { ref } from "vue";
 import BaseLayout from "../../layout/BaseLayout.vue";
 import TableDocs from "../../components/TableDocs.vue";
 import PagePagination from "../../layout/PagePagination.vue";
+import CardDocs from "../../components/CardDocs.vue";
 
 const example1 = ref("");
 const example2 = ref("");

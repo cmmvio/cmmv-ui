@@ -19,39 +19,39 @@
             </thead>
             <tbody>
                 <tr>
-                    <td><code>modelValue</code></td>
+                    <td>modelValue</td>
                     <td>String</td>
-                    <td><code>""</code></td>
+                    <td>""</td>
                     <td>Selected time in "HH:mm" format, bound using <code>v-model</code>.</td>
                 </tr>
                 <tr>
-                    <td><code>format</code></td>
+                    <td>format</td>
                     <td>String</td>
-                    <td><code>"24h"</code></td>
+                    <td>"24h"</td>
                     <td>Time format, supports "12h" (AM/PM) or "24h".</td>
                 </tr>
                 <tr>
-                    <td><code>step</code></td>
+                    <td>step</td>
                     <td>Number</td>
-                    <td><code>30</code></td>
+                    <td>30</td>
                     <td>Defines the time intervals (in minutes) available for selection.</td>
                 </tr>
                 <tr>
-                    <td><code>label</code></td>
+                    <td>label</td>
                     <td>String</td>
-                    <td><code>""</code></td>
+                    <td>""</td>
                     <td>Optional label to describe the purpose of the time picker.</td>
                 </tr>
                 <tr>
-                    <td><code>placeholder</code></td>
+                    <td>placeholder</td>
                     <td>String</td>
-                    <td><code>"Pick a time"</code></td>
+                    <td>"Pick a time"</td>
                     <td>Placeholder text when no time is selected.</td>
                 </tr>
                 <tr>
-                    <td><code>disabled</code></td>
+                    <td>disabled</td>
                     <td>Boolean</td>
-                    <td><code>false</code></td>
+                    <td>false</td>
                     <td>Disables the time picker, preventing user interaction.</td>
                 </tr>
             </tbody>
@@ -63,13 +63,23 @@
             The simplest usage of the <code>c-timepicker</code>, allowing the user to select a time using the default 24-hour format.
         </p>
 
-        <c-card variant="flat" class="mx-auto p-4 flex flex-col items-center">
-            <c-timepicker v-model="selectedTime" />
-        </c-card>
+        <card-docs>
+            <div class="mx-auto p-4 flex flex-col items-center">
+                <c-timepicker v-model="selectedTime" />
+            </div>
 
-        <pre>
-            <code class="code-highlight language-html">&lt;c-timepicker v-model="selectedTime" /&gt;</code>
-        </pre>
+            <template #code>
+<pre><code class="code-highlight language-vue">&lt;template&gt;
+    &lt;c-timepicker v-model="selectedTime" /&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref } from "vue";
+
+const selectedTime = ref("");
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <h3>12-Hour Format (AM/PM)</h3>
 
@@ -77,13 +87,23 @@
             By setting the <code>format</code> prop to <code>"12h"</code>, the time picker will display and accept values in 12-hour format with AM/PM notation.
         </p>
 
-        <c-card variant="flat" class="mx-auto p-4 flex flex-col items-center">
-            <c-timepicker v-model="selectedTime12h" format="12h" />
-        </c-card>
+        <card-docs>
+            <div class="mx-auto p-4 flex flex-col items-center">
+                <c-timepicker v-model="selectedTime12h" format="12h" />
+            </div>
 
-        <pre>
-            <code class="code-highlight language-html">&lt;c-timepicker v-model="selectedTime12h" format="12h" /&gt;</code>
-        </pre>
+            <template #code>
+<pre><code class="code-highlight language-vue">&lt;template&gt;
+    &lt;c-timepicker v-model="selectedTime12h" format="12h" /&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref } from "vue";
+
+const selectedTime12h = ref("");
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <h3>Custom Step Interval</h3>
 
@@ -92,13 +112,23 @@
             In this example, the picker shows options every **15 minutes** instead of the default **30 minutes**.
         </p>
 
-        <c-card variant="flat" class="mx-auto p-4 flex flex-col items-center">
-            <c-timepicker v-model="selectedTimeStep" :step="15" />
-        </c-card>
+        <card-docs>
+            <div class="mx-auto p-4 flex flex-col items-center">
+                <c-timepicker v-model="selectedTimeStep" :step="15" />
+            </div>
 
-        <pre>
-            <code class="code-highlight language-html">&lt;c-timepicker v-model="selectedTimeStep" :step="15" /&gt;</code>
-        </pre>
+            <template #code>
+<pre><code class="code-highlight language-vue">&lt;template&gt;
+    &lt;c-timepicker v-model="selectedTimeStep" :step="15" /&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref } from "vue";
+
+const selectedTimeStep = ref("");
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <PagePagination
             previous="Textarea"
@@ -112,6 +142,7 @@
 <script setup>
 import { ref } from "vue";
 import BaseLayout from "../../layout/BaseLayout.vue";
+import CardDocs from "../../components/CardDocs.vue";
 import TableDocs from "../../components/TableDocs.vue";
 import PagePagination from "../../layout/PagePagination.vue";
 
@@ -119,3 +150,9 @@ const selectedTime = ref("");
 const selectedTime12h = ref("");
 const selectedTimeStep = ref("");
 </script>
+
+<style scoped>
+.code-highlight {
+    white-space: pre;
+}
+</style>

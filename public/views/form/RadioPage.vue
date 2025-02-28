@@ -69,39 +69,41 @@
             The following example demonstrates a basic radio button with a dynamic label. The label changes based on the <code>v-model</code> binding, reflecting the current state of the selected option.
         </p>
 
-        <card-docs class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4">
-            <c-radio
-                v-model="selectedOption"
-                value="option1"
-                label="Option 1"
-            ></c-radio>
-            <c-radio
-                v-model="selectedOption"
-                value="option2"
-                label="Option 2"
-            ></c-radio>
-        </card-docs>
+        <card-docs>
+            <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4">
+                <c-radio
+                    v-model="selectedOption"
+                    value="option1"
+                    label="Option 1"
+                ></c-radio>
+                <c-radio
+                    v-model="selectedOption"
+                    value="option2"
+                    label="Option 2"
+                ></c-radio>
+            </div>
 
-        <pre>
-            <code class="code-hightlight language-vue">&lt;template&gt;
+            <template #code>
+<pre><code class="code-highlight language-vue">&lt;template&gt;
     &lt;c-radio
-        v-model=&quot;selectedOption&quot;
-        value=&quot;option1&quot;
-        label=&quot;Option 1&quot;
+        v-model="selectedOption"
+        value="option1"
+        label="Option 1"
     /&gt;
     &lt;c-radio
-        v-model=&quot;selectedOption&quot;
-        value=&quot;option2&quot;
-        label=&quot;Option 2&quot;
+        v-model="selectedOption"
+        value="option2"
+        label="Option 2"
     /&gt;
 &lt;/template&gt;
 
 &lt;script setup&gt;
-import CRadio from &quot;@cmmv/ui/components/CRadio.vue&quot;;
-import { ref } from &quot;vue&quot;;
-const selectedOption = ref(&quot;option1&quot;);
-&lt;/script&gt;</code>
-        </pre>
+import { ref } from "vue";
+
+const selectedOption = ref("option1");
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <!-- Size Variants -->
         <h3>Size Variants</h3>
@@ -110,19 +112,21 @@ const selectedOption = ref(&quot;option1&quot;);
             The <code>CRadio</code> supports multiple sizes to fit different UI contexts. Use the <code>size</code> prop to customize the radio button dimensions. Available sizes include <code>sm</code>, <code>md</code>, and <code>lg</code>.
         </p>
 
-        <card-docs class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4">
-            <c-radio label="Small" size="sm" value="small" checked />
-            <c-radio label="Medium" size="md" value="medium" checked />
-            <c-radio label="Large" size="lg" value="large" checked />
-        </card-docs>
+        <card-docs>
+            <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4">
+                <c-radio label="Small" size="sm" value="small" checked />
+                <c-radio label="Medium" size="md" value="medium" checked />
+                <c-radio label="Large" size="lg" value="large" checked />
+            </div>
 
-        <pre>
-            <code class="code-hightlight language-vue">&lt;template&gt;
-    &lt;c-radio label=&quot;Small&quot; size=&quot;sm&quot; value=&quot;small&quot; /&gt;
-    &lt;c-radio label=&quot;Medium&quot; size=&quot;md&quot; value=&quot;medium&quot; /&gt;
-    &lt;c-radio label=&quot;Large&quot; size=&quot;lg&quot; value=&quot;large&quot; /&gt;
-&lt;/template&gt;</code>
-        </pre>
+            <template #code>
+<pre><code class="code-highlight language-vue">&lt;template&gt;
+    &lt;c-radio label="Small" size="sm" value="small" checked /&gt;
+    &lt;c-radio label="Medium" size="md" value="medium" checked /&gt;
+    &lt;c-radio label="Large" size="lg" value="large" checked /&gt;
+&lt;/template&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <!-- Disabled -->
         <h3>Disabled</h3>
@@ -131,15 +135,17 @@ const selectedOption = ref(&quot;option1&quot;);
             The <code>disabled</code> prop can be used to disable the radio button, making it non-interactive.
         </p>
 
-        <card-docs class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4">
-            <c-radio label="Disabled" checked disabled />
-        </card-docs>
+        <card-docs>
+            <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4">
+                <c-radio label="Disabled" checked disabled />
+            </div>
 
-        <pre>
-            <code class="code-hightlight language-vue">&lt;template&gt;
-    &lt;c-radio label=&quot;Disabled&quot; disabled /&gt;
-&lt;/template&gt;</code>
-        </pre>
+            <template #code>
+<pre><code class="code-highlight language-vue">&lt;template&gt;
+    &lt;c-radio label="Disabled" disabled checked /&gt;
+&lt;/template&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <!-- Color Variations -->
         <h3>Color Variations</h3>
@@ -148,34 +154,39 @@ const selectedOption = ref(&quot;option1&quot;);
             The <code>CRadio</code> supports color customization. Use the <code>bgColor</code> and <code>borderColor</code> props to style the radio button with custom colors.
         </p>
 
-        <card-docs class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4">
-            <c-radio label="Blue" bgColor="bg-blue-600" borderColor="border-blue-800" value="blue" checked />
-            <c-radio label="Green" bgColor="bg-green-600" borderColor="border-green-800" value="green" checked />
-            <c-radio label="Red" bgColor="bg-red-600" borderColor="border-red-800" value="red" checked />
-        </card-docs>
+        <card-docs>
+            <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4">
+                <c-radio label="Blue" bgColor="bg-blue-600" borderColor="border-blue-800" value="blue" checked />
+                <c-radio label="Green" bgColor="bg-green-600" borderColor="border-green-800" value="green" checked />
+                <c-radio label="Red" bgColor="bg-red-600" borderColor="border-red-800" value="red" checked />
+            </div>
 
-        <pre>
-            <code class="code-hightlight language-vue">&lt;template&gt;
+            <template #code>
+<pre><code class="code-highlight language-vue">&lt;template&gt;
     &lt;c-radio
-        label=&quot;Blue&quot;
-        bgColor=&quot;bg-blue-600&quot;
-        borderColor=&quot;border-blue-800&quot;
-        value=&quot;blue&quot;
+        label="Blue"
+        bgColor="bg-blue-600"
+        borderColor="border-blue-800"
+        value="blue"
+        checked
     /&gt;
     &lt;c-radio
-        label=&quot;Green&quot;
-        bgColor=&quot;bg-green-600&quot;
-        borderColor=&quot;border-green-800&quot;
-        value=&quot;green&quot;
+        label="Green"
+        bgColor="bg-green-600"
+        borderColor="border-green-800"
+        value="green"
+        checked
     /&gt;
     &lt;c-radio
-        label=&quot;Red&quot;
-        bgColor=&quot;bg-red-600&quot;
-        borderColor=&quot;border-red-800&quot;
-        value=&quot;red&quot;
+        label="Red"
+        bgColor="bg-red-600"
+        borderColor="border-red-800"
+        value="red"
+        checked
     /&gt;
-&lt;/template&gt;</code>
-        </pre>
+&lt;/template&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <PagePagination
             previous="OTP Input"
@@ -185,6 +196,12 @@ const selectedOption = ref(&quot;option1&quot;);
         />
     </BaseLayout>
 </template>
+
+<style scoped>
+.code-highlight {
+    white-space: pre;
+}
+</style>
 
 <script setup>
 import { ref } from "vue";

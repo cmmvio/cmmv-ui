@@ -1,5 +1,5 @@
 <template>
-  <div class="code-preview-container border border-gray-200 dark:border-neutral-700 rounded-lg mb-8">
+  <div class="code-preview-container border border-gray-200 dark:border-neutral-700 rounded-lg mb-8 overflow-hidden">
     <!-- Header com opções -->
     <div class="flex items-center justify-between px-4 py-2 bg-gray-100 dark:bg-neutral-800 border-b border-gray-200 dark:border-neutral-700">
       <!-- Tabs para alternar entre Preview e Code -->
@@ -122,7 +122,7 @@
       <!-- Code -->
       <div
         v-show="activeTab === 'code'"
-        class="bg-gray-50 dark:bg-neutral-900 p-4 overflow-auto"
+        class="overflow-auto"
         style="max-height: 500px;"
       >
         <pre class="language-html"><code><slot name="code"></slot></code></pre>

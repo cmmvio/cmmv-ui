@@ -87,7 +87,7 @@
             The node has both inputs and outputs, allowing connections between nodes.
         </p>
 
-        <c-card variant="flat" class="mx-auto flex flex-col items-center">
+        <card-docs>
             <div class="w-full h-96">
                 <c-graph-box ref="graph" :gridSize="30">
                     <c-graph-node
@@ -108,26 +108,48 @@
                     />
                 </c-graph-box>
             </div>
-        </c-card>
 
-        <pre>
-            <code>&lt;c-graph-box :gridSize="30"&gt;
-    &lt;c-graph-node
-        id="start"
-        :x="100"
-        :y="150"
-        label="Start Node"
-        :outputs="[{ id: 'delta', type: 'float', label: 'Delta' }]"
-    /&gt;
-    &lt;c-graph-node
-        id="process"
-        :x="300"
-        :y="250"
-        label="Process Node"
-        :inputs="[{ id: 'delta', type: 'float', label: 'Delta' }]"
-    /&gt;
-&lt;/c-graph-box&gt;</code>
-        </pre>
+            <template #code>
+<pre><code class="code-highlight language-vue">&lt;template&gt;
+    &lt;c-graph-box :gridSize="30"&gt;
+        &lt;c-graph-node
+            id="start"
+            :x="50"
+            :y="50"
+            label="Start Node"
+            :outputs="outputs1"
+        /&gt;
+        &lt;c-graph-node
+            id="process"
+            :x="300"
+            :y="150"
+            label="Process Node"
+            :inputs="inputs1"
+            :outputs="outputs2"
+        /&gt;
+    &lt;/c-graph-box&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref } from "vue";
+
+const outputs1 = ref([
+    { id: "delta", type: "float", label: "Delta" }
+]);
+
+const inputs1 = ref([
+    { id: "delta", type: "float", label: "Delta" }
+]);
+
+const outputs2 = ref([
+    { id: "X", type: "int", label: "X" },
+    { id: "y", type: "int", label: "Y" }
+]);
+
+const graph = ref(null);
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <h3>Node Inputs & Outputs</h3>
 
@@ -136,8 +158,8 @@
             The colors of the input/output ports are automatically assigned based on the data type.
         </p>
 
-        <c-card variant="flat" class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center">
-            <div class="lg:w-3/4 w-full h-96">
+        <card-docs>
+            <div class="w-full h-96">
                 <c-graph-box ref="graph">
                     <c-graph-node
                         id="math-addition"
@@ -154,35 +176,25 @@
                     />
                 </c-graph-box>
             </div>
-        </c-card>
 
-        <pre>
-            <code>&lt;c-graph-node
-    id="math-addition"
-    :x="200"
-    :y="100"
-    label="Addition"
-    :inputs="[
-        {
-            id: 'a',
-            type: 'int',
-            label: 'A'
-        },
-        {
-            id: 'b',
-            type: 'int',
-            label: 'B'
-        }
-    ]"
-    :outputs="[
-        {
-            id: 'result',
-            type: 'int',
-            label: 'Result'
-        }
-    ]"
-/&gt;</code>
-        </pre>
+            <template #code>
+<pre><code class="code-highlight language-vue">&lt;template&gt;
+    &lt;c-graph-node
+        id="math-addition"
+        :x="200"
+        :y="100"
+        label="Addition"
+        :inputs="[
+            { id: 'a', type: 'int', label: 'A' },
+            { id: 'b', type: 'int', label: 'B' }
+        ]"
+        :outputs="[
+            { id: 'result', type: 'int', label: 'Result' }
+        ]"
+    /&gt;
+&lt;/template&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <PagePagination previous="Graph Box" previousLink="/graph-box" next="Graph Links" nextLink="/graph-links" />
     </BaseLayout>
@@ -191,6 +203,7 @@
 <script setup>
 import { ref } from "vue";
 import BaseLayout from "../../layout/BaseLayout.vue";
+import CardDocs from "../../components/CardDocs.vue";
 import TableDocs from "../../components/TableDocs.vue";
 import PagePagination from "../../layout/PagePagination.vue";
 
@@ -200,3 +213,9 @@ const outputs2 = ref([{ id: "X", type: "int", label: "X" }, { id: "y", type: "in
 
 const graph = ref(null);
 </script>
+
+<style scoped>
+.code-highlight {
+    white-space: pre;
+}
+</style>

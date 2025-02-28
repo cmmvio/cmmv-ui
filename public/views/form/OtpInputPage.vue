@@ -64,99 +64,115 @@
 
         <p>The <code>COTPInput</code> component is easy to use with minimal configuration.</p>
 
-        <c-card variant="flat" class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-            <div class="lg:w-2/5 w-full">
-                <c-otp-input v-model="otpValue" />
+        <card-docs>
+            <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+                <div class="lg:w-2/5 w-full">
+                    <c-otp-input v-model="otpValue" />
 
-                <div class="text-center">Value: {{ otpValue }}</div>
+                    <div class="text-center">Value: {{ otpValue }}</div>
+                </div>
             </div>
-        </c-card>
 
-        <pre>
-            <code class="code-highlight language-vue">&lt;template&gt;
-    &lt;c-otp-input v-model=&quot;otpValue&quot; /&gt;
+            <template #code>
+<pre><code class="code-highlight language-vue">&lt;template&gt;
+    &lt;c-otp-input v-model="otpValue" /&gt;
 &lt;/template&gt;
 
-&lt;script&gt;
-const otpValue = ref(&quot;&quot;);
-&lt;/script&gt;</code>
-        </pre>
+&lt;script setup&gt;
+import { ref } from "vue";
+
+const otpValue = ref("");
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <!-- Custom Length -->
         <h3>Custom Length</h3>
 
         <p>You can customize the OTP length to match specific requirements, ranging from 4 to 8 digits.</p>
 
-        <c-card variant="flat" class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-            <div class="lg:w-2/5 w-full">
-                <c-otp-input v-model="otpValueLength8" :length="8" />
+        <card-docs>
+            <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+                <div class="lg:w-2/5 w-full">
+                    <c-otp-input v-model="otpValueLength8" :length="8" />
+                </div>
             </div>
-        </c-card>
 
-        <pre>
-            <code class="code-highlight language-vue">&lt;template&gt;
-    &lt;c-otp-input v-model=&quot;otpValueLength8&quot; :length=&quot;8&quot; /&gt;
+            <template #code>
+<pre><code class="code-highlight language-vue">&lt;template&gt;
+    &lt;c-otp-input v-model="otpValueLength8" :length="8" /&gt;
 &lt;/template&gt;
 
-&lt;script&gt;
-const otpValueLength8 = ref(&quot;&quot;);
-&lt;/script&gt;</code>
-        </pre>
+&lt;script setup&gt;
+import { ref } from "vue";
+
+const otpValueLength8 = ref("");
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <!-- Error State -->
         <h3>Error State</h3>
 
         <p>The <code>isError</code> property highlights the input fields in red when validation fails.</p>
 
-        <c-card variant="flat" class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-            <div class="lg:w-2/5 w-full">
-                <c-otp-input v-model="otpErrorValue" error />
+        <card-docs>
+            <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+                <div class="lg:w-2/5 w-full">
+                    <c-otp-input v-model="otpErrorValue" error />
+                </div>
             </div>
-        </c-card>
 
-        <pre>
-            <code class="code-hightlight language-vue">&lt;template&gt;
-    &lt;c-otp-input v-model=&quot;otpErrorValue&quot; error /&gt;
+            <template #code>
+<pre><code class="code-highlight language-vue">&lt;template&gt;
+    &lt;c-otp-input v-model="otpErrorValue" error /&gt;
 &lt;/template&gt;
 
-&lt;script&gt;
-const otpErrorValue = ref(&quot;&quot;);
-&lt;/script&gt;</code>
-        </pre>
+&lt;script setup&gt;
+import { ref } from "vue";
+
+const otpErrorValue = ref("");
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <!-- Custom Colors -->
         <h3>Custom Colors</h3>
 
         <p>
-            Customize the component’s appearance by changing background, text, and border colors
+            Customize the component's appearance by changing background, text, and border colors
             to fit your application's design.
         </p>
 
-        <c-card variant="flat" class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-            <div class="lg:w-2/5 w-full">
-                <c-otp-input
-                    v-model="otpCustomValue"
-                    bgColor="bg-blue-100"
-                    textColor="text-blue-800"
-                    borderColor="focus:ring-blue-400 border-blue-200"
-                />
+        <card-docs>
+            <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+                <div class="lg:w-2/5 w-full">
+                    <c-otp-input
+                        v-model="otpCustomValue"
+                        bgColor="bg-blue-100"
+                        textColor="text-blue-800"
+                        borderColor="focus:ring-blue-400 border-blue-200"
+                    />
+                </div>
             </div>
-        </c-card>
 
-        <pre>
-            <code class="code-highlight language-vue">&lt;template&gt;
+            <template #code>
+<pre><code class="code-highlight language-vue">&lt;template&gt;
     &lt;c-otp-input
-        v-model=&quot;otpCustomValue&quot;
-        bgColor=&quot;bg-blue-100&quot;
-        textColor=&quot;text-blue-800&quot;
-        borderColor=&quot;focus:ring-blue-400 border-blue-200&quot;
+        v-model="otpCustomValue"
+        bgColor="bg-blue-100"
+        textColor="text-blue-800"
+        borderColor="focus:ring-blue-400 border-blue-200"
     /&gt;
 &lt;/template&gt;
 
-&lt;script&gt;
-const otpCustomValue = ref(&quot;&quot;);
-&lt;/script&gt;</code>
-        </pre>
+&lt;script setup&gt;
+import { ref } from "vue";
+
+const otpCustomValue = ref("");
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <!-- Multiple Instances -->
         <h3>Multiple Instances</h3>
@@ -166,33 +182,37 @@ const otpCustomValue = ref(&quot;&quot;);
             This is useful for multi-step authentication flows.
         </p>
 
-        <c-card variant="flat" class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-            <div class="lg:w-2/5 w-full">
-                <c-otp-input v-model="otpInstance1" />
-                <c-otp-input v-model="otpInstance2" :length="8" bgColor="bg-gray-100" textColor="text-gray-800" />
+        <card-docs>
+            <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+                <div class="lg:w-2/5 w-full">
+                    <c-otp-input v-model="otpInstance1" />
+                    <c-otp-input v-model="otpInstance2" :length="8" bgColor="bg-gray-100" textColor="text-gray-800" />
+                </div>
             </div>
-        </c-card>
 
-        <pre>
-            <code class="code-highlight language-vue">&lt;template&gt;
-    &lt;c-otp-input v-model=&quot;otpInstance1&quot; /&gt;
+            <template #code>
+<pre><code class="code-highlight language-vue">&lt;template&gt;
+    &lt;c-otp-input v-model="otpInstance1" /&gt;
     &lt;c-otp-input
-        v-model=&quot;otpInstance2&quot;
-        :length=&quot;8&quot;
-        bgColor=&quot;bg-gray-100&quot;
-        textColor=&quot;text-gray-800&quot;
+        v-model="otpInstance2"
+        :length="8"
+        bgColor="bg-gray-100"
+        textColor="text-gray-800"
     /&gt;
 &lt;/template&gt;
 
-&lt;script&gt;
-const otpInstance1 = ref(&quot;&quot;);
-const otpInstance2 = ref(&quot;&quot;);
-&lt;/script&gt;</code>
-        </pre>
+&lt;script setup&gt;
+import { ref } from "vue";
+
+const otpInstance1 = ref("");
+const otpInstance2 = ref("");
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <h3>Exemples</h3>
 
-        <p>Here is an example of using the <code>c-otp-input</code> component within a card layout to create a verification screen. The card contains a title, instructions for entering a verification code, and a button to proceed with the verification. Additionally, it includes a link for users to resend the code if they didn’t receive it. This implementation demonstrates a practical use case of combining multiple <code>@cmmv/ui</code> components to create an interactive and visually appealing UI.</p>
+        <p>Here is an example of using the <code>c-otp-input</code> component within a card layout to create a verification screen. The card contains a title, instructions for entering a verification code, and a button to proceed with the verification. Additionally, it includes a link for users to resend the code if they didn't receive it. This implementation demonstrates a practical use case of combining multiple <code>@cmmv/ui</code> components to create an interactive and visually appealing UI.</p>
 
         <card-docs>
             <c-card
@@ -228,53 +248,52 @@ const otpInstance2 = ref(&quot;&quot;);
                     </div>
                 </template>
             </c-card>
-        </card-docs>
 
-        <pre>
-    <code class="code-highlight language-vue">&lt;template&gt;
-    &lt;card-docs&gt;
-        &lt;c-card
-            bgColor=&quot;bg-zinc-900&quot;
-            textColor=&quot;text-white&quot;
-            maxWidth=&quot;400px&quot;
-            rounded=&quot;md&quot;
-        &gt;
-            &lt;template #header&gt;
-                &lt;div class=&quot;flex items-center space-x-3 p-3&quot;&gt;
-                    &lt;h3 class=&quot;text-2xl m-auto mt-4 font-bold&quot;&gt;Verify Your Account&lt;/h3&gt;
+            <template #code>
+<pre><code class="code-highlight language-vue">&lt;template&gt;
+    &lt;c-card
+        bgColor="bg-neutral-100 dark:bg-neutral-900"
+        textColor="text-neutral-600 dark:text-white"
+        maxWidth="400px"
+        rounded="md"
+    &gt;
+        &lt;template #header&gt;
+            &lt;div class="flex items-center space-x-3 p-3"&gt;
+                &lt;h3 class="text-2xl m-auto mt-4 font-bold"&gt;Verify Your Account&lt;/h3&gt;
+            &lt;/div&gt;
+        &lt;/template&gt;
+
+        &lt;template #content&gt;
+            &lt;div class="py-10 pt-4 text-sm px-8 text-center"&gt;
+                &lt;div class="mb-2"&gt;
+                    A verification code has been sent to and..@gmail.com.
+                    Please check your inbox and enter the code below to verify your email address.
                 &lt;/div&gt;
-            &lt;/template&gt;
 
-            &lt;template #content&gt;
-                &lt;div class=&quot;py-10 pt-4 text-sm px-8 text-center&quot;&gt;
-                    &lt;div class=&quot;mb-2&quot;&gt;
-                        A verification code has been sent to and..@gmail.com.
-                        Please check your inbox and enter the code below to verify your email address.
-                    &lt;/div&gt;
+                &lt;c-otp-input v-model="otpValue" /&gt;
 
-                    &lt;c-otp-input v-model=&quot;otpValue&quot; /&gt;
+                &lt;c-button
+                    size="2xl"
+                    type="button"
+                    class="w-8/12 my-4"
+                    :disabled="otpValue.length &lt; 6"
+                &gt;
+                    VERIFY
+                &lt;/c-button&gt;
 
-                    &lt;c-button
-                        size=&quot;2xl&quot;
-                        type=&quot;button&quot;
-                        class=&quot;w-8/12 my-4&quot;
-                        :disabled=&quot;otpValue.length &lt; 6&quot;
-                    &gt;
-                        VERIFY
-                    &lt;/c-button&gt;
-
-                    &lt;div&gt;Didn&apos;t receive the code? &lt;a href=&quot;#&quot;&gt;Resend&lt;/a&gt;&lt;/div&gt;
-                &lt;/div&gt;
-            &lt;/template&gt;
-        &lt;/c-card&gt;
-    &lt;/card-docs&gt;
+                &lt;div&gt;Didn't receive the code? &lt;a href="#"&gt;Resend&lt;/a&gt;&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/template&gt;
+    &lt;/c-card&gt;
 &lt;/template&gt;
 
-&lt;script&gt;
-import { ref } from &quot;vue&quot;;
-const otpValue = ref(&quot;&quot;);
-&lt;/script&gt;</code>
-</pre>
+&lt;script setup&gt;
+import { ref } from "vue";
+
+const otpValue = ref("");
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <PagePagination
             previous="Number Input"
@@ -300,6 +319,7 @@ import PagePagination from "../../layout/PagePagination.vue";
 
 const otpValue = ref("");
 const otpValueLength8 = ref("");
+const otpErrorValue = ref("");
 const otpCustomValue = ref("");
 const otpInstance1 = ref("");
 const otpInstance2 = ref("");
