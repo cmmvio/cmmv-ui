@@ -317,47 +317,67 @@ const filteredBrandIcons = computed(() => {
 });
 
 onMounted(async () => {
-    for (const icon of iconsBrands) {
-        if(icon.path){
-            try{
-                if(process.env.NODE_ENV === "production"){
-                    resolvedBrandsIcons.push({
-                        ...icon,
-                        component: markRaw(Icons.components[icon.path.replace("components/icons/", "").replace(".vue", "")]),
-                    });
-                }
-                else {
-                    const component = await import(`../../../src/${icon.path}`);
-
-                    resolvedBrandsIcons.push({
-                        ...icon,
-                        component: markRaw(component.default),
-                    });
+    if (process.env.NODE_ENV === "production") {
+        // Em produção, acessamos os componentes através da propriedade .components do objeto Icons
+        for (const icon of iconsBrands) {
+            if (icon.path) {
+                try {
+                    const iconName = icon.path.replace("components/icons/", "").replace(".vue", "");
+                    if (Icons.components && Icons.components[iconName]) {
+                        resolvedBrandsIcons.push({
+                            ...icon,
+                            component: markRaw(Icons.components[iconName]),
+                        });
+                    }
+                } catch (e) {
+                    console.warn(`Não foi possível carregar o ícone de marca: ${icon.name}`);
                 }
             }
-            catch{}
         }
-    }
 
-    for (const icon of icons) {
-        if(icon.path){
-            try{
-                if(process.env.NODE_ENV === "production"){
-                    resolvedIcons.push({
-                        ...icon,
-                        component: markRaw(Icons.components[icon.path.replace("components/icons/", "").replace(".vue", "")]),
-                    });
-                }
-                else {
-                    const component = await import(`../../../src/${icon.path}`);
-
-                    resolvedIcons.push({
-                        ...icon,
-                        component: markRaw(component.default),
-                    });
+        for (const icon of icons) {
+            if (icon.path) {
+                try {
+                    const iconName = icon.path.replace("components/icons/", "").replace(".vue", "");
+                    if (Icons.components && Icons.components[iconName]) {
+                        resolvedIcons.push({
+                            ...icon,
+                            component: markRaw(Icons.components[iconName]),
+                        });
+                    }
+                } catch (e) {
+                    console.warn(`Não foi possível carregar o ícone: ${icon.name}`);
                 }
             }
-            catch{}
+        }
+    } else {
+        // Em desenvolvimento, usamos importação dinâmica
+        for (const icon of iconsBrands) {
+            if (icon.path) {
+                try {
+                    const imported = await import(`../../../src/${icon.path}`);
+                    resolvedBrandsIcons.push({
+                        ...icon,
+                        component: markRaw(imported.default),
+                    });
+                } catch (e) {
+                    console.warn(`Falha ao importar ícone de marca: ${icon.path}`, e);
+                }
+            }
+        }
+
+        for (const icon of icons) {
+            if (icon.path) {
+                try {
+                    const imported = await import(`../../../src/${icon.path}`);
+                    resolvedIcons.push({
+                        ...icon,
+                        component: markRaw(imported.default),
+                    });
+                } catch (e) {
+                    console.warn(`Falha ao importar ícone: ${icon.path}`, e);
+                }
+            }
         }
     }
 });

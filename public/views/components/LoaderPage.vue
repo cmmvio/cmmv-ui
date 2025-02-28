@@ -329,20 +329,37 @@ const loaders = LoaderList;
 const resolvedIcons = reactive([]);
 
 onMounted(async () => {
-    for (const loader of loaders) {
-        if(process.env.NODE_ENV === "production"){
-            resolvedIcons.push({
-                ...loader,
-                component: markRaw(Icons.components[loader.path.replace("components/loader/", "").replace(".vue", "")]),
-            });
+    if (process.env.NODE_ENV === "production") {
+        // Em produção, acessamos os componentes através da propriedade .components do objeto Icons
+        for (const loader of loaders) {
+            if (loader.path) {
+                try {
+                    const loaderName = loader.path.replace("components/loader/", "").replace(".vue", "");
+                    if (Icons.components && Icons.components[loaderName]) {
+                        resolvedIcons.push({
+                            ...loader,
+                            component: markRaw(Icons.components[loaderName]),
+                        });
+                    }
+                } catch (e) {
+                    console.warn(`Não foi possível carregar o loader: ${loader.name}`);
+                }
+            }
         }
-        else {
-            const component = await import(`../../../src/${loader.path}`);
-
-            resolvedIcons.push({
-                ...loader,
-                component: markRaw(component.default),
-            });
+    } else {
+        // Em desenvolvimento, usamos importação dinâmica
+        for (const loader of loaders) {
+            if (loader.path) {
+                try {
+                    const imported = await import(`../../../src/${loader.path}`);
+                    resolvedIcons.push({
+                        ...loader,
+                        component: markRaw(imported.default),
+                    });
+                } catch (e) {
+                    console.warn(`Falha ao importar loader: ${loader.path}`, e);
+                }
+            }
         }
     }
 });
