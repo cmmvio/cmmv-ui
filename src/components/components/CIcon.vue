@@ -20,7 +20,7 @@
 defineProps({
     size: {
         type: String,
-        default: "md", // sm|md|lg|xl|2xl
+        default: "md",
     },
     color: {
         type: String,

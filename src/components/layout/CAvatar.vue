@@ -1,8 +1,9 @@
 <template>
-    <div :class="class">
+    <div v-bind="$attrs">
         <div
+            v-if="!stacked"
             :class="[
-                'relative flex items-center justify-center overflow-hidden',
+                'relative flex items-center justify-center',
                 roundedStyles[rounded],
                 sizes[size],
                 borderColor ? borderColor : '',
@@ -10,21 +11,42 @@
             ]"
         >
             <img
-                v-if="src"
+                v-if="src && !stacked"
                 :src="src"
                 :alt="alt"
-                :class="['object-cover w-full h-full', imageClass]"
+                :class="[
+                    'object-cover w-full h-full overflow-hidden z-60',
+                    roundedStyles[rounded],
+                    imageClass
+                ]"
                 @error="handleError"
             />
 
-            <slot v-else>
+            <slot v-else-if="!stacked">
                 <span v-if="icon" :class="['text-white', iconClass]">
                     <component :is="icon" />
                 </span>
-                <span v-else class="text-white text-sm font-semibold">
+
+                <span v-else-if="initials" class="text-white text-sm font-semibold">
                     {{ initials }}
                 </span>
+
+                <span v-else class="relative">
+                    <svg class="w-12 h-12 text-gray-400 -left-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
+                    </svg>
+                </span>
             </slot>
+
+            <div
+                v-if="dotIndicator"
+                class="absolute bottom-0 right-0 w-3 h-3 rounded-full border-2 border-white z-90"
+                :class="dotColors[dotIndicator]"
+            ></div>
+        </div>
+
+        <div v-else class="flex -space-x-4 rtl:space-x-reverse" >
+            <slot></slot>
         </div>
     </div>
 </template>
@@ -35,59 +57,57 @@ import { computed } from "vue";
 const props = defineProps({
     size: {
         type: String,
-        default: "md", // sm | md | lg | xl | 2xl
-        required: false,
+        default: "md"
     },
     src: {
         type: String,
-        required: false,
-        default: "",
+        default: ""
     },
     alt: {
         type: String,
-        required: false,
-        default: "Avatar",
+        default: "Avatar"
     },
     icon: {
         type: [String, Object],
-        required: false,
-        default: null,
+        default: null
     },
     initials: {
         type: String,
-        required: false,
-        default: "",
+        default: ""
     },
     rounded: {
         type: String,
-        required: false,
-        default: "full", // none | md | full
+        default: "full"
     },
     bgColor: {
         type: String,
-        required: false,
-        default: "bg-gray-300",
+        default: "bg-gray-300"
     },
     borderColor: {
         type: String,
-        required: false,
-        default: "",
+        default: ""
     },
     class: {
         type: String,
-        required: false,
-        default: "",
+        default: ""
     },
     imageClass: {
         type: String,
-        required: false,
-        default: "",
+        default: ""
     },
     iconClass: {
         type: String,
-        required: false,
-        default: "text-2xl",
+        default: "text-2xl"
     },
+    dotIndicator: {
+        type: String,
+        default: null,
+        validator: (value: string) => ["online", "busy", "offline", "custom"].includes(value)
+    },
+    stacked: {
+        type: Boolean,
+        default: false
+    }
 });
 
 const emit = defineEmits(["error"]);
@@ -104,6 +124,13 @@ const roundedStyles = computed((): Record<string, string> => ({
     none: "rounded-none",
     md: "rounded-md",
     full: "rounded-full",
+}));
+
+const dotColors = computed((): Record<string, string> => ({
+    online: "bg-green-500",
+    busy: "bg-red-500",
+    offline: "bg-gray-400",
+    custom: "",
 }));
 
 const handleError = () => {

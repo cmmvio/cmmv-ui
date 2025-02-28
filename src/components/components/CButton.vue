@@ -2,8 +2,8 @@
     <component
         :is="buttonType"
         :type="type"
-        class="c-button font-semibold shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 relative"
-        :class="[sizes[size], roundedStyles[rounded], variantStyles[variant], computedBgColor, textColor, { 'opacity-50': disabled, 'cursor-not-allowed': disabled }]"
+        class="c-button font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 relative"
+        :class="[sizes[size], roundedStyles[rounded], variantStyles[variant], computedBgColor, textColor, shadow, { 'opacity-50': disabled, 'cursor-not-allowed': disabled }]"
         :aria-busy="loading ? true : undefined"
         :disabled="disabled"
         :tabindex="disabled || loading ? -1 : undefined"
@@ -82,6 +82,10 @@ const props = defineProps({
         type: String,
         default: "text-white"
     },
+    shadow: {
+        type: String,
+        default: "shadow-sm"
+    },
     disabled: {
         type: Boolean,
         default: false
@@ -112,16 +116,20 @@ const roundedStyles: Record<string, string> = reactive({
 });
 
 const variantStyles: Record<string, string> = reactive({
-    elevated: "text-black shadow-md", 
-    flat: "text-black", 
-    tonal: "", 
-    outlined: "border border-gray-300 text-black", 
+    elevated: "text-black shadow-md",
+    flat: "text-black",
+    tonal: "",
+    outlined: "border border-gray-300 text-black",
     text: "text-blue-600 hover:underline",
     plain: "bg-transparent text-black"
 });
 
 function handleClick(event: MouseEvent) {
-    if (props.disabled) return;
+    if (props.disabled) {
+        event.preventDefault();
+        event.stopPropagation();
+        return;
+    }
 
     emit("click", event);
 
@@ -145,7 +153,7 @@ function handleClick(event: MouseEvent) {
     const existingRipple = button.querySelector(".ripple");
 
     if (existingRipple) existingRipple.remove();
-    
+
     button.appendChild(circle);
 }
 </script>

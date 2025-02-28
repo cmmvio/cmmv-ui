@@ -1,10 +1,9 @@
 <template>
     <div
         v-if="modelValue"
-        class="fixed inset-0 z-[var(--z-index)] flex items-center justify-center transition-opacity"
-        style="--z-index: 50;"
+        class="fixed inset-0 z-[var(--z-index)] flex items-center justify-center transition-opacity c-overlay"
+        style="--z-index: 50; transition-timing-function: cubic-bezier(.4,0,.2,1)"
     >
-        <!-- Background -->
         <div
             class="absolute inset-0"
             :style="{
@@ -14,12 +13,18 @@
             @click.self="handleClose"
         ></div>
 
-        <!-- Slot Content -->
         <div class="relative z-[calc(var(--z-index)+1)]">
             <slot></slot>
         </div>
     </div>
 </template>
+
+<style scoped>
+.c-overlay {
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+}
+</style>
 
 <script setup lang="ts">
 import { defineProps, defineEmits } from "vue";
@@ -31,19 +36,19 @@ const props = defineProps({
     },
     bgColor: {
         type: String,
-        default: "#FFF", // Default semi-transparent black background
+        default: "#FFF",
     },
     opacity: {
         type: Number,
-        default: 50, // Opacity from 0 to 100
+        default: 50,
     },
     closeOnClick: {
         type: Boolean,
-        default: true, // Allow closing by clicking on the overlay
+        default: true,
     },
     zIndex: {
         type: Number,
-        default: 50, // Define stacking order
+        default: 50,
     },
 });
 
@@ -57,7 +62,6 @@ const handleClose = () => {
 </script>
 
 <style scoped>
-/* Fade-in/out for overlay */
 .fade-overlay-enter-active,
 .fade-overlay-leave-active {
     transition: opacity 0.3s ease;

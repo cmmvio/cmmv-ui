@@ -47,7 +47,7 @@ const props = defineProps({
     },
     bgColor: {
         type: String,
-        default: "bg-white dark:bg-zinc-800",
+        default: "bg-white dark:bg-neutral-800",
     },
     textColor: {
         type: String,
@@ -55,7 +55,7 @@ const props = defineProps({
     },
     borderColor: {
         type: String,
-        default: "border-zinc-800 dark:border-zinc-600 focus:ring-blue-500",
+        default: "border-neutral-400 dark:border-neutral-700 focus:ring-blue-500",
     },
 });
 

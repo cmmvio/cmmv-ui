@@ -1,24 +1,24 @@
 <template>
     <div class="c-input relative w-full">
-        <label 
+        <label
             :for="id"
-            class="c-input-label absolute left-3 text-sm transition-all duration-200 ease-in-out pointer-events-none"
-            :class="[{ 
-                'c-input-label--active': isActive, 
-                'bg-white dark:bg-zinc-900': variant === 'default' && !disabled && bgColor == '',
-                'bg-white dark:bg-zinc-800': (variant === 'outlined' || variant === 'filled') && !disabled && bgColor == '',
-                'top-[50%] -translate-y-1/2': !isActive && !currentValue && !hasError,
+            class="c-input-label absolute text-sm transition-all duration-200 ease-in-out drop-shadow-xs pointer-events-none"
+            :class="[{
+                'c-input-label--active': floatingLabel && (isActive || currentValue),
+                'top-[50%] -translate-y-1/2 left-3': (!isActive && !currentValue),
                 'top-[30%]': !isActive && hasError,
-                'top-1/3': currentValue !== undefined && currentValue !== '',
-                'pl-8': hasIcon && !isActive
-            }, bgColor, textColor ? textColor : 'text-gray-500 dark:text-gray-400']"
+                'scale-75 origin-left text-xs top-1 left-3': (isActive || (currentValue !== undefined && currentValue !== '')) && !floatingLabel,
+                'pl-10': hasIcon && (!isActive && !currentValue)
+            },
+            textColor ? textColor : 'text-gray-500 dark:text-gray-400',
+            !disabled ? (bgColor ? bgColor : variantColors[variant]) : '', 'px-1']"
         >
             {{ label }}
         </label>
 
         <div class="relative flex items-center">
-            <div 
-                v-if="hasIcon" 
+            <div
+                v-if="hasIcon"
                 class="absolute inset-y-0 left-0 flex items-center pl-3 z-50"
             >
                 <slot name="icon"></slot>
@@ -30,8 +30,8 @@
                 :name="name"
                 :placeholder="isActive ? placeholder : ''"
                 :value="modelValue"
-                :class="[sizes[size], roundedStyles[rounded], variantStyles[variant], bgColor ? bgColor : variantColors[variant], textColor, borderColorClass,
-                    { 'ring-red-500 ring-2': hasError, 'opacity-50': disabled, 'cursor-not-allowed': disabled, 'pl-10': hasIcon }]"
+                :class="[sizes[size], roundedStyles[rounded], variantStyles[variant], bgColor ? bgColor : variantColors[variant], textColor,
+                    { 'ring-red-500 ring-2': hasError, 'opacity-30': disabled, 'cursor-not-allowed': disabled, 'pl-10': hasIcon }]"
                 class="c-input-field block w-full border shadow-sm pt-4 pb-2 outline-none"
                 @keyup="handleInput"
                 @change="handleInput"
@@ -52,14 +52,14 @@
                 </svg>
             </button>
 
-            <div 
-                v-if="loading" 
-                class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-400"
+            <div
+                v-if="loading"
+                class="absolute inset-y-0 right-0 flex items-center px-2 mr-1 text-gray-400"
             >
-                <c-progress-circular 
-                    indeterminate 
-                    :size="20" 
-                    :fillColor="'#EFEFEF'" 
+                <c-progress-circular
+                    indeterminate
+                    :size="20"
+                    :fillColor="'#666'"
                     :width="2"
                 />
             </div>
@@ -69,19 +69,22 @@
                 type="button"
                 class="absolute inset-y-0 right-0 flex items-center px-2"
                 @click="togglePasswordVisibility"
-                :aria-pressed="showPassword" 
-                aria-label="Toggle password visibility" 
+                :aria-pressed="showPassword"
+                aria-label="Toggle password visibility"
                 role="switch"
             >
-                <icon-eye-slash 
-                    :class="[textColor ? textColor : 'text-gray-500 dark:text-gray-400 hover:text-gray-200']" 
+                <icon-eye-slash
+                    :class="[textColor ? textColor : 'text-neutral-400 dark:text-neutral-400 hover:text-neutral-200']"
+                    tabindex="-1"
                     v-if="showPassword"
                 ></icon-eye-slash>
-                <icon-eye 
-                    :class="[textColor ? textColor : 'text-gray-500 dark:text-gray-400 hover:text-gray-200']" 
+
+                <icon-eye
+                    :class="[textColor ? textColor : 'text-neutral-400 dark:text-neutral-400 hover:text-neutral-200']"
+                    tabindex="-1"
                     v-else
                 ></icon-eye>
-            </button> 
+            </button>
         </div>
 
         <div class="mt-1" v-if="!hiddenHint">
@@ -100,7 +103,6 @@
 .c-input-label {
     transform: translate(0, -50%);
     z-index: 1;
-    left: 0.75rem;
 }
 
 .c-input-label--active {
@@ -109,13 +111,17 @@
     left: 0.3rem;
 }
 
+.scale-75 {
+    transform: scale(0.75);
+}
+
 .c-input-field {
     transition: border-color 0.3s, box-shadow 0.3s, padding-top 0.3s;
     position: relative;
 }
 
 .c-input .c-input-field.pl-10 {
-    padding-left: 2.5rem; 
+    padding-left: 2.5rem;
 }
 
 .c-input [slot="icon"] {
@@ -213,7 +219,7 @@ const props = defineProps({
     bgColor: {
         type: String,
         required: false,
-        default: ""
+        default: "bg-white dark:bg-neutral-900"
     },
     textColor: {
         type: String,
@@ -226,6 +232,10 @@ const props = defineProps({
         default: "focus:ring focus:ring-zinc-700 focus:ring-opacity-50"
     },
     loading: {
+        type: Boolean,
+        default: false,
+    },
+    floatingLabel: {
         type: Boolean,
         default: false,
     },
@@ -265,7 +275,7 @@ const roundedStyles: Record<string, string> = {
 };
 
 const variantStyles: Record<string, string> = {
-    default: "border-none",
+    default: "border border-gray-300 dark:border-gray-700",
     outlined: "border-2 border-zinc-700",
     filled: "border-1 border-zinc-900 shadow-md",
 };
@@ -306,7 +316,7 @@ const validateShowError = () => {
         //@ts-ignore
         const error = rule(currentValue.value);
 
-        if (error) 
+        if (error)
             errorMessage.value = error;
     }
 };
@@ -332,7 +342,7 @@ const activateLabel = () => {
 };
 
 const deactivateLabel = () => {
-    if (!currentValue.value) 
+    if (!currentValue.value)
         isActive.value = false;
 };
 

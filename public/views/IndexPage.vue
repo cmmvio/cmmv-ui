@@ -1,9 +1,11 @@
 <template>
     <BaseLayout>
         <p align="center">
-        <img src="https://raw.githubusercontent.com/cmmvio/docs.cmmv.io/main/public/assets/logo_CMMV2_icon.png" width="300" alt="CMMV Logo" />
+            <img src="https://raw.githubusercontent.com/cmmvio/docs.cmmv.io/main/public/assets/logo_CMMV2_icon.png" width="300" alt="CMMV Logo" />
         </p>
+
         <p align="center">Contract-Model-Model-View (CMMV) <br/> Building scalable and modular applications using contracts.</p>
+
         <div class="flex flex-container">
             <a href="https://www.npmjs.com/package/@cmmv/ui" target="_blank" rel="nofollow">
                 <img src="https://img.shields.io/npm/v/@cmmv/ui.svg" alt="NPM Version" />
@@ -26,14 +28,14 @@
         <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 rounded-md my-6">
             <p class="font-bold">Disclaimer</p>
             <p>
-                The <code>@cmmv/ui</code> module is currently in <strong>beta</strong>. It is not recommended for use in production applications. 
-                Features and APIs are subject to change, and there may be unresolved issues or incomplete implementations. 
+                The <code>@cmmv/ui</code> module is currently in <strong>beta</strong>. It is not recommended for use in production applications.
+                Features and APIs are subject to change, and there may be unresolved issues or incomplete implementations.
                 Please use it for testing or experimental purposes only.
             </p>
         </div>
 
 
-        <h2>Features</h2>
+        <h3>Features</h3>
 
         <br/>
 
@@ -44,13 +46,13 @@
             <li>Integrates seamlessly with <code>@cmmv/core</code> and other modules in the CMMV ecosystem.</li>
         </ul>
 
-        <h2>Installation</h2>
+        <h3>Installation</h3>
 
         <pre>
             <code class="code-highlight language-bash">$ pnpm install @cmmv/ui vue@latest tailwindcss</code>
         </pre>
 
-        <h2>Vite Configuration</h2>
+        <h3>Vite Configuration</h3>
 
         <p>
             To configure the Vite environment for the <code>@cmmv/ui</code> project, include the following plugins and dependencies in your <code>vite.config.ts</code> file:
@@ -76,9 +78,9 @@ export default defineConfig({
             extensions: ['vue'],
             include: [/\\.vue$/, /\\.vue\\?vue/, /\\.md$/]
         }),
-        dts({ 
-            include: ['src/**/*.ts', 'src/**/*.vue'], 
-            insertTypesEntry: true 
+        dts({
+            include: ['src/**/*.ts', 'src/**/*.vue'],
+            insertTypesEntry: true
         }),
     ],
     resolve: {
@@ -106,7 +108,7 @@ export default defineConfig({
 </code>
 </pre>
 
-        <h2>Development Dependencies</h2>
+        <h3>Development Dependencies</h3>
 
         <p>
             Add the following development dependencies to your <code>package.json</code>:
@@ -132,10 +134,10 @@ export default defineConfig({
 <code class="code-highlight language-bash">$ pnpm add -D @vitejs/plugin-vue vite-tsconfig-paths unplugin-vue-components vite-plugin-dts typescript vue-tsc ant-design-vue</code>
 </pre>
 
-        <h2>Development</h2>
+        <h3>Development</h3>
 
         <p>If you wish to contribute or customize the library, clone the repository and install dependencies:</p>
-    
+
     <pre>
 <code class="code-highlight language-bash">git clone https://github.com/cmmvio/cmmv-ui.git
 cd cmmv-ui
@@ -143,7 +145,8 @@ pnpm install
 </code>
     </pre>
 
-    <h2>Build Commands</h2>
+    <h3>Build Commands</h3>
+
     <p>The library provides two types of builds:</p>
 
     <pre><code>pnpm run build</code></pre>

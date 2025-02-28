@@ -1,41 +1,41 @@
 <template>
     <div
-        class="rounded-lg shadow w-full m-auto transition duration-200"
-        :class="[ 
+        class="rounded-lg w-full m-auto transition duration-200 c-card"
+        :class="[
             roundedStyles[rounded],
             bgColor,
             borderColor,
             textColor,
             variants[variant],
+            customClass,
             { 'hover:brightness-110': hover && !disabled, 'opacity-50 cursor-not-allowed': disabled },
         ]"
         :style="{ maxWidth, minWidth, minHeight }"
-        :href="href"
         v-bind="href ? { role: 'link', tabindex: 0 } : {}"
     >
-        <c-progress-bar 
+        <c-progress-bar
             class="top-0 absolute rounded-t-md"
-            indeterminate 
+            indeterminate
             :height="5"
             :fillColor="loadingFillColor"
-            v-if="loading" 
+            v-if="loading"
         />
 
         <slot name="header">
-            <div 
-                v-if="title || subtitle || closable" 
+            <div
+                v-if="title || subtitle || closable"
                 class="px-4 py-3 pb-0 flex justify-between items-center relative rounded-t-md"
                 :class="[bgHeaderColor ? bgHeaderColor : bgColor, bgBorderColor]"
             >
                 <div>
-                    <h3 
-                        v-if="title" 
+                    <h3
+                        v-if="title"
                         :class="['font-bold']"
                         class="mt-2"
                     >{{ title }}</h3>
 
-                    <div 
-                        v-if="subtitle" 
+                    <div
+                        v-if="subtitle"
                         class="py-2 mb-0"
                         :class="['text-sm', 'opacity-75']"
                     >{{ subtitle }}</div>
@@ -60,9 +60,9 @@
         </slot>
 
         <slot name="content" class="relative">
-            <div 
-                class="px-4 py-3 w-full" 
-                :class="textSizes[textSize]"
+            <div
+                class="w-full"
+                :class="[textSizes[textSize], padding]"
             >
                 <div :class="class">
                     <slot></slot>
@@ -71,12 +71,12 @@
         </slot>
 
         <slot name="actions">
-            <div 
-                v-if="actions" 
-                class="flex justify-end space-x-2 px-4 py-3 border-t" 
+            <div
+                v-if="actions"
+                class="flex justify-end space-x-2 px-4 py-3 border-t"
                 :class="[bgBorderColor ? bgBorderColor : borderColor]"
             >
-                <slot name="action-buttons" />
+                <slot name="action-buttons"></slot>
             </div>
         </slot>
     </div>
@@ -110,7 +110,7 @@ defineProps({
     rounded: {
         type: String,
         required: false,
-        default: "default", // none | default | md | full
+        default: "default",
     },
     bgColor: {
         type: String,
@@ -140,12 +140,12 @@ defineProps({
     textSize: {
         type: String,
         required: false,
-        default: "md", // sm | md | lg | xl | 2xl
+        default: "md",
     },
     variant: {
         type: String,
         required: false,
-        default: "elevated", // elevated | flat | tonal | outlined | text | plain
+        default: "elevated",
     },
     href: {
         type: String,
@@ -197,6 +197,14 @@ defineProps({
         required: false,
         default: "text-black",
     },
+    customClass: {
+        type: String,
+        required: false
+    },
+    padding: {
+        type: String,
+        default: "px-4 py-3"
+    }
 });
 
 const roundedStyles = computed((): Record<string, string> => ({

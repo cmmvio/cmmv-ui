@@ -1,16 +1,16 @@
 <template>
     <div class="c-textarea relative w-full">
-        <label 
+        <label
             :for="id"
-            class="c-textarea-label absolute left-3 text-sm transition-all duration-200 ease-in-out pointer-events-none"
-            :class="[{ 
-                'c-textarea-label--active': isActive, 
-                'bg-white dark:bg-zinc-900': variant === 'default' && !disabled && bgColor === '',
-                'bg-white dark:bg-zinc-800': (variant === 'outlined' || variant === 'filled') && !disabled && bgColor === '',
+            class="c-textarea-label absolute left-3 text-sm transition-all duration-200 ease-in-out pointer-events-none drop-shadow-xs"
+            :class="[{
+                'c-textarea-label--active': isActive,
                 'top-[50%] -translate-y-1/2': !isActive && !currentValue && !hasError,
                 'top-[30%]': !isActive && hasError,
                 'top-1/3': currentValue !== undefined && currentValue !== ''
-            }, bgColor, textColor ? textColor : 'text-gray-500 dark:text-gray-400']"
+            },
+            textColor ? textColor : 'text-gray-500 dark:text-gray-400',
+            bgColor ? bgColor : variantColors[variant], 'px-1']"
         >
             {{ label }}
         </label>
@@ -22,20 +22,19 @@
             :placeholder="isActive ? placeholder : ''"
             :maxlength="maxlength"
             :value="currentValue"
-            :class="[ 
-                sizes[size], 
-                roundedStyles[rounded], 
-                variantStyles[variant], 
-                bgColor ? bgColor : variantColors[variant], 
-                textColor, 
-                borderColorClass,
-                { 
-                    'ring-red-500 ring-2': hasError, 
-                    'opacity-50': disabled, 
+            :class="[
+                sizes[size],
+                roundedStyles[rounded],
+                variantStyles[variant],
+                bgColor ? bgColor : variantColors[variant],
+                textColor,
+                {
+                    'ring-red-500 ring-2': hasError,
+                    'opacity-50': disabled,
                     'resize-none': !resize
                 }
             ]"
-            class="c-textarea-field block w-full pt-4 pb-2 outline-none border-none"
+            class="c-textarea-field block w-full pt-4 pb-2 outline-none"
             @input="handleInput"
             @focus="activateLabel"
             @blur="deactivateLabel"
@@ -152,7 +151,7 @@ const props = defineProps({
     bgColor: {
         type: String,
         required: false,
-        default: ""
+        default: "bg-white dark:bg-neutral-900"
     },
     textColor: {
         type: String,
@@ -188,7 +187,7 @@ const roundedStyles: Record<string, string> = {
 };
 
 const variantStyles: Record<string, string> = {
-    default: "border-none",
+    default: "border border-gray-300 dark:border-gray-700",
     outlined: "border-2 border-zinc-700",
     filled: "bg-gray-100 dark:bg-zinc-800 border-none",
 };
@@ -248,7 +247,7 @@ const activateLabel = () => {
 };
 
 const deactivateLabel = () => {
-    if (!currentValue.value) 
+    if (!currentValue.value)
         isActive.value = false;
 };
 

@@ -7,15 +7,15 @@
     >
         <div v-if="icon" class="mr-3">
             <slot name="icon">
-                <component 
-                    :is="computedIcon" 
-                    class="h-6 w-6" 
+                <component
+                    :is="computedIcon"
+                    class="h-6 w-6"
                     :class="textColorClass"
                 />
             </slot>
         </div>
 
-        <div class="flex-1">
+        <div :class="[outlined ? textColorClass : textColor, 'flex-1']">
             <div v-if="title" class="font-bold text-lg">
                 {{ title }}
             </div>
@@ -32,8 +32,8 @@
             aria-label="Close alert"
         >
             <slot name="close-icon">
-                <icon-x-mark 
-                    class="w-6 h-6 text-black"  
+                <icon-x-mark
+                    class="w-6 h-6 text-white"
                     aria-label="Close"
                 />
             </slot>
@@ -52,7 +52,7 @@ import { computed } from 'vue';
 import IconCheckCircle from "@components/icons/IconCheckCircle.vue";
 import IconInformationCircle from "@components/icons/IconInformationCircle.vue";
 import IconExclamationTriangle from "@components/icons/IconExclamationTriangle.vue";
-import IconXCircle from "@components/icons/IconXCircle.vue"; 
+import IconXCircle from "@components/icons/IconXCircle.vue";
 
 const props = defineProps({
     title: {
@@ -79,7 +79,7 @@ const props = defineProps({
     },
     textColor: {
         type: String,
-        default: '',
+        default: 'text-white',
     },
     outlined: {
         type: Boolean,
@@ -98,7 +98,6 @@ const colorByType: Record<string, string> = {
     error: "red"
 }
 
-// Ajustando para Tailwind v4
 const computedClasses = computed(() => {
     return [
         !props.outlined ? props.bgColor || `bg-${colorByType[props.type]}-400` : '',
@@ -109,7 +108,7 @@ const computedClasses = computed(() => {
 });
 
 const textColorClass = computed(() => {
-    return props.textColor || `text-${colorByType[props.type]}-600`;
+    return props.outlined ? `text-${colorByType[props.type]}-600` : props.textColor || `text-${colorByType[props.type]}-600`;
 });
 
 const computedIcon = computed(() => {

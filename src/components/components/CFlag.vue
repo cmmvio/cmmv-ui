@@ -1,9 +1,11 @@
 <template>
     <div
-        :class="[ 
+        :class="[
             'c-flag inline-flex items-center justify-center',
             sizes[size],
-            roundedStyles[rounded]
+            roundedStyles[rounded],
+            shadow,
+            border
         ]"
         :aria-label="ariaLabel"
     >
@@ -23,8 +25,6 @@
     position: relative;
     box-sizing: border-box;
     transition: color 0.3s, fill 0.3s;
-    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.1);
-    border: 0.5px solid rgba(0, 0, 0, 0.2);
 }
 
 .c-flag::before {
@@ -53,7 +53,15 @@ const props = defineProps({
     rounded: {
         required: false,
         type: [String],
-        default: "md", 
+        default: "md",
+    },
+    shadow: {
+        type: String,
+        default: "shadow-sm",
+    },
+    border: {
+        type: String,
+        default: "border border-neutral-100 dark:border-neutral-800",
     },
     ariaLabel: {
         type: String,

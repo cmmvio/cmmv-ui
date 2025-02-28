@@ -1,19 +1,20 @@
 <template>
     <div
-        class=" inline-flex items-center justify-center"
+        class="inline-flex items-center justify-center select-none"
         :class="{
-            'inline-block': inline,
-            'absolute': floating,
+            'inline-flex': inline,
+            'absolute': floating === true,
             'rounded-full': dot,
         }"
-        :style="badgeStyle"
+        :style="!inline ? badgeStyle : {}"
     >
         <span
             v-if="!dot"
-            class="text-xs rounded-md font-semibold flex items-center justify-center px-1 py-0.2"
-            :class="[bgColor, textColor]"
+            class="text-xs font-semibold flex items-center justify-center px-1 py-0.2"
+            :class="[bgColor, textColor, rounded, customClass]"
         >
-            <slot>{{ content }}</slot>
+            <span v-if="!$slots.default">{{ content }}</span>
+            <slot v-else></slot>
         </span>
 
         <span
@@ -25,12 +26,17 @@
 </template>
 
 <script setup>
-import { computed } from "vue";
+import { computed, defineProps } from "vue";
 
 const props = defineProps({
     content: {
         type: String,
         default: "",
+    },
+    rounded: {
+        type: String,
+        required: false,
+        default: "rounded-full",
     },
     bgColor: {
         type: String,
@@ -46,7 +52,7 @@ const props = defineProps({
     },
     floating: {
         type: Boolean,
-        default: true,
+        default: false,
     },
     dot: {
         type: Boolean,
@@ -54,11 +60,15 @@ const props = defineProps({
     },
     offsetX: {
         type: String,
-        default: "0.3rem", 
+        default: "0.3rem",
     },
     offsetY: {
         type: String,
-        default: "0.3rem", 
+        default: "0.3rem",
+    },
+    customClass: {
+        type: String,
+        default: "0.3rem",
     },
 });
 

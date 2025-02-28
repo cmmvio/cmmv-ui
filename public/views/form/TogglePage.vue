@@ -4,7 +4,7 @@
 
         <p>The <code>CToggle (alias: c-toggle)</code> component in the <code>@cmmv/ui</code> framework provides a customizable switch element with various sizes, states, and interactive ripple effects. It supports binding via <code>v-model</code> and is ideal for enabling or disabling settings.</p>
 
-        <table class="w-full text-left border-collapse border-0">
+        <table-docs>
             <thead>
                 <tr>
                     <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
@@ -63,116 +63,163 @@
                     <td class="border-b px-4 py-2">Custom color for the track when checked.</td>
                 </tr>
             </tbody>
-        </table>
+        </table-docs>
 
-        <!-- Live Value Update -->
-        <h2>Live Value Display</h2>
-        <c-card class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-            <c-toggle v-model="liveToggle" label="Live Update Toggle" />
-            <p class="text-gray-700 dark:text-white">Toggle Value: <span class="font-bold" v-html="liveToggle?.toString()"></span></p>
-        </c-card>
+        <h3>Basic Example</h3>
 
-        <pre>
-            <code class="code-hightlight language-vue">&lt;template&gt;
-    &lt;c-toggle v-model=&quot;liveToggle&quot; label=&quot;Live Update Toggle&quot; /&gt;
-    &lt;p&gt;Toggle Value: &#123;&#123; liveToggle &#125;&#125;&lt;/p&gt;
+        <card-docs>
+            <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+                <c-toggle v-model="liveToggle" label="Live Update Toggle" />
+                <p class="text-gray-700 dark:text-white">Toggle Value: <span class="font-bold" v-html="liveToggle?.toString()"></span></p>
+            </div>
+
+            <template #code>
+<pre><code class="code-highlight language-vue">&lt;template&gt;
+    &lt;c-toggle v-model="liveToggle" label="Live Update Toggle" /&gt;
+    &lt;p&gt;Toggle Value: {{ liveToggle }}&lt;/p&gt;
 &lt;/template&gt;
 
-&lt;script&gt;
+&lt;script setup&gt;
 import { ref } from "vue";
-const liveToggle = ref(false);
-&lt;/script&gt;</code>
-        </pre>
 
-        <h2>Disabled</h2>
+const liveToggle = ref(false);
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
+
+        <h3>Disabled</h3>
 
         <p>The <code>CToggle</code> component includes a <code>disabled</code> property that prevents user interaction with the toggle. When the <code>disabled</code> state is active, the toggle appears dimmed and its cursor changes to indicate that it is non-interactive. This is useful for situations where the toggle represents a feature or setting that cannot currently be modified.</p>
-        <c-card class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-            <c-toggle v-model="toggle2" label="Disabled Toggle" disabled />
-        </c-card>
 
-        <pre>
-            <code class="code-hightlight language-vue">&lt;template&gt;
-    &lt;c-toggle v-model=&quot;toggle2&quot; label=&quot;Disabled Toggle&quot; disabled /&gt;
-&lt;/template&gt;</code>
-        </pre>
+        <card-docs>
+            <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+                <c-toggle v-model="toggle2" label="Disabled Toggle" disabled />
+            </div>
+
+            <template #code>
+<pre><code class="code-highlight language-vue">&lt;template&gt;
+    &lt;c-toggle v-model="toggle2" label="Disabled Toggle" disabled /&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref } from "vue";
+
+const toggle2 = ref(false);
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <!-- Size Variants -->
-        <h2>Size Variants</h2>
+        <h3>Size Variants</h3>
+
         <p>The <code>CToggle</code> component supports multiple sizes for better adaptability in different contexts. Available sizes include <code>sm</code>, <code>md</code>, and <code>lg</code>.</p>
 
-        <c-card class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-            <c-toggle v-model="toggleSmall" size="sm" label="Small Toggle" />
-            <c-toggle v-model="toggleMedium" size="md" label="Medium Toggle" />
-            <c-toggle v-model="toggleLarge" size="lg" label="Large Toggle" />
-        </c-card>
+        <card-docs>
+            <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+                <c-toggle v-model="toggleSmall" size="sm" label="Small Toggle" />
+                <c-toggle v-model="toggleMedium" size="md" label="Medium Toggle" />
+                <c-toggle v-model="toggleLarge" size="lg" label="Large Toggle" />
+            </div>
 
-        <pre>
-            <code class="code-hightlight language-vue">&lt;template&gt;
-    &lt;c-toggle v-model=&quot;toggleSmall&quot; size=&quot;sm&quot; label=&quot;Small Toggle&quot; /&gt;
-    &lt;c-toggle v-model=&quot;toggleMedium&quot; size=&quot;md&quot; label=&quot;Medium Toggle&quot; /&gt;
-    &lt;c-toggle v-model=&quot;toggleLarge&quot; size=&quot;lg&quot; label=&quot;Large Toggle&quot; /&gt;
-&lt;/template&gt;</code>
-        </pre>
+            <template #code>
+<pre><code class="code-highlight language-vue">&lt;template&gt;
+    &lt;c-toggle v-model="toggleSmall" size="sm" label="Small Toggle" /&gt;
+    &lt;c-toggle v-model="toggleMedium" size="md" label="Medium Toggle" /&gt;
+    &lt;c-toggle v-model="toggleLarge" size="lg" label="Large Toggle" /&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref } from "vue";
+
+const toggleSmall = ref(false);
+const toggleMedium = ref(false);
+const toggleLarge = ref(false);
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <!-- Custom Colors -->
-        <h2>Custom Colors</h2>
+        <h3>Custom Colors</h3>
+
         <p>The <code>CToggle</code> component allows customization of the track and thumb colors through the <code>bgColor</code> and <code>thumbColor</code> props, respectively.</p>
 
-        <c-card class="mx-auto mt-4 px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-            <c-toggle 
-                v-model="toggleCustom1" 
-                label="Custom Blue Track" 
-                bgColor="bg-blue-900" 
-                trackColor="bg-blue-700" 
-                thumbColor="bg-blue-500" 
-            />
-            <c-toggle 
-                v-model="toggleCustom2" 
-                label="Custom Red Track" 
-                bgColor="bg-red-900" 
-                trackColor="bg-red-700" 
-                thumbColor="bg-red-500" 
-            />
-            <c-toggle 
-                v-model="toggleCustom3" 
-                label="Custom Thumb" 
-                bgColor="bg-purple-900" 
-                trackColor="bg-purple-700" 
-                thumbColor="bg-purple-500"
-            />
-        </c-card>
+        <card-docs>
+            <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+                <c-toggle
+                    v-model="toggleCustom1"
+                    label="Custom Blue Track"
+                    bgColor="bg-blue-600 dark:bg-blue-900"
+                    trackColor="bg-blue-500 dark:bg-blue-700"
+                    thumbColor="bg-white"
+                    thumbBorderColor="border-blue-500"
+                />
+                <c-toggle
+                    v-model="toggleCustom2"
+                    label="Custom Red Track"
+                    bgColor="bg-red-900"
+                    trackColor="bg-red-700"
+                    thumbColor="bg-white"
+                    thumbBorderColor="border-red-500"
+                />
+                <c-toggle
+                    v-model="toggleCustom3"
+                    label="Custom Thumb"
+                    bgColor="bg-purple-900"
+                    trackColor="bg-purple-700"
+                    thumbColor="bg-white"
+                    thumbBorderColor="border-purple-500"
+                />
+            </div>
 
-        <pre>
-            <code class="code-hightlight language-vue">&lt;template&gt;
-    &lt;c-toggle 
-        v-model=&quot;toggleCustom1&quot; 
-        label=&quot;Custom Blue Track&quot; 
-        bgColor=&quot;bg-blue-900&quot; 
-        trackColor=&quot;bg-blue-700&quot; 
-        thumbColor=&quot;bg-blue-500&quot; 
+            <template #code>
+<pre><code class="code-highlight language-vue">&lt;template&gt;
+    &lt;c-toggle
+        v-model="toggleCustom1"
+        label="Custom Blue Track"
+        bgColor="bg-blue-600 dark:bg-blue-900"
+        trackColor="bg-blue-500 dark:bg-blue-700"
+        thumbColor="bg-white"
+        thumbBorderColor="border-blue-500"
     /&gt;
-    &lt;c-toggle 
-        v-model=&quot;toggleCustom2&quot; 
-        label=&quot;Custom Red Track&quot; 
-        bgColor=&quot;bg-red-900&quot; 
-        trackColor=&quot;bg-red-700&quot; 
-        thumbColor=&quot;bg-red-500&quot; 
+    &lt;c-toggle
+        v-model="toggleCustom2"
+        label="Custom Red Track"
+        bgColor="bg-red-900"
+        trackColor="bg-red-700"
+        thumbColor="bg-white"
+        thumbBorderColor="border-red-500"
     /&gt;
-    &lt;c-toggle 
-        v-model=&quot;toggleCustom3&quot; 
-        label=&quot;Custom Thumb&quot; 
-        bgColor=&quot;bg-purple-900&quot; 
-        trackColor=&quot;bg-purple-700&quot; 
-        thumbColor=&quot;bg-purple-500&quot;
+    &lt;c-toggle
+        v-model="toggleCustom3"
+        label="Custom Thumb"
+        bgColor="bg-purple-900"
+        trackColor="bg-purple-700"
+        thumbColor="bg-white"
+        thumbBorderColor="border-purple-500"
     /&gt;
-&lt;/template&gt;</code>
-        </pre>
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref } from "vue";
+
+const toggleCustom1 = ref(false);
+const toggleCustom2 = ref(false);
+const toggleCustom3 = ref(false);
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
+
+        <PagePagination
+            previous="Timepicker"
+            previousLink="/timepicker"
+            next="Dialog"
+            nextLink="/dialog"
+        />
     </BaseLayout>
 </template>
 
 <style scoped>
-.code-hightlight {
+.code-highlight {
     white-space: pre;
 }
 </style>
@@ -180,6 +227,16 @@ const liveToggle = ref(false);
 <script setup>
 import { ref } from "vue";
 import BaseLayout from "../../layout/BaseLayout.vue";
-import CCard from "@components/layout/CCard.vue";
+import CardDocs from "../../components/CardDocs.vue";
+import TableDocs from "../../components/TableDocs.vue";
+import PagePagination from "../../layout/PagePagination.vue";
+
 const liveToggle = ref(false);
+const toggle2 = ref(false);
+const toggleSmall = ref(false);
+const toggleMedium = ref(false);
+const toggleLarge = ref(false);
+const toggleCustom1 = ref(false);
+const toggleCustom2 = ref(false);
+const toggleCustom3 = ref(false);
 </script>

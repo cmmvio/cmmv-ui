@@ -7,20 +7,17 @@
         </p>
 
         <!-- Basic Example -->
-        <h2 class="text-lg font-semibold mt-8">Example</h2>
+        <h3 class="text-lg font-semibold mt-8">Example</h3>
 
         <p>
             Below is a basic example of using the <code>CForm</code> component to create a login form. It demonstrates the integration with <code>CInput</code> for validation and <code>CButton</code> for form submission.
         </p>
 
-        <c-card
-            bgColor="bg-white dark:bg-zinc-800 w-6/12 m-auto"
-            class="p-8"
-        >
-            <div class="m-auto w-6/12 mb-8">
+        <card-docs>
+            <div class="m-auto w-6/12 mb-2 max-w-[500px]">
                 <h1 class="mb-4">Login</h1>
 
-                <c-form 
+                <c-form
                     v-model="form"
                     @submit.prevent="handleSubmit"
                 >
@@ -51,66 +48,60 @@
                     >Login</c-button>
                 </c-form>
             </div>
-        </c-card>
 
-        <pre>
-            <code class="code-hightlight language-vue">&lt;template&gt;
-    &lt;c-card
-        bgColor=&quot;bg-white dark:bg-zinc-800 w-6/12 m-auto&quot;
-        class=&quot;p-8&quot;
+            <template #code>
+<pre><code class="code-highlight language-html">&lt;template&gt;
+    &lt;c-form
+        v-model="form"
+        @submit.prevent="handleSubmit"
     &gt;
-        &lt;h1 class=&quot;mb-4&quot;&gt;Login&lt;/h1&gt;
+        &lt;c-input
+            v-model="data.email"
+            label="Email"
+            type="email"
+            placeholder="Enter your email"
+            hint="Enter your email to login"
+            :rules="[value => !value && 'Email is required']"
+            clearable
+        /&gt;
 
-        &lt;c-form
-            v-model=&quot;form&quot;
-            @submit.prevent=&quot;handleSubmit&quot;
-        &gt;
-            &lt;div class="m-auto w-6/12"&gt;
-                &lt;c-input
-                    v-model=&quot;data.email&quot;
-                    label=&quot;Email&quot;
-                    type=&quot;email&quot;
-                    placeholder=&quot;Enter your email&quot;
-                    :rules=&quot;[value =&gt; !value &amp;&amp; 'Email is required']&quot;
-                    clearable
-                /&gt;
+        &lt;c-input
+            v-model="data.password"
+            type="password"
+            label="Password"
+            placeholder="Enter your password"
+            :rules="[value => !value && 'Password is required']"
+        /&gt;
 
-                &lt;c-input
-                    v-model=&quot;data.password&quot;
-                    type=&quot;password&quot;
-                    label=&quot;Password&quot;
-                    placeholder=&quot;Enter your password&quot;
-                    :rules=&quot;[value =&gt; !value &amp;&amp; 'Password is required']&quot;
-                /&gt;
-
-                &lt;c-button
-                    class=&quot;w-full pb-4 pt-4&quot;
-                    type=&quot;submit&quot;
-                    buttonType=&quot;button&quot;
-                    size=&quot;2xl&quot;
-                    :disabled=&quot;!form&quot;
-                &gt;Login&lt;/c-button&gt;
-            &lt;/div&gt;
-        &lt;/c-form&gt;
-    &lt;/c-card&gt;
+        &lt;c-button
+            class="w-full pb-4 pt-4"
+            type="submit"
+            buttonType="button"
+            size="2xl"
+            :disabled="!form"
+        &gt;Login&lt;/c-button&gt;
+    &lt;/c-form&gt;
 &lt;/template&gt;
 
 &lt;script setup&gt;
-import { ref } from &quot;vue&quot;;
+import { ref } from "vue";
 
 const data = ref({
-    email: &quot;&quot;,
-    password: &quot;&quot;
+    email: "",
+    password: ""
 });
 
-const handleSubmit = () =&gt; {
-    console.log(&quot;Form Submitted&quot;, data.value);
+const form = ref(false);
+
+const handleSubmit = () => {
+    console.log("Form Submitted", data.value);
 };
-&lt;/script&gt;</code>
-        </pre>
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <!-- Features -->
-        <h2 class="text-lg font-semibold">Features</h2>
+        <h3>Features</h3>
 
         <br/>
 
@@ -122,9 +113,9 @@ const handleSubmit = () =&gt; {
         </ul>
 
         <!-- Props -->
-        <h2 class="text-lg font-semibold mt-8">Props</h2>
+        <h3>Props</h3>
 
-        <table class="w-full text-left border-collapse border-0">
+        <table-docs>
             <thead>
                 <tr>
                     <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
@@ -141,12 +132,12 @@ const handleSubmit = () =&gt; {
                     <td class="border-b px-4 py-2">Tracks the validation state of the form.</td>
                 </tr>
             </tbody>
-        </table>
+        </table-docs>
 
         <!-- Events -->
-        <h2 class="text-lg font-semibold mt-8">Events</h2>
+        <h3>Events</h3>
 
-        <table class="w-full text-left border-collapse border-0">
+        <table-docs>
             <thead>
                 <tr>
                     <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Event</th>
@@ -159,19 +150,28 @@ const handleSubmit = () =&gt; {
                     <td class="border-b px-4 py-2">Emitted when the form is submitted.</td>
                 </tr>
             </tbody>
-        </table>
+        </table-docs>
+
+        <PagePagination
+            previous="File Upload"
+            previousLink="/file-upload"
+            next="Input"
+            nextLink="/input"
+        />
     </BaseLayout>
 </template>
 
 <style scoped>
-.code-hightlight {
+.code-highlight {
     white-space: pre;
 }
 </style>
 
 <script setup>
 import BaseLayout from "../../layout/BaseLayout.vue";
-import CCard from "@components/layout/CCard.vue";
+import TableDocs from "../../components/TableDocs.vue";
+import PagePagination from "../../layout/PagePagination.vue";
+import CardDocs from "../../components/CardDocs.vue";
 import CForm from "@components/forms/CForm.vue";
 import CInput from "@components/forms/CInput.vue";
 import CButton from "@components/components/CButton.vue";
