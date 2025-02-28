@@ -758,7 +758,7 @@
                 maxWidth="350px"
                 rounded="md"
                 variant="outlined"
-                class="shadow-md border-2 border-gray-300 dark:border-gray-600"
+                customClass="shadow-md border-2 border-gray-300 dark:border-gray-600 overflow-hidden"
                 actions
             >
                 <template #header>
@@ -822,6 +822,7 @@
                         >
                             View details
                         </c-button>
+
                         <c-button
                             type="button"
                             class="bg-blue-600 hover:bg-blue-700 text-white"
@@ -842,7 +843,7 @@
     maxWidth="450px"
     rounded="md"
     variant="outlined"
-    class="shadow-md border-2 border-gray-300 dark:border-gray-600"
+    customClass="shadow-md border-2 border-gray-300 dark:border-gray-600 overflow-hidden"
     actions
 &gt;
     &lt;template #header&gt;
@@ -934,7 +935,7 @@
                 maxWidth="350px"
                 rounded="lg"
                 variant="elevated"
-                class="shadow-lg"
+                customClass="shadow-lg overflow-hidden"
                 actions
             >
                 <template #header>
@@ -1028,7 +1029,7 @@
     maxWidth="350px"
     rounded="lg"
     variant="elevated"
-    class="shadow-lg"
+    customClass="shadow-lg overflow-hidden"
     actions
 &gt;
     &lt;template #header&gt;

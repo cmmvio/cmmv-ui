@@ -64,7 +64,7 @@
                 class="w-full"
                 :class="[textSizes[textSize], padding]"
             >
-                <div :class="class">
+                <div :class="customClass">
                     <slot></slot>
                 </div>
             </div>
@@ -106,6 +106,21 @@ defineProps({
         type: Boolean,
         required: false,
         default: false,
+    },
+    loadingFillColor: {
+        type: String,
+        required: false,
+        default: "#3B82F6", // Cor azul padrão
+    },
+    closable: {
+        type: Boolean,
+        required: false,
+        default: false,
+    },
+    closeColor: {
+        type: String,
+        required: false,
+        default: "text-white",
     },
     rounded: {
         type: String,
@@ -176,26 +191,6 @@ defineProps({
         type: String,
         required: false,
         default: "auto",
-    },
-    class: {
-        type: String,
-        required: false,
-        default: "",
-    },
-    loadingFillColor: {
-        type: String,
-        require: false,
-        default: "#03a9f4",
-    },
-    closable: {
-        type: Boolean,
-        required: false,
-        default: false,
-    },
-    closeColor: {
-        type: String,
-        required: false,
-        default: "text-black",
     },
     customClass: {
         type: String,

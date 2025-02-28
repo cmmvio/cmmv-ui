@@ -1,5 +1,5 @@
 <template>
-    <div class="c-list-item mx-2 my-1 flex items-center p-1 cursor-pointer" :class="class">
+    <div class="c-list-item mx-2 my-1 flex items-center p-1 cursor-pointer" :class="customClass">
         <template v-if="icon !== null">
             <div class="icon-wrapper">
                 <component :is="icon" class="w-6 h-6 mr-3" :class="[textColor]"></component>
@@ -42,7 +42,7 @@ defineProps({
         default: null,
     },
 
-    class: {
+    customClass: {
         type: String,
         default: "",
     },

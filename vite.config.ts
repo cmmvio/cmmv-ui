@@ -24,7 +24,6 @@ export default defineConfig(({ mode }) => {
         plugins: [
             vue(),
             viteTsconfigPaths(),
-            cssInjectedByJsPlugin(),
             Components({
                 resolvers: [AntDesignVueResolver()],
                 dirs: ['src/components'],
@@ -33,6 +32,7 @@ export default defineConfig(({ mode }) => {
                 dts: !isDocs,
             }),
             ...(isDocs ? [] : [dts({ include: ['src/**/*.ts', 'src/**/*.vue'], insertTypesEntry: true })]),
+            ...(isDocs ? [] : [cssInjectedByJsPlugin()]),
         ],
 
         resolve: {
