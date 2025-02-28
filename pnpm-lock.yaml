@@ -117,12 +117,21 @@ importers:
       '@vue/tsconfig':
         specifier: ^0.7.0
         version: 0.7.0(typescript@5.6.3)(vue@3.5.13(typescript@5.6.3))
+      chalk:
+        specifier: ^5.4.1
+        version: 5.4.1
       conventional-changelog:
         specifier: ^6.0.0
         version: 6.0.0(conventional-commits-filter@5.0.0)
       conventional-changelog-cli:
         specifier: ^5.0.0
         version: 5.0.0(conventional-commits-filter@5.0.0)
+      enquirer:
+        specifier: ^2.4.1
+        version: 2.4.1
+      execa:
+        specifier: ^9.5.2
+        version: 9.5.2
       husky:
         specifier: ^9.1.7
         version: 9.1.7
@@ -132,6 +141,9 @@ importers:
       rimraf:
         specifier: ^6.0.1
         version: 6.0.1
+      semver:
+        specifier: ^7.7.1
+        version: 7.7.1
       tailwindcss:
         specifier: ^3.4.17
         version: 3.4.17(ts-node@10.9.2(@swc/core@1.11.4(@swc/helpers@0.5.15))(@types/node@22.13.5)(typescript@5.6.3))
