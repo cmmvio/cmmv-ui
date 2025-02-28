@@ -185,18 +185,20 @@
 
         <c-card
             variant="flat"
-            class="m-auto mt-4 px-4 py-10 items-center grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 2xl:grid-cols-10 gap-4"
+            class="m-auto mt-4 px-4 py-5 items-center"
         >
-            <div
-                v-for="icon in filteredIcons"
-                :key="icon.name"
-                class="relative flex flex-col items-center justify-center cursor-pointer group"
-                @click="copyToClipboard(icon.code)"
-            >
-                <c-tooltip :content="icon.name" position="top">
-                    <component :is="icon.component" class="w-8 h-8 text-neutral-600 dark:text-white mb-2" aria-hidden="true" />
-                </c-tooltip>
-                <span class="text-xs text-center text-gray-500 dark:text-neutral-400 truncate w-full">{{ icon.name }}</span>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 2xl:grid-cols-10 gap-4">
+                <div
+                    v-for="icon in filteredIcons"
+                    :key="icon.name"
+                    class="relative flex flex-col items-center justify-center cursor-pointer group"
+                    @click="copyToClipboard(icon.code)"
+                >
+                    <c-tooltip :content="icon.name" position="top">
+                        <component :is="icon.component" class="w-8 h-8 text-neutral-600 dark:text-white mb-2" aria-hidden="true" />
+                    </c-tooltip>
+                    <span class="text-xs text-center text-gray-500 dark:text-neutral-400 truncate w-full">{{ icon.name }}</span>
+                </div>
             </div>
         </c-card>
 
@@ -234,18 +236,20 @@
 
         <c-card
             variant="flat"
-            class="m-auto mt-4 px-4 py-10 items-center grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 2xl:grid-cols-10 gap-4"
+            class="m-auto mt-4 px-4 py-10 items-center"
         >
-            <div
-                v-for="icon in filteredBrandIcons"
-                :key="icon.name"
-                class="relative flex flex-col items-center justify-center cursor-pointer group"
-                @click="copyToClipboard(icon.code)"
-            >
-                <c-tooltip :content="icon.name" position="top">
-                    <component :is="icon.component" class="w-8 h-8 text-neutral-600 dark:text-white mb-2" aria-hidden="true" />
-                </c-tooltip>
-                <span class="text-xs text-center text-gray-500 dark:text-neutral-400 truncate w-full">{{ icon.name }}</span>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 2xl:grid-cols-10 gap-4">
+                <div
+                    v-for="icon in filteredBrandIcons"
+                    :key="icon.name"
+                    class="relative flex flex-col items-center justify-center cursor-pointer group"
+                    @click="copyToClipboard(icon.code)"
+                >
+                    <c-tooltip :content="icon.name" position="top">
+                        <component :is="icon.component" class="w-8 h-8 text-neutral-600 dark:text-white mb-2" aria-hidden="true" />
+                    </c-tooltip>
+                    <span class="text-xs text-center text-gray-500 dark:text-neutral-400 truncate w-full">{{ icon.name }}</span>
+                </div>
             </div>
         </c-card>
 

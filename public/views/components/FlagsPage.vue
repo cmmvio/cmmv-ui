@@ -228,7 +228,6 @@ import BaseLayout from "../../layout/BaseLayout.vue";
 import TableDocs from "../../components/TableDocs.vue";
 import CardDocs from "../../components/CardDocs.vue";
 import PagePagination from "../../layout/PagePagination.vue";
-import CCard from "@components/layout/CCard.vue";
 import CButton from "@components/components/CButton.vue";
 const countries = Countries;
 </script>

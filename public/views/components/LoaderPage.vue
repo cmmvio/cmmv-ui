@@ -276,18 +276,20 @@
 
         <c-card
             variant="flat"
-            class="m-auto mt-4 px-4 py-10 items-center grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-6"
+            class="m-auto mt-4 px-4 py-10 items-center"
         >
-            <div
-                v-for="loader in resolvedIcons"
-                :key="loader.name"
-                class="relative flex flex-col items-center justify-center cursor-pointer group"
-                @click="copyToClipboard(loader.code)"
-            >
-                <c-tooltip :content="loader.name" position="top">
-                    <component :is="loader.component" width="32" height="32" color="text-neutral-600 dark:text-white" aria-hidden="true" />
-                </c-tooltip>
-                <span class="text-xs text-center text-gray-500 dark:text-neutral-400 mt-2 truncate w-full">{{ loader.name }}</span>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 2xl:grid-cols-10 gap-4">
+                <div
+                    v-for="loader in resolvedIcons"
+                    :key="loader.name"
+                    class="relative flex flex-col items-center justify-center cursor-pointer group"
+                    @click="copyToClipboard(loader.code)"
+                >
+                    <c-tooltip :content="loader.name" position="top">
+                        <component :is="loader.component" width="32" height="32" color="text-neutral-600 dark:text-white" aria-hidden="true" />
+                    </c-tooltip>
+                    <span class="text-xs text-center text-gray-500 dark:text-neutral-400 mt-2 truncate w-full">{{ loader.name }}</span>
+                </div>
             </div>
         </c-card>
 
