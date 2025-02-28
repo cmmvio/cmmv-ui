@@ -103,14 +103,22 @@
                     size="lg"
                 />
             </div>
-        </card-docs>
 
-        <pre>
-            <code class="code-highlight language-html">&lt;c-avatar
-    alt="User Avatar"
-    size="lg"
-/&gt;</code>
-        </pre>
+            <template #code>
+<pre><code class="code-highlight language-vue">&lt;template&gt;
+    &lt;c-avatar
+        alt="User Avatar"
+        size="lg"
+    /&gt;
+
+    &lt;c-avatar
+        alt="User Avatar"
+        rounded="md"
+        size="lg"
+    /&gt;
+&lt;/template&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <h3>Avatar with Initials</h3>
 
@@ -119,14 +127,20 @@
         </p>
 
         <card-docs>
-            <div class="m-auto">
-                <c-avatar initials="EY" bgColor="bg-blue-500" size="md" />
+            <div class="flex items-center justify-center gap-x-4">
+                <c-avatar initials="EY" bgColor="bg-blue-500" size="md" class="m-auto" />
             </div>
-        </card-docs>
 
-        <pre>
-            <code class="code-highlight language-html">&lt;c-avatar initials="EY" bgColor="bg-blue-500" size="md" /&gt;</code>
-        </pre>
+            <template #code>
+<pre><code class="code-highlight language-vue">&lt;template&gt;
+    &lt;c-avatar
+        initials="EY"
+        bgColor="bg-blue-500"
+        size="md"
+    /&gt;
+&lt;/template&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <h3>Advanced Example</h3>
 
@@ -147,22 +161,24 @@
                     <div class="text-sm opacity-75">Software Engineer</div>
                 </div>
             </div>
-        </card-docs>
 
-        <pre>
-            <code class="code-highlight language-html">&lt;div class="flex items-center space-x-4"&gt;
-    &lt;c-avatar
-        src="https://example.com/avatar.jpg"
-        alt="User Avatar"
-        size="lg"
-        borderColor="border-2 border-blue-500"
-    /&gt;
-    &lt;div&gt;
-        &lt;div class="font-bold text-lg"&gt;John Doe&lt;/div&gt;
-        &lt;div class="text-sm opacity-75"&gt;Software Engineer&lt;/div&gt;
+            <template #code>
+<pre><code class="code-highlight language-vue">&lt;template&gt;
+    &lt;div class="flex items-center space-x-4"&gt;
+        &lt;c-avatar
+            src="https://example.com/avatar.jpg"
+            alt="User Avatar"
+            size="lg"
+            borderColor="border-2 border-blue-500"
+        /&gt;
+        &lt;div&gt;
+            &lt;div class="font-bold text-lg"&gt;John Doe&lt;/div&gt;
+            &lt;div class="text-sm opacity-75"&gt;Software Engineer&lt;/div&gt;
+        &lt;/div&gt;
     &lt;/div&gt;
-&lt;/div&gt;</code>
-        </pre>
+&lt;/template&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <h3>Dot Indicator</h3>
 
@@ -204,35 +220,35 @@
                     dotIndicator="offline"
                 />
             </div>
+
+            <template #code>
+<pre><code class="code-highlight language-vue">&lt;template&gt;
+    &lt;c-avatar
+        src="https://i.pravatar.cc/150?img=1"
+        alt="User Avatar"
+        size="lg"
+        borderColor="border-2 border-blue-500"
+        dotIndicator="online"
+    /&gt;
+
+    &lt;c-avatar
+        src="https://i.pravatar.cc/150?img=1"
+        alt="User Avatar"
+        size="lg"
+        borderColor="border-2 border-blue-500"
+        dotIndicator="busy"
+    /&gt;
+
+    &lt;c-avatar
+        src="https://i.pravatar.cc/150?img=1"
+        alt="User Avatar"
+        size="lg"
+        borderColor="border-2 border-blue-500"
+        dotIndicator="offline"
+    /&gt;
+&lt;/template&gt;</code></pre>
+            </template>
         </card-docs>
-
-        <pre>
-
-<code class="code-highlight language-html">&lt;c-avatar
-    src="https://i.pravatar.cc/150?img=1"
-    alt="User Avatar"
-    size="lg"
-    borderColor="border-2 border-blue-500"
-    dotIndicator="online"
-/&gt;
-
-&lt;c-avatar
-    src="https://i.pravatar.cc/150?img=1"
-    alt="User Avatar"
-    size="lg"
-    borderColor="border-2 border-blue-500"
-    dotIndicator="busy"
-/&gt;
-
-&lt;c-avatar
-    src="https://i.pravatar.cc/150?img=1"
-    alt="User Avatar"
-    size="lg"
-    borderColor="border-2 border-blue-500"
-    dotIndicator="offline"
-/&gt;
-</code>
-</pre>
 
         <h3>Stacked</h3>
 
@@ -257,41 +273,41 @@
                     <div class="flex items-center justify-center w-10 h-10 text-xs font-medium text-white bg-gray-700 border-2 border-white rounded-full dark:border-gray-800">+99</div>
                 </c-avatar>
             </div>
+
+            <template #code>
+<pre><code class="code-highlight language-vue">&lt;template&gt;
+    &lt;div class="flex items-center justify-center"&gt;
+        &lt;c-avatar stacked&gt;
+            &lt;img
+                class="w-10 h-10 border-2 border-white rounded-full"
+                src="https://i.pravatar.cc/150?img=1"
+                alt=""
+            &gt;
+            &lt;img
+                class="w-10 h-10 border-2 border-white rounded-full"
+                src="https://i.pravatar.cc/150?img=2"
+                alt=""
+            &gt;
+            &lt;img
+                class="w-10 h-10 border-2 border-white rounded-full"
+                src="https://i.pravatar.cc/150?img=3"
+                alt=""
+            &gt;
+            &lt;img
+                class="w-10 h-10 border-2 border-white rounded-full"
+                src="https://i.pravatar.cc/150?img=4"
+                alt=""
+            &gt;
+            &lt;div
+                class="flex items-center justify-center w-10 h-10 text-xs font-medium text-white bg-gray-700 border-2 border-white rounded-full dark:border-gray-800"
+            &gt;
+                +99
+            &lt;/div&gt;
+        &lt;/c-avatar&gt;
+    &lt;/div&gt;
+&lt;/template&gt;</code></pre>
+            </template>
         </card-docs>
-
-        <pre>
-
-<code class="code-highlight language-html">&lt;div class="flex items-center justify-center"&gt;
-    &lt;c-avatar stacked&gt;
-        &lt;img
-            class="w-10 h-10 border-2 border-white rounded-full"
-            src="https://i.pravatar.cc/150?img=1"
-            alt=""
-        &gt;
-        &lt;img
-            class="w-10 h-10 border-2 border-white rounded-full"
-            src="https://i.pravatar.cc/150?img=2"
-            alt=""
-        &gt;
-        &lt;img
-            class="w-10 h-10 border-2 border-white rounded-full"
-            src="https://i.pravatar.cc/150?img=3"
-            alt=""
-        &gt;
-        &lt;img
-            class="w-10 h-10 border-2 border-white rounded-full"
-            src="https://i.pravatar.cc/150?img=4"
-            alt=""
-        &gt;
-        &lt;div
-            class="flex items-center justify-center w-10 h-10 text-xs font-medium text-white bg-gray-700 border-2 border-white rounded-full dark:border-gray-800"
-        &gt;
-            +99
-        &lt;/div&gt;
-    &lt;/c-avatar&gt;
-&lt;/div&gt;
-</code>
-</pre>
 
         <PagePagination
             previous="Alert"
@@ -308,3 +324,9 @@ import CardDocs from "../../components/CardDocs.vue";
 import PagePagination from "../../layout/PagePagination.vue";
 import TableDocs from "../../components/TableDocs.vue";
 </script>
+
+<style scoped>
+.code-highlight {
+    white-space: pre;
+}
+</style>

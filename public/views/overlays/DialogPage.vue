@@ -85,27 +85,35 @@
                     >Close</c-button>
                 </template>
             </c-dialog>
+
+            <template #code>
+<pre><code class="code-highlight language-vue">&lt;template&gt;
+    &lt;c-dialog v-model="showDialog" closable&gt;
+        &lt;template #activator&gt;
+            &lt;c-button @click="showDialog = true"&gt;Open Dialog&lt;/c-button&gt;
+        &lt;/template&gt;
+
+        &lt;template #header&gt;
+            &lt;h3 class="font-bold"&gt;Dialog Header&lt;/h3&gt;
+        &lt;/template&gt;
+
+        &lt;template #content&gt;
+            &lt;p&gt;This is the dialog content area. You can place any elements here.&lt;/p&gt;
+        &lt;/template&gt;
+
+        &lt;template #actions&gt;
+            &lt;c-button @click="showDialog = false"&gt;Close&lt;/c-button&gt;
+        &lt;/template&gt;
+    &lt;/c-dialog&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref } from 'vue';
+
+const showDialog = ref(false);
+&lt;/script&gt;</code></pre>
+            </template>
         </card-docs>
-
-        <pre>
-            <code class="code-highlight language-html">&lt;c-dialog v-model="showDialog" closable&gt;
-    &lt;template #activator&gt;
-        &lt;c-button @click="showDialog = true"&gt;Open Dialog&lt;/c-button&gt;
-    &lt;/template&gt;
-
-    &lt;template #header&gt;
-        Dialog Title
-    &lt;/template&gt;
-
-    &lt;template #content&gt;
-        This is the dialog content area. You can place any elements here.
-    &lt;/template&gt;
-
-    &lt;template #actions&gt;
-        &lt;c-button variant="text" @click="showDialog = false"&gt;Close&lt;/c-button&gt;
-    &lt;/template&gt;
-&lt;/c-dialog&gt;</code>
-        </pre>
 
         <h3>Fullscreen Dialog</h3>
 
@@ -138,27 +146,39 @@
                     <c-button @click="fullscreenDialog = false">Close</c-button>
                 </template>
             </c-dialog>
+
+            <template #code>
+<pre><code class="code-highlight language-vue">&lt;template&gt;
+    &lt;c-dialog
+        v-model="fullscreenDialog"
+        fullscreen
+        closable
+    &gt;
+        &lt;template #activator&gt;
+            &lt;c-button @click="fullscreenDialog = true"&gt;Open Fullscreen Dialog&lt;/c-button&gt;
+        &lt;/template&gt;
+
+        &lt;template #header&gt;
+            &lt;h3 class="font-bold"&gt;Fullscreen Dialog&lt;/h3&gt;
+        &lt;/template&gt;
+
+        &lt;template #content&gt;
+            &lt;p&gt;This dialog takes up the entire screen.&lt;/p&gt;
+        &lt;/template&gt;
+
+        &lt;template #actions&gt;
+            &lt;c-button @click="fullscreenDialog = false"&gt;Close&lt;/c-button&gt;
+        &lt;/template&gt;
+    &lt;/c-dialog&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref } from 'vue';
+
+const fullscreenDialog = ref(false);
+&lt;/script&gt;</code></pre>
+            </template>
         </card-docs>
-
-        <pre>
-            <code class="code-highlight language-html">&lt;c-dialog v-model="fullscreenDialog" fullscreen closable&gt;
-    &lt;template #activator&gt;
-        &lt;c-button @click="fullscreenDialog = true"&gt;Open Fullscreen Dialog&lt;/c-button&gt;
-    &lt;/template&gt;
-
-    &lt;template #header&gt;
-        Fullscreen Dialog
-    &lt;/template&gt;
-
-    &lt;template #content&gt;
-        This dialog takes up the entire screen.
-    &lt;/template&gt;
-
-    &lt;template #actions&gt;
-        &lt;c-button variant="text" @click="fullscreenDialog = false"&gt;Close&lt;/c-button&gt;
-    &lt;/template&gt;
-&lt;/c-dialog&gt;</code>
-        </pre>
 
         <PagePagination
             previous="Toggle"
@@ -179,3 +199,9 @@ import PagePagination from "../../layout/PagePagination.vue";
 const showDialog = ref(false);
 const fullscreenDialog = ref(false);
 </script>
+
+<style scoped>
+.code-highlight {
+    white-space: pre;
+}
+</style>

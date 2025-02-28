@@ -65,10 +65,9 @@
 
         <card-docs>
             <c-tabs :tabs="tabs"></c-tabs>
-        </card-docs>
 
-        <pre>
-            <code class="code-highlight language-vue">&lt;template&gt;
+            <template #code>
+<pre><code class="code-highlight language-vue">&lt;template&gt;
     &lt;c-tabs :tabs="tabs" /&gt;
 &lt;/template&gt;
 
@@ -81,8 +80,9 @@ const tabs = ref([
     { title: "Settings", id: "settings" },
     { title: "Contacts", id: "contacts" }
 ]);
-&lt;/script&gt;</code>
-        </pre>
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <h3>Full-Width Tabs</h3>
 
@@ -92,11 +92,13 @@ const tabs = ref([
 
         <card-docs>
             <c-tabs :tabs="tabs" fullWidth></c-tabs>
-        </card-docs>
 
-        <pre>
-            <code class="code-highlight language-vue">&lt;c-tabs :tabs="tabs" fullWidth /&gt;</code>
-        </pre>
+            <template #code>
+<pre><code class="code-highlight language-vue">&lt;template&gt;
+    &lt;c-tabs :tabs="tabs" fullWidth /&gt;
+&lt;/template&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <h3>Tabs with icons</h3>
 
@@ -113,10 +115,9 @@ const tabs = ref([
 
         <card-docs>
             <c-tabs :tabs="tabsWithIcons"></c-tabs>
-        </card-docs>
 
-        <pre>
-    <code class="code-highlight language-vue">&lt;template&gt;
+            <template #code>
+<pre><code class="code-highlight language-vue">&lt;template&gt;
     &lt;c-tabs :tabs="tabsWithIcons" /&gt;
 &lt;/template&gt;
 
@@ -133,8 +134,9 @@ const tabsWithIcons = ref([
     { title: "Settings", id: "settings", icon: IconCog6Tooth },
     { title: "Contacts", id: "contacts", icon: IconUserGroup }
 ]);
-&lt;/script&gt;</code>
-</pre>
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <h3>Pills</h3>
 
@@ -145,11 +147,13 @@ const tabsWithIcons = ref([
 
         <card-docs>
             <c-tabs :tabs="tabs" styleType="pills"></c-tabs>
-        </card-docs>
 
-        <pre>
-            <code class="code-highlight language-vue">&lt;c-tabs :tabs="tabs" styleType="pills" /&gt;</code>
-        </pre>
+            <template #code>
+<pre><code class="code-highlight language-vue">&lt;template&gt;
+    &lt;c-tabs :tabs="tabs" styleType="pills" /&gt;
+&lt;/template&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <h3>Bar</h3>
 
@@ -160,11 +164,13 @@ const tabsWithIcons = ref([
 
         <card-docs>
             <c-tabs :tabs="tabs" styleType="bar"></c-tabs>
-        </card-docs>
 
-        <pre>
-            <code class="code-highlight language-vue">&lt;c-tabs :tabs="tabs" styleType="bar" /&gt;</code>
-        </pre>
+            <template #code>
+<pre><code class="code-highlight language-vue">&lt;template&gt;
+    &lt;c-tabs :tabs="tabs" styleType="bar" /&gt;
+&lt;/template&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <h3>Contents</h3>
 
@@ -217,10 +223,9 @@ const tabsWithIcons = ref([
                     </div>
                 </template>
             </c-tabs>
-        </card-docs>
 
-        <pre>
-    <code class="code-highlight language-vue">&lt;template&gt;
+            <template #code>
+<pre><code class="code-highlight language-vue">&lt;template&gt;
     &lt;c-tabs :tabs="tabs" styleType="bar"&gt;
         &lt;template #profile&gt;
             &lt;div class="p-4 bg-gray-200 dark:bg-white rounded-md"&gt;
@@ -269,8 +274,9 @@ const tabs = ref([
     { title: "Settings", id: "settings" },
     { title: "Contacts", id: "contacts" }
 ]);
-&lt;/script&gt;</code>
-</pre>
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <PagePagination
             previous="Sidebar"
@@ -306,3 +312,9 @@ const tabsWithIcons = ref([
     { title: "Contacts", id: "contacts", icon: IconUserGroup  }
 ]);
 </script>
+
+<style scoped>
+.code-highlight {
+    white-space: pre;
+}
+</style>

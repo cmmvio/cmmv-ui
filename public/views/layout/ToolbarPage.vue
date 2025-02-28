@@ -39,15 +39,25 @@
 
         <p>The <code>CAppBarNav</code> component is designed for quick implementation of navigation controls. It is often used to include a hamburger menu for mobile-first designs, offering a clean and minimalistic approach to navigation.</p>
 
-        <pre><code class="code-highlight language-html">&lt;c-app-bar-nav /&gt;</code>
-        </pre>
+        <card-docs>
+            <template #code>
+<pre><code class="code-highlight language-vue">&lt;template&gt;
+    &lt;c-app-bar-nav /&gt;
+&lt;/template&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <h3>CToolbarTitle</h3>
 
         <p>Display a prominent title or application name using the <code>CToolbarTitle</code>. Its simplicity ensures that your users immediately recognize the context or purpose of the toolbar.</p>
 
-        <pre><code class="code-highlight language-html">&lt;c-toolbar-title&gt;My App&lt;/c-toolbar-title&gt;</code>
-        </pre>
+        <card-docs>
+            <template #code>
+<pre><code class="code-highlight language-vue">&lt;template&gt;
+    &lt;c-toolbar-title&gt;My App&lt;/c-toolbar-title&gt;
+&lt;/template&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <h3>CSpacer</h3>
 
@@ -55,9 +65,13 @@
             The <code>CSpacer</code> component plays a critical role in dynamically spacing elements within the toolbar. This ensures proper alignment and balance, especially in layouts with multiple buttons or navigation links.
         </p>
 
-        <pre>
-            <code class="code-highlight language-html">&lt;c-spacer /&gt;</code>
-        </pre>
+        <card-docs>
+            <template #code>
+<pre><code class="code-highlight language-vue">&lt;template&gt;
+    &lt;c-spacer /&gt;
+&lt;/template&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <h3>Examples</h3>
 
@@ -70,13 +84,15 @@
             <c-toolbar class="bg-blue-500 text-white">
                 <c-toolbar-title>My Application</c-toolbar-title>
             </c-toolbar>
-        </card-docs>
 
-        <pre>
-            <code class="code-highlight language-html">&lt;c-toolbar class="bg-blue-500 text-white"&gt;
-    &lt;c-toolbar-title&gt;My Application&lt;/c-toolbar-title&gt;
-&lt;/c-toolbar&gt;</code>
-        </pre>
+            <template #code>
+<pre><code class="code-highlight language-vue">&lt;template&gt;
+    &lt;c-toolbar class="bg-blue-500 text-white"&gt;
+        &lt;c-toolbar-title&gt;My Application&lt;/c-toolbar-title&gt;
+    &lt;/c-toolbar&gt;
+&lt;/template&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <h3>Toolbar with Buttons</h3>
 
@@ -99,25 +115,31 @@
                     <IconMagnifyingGlass class="text-white" />
                 </c-button>
             </c-toolbar>
+
+            <template #code>
+<pre><code class="code-highlight language-vue">&lt;template&gt;
+    &lt;c-toolbar class="bg-purple-800 text-white"&gt;
+        &lt;c-app-bar-nav /&gt;
+        &lt;c-toolbar-title&gt;My App&lt;/c-toolbar-title&gt;
+        &lt;c-spacer /&gt;
+        &lt;c-button
+            type="button"
+            variant="plain"
+            rounded="full"
+            bgColor="bg-purple-700 hover:bg-purple-500"
+        &gt;
+            &lt;IconMagnifyingGlass class="text-white" /&gt;
+        &lt;/c-button&gt;
+    &lt;/c-toolbar&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import IconMagnifyingGlass from "@components/icons/IconMagnifyingGlass.vue";
+&lt;/script&gt;</code></pre>
+            </template>
         </card-docs>
 
-        <pre>
-            <code class="code-highlight language-html">&lt;c-toolbar class="bg-purple-800 text-white"&gt;
-    &lt;c-app-bar-nav /&gt;
-    &lt;c-toolbar-title&gt;My App&lt;/c-toolbar-title&gt;
-    &lt;c-spacer /&gt;
-    &lt;c-button
-        type="button"
-        variant="plain"
-        rounded="full"
-        bgColor="bg-purple-700 hover:bg-purple-500"
-    &gt;
-        &lt;IconMagnifyingGlass class="text-white" /&gt;
-    &lt;/c-button&gt;
-&lt;/c-toolbar&gt;</code>
-</pre>
-
-        <h3>Advaced sample</h3>
+        <h3>Advanced Sample</h3>
 
         <p>
             This advanced example demonstrates the flexibility of <code>CToolbar</code> in building a mobile-first layout. It incorporates dynamic search input, badge notifications, and flexible spacing for a modern application header.
@@ -158,13 +180,55 @@
                     </div>
                 </c-container>
             </div>
+
+            <template #code>
+<pre><code class="code-highlight language-vue">&lt;template&gt;
+    &lt;div class="bg-gray-100 dark:bg-gray-800 min-h-[600px] flex flex-col"&gt;
+        &lt;c-toolbar class="bg-blue-600 text-white rounded-t-md shadow-md"&gt;
+            &lt;c-app-bar-nav /&gt;
+            &lt;c-toolbar-title&gt;My App&lt;/c-toolbar-title&gt;
+            &lt;c-spacer /&gt;
+
+            &lt;div class="relative"&gt;
+                &lt;IconMagnifyingGlass class="absolute top-1/2 right-3 transform -translate-y-1/2 text-white" /&gt;
+            &lt;/div&gt;
+
+            &lt;c-button
+                type="button"
+                variant="plain"
+                rounded="full"
+                bgColor="bg-blue-600 hover:bg-blue-800"
+                class="py-1"
+            &gt;
+                &lt;IconBell class="text-white"&gt;&lt;/IconBell&gt;
+                &lt;c-badge floating&gt;5&lt;/c-badge&gt;
+            &lt;/c-button&gt;
+        &lt;/c-toolbar&gt;
+
+        &lt;c-container class="flex-grow bg-gray-50 dark:bg-gray-800 flex flex-col items-center justify-center rounded-t-none shadow-md"&gt;
+            &lt;div class="bg-white dark:bg-gray-900 rounded-lg shadow-md p-6 m-8"&gt;
+                &lt;h1 class="text-xl font-semibold text-gray-800 dark:text-white mb-4"&gt;
+                    Welcome to My App
+                &lt;/h1&gt;
+                &lt;p class="text-gray-600 dark:text-gray-300 mb-4"&gt;
+                    This is a sample layout for a mobile-first application design with a toolbar and
+                    dynamic theme switcher.
+                &lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/c-container&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import IconMagnifyingGlass from "@components/icons/IconMagnifyingGlass.vue";
+import IconBell from "@components/icons/IconBell.vue";
+&lt;/script&gt;</code></pre>
+            </template>
         </card-docs>
 
-        <br/>
-
         <PagePagination
-            previous="Carc"
-            previousLink="/card"
+            previous="Tabs"
+            previousLink="/tabs"
             next="Autocomplete"
             nextLink="/autocomplete"
         />
@@ -176,4 +240,12 @@ import BaseLayout from "../../layout/BaseLayout.vue";
 import CardDocs from "../../components/CardDocs.vue";
 import TableDocs from "../../components/TableDocs.vue";
 import PagePagination from "../../layout/PagePagination.vue";
+import IconMagnifyingGlass from "@components/icons/IconMagnifyingGlass.vue";
+import IconBell from "@components/icons/IconBell.vue";
 </script>
+
+<style scoped>
+.code-highlight {
+    white-space: pre;
+}
+</style>

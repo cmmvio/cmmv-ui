@@ -284,7 +284,7 @@ h3 {
 .context-html pre code:not(.c-card pre code):not(.card-docs pre code):not(.c-list pre code) {
     display: block;
     max-height: 400px;
-    padding: 5px;
+    padding: 10px;
     background-color: #ffffff;
     overflow-y: auto;
     white-space: pre-wrap;
@@ -358,7 +358,7 @@ pre code::-webkit-scrollbar-thumb:hover {
 .dark .context-html pre code:not(.c-card pre code):not(.card-docs pre code):not(.c-list pre code) {
     display: block;
     max-height: 400px;
-    padding: 5px;
+    padding: 10px;
     background-color: #1d1d1d;
     overflow-y: auto;
     white-space: pre-wrap;

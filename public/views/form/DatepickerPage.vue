@@ -74,7 +74,7 @@
     </p>
 
     <card-docs>
-        <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+        <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4 h-[400px]">
             <div class="lg:w-2/5 w-full max-w-[400px]">
                 <c-datepicker
                     id="example1"
@@ -112,7 +112,7 @@ const date = ref(null);
     </p>
 
     <card-docs>
-        <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+        <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4 h-[400px]">
             <div class="lg:w-2/5 w-full max-w-[400px]">
                 <c-datepicker
                     id="format"
@@ -150,7 +150,7 @@ const date = ref(null);
     </p>
 
     <card-docs>
-        <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+        <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4 h-[400px]">
             <div class="lg:w-2/5 w-full max-w-[400px]">
                 <c-datepicker
                     id="minmax"
@@ -193,7 +193,7 @@ const maxDate = new Date(today.getFullYear(), today.getMonth() + 1, 0);
     </p>
 
     <card-docs>
-        <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+        <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4 h-[400px]">
             <div class="lg:w-2/5 w-full max-w-[400px]">
                 <c-datepicker
                     id="validation"
@@ -269,8 +269,8 @@ const date = ref(new Date());
     </p>
 
     <card-docs>
-        <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-            <div class="lg:w-2/5 w-full max-w-[400px]">
+        <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4 h-[400px]">
+            <div class=" w-full max-w-[300px]">
                 <c-datepicker
                     id="range"
                     label="Travel Dates"
