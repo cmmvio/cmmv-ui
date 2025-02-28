@@ -1,3 +1,27 @@
+# [0.1.0](https://github.com/cmmvio/cmmv-ui/compare/v0.0.13...v0.1.0) (2025-02-28)
+
+
+### Bug Fixes
+
+* badge, alert, avatar ([add0b31](https://github.com/cmmvio/cmmv-ui/commit/add0b3137d26ea6f915fd45cfbd2d5f6c4bddff2))
+* card ([7f9cc37](https://github.com/cmmvio/cmmv-ui/commit/7f9cc3735dfb39f72d7008a1d46c3b638b607ebe))
+* clean ([ef95314](https://github.com/cmmvio/cmmv-ui/commit/ef953147c6b20540b26df87eb2e16c4909177645))
+* docs ([30143bf](https://github.com/cmmvio/cmmv-ui/commit/30143bfe4873bc632e69e861dad4fb623ac090cc))
+* release script ([c7d4b70](https://github.com/cmmvio/cmmv-ui/commit/c7d4b705d82e185fb928ac66bac0c1409a40b9b1))
+
+
+### Features
+
+* ai chat, number input, datepicker, file upload ([fe66301](https://github.com/cmmvio/cmmv-ui/commit/fe66301bd8be641fb0e9017e2d1ae8a267040968))
+* chart bar, chart line ([1aa576b](https://github.com/cmmvio/cmmv-ui/commit/1aa576b46849534ef006a477bae264651e3f5c26))
+* custom template table ([0645722](https://github.com/cmmvio/cmmv-ui/commit/064572222d384a957f813fed803607c0e26f1413))
+* dropdown, list ([c686328](https://github.com/cmmvio/cmmv-ui/commit/c6863280dbb18e601cf6dee9d6fbae5d89a51ec1))
+* sidebar ([6d21d42](https://github.com/cmmvio/cmmv-ui/commit/6d21d42e038be9d4d745c5ea8c61493868aa7831))
+* speed dial, dropdown, combobox, numberinput ([86ec416](https://github.com/cmmvio/cmmv-ui/commit/86ec416ca7d42204ba8269cd2cdd53852f1d1968))
+* tabs ([3561dc1](https://github.com/cmmvio/cmmv-ui/commit/3561dc1ceea51cb3dfc8d82062264f794270f303))
+
+
+
 ## [0.0.13](https://github.com/cmmvio/cmmv-ui/compare/v0.0.12...v0.0.13) (2025-02-24)
 
 

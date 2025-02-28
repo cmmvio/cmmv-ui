@@ -1,6 +1,6 @@
 {
     "name": "@cmmv/ui",
-    "version": "0.0.13",
+    "version": "0.1.0",
     "description": "Vue3 UI Component + TailwindCSS 4 for CMMV",
     "license": "MIT",
     "author": "Andre Ferreira",
@@ -16,7 +16,7 @@
         "test": "vitest",
         "build-only": "vite build",
         "type-check": "vue-tsc --build",
-        "release": "pnpm run build:module && pnpm run clean:server && ./release.js",
+        "release": "pnpm run build:module && pnpm run clean:server && node ./release.js",
         "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
         "prepare": "husky"
     },
