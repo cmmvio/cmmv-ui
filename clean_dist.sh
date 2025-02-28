@@ -32,7 +32,7 @@ find "$TARGET_DIR" -type f ! \( \
     -name "*.umd.js" -o \
     -name "*.vue.js" -o \
     -name "*.js" -o \
-    -name "*.vue" -o \
+    -name "*.vue" \
 \) -exec rm -f {} +
 
 # Remove empty directories after cleanup

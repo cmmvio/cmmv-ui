@@ -24,7 +24,6 @@ declare module 'vue' {
     CDatepicker: typeof import('./src/components/forms/CDatepicker.vue')['default']
     CDialog: typeof import('./src/components/overlays/CDialog.vue')['default']
     CDropdown: typeof import('./src/components/layout/CDropdown.vue')['default']
-    CDropmenu: typeof import('./src/components/layout/CDropmenu.vue')['default']
     CFileUpload: typeof import('./src/components/forms/CFileUpload.vue')['default']
     CFlag: typeof import('./src/components/components/CFlag.vue')['default']
     CForm: typeof import('./src/components/forms/CForm.vue')['default']
