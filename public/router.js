@@ -15,6 +15,8 @@ import LoaderPage from "./views/components/LoaderPage.vue";
 import RatingPage from "./views/components/RatingPage.vue";
 
 //Data
+import ChartBarPage from "./views/data/ChartBarPage.vue";
+import ChartLinePage from "./views/data/ChartLinePage.vue";
 import ListPage from "./views/data/ListPage.vue";
 import PaginationPage from "./views/data/PaginationPage.vue";
 import TablePage from "./views/data/TablePage.vue";
@@ -70,6 +72,8 @@ const routes = [
     { path: '/tooltip', component: TooltipPage },
 
     //Data
+    { path: '/chart-bar', component: ChartBarPage },
+    { path: '/chart-line', component: ChartLinePage },
     { path: '/list', component: ListPage },
     { path: '/pagination', component: PaginationPage },
     { path: '/table', component: TablePage },

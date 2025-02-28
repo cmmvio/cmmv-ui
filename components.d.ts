@@ -16,6 +16,8 @@ declare module 'vue' {
     CBadge: typeof import('./src/components/components/CBadge.vue')['default']
     CButton: typeof import('./src/components/components/CButton.vue')['default']
     CCard: typeof import('./src/components/layout/CCard.vue')['default']
+    CChartBar: typeof import('./src/components/data/CChartBar.vue')['default']
+    CChartLine: typeof import('./src/components/data/CChartLine.vue')['default']
     CCheckbox: typeof import('./src/components/forms/CCheckbox.vue')['default']
     CCombobox: typeof import('./src/components/forms/CCombobox.vue')['default']
     CContainer: typeof import('./src/components/layout/CContainer.vue')['default']

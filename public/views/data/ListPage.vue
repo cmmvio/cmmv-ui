@@ -78,33 +78,33 @@
 
         <card-docs>
             <div class="w-full max-w-[780px] mx-auto">
-                <c-list v-model="items" class="w-full">
-                    <template v-slot="{ item }">
-                        <div class="w-full flex justify-between">
-                            <div class="flex min-w-0 gap-x-4">
-                                <img class="size-12 flex-none rounded-full bg-neutral-500" :src="item.imageUrl" alt="" />
-                                <div class="min-w-0 flex-auto">
-                                    <p class="text-sm/6 font-semibold text-neutral-900 dark:text-neutral-200">{{ item.name }}</p>
-                                    <p class="mt-1 truncate text-xs/5 text-neutral-500 dark:text-neutral-500">{{ item.email }}</p>
-                                </div>
-                            </div>
-                            <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
-                                <p class="text-sm/6 text-neutral-900 dark:text-neutral-200">{{ item.role }}</p>
-
-                                <p v-if="item.lastSeen" class="mt-1 text-xs/5 text-gray-500">
-                                    Last seen <time :datetime="item.lastSeenDateTime">{{ item.lastSeen }}</time>
-                                </p>
-
-                                <div v-else class="mt-1 flex items-center gap-x-1.5">
-                                    <div class="flex-none rounded-full bg-emerald-500/20 p-1">
-                                        <div class="size-1.5 rounded-full bg-emerald-500" />
-                                    </div>
-                                    <p class="text-xs/5 text-gray-500">Online</p>
-                                </div>
+            <c-list v-model="items" class="w-full">
+                <template v-slot="{ item }">
+                    <div class="w-full flex justify-between">
+                        <div class="flex min-w-0 gap-x-4">
+                            <img class="size-12 flex-none rounded-full bg-neutral-500" :src="item.imageUrl" alt="" />
+                            <div class="min-w-0 flex-auto">
+                                <p class="text-sm/6 font-semibold text-neutral-900 dark:text-neutral-200">{{ item.name }}</p>
+                                <p class="mt-1 truncate text-xs/5 text-neutral-500 dark:text-neutral-500">{{ item.email }}</p>
                             </div>
                         </div>
-                    </template>
-                </c-list>
+                        <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
+                            <p class="text-sm/6 text-neutral-900 dark:text-neutral-200">{{ item.role }}</p>
+
+                            <p v-if="item.lastSeen" class="mt-1 text-xs/5 text-gray-500">
+                                Last seen <time :datetime="item.lastSeenDateTime">{{ item.lastSeen }}</time>
+                            </p>
+
+                            <div v-else class="mt-1 flex items-center gap-x-1.5">
+                                <div class="flex-none rounded-full bg-emerald-500/20 p-1">
+                                    <div class="size-1.5 rounded-full bg-emerald-500" />
+                                </div>
+                                <p class="text-xs/5 text-gray-500">Online</p>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </c-list>
             </div>
 
             <template #code>
@@ -223,24 +223,24 @@ const items = ref([
 
         <card-docs>
             <div class="w-full max-w-[780px] mx-auto">
-                <c-list
-                    v-model="items"
-                    height="h-[400px]"
+            <c-list
+                v-model="items"
+                height="h-[400px]"
                     width="md:w-full w-3/6 m-auto"
-                    class="bg-white dark:bg-neutral-800 py-2 px-4 m-2 shadow border dark:border-neutral-900"
-                >
-                    <template v-slot="{ item }">
-                        <div class="w-full flex justify-between">
-                            <div class="flex min-w-0 gap-x-4">
-                                <img class="size-12 flex-none rounded-full bg-neutral-500" :src="item.imageUrl" alt="" />
-                                <div class="min-w-0 flex-auto">
-                                    <p class="text-sm/6 font-semibold text-neutral-900 dark:text-neutral-200">{{ item.name }}</p>
-                                    <p class="mt-1 truncate text-xs/5 text-neutral-500 dark:text-neutral-500">{{ item.email }}</p>
-                                </div>
+                class="bg-white dark:bg-neutral-800 py-2 px-4 m-2 shadow border dark:border-neutral-900"
+            >
+                <template v-slot="{ item }">
+                    <div class="w-full flex justify-between">
+                        <div class="flex min-w-0 gap-x-4">
+                            <img class="size-12 flex-none rounded-full bg-neutral-500" :src="item.imageUrl" alt="" />
+                            <div class="min-w-0 flex-auto">
+                                <p class="text-sm/6 font-semibold text-neutral-900 dark:text-neutral-200">{{ item.name }}</p>
+                                <p class="mt-1 truncate text-xs/5 text-neutral-500 dark:text-neutral-500">{{ item.email }}</p>
                             </div>
                         </div>
-                    </template>
-                </c-list>
+                    </div>
+                </template>
+            </c-list>
             </div>
 
             <template #code>

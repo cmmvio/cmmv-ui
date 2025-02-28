@@ -199,14 +199,14 @@
 
         <card-docs>
             <div class="flex items-center justify-center gap-x-4">
-                <c-button
-                    type="button"
-                    size="2xl"
-                    class="m-auto"
+            <c-button
+                type="button"
+                size="2xl"
+                class="m-auto"
                         @click="triggerBasicNotification"
-                >
-                    Show Notification
-                </c-button>
+            >
+                Show Notification
+            </c-button>
             </div>
 
             <c-notification ref="basicNotification" />

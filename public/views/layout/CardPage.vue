@@ -185,7 +185,7 @@
 &gt;
     This is the card content.
 &lt;/c-card&gt;</code>
-</pre>
+        </pre>
             </template>
         </card-docs>
 
@@ -325,26 +325,26 @@
             </template>
         </card-docs>
 
-        <h3>Closable</h3>
+    <h3>Closable</h3>
 
-        <p>
-            The <code>Closable</code> example demonstrates the use of the <code>closable</code> prop in the <code>CCard</code> component.
-            This feature adds a close button to the card's header and emits a <code>close</code> event when clicked, enabling dynamic card dismissal.
-        </p>
+    <p>
+        The <code>Closable</code> example demonstrates the use of the <code>closable</code> prop in the <code>CCard</code> component.
+        This feature adds a close button to the card's header and emits a <code>close</code> event when clicked, enabling dynamic card dismissal.
+    </p>
 
-        <card-docs>
-            <c-card
-                title="Closable Card"
-                subtitle="This card can be closed."
-                bgColor="bg-white"
-                textColor="text-black"
-                maxWidth="500px"
-                minHeight="150px"
-                closable
-                @close="onClose"
-            >
-                This card contains content and a close button in the header. When the close button is clicked, the card emits a <code>close</code> event.
-            </c-card>
+    <card-docs>
+        <c-card
+            title="Closable Card"
+            subtitle="This card can be closed."
+            bgColor="bg-white"
+            textColor="text-black"
+            maxWidth="500px"
+            minHeight="150px"
+            closable
+            @close="onClose"
+        >
+            This card contains content and a close button in the header. When the close button is clicked, the card emits a <code>close</code> event.
+        </c-card>
 
             <template #code>
 <pre><code class="code-highlight language-html">&lt;c-card

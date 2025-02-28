@@ -77,6 +77,8 @@ export default defineComponent({
                 name: "Data",
                 isDir: true,
                 children: [
+                    { name: "Chart Bar", uri: "/chart-bar" },
+                    { name: "Chart Line", uri: "/chart-line" },
                     { name: "List", uri: "/list" },
                     { name: "Pagination", uri: "/pagination" },
                     { name: "Table", uri: "/table" },

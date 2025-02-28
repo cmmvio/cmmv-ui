@@ -84,6 +84,7 @@
         "@cmmv/view": "^0.8.26",
         "@heroicons/vue": "^2.2.0",
         "@vueuse/core": "^12.7.0",
+        "chart.js": "^4.4.8",
         "class-transformer": "^0.5.1",
         "class-validator": "^0.14.1",
         "dotenv": "^16.4.7",
