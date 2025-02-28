@@ -323,7 +323,7 @@ onMounted(async () => {
                 if(process.env.NODE_ENV === "production"){
                     resolvedBrandsIcons.push({
                         ...icon,
-                        component: markRaw(Icons[icon.path.replace("components/icons/", "").replace(".vue", "")]),
+                        component: markRaw(Icons.components[icon.path.replace("components/icons/", "").replace(".vue", "")]),
                     });
                 }
                 else {
@@ -345,7 +345,7 @@ onMounted(async () => {
                 if(process.env.NODE_ENV === "production"){
                     resolvedIcons.push({
                         ...icon,
-                        component: markRaw(Icons[icon.path.replace("components/icons/", "").replace(".vue", "")]),
+                        component: markRaw(Icons.components[icon.path.replace("components/icons/", "").replace(".vue", "")]),
                     });
                 }
                 else {

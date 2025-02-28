@@ -333,7 +333,7 @@ onMounted(async () => {
         if(process.env.NODE_ENV === "production"){
             resolvedIcons.push({
                 ...loader,
-                component: markRaw(Icons[loader.path.replace("components/loader/", "").replace(".vue", "")]),
+                component: markRaw(Icons.components[loader.path.replace("components/loader/", "").replace(".vue", "")]),
             });
         }
         else {
