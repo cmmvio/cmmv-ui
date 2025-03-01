@@ -58,6 +58,14 @@ export default defineComponent({
 
         const navbarItems = [
             {
+                name: "Getting Started",
+                isDir: true,
+                children: [
+                    { name: "Introduction", uri: "/introduction" },
+                    { name: "First steps", uri: "/first-steps" }
+                ],
+            },
+            {
                 name: "Components",
                 isDir: true,
                 children: [

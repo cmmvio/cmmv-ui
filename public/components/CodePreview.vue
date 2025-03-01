@@ -125,7 +125,7 @@
         class="overflow-auto"
         style="max-height: 500px;"
       >
-        <pre class="language-html"><code><slot name="code"></slot></code></pre>
+        <slot name="code"></slot>
       </div>
     </div>
   </div>

@@ -1,6 +1,7 @@
 import { createMemoryHistory, createRouter } from 'vue-router';
 
 import IndexPage from "./views/IndexPage.vue";
+import FirstStepsPage from "./views/FirstStepsPage.vue";
 
 //Components
 import AIChatPage from "./views/components/AIChatPage.vue";
@@ -58,8 +59,12 @@ import NotificationPage from "./views/overlays/NotificationPage.vue";
 import OverlayPage from "./views/overlays/OverlayPage.vue";
 
 const routes = [
-    //Components
+    //
     { path: '/', component: IndexPage },
+    { path: '/introduction', component: IndexPage },
+    { path: '/first-steps', component: FirstStepsPage },
+
+    //Components
     { path: '/ai-chat', component: AIChatPage },
     { path: '/badge', component: BadgePage },
     { path: '/button', component: ButtonPage },

@@ -17,6 +17,29 @@
 
         <br/>
 
+        <h3>Introduction to CMMV</h3>
+
+        <p>
+            Contract-Model-Model-View (CMMV) is an architectural pattern designed to create highly modular, maintainable, and scalable frontend applications. The pattern builds upon established practices from other architectural approaches while introducing the concept of contracts as a central organizing principle.
+        </p>
+
+        <p>
+            At its core, CMMV separates concerns into four distinct layers:
+        </p>
+
+        <ul class="list-disc pl-5 space-y-2 mb-6">
+            <li><strong>Contract:</strong> Defines the interface and data structures that connect different parts of the application.</li>
+            <li><strong>Domain Model:</strong> Manages business logic and validation rules that are independent of UI concerns.</li>
+            <li><strong>View Model:</strong> Transforms the domain model data into a format suitable for presentation.</li>
+            <li><strong>View:</strong> Handles presentation logic and user interactions without containing business logic.</li>
+        </ul>
+
+        <p>
+            This separation creates a clear boundary between UI components and business logic, making applications easier to test, refactor, and scale. The contract-first approach ensures that teams can work independently on different parts of the application, as long as they adhere to the agreed-upon contracts.
+        </p>
+
+        <h3>UI Component Library</h3>
+
         <p>
             <code>@cmmv/ui</code> is a modular UI component library built on top of Vue 3 and Tailwind CSS. It offers a collection of pre-designed, customizable components to streamline the development of user interfaces. This library is optimized for modern frontend frameworks, providing developers with tools to quickly build performant, scalable, and accessible web applications.
         </p>
@@ -34,6 +57,26 @@
             </p>
         </div>
 
+        <h3>Core Principles</h3>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6">
+                <h4 class="text-base font-semibold mb-3">Contract-First Development</h4>
+                <p>CMMV encourages defining clear contracts between system components before implementation. This approach enables parallel development and better system integration.</p>
+            </div>
+            <div class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6">
+                <h4 class="text-base font-semibold mb-3">Separation of Concerns</h4>
+                <p>By separating domain logic, presentation logic, and UI components, CMMV creates more maintainable code with reduced interdependencies.</p>
+            </div>
+            <div class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6">
+                <h4 class="text-base font-semibold mb-3">Testability</h4>
+                <p>The clean separation between layers makes unit testing much simpler, as each component can be tested in isolation with clear boundaries.</p>
+            </div>
+            <div class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6">
+                <h4 class="text-base font-semibold mb-3">Scalability</h4>
+                <p>CMMV applications are designed to scale from small prototypes to enterprise applications without requiring architectural redesigns.</p>
+            </div>
+        </div>
 
         <h3>Features</h3>
 
@@ -48,97 +91,15 @@
 
         <h3>Installation</h3>
 
-        <pre>
+        <pre class="rounded-md">
             <code class="code-highlight language-bash">$ pnpm install @cmmv/ui vue@latest tailwindcss</code>
         </pre>
-
-        <h3>Vite Configuration</h3>
-
-        <p>
-            To configure the Vite environment for the <code>@cmmv/ui</code> project, include the following plugins and dependencies in your <code>vite.config.ts</code> file:
-        </p>
-
-        <pre>
-<code class="code-highlight language-typescript">import { defineConfig } from 'vite';
-import vue from '@vitejs/plugin-vue';
-import viteTsconfigPaths from 'vite-tsconfig-paths';
-import Components from 'unplugin-vue-components/vite';
-import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers';
-import dts from 'vite-plugin-dts';
-
-const isDocs = process.env.BUILD_DOCS === 'true';
-
-export default defineConfig({
-    plugins: [
-        vue(),
-        viteTsconfigPaths(),
-        Components({
-            resolvers: [AntDesignVueResolver()],
-            dirs: ['src/components'],
-            extensions: ['vue'],
-            include: [/\\.vue$/, /\\.vue\\?vue/, /\\.md$/]
-        }),
-        dts({
-            include: ['src/**/*.ts', 'src/**/*.vue'],
-            insertTypesEntry: true
-        }),
-    ],
-    resolve: {
-        alias: {
-            '@': '/src',
-            '@components': '/src/components',
-            '@composables': '/src/composables',
-            '@mixins': '/src/mixins',
-            '@services': '/src/services',
-            '@utils': '/src/utils',
-        },
-    },
-    build: {
-        target: 'esnext',
-        rollupOptions: {
-            external: ['vue'],
-            output: {
-                globals: {
-                    vue: 'Vue',
-                },
-            },
-        }
-    },
-});
-</code>
-</pre>
-
-        <h3>Development Dependencies</h3>
-
-        <p>
-            Add the following development dependencies to your <code>package.json</code>:
-        </p>
-<pre>
-<code class="code-highlight language-json">{
-    "devDependencies": {
-        "@vitejs/plugin-vue": "^5.2.1",
-        "vite-tsconfig-paths": "^5.1.3",
-        "unplugin-vue-components": "^0.27.5",
-        "vite-plugin-dts": "^4.3.0",
-        "typescript": "~5.6.3",
-        "vue-tsc": "^2.1.10",
-        "ant-design-vue": "^3.5.0"
-    }
-}
-</code>
-</pre>
-<p>
-    Install these dependencies using:
-</p>
-<pre>
-<code class="code-highlight language-bash">$ pnpm add -D @vitejs/plugin-vue vite-tsconfig-paths unplugin-vue-components vite-plugin-dts typescript vue-tsc ant-design-vue</code>
-</pre>
 
         <h3>Development</h3>
 
         <p>If you wish to contribute or customize the library, clone the repository and install dependencies:</p>
 
-    <pre>
+    <pre class="rounded-md">
 <code class="code-highlight language-bash">git clone https://github.com/cmmvio/cmmv-ui.git
 cd cmmv-ui
 pnpm install
@@ -149,11 +110,21 @@ pnpm install
 
     <p>The library provides two types of builds:</p>
 
-    <pre><code>pnpm run build</code></pre>
+    <pre class="rounded-md"><code>pnpm run build</code></pre>
+
+    <br/>
+
+    <PagePagination
+            previous=""
+            previousLink=""
+            next="First Steps"
+            nextLink="/first-steps"
+        />
 
     </BaseLayout>
 </template>
 
 <script setup>
 import BaseLayout from "../layout/BaseLayout.vue";
+import PagePagination from "../layout/PagePagination.vue";
 </script>
