@@ -5,8 +5,6 @@
 <p align="center">
     <a href="https://www.npmjs.com/package/@cmmv/ui"><img src="https://img.shields.io/npm/v/@cmmv/ui.svg" alt="NPM Version" /></a>
     <a href="https://github.com/cmmvio/cmmv/blob/main/LICENSE"><img src="https://img.shields.io/npm/l/@cmmv/ui.svg" alt="Package License" /></a>
-    <a href="https://ui.cmmv.io"><img src="https://img.shields.io/badge/docs-ui.cmmv.io-blue.svg" alt="Documentation" /></a>
-    <a href="https://discord.gg/cmmv"><img src="https://img.shields.io/badge/chat-discord-7289da.svg" alt="Discord" /></a>
 </p>
 
 <p align="center">
