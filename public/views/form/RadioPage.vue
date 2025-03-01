@@ -280,6 +280,24 @@ const selectedColorName = computed(() => {
     const selected = colorOptions.find(color => color.value === selectedColorValue.value);
     return selected ? selected.name : '';
 });
+
+// Add the new example data in the script section
+const mailingLists = [
+    { id: 1, title: 'Newsletter', description: 'Last message sent an hour ago', users: '621 users' },
+    { id: 2, title: 'Existing customers', description: 'Last message sent 2 weeks ago', users: '1200 users' },
+    { id: 3, title: 'Trial users', description: 'Last message sent 4 days ago', users: '2740 users' },
+];
+
+const selectedMailingList = ref(mailingLists[0]);
+
+// Pricing table example data
+const pricingPlans = [
+    { name: 'Startup', priceMonthly: '$29', priceYearly: '$290', limit: 'Up to 5 active job postings' },
+    { name: 'Business', priceMonthly: '$99', priceYearly: '$990', limit: 'Up to 25 active job postings' },
+    { name: 'Enterprise', priceMonthly: '$249', priceYearly: '$2490', limit: 'Unlimited active job postings' },
+];
+
+const selectedPlan = ref(pricingPlans[0]);
 &lt;/script&gt;</code></pre>
             </template>
         </card-docs>
@@ -383,6 +401,144 @@ const mailingLists = [
 ];
 
 const selectedMailingList = ref(mailingLists[0]);
+
+// Pricing table example data
+const pricingPlans = [
+    { name: 'Startup', priceMonthly: '$29', priceYearly: '$290', limit: 'Up to 5 active job postings' },
+    { name: 'Business', priceMonthly: '$99', priceYearly: '$990', limit: 'Up to 25 active job postings' },
+    { name: 'Enterprise', priceMonthly: '$249', priceYearly: '$2490', limit: 'Unlimited active job postings' },
+];
+
+const selectedPlan = ref(pricingPlans[0]);
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
+
+        <!-- Pricing Table Example -->
+        <h3>Pricing Table Selection</h3>
+
+        <p>
+            This example demonstrates how to create a pricing plan selection table using the <code>CRadio</code>
+            component
+            with a custom template. The interface displays detailed information about each plan in a responsive tabular
+            format.
+        </p>
+
+        <card-docs>
+            <div class="mx-auto max-w-3xl px-4 py-5 sm:p-6">
+                <fieldset aria-label="Pricing plans"
+                    class="relative -space-y-px rounded-md bg-white dark:bg-zinc-800 justify-center m-auto md:w-[550px] w-[350px]">
+                    <c-radio v-for="plan in pricingPlans" :key="plan.name" v-model="selectedPlan" :value="plan"
+                        :aria-label="plan.name">
+                        <template v-slot="{ checked }">
+                            <div :class="[
+                                'group flex cursor-pointer flex-col border border-gray-200 dark:border-gray-700 p-4 focus:outline-none',
+                                checked ? 'relative border-indigo-200 bg-indigo-50 dark:border-indigo-800 dark:bg-indigo-900/30' : '',
+                                'md:grid md:grid-cols-3 md:pl-4 md:pr-6  md:w-[550px] w-[350px]',
+                                plan.name === 'Startup' ? 'first:rounded-tl-md first:rounded-tr-md' : '',
+                                plan.name === 'Enterprise' ? 'last:rounded-bl-md last:rounded-br-md' : ''
+                            ]">
+                                <span class="flex items-center gap-3 text-sm">
+                                    <span class="relative size-4 flex items-center justify-center">
+                                        <span class="size-4 rounded-full border border-gray-300 dark:border-gray-600"
+                                            :class="checked ? 'border-indigo-600 bg-indigo-600 dark:border-indigo-500 dark:bg-indigo-500' : ''"></span>
+                                        <span v-if="checked" class="absolute inset-0 flex items-center justify-center">
+                                            <span class="size-1.5 rounded-full bg-white dark:bg-white"></span>
+                                        </span>
+                                    </span>
+                                    <span class="font-medium text-gray-900 dark:text-white"
+                                        :class="checked ? 'text-indigo-900 dark:text-indigo-300' : ''">{{ plan.name
+                                        }}</span>
+                                </span>
+                                <span class="ml-6 pl-1 text-sm md:ml-0 md:pl-0 md:text-center">
+                                    <span class="font-medium text-gray-900 dark:text-white"
+                                        :class="checked ? 'text-indigo-900 dark:text-indigo-300' : ''">{{
+                                            plan.priceMonthly }} / mo</span>
+                                    {{ ' ' }}
+                                    <span class="text-gray-500 dark:text-gray-400"
+                                        :class="checked ? 'text-indigo-700 dark:text-indigo-400' : ''">
+                                        ({{ plan.priceYearly }} / yr)
+                                    </span>
+                                </span>
+                                <span
+                                    class="ml-6 pl-1 text-sm text-gray-500 dark:text-gray-400 md:ml-0 md:pl-0 md:text-right"
+                                    :class="checked ? 'text-indigo-700 dark:text-indigo-400' : ''">
+                                    {{ plan.limit }}
+                                </span>
+                            </div>
+                        </template>
+                    </c-radio>
+                </fieldset>
+                <p class="mt-4 text-sm text-gray-700 dark:text-gray-300 text-center" v-if="selectedPlan">
+                    Selected plan: <span class="font-semibold">{{ selectedPlan.name }}</span> -
+                    <span class="font-medium">{{ selectedPlan.priceMonthly }}/month</span>
+                </p>
+            </div>
+
+            <template #code>
+                <pre><code class="code-highlight language-vue">&lt;template&gt;
+    &lt;fieldset aria-label="Pricing plans" class="relative -space-y-px rounded-md bg-white dark:bg-zinc-800"&gt;
+        &lt;c-radio
+            v-for="plan in pricingPlans"
+            :key="plan.name"
+            v-model="selectedPlan"
+            :value="plan"
+            :aria-label="plan.name"
+        &gt;
+            &lt;template v-slot="{ checked }"&gt;
+                &lt;div :class="[
+                    'group flex cursor-pointer flex-col border border-gray-200 dark:border-gray-700 p-4 focus:outline-none',
+                    checked ? 'relative border-indigo-200 bg-indigo-50 dark:border-indigo-800 dark:bg-indigo-900/30' : '',
+                    'md:grid md:grid-cols-3 md:pl-4 md:pr-6',
+                    plan.name === 'Startup' ? 'first:rounded-tl-md first:rounded-tr-md' : '',
+                    plan.name === 'Enterprise' ? 'last:rounded-bl-md last:rounded-br-md' : ''
+                ]"&gt;
+                    &lt;span class="flex items-center gap-3 text-sm"&gt;
+                        &lt;span class="relative size-4 flex items-center justify-center"&gt;
+                            &lt;span class="size-4 rounded-full border border-gray-300 dark:border-gray-600"
+                                :class="checked ? 'border-indigo-600 bg-indigo-600 dark:border-indigo-500 dark:bg-indigo-500' : ''"&gt;&lt;/span&gt;
+                            &lt;span v-if="checked"
+                                class="absolute inset-0 flex items-center justify-center"&gt;
+                                &lt;span class="size-1.5 rounded-full bg-white dark:bg-white"&gt;&lt;/span&gt;
+                            &lt;/span&gt;
+                        &lt;/span&gt;
+                        &lt;span class="font-medium text-gray-900 dark:text-white"
+                            :class="checked ? 'text-indigo-900 dark:text-indigo-300' : ''"&gt;&#123;&#123; plan.name &#125;&#125;&lt;/span&gt;
+                    &lt;/span&gt;
+                    &lt;span class="ml-6 pl-1 text-sm md:ml-0 md:pl-0 md:text-center"&gt;
+                        &lt;span class="font-medium text-gray-900 dark:text-white"
+                            :class="checked ? 'text-indigo-900 dark:text-indigo-300' : ''"&gt;&#123;&#123; plan.priceMonthly &#125;&#125; / mo&lt;/span&gt;
+                        &#123;&#123; ' ' &#125;&#125;
+                        &lt;span class="text-gray-500 dark:text-gray-400"
+                            :class="checked ? 'text-indigo-700 dark:text-indigo-400' : ''"&gt;
+                            (&#123;&#123; plan.priceYearly &#125;&#125; / yr)
+                        &lt;/span&gt;
+                    &lt;/span&gt;
+                    &lt;span class="ml-6 pl-1 text-sm text-gray-500 dark:text-gray-400 md:ml-0 md:pl-0 md:text-right"
+                        :class="checked ? 'text-indigo-700 dark:text-indigo-400' : ''"&gt;
+                        &#123;&#123; plan.limit &#125;&#125;
+                    &lt;/span&gt;
+                &lt;/div&gt;
+            &lt;/template&gt;
+        &lt;/c-radio&gt;
+    &lt;/fieldset&gt;
+    &lt;p class="mt-4 text-sm text-gray-700 dark:text-gray-300" v-if="selectedPlan"&gt;
+        Selected plan: &lt;span class="font-semibold"&gt;&#123;&#123; selectedPlan.name &#125;&#125;&lt;/span&gt; -
+        &lt;span class="font-medium"&gt;&#123;&#123; selectedPlan.priceMonthly &#125;&#125;/month&lt;/span&gt;
+    &lt;/p&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref } from 'vue';
+import CRadio from "@components/forms/CRadio.vue";
+
+const pricingPlans = [
+    { name: 'Startup', priceMonthly: '$29', priceYearly: '$290', limit: 'Up to 5 active job postings' },
+    { name: 'Business', priceMonthly: '$99', priceYearly: '$990', limit: 'Up to 25 active job postings' },
+    { name: 'Enterprise', priceMonthly: '$249', priceYearly: '$2490', limit: 'Unlimited active job postings' },
+];
+
+const selectedPlan = ref(pricingPlans[0]);
 &lt;/script&gt;</code></pre>
             </template>
         </card-docs>
@@ -431,4 +587,13 @@ const mailingLists = [
 ];
 
 const selectedMailingList = ref(mailingLists[0]);
+
+// Pricing table example data
+const pricingPlans = [
+    { name: 'Startup', priceMonthly: '$29', priceYearly: '$290', limit: 'Up to 5 active job postings' },
+    { name: 'Business', priceMonthly: '$99', priceYearly: '$990', limit: 'Up to 25 active job postings' },
+    { name: 'Enterprise', priceMonthly: '$249', priceYearly: '$2490', limit: 'Unlimited active job postings' },
+];
+
+const selectedPlan = ref(pricingPlans[0]);
 </script>
