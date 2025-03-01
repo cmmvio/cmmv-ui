@@ -14,6 +14,7 @@ declare module 'vue' {
     CAutocomplete: typeof import('./src/components/forms/CAutocomplete.vue')['default']
     CAvatar: typeof import('./src/components/layout/CAvatar.vue')['default']
     CBadge: typeof import('./src/components/components/CBadge.vue')['default']
+    CBreadcrumb: typeof import('./src/components/layout/CBreadcrumb.vue')['default']
     CButton: typeof import('./src/components/components/CButton.vue')['default']
     CCard: typeof import('./src/components/layout/CCard.vue')['default']
     CChartBar: typeof import('./src/components/data/CChartBar.vue')['default']

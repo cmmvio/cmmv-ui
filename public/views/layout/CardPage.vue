@@ -3,7 +3,8 @@
         <h1>Card</h1>
 
         <p>
-            The <code>CCard (alias: c-card)</code> component provides a versatile and visually appealing container for grouping content.
+            The <code>CCard (alias: c-card)</code> component provides a versatile and visually appealing container for
+            grouping content.
             It supports titles, subtitles, actions, and various customization options for layout, colors, and styles.
         </p>
 
@@ -22,7 +23,8 @@
                     <td class="border-b px-4 py-2">String</td>
                     <td class="border-b px-4 py-2">''</td>
                     <td class="border-b px-4 py-2">
-                        The <code>title</code> prop allows you to define a prominent heading for the card. This is especially useful for providing a quick summary or name for the content inside the card.
+                        The <code>title</code> prop allows you to define a prominent heading for the card. This is
+                        especially useful for providing a quick summary or name for the content inside the card.
                     </td>
                 </tr>
                 <tr>
@@ -30,7 +32,8 @@
                     <td class="border-b px-4 py-2">String</td>
                     <td class="border-b px-4 py-2">''</td>
                     <td class="border-b px-4 py-2">
-                        The <code>subtitle</code> prop is used to add a secondary description below the title. It helps provide additional context to the content and complements the title.
+                        The <code>subtitle</code> prop is used to add a secondary description below the title. It helps
+                        provide additional context to the content and complements the title.
                     </td>
                 </tr>
                 <tr>
@@ -38,7 +41,8 @@
                     <td class="border-b px-4 py-2">Boolean</td>
                     <td class="border-b px-4 py-2">false</td>
                     <td class="border-b px-4 py-2">
-                        Use the <code>actions</code> prop to enable a dedicated area for buttons or links at the bottom of the card. This is ideal for interactive components like "Save" or "Cancel" buttons.
+                        Use the <code>actions</code> prop to enable a dedicated area for buttons or links at the bottom
+                        of the card. This is ideal for interactive components like "Save" or "Cancel" buttons.
                     </td>
                 </tr>
                 <tr>
@@ -46,7 +50,8 @@
                     <td class="border-b px-4 py-2">Boolean</td>
                     <td class="border-b px-4 py-2">false</td>
                     <td class="border-b px-4 py-2">
-                        When the <code>loading</code> prop is set to true, the card content is replaced with a loader. This is useful for async operations or when data is being fetched.
+                        When the <code>loading</code> prop is set to true, the card content is replaced with a loader.
+                        This is useful for async operations or when data is being fetched.
                     </td>
                 </tr>
                 <tr>
@@ -54,7 +59,9 @@
                     <td class="border-b px-4 py-2">String</td>
                     <td class="border-b px-4 py-2">default</td>
                     <td class="border-b px-4 py-2">
-                        The <code>rounded</code> prop controls the border-radius of the card. Options include "none" for sharp corners, "default" for standard rounding, "md" for medium rounding, and "full" for pill-shaped edges.
+                        The <code>rounded</code> prop controls the border-radius of the card. Options include "none" for
+                        sharp corners, "default" for standard rounding, "md" for medium rounding, and "full" for
+                        pill-shaped edges.
                     </td>
                 </tr>
                 <tr>
@@ -62,7 +69,8 @@
                     <td class="border-b px-4 py-2">String</td>
                     <td class="border-b px-4 py-2">bg-white dark:bg-zinc-800</td>
                     <td class="border-b px-4 py-2">
-                        The <code>bgColor</code> prop lets you specify the background color of the card. It supports both light and dark themes for consistent design.
+                        The <code>bgColor</code> prop lets you specify the background color of the card. It supports
+                        both light and dark themes for consistent design.
                     </td>
                 </tr>
                 <tr>
@@ -70,7 +78,8 @@
                     <td class="border-b px-4 py-2">String</td>
                     <td class="border-b px-4 py-2">''</td>
                     <td class="border-b px-4 py-2">
-                        The <code>bgHeaderColor</code> prop customizes the background color of the card header, allowing for visual separation of the header from the main content.
+                        The <code>bgHeaderColor</code> prop customizes the background color of the card header, allowing
+                        for visual separation of the header from the main content.
                     </td>
                 </tr>
                 <tr>
@@ -78,7 +87,8 @@
                     <td class="border-b px-4 py-2">String</td>
                     <td class="border-b px-4 py-2">text-slate-800 dark:text-white</td>
                     <td class="border-b px-4 py-2">
-                        The <code>textColor</code> prop defines the color of the text inside the card, ensuring readability across different themes and backgrounds.
+                        The <code>textColor</code> prop defines the color of the text inside the card, ensuring
+                        readability across different themes and backgrounds.
                     </td>
                 </tr>
                 <tr>
@@ -86,7 +96,8 @@
                     <td class="border-b px-4 py-2">String</td>
                     <td class="border-b px-4 py-2">border-gray-300 dark:border-gray-600</td>
                     <td class="border-b px-4 py-2">
-                        The <code>borderColor</code> prop sets the border color of the card. This is particularly relevant when using the "outlined" variant.
+                        The <code>borderColor</code> prop sets the border color of the card. This is particularly
+                        relevant when using the "outlined" variant.
                     </td>
                 </tr>
                 <tr>
@@ -94,7 +105,8 @@
                     <td class="border-b px-4 py-2">String</td>
                     <td class="border-b px-4 py-2">md</td>
                     <td class="border-b px-4 py-2">
-                        The <code>textSize</code> prop adjusts the size of the text within the card. Available sizes include "sm", "md", "lg", "xl", and "2xl".
+                        The <code>textSize</code> prop adjusts the size of the text within the card. Available sizes
+                        include "sm", "md", "lg", "xl", and "2xl".
                     </td>
                 </tr>
                 <tr>
@@ -102,7 +114,9 @@
                     <td class="border-b px-4 py-2">String</td>
                     <td class="border-b px-4 py-2">elevated</td>
                     <td class="border-b px-4 py-2">
-                        The <code>variant</code> prop defines the visual style of the card. Options include "elevated" for shadows, "flat" for no shadow, "tonal" for muted colors, "outlined" for bordered cards, "text" for minimal styles, and "plain".
+                        The <code>variant</code> prop defines the visual style of the card. Options include "elevated"
+                        for shadows, "flat" for no shadow, "tonal" for muted colors, "outlined" for bordered cards,
+                        "text" for minimal styles, and "plain".
                     </td>
                 </tr>
                 <tr>
@@ -110,7 +124,8 @@
                     <td class="border-b px-4 py-2">String</td>
                     <td class="border-b px-4 py-2">''</td>
                     <td class="border-b px-4 py-2">
-                        Use the <code>href</code> prop to convert the card into a clickable link. This is ideal for interactive cards that lead to external or internal pages.
+                        Use the <code>href</code> prop to convert the card into a clickable link. This is ideal for
+                        interactive cards that lead to external or internal pages.
                     </td>
                 </tr>
                 <tr>
@@ -118,7 +133,8 @@
                     <td class="border-b px-4 py-2">Boolean</td>
                     <td class="border-b px-4 py-2">false</td>
                     <td class="border-b px-4 py-2">
-                        The <code>hover</code> prop adds a subtle brightness effect when the card is hovered over, enhancing interactivity.
+                        The <code>hover</code> prop adds a subtle brightness effect when the card is hovered over,
+                        enhancing interactivity.
                     </td>
                 </tr>
                 <tr>
@@ -126,7 +142,8 @@
                     <td class="border-b px-4 py-2">Boolean</td>
                     <td class="border-b px-4 py-2">false</td>
                     <td class="border-b px-4 py-2">
-                        When the <code>disabled</code> prop is true, the card becomes non-interactive, with reduced opacity to visually indicate its disabled state.
+                        When the <code>disabled</code> prop is true, the card becomes non-interactive, with reduced
+                        opacity to visually indicate its disabled state.
                     </td>
                 </tr>
                 <tr>
@@ -134,7 +151,8 @@
                     <td class="border-b px-4 py-2">String</td>
                     <td class="border-b px-4 py-2">100%</td>
                     <td class="border-b px-4 py-2">
-                        The <code>maxWidth</code> prop defines the maximum width of the card. This is useful for creating consistent layouts in responsive designs.
+                        The <code>maxWidth</code> prop defines the maximum width of the card. This is useful for
+                        creating consistent layouts in responsive designs.
                     </td>
                 </tr>
                 <tr>
@@ -142,7 +160,8 @@
                     <td class="border-b px-4 py-2">String</td>
                     <td class="border-b px-4 py-2">auto</td>
                     <td class="border-b px-4 py-2">
-                        The <code>minHeight</code> prop ensures a minimum height for the card, useful for maintaining design consistency across dynamic content.
+                        The <code>minHeight</code> prop ensures a minimum height for the card, useful for maintaining
+                        design consistency across dynamic content.
                     </td>
                 </tr>
             </tbody>
@@ -151,27 +170,26 @@
         <h3>Basic Card</h3>
 
         <p>
-            The <strong>Basic Card</strong> demonstrates the default functionality of the <code>CCard</code> component. This example includes a title and subtitle, along with some placeholder content. The card is styled with a clean white background, a subtle header color, and rounded corners to enhance its visual appeal. It showcases how the card can adapt to different content sizes while maintaining a professional layout.
+            The <strong>Basic Card</strong> demonstrates the default functionality of the <code>CCard</code> component.
+            This example includes a title and subtitle, along with some placeholder content. The card is styled with a
+            clean white background, a subtle header color, and rounded corners to enhance its visual appeal. It
+            showcases how the card can adapt to different content sizes while maintaining a professional layout.
         </p>
 
         <card-docs>
-            <c-card
-                title="Basic Card"
-                subtitle="This is a basic card example."
-                bgColor="bg-white"
-                bgHeaderColor="bg-zinc-200"
-                bgBorderColor="border-b border-b-slate-300"
-                textColor="text-black"
-                maxWidth="500px"
-                minHeight="300px"
-                textSize="md"
-                class="m-auto"
-            >
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+            <c-card title="Basic Card" subtitle="This is a basic card example." bgColor="bg-white"
+                bgHeaderColor="bg-zinc-200" bgBorderColor="border-b border-b-slate-300" textColor="text-black"
+                maxWidth="500px" minHeight="300px" textSize="md" class="m-auto">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
+                into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
+                release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
+                software like Aldus PageMaker including versions of Lorem Ipsum.
             </c-card>
 
             <template #code>
-<pre><code class="code-highlight language-html">&lt;c-card
+                <pre><code class="code-highlight language-html">&lt;c-card
     title="Basic Card"
     subtitle="This is a basic card example."
     bgColor="bg-white"
@@ -192,26 +210,21 @@
         <h3>Loading</h3>
 
         <p>
-            The example illustrates the use of the <code>loading</code> prop. When enabled, the card content is temporarily replaced by a loading indicator, making it suitable for scenarios where data is being fetched or processed.
+            The example illustrates the use of the <code>loading</code> prop. When enabled, the card content is
+            temporarily
+            replaced by a loading indicator, making it suitable for scenarios where data is being fetched or processed.
         </p>
 
         <card-docs>
-            <c-card
-                title="Loading Card"
-                subtitle="This is a loading card example."
-                bgColor="bg-white"
-                textColor="text-black"
-                maxWidth="500px"
-                minHeight="150px"
-                loading
-            >
+            <c-card title="Loading Card" subtitle="This is a loading card example." bgColor="bg-white"
+                textColor="text-black" maxWidth="500px" minHeight="150px" loading>
                 <template v-slot:default>
                     Content will be replaced by a loader until loading is false.
                 </template>
             </c-card>
 
             <template #code>
-<pre><code class="code-highlight language-html">&lt;c-card
+                <pre><code class="code-highlight language-html">&lt;c-card
     title="Loading Card"
     subtitle="This is a loading card example."
     bgColor="bg-white"
@@ -229,22 +242,21 @@
         <h3>Custom Colors</h3>
 
         <p>
-            The example demonstrates the customization capabilities of the <code>CCard</code> component. By applying specific <code>bgColor</code> and <code>textColor</code> values, developers can create visually distinct cards that align with application design requirements.
+            The example demonstrates the customization capabilities of the <code>CCard</code> component. By applying
+            specific
+            <code>bgColor</code> and <code>textColor</code> values, developers can create visually distinct cards that
+            align
+            with application design requirements.
         </p>
 
         <card-docs>
-            <c-card
-                bgColor="bg-purple-500"
-                textColor="text-white"
-                title="Custom Colors"
-                maxWidth="500px"
-                minHeight="150px"
-            >
+            <c-card bgColor="bg-purple-500" textColor="text-white" title="Custom Colors" maxWidth="500px"
+                minHeight="150px">
                 This card has custom background and text colors.
             </c-card>
 
             <template #code>
-<pre><code class="code-highlight language-html">&lt;c-card bgColor="bg-purple-500" textColor="text-white" title="Custom Colors"&gt;
+                <pre><code class="code-highlight language-html">&lt;c-card bgColor="bg-purple-500" textColor="text-white" title="Custom Colors"&gt;
     This card has custom background and text colors.
 &lt;/c-card&gt;</code></pre>
             </template>
@@ -253,21 +265,19 @@
         <h3>Outlined</h3>
 
         <p>
-            The <code>Outlined</code> example shows the <code>outlined</code> variant of the <code>CCard</code> component. This variant applies a transparent background and a defined border, offering a lightweight and minimalistic visual style.
+            The <code>Outlined</code> example shows the <code>outlined</code> variant of the <code>CCard</code>
+            component. This
+            variant applies a transparent background and a defined border, offering a lightweight and minimalistic
+            visual style.
         </p>
 
         <card-docs>
-            <c-card
-                variant="outlined"
-                title="Outlined Card"
-                maxWidth="500px"
-                minHeight="150px"
-            >
+            <c-card variant="outlined" title="Outlined Card" maxWidth="500px" minHeight="150px">
                 This card has an outlined style.
             </c-card>
 
             <template #code>
-<pre><code class="code-highlight language-html">&lt;c-card variant="outlined" title="Outlined Card"&gt;
+                <pre><code class="code-highlight language-html">&lt;c-card variant="outlined" title="Outlined Card"&gt;
     This card has an outlined style.
 &lt;/c-card&gt;</code></pre>
             </template>
@@ -278,36 +288,23 @@
         <h3>Card with Actions</h3>
 
         <p>
-            Usage of the <code>actions</code> slot. This configuration allows for interactive buttons or other elements to be added within the card footer, enabling developers to create cards with user interaction capabilities.
+            Usage of the <code>actions</code> slot. This configuration allows for interactive buttons or other elements
+            to be
+            added within the card footer, enabling developers to create cards with user interaction capabilities.
         </p>
 
         <card-docs>
-            <c-card
-                title="Card with Actions"
-                subtitle="This is a loading card example."
-                bgColor="bg-white"
-                borderColor="border-gray-200"
-                textColor="text-black"
-                maxWidth="500px"
-                minHeight="150px"
-                actions
-            >
+            <c-card title="Card with Actions" subtitle="This is a loading card example." bgColor="bg-white"
+                borderColor="border-gray-200" textColor="text-black" maxWidth="500px" minHeight="150px" actions>
                 <template #action-buttons>
-                    <c-button
-                        type="button"
-                        variant="text"
-                    >Accept</c-button>
+                    <c-button type="button" variant="text">Accept</c-button>
 
-                    <c-button
-                        type="button"
-                        variant="text"
-                        class="bg-red-800 hover:bg-red-700"
-                    >Cancel</c-button>
+                    <c-button type="button" variant="text" class="bg-red-800 hover:bg-red-700">Cancel</c-button>
                 </template>
             </c-card>
 
             <template #code>
-<pre><code class="code-highlight language-html">&lt;c-card
+                <pre><code class="code-highlight language-html">&lt;c-card
     title="Card with Actions"
     subtitle="This is a loading card example."
     bgColor="bg-white"
@@ -325,29 +322,27 @@
             </template>
         </card-docs>
 
-    <h3>Closable</h3>
+        <h3>Closable</h3>
 
-    <p>
-        The <code>Closable</code> example demonstrates the use of the <code>closable</code> prop in the <code>CCard</code> component.
-        This feature adds a close button to the card's header and emits a <code>close</code> event when clicked, enabling dynamic card dismissal.
-    </p>
+        <p>
+            The <code>Closable</code> example demonstrates the use of the <code>closable</code> prop in the
+            <code>CCard</code>
+            component.
+            This feature adds a close button to the card's header and emits a <code>close</code> event when clicked,
+            enabling
+            dynamic card dismissal.
+        </p>
 
-    <card-docs>
-        <c-card
-            title="Closable Card"
-            subtitle="This card can be closed."
-            bgColor="bg-white"
-            textColor="text-black"
-            maxWidth="500px"
-            minHeight="150px"
-            closable
-            @close="onClose"
-        >
-            This card contains content and a close button in the header. When the close button is clicked, the card emits a <code>close</code> event.
-        </c-card>
+        <card-docs>
+            <c-card title="Closable Card" subtitle="This card can be closed." bgColor="bg-white" textColor="text-black"
+                maxWidth="500px" minHeight="150px" closable @close="onClose">
+                This card contains content and a close button in the header. When the close button is clicked, the card
+                emits a
+                <code>close</code> event.
+            </c-card>
 
             <template #code>
-<pre><code class="code-highlight language-html">&lt;c-card
+                <pre><code class="code-highlight language-html">&lt;c-card
     title="Closable Card"
     subtitle="This card can be closed."
     bgColor="bg-white"
@@ -363,62 +358,49 @@
         </card-docs>
 
 
-    <h3>Advanced Example</h3>
+        <h3>Advanced Example</h3>
 
-    <p>
-        This example demonstrates the comprehensive use of the <code>CCard</code> component, combining multiple configurations like
-        <code>title</code>, <code>subtitle</code>, <code>actions</code>, <code>loading</code>, <code>hover</code>, and various styling options
-        such as <code>bgColor</code>, <code>textColor</code>, <code>variant</code>, and <code>closable</code>. It showcases the flexibility and
-        power of the <code>CCard</code> component to create complex and interactive UI designs.
-    </p>
+        <p>
+            This example demonstrates the comprehensive use of the <code>CCard</code> component, combining multiple
+            configurations like
+            <code>title</code>, <code>subtitle</code>, <code>actions</code>, <code>loading</code>, <code>hover</code>,
+            and
+            various styling options
+            such as <code>bgColor</code>, <code>textColor</code>, <code>variant</code>, and <code>closable</code>. It
+            showcases
+            the flexibility and
+            power of the <code>CCard</code> component to create complex and interactive UI designs.
+        </p>
 
-    <card-docs>
-        <c-card
-            title="Advanced Card"
-            subtitle="This card demonstrates all configurations."
-            customClass="overflow-hidden"
-            bgColor="bg-white"
-            bgHeaderColor="bg-blue-500 text-white"
-            bgBorderColor="border-b border-gray-300"
-            textColor="text-gray-800"
-            borderColor="border-blue-700"
-            closeColor="text-white"
-            textSize="lg"
-            variant="outlined"
-            maxWidth="600px"
-            minHeight="200px"
-            hover
-            closable
-            @close="onClose"
-            actions
-        >
-            <template #default>
-                This advanced card uses a combination of all available configurations. It includes:
-                <ul class="list-disc ml-6 mt-2">
-                    <li>A title and subtitle for context.</li>
-                    <li>A loading indicator at the top.</li>
-                    <li>Custom background, header, and border colors.</li>
-                    <li>A hover effect for interactivity.</li>
-                    <li>An outlined style for a modern appearance.</li>
-                    <li>A closable button to dismiss the card.</li>
-                    <li>Action buttons at the footer.</li>
-                </ul>
-            </template>
-            <template #action-buttons>
-                <c-button
-                    type="button"
-                    class="text-white border-green-700 bg-green-700 hover:bg-green-500"
-                >Accept</c-button>
+        <card-docs>
+            <c-card title="Advanced Card" subtitle="This card demonstrates all configurations."
+                customClass="overflow-hidden" bgColor="bg-white" bgHeaderColor="bg-blue-500 text-white"
+                bgBorderColor="border-b border-gray-300" textColor="text-gray-800" borderColor="border-blue-700"
+                closeColor="text-white" textSize="lg" variant="outlined" maxWidth="600px" minHeight="200px" hover
+                closable @close="onClose" actions>
+                <template #default>
+                    This advanced card uses a combination of all available configurations. It includes:
+                    <ul class="list-disc ml-6 mt-2">
+                        <li>A title and subtitle for context.</li>
+                        <li>A loading indicator at the top.</li>
+                        <li>Custom background, header, and border colors.</li>
+                        <li>A hover effect for interactivity.</li>
+                        <li>An outlined style for a modern appearance.</li>
+                        <li>A closable button to dismiss the card.</li>
+                        <li>Action buttons at the footer.</li>
+                    </ul>
+                </template>
+                <template #action-buttons>
+                    <c-button type="button"
+                        class="text-white border-green-700 bg-green-700 hover:bg-green-500">Accept</c-button>
 
-                <c-button
-                    type="button"
-                    class="text-white border-red-700 bg-red-700 hover:bg-red-500"
-                >Decline</c-button>
-            </template>
-        </c-card>
+                    <c-button type="button"
+                        class="text-white border-red-700 bg-red-700 hover:bg-red-500">Decline</c-button>
+                </template>
+            </c-card>
 
-        <template #code>
-<pre><code class="code-highlight language-html">&lt;c-card
+            <template #code>
+                <pre><code class="code-highlight language-html">&lt;c-card
     title="Advanced Card"
     subtitle="This card demonstrates all configurations."
     bgColor="bg-white"
@@ -459,74 +441,77 @@
         &gt;Decline&lt;/c-button&gt;
     &lt;/template&gt;
 &lt;/c-card&gt;</code></pre>
-        </template>
-    </card-docs>
-
-
-
-    <h2>More Example</h2>
-
-    <p>Below are some more examples of what you can do with <code>CCard</code> using other <code>@cmmv/ui</code> components. CCard is a flexible component that can be easily combined with many other components to create rich and interactive layouts. See how it can be combined with other components to improve the interface and usability of your project:</p>
-
-    <br/>
-
-    <h3>Twitter Card</h3>
-
-    <p>
-        The <strong>Twitter Card</strong> example demonstrates how to create a social media post card that mimics the Twitter interface. This design showcases user information, post content, and engagement metrics in a familiar layout. It's perfect for social media feeds or dashboards that need to display user-generated content.
-    </p>
-
-    <card-docs>
-        <c-card
-            title="Twitter"
-            subtitle="Evan You · Vue Creator"
-            bgColor="bg-cyan-500"
-            textColor="text-white"
-            maxWidth="400px"
-            rounded="md"
-        >
-            <template #header>
-                <div class="flex items-center space-x-3 p-3">
-                    <icon-twitter class="w-8 h-8 text-white" />
-
-                    <div>
-                        <h3 class="font-bold text-lg">Twitter</h3>
-                    </div>
-                </div>
             </template>
+        </card-docs>
 
-            <template #content>
-                <div class="p-4 text-2xl">
-                    "Turns out semicolon-less style is easier and safer in TS because most gotcha edge cases are type invalid as well."
-                </div>
 
-                <div class="flex items-center w-full px-4 pt-2 pb-4">
-                    <div class="flex items-center space-x-3 ">
-                        <c-avatar
-                            size="md"
-                            src="https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Prescription02&hairColor=Black&facialHairType=Blank&clotheType=Hoodie&clotheColor=White&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Default&skinColor=Light"
-                        ></c-avatar>
+
+        <h2>More Example</h2>
+
+        <p>Below are some more examples of what you can do with <code>CCard</code> using other <code>@cmmv/ui</code>
+            components.
+            CCard is a flexible component that can be easily combined with many other components to create rich and
+            interactive
+            layouts. See how it can be combined with other components to improve the interface and usability of your
+            project:
+        </p>
+
+        <br />
+
+        <h3>Twitter Card</h3>
+
+        <p>
+            The <strong>Twitter Card</strong> example demonstrates how to create a social media post card that mimics
+            the
+            Twitter interface. This design showcases user information, post content, and engagement metrics in a
+            familiar
+            layout. It's perfect for social media feeds or dashboards that need to display user-generated content.
+        </p>
+
+        <card-docs>
+            <c-card title="Twitter" subtitle="Evan You · Vue Creator" bgColor="bg-cyan-500" textColor="text-white"
+                maxWidth="400px" rounded="md">
+                <template #header>
+                    <div class="flex items-center space-x-3 p-3">
+                        <icon-twitter class="w-8 h-8 text-white" />
+
                         <div>
-                            <div class="font-semibold">Evan You</div>
-                            <div class="text-sm opacity-75">Vue Creator</div>
+                            <h3 class="font-bold text-lg">Twitter</h3>
                         </div>
                     </div>
-                    <div class="flex items-center space-x-4 ml-auto">
-                        <button class="flex items-center text-sm space-x-2">
-                            <IconHeart class="text-white" />
-                            <span>256</span>
-                        </button>
-                        <button class="flex items-center text-sm space-x-2">
-                            <IconShare class="text-white" aria-hidden="true" />
-                            <span>45</span>
-                        </button>
-                    </div>
-                </div>
-            </template>
-        </c-card>
+                </template>
 
-        <template #code>
-<pre><code class="code-highlight language-html">&lt;c-card
+                <template #content>
+                    <div class="p-4 text-2xl">
+                        "Turns out semicolon-less style is easier and safer in TS because most gotcha edge cases are
+                        type invalid as well."
+                    </div>
+
+                    <div class="flex items-center w-full px-4 pt-2 pb-4">
+                        <div class="flex items-center space-x-3 ">
+                            <c-avatar size="md"
+                                src="https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Prescription02&hairColor=Black&facialHairType=Blank&clotheType=Hoodie&clotheColor=White&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Default&skinColor=Light"></c-avatar>
+                            <div>
+                                <div class="font-semibold">Evan You</div>
+                                <div class="text-sm opacity-75">Vue Creator</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4 ml-auto">
+                            <button class="flex items-center text-sm space-x-2">
+                                <IconHeart class="text-white" />
+                                <span>256</span>
+                            </button>
+                            <button class="flex items-center text-sm space-x-2">
+                                <IconShare class="text-white" aria-hidden="true" />
+                                <span>45</span>
+                            </button>
+                        </div>
+                    </div>
+                </template>
+            </c-card>
+
+            <template #code>
+                <pre><code class="code-highlight language-html">&lt;c-card
     title="Twitter"
     subtitle="Evan You · Vue Creator"
     bgColor="bg-cyan-500"
@@ -572,27 +557,25 @@
         &lt;/div&gt;
     &lt;/template&gt;
 &lt;/c-card&gt;</code></pre>
-        </template>
-    </card-docs>
+            </template>
+        </card-docs>
 
 
         <h3>Weather card</h3>
 
         <p>
-            The <strong>Weather Card</strong> example illustrates how to create an informative weather dashboard with real-time data visualization. This card combines icons, metrics, and interactive elements to provide a comprehensive weather report. The expandable section allows users to access additional forecast information without cluttering the initial view.
+            The <strong>Weather Card</strong> example illustrates how to create an informative weather dashboard with
+            real-time
+            data visualization. This card combines icons, metrics, and interactive elements to provide a comprehensive
+            weather
+            report. The expandable section allows users to access additional forecast information without cluttering the
+            initial
+            view.
         </p>
 
         <card-docs>
-            <c-card
-                title="Florida"
-                subtitle="Extreme Weather Alert"
-                bgColor="bg-gray-800"
-                textColor="text-white"
-                borderColor="border-gray-900"
-                maxWidth="368px"
-                rounded="md"
-                actions
-            >
+            <c-card title="Florida" subtitle="Extreme Weather Alert" bgColor="bg-gray-800" textColor="text-white"
+                borderColor="border-gray-900" maxWidth="368px" rounded="md" actions>
                 <template #header>
                     <div class="flex items-center space-x-3 p-3 border-b border-gray-900">
                         <icon-exclamation-triangle class="w-8 h-8 text-red-500" aria-hidden="true" />
@@ -624,37 +607,22 @@
                     </div>
 
                     <div v-if="expand" class="p-4">
-                        <c-slider
-                            v-model="time"
-                            :min="0"
-                            :max="6"
-                            step="1"
-                            tickLabels="['Now', '1h', '2h', '3h', '4h', '5h', '6h']"
-                            showTicks
-                            thumbSize="10px"
-                        ></c-slider>
+                        <c-slider v-model="time" :min="0" :max="6" step="1"
+                            tickLabels="['Now', '1h', '2h', '3h', '4h', '5h', '6h']" showTicks
+                            thumbSize="10px"></c-slider>
 
                         <c-list class="bg-transparent">
-                            <c-list-item
-                                v-for="item in forecast"
-                                :key="item.day"
-                                :title="item.day"
-                                :subtitle="item.temp"
-                                :icon="item.icon"
-                                textColor="text-white"
-                            ></c-list-item>
+                            <c-list-item v-for="item in forecast" :key="item.day" :title="item.day"
+                                :subtitle="item.temp" :icon="item.icon" textColor="text-white"></c-list-item>
                         </c-list>
                     </div>
                 </template>
 
                 <template #actions>
                     <div class="flex justify-between items-center px-4 py-4 border-t border-gray-900">
-                        <c-button
-                            type="button"
-                            variant="text"
+                        <c-button type="button" variant="text"
                             class="text-blue-500 font-semibold bg-transparent hover:bg-gray-700"
-                            @click="expand = !expand"
-                        >
+                            @click="expand = !expand">
                             {{ expand ? 'Hide Report' : 'Full Report' }}
                         </c-button>
                     </div>
@@ -662,7 +630,7 @@
             </c-card>
 
             <template #code>
-<pre><code class="code-highlight language-html">&lt;c-card
+                <pre><code class="code-highlight language-html">&lt;c-card
     title="Florida"
     subtitle="Extreme Weather Alert"
     bgColor="bg-gray-800"
@@ -745,30 +713,26 @@
         <h3>Hotel Reservation Card</h3>
 
         <p>
-            The <strong>Hotel Reservation Card</strong> showcases how to create an attractive booking interface for hospitality applications. This example combines visual elements like high-quality images with practical information such as ratings, amenities, and pricing. The card includes interactive elements for user engagement and clear call-to-action buttons.
+            The <strong>Hotel Reservation Card</strong> showcases how to create an attractive booking interface for
+            hospitality
+            applications. This example combines visual elements like high-quality images with practical information such
+            as
+            ratings, amenities, and pricing. The card includes interactive elements for user engagement and clear
+            call-to-action
+            buttons.
         </p>
 
         <card-docs>
-            <c-card
-                title="Grand Resort & Spa"
-                subtitle="Cancún, México"
-                bgColor="bg-white dark:bg-neutral-800"
-                textColor="text-gray-900 dark:text-white"
-                borderColor="border-gray-200 dark:border-gray-700"
-                maxWidth="350px"
-                rounded="md"
-                variant="outlined"
-                customClass="shadow-md border-2 border-gray-300 dark:border-gray-600 overflow-hidden"
-                actions
-            >
+            <c-card title="Grand Resort & Spa" subtitle="Cancún, México" bgColor="bg-white dark:bg-neutral-800"
+                textColor="text-gray-900 dark:text-white" borderColor="border-gray-200 dark:border-gray-700"
+                maxWidth="350px" rounded="md" variant="outlined"
+                customClass="shadow-md border-2 border-gray-300 dark:border-gray-600 overflow-hidden" actions>
                 <template #header>
                     <div class="relative w-full h-48 overflow-hidden">
-                        <img
-                            src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400&q=80"
-                            alt="Grand Resort & Spa"
-                            class="w-full h-full object-cover"
-                        />
-                        <div class="absolute top-4 right-4 bg-white dark:bg-neutral-800 text-red-500 px-3 py-1 rounded-full text-sm font-bold shadow-md">
+                        <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400&q=80"
+                            alt="Grand Resort & Spa" class="w-full h-full object-cover" />
+                        <div
+                            class="absolute top-4 right-4 bg-white dark:bg-neutral-800 text-red-500 px-3 py-1 rounded-full text-sm font-bold shadow-md">
                             -25% OFF
                         </div>
                     </div>
@@ -788,15 +752,22 @@
                         </div>
 
                         <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
-                            Luxury beachfront resort with 3 pools, full-service spa and 5 restaurants. Spacious rooms with ocean views and all amenities.
+                            Luxury beachfront resort with 3 pools, full-service spa and 5 restaurants. Spacious rooms
+                            with ocean views and all amenities.
                         </p>
 
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs rounded-md">Pool</span>
-                            <span class="px-2 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-xs rounded-md">Free Wi-Fi</span>
-                            <span class="px-2 py-1 bg-amber-100 dark:bg-amber-900 text-amber-800 dark:text-amber-200 text-xs rounded-md">Breakfast</span>
-                            <span class="px-2 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 text-xs rounded-md">Spa</span>
-                            <span class="px-2 py-1 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 text-xs rounded-md">Restaurant</span>
+                            <span
+                                class="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs rounded-md">Pool</span>
+                            <span
+                                class="px-2 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-xs rounded-md">Free
+                                Wi-Fi</span>
+                            <span
+                                class="px-2 py-1 bg-amber-100 dark:bg-amber-900 text-amber-800 dark:text-amber-200 text-xs rounded-md">Breakfast</span>
+                            <span
+                                class="px-2 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 text-xs rounded-md">Spa</span>
+                            <span
+                                class="px-2 py-1 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 text-xs rounded-md">Restaurant</span>
                         </div>
 
                         <div class="flex justify-between items-center">
@@ -814,19 +785,14 @@
                 </template>
 
                 <template #actions>
-                    <div class="flex justify-between items-center px-4 py-3 border-t border-gray-200 dark:border-gray-700">
-                        <c-button
-                            type="button"
-                            variant="text"
-                            class="text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/30"
-                        >
+                    <div
+                        class="flex justify-between items-center px-4 py-3 border-t border-gray-200 dark:border-gray-700">
+                        <c-button type="button" variant="text"
+                            class="text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/30">
                             View details
                         </c-button>
 
-                        <c-button
-                            type="button"
-                            class="bg-blue-600 hover:bg-blue-700 text-white"
-                        >
+                        <c-button type="button" class="bg-blue-600 hover:bg-blue-700 text-white">
                             Book now
                         </c-button>
                     </div>
@@ -834,7 +800,7 @@
             </c-card>
 
             <template #code>
-<pre><code class="code-highlight language-html">&lt;c-card
+                <pre><code class="code-highlight language-html">&lt;c-card
     title="Grand Resort & Spa"
     subtitle="Cancún, México"
     bgColor="bg-white dark:bg-neutral-800"
@@ -922,30 +888,24 @@
         <h3>E-commerce Product Card</h3>
 
         <p>
-            The <strong>E-commerce Product Card</strong> demonstrates how to create an effective product display for online stores. This example showcases important product information including images, pricing, ratings, and availability status. The design incorporates clear call-to-action buttons and visual indicators to enhance the shopping experience.
+            The <strong>E-commerce Product Card</strong> demonstrates how to create an effective product display for
+            online
+            stores. This example showcases important product information including images, pricing, ratings, and
+            availability
+            status. The design incorporates clear call-to-action buttons and visual indicators to enhance the shopping
+            experience.
         </p>
 
         <card-docs>
-            <c-card
-                title="Wireless Noise-Cancelling Headphones"
-                subtitle="Premium Audio Series"
-                bgColor="bg-white dark:bg-neutral-800"
-                textColor="text-gray-900 dark:text-white"
-                borderColor="border-gray-200 dark:border-neutral-700"
-                maxWidth="350px"
-                rounded="lg"
-                variant="elevated"
-                customClass="shadow-lg overflow-hidden"
-                actions
-            >
+            <c-card title="Wireless Noise-Cancelling Headphones" subtitle="Premium Audio Series"
+                bgColor="bg-white dark:bg-neutral-800" textColor="text-gray-900 dark:text-white"
+                borderColor="border-gray-200 dark:border-neutral-700" maxWidth="350px" rounded="lg" variant="elevated"
+                customClass="shadow-lg overflow-hidden" actions>
                 <template #header>
                     <div class="relative">
                         <div class="flex items-center justify-center bg-gray-100 dark:bg-neutral-700 p-6 h-52">
-                            <img
-                                src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=300&q=80"
-                                alt="Wireless Headphones"
-                                class="max-h-full max-w-full object-contain"
-                            />
+                            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=300&q=80"
+                                alt="Wireless Headphones" class="max-h-full max-w-full object-contain" />
                         </div>
                         <div class="absolute top-3 left-3 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">
                             NEW
@@ -963,7 +923,8 @@
                                 <c-rating :model-value="4" size="sm" fixed />
                                 <span class="ml-2 text-sm text-gray-600 dark:text-neutral-400">4.0 (42 reviews)</span>
                             </div>
-                            <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
+                            <span
+                                class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
                                 In Stock
                             </span>
                         </div>
@@ -971,8 +932,10 @@
                         <div class="mt-3 mb-4">
                             <div class="flex items-baseline">
                                 <span class="text-2xl font-bold text-gray-900 dark:text-white">$249.99</span>
-                                <span class="ml-2 text-sm text-gray-500 dark:text-neutral-400 line-through">$299.99</span>
-                                <span class="ml-2 text-sm font-medium text-green-600 dark:text-green-400">Save 17%</span>
+                                <span
+                                    class="ml-2 text-sm text-gray-500 dark:text-neutral-400 line-through">$299.99</span>
+                                <span class="ml-2 text-sm font-medium text-green-600 dark:text-green-400">Save
+                                    17%</span>
                             </div>
                             <div class="text-xs text-gray-500 dark:text-neutral-400 mt-1">
                                 Free shipping on orders over $50
@@ -982,10 +945,14 @@
                         <div class="mb-4">
                             <div class="text-sm font-medium text-gray-700 dark:text-neutral-300 mb-1">Color</div>
                             <div class="flex space-x-2">
-                                <button class="w-6 h-6 rounded-full bg-black border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"></button>
-                                <button class="w-6 h-6 rounded-full bg-white border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"></button>
-                                <button class="w-6 h-6 rounded-full bg-blue-600 border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"></button>
-                                <button class="w-6 h-6 rounded-full bg-red-600 border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"></button>
+                                <button
+                                    class="w-6 h-6 rounded-full bg-black border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"></button>
+                                <button
+                                    class="w-6 h-6 rounded-full bg-white border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"></button>
+                                <button
+                                    class="w-6 h-6 rounded-full bg-blue-600 border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"></button>
+                                <button
+                                    class="w-6 h-6 rounded-full bg-red-600 border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"></button>
                             </div>
                         </div>
 
@@ -1001,18 +968,13 @@
                 </template>
 
                 <template #actions>
-                    <div class="flex justify-between items-center px-4 py-3 border-t border-gray-200 dark:border-neutral-700">
-                        <c-button
-                            type="button"
-                            variant="text"
-                            class="text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/30 flex items-center"
-                        >
+                    <div
+                        class="flex justify-between items-center px-4 py-3 border-t border-gray-200 dark:border-neutral-700">
+                        <c-button type="button" variant="text"
+                            class="text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/30 flex items-center">
                             <icon-heart class="w-4 h-4 mr-1.5 text-white" /> Wishlist
                         </c-button>
-                        <c-button
-                            type="button"
-                            class="bg-blue-600 hover:bg-blue-700 text-white flex items-center"
-                        >
+                        <c-button type="button" class="bg-blue-600 hover:bg-blue-700 text-white flex items-center">
                             <icon-shopping-cart class="w-4 h-4 mr-1.5 text-white" /> Add to Cart
                         </c-button>
                     </div>
@@ -1020,7 +982,7 @@
             </c-card>
 
             <template #code>
-<pre><code class="code-highlight language-html">&lt;c-card
+                <pre><code class="code-highlight language-html">&lt;c-card
     title="Wireless Noise-Cancelling Headphones"
     subtitle="Premium Audio Series"
     bgColor="bg-white dark:bg-neutral-800"
@@ -1115,12 +1077,7 @@
             </template>
         </card-docs>
 
-        <PagePagination
-            previous="Avatar"
-            previousLink="/avatar"
-            next="Dropdown"
-            nextLink="/dropdown"
-        />
+        <PagePagination previous="Breadcrumb" previousLink="/breadcrumb" next="Dropdown" nextLink="/dropdown" />
     </BaseLayout>
 </template>
 

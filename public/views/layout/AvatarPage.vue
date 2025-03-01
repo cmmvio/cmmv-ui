@@ -3,7 +3,8 @@
         <h1>Avatar</h1>
 
         <p>
-            The <code>CAvatar (alias: c-avatar)</code> component provides a customizable and responsive way to display user avatars.
+            The <code>CAvatar (alias: c-avatar)</code> component provides a customizable and responsive way to display
+            user avatars.
             It supports images, icons, and text initials with various styling options for size, shape, and colors.
         </p>
 
@@ -22,7 +23,8 @@
                     <td class="border-b px-4 py-2">String</td>
                     <td class="border-b px-4 py-2">''</td>
                     <td class="border-b px-4 py-2">
-                        The <code>src</code> prop defines the image URL for the avatar. If not provided, initials or a slot can be used as a fallback.
+                        The <code>src</code> prop defines the image URL for the avatar. If not provided, initials or a
+                        slot can be used as a fallback.
                     </td>
                 </tr>
                 <tr>
@@ -54,7 +56,8 @@
                     <td class="border-b px-4 py-2">String</td>
                     <td class="border-b px-4 py-2">'md'</td>
                     <td class="border-b px-4 py-2">
-                        Specifies the size of the avatar. Available options are <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, and <code>2xl</code>.
+                        Specifies the size of the avatar. Available options are <code>sm</code>, <code>md</code>,
+                        <code>lg</code>, <code>xl</code>, and <code>2xl</code>.
                     </td>
                 </tr>
                 <tr>
@@ -62,7 +65,8 @@
                     <td class="border-b px-4 py-2">String</td>
                     <td class="border-b px-4 py-2">'full'</td>
                     <td class="border-b px-4 py-2">
-                        Controls the border radius of the avatar. Options include <code>none</code>, <code>md</code>, and <code>full</code>.
+                        Controls the border radius of the avatar. Options include <code>none</code>, <code>md</code>,
+                        and <code>full</code>.
                     </td>
                 </tr>
                 <tr>
@@ -87,25 +91,19 @@
         <h3>Basic Usage</h3>
 
         <p>
-            The basic example showcases an avatar displaying an image. When the <code>src</code> prop is provided, the image is displayed inside the avatar container.
+            The basic example showcases an avatar displaying an image. When the <code>src</code> prop is provided, the
+            image is displayed inside the avatar container.
         </p>
 
         <card-docs>
             <div class="flex items-center justify-center gap-x-4">
-                <c-avatar
-                    alt="User Avatar"
-                    size="lg"
-                />
+                <c-avatar alt="User Avatar" size="lg" />
 
-                <c-avatar
-                    alt="User Avatar"
-                    rounded="md"
-                    size="lg"
-                />
+                <c-avatar alt="User Avatar" rounded="md" size="lg" />
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-vue">&lt;template&gt;
+                <pre><code class="code-highlight language-vue">&lt;template&gt;
     &lt;c-avatar
         alt="User Avatar"
         size="lg"
@@ -123,7 +121,9 @@
         <h3>Avatar with Initials</h3>
 
         <p>
-            When no image is provided, the <code>initials</code> prop can be used to display the user's initials. This is particularly useful for fallback designs.
+            When no image is provided, the <code>initials</code> prop can be used to display the user's initials. This
+            is
+            particularly useful for fallback designs.
         </p>
 
         <card-docs>
@@ -132,7 +132,7 @@
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-vue">&lt;template&gt;
+                <pre><code class="code-highlight language-vue">&lt;template&gt;
     &lt;c-avatar
         initials="EY"
         bgColor="bg-blue-500"
@@ -145,17 +145,15 @@
         <h3>Advanced Example</h3>
 
         <p>
-            This example demonstrates a combination of the <code>CAvatar</code> component with other elements. It highlights how avatars can be integrated into user profiles or interactive designs.
+            This example demonstrates a combination of the <code>CAvatar</code> component with other elements. It
+            highlights how
+            avatars can be integrated into user profiles or interactive designs.
         </p>
 
         <card-docs>
             <div class="flex items-center space-x-4">
-                <c-avatar
-                    src="https://i.pravatar.cc/150?img=3"
-                    alt="User Avatar"
-                    size="lg"
-                    borderColor="border-2 border-blue-500"
-                />
+                <c-avatar src="https://i.pravatar.cc/150?img=3" alt="User Avatar" size="lg"
+                    borderColor="border-2 border-blue-500" />
                 <div>
                     <div class="font-bold text-lg">John Doe</div>
                     <div class="text-sm opacity-75">Software Engineer</div>
@@ -163,7 +161,7 @@
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-vue">&lt;template&gt;
+                <pre><code class="code-highlight language-vue">&lt;template&gt;
     &lt;div class="flex items-center space-x-4"&gt;
         &lt;c-avatar
             src="https://example.com/avatar.jpg"
@@ -183,7 +181,9 @@
         <h3>Dot Indicator</h3>
 
         <p>
-            The <code>dotIndicator</code> feature allows you to display a small status indicator at the bottom right of the avatar.
+            The <code>dotIndicator</code> feature allows you to display a small status indicator at the bottom right of
+            the
+            avatar.
             This is useful for showing a user's availability in chat applications, dashboards, or contact lists.
         </p>
 
@@ -196,33 +196,18 @@
 
         <card-docs>
             <div class="flex items-center justify-center gap-x-4">
-                <c-avatar
-                    src="https://i.pravatar.cc/150?img=1"
-                    alt="User Avatar"
-                    size="lg"
-                    borderColor="border-2 border-blue-500"
-                    dotIndicator="online"
-                />
+                <c-avatar src="https://i.pravatar.cc/150?img=1" alt="User Avatar" size="lg"
+                    borderColor="border-2 border-blue-500" dotIndicator="online" />
 
-                <c-avatar
-                    src="https://i.pravatar.cc/150?img=1"
-                    alt="User Avatar"
-                    size="lg"
-                    borderColor="border-2 border-blue-500"
-                    dotIndicator="busy"
-                />
+                <c-avatar src="https://i.pravatar.cc/150?img=1" alt="User Avatar" size="lg"
+                    borderColor="border-2 border-blue-500" dotIndicator="busy" />
 
-                <c-avatar
-                    src="https://i.pravatar.cc/150?img=1"
-                    alt="User Avatar"
-                    size="lg"
-                    borderColor="border-2 border-blue-500"
-                    dotIndicator="offline"
-                />
+                <c-avatar src="https://i.pravatar.cc/150?img=1" alt="User Avatar" size="lg"
+                    borderColor="border-2 border-blue-500" dotIndicator="offline" />
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-vue">&lt;template&gt;
+                <pre><code class="code-highlight language-vue">&lt;template&gt;
     &lt;c-avatar
         src="https://i.pravatar.cc/150?img=1"
         alt="User Avatar"
@@ -253,29 +238,32 @@
         <h3>Stacked</h3>
 
         <p>
-            The <code>stacked</code> option allows multiple avatars to be displayed in an overlapping format, creating a group effect.
+            The <code>stacked</code> option allows multiple avatars to be displayed in an overlapping format, creating a
+            group
+            effect.
             This is ideal for representing teams, participants, or social interactions.
         </p>
 
         <card-docs>
             <div class="flex items-center justify-center gap-x-4">
-                <c-avatar
-                    src="https://i.pravatar.cc/150?img=1"
-                    alt="User Avatar"
-                    size="lg"
-                    borderColor="border-2 border-blue-500"
-                    stacked
-                >
-                    <img class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800" src="https://i.pravatar.cc/150?img=1" alt="">
-                    <img class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800" src="https://i.pravatar.cc/150?img=2" alt="">
-                    <img class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800" src="https://i.pravatar.cc/150?img=3" alt="">
-                    <img class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800" src="https://i.pravatar.cc/150?img=4" alt="">
-                    <div class="flex items-center justify-center w-10 h-10 text-xs font-medium text-white bg-gray-700 border-2 border-white rounded-full dark:border-gray-800">+99</div>
+                <c-avatar src="https://i.pravatar.cc/150?img=1" alt="User Avatar" size="lg"
+                    borderColor="border-2 border-blue-500" stacked>
+                    <img class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800"
+                        src="https://i.pravatar.cc/150?img=1" alt="">
+                    <img class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800"
+                        src="https://i.pravatar.cc/150?img=2" alt="">
+                    <img class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800"
+                        src="https://i.pravatar.cc/150?img=3" alt="">
+                    <img class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800"
+                        src="https://i.pravatar.cc/150?img=4" alt="">
+                    <div
+                        class="flex items-center justify-center w-10 h-10 text-xs font-medium text-white bg-gray-700 border-2 border-white rounded-full dark:border-gray-800">
+                        +99</div>
                 </c-avatar>
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-vue">&lt;template&gt;
+                <pre><code class="code-highlight language-vue">&lt;template&gt;
     &lt;div class="flex items-center justify-center"&gt;
         &lt;c-avatar stacked&gt;
             &lt;img
@@ -309,12 +297,7 @@
             </template>
         </card-docs>
 
-        <PagePagination
-            previous="Alert"
-            previousLink="/alert"
-            next="Card"
-            nextLink="/card"
-        />
+        <PagePagination previous="Alert" previousLink="/alert" next="Breadcrumb" nextLink="/breadcrumb" />
     </BaseLayout>
 </template>
 

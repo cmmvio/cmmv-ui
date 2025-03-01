@@ -26,6 +26,7 @@ import TablePage from "./views/data/TablePage.vue";
 import AccordionPage from "./views/layout/AccordionPage.vue";
 import AlertPage from "./views/layout/AlertPage.vue";
 import AvatarPage from "./views/layout/AvatarPage.vue";
+import BreadcrumbPage from "./views/layout/BreadcrumbPage.vue";
 import CardPage from "./views/layout/CardPage.vue";
 import DropdownPage from "./views/layout/DropdownPage.vue";
 import SidebarPage from "./views/layout/SidebarPage.vue";
@@ -88,6 +89,7 @@ const routes = [
     { path: '/accordion', component: AccordionPage },
     { path: '/alert', component: AlertPage },
     { path: '/avatar', component: AvatarPage },
+	{ path: '/breadcrumb', component: BreadcrumbPage },
 	{ path: '/card', component: CardPage },
     { path: '/dropdown', component: DropdownPage },
     { path: '/navbar', component: NavbarPage },

@@ -13,42 +13,36 @@
                     <IconMagnifyingGlass class="h-5 w-5 " color="text-gray-400 dark:text-gray-100" />
                 </div>
 
-                <input
-                    type="search"
-                    placeholder="Search components..."
+                <input type="search" placeholder="Search components..."
                     class="pl-10 pr-4 py-2 w-full bg-gray-100 dark:bg-zinc-700/50 border-0 rounded-lg text-sm transition-all duration-200"
-                    v-model="searchQuery"
-                    @keydown.esc="clearSearch"
-                >
+                    v-model="searchQuery" @keydown.esc="clearSearch">
                 <!-- Resultados da pesquisa -->
                 <div v-if="searchQuery && filteredResults.length > 0"
-                     class="absolute z-50 mt-1 w-full bg-white dark:bg-zinc-800 rounded-lg shadow-lg border border-gray-200 dark:border-zinc-700 overflow-hidden max-h-[300px] overflow-y-auto">
+                    class="absolute z-50 mt-1 w-full bg-white dark:bg-zinc-800 rounded-lg shadow-lg border border-gray-200 dark:border-zinc-700 overflow-hidden max-h-[300px] overflow-y-auto">
                     <div v-for="(result, index) in filteredResults" :key="index"
-                         class="px-3 py-2 hover:bg-gray-100 dark:hover:bg-zinc-700/70 cursor-pointer"
-                         @click="navigateTo(result)">
+                        class="px-3 py-2 hover:bg-gray-100 dark:hover:bg-zinc-700/70 cursor-pointer"
+                        @click="navigateTo(result)">
                         <div class="flex items-center">
                             <div>
                                 <span class="text-sm">{{ result.name }}</span>
-                                <span v-if="result.parent" class="text-xs text-gray-500 dark:text-gray-400 ml-2">({{ result.parent }})</span>
+                                <span v-if="result.parent" class="text-xs text-gray-500 dark:text-gray-400 ml-2">({{
+                                    result.parent }})</span>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div v-else-if="searchQuery && filteredResults.length === 0"
-                     class="absolute z-50 mt-1 w-full bg-white dark:bg-zinc-800 rounded-lg shadow-lg border border-gray-200 dark:border-zinc-700 py-3 px-4 text-center">
+                    class="absolute z-50 mt-1 w-full bg-white dark:bg-zinc-800 rounded-lg shadow-lg border border-gray-200 dark:border-zinc-700 py-3 px-4 text-center">
                     <span class="text-gray-500 dark:text-gray-400 text-sm">Nenhum resultado encontrado</span>
                 </div>
             </div>
         </div>
         <div v-if="!searchQuery" v-for="(item, key) in navbarItems" :key="key" class="mb-1">
-            <div
-                class="flex items-center px-3 py-2.5 rounded-lg hover:bg-gray-100 dark:hover:bg-zinc-700/70 transition-colors duration-200 cursor-pointer group"
-                :id="item?.name.replace(/\s/g, '_')"
-                @click.stop="toggle(item.name?.replace(/\s/g, '_'))"
-            >
+            <div class="flex items-center px-3 py-2.5 rounded-lg hover:bg-gray-100 dark:hover:bg-zinc-700/70 transition-colors duration-200 cursor-pointer group"
+                :id="item?.name.replace(/\s/g, '_')" @click.stop="toggle(item.name?.replace(/\s/g, '_'))">
                 <div class="flex flex-1 items-center">
                     <div class="mr-4 text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200 flex-shrink-0"
-                        :class="{'text-blue-600 dark:text-blue-400': navbar[item?.name.replace(/\s/g, '_')]}">
+                        :class="{ 'text-blue-600 dark:text-blue-400': navbar[item?.name.replace(/\s/g, '_')] }">
                         <component :is="item.icon" class="h-5 w-5" color="text-gray-500 dark:text-gray-400" />
                     </div>
 
@@ -63,15 +57,12 @@
                 </div>
             </div>
 
-            <div
-                v-if="item?.children && item.children.length > 0 && navbar[item?.name.replace(/\s/g, '_')]"
-                :id="`${item?.name.replace(/\s/g, '_')}_contents`"
-                class="py-1 pl-10 pr-3 mb-1 transition duration-200"
-            >
+            <div v-if="item?.children && item.children.length > 0 && navbar[item?.name.replace(/\s/g, '_')]"
+                :id="`${item?.name.replace(/\s/g, '_')}_contents`" class="py-1 pl-10 pr-3 mb-1 transition duration-200">
                 <div v-for="(child) in item.children" :key="child.name" class="mb-1">
                     <a :href="child.uri"
-                       class="block py-2 px-3 rounded-md text-sm hover:bg-gray-100 dark:hover:bg-zinc-700/50 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
-                       :class="{'bg-blue-50 dark:bg-blue-900/10 text-blue-700 dark:text-blue-400 font-medium': isCurrentPath(child.uri)}">
+                        class="block py-2 px-3 rounded-md text-sm hover:bg-gray-100 dark:hover:bg-zinc-700/50 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
+                        :class="{ 'bg-blue-50 dark:bg-blue-900/10 text-blue-700 dark:text-blue-400 font-medium': isCurrentPath(child.uri) }">
                         {{ child.name }}
                     </a>
                 </div>
@@ -94,7 +85,6 @@ import IconChevronDown from '../../src/components/icons/IconChevronDown.vue';
 import IconChevronRight from '../../src/components/icons/IconChevronRight.vue';
 import IconMagnifyingGlass from '../../src/components/icons/IconMagnifyingGlass.vue';
 
-// Props para controlar a visibilidade no mobile
 const props = defineProps({
     isOpen: {
         type: Boolean,
@@ -102,7 +92,6 @@ const props = defineProps({
     }
 });
 
-// Emitir eventos para o componente pai
 const emit = defineEmits(['close']);
 
 const navbar = reactive({});
@@ -120,36 +109,28 @@ const toggle = (key) => {
     navbar[key] = !navbar[key];
 };
 
-// Função para limpar a pesquisa
 const clearSearch = () => {
     searchQuery.value = '';
 };
 
-// Navegação quando um resultado de pesquisa é clicado
 const navigateTo = (result) => {
     if (result.uri) {
-        if (typeof window !== 'undefined') {
-            // Se foi encontrado um item filho, navegar diretamente
+        if (typeof window !== 'undefined')
             window.location.href = result.uri;
-        }
     } else if (result.parent) {
-        // Se for um item pai, expandir a seção
         const parentKey = result.parent.replace(/\s/g, '_');
         navbar[parentKey] = true;
         clearSearch();
     }
 };
 
-// Resultados filtrados com base na pesquisa
 const filteredResults = computed(() => {
     if (!searchQuery.value) return [];
 
     const query = searchQuery.value.toLowerCase();
     const results = [];
 
-    // Procurar em todos os itens do menu
     navbarItems.forEach(item => {
-        // Verificar correspondência no item pai
         if (item.name.toLowerCase().includes(query)) {
             results.push({
                 name: item.name,
@@ -157,7 +138,6 @@ const filteredResults = computed(() => {
             });
         }
 
-        // Verificar correspondência nos itens filhos
         if (item.children) {
             item.children.forEach(child => {
                 if (child.name.toLowerCase().includes(query)) {
@@ -251,6 +231,7 @@ const navbarItems = [
             { name: "Accordion", uri: "/accordion" },
             { name: "Alert", uri: "/alert" },
             { name: "Avatar", uri: "/avatar" },
+            { name: "Breadcrumb", uri: "/breadcrumb" },
             { name: "Card", uri: "/card" },
             { name: "Dropdown", uri: "/dropdown" },
             { name: "Navbar", uri: "/navbar" },
@@ -347,7 +328,8 @@ watch(
 }
 
 /* Manter os ícones perfeitamente alinhados */
-.mr-3, .mr-4 {
+.mr-3,
+.mr-4 {
     display: flex;
     align-items: center;
     justify-content: center;

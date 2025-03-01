@@ -1,10 +1,6 @@
 <template>
-    <span
-        :class="[sizes[size], color]"
-        role="img"
-        :aria-label="ariaLabel"
-        class="c-icon inline-flex items-center justify-center  min-w-[1em]"
-    >
+    <span :class="[sizes[size], color, customClass]" role="img" :aria-label="ariaLabel"
+        class="c-icon inline-flex items-center justify-center  min-w-[1em]">
         <slot></slot>
     </span>
 </template>
@@ -29,6 +25,10 @@ defineProps({
     ariaLabel: {
         type: String,
         default: "icon",
+    },
+    customClass: {
+        type: String,
+        default: "",
     },
 });
 
