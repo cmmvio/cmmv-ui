@@ -1,3 +1,18 @@
+## [0.1.3](https://github.com/cmmvio/cmmv-ui/compare/v0.1.2...v0.1.3) (2025-03-01)
+
+
+### Bug Fixes
+
+* code preview ([a89809e](https://github.com/cmmvio/cmmv-ui/commit/a89809ebed0a830a49f4faf5b71e1abec6420b34))
+* max width ([ecf1335](https://github.com/cmmvio/cmmv-ui/commit/ecf13350593b8fc08dcc0de1a897fc01d7f7ae98))
+
+
+### Features
+
+* datatable ([e626a08](https://github.com/cmmvio/cmmv-ui/commit/e626a089b5736060625162aed908610b1d6b06db))
+
+
+
 ## [0.1.2](https://github.com/cmmvio/cmmv-ui/compare/v0.1.1...v0.1.2) (2025-03-01)
 
 
