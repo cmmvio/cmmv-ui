@@ -1,6 +1,5 @@
 <template>
     <div class="relative inline-flex items-center cursor-pointer select-none" @click="toggle">
-        <!-- Default radio template -->
         <template v-if="!$slots.default">
             <div class="relative z-10 flex items-center justify-center border rounded-full transition-all duration-200 overflow-hidden text-center"
                 :class="[
@@ -22,7 +21,6 @@
             </span>
         </template>
 
-        <!-- Custom template slot -->
         <slot :checked="isChecked" :disabled="disabled" :value="value" :toggle="toggle"></slot>
     </div>
 </template>
@@ -32,12 +30,12 @@ import { ref, computed, defineProps, defineEmits } from "vue";
 
 const props = defineProps({
     modelValue: {
-        type: [String, Number],
+        type: [String, Number, Object],
         required: false,
         default: undefined,
     },
     value: {
-        type: [String, Number],
+        type: [String, Number, Object],
         required: true,
     },
     checked: {
@@ -81,24 +79,25 @@ const emit = defineEmits(["update:modelValue"]);
 const internalModel = ref(props.checked ? props.value : undefined);
 
 const isChecked = computed(() => {
-    // Para valores primitivos, usamos a comparação normal
     if (props.modelValue !== undefined) {
-        // Se ambos são objetos, comparamos por id se disponível
         if (typeof props.modelValue === 'object' && props.modelValue !== null &&
             typeof props.value === 'object' && props.value !== null) {
-            // Se ambos os objetos têm uma propriedade 'id', compare por ela
-            if ('id' in props.modelValue && 'id' in props.value) {
-                return props.modelValue.id === props.value.id;
+
+            if (props.modelValue && 'id' in props.modelValue &&
+                props.value && 'id' in props.value) {
+                return (props.modelValue as any).id === (props.value as any).id;
             }
-            // Se não tiver id, tente comparar pelo primeiro campo disponível
+
             const modelValueKeys = Object.keys(props.modelValue);
-            if (modelValueKeys.length > 0 && modelValueKeys[0] in props.value) {
-                return props.modelValue[modelValueKeys[0]] === props.value[modelValueKeys[0]];
+            if (modelValueKeys.length > 0 &&
+                props.value && modelValueKeys[0] in props.value) {
+                return (props.modelValue as any)[modelValueKeys[0]] === (props.value as any)[modelValueKeys[0]];
             }
         }
-        // Caso contrário, fazemos comparação normal
+
         return props.modelValue === props.value;
     }
+
     return internalModel.value === props.value;
 });
 
