@@ -59,8 +59,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, defineProps } from 'vue';
-import CDropdown from './CDropdown.vue';
+import { defineProps } from 'vue';
 import IconChevronDown from '@components/icons/IconChevronDown.vue';
 
 interface DropdownOption {
@@ -116,6 +115,4 @@ const props = defineProps({
         default: "text-gray-500 dark:text-gray-400",
     },
 });
-
-// No need for additional computed properties or methods for now
 </script>
