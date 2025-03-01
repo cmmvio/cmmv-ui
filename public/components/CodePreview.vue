@@ -1,7 +1,9 @@
 <template>
     <div class="code-preview-container border border-gray-200 dark:border-neutral-700 rounded-lg mb-8 overflow-hidden">
+        <!-- Header com opções -->
         <div
             class="flex items-center justify-between px-4 py-2 bg-gray-100 dark:bg-neutral-800 border-b border-gray-200 dark:border-neutral-700">
+            <!-- Tabs para alternar entre Preview e Code -->
             <div class="flex space-x-1">
                 <button v-if="showPreviewButton" @click="activeTab = 'preview'" :class="[
                     'px-3 py-1.5 text-sm font-medium rounded-md transition-colors',
@@ -21,7 +23,9 @@
                 </button>
             </div>
 
+            <!-- Controles adicionais -->
             <div class="flex items-center space-x-4">
+                <!-- Opções de dispositivo (apenas visíveis no modo preview) -->
                 <div v-if="activeTab === 'preview' && showPreviewButton"
                     class="flex items-center space-x-2 border-r border-gray-300 dark:border-neutral-600 pr-4">
                     <button @click="deviceSize = 'desktop'" :class="[
@@ -56,6 +60,7 @@
                     </button>
                 </div>
 
+                <!-- Toggle de tema (apenas visível no modo preview) -->
                 <div v-if="activeTab === 'preview' && showPreviewButton" class="flex items-center">
                     <span class="text-xs text-gray-500 dark:text-neutral-400 mr-2">Theme:</span>
                     <button @click="toggleTheme"
@@ -68,28 +73,33 @@
             </div>
         </div>
 
-        <div class="content-wrapper" :style="{ minHeight: contentMinHeight + 'px' }">
+        <!-- Conteúdo -->
+        <div>
+            <!-- Preview -->
             <div v-show="activeTab === 'preview'" class="transition-all duration-200" :class="[
                 previewTheme === 'dark' ? 'dark bg-neutral-900' : 'bg-gray-100',
             ]">
-
+                <!-- Container com grid de fundo -->
                 <div class="preview-container relative border border-gray-200 dark:border-neutral-700">
+                    <!-- Grid de fundo para contraste -->
                     <div class="absolute inset-0 grid-bg"></div>
 
+                    <!-- Container do conteúdo com tamanho responsivo -->
                     <div class="relative mx-auto border border-gray-300 dark:border-neutral-600 bg-white dark:bg-neutral-800 shadow-sm"
                         :class="[
                             deviceSize === 'desktop' ? 'w-full' :
                                 deviceSize === 'tablet' ? 'w-[768px] max-w-full' :
                                     'w-[375px] max-w-full'
                         ]">
-                        <div ref="previewContentRef" class="p-6">
+                        <div class="p-6">
                             <slot name="preview"></slot>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div v-show="activeTab === 'code'" class="code-container overflow-auto" ref="codeContainerRef">
+            <!-- Code -->
+            <div v-show="activeTab === 'code'" class="overflow-auto" style="max-height: 500px;">
                 <slot name="code"></slot>
             </div>
         </div>
@@ -97,8 +107,9 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted, watch, nextTick } from 'vue';
+import { ref, onMounted, onUnmounted, watch } from 'vue';
 
+// Props
 const props = defineProps({
     defaultView: {
         type: String,
@@ -111,40 +122,30 @@ const props = defineProps({
     }
 });
 
+// Estado
 const activeTab = ref(props.defaultView);
 const deviceSize = ref('desktop');
 const previewTheme = ref('light');
 const isDarkMode = ref(false);
-const contentMinHeight = ref(200);
-const previewContentRef = ref(null);
-const codeContainerRef = ref(null);
 
-const adjustHeights = async () => {
-    await nextTick();
-
-    if (activeTab.value === 'preview' && previewContentRef.value) {
-        const previewHeight = previewContentRef.value.scrollHeight + 40;
-        contentMinHeight.value = Math.max(200, previewHeight);
-    }
-
-    else if (activeTab.value === 'code' && !props.showPreviewButton)
-        contentMinHeight.value = 250;
-
-    if (codeContainerRef.value)
-        codeContainerRef.value.style.maxHeight = `${contentMinHeight.value}px`;
-};
-
+// Detectar tema atual do sistema/página
 const detectDarkMode = () => {
+    // Verifica se o elemento html tem a classe 'dark'
     const htmlElement = document.documentElement;
     isDarkMode.value = htmlElement.classList.contains('dark');
+
+    // Sincroniza o tema do preview com o tema geral
     previewTheme.value = isDarkMode.value ? 'dark' : 'light';
 };
 
+// Alternar tema
 const toggleTheme = () => {
     previewTheme.value = previewTheme.value === 'light' ? 'dark' : 'light';
 };
 
+// Observar mudanças no tema do sistema
 const observeThemeChanges = () => {
+    // Usar MutationObserver para detectar mudanças na classe do elemento html
     const observer = new MutationObserver((mutations) => {
         mutations.forEach((mutation) => {
             if (mutation.attributeName === 'class') {
@@ -153,29 +154,28 @@ const observeThemeChanges = () => {
         });
     });
 
+    // Iniciar observação
     observer.observe(document.documentElement, { attributes: true });
 
+    // Limpar observer quando o componente for desmontado
     return observer;
 };
 
-watch(activeTab, () => {
-    adjustHeights();
-});
-
+// Inicializar Prism.js para destacar a sintaxe quando o componente for montado
 onMounted(() => {
-    if (window.Prism)
+    if (window.Prism) {
         window.Prism.highlightAll();
+    }
 
+    // Detectar tema inicial
     detectDarkMode();
-    adjustHeights();
 
+    // Configurar observer para mudanças de tema
     const observer = observeThemeChanges();
 
-    window.addEventListener('resize', adjustHeights);
-
+    // Limpar observer quando o componente for desmontado
     onUnmounted(() => {
         observer.disconnect();
-        window.removeEventListener('resize', adjustHeights);
     });
 });
 </script>
@@ -192,19 +192,11 @@ onMounted(() => {
     line-height: 1.5;
 }
 
-.content-wrapper {
-    position: relative;
-    transition: min-height 0.2s ease;
-}
-
 .preview-container {
     padding: 1rem;
 }
 
-.code-container {
-    min-height: 100px;
-}
-
+/* Grid de fundo para contraste */
 .grid-bg {
     background-image: linear-gradient(45deg, rgba(0, 0, 0, 0.03) 25%, transparent 25%),
         linear-gradient(-45deg, rgba(0, 0, 0, 0.03) 25%, transparent 25%),
