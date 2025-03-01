@@ -3,8 +3,10 @@
         <h1>AI Chat</h1>
 
         <p>
-            The <code>CAIChat (alias: c-ai-chat)</code> component provides a ChatGPT-like interface for AI conversations.
-            It includes features like streaming responses, code highlighting, suggestion buttons, auto-scrolling, and markdown formatting.
+            The <code>CAIChat (alias: c-ai-chat)</code> component provides a ChatGPT-like interface for AI
+            conversations.
+            It includes features like streaming responses, code highlighting, suggestion buttons, auto-scrolling, and
+            markdown formatting.
         </p>
 
         <table-docs>
@@ -21,13 +23,15 @@
                     <td class="border-b px-4 py-2">initialMessages</td>
                     <td class="border-b px-4 py-2">Array</td>
                     <td class="border-b px-4 py-2">[]</td>
-                    <td class="border-b px-4 py-2">Initial messages to display in the chat. Each message should have <code>role</code> ('user' or 'assistant') and <code>content</code> properties.</td>
+                    <td class="border-b px-4 py-2">Initial messages to display in the chat. Each message should have
+                        <code>role</code> ('user' or 'assistant') and <code>content</code> properties.</td>
                 </tr>
                 <tr>
                     <td class="border-b px-4 py-2">suggestions</td>
                     <td class="border-b px-4 py-2">Array</td>
                     <td class="border-b px-4 py-2">[]</td>
-                    <td class="border-b px-4 py-2">Suggestion buttons displayed above the input field. Each item is a string representing a suggested message.</td>
+                    <td class="border-b px-4 py-2">Suggestion buttons displayed above the input field. Each item is a
+                        string representing a suggested message.</td>
                 </tr>
                 <tr>
                     <td class="border-b px-4 py-2">typingSpeed</td>
@@ -45,7 +49,8 @@
                     <td class="border-b px-4 py-2">autoScroll</td>
                     <td class="border-b px-4 py-2">Boolean</td>
                     <td class="border-b px-4 py-2">true</td>
-                    <td class="border-b px-4 py-2">Whether to automatically scroll to the bottom when new messages are added.</td>
+                    <td class="border-b px-4 py-2">Whether to automatically scroll to the bottom when new messages are
+                        added.</td>
                 </tr>
             </tbody>
         </table-docs>
@@ -64,12 +69,14 @@
                 <tr>
                     <td class="border-b px-4 py-2">message-sent</td>
                     <td class="border-b px-4 py-2">String</td>
-                    <td class="border-b px-4 py-2">Emitted when a user sends a message. The payload is the message content.</td>
+                    <td class="border-b px-4 py-2">Emitted when a user sends a message. The payload is the message
+                        content.</td>
                 </tr>
                 <tr>
                     <td class="border-b px-4 py-2">message-completed</td>
                     <td class="border-b px-4 py-2">String</td>
-                    <td class="border-b px-4 py-2">Emitted when the AI finishes typing a response. The payload is the complete message.</td>
+                    <td class="border-b px-4 py-2">Emitted when the AI finishes typing a response. The payload is the
+                        complete message.</td>
                 </tr>
                 <tr>
                     <td class="border-b px-4 py-2">stop-generating</td>
@@ -89,19 +96,15 @@
         <card-docs>
             <c-card variant="flat">
                 <div class="h-[600px]">
-                    <CAIChat
-                        :initial-messages="basicExampleMessages"
+                    <CAIChat :initial-messages="basicExampleMessages"
                         :suggestions="['Tell me about Vue.js', 'How do I use this component?', 'Show me a code example']"
-                        :auto-scroll="false"
-                        @message-sent="handleMessageSent"
-                        @message-completed="handleMessageCompleted"
-                        @stop-generating="handleStopGenerating"
-                    />
+                        :auto-scroll="false" @message-sent="handleMessageSent"
+                        @message-completed="handleMessageCompleted" @stop-generating="handleStopGenerating" />
                 </div>
             </c-card>
 
             <template #code>
-<pre><code class="code-highlight language-vue">&lt;template&gt;
+                <pre><code class="code-highlight language-vue">&lt;template&gt;
     &lt;c-ai-chat
         :initial-messages="messages"
         :suggestions="['Tell me about Vue.js', 'How do I use this component?', 'Show me a code example']"
@@ -149,7 +152,8 @@ onMounted(() => {
         </p>
 
         <card-docs>
-            <template #code><pre><code class="code-highlight language-javascript">&lt;script&gt;
+            <template #code>
+                <pre><code class="code-highlight language-javascript">&lt;script&gt;
     const sendMessageToAI = async (userMessage) => {
     messages.value.push({
         role: 'user',
@@ -212,7 +216,7 @@ onMounted(() => {
 
         <card-docs>
             <template #code>
-<pre><code class="code-highlight language-vue">&lt;c-ai-chat
+                <pre><code class="code-highlight language-vue">&lt;c-ai-chat
     :initial-messages="[
         { role: 'assistant', content: 'Welcome to our support chat! How can I help you today?' }
     ]"
@@ -237,19 +241,14 @@ onMounted(() => {
 
         <card-docs>
             <template #code>
-<pre><code class="code-highlight language-vue">&lt;c-ai-chat
+                <pre><code class="code-highlight language-vue">&lt;c-ai-chat
     :initial-messages="messages"
     :auto-scroll="false"
 /&gt;</code></pre>
             </template>
         </card-docs>
 
-        <PagePagination
-            previous="Index"
-            previousLink="/"
-            next="Badge"
-            nextLink="/badge"
-        />
+        <PagePagination previous="First Steps" previousLink="/first-steps" next="Badge" nextLink="/badge" />
     </BaseLayout>
 </template>
 

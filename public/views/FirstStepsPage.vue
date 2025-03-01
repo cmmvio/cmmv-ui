@@ -16,7 +16,7 @@
             <li>pnpm, npm, or yarn package manager</li>
         </ul>
 
-        <br/>
+        <br />
 
         <h3>Creating a New Vue Project</h3>
 
@@ -25,9 +25,11 @@
             We'll use pnpm for this guide, but you can use npm or yarn as well.
         </p>
 
-        <pre class="rounded-md"><code class="code-highlight language-bash">pnpm create vue@latest my-cmmv-app</code></pre>
+        <pre
+            class="rounded-md"><code class="code-highlight language-bash">pnpm create vue@latest my-cmmv-app</code></pre>
 
-        <p>During the setup, you'll be asked about various features. For optimal use with <code>@cmmv/ui</code>, we recommend:</p>
+        <p>During the setup, you'll be asked about various features. For optimal use with <code>@cmmv/ui</code>, we
+            recommend:</p>
 
         <ul class="list-disc pl-5 space-y-2 mb-6">
             <li>✅ Add TypeScript</li>
@@ -43,15 +45,16 @@
         <pre class="rounded-md"><code class="code-highlight language-bash">cd my-cmmv-app
 pnpm install</code></pre>
 
-        <br/>
+        <br />
 
         <h3>Installing @cmmv/ui</h3>
 
         <p>Now, let's install the <code>@cmmv/ui</code> library and its peer dependencies:</p>
 
-        <pre class="rounded-md"><code class="code-highlight language-bash">pnpm install @cmmv/ui vue@latest tailwindcss</code></pre>
+        <pre
+            class="rounded-md"><code class="code-highlight language-bash">pnpm install @cmmv/ui vue@latest tailwindcss</code></pre>
 
-        <br/>
+        <br />
 
         <h3>Configuring Tailwind CSS</h3>
 
@@ -81,7 +84,7 @@ export default {
 @tailwind components;
 @tailwind utilities;</code></pre>
 
-        <br/>
+        <br />
 
         <h3>Configuring Vite</h3>
 
@@ -89,7 +92,7 @@ export default {
 
         <card-docs>
             <template #code>
-<pre><code class="code-highlight language-typescript">import { fileURLToPath, URL } from 'node:url'
+                <pre><code class="code-highlight language-typescript">import { fileURLToPath, URL } from 'node:url'
 import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
@@ -121,11 +124,13 @@ export default defineConfig(({ mode }) => {
 
         <h3>Setting up @cmmv/ui as a Global Component</h3>
 
-        <p>To use <code>@cmmv/ui</code> components globally in your Vue application, modify your <code>src/main.ts</code> file:</p>
+        <p>To use <code>@cmmv/ui</code> components globally in your Vue application, modify your
+            <code>src/main.ts</code> file:
+        </p>
 
         <card-docs>
             <template #code>
-        <pre><code class="code-highlight language-javascript">import './assets/main.css'
+                <pre><code class="code-highlight language-javascript">import './assets/main.css'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
@@ -152,13 +157,13 @@ app.mount('#app')</code></pre>
             <h1 class="text-2xl font-bold mb-4">Welcome to CMMV UI</h1>
 
             <c-button variant="primary" @click="showNotification">
-            Click me!
+                Click me!
             </c-button>
 
             <c-notification ref="notification" />
 
             <template #code>
-<pre><code class="code-highlight language-html">&lt;template&gt;
+                <pre><code class="code-highlight language-html">&lt;template&gt;
   &lt;div class="p-8"&gt;
     &lt;h1 class="text-2xl font-bold mb-4"&gt;Welcome to CMMV UI&lt;/h1&gt;
 
@@ -189,10 +194,12 @@ function showNotification() {
         <h3>Environment Variables</h3>
 
         <p>
-            For API configuration and other environment-specific settings, create a <code>.env</code> file in your project root:
+            For API configuration and other environment-specific settings, create a <code>.env</code> file in your
+            project root:
         </p>
 
-        <pre class="rounded-md"><code class="code-highlight language-env">VITE_API_URL=http://localhost:3000</code></pre>
+        <pre
+            class="rounded-md"><code class="code-highlight language-env">VITE_API_URL=http://localhost:3000</code></pre>
 
         <p>You can create different environment files for different environments:</p>
 
@@ -208,7 +215,9 @@ function showNotification() {
 
         <pre class="rounded-md"><code class="code-highlight language-bash">pnpm dev</code></pre>
 
-        <p>Your application should now be running at <code>http://localhost:5173</code> with <code>@cmmv/ui</code> ready to use!</p>
+        <p>Your application should now be running at <code>http://localhost:5173</code> with <code>@cmmv/ui</code> ready
+            to use!
+        </p>
 
         <h3>Next Steps</h3>
 
@@ -218,12 +227,7 @@ function showNotification() {
             events, and customization options.
         </p>
 
-        <PagePagination
-            previous="Home"
-            previousLink="/"
-            next="Form Elements"
-            nextLink="/form-elements"
-        />
+        <PagePagination previous="Home" previousLink="/" next="AI Chat" nextLink="/ai-chat" />
     </BaseLayout>
 </template>
 
@@ -236,11 +240,11 @@ import CardDocs from "../components/CardDocs.vue";
 const notification = ref(null)
 
 function showNotification() {
-  notification.value?.showNotification({
-    newTitle: 'Success',
-    newContent: 'You have successfully set up CMMV UI!',
-    newDuration: 3000
-  })
+    notification.value?.showNotification({
+        newTitle: 'Success',
+        newContent: 'You have successfully set up CMMV UI!',
+        newDuration: 3000
+    })
 }
 </script>
 
