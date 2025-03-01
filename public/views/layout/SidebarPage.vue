@@ -71,9 +71,12 @@
                     </template>
 
                     <ul class="space-y-2 text-gray-700 dark:text-gray-300">
-                        <li><a href="#" class="block p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">Dashboard</a></li>
-                        <li><a href="#" class="block p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">Settings</a></li>
-                        <li><a href="#" class="block p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">Logout</a></li>
+                        <li><a href="#" class="block p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">Dashboard</a>
+                        </li>
+                        <li><a href="#" class="block p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">Settings</a>
+                        </li>
+                        <li><a href="#" class="block p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">Logout</a>
+                        </li>
                     </ul>
 
                     <template #footer>
@@ -81,16 +84,14 @@
                     </template>
                 </c-sidebar>
 
-                <button
-                    @click="showSidebar = true"
-                    class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition"
-                >
+                <button @click="showSidebar = true"
+                    class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition">
                     Open Sidebar
                 </button>
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-vue">&lt;template&gt;
+                <pre><code class="code-highlight language-vue">&lt;template&gt;
     &lt;c-sidebar
         v-model="showSidebar"
         side="left"
@@ -148,16 +149,14 @@ const showSidebar = ref(false);
                     </template>
                 </c-sidebar>
 
-                <button
-                    @click="showRightSidebar = true"
-                    class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition"
-                >
+                <button @click="showRightSidebar = true"
+                    class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition">
                     Open Right Sidebar
                 </button>
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-vue">&lt;template&gt;
+                <pre><code class="code-highlight language-vue">&lt;template&gt;
     &lt;c-sidebar
         v-model="showRightSidebar"
         side="right"
@@ -187,12 +186,14 @@ const showSidebar = ref(false);
         <h3>Custom Width & Overlay</h3>
 
         <p>
-            You can customize the sidebar width and overlay background color using <code>width</code> and <code>bgColorOverlay</code>.
+            You can customize the sidebar width and overlay background color using <code>width</code> and
+            <code>bgColorOverlay</code>.
         </p>
 
         <card-docs>
             <div class="mx-auto p-4 sm:p-6 flex flex-col items-center">
-                <c-sidebar v-model="showWideSidebar" side="left" width="w-96" bgColor="bg-gray-100 dark:bg-zinc-800" bgColorOverlay="bg-black/70">
+                <c-sidebar v-model="showWideSidebar" side="left" width="w-96" bgColor="bg-gray-100 dark:bg-zinc-800"
+                    bgColorOverlay="bg-black/70">
                     <template #title>
                         Wide Sidebar
                     </template>
@@ -200,16 +201,14 @@ const showSidebar = ref(false);
                     <p class="text-gray-700 dark:text-gray-300">This sidebar is wider than usual.</p>
                 </c-sidebar>
 
-                <button
-                    @click="showWideSidebar = true"
-                    class="bg-purple-500 text-white px-4 py-2 rounded-md hover:bg-purple-600 transition"
-                >
+                <button @click="showWideSidebar = true"
+                    class="bg-purple-500 text-white px-4 py-2 rounded-md hover:bg-purple-600 transition">
                     Open Wide Sidebar
                 </button>
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-vue">&lt;template&gt;
+                <pre><code class="code-highlight language-vue">&lt;template&gt;
     &lt;c-sidebar
         v-model="showWideSidebar"
         side="left"
@@ -242,22 +241,21 @@ const showSidebar = ref(false);
         </p>
 
         <card-docs>
-            <div class="relative mx-auto flex flex-col justify-center items-center w-full min-h-[400px] overflow-hidden">
+            <div
+                class="relative mx-auto flex flex-col justify-center items-center w-full min-h-[400px] overflow-hidden">
                 <c-sidebar ref="cardSidebar" absolute shadow="" rounded="md" width="w-48" class="rounded-l-md">
                     <template #title>Panel</template>
                     <p class="text-gray-700 dark:text-gray-300">This is a floating sidebar inside the card.</p>
                 </c-sidebar>
 
-                <button
-                    @click="openCardSidebar"
-                    class="bg-blue-500 text-white px-4 py-2 rounded-md mt-4 hover:bg-blue-600 transition"
-                >
+                <button @click="openCardSidebar"
+                    class="bg-blue-500 text-white px-4 py-2 rounded-md mt-4 hover:bg-blue-600 transition">
                     Open Sidebar Inside Card
                 </button>
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-vue">&lt;template&gt;
+                <pre><code class="code-highlight language-vue">&lt;template&gt;
     &lt;div class="relative min-h-[400px] overflow-hidden"&gt;
         &lt;c-sidebar
             ref="cardSidebar"
@@ -295,21 +293,18 @@ const openCardSidebar = () => {
         <h3>Sidebar With Toolbar</h3>
 
         <p>
-            The <code>c-sidebar</code> can be used inside a <code>c-toolbar</code> to create a responsive sidebar that expands when clicking the navigation button.
+            The <code>c-sidebar</code> can be used inside a <code>c-toolbar</code> to create a responsive sidebar that
+            expands
+            when clicking the navigation button.
             This approach is useful for app panels, navigation menus, and other interfaces that require a sliding panel.
         </p>
 
         <card-docs>
             <div class="relative mx-auto flex flex-col items-center w-full min-h-[400px] overflow-hidden p-4">
-                <div class="bg-gray-100 dark:bg-gray-800 min-h-[400px] max-w-[300px] flex flex-col sm:w-full m-auto relative overflow-hidden">
-                    <c-sidebar
-                        v-model="showSidebarToolbar"
-                        absolute
-                        shadow=""
-                        rounded="md"
-                        width="w-48"
-                        class="rounded-l-md w-full"
-                    >
+                <div
+                    class="bg-gray-100 dark:bg-gray-800 min-h-[400px] max-w-[300px] flex flex-col sm:w-full m-auto relative overflow-hidden">
+                    <c-sidebar v-model="showSidebarToolbar" absolute shadow="" rounded="md" width="w-48"
+                        class="rounded-l-md w-full">
                         <template #title>Panel</template>
                         <p class="text-gray-700 dark:text-gray-300">This is a floating sidebar inside the card.</p>
                     </c-sidebar>
@@ -320,25 +315,21 @@ const openCardSidebar = () => {
                         <c-spacer />
 
                         <div class="relative">
-                            <IconMagnifyingGlass class="absolute top-1/2 right-3 transform -translate-y-1/2 text-white" />
+                            <IconMagnifyingGlass
+                                class="absolute top-1/2 right-3 transform -translate-y-1/2 text-white" />
                         </div>
 
-                        <c-button
-                            type="button"
-                            variant="plain"
-                            rounded="full"
-                            bgColor="bg-blue-600 hover:bg-blue-800"
-                            class="py-1"
-                        >
+                        <c-button type="button" variant="plain" rounded="full" bgColor="bg-blue-600 hover:bg-blue-800"
+                            class="py-1">
                             <IconBell class="text-white"></IconBell>
-                            <c-badge floating >5</c-badge>
+                            <c-badge floating>5</c-badge>
                         </c-button>
                     </c-toolbar>
                 </div>
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-vue">&lt;template&gt;
+                <pre><code class="code-highlight language-vue">&lt;template&gt;
     &lt;div class="relative overflow-hidden"&gt;
         &lt;c-sidebar
             v-model="showSidebarToolbar"
@@ -373,12 +364,7 @@ const openCardSidebar = () => {
             </template>
         </card-docs>
 
-        <PagePagination
-            previous="Dropdown"
-            previousLink="/dropdown"
-            next="Speed Dial"
-            nextLink="/speed-dial"
-        />
+        <PagePagination previous="Navbar" previousLink="/navbar" next="Speed Dial" nextLink="/speed-dial" />
     </BaseLayout>
 </template>
 

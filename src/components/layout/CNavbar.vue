@@ -143,8 +143,6 @@ const props = defineProps<{
 }>();
 
 const emit = defineEmits(['toggle']);
-
-// Definindo valores padrão para props opcionais
 const toggleAriaLabel = props.toggleAriaLabel || 'Toggle menu';
 
 const mobileMenuOpen = ref(false);

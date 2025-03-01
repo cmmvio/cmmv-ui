@@ -39,7 +39,9 @@
                     <td>position</td>
                     <td>String</td>
                     <td>"bottom-left"</td>
-                    <td>Defines dropdown positioning: <code>top-left</code>, <code>top-right</code>, <code>bottom-left</code>, <code>bottom-right</code>, <code>bottom-center</code>, <code>top-center</code>.</td>
+                    <td>Defines dropdown positioning: <code>top-left</code>, <code>top-right</code>,
+                        <code>bottom-left</code>, <code>bottom-right</code>, <code>bottom-center</code>,
+                        <code>top-center</code>.</td>
                 </tr>
             </tbody>
         </table-docs>
@@ -55,10 +57,7 @@
             <div class="mx-auto p-4 flex flex-col items-center h-[400px]">
                 <c-dropdown v-model="selectedItem" :options="menuOptions">
                     <template #activator>
-                        <c-button
-                            size="lg"
-                            class="px-4 py-2 bg-blue-500 text-white rounded-md "
-                        >
+                        <c-button size="lg" class="px-4 py-2 bg-blue-500 text-white rounded-md ">
                             Open Menu
                         </c-button>
                     </template>
@@ -66,7 +65,7 @@
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-vue">&lt;template&gt;
+                <pre><code class="code-highlight language-vue">&lt;template&gt;
     &lt;c-dropdown v-model="selectedItem" :options="menuOptions"&gt;
         &lt;template #activator&gt;
             &lt;c-button
@@ -103,11 +102,8 @@ const menuOptions = ref([
             <div class="mx-auto p-4 flex flex-col items-center h-[400px]">
                 <c-dropdown v-model="selectedItem" :options="menuOptions">
                     <template #activator>
-                        <c-button
-                            size="lg"
-                            bgColor="bg-green-600 hover:bg-green-500"
-                            class="px-4 py-2 bg-green-500 text-white rounded-md"
-                        >
+                        <c-button size="lg" bgColor="bg-green-600 hover:bg-green-500"
+                            class="px-4 py-2 bg-green-500 text-white rounded-md">
                             Custom Options
                         </c-button>
                     </template>
@@ -121,7 +117,7 @@ const menuOptions = ref([
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-vue">&lt;template&gt;
+                <pre><code class="code-highlight language-vue">&lt;template&gt;
     &lt;c-dropdown v-model="selectedItem" :options="menuOptions"&gt;
         &lt;template #activator&gt;
             &lt;c-button
@@ -149,8 +145,11 @@ const menuOptions = ref([
         <h3>Dropdown Positions</h3>
 
         <p>
-            You can control where the dropdown appears relative to the activator button using the <code>position</code> prop.
-            The default position is <code>bottom-left</code>, but you can choose from other options like <code>top-left</code>, <code>top-right</code>, <code>bottom-right</code>, and <code>bottom-center</code>.
+            You can control where the dropdown appears relative to the activator button using the <code>position</code>
+            prop.
+            The default position is <code>bottom-left</code>, but you can choose from other options like
+            <code>top-left</code>,
+            <code>top-right</code>, <code>bottom-right</code>, and <code>bottom-center</code>.
         </p>
 
         <card-docs>
@@ -197,7 +196,7 @@ const menuOptions = ref([
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-vue">&lt;template&gt;
+                <pre><code class="code-highlight language-vue">&lt;template&gt;
     &lt;c-dropdown
         v-model="selectedItem"
         :options="menuOptions"
@@ -261,12 +260,7 @@ const menuOptions = ref([
             </template>
         </card-docs>
 
-        <PagePagination
-            previous="Card"
-            previousLink="/card"
-            next="Sidebar"
-            nextLink="/sidebar"
-        />
+        <PagePagination previous="Card" previousLink="/card" next="Navbar" nextLink="/navbar" />
     </BaseLayout>
 </template>
 

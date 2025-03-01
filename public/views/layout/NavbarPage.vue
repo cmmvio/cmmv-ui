@@ -523,7 +523,7 @@ const showSidebarNavbar = ref(false);
         </card-docs>
 
 
-        <PagePagination previous="Modal" previousLink="/modal" next="Sidebar" nextLink="/sidebar" />
+        <PagePagination previous="Dropdown" previousLink="/dropdown" next="Sidebar" nextLink="/sidebar" />
     </BaseLayout>
 </template>
 
@@ -579,7 +579,6 @@ const dropdownItems = [
     }
 ];
 
-// Items for vertical mode (with submenus)
 const verticalItems = [
     {
         text: 'Home',

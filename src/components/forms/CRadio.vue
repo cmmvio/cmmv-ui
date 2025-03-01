@@ -1,35 +1,29 @@
 <template>
-    <div
-        class="relative inline-flex items-center cursor-pointer select-none"
-        @click="toggle"
-    >
-        <div
-            class="relative z-10 flex items-center justify-center border rounded-full transition-all duration-200 overflow-hidden text-center"
-            :class="[
-                sizes[size].box,
-                isChecked ? borderColor : 'border-gray-300',
-                disabled ? 'border-gray-600' : borderColor,
-                disabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'
-            ]"
-        >
-            <div
-                v-if="isChecked"
-                class="absolute inset-0 m-auto rounded-full transition-all duration-200"
+    <div class="relative inline-flex items-center cursor-pointer select-none" @click="toggle">
+        <!-- Default radio template -->
+        <template v-if="!$slots.default">
+            <div class="relative z-10 flex items-center justify-center border rounded-full transition-all duration-200 overflow-hidden text-center"
                 :class="[
+                    sizes[size].box,
+                    isChecked ? borderColor : 'border-gray-300',
+                    disabled ? 'border-gray-600' : borderColor,
+                    disabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'
+                ]">
+                <div v-if="isChecked" class="absolute inset-0 m-auto rounded-full transition-all duration-200" :class="[
                     'scale-75',
                     disabled ? 'bg-gray-600' : bgColor,
                     disabled ? 'text-gray-400' : textColor,
                     disabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'
-                ]"
-            ></div>
-        </div>
+                ]"></div>
+            </div>
 
-        <span
-            v-if="label"
-            :class="['ml-2', sizes[size].label]"
-        >
-            {{ label }}
-        </span>
+            <span v-if="label" :class="['ml-2', sizes[size].label]">
+                {{ label }}
+            </span>
+        </template>
+
+        <!-- Custom template slot -->
+        <slot :checked="isChecked" :disabled="disabled" :value="value" :toggle="toggle"></slot>
     </div>
 </template>
 
@@ -87,9 +81,25 @@ const emit = defineEmits(["update:modelValue"]);
 const internalModel = ref(props.checked ? props.value : undefined);
 
 const isChecked = computed(() => {
-    return props.modelValue !== undefined
-        ? props.modelValue === props.value
-        : internalModel.value === props.value;
+    // Para valores primitivos, usamos a comparação normal
+    if (props.modelValue !== undefined) {
+        // Se ambos são objetos, comparamos por id se disponível
+        if (typeof props.modelValue === 'object' && props.modelValue !== null &&
+            typeof props.value === 'object' && props.value !== null) {
+            // Se ambos os objetos têm uma propriedade 'id', compare por ela
+            if ('id' in props.modelValue && 'id' in props.value) {
+                return props.modelValue.id === props.value.id;
+            }
+            // Se não tiver id, tente comparar pelo primeiro campo disponível
+            const modelValueKeys = Object.keys(props.modelValue);
+            if (modelValueKeys.length > 0 && modelValueKeys[0] in props.value) {
+                return props.modelValue[modelValueKeys[0]] === props.value[modelValueKeys[0]];
+            }
+        }
+        // Caso contrário, fazemos comparação normal
+        return props.modelValue === props.value;
+    }
+    return internalModel.value === props.value;
 });
 
 const toggle = () => {
