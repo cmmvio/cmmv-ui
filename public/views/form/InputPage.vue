@@ -2,7 +2,9 @@
     <BaseLayout>
         <h1>Input</h1>
 
-        <p>The <code>CInput (alias: c-input)</code> component in the <code>@cmmv/ui</code> framework provides a flexible input field with advanced customization options for size, variants, rounding, and interaction states. It also supports validation, clearable functionality, and dynamic hints or error messages.</p>
+        <p>The <code>CInput (alias: c-input)</code> component in the <code>@cmmv/ui</code> framework provides a flexible
+            input field with advanced customization options for size, variants, rounding, and interaction states. It
+            also supports validation, clearable functionality, and dynamic hints or error messages.</p>
 
         <table-docs>
             <thead>
@@ -36,7 +38,9 @@
                     <td class="border-b px-4 py-2">type</td>
                     <td class="border-b px-4 py-2">String</td>
                     <td class="border-b px-4 py-2">"text"</td>
-                    <td class="border-b px-4 py-2">The type of the input field (e.g., <code>text</code>, <code>number</code>, <code>password</code>).</td>
+                    <td class="border-b px-4 py-2">The type of the input field (e.g., <code>text</code>,
+                        <code>number</code>, <code>password</code>).
+                    </td>
                 </tr>
                 <tr>
                     <td class="border-b px-4 py-2">name</td>
@@ -48,19 +52,25 @@
                     <td class="border-b px-4 py-2">size</td>
                     <td class="border-b px-4 py-2">String</td>
                     <td class="border-b px-4 py-2">"md"</td>
-                    <td class="border-b px-4 py-2">Specifies the size of the input field. Options: <code>sm</code>, <code>md</code>, <code>lg</code>.</td>
+                    <td class="border-b px-4 py-2">Specifies the size of the input field. Options: <code>sm</code>,
+                        <code>md</code>, <code>lg</code>.
+                    </td>
                 </tr>
                 <tr>
                     <td class="border-b px-4 py-2">rounded</td>
                     <td class="border-b px-4 py-2">String</td>
                     <td class="border-b px-4 py-2">"default"</td>
-                    <td class="border-b px-4 py-2">Controls the border radius of the input field. Options: <code>none</code>, <code>default</code>, <code>full</code>.</td>
+                    <td class="border-b px-4 py-2">Controls the border radius of the input field. Options:
+                        <code>none</code>, <code>default</code>, <code>full</code>.
+                    </td>
                 </tr>
                 <tr>
                     <td class="border-b px-4 py-2">variant</td>
                     <td class="border-b px-4 py-2">String</td>
                     <td class="border-b px-4 py-2">"default"</td>
-                    <td class="border-b px-4 py-2">Styling variant for the input. Options: <code>default</code>, <code>outlined</code>, <code>filled</code>.</td>
+                    <td class="border-b px-4 py-2">Styling variant for the input. Options: <code>default</code>,
+                        <code>outlined</code>, <code>filled</code>.
+                    </td>
                 </tr>
                 <tr>
                     <td class="border-b px-4 py-2">disabled</td>
@@ -96,7 +106,8 @@
                     <td class="border-b px-4 py-2">floatingLabel</td>
                     <td class="border-b px-4 py-2">Boolean</td>
                     <td class="border-b px-4 py-2">false</td>
-                    <td class="border-b px-4 py-2">Determines if the label floats outside the input when it receives focus.</td>
+                    <td class="border-b px-4 py-2">Determines if the label floats outside the input when it receives
+                        focus.</td>
                 </tr>
             </tbody>
         </table-docs>
@@ -105,14 +116,15 @@
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
                 <div class="lg:w-2/5 w-full">
-                    <c-input v-model="example1" id="example1" label="Basic Input" />
-                    <c-input v-model="example2" id="example2" label="Input with Placeholder" placeholder="Enter text..." />
-                    <c-input v-model="example3" id="example3" label="Disabled Input" disabled />
+                    <c-input v-model="example1" id="example1" label="Basic Input" class="mb-4" />
+                    <c-input v-model="example2" id="example2" label="Input with Placeholder" placeholder="Enter text..."
+                        class="mb-4" />
+                    <c-input v-model="example3" id="example3" label="Disabled Input" disabled class="mb-4" />
                 </div>
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-html">&lt;template&gt;
+                <pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;c-input v-model="example1" id="example1" label="Basic Input" /&gt;
     &lt;c-input v-model="example2" id="example2" label="Input with Placeholder" placeholder="Enter text..." /&gt;
     &lt;c-input v-model="example3" id="example3" label="Disabled Input" disabled /&gt;
@@ -131,22 +143,20 @@ const example3 = ref("");
         <!-- Validation -->
         <h3>Validation</h3>
 
-        <p>The <code>CInput</code> component supports custom validation rules. Error messages are displayed below the input field if a rule fails.</p>
+        <p>The <code>CInput</code> component supports custom validation rules. Error messages are displayed below the
+            input
+            field if a rule fails.</p>
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
                 <div class="lg:w-2/5 w-full">
-                    <c-input
-                        id="validation"
-                        label="Input with Validation"
-                        :rules="[value => (value ? null : 'This field is required')]"
-                        v-model="validableValue"
-                    />
+                    <c-input id="validation" label="Input with Validation"
+                        :rules="[value => (value ? null : 'This field is required')]" v-model="validableValue" />
                 </div>
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-html">&lt;template&gt;
+                <pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;c-input
         id="validation"
         label="Input with Validation"
@@ -166,19 +176,20 @@ const validableValue = ref("");
         <!-- Size Variants -->
         <h3>Size Variants</h3>
 
-        <p>The <code>CInput</code> component supports size variations for better responsiveness and design adaptability. Available sizes include <code>sm</code>, <code>md</code>, and <code>lg</code>.</p>
+        <p>The <code>CInput</code> component supports size variations for better responsiveness and design adaptability.
+            Available sizes include <code>sm</code>, <code>md</code>, and <code>lg</code>.</p>
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
                 <div class="lg:w-2/5 w-full">
-                    <c-input v-model="example4" id="small" label="Small Input" size="sm" />
-                    <c-input v-model="example5" id="medium" label="Medium Input" size="md" />
-                    <c-input v-model="example6" id="large" label="Large Input" size="lg" />
+                    <c-input v-model="example4" id="small" label="Small Input" size="sm" class="mb-4" />
+                    <c-input v-model="example5" id="medium" label="Medium Input" size="md" class="mb-4" />
+                    <c-input v-model="example6" id="large" label="Large Input" size="lg" class="mb-4" />
                 </div>
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-html">&lt;template&gt;
+                <pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;c-input id="small" label="Small Input" size="sm" /&gt;
     &lt;c-input id="medium" label="Medium Input" size="md" /&gt;
     &lt;c-input id="large" label="Large Input" size="lg" /&gt;
@@ -189,19 +200,23 @@ const validableValue = ref("");
         <!-- Variants -->
         <h3>Variants</h3>
 
-        <p>The <code>CInput</code> component supports visual <code>variant</code> styles, including <code>default</code>, <code>outlined</code>, and <code>filled</code>. These styles allow you to align the input field with your application's design language.</p>
+        <p>The <code>CInput</code> component supports visual <code>variant</code> styles, including
+            <code>default</code>,
+            <code>outlined</code>, and <code>filled</code>. These styles allow you to align the input field with your
+            application's design language.
+        </p>
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
                 <div class="lg:w-2/5 w-full">
-                    <c-input id="default" label="Default Variant" variant="default" />
-                    <c-input id="outlined" label="Outlined Variant" variant="outlined" />
+                    <c-input id="default" label="Default Variant" variant="default" class="mb-4" />
+                    <c-input id="outlined" label="Outlined Variant" variant="outlined" class="mb-4" />
                     <c-input id="filled" label="Filled Variant" variant="filled" />
                 </div>
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-html">&lt;template&gt;
+                <pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;c-input id="default" label="Default Variant" variant="default" /&gt;
     &lt;c-input id="outlined" label="Outlined Variant" variant="outlined" /&gt;
     &lt;c-input id="filled" label="Filled Variant" variant="filled" /&gt;
@@ -212,22 +227,21 @@ const validableValue = ref("");
         <!-- Password -->
         <h3>Password</h3>
 
-        <p>The <code>CInput</code> component supports password fields with an optional visibility toggle. By specifying the type="password" prop, the input field will display an eye icon for toggling the visibility of the password. This feature uses the IconEye and IconEyeSlash components to provide a seamless user experience.</p>
+        <p>The <code>CInput</code> component supports password fields with an optional visibility toggle. By specifying
+            the
+            type="password" prop, the input field will display an eye icon for toggling the visibility of the password.
+            This
+            feature uses the IconEye and IconEyeSlash components to provide a seamless user experience.</p>
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
                 <div class="lg:w-2/5 w-full">
-                    <c-input
-                        v-model="passwordValue"
-                        id="password"
-                        label="Password"
-                        type="password"
-                    />
+                    <c-input v-model="passwordValue" id="password" label="Password" type="password" />
                 </div>
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-html">&lt;template&gt;
+                <pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;c-input
         v-model="passwordValue"
         id="password"
@@ -257,7 +271,7 @@ const passwordValue = ref("");
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-html">&lt;template&gt;
+                <pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;c-input
         v-model="clearableValue"
         id="clearable"
@@ -287,7 +301,7 @@ const clearableValue = ref("");
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-html">&lt;template&gt;
+                <pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;c-input id="loading" label="Loading Input" loading /&gt;
 &lt;/template&gt;</code></pre>
             </template>
@@ -296,30 +310,28 @@ const clearableValue = ref("");
         <!-- Floating Label -->
         <h3>Floating Label</h3>
 
-        <p>The <code>CInput</code> component supports two different label behavior styles. By default, the label stays inside the input and scales down when the input receives focus. Alternatively, with <code>floatingLabel</code> set to <code>true</code>, the label completely moves out of the input, floating above it when it receives focus.</p>
+        <p>The <code>CInput</code> component supports two different label behavior styles. By default, the label stays
+            inside
+            the input and scales down when the input receives focus. Alternatively, with <code>floatingLabel</code> set
+            to
+            <code>true</code>, the label completely moves out of the input, floating above it when it receives focus.
+        </p>
 
-        <p><strong>Note:</strong> When an icon is added to the input using the <code>#icon</code> slot, the label should use the floating behavior to prevent overlapping with the icon.</p>
+        <p><strong>Note:</strong> When an icon is added to the input using the <code>#icon</code> slot, the label should
+            use the
+            floating behavior to prevent overlapping with the icon.</p>
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
                 <div class="lg:w-2/5 w-full">
-                    <c-input
-                        v-model="defaultLabel"
-                        id="default-label"
-                        label="Default Label (inside)"
-                        class="mb-4"
-                    />
-                    <c-input
-                        v-model="floatingLabelValue"
-                        id="floating-label"
-                        label="Floating Label (outside)"
-                        floatingLabel
-                    />
+                    <c-input v-model="defaultLabel" id="default-label" label="Default Label (inside)" class="mb-4" />
+                    <c-input v-model="floatingLabelValue" id="floating-label" label="Floating Label (outside)"
+                        floatingLabel />
                 </div>
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-html">&lt;template&gt;
+                <pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;!-- Default label (stays inside the input when focused) --&gt;
     &lt;c-input
         v-model="defaultLabel"
@@ -348,9 +360,19 @@ const floatingLabelValue = ref("");
         <!-- Icon -->
         <h3>Icon</h3>
 
-        <p>The Input component does not include a dedicated <code>icon</code> prop. Instead, it utilizes a slot to allow for greater flexibility in customizing the icon within the input field. This approach provides developers with more control over the design and behavior of the icon. By adding an icon through the icon slot, you can seamlessly align it to the left of the input field, enhancing the user experience with contextual cues, such as a magnifying glass for search fields.</p>
+        <p>The Input component does not include a dedicated <code>icon</code> prop. Instead, it utilizes a slot to allow
+            for
+            greater flexibility in customizing the icon within the input field. This approach provides developers with
+            more
+            control over the design and behavior of the icon. By adding an icon through the icon slot, you can
+            seamlessly align
+            it to the left of the input field, enhancing the user experience with contextual cues, such as a magnifying
+            glass
+            for search fields.</p>
 
-        <p><strong>Note:</strong> When an icon is present, it's recommended to use the <code>floatingLabel</code> property to ensure the label doesn't overlap with the icon.</p>
+        <p><strong>Note:</strong> When an icon is present, it's recommended to use the <code>floatingLabel</code>
+            property to
+            ensure the label doesn't overlap with the icon.</p>
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
@@ -364,7 +386,7 @@ const floatingLabelValue = ref("");
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-html">&lt;template&gt;
+                <pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;c-input id="search" label="Search Input" floatingLabel&gt;
         &lt;template #icon&gt;
             &lt;IconMagnifyingGlass class="w-6 h-6 text-gray-600 dark:text-white" aria-hidden="true" /&gt;
@@ -377,15 +399,21 @@ const floatingLabelValue = ref("");
         <!-- Custom Colors -->
         <h3>Custom Colors</h3>
 
-        <p>The <code>CInput</code> component supports <strong>custom colors</strong> for the input field, label, and border. You can use the following props to style the input field as per your application's design requirements:</p>
+        <p>The <code>CInput</code> component supports <strong>custom colors</strong> for the input field, label, and
+            border. You
+            can use the following props to style the input field as per your application's design requirements:</p>
 
         <ul>
             <li><strong><code>bgColor</code></strong>: Adjusts the background color of the input.</li>
             <li><strong><code>textColor</code></strong>: Modifies the color of the input text and label.</li>
-            <li><strong><code>borderColor</code></strong>: Sets the color and styles for the input's border during interactions such as focus.</li>
+            <li><strong><code>borderColor</code></strong>: Sets the color and styles for the input's border during
+                interactions
+                such as focus.</li>
         </ul>
 
-        <p>This flexibility allows for dynamic and visually appealing designs, tailored to specific use cases or branding guidelines.</p>
+        <p>This flexibility allows for dynamic and visually appealing designs, tailored to specific use cases or
+            branding
+            guidelines.</p>
 
         <table-docs>
             <thead>
@@ -421,18 +449,13 @@ const floatingLabelValue = ref("");
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
                 <div class="lg:w-2/5 w-full">
-                    <c-input
-                        id="custom"
-                        label="Custom Input"
-                        bgColor="bg-blue-600"
-                        textColor="text-white"
-                        borderColor="focus:ring focus:ring-purple-700 focus:ring-opacity-50"
-                    ></c-input>
+                    <c-input id="custom" label="Custom Input" bgColor="bg-blue-600" textColor="text-white"
+                        borderColor="focus:ring focus:ring-purple-700 focus:ring-opacity-50"></c-input>
                 </div>
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-html">&lt;template&gt;
+                <pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;c-input
         id="custom"
         label="Custom Input"
@@ -447,33 +470,31 @@ const floatingLabelValue = ref("");
         <!-- Grouped Inputs -->
         <h3>Grouped Inputs</h3>
 
-        <p>The <code>CInput</code> component can be combined with other components to create compound form controls. By using flexbox utilities from Tailwind CSS, you can create seamlessly integrated input groups that function as a single component.</p>
+        <p>The <code>CInput</code> component can be combined with other components to create compound form controls. By
+            using
+            flexbox utilities from Tailwind CSS, you can create seamlessly integrated input groups that function as a
+            single
+            component.</p>
 
         <!-- Input with Button -->
         <h4>Input with Button</h4>
 
-        <p>A common UI pattern is to combine a text input with a button, such as for search forms or code verification inputs. This example shows how to create an input field with a button positioned to its right.</p>
+        <p>A common UI pattern is to combine a text input with a button, such as for search forms or code verification
+            inputs.
+            This example shows how to create an input field with a button positioned to its right.</p>
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
                 <div class="lg:w-3/5 w-full">
                     <div class="flex items-stretch">
-                        <c-input
-                            v-model="searchQuery"
-                            id="search-with-button"
-                            label="Search"
-                            placeholder="Search anything..."
-                            customClass="!rounded-r-none !border-r-0"
-                        >
+                        <c-input v-model="searchQuery" id="search-with-button" label="Search"
+                            placeholder="Search anything..." customClass="!rounded-r-none !border-r-0">
 
                         </c-input>
 
-                        <c-button
-                            variant="primary"
-                            size="lg"
-                            class="!rounded-l-none mb-[1.25rem] w-[100px] px-6 flex items-center justify-center"
-                            @click="handleSearch"
-                        >
+                        <c-button variant="primary" size="lg"
+                            class="!rounded-l-none mb-[0.25rem] w-[100px] px-6 flex items-center justify-center"
+                            @click="handleSearch">
                             <IconMagnifyingGlass class="w-6 h-6 text-white mr-2" aria-hidden="true" /> Search
                         </c-button>
                     </div>
@@ -481,7 +502,7 @@ const floatingLabelValue = ref("");
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-html">&lt;template&gt;
+                <pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;div class="flex items-stretch"&gt;
         &lt;c-input
             v-model="searchQuery"
@@ -518,34 +539,25 @@ function handleSearch() {
         <!-- Input with Combobox -->
         <h4>Input with Combobox</h4>
 
-        <p>Another useful pattern is combining an input with a combobox (dropdown) for cases like entering values with units or currency selection. This example demonstrates how to create an input field with an attached combobox.</p>
+        <p>Another useful pattern is combining an input with a combobox (dropdown) for cases like entering values with
+            units or
+            currency selection. This example demonstrates how to create an input field with an attached combobox.</p>
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4 h-[300px]">
                 <div class="lg:w-2/5 w-full">
                     <div class="flex items-stretch">
-                        <c-input
-                            v-model="amountValue"
-                            id="amount-with-select"
-                            label="Amount"
-                            type="number"
-                            floatingLabel
-                            customClass="!rounded-r-none border-r-1"
-                        />
+                        <c-input v-model="amountValue" id="amount-with-select" label="Amount" type="number"
+                            floatingLabel customClass="!rounded-r-none border-r-1" />
 
-                        <c-combobox
-                            v-model="selectedCurrency"
-                            :options="currencyOptions"
-                            size="lg"
-                            class="!rounded-l-none min-w-[120px]"
-                            customClass="!rounded-l-none border-l-0"
-                        />
+                        <c-combobox v-model="selectedCurrency" :options="currencyOptions" size="lg"
+                            class="!rounded-l-none min-w-[120px]" customClass="!rounded-l-none border-l-0" />
                     </div>
                 </div>
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-html">&lt;template&gt;
+                <pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;div class="flex items-stretch"&gt;
         &lt;c-input
             v-model="amountValue"
@@ -581,12 +593,7 @@ const currencyOptions = [
             </template>
         </card-docs>
 
-        <PagePagination
-            previous="Form"
-            previousLink="/form"
-            next="Number Input"
-            nextLink="/number-input"
-        />
+        <PagePagination previous="Form" previousLink="/form" next="Number Input" nextLink="/number-input" />
     </BaseLayout>
 </template>
 

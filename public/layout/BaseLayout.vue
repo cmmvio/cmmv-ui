@@ -82,9 +82,8 @@
             <div v-if="isMenuVisible" class="fixed inset-0 top-16 bg-black/20 backdrop-blur-sm z-30 lg:hidden"
                 @click="isMenuVisible = false"></div>
 
-            <div
-                class="lg:ml-80 sm:ml-4 ml-2 sm:mr-2 lg:mr-8 text-justify relative m-auto lg:max-w-[calc(100%-20rem)] max-w-[calc(100%-1rem)]">
-                <div class="content-container rounded-lg overflow-hidden max-w-[calc(100%-1rem)]">
+            <div class="lg:ml-80 sm:ml-4 ml-2 sm:mr-2 lg:mr-6 text-justify relative m-auto max-w-[calc(100%-0.1rem)]">
+                <div class="content-container rounded-lg overflow-hidden">
                     <div class="m-auto py-8 w-full">
                         <div class="text-slate-800 relative dark:text-white mb-12 context-html">
                             <slot />

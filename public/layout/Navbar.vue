@@ -188,6 +188,7 @@ const navbarItems = [
         children: [
             { name: "Chart Bar", uri: "/chart-bar" },
             { name: "Chart Line", uri: "/chart-line" },
+            { name: "Data Table", uri: "/data-table" },
             { name: "List", uri: "/list" },
             { name: "Pagination", uri: "/pagination" },
             { name: "Table", uri: "/table" },

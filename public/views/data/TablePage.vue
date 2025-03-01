@@ -3,7 +3,9 @@
         <h1>Table</h1>
 
         <p>
-            The <code>CTable</code> (alias: <code>c-table</code>) component in the <code>@cmmv/ui</code> framework allows the creation of dynamic and customizable tables. It supports custom styling, rounded borders, and theme-based colors for better adaptation to the application's design.
+            The <code>CTable</code> (alias: <code>c-table</code>) component in the <code>@cmmv/ui</code> framework
+            allows the creation of dynamic and customizable tables. It supports custom styling, rounded borders, and
+            theme-based colors for better adaptation to the application's design.
         </p>
 
         <table-docs>
@@ -20,19 +22,25 @@
                     <td class="border-b px-4 py-2">headers</td>
                     <td class="border-b px-4 py-2">Array</td>
                     <td class="border-b px-4 py-2">[]</td>
-                    <td class="border-b px-4 py-2">Defines the table headers. Each item in the array must have a <code>label</code> (visible name) and a <code>key</code> (used to map data).</td>
+                    <td class="border-b px-4 py-2">Defines the table headers. Each item in the array must have a
+                        <code>label</code> (visible name) and a <code>key</code> (used to map data).
+                    </td>
                 </tr>
                 <tr>
                     <td class="border-b px-4 py-2">items</td>
                     <td class="border-b px-4 py-2">Array</td>
                     <td class="border-b px-4 py-2">[]</td>
-                    <td class="border-b px-4 py-2">Defines the data for the table rows. Each object must match the <code>key</code> values specified in the headers.</td>
+                    <td class="border-b px-4 py-2">Defines the data for the table rows. Each object must match the
+                        <code>key</code> values specified in the headers.
+                    </td>
                 </tr>
                 <tr>
                     <td class="border-b px-4 py-2">rounded</td>
                     <td class="border-b px-4 py-2">String</td>
                     <td class="border-b px-4 py-2">"md"</td>
-                    <td class="border-b px-4 py-2">Controls the border radius of the table. Options: <code>none</code>, <code>default</code>, <code>md</code>, <code>full</code>.</td>
+                    <td class="border-b px-4 py-2">Controls the border radius of the table. Options: <code>none</code>,
+                        <code>default</code>, <code>md</code>, <code>full</code>.
+                    </td>
                 </tr>
                 <tr>
                     <td class="border-b px-4 py-2">bgColor</td>
@@ -86,7 +94,8 @@
                     <td class="border-b px-4 py-2">infinityScroll</td>
                     <td class="border-b px-4 py-2">Boolean</td>
                     <td class="border-b px-4 py-2">false</td>
-                    <td class="border-b px-4 py-2">Enables infinite scrolling for loading more data as the user scrolls.</td>
+                    <td class="border-b px-4 py-2">Enables infinite scrolling for loading more data as the user scrolls.
+                    </td>
                 </tr>
                 <tr>
                     <td class="border-b px-4 py-2">fixedHeaders</td>
@@ -103,25 +112,25 @@
             </tbody>
         </table-docs>
 
-        <br/>
+        <br />
 
         <!-- Basic Example -->
         <h3>Basic Example</h3>
 
         <p>
-            The Basic Example demonstrates how to use the <code>CTable</code> component with a simple dataset. It defines a list of column headers and an array of items, where each row corresponds to an object in the <code>tableData</code> array. This example shows how easy it is to render structured data dynamically without manually creating table rows and columns.
+            The Basic Example demonstrates how to use the <code>CTable</code> component with a simple dataset. It
+            defines a list of column headers and an array of items, where each row corresponds to an object in the
+            <code>tableData</code> array. This example shows how easy it is to render structured data dynamically
+            without manually creating table rows and columns.
         </p>
 
         <card-docs>
             <div class="w-full max-w-[780px] mx-auto">
-                <c-table
-                    :items="items"
-                    :headers="headers"
-                ></c-table>
+                <c-table :items="items" :headers="headers"></c-table>
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-html">&lt;template&gt;
+                <pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;c-table
         :headers="tableHeaders"
         :items="tableData"
@@ -150,17 +159,16 @@ const tableData = ref([
         <h3>Row Selection with Checkboxes</h3>
 
         <p>
-            The <code>checked</code> property allows users to select multiple rows using checkboxes. The selected items can be retrieved using the <code>@update:selected</code> event, which emits an array of selected rows. This is particularly useful for implementing bulk actions on selected data.
+            The <code>checked</code> property allows users to select multiple rows using checkboxes. The selected items
+            can be
+            retrieved using the <code>@update:selected</code> event, which emits an array of selected rows. This is
+            particularly
+            useful for implementing bulk actions on selected data.
         </p>
 
         <card-docs>
             <div class="w-full max-w-[780px] mx-auto">
-                <c-table
-                    :items="items"
-                    :headers="headers"
-                    checked
-                    @update:selected="onSelectionChange"
-                ></c-table>
+                <c-table :items="items" :headers="headers" checked @update:selected="onSelectionChange"></c-table>
 
                 <div class="mt-4 p-4 bg-gray-100 dark:bg-gray-800 rounded">
                     <p class="font-medium mb-2">Selected Items:</p>
@@ -169,7 +177,7 @@ const tableData = ref([
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-html">&lt;template&gt;
+                <pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;div&gt;
         &lt;c-table
             :headers="tableHeaders"
@@ -214,43 +222,38 @@ const onSelectionChange = (selected) => {
         <h3>Customizing Table Columns</h3>
 
         <p>
-            The <code>CTable</code> component allows developers to customize how specific fields are rendered in the table using Vue slots.
-            This is useful when you want to format dates, apply styles based on the field value, or display icons, badges, and other UI elements dynamically.
+            The <code>CTable</code> component allows developers to customize how specific fields are rendered in the
+            table using
+            Vue slots.
+            This is useful when you want to format dates, apply styles based on the field value, or display icons,
+            badges, and
+            other UI elements dynamically.
         </p>
 
         <p>
-            In the example below, we format the <code>createAt</code> field to display a localized date and time instead of a timestamp.
-            Additionally, the <code>active</code> field is rendered using badges to indicate whether the user is active or inactive.
+            In the example below, we format the <code>createAt</code> field to display a localized date and time instead
+            of a
+            timestamp.
+            Additionally, the <code>active</code> field is rendered using badges to indicate whether the user is active
+            or
+            inactive.
         </p>
 
         <card-docs>
             <div class="w-full max-w-[780px] mx-auto">
-                <c-table
-                    :items="itemsWithCreateAt"
-                    :headers="headersWithCreateAt"
-                >
+                <c-table :items="itemsWithCreateAt" :headers="headersWithCreateAt">
                     <template #createAt="{ item }">
                         {{ formatDate(item.createAt) }}
                     </template>
 
                     <template #active="{ item }">
-                        <c-badge
-                            bgColor="bg-green-100 dark:bg-green-900"
-                            textColor="text-green-800 dark:text-green-300"
-                            rounded="rounded-md"
-                            customClass="me-2 px-2.5 py-0.5"
-                            v-if="item.active"
-                        >
+                        <c-badge bgColor="bg-green-100 dark:bg-green-900" textColor="text-green-800 dark:text-green-300"
+                            rounded="rounded-md" customClass="me-2 px-2.5 py-0.5" v-if="item.active">
                             Active
                         </c-badge>
 
-                        <c-badge
-                            bgColor="bg-red-100 dark:bg-red-900"
-                            textColor="text-red-800 dark:text-red-300"
-                            rounded="rounded-md"
-                            customClass="me-2 px-2.5 py-0.5"
-                            v-else
-                        >
+                        <c-badge bgColor="bg-red-100 dark:bg-red-900" textColor="text-red-800 dark:text-red-300"
+                            rounded="rounded-md" customClass="me-2 px-2.5 py-0.5" v-else>
                             Inactive
                         </c-badge>
                     </template>
@@ -258,7 +261,7 @@ const onSelectionChange = (selected) => {
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-html">&lt;template&gt;
+                <pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;c-table
         :headers="headersWithCreateAt"
         :items="itemsWithCreateAt"
@@ -361,30 +364,28 @@ const formatDate = (timestamp) => {
         <h3>Sorting</h3>
 
         <p>
-            The <code>CTable</code> component supports sorting functionality, allowing users to sort data by specific columns.
+            The <code>CTable</code> component supports sorting functionality, allowing users to sort data by specific
+            columns.
             By default, sorting is disabled, but it can be enabled using the <code>enableSort</code> prop.
             Clicking on a column header triggers sorting in ascending or descending order.
         </p>
 
         <p>
-            The <code>sortBy</code> prop defines the default column to sort, while <code>sortReverse</code> controls the initial sorting direction.
-            The <code>@sorting</code> event emits the current sorting field and direction, allowing for dynamic data reordering.
+            The <code>sortBy</code> prop defines the default column to sort, while <code>sortReverse</code> controls the
+            initial
+            sorting direction.
+            The <code>@sorting</code> event emits the current sorting field and direction, allowing for dynamic data
+            reordering.
         </p>
 
         <card-docs>
             <div class="w-full max-w-[780px] mx-auto">
-                <c-table
-                    :items="itemsSorting"
-                    :headers="headers"
-                    sortBy="id"
-                    :sortReverse="false"
-                    @sorting="sortingItems"
-                    enableSort
-                ></c-table>
+                <c-table :items="itemsSorting" :headers="headers" sortBy="id" :sortReverse="false"
+                    @sorting="sortingItems" enableSort></c-table>
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-html">&lt;template&gt;
+                <pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;c-table
         :headers="tableHeaders"
         :items="tableData"
@@ -437,18 +438,23 @@ const sortingItems = (field, direction) => {
         <h3>Server-Side Sorting</h3>
 
         <p>
-            For large datasets, it's often more efficient to handle sorting on the server side rather than in the browser.
-            The <code>@sorting</code> event can be used to trigger API calls with sorting parameters, allowing the backend to handle the sorting logic.
+            For large datasets, it's often more efficient to handle sorting on the server side rather than in the
+            browser.
+            The <code>@sorting</code> event can be used to trigger API calls with sorting parameters, allowing the
+            backend to
+            handle the sorting logic.
         </p>
 
         <p>
-            This approach is particularly useful when working with paginated data, as it ensures that only the necessary records are transferred over the network,
+            This approach is particularly useful when working with paginated data, as it ensures that only the necessary
+            records
+            are transferred over the network,
             significantly improving performance and user experience.
         </p>
 
         <card-docs>
             <template #code>
-<pre><code class="code-highlight language-html">&lt;template&gt;
+                <pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;c-table
         :headers="tableHeaders"
         :items="tableData"
@@ -507,30 +513,28 @@ onMounted(() => {
         <h3>Infinite Scroll</h3>
 
         <p>
-            The <code>CTable</code> component supports infinite scrolling, which allows data to be loaded dynamically as the user scrolls down.
-            This is useful for handling large datasets efficiently by loading only a subset of records at a time, improving performance and reducing memory usage.
+            The <code>CTable</code> component supports infinite scrolling, which allows data to be loaded dynamically as
+            the
+            user scrolls down.
+            This is useful for handling large datasets efficiently by loading only a subset of records at a time,
+            improving
+            performance and reducing memory usage.
         </p>
 
         <p>
-            To enable infinite scrolling, set the <code>infinityScroll</code> prop to true and implement the <code>@load-more</code> event handler to fetch additional data.
+            To enable infinite scrolling, set the <code>infinityScroll</code> prop to true and implement the
+            <code>@load-more</code> event handler to fetch additional data.
             You can also use the <code>fixedHeaders</code> prop to keep the table headers visible while scrolling.
         </p>
 
         <card-docs>
             <div class="w-full max-w-[780px] mx-auto">
-                <c-table
-                    :items="visibleItems"
-                    :headers="headers"
-                    infinityScroll
-                    fixedHeaders
-                    maxHeight="300px"
-                    :ended="visibleItems.length === 200"
-                    @load-more="loadMore"
-                ></c-table>
+                <c-table :items="visibleItems" :headers="headers" infinityScroll fixedHeaders maxHeight="300px"
+                    :ended="visibleItems.length === 200" @load-more="loadMore"></c-table>
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-html">&lt;template&gt;
+                <pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;c-table
         :headers="tableHeaders"
         :items="visibleItems"
@@ -597,25 +601,23 @@ const loadMore = () => {
         <h3>Advanced User Table Example</h3>
 
         <p>
-            This example demonstrates how to create a more complex and visually appealing user table with the <code>CTable</code> component.
+            This example demonstrates how to create a more complex and visually appealing user table with the
+            <code>CTable</code> component.
             It includes custom column rendering for user profiles with avatars, status indicators, and action links.
         </p>
 
         <p>
-            The example also shows how to use the <code>caption</code> slot to add a custom header with a title, description, and search functionality.
+            The example also shows how to use the <code>caption</code> slot to add a custom header with a title,
+            description,
+            and search functionality.
             This creates a complete user management interface that is both functional and aesthetically pleasing.
         </p>
 
         <card-docs>
-            <div class="w-full max-w-[780px] mx-auto">
-                <c-table
-                    :items="itemsWithCreateAt"
-                    :headers="headersUsers"
-                    maxHeight="300px"
-                    checked
-                >
+            <div class="w-full max-w-[880px] mx-auto">
+                <c-table :items="itemsWithCreateAt" :headers="headersUsers" maxHeight="300px" checked>
                     <template #caption>
-                        <div class="flex items-center justify-between flex-column flex-wrap mb-4">
+                        <div class="flex items-center justify-between flex-column flex-wrap">
                             <div>
                                 <h2 class="text-xl font-semibold">Users</h2>
                                 <span class="text-sm text-gray-500">See information about all members</span>
@@ -623,7 +625,8 @@ const loadMore = () => {
                             <div class="relative">
                                 <c-input id="search" label="Search Input" placeholder="Search users...">
                                     <template #icon>
-                                        <IconMagnifyingGlass class="w-6 h-6 text-neutral-600 dark:text-white" aria-hidden="true" />
+                                        <IconMagnifyingGlass class="w-6 h-6 text-neutral-600 dark:text-white"
+                                            aria-hidden="true" />
                                     </template>
                                 </c-input>
                             </div>
@@ -653,14 +656,15 @@ const loadMore = () => {
                     <template #actions="{ item }">
                         <div class="flex space-x-2">
                             <c-button size="sm" variant="outline">Edit</c-button>
-                            <c-button size="sm" variant="outline" bgColor="bg-red-50" textColor="text-red-600">Delete</c-button>
+                            <c-button size="sm" variant="outline" bgColor="bg-red-50"
+                                textColor="text-red-600">Delete</c-button>
                         </div>
                     </template>
                 </c-table>
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-html">&lt;template&gt;
+                <pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;c-table
         :headers="headersUsers"
         :items="itemsWithCreateAt"
@@ -736,7 +740,7 @@ const headersUsers = ref([
     { label: "Name", key: "name", width: "250px" },
     { label: "Position", key: "position" },
     { label: "Status", key: "active", width: "120px" },
-    { label: "Actions", key: "actions", width: "100px" }
+    { label: "Actions", key: "actions", width: "140px" }
 ]);
 
 // Sample user data
@@ -795,31 +799,102 @@ const deleteUser = (user) => {
             </template>
         </card-docs>
 
+        <h3>Condensed Table and No Card Style</h3>
+
+        <p>
+            The <code>CTable</code> component offers two additional display options for different UI needs:
+            <code>dense</code> and <code>card</code> props.
+        </p>
+
+        <p>
+            The <code>dense</code> property creates a more compact table with reduced padding and smaller text,
+            ideal for displaying large datasets where space is limited. The <code>card: false</code> option removes
+            the card-like border and shadow, allowing the table to blend more seamlessly with the surrounding content.
+        </p>
+
+        <card-docs>
+            <div class="space-y-8 w-full max-w-[780px] mx-auto">
+                <div>
+                    <h4 class="text-base font-medium mb-2">Dense Table</h4>
+                    <c-table :items="items" :headers="headers" dense></c-table>
+                </div>
+
+                <div>
+                    <h4 class="text-base font-medium mb-2">No Card Style (card: false)</h4>
+                    <c-table :items="items" :headers="headers" :card="false" shadow="shadow-none"></c-table>
+                </div>
+
+                <div>
+                    <h4 class="text-base font-medium mb-2">Combined: Dense Table without Card Style</h4>
+                    <c-table :items="items" :headers="headers" dense :card="false" shadow="shadow-none"></c-table>
+                </div>
+            </div>
+
+            <template #code>
+                <pre><code class="code-highlight language-html">&lt;template&gt;
+    &lt;!-- Dense Table - More compact with reduced padding and font size --&gt;
+    &lt;c-table
+        :headers="tableHeaders"
+        :items="tableData"
+        dense
+    &gt;&lt;/c-table&gt;
+
+    &lt;!-- No Card Style - Removes border and shadow --&gt;
+    &lt;c-table
+        :headers="tableHeaders"
+        :items="tableData"
+        :card="false"
+        class="border-t border-b" &lt;!-- Optional border classes --&gt;
+    &gt;&lt;/c-table&gt;
+
+    &lt;!-- Combined: Dense Table without Card Style --&gt;
+    &lt;c-table
+        :headers="tableHeaders"
+        :items="tableData"
+        dense
+        :card="false"
+        class="border-t border-b"
+    &gt;&lt;/c-table&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref } from "vue";
+import CTable from "@components/data/CTable.vue";
+
+const tableHeaders = ref([
+    { label: "ID", key: "id" },
+    { label: "Name", key: "name" },
+    { label: "Email", key: "email" }
+]);
+
+const tableData = ref([
+    { id: 1, name: "Alice Johnson", email: "alice@example.com" },
+    { id: 2, name: "Bob Smith", email: "bob@example.com" },
+    { id: 3, name: "Charlie Brown", email: "charlie@example.com" }
+]);
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
+
         <h3>Integration with Pagination</h3>
 
         <p>
-            For large datasets, it's often beneficial to combine the <code>CTable</code> component with <code>CPagination</code> to create a paginated table interface.
+            For large datasets, it's often beneficial to combine the <code>CTable</code> component with
+            <code>CPagination</code>
+            to create a paginated table interface.
             This approach improves performance and usability by displaying a limited number of records per page.
         </p>
 
         <card-docs>
             <div class="w-full max-w-[780px] mx-auto">
-                <c-table
-                    :headers="headers"
-                    :items="visibleItems.slice(0, 5)"
-                    class="mb-4"
-                ></c-table>
+                <c-table :headers="headers" :items="paginatedItems" class="mb-4"></c-table>
 
-                <c-pagination
-                    v-model="currentPage"
-                    :totalItems="visibleItems.length"
-                    :perPage="5"
-                    :showPerPageSelect="true"
-                ></c-pagination>
+                <c-pagination v-model="currentPage" :totalItems="visibleItems.length" :perPage="5"
+                    :showPerPageSelect="true" @update:perPage="onPerPageChange"></c-pagination>
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-html">&lt;template&gt;
+                <pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;div&gt;
         &lt;c-table
             :headers="tableHeaders"
@@ -887,12 +962,7 @@ onMounted(() => {
             </template>
         </card-docs>
 
-        <PagePagination
-            previous="Pagination"
-            previousLink="/pagination"
-            next="Autocomplete"
-            nextLink="/autocomplete"
-        />
+        <PagePagination previous="Pagination" previousLink="/pagination" next="Autocomplete" nextLink="/autocomplete" />
     </BaseLayout>
 </template>
 
@@ -928,7 +998,7 @@ const headersUsers = ref([
     { label: "Name", key: "name", width: "250px" },
     { label: "Position", key: "position" },
     { label: "Status", key: "active", width: "120px" },
-    { label: "Actions", key: "actions", width: "100px" }
+    { label: "Actions", key: "actions", width: "140px" }
 ]);
 
 const items = ref([
@@ -1026,6 +1096,19 @@ const generateRandomData = (count) => {
 const allItems = generateRandomData(200);
 const visibleItems = ref(allItems.slice(0, 20));
 const currentPage = ref(1);
+const itemsPerPage = ref(5);
+
+// Computed property for pagination example
+const paginatedItems = computed(() => {
+    const startIndex = (currentPage.value - 1) * itemsPerPage.value;
+    const endIndex = startIndex + itemsPerPage.value;
+    return visibleItems.value.slice(startIndex, endIndex);
+});
+
+const onPerPageChange = (newPerPage) => {
+    itemsPerPage.value = newPerPage;
+    currentPage.value = 1; // Reset to first page when changing items per page
+};
 
 const loadMore = () => {
     const nextItems = allItems.slice(visibleItems.value.length, visibleItems.value.length + 20);

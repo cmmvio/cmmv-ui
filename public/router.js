@@ -18,6 +18,7 @@ import RatingPage from "./views/components/RatingPage.vue";
 //Data
 import ChartBarPage from "./views/data/ChartBarPage.vue";
 import ChartLinePage from "./views/data/ChartLinePage.vue";
+import DataTablePage from "./views/data/DataTablePage.vue";
 import ListPage from "./views/data/ListPage.vue";
 import PaginationPage from "./views/data/PaginationPage.vue";
 import TablePage from "./views/data/TablePage.vue";
@@ -81,6 +82,7 @@ const routes = [
     //Data
     { path: '/chart-bar', component: ChartBarPage },
     { path: '/chart-line', component: ChartLinePage },
+    { path: '/data-table', component: DataTablePage },
     { path: '/list', component: ListPage },
     { path: '/pagination', component: PaginationPage },
     { path: '/table', component: TablePage },

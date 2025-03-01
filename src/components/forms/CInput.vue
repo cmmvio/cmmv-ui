@@ -1,7 +1,6 @@
 <template>
     <div class="c-input relative w-full">
-        <label
-            :for="id"
+        <label :for="id"
             class="c-input-label absolute text-sm transition-all duration-200 ease-in-out drop-shadow-xs pointer-events-none"
             :class="[{
                 'c-input-label--active': floatingLabel && (isActive || currentValue),
@@ -11,79 +10,47 @@
                 'pl-10': hasIcon && (!isActive && !currentValue)
             },
             textColor ? textColor : 'text-gray-500 dark:text-gray-400',
-            !disabled ? (bgColor ? bgColor : variantColors[variant]) : '', 'px-1', customClass]"
-        >
+            !disabled ? (bgColor ? bgColor : variantColors[variant]) : '', 'px-1', customClass]">
             {{ label }}
         </label>
 
         <div class="relative flex items-center">
-            <div
-                v-if="hasIcon"
-                class="absolute inset-y-0 left-0 flex items-center pl-3 z-50"
-            >
+            <div v-if="hasIcon" class="absolute inset-y-0 left-0 flex items-center pl-3 z-50">
                 <slot name="icon"></slot>
             </div>
 
-            <input
-                :id="id"
-                :type="inputType"
-                :name="name"
-                :placeholder="isActive ? placeholder : ''"
+            <input :id="id" :type="inputType" :name="name" :placeholder="isActive ? placeholder : ''"
                 :value="modelValue"
                 :class="[sizes[size], roundedStyles[rounded], variantStyles[variant], bgColor ? bgColor : variantColors[variant], textColor,
-                    { 'ring-red-500 ring-2': hasError, 'opacity-30': disabled, 'cursor-not-allowed': disabled, 'pl-10': hasIcon }, customClass]"
-                class="c-input-field block w-full border shadow-sm pt-4 pb-2 outline-none"
-                @keyup="handleInput"
-                @change="handleInput"
-                @focus="activateLabel"
-                @blur="deactivateLabel"
-                :disabled="disabled"
-                :aria-invalid="hasError"
-            />
+                { 'ring-red-500 ring-2': hasError, 'opacity-30': disabled, 'cursor-not-allowed': disabled, 'pl-10': hasIcon }, customClass]"
+                class="c-input-field block w-full border shadow-sm pt-4 pb-2 outline-none" @keyup="handleInput"
+                @change="handleInput" @focus="activateLabel" @blur="deactivateLabel" :disabled="disabled"
+                :aria-invalid="hasError" />
 
-            <button
-                v-if="clearable && currentValue !== ''"
-                type="button"
+            <button v-if="clearable && currentValue !== ''" type="button"
                 class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-400 hover:text-gray-600"
-                @click="clearInput"
-            >
+                @click="clearInput">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
-                    <path fill-rule="evenodd" d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+                    <path fill-rule="evenodd"
+                        d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z"
+                        clip-rule="evenodd" />
                 </svg>
             </button>
 
-            <div
-                v-if="loading"
-                class="absolute inset-y-0 right-0 flex items-center px-2 mr-1 text-gray-400"
-            >
-                <c-progress-circular
-                    indeterminate
-                    :size="20"
-                    :fillColor="'#666'"
-                    :width="2"
-                />
+            <div v-if="loading" class="absolute inset-y-0 right-0 flex items-center px-2 mr-1 text-gray-400">
+                <c-progress-circular indeterminate :size="20" :fillColor="'#666'" :width="2" />
             </div>
 
-            <button
-                v-if="type === 'password'"
-                type="button"
-                class="absolute inset-y-0 right-0 flex items-center px-2"
-                @click="togglePasswordVisibility"
-                :aria-pressed="showPassword"
-                aria-label="Toggle password visibility"
-                role="switch"
-            >
+            <button v-if="type === 'password'" type="button" class="absolute inset-y-0 right-0 flex items-center px-2"
+                @click="togglePasswordVisibility" :aria-pressed="showPassword" aria-label="Toggle password visibility"
+                role="switch">
                 <icon-eye-slash
                     :class="[textColor ? textColor : 'text-neutral-400 dark:text-neutral-400 hover:text-neutral-200']"
-                    tabindex="-1"
-                    v-if="showPassword"
-                ></icon-eye-slash>
+                    tabindex="-1" v-if="showPassword"></icon-eye-slash>
 
                 <icon-eye
                     :class="[textColor ? textColor : 'text-neutral-400 dark:text-neutral-400 hover:text-neutral-200']"
-                    tabindex="-1"
-                    v-else
-                ></icon-eye>
+                    tabindex="-1" v-else></icon-eye>
             </button>
         </div>
 
@@ -96,7 +63,6 @@
 
 <style scoped>
 .c-input {
-    margin-bottom: 1rem;
     position: relative;
 }
 
@@ -139,6 +105,7 @@
     0% {
         transform: rotate(0deg);
     }
+
     100% {
         transform: rotate(360deg);
     }
@@ -298,7 +265,7 @@ const hasError = computed(() => !!errorMessage.value);
 const handleInput = (event: Event) => {
     currentValue.value = (event.target as HTMLInputElement).value;
 
-    if(!validate() || !changed.value)
+    if (!validate() || !changed.value)
         errorMessage.value = null;
 
     changed.value = true;
@@ -315,7 +282,7 @@ const clearInput = () => {
 const validateShowError = () => {
     errorMessage.value = null;
 
-    if(!changed.value) return false;
+    if (!changed.value) return false;
 
     for (const rule of props.rules) {
         //@ts-ignore

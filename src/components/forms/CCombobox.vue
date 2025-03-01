@@ -1,59 +1,42 @@
 <template>
-    <div class="c-dropdown relative w-full">
-        <div class="relative">
-            <div
-                v-if="isActive"
-                class="fixed inset-0 z-40 bg-transparent"
-                @click="closeDropdown"
-            ></div>
+    <div class="c-dropdown relative w-full ">
+        <div class="relative h-full">
+            <div v-if="isActive" class="fixed inset-0 z-40 bg-transparent" @click="closeDropdown"></div>
 
-            <div class="relative flex items-center z-30" @click="toggleDropdown">
-                <div
-                    v-if="hasIcon"
-                    class="absolute inset-y-0 left-0 flex items-center pl-3 z-30"
-                >
+            <div class="relative flex items-center z-30 h-[46px]" @click="toggleDropdown">
+                <div v-if="hasIcon" class="absolute inset-y-0 left-0 flex items-center pl-3 z-30">
                     <slot name="icon"></slot>
                 </div>
 
-                <button
-                    :id="id"
-                    type="button"
-                    :class="[sizes[size], roundedStyles[rounded], variantStyles[variant], bgColor ? bgColor : variantColors[variant], textColor,
-                        { 'opacity-50': disabled, 'cursor-not-allowed': disabled, 'pl-10': hasIcon }, customClass]"
+                <button :id="id" type="button" :class="[sizes[size], roundedStyles[rounded], variantStyles[variant], bgColor ? bgColor : variantColors[variant], textColor,
+                { 'opacity-50': disabled, 'cursor-not-allowed': disabled, 'pl-10': hasIcon }, customClass]"
                     class="c-dropdown-field block w-full border shadow-sm pt-3 pb-2 outline-none text-left"
-                    :disabled="disabled"
-                >
+                    :disabled="disabled">
                     <span v-if="$slots.selected && selectedLabel">
                         <slot name="selected" :data="selectedOption"></slot>
                     </span>
+
                     <span v-else-if="selectedLabel">
                         {{ selectedLabel }}
                     </span>
+
                     <span v-else>
                         {{ placeholder }}
                     </span>
                 </button>
 
-                <div
-                    class="absolute inset-y-0 right-0 flex items-center px-2 transition-transform duration-300 cursor-pointer"
-                    :class="{ 'rotate-180': isActive, 'opacity-50': disabled, 'cursor-not-allowed': disabled }"
-                >
-                    <icon-chevron-down class="w-6 h-6 text-neutral-800 dark:text-white" size="sm" aria-hidden="true" />
+                <div class="absolute inset-y-0 right-0 flex items-center px-2 transition-transform duration-300 cursor-pointer"
+                    :class="{ 'rotate-180': isActive, 'opacity-50': disabled, 'cursor-not-allowed': disabled }">
+                    <icon-chevron-down class="w-4 h-4 text-neutral-800 dark:text-white" size="sm" aria-hidden="true" />
                 </div>
             </div>
 
             <transition name="fade">
-                <div
-                    v-if="isActive"
-                    class="absolute z-50 w-full bg-white border border-gray-300 dark:border-gray-700 dark:bg-zinc-800 mt-2 max-h-40 overflow-auto shadow-lg rounded-md"
-                >
+                <div v-if="isActive"
+                    class="absolute z-50 w-full bg-white border border-gray-300 dark:border-gray-700 dark:bg-zinc-800 mt-2 max-h-40 overflow-auto shadow-lg rounded-md">
                     <ul>
-                        <li
-                            v-for="option in options"
-                            :key="option.value"
-                            @click="selectOption(option)"
-                            class="px-4 py-2 cursor-pointer hover:bg-gray-200 dark:hover:bg-zinc-700 transition-colors z-60 "
-                        >
+                        <li v-for="option in options" :key="option.value" @click="selectOption(option)"
+                            class="px-4 py-2 cursor-pointer text-sm hover:bg-gray-200 dark:hover:bg-zinc-700 transition-colors z-60 ">
                             <span v-if="$slots.option">
                                 <slot name="option" :data="option"></slot>
                             </span>

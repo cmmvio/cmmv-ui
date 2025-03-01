@@ -58,6 +58,12 @@
                     <td class="border-b px-4 py-2">false</td>
                     <td class="border-b px-4 py-2">Whether to center the pagination controls.</td>
                 </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">mode</td>
+                    <td class="border-b px-4 py-2">String</td>
+                    <td class="border-b px-4 py-2">'default'</td>
+                    <td class="border-b px-4 py-2">Pagination display mode. Options: 'default', 'input'.</td>
+                </tr>
             </tbody>
         </table-docs>
 
@@ -177,6 +183,40 @@ import CPagination from "@components/components/CPagination.vue";
 
 const currentPage = ref(1);
 const perPage = ref(10);
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
+
+        <!-- Input Mode Pagination -->
+        <h3>Input Mode Pagination</h3>
+
+        <p>
+            The <code>mode="input"</code> property creates a more compact pagination interface with direct page input.
+            Instead of displaying multiple page buttons, it shows navigation arrows with a numeric input field
+            that allows users to jump directly to a specific page. This is ideal for interfaces with limited space
+            or when dealing with a large number of pages.
+        </p>
+
+        <card-docs>
+            <c-pagination v-model="inputModePage" :totalItems="500" :perPage="10" mode="input"
+                :showPerPageSelect="true"></c-pagination>
+
+            <template #code>
+                <pre><code class="code-highlight language-html">&lt;template&gt;
+    &lt;c-pagination
+        v-model="currentPage"
+        :totalItems="500"
+        :perPage="10"
+        mode="input"
+        :showPerPageSelect="true"
+    &gt;&lt;/c-pagination&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref } from 'vue';
+import CPagination from "@components/components/CPagination.vue";
+
+const currentPage = ref(1);
 &lt;/script&gt;</code></pre>
             </template>
         </card-docs>
@@ -536,6 +576,8 @@ const perPage = ref(10);
 const centeredPerPage = ref(10);
 const customPage = ref(1);
 const customPerPage = ref(20);
+const inputModePage = ref(1);
+
 const handlePageChange = (event) => {
     console.log(`Page changed to ${event.page}, showing ${event.perPage} items per page`);
 };

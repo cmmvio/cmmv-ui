@@ -22,6 +22,7 @@ declare module 'vue' {
     CCheckbox: typeof import('./src/components/forms/CCheckbox.vue')['default']
     CCombobox: typeof import('./src/components/forms/CCombobox.vue')['default']
     CContainer: typeof import('./src/components/layout/CContainer.vue')['default']
+    CDataTable: typeof import('./src/components/data/CDataTable.vue')['default']
     CDatepicker: typeof import('./src/components/forms/CDatepicker.vue')['default']
     CDialog: typeof import('./src/components/overlays/CDialog.vue')['default']
     CDropdown: typeof import('./src/components/layout/CDropdown.vue')['default']

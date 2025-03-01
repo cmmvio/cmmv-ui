@@ -1,30 +1,30 @@
 <template>
-  <BaseLayout>
-    <h1>Line Chart</h1>
+    <BaseLayout>
+        <h1>Line Chart</h1>
 
-    <p>
-        The <code>CChartLine (alias: c-chart-line)</code> component allows you to create interactive and responsive line charts,
-        with support for multiple data series, color customization, animations, and more. This component is built on top of
-        <a href="https://www.chartjs.org/" target="_blank" rel="noopener noreferrer">Chart.js</a>, a powerful JavaScript charting library.
-    </p>
+        <p>
+            The <code>CChartLine (alias: c-chart-line)</code> component allows you to create interactive and responsive
+            line charts,
+            with support for multiple data series, color customization, animations, and more. This component is built on
+            top of
+            <a href="https://www.chartjs.org/" target="_blank" rel="noopener noreferrer">Chart.js</a>, a powerful
+            JavaScript charting library.
+        </p>
 
-    <h3>Basic Usage</h3>
+        <h3>Basic Usage</h3>
 
-    <p>
-        The following example demonstrates the basic usage of the <code>CChartLine</code> component with a single data series.
-    </p>
+        <p>
+            The following example demonstrates the basic usage of the <code>CChartLine</code> component with a single
+            data series.
+        </p>
 
-    <card-docs>
-        <div class="mb-4">
-            <c-chart-line
-                :data="basicChartData"
-                title="Monthly Sales"
-                height="300px"
-            />
-        </div>
+        <card-docs>
+            <div class="mb-4">
+                <c-chart-line :data="basicChartData" title="Monthly Sales" height="300px" />
+            </div>
 
-        <template #code>
-<pre><code class="code-highlight language-html">&lt;template&gt;
+            <template #code>
+                <pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;c-chart-line
         :data="chartData"
         title="Monthly Sales"
@@ -46,26 +46,22 @@ datasets: [
 ]
 });
 &lt;/script&gt;</code></pre>
-        </template>
-    </card-docs>
+            </template>
+        </card-docs>
 
-    <h3>Multiple Series</h3>
+        <h3>Multiple Series</h3>
 
-    <p>
-      You can add multiple data series for comparison.
-    </p>
+        <p>
+            You can add multiple data series for comparison.
+        </p>
 
-    <card-docs>
-        <div class="mb-4">
-            <c-chart-line
-                :data="multiSeriesData"
-                title="Sales Comparison"
-                height="300px"
-            />
-        </div>
+        <card-docs>
+            <div class="mb-4">
+                <c-chart-line :data="multiSeriesData" title="Sales Comparison" height="300px" />
+            </div>
 
-      <template #code>
-<pre><code class="code-highlight language-html">&lt;template&gt;
+            <template #code>
+                <pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;c-chart-line
         :data="chartData"
         title="Sales Comparison"
@@ -92,26 +88,23 @@ const chartData = ref({
   ]
 });
 &lt;/script&gt;</code></pre>
-      </template>
-    </card-docs>
+            </template>
+        </card-docs>
 
-    <h3>Line Types</h3>
+        <h3>Line Types</h3>
 
-    <p>
-      You can create different types of lines by setting the <code>lineType</code> property to <code>straight</code>, <code>curved</code>, or <code>stepped</code>.
-    </p>
+        <p>
+            You can create different types of lines by setting the <code>lineType</code> property to
+            <code>straight</code>,
+            <code>curved</code>, or <code>stepped</code>.
+        </p>
 
-    <card-docs>
-      <div class="mb-4">
-        <c-chart-line
-          :data="lineTypesData"
-          lineType="curved"
-          title="Chart with Curved Lines"
-          height="300px"
-        />
-      </div>
-      <template #code>
-<pre><code class="code-highlight language-html">&lt;template&gt;
+        <card-docs>
+            <div class="mb-4">
+                <c-chart-line :data="lineTypesData" lineType="curved" title="Chart with Curved Lines" height="300px" />
+            </div>
+            <template #code>
+                <pre><code class="code-highlight language-html">&lt;template&gt;
   &lt;c-chart-line
     :data="chartData"
     lineType="curved"
@@ -134,26 +127,21 @@ const chartData = ref({
   ]
 });
 &lt;/script&gt;</code></pre>
-      </template>
-    </card-docs>
+            </template>
+        </card-docs>
 
-    <h3>Area Chart</h3>
+        <h3>Area Chart</h3>
 
-    <p>
-      You can fill the area below the line by setting the <code>fill</code> property to <code>true</code>.
-    </p>
+        <p>
+            You can fill the area below the line by setting the <code>fill</code> property to <code>true</code>.
+        </p>
 
-    <card-docs>
-      <div class="mb-4">
-        <c-chart-line
-          :data="areaChartData"
-          :fill="true"
-          title="Area Chart"
-          height="300px"
-        />
-      </div>
-      <template #code>
-<pre><code class="code-highlight language-html">&lt;template&gt;
+        <card-docs>
+            <div class="mb-4">
+                <c-chart-line :data="areaChartData" :fill="true" title="Area Chart" height="300px" />
+            </div>
+            <template #code>
+                <pre><code class="code-highlight language-html">&lt;template&gt;
   &lt;c-chart-line
     :data="chartData"
     :fill="true"
@@ -177,26 +165,21 @@ const chartData = ref({
   ]
 });
 &lt;/script&gt;</code></pre>
-      </template>
-    </card-docs>
+            </template>
+        </card-docs>
 
-    <h3>Point Customization</h3>
+        <h3>Point Customization</h3>
 
-    <p>
-      You can customize the chart points, changing their size or hiding them completely.
-    </p>
+        <p>
+            You can customize the chart points, changing their size or hiding them completely.
+        </p>
 
-    <card-docs>
-      <div class="mb-4">
-        <c-chart-line
-          :data="pointsChartData"
-          :pointSize="6"
-          title="Chart with Custom Points"
-          height="300px"
-        />
-      </div>
-      <template #code>
-<pre><code class="code-highlight language-html">&lt;template&gt;
+        <card-docs>
+            <div class="mb-4">
+                <c-chart-line :data="pointsChartData" :pointSize="6" title="Chart with Custom Points" height="300px" />
+            </div>
+            <template #code>
+                <pre><code class="code-highlight language-html">&lt;template&gt;
   &lt;c-chart-line
     :data="chartData"
     :pointSize="6"
@@ -222,33 +205,29 @@ const chartData = ref({
   ]
 });
 &lt;/script&gt;</code></pre>
-      </template>
-    </card-docs>
+            </template>
+        </card-docs>
 
-    <h3>Animations</h3>
+        <h3>Animations</h3>
 
-    <p>
-      You can customize the chart animations, changing the duration and easing type.
-    </p>
+        <p>
+            You can customize the chart animations, changing the duration and easing type.
+        </p>
 
-    <card-docs>
-      <div class="mb-4">
-        <c-chart-line
-          :data="basicChartData"
-          title="Chart with Custom Animation"
-          height="300px"
-          :animation="customAnimation"
-        />
+        <card-docs>
+            <div class="mb-4">
+                <c-chart-line :data="basicChartData" title="Chart with Custom Animation" height="300px"
+                    :animation="customAnimation" />
 
-        <div class="m-auto justify-center">
-            <c-button color="primary" @click="updateChartData" class="inline-flex items-center gap-x-2 mt-2">
-            <IconStar class="h-5 w-5 text-white" aria-hidden="true" />
-            Update Data
-            </c-button>
-        </div>
-      </div>
-      <template #code>
-<pre><code class="code-highlight language-html">&lt;template&gt;
+                <div class="m-auto justify-center">
+                    <c-button color="primary" @click="updateChartData" class="inline-flex items-center gap-x-2 mt-2">
+                        <IconStar class="h-5 w-5 text-white" aria-hidden="true" />
+                        Update Data
+                    </c-button>
+                </div>
+            </div>
+            <template #code>
+                <pre><code class="code-highlight language-html">&lt;template&gt;
   &lt;c-chart-line
     :data="chartData"
     title="Chart with Custom Animation"
@@ -287,30 +266,26 @@ const updateData = () => {
   );
 };
 &lt;/script&gt;</code></pre>
-      </template>
-    </card-docs>
+            </template>
+        </card-docs>
 
-    <h3>Interactivity</h3>
+        <h3>Interactivity</h3>
 
-    <p>
-      The <code>CChartLine</code> component emits events when the user interacts with the chart.
-    </p>
+        <p>
+            The <code>CChartLine</code> component emits events when the user interacts with the chart.
+        </p>
 
-    <card-docs>
-      <div class="mb-4">
-        <c-chart-line
-          :data="basicChartData"
-          title="Interactive Chart"
-          height="300px"
-          @chart-click="handleChartClick"
-          @chart-hover="handleChartHover"
-        />
-        <div v-if="selectedPoint" class="mt-2 p-2 border rounded">
-          <strong>Selected point:</strong> &#123;&#123; selectedPoint.label &#125;&#125; - &#123;&#123; selectedPoint.value &#125;&#125;
-        </div>
-      </div>
-      <template #code>
-<pre><code class="code-highlight language-html">&lt;template&gt;
+        <card-docs>
+            <div class="mb-4">
+                <c-chart-line :data="basicChartData" title="Interactive Chart" height="300px"
+                    @chart-click="handleChartClick" @chart-hover="handleChartHover" />
+                <div v-if="selectedPoint" class="mt-2 p-2 border rounded">
+                    <strong>Selected point:</strong> &#123;&#123; selectedPoint.label &#125;&#125; - &#123;&#123;
+                    selectedPoint.value &#125;&#125;
+                </div>
+            </div>
+            <template #code>
+                <pre><code class="code-highlight language-html">&lt;template&gt;
   &lt;c-chart-line
     :data="chartData"
     title="Interactive Chart"
@@ -352,44 +327,41 @@ const handleChartHover = (event) => {
   console.log('Hover:', event);
 };
 &lt;/script&gt;</code></pre>
-      </template>
-    </card-docs>
+            </template>
+        </card-docs>
 
-    <h3>Real-time Updates</h3>
+        <h3>Real-time Updates</h3>
 
-    <p>
-      You can update the chart in real-time, adding or removing data points.
-    </p>
+        <p>
+            You can update the chart in real-time, adding or removing data points.
+        </p>
 
-    <card-docs>
-      <div class="mb-4">
-        <c-chart-line
-          ref="realtimeChart"
-          :data="realtimeData"
-          title="Real-time Data"
-          height="300px"
-        />
-        <div class="mt-2 flex flex-wrap gap-2">
-          <c-button color="primary" @click="addDataPoint" class="inline-flex items-center gap-x-2">
-            <IconPlus class="h-5 w-5 text-white" aria-hidden="true" />
-            Add
-          </c-button>
-          <c-button color="danger" @click="removeDataPoint" class="inline-flex items-center gap-x-2">
-            <IconMinus class="h-5 w-5 text-white" aria-hidden="true" />
-            Remove
-          </c-button>
-          <c-button v-if="!autoUpdateActive" color="success" @click="startAutoUpdate" class="inline-flex items-center gap-x-2">
-            <IconBolt class="h-5 w-5 text-white" aria-hidden="true" />
-            Start Update
-          </c-button>
-          <c-button v-if="autoUpdateActive" color="warning" @click="stopAutoUpdate" class="inline-flex items-center gap-x-2">
-            <IconStop class="h-5 w-5 text-white" aria-hidden="true" />
-            Stop Update
-          </c-button>
-        </div>
-      </div>
-      <template #code>
-<pre><code class="code-highlight language-html">&lt;template&gt;
+        <card-docs>
+            <div class="mb-4">
+                <c-chart-line ref="realtimeChart" :data="realtimeData" title="Real-time Data" height="300px" />
+                <div class="mt-2 flex flex-wrap gap-2">
+                    <c-button color="primary" @click="addDataPoint" class="inline-flex items-center gap-x-2">
+                        <IconPlus class="h-5 w-5 text-white" aria-hidden="true" />
+                        Add
+                    </c-button>
+                    <c-button color="danger" @click="removeDataPoint" class="inline-flex items-center gap-x-2">
+                        <IconMinus class="h-5 w-5 text-white" aria-hidden="true" />
+                        Remove
+                    </c-button>
+                    <c-button v-if="!autoUpdateActive" color="success" @click="startAutoUpdate"
+                        class="inline-flex items-center gap-x-2">
+                        <IconBolt class="h-5 w-5 text-white" aria-hidden="true" />
+                        Start Update
+                    </c-button>
+                    <c-button v-if="autoUpdateActive" color="warning" @click="stopAutoUpdate"
+                        class="inline-flex items-center gap-x-2">
+                        <IconStop class="h-5 w-5 text-white" aria-hidden="true" />
+                        Stop Update
+                    </c-button>
+                </div>
+            </div>
+            <template #code>
+                <pre><code class="code-highlight language-html">&lt;template&gt;
   &lt;c-chart-line
     ref="chartRef"
     :data="chartData"
@@ -481,16 +453,11 @@ onUnmounted(() => {
   }
 });
 &lt;/script&gt;</code></pre>
-      </template>
-    </card-docs>
+            </template>
+        </card-docs>
 
-    <PagePagination
-        previous="Chart Bar"
-        previousLink="/chart-bar"
-        next="List"
-        nextLink="/list"
-    />
-  </BaseLayout>
+        <PagePagination previous="Chart Bar" previousLink="/chart-bar" next="Data Table" nextLink="/data-table" />
+    </BaseLayout>
 </template>
 
 <script setup>
@@ -658,8 +625,8 @@ const startAutoUpdate = () => {
 };
 
 const stopAutoUpdate = () => {
-  autoUpdateActive.value = false;
-  clearInterval(updateInterval);
+    autoUpdateActive.value = false;
+    clearInterval(updateInterval);
 };
 
 onUnmounted(() => {
