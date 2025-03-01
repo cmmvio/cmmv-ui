@@ -19,7 +19,7 @@
                     :id="id"
                     type="button"
                     :class="[sizes[size], roundedStyles[rounded], variantStyles[variant], bgColor ? bgColor : variantColors[variant], textColor,
-                        { 'opacity-50': disabled, 'cursor-not-allowed': disabled, 'pl-10': hasIcon }]"
+                        { 'opacity-50': disabled, 'cursor-not-allowed': disabled, 'pl-10': hasIcon }, customClass]"
                     class="c-dropdown-field block w-full border shadow-sm pt-3 pb-2 outline-none text-left"
                     :disabled="disabled"
                 >
@@ -193,6 +193,11 @@ const props = defineProps({
         type: String,
         required: false,
         default: "focus:ring focus:ring-zinc-700 focus:ring-opacity-50"
+    },
+    customClass: {
+        type: String,
+        required: false,
+        default: ""
     },
 });
 

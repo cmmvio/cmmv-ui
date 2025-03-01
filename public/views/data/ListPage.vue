@@ -5,7 +5,8 @@
         <p>
             The <code>CList</code> (alias: <code>c-list</code>) component provides a flexible way to render lists dynamically.
             It supports custom styling, shadow effects, and dividers between items, making it ideal for displaying structured data
-            such as user lists, notifications, or interactive content.
+            such as user lists, notifications, or interactive content. The component also supports drag and drop functionality
+            for reordering items, with customizable handlers for improved user experience.
         </p>
 
         <table-docs>
@@ -23,6 +24,18 @@
                     <td class="border-b px-4 py-2">Array</td>
                     <td class="border-b px-4 py-2">[]</td>
                     <td class="border-b px-4 py-2">Defines the list items that will be rendered. Each item can be accessed in the slot.</td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">draggable</td>
+                    <td class="border-b px-4 py-2">Boolean</td>
+                    <td class="border-b px-4 py-2">false</td>
+                    <td class="border-b px-4 py-2">Enables drag and drop functionality for reordering list items.</td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">useHandler</td>
+                    <td class="border-b px-4 py-2">Boolean</td>
+                    <td class="border-b px-4 py-2">true</td>
+                    <td class="border-b px-4 py-2">When true, displays a drag handle that users must click to drag items. When false, the entire item becomes draggable.</td>
                 </tr>
                 <tr>
                     <td class="border-b px-4 py-2">rounded</td>
@@ -489,150 +502,172 @@ const chatContacts = ref([
     unread: 0
   }
 ]);
-&lt;/script&gt;</code></pre>
-            </template>
-        </card-docs>
 
-        <h3>Interactive List Items</h3>
-
-        <p>
-            You can create interactive lists by adding event handlers and interactive elements to your list items.
-            This example demonstrates how to implement clickable list items with hover effects and action buttons.
-        </p>
-
-        <card-docs>
-            <div class="w-full max-w-[780px] mx-auto">
-                <c-list
-                    v-model="topThreeItems"
-                    class="w-full"
-                >
-                    <template v-slot="{ item }">
-                        <div class="w-full flex justify-between items-center p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition-colors cursor-pointer">
-                            <div class="flex min-w-0 gap-x-4">
-                                <img class="size-12 flex-none rounded-full bg-neutral-500" :src="item.imageUrl" alt="" />
-                                <div class="min-w-0 flex-auto">
-                                    <p class="text-sm/6 font-semibold text-neutral-900 dark:text-neutral-200">{{ item.name }}</p>
-                                    <p class="mt-1 truncate text-xs/5 text-neutral-500 dark:text-neutral-500">{{ item.email }}</p>
-                                </div>
-                            </div>
-                            <div class="flex space-x-2">
-                                <c-button size="sm" variant="outline">View</c-button>
-                                <c-button size="sm" variant="outline" bgColor="bg-red-50" textColor="text-red-600">Delete</c-button>
-                            </div>
-                        </div>
-                    </template>
-                </c-list>
-            </div>
-
-            <template #code>
-<pre><code class="code-highlight language-vue">&lt;template&gt;
-    &lt;c-list
-        v-model="topThreeItems"
-        class="w-full"
-    &gt;
-        &lt;template v-slot="{ item }"&gt;
-            &lt;div
-                class="w-full flex justify-between items-center p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition-colors cursor-pointer"
-                @click="viewItem(item)"
-            &gt;
-                &lt;div class="flex min-w-0 gap-x-4"&gt;
-                    &lt;img class="size-12 flex-none rounded-full bg-neutral-500" :src="item.imageUrl" alt="" /&gt;
-                    &lt;div class="min-w-0 flex-auto"&gt;
-                        &lt;p class="text-sm/6 font-semibold text-neutral-900 dark:text-neutral-200"&gt;&#123;&#123; item.name &#125;&#125;&lt;/p&gt;
-                        &lt;p class="mt-1 truncate text-xs/5 text-neutral-500 dark:text-neutral-500"&gt;&#123;&#123; item.email &#125;&#125;&lt;/p&gt;
-                    &lt;/div&gt;
-                &lt;/div&gt;
-                &lt;div class="flex space-x-2"&gt;
-                    &lt;c-button size="sm" variant="outline" @click.stop="viewItem(item)"&gt;View&lt;/c-button&gt;
-                    &lt;c-button
-                        size="sm"
-                        variant="outline"
-                        bgColor="bg-red-50"
-                        textColor="text-red-600"
-                        @click.stop="deleteItem(item)"
-                    &gt;
-                        Delete
-                    &lt;/c-button&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-        &lt;/template&gt;
-    &lt;/c-list&gt;
-&lt;/template&gt;
-
-&lt;script setup&gt;
-import { ref, computed } from "vue";
-import { CList, CButton } from "@cmmv/ui";
-
-const items = ref([
+// Dados e funções para o exemplo Sortable List melhorado
+const sortableTaskItems = ref([
     {
-        name: 'Leslie Alexander',
-        email: 'leslie.alexander@example.com',
-        role: 'Co-Founder / CEO',
-        imageUrl:
-        'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-        lastSeen: '3h ago',
-        lastSeenDateTime: '2023-01-23T13:23Z',
+        text: "Complete project proposal",
+        description: "Finalize the scope and deliverables for the Q3 project",
+        completed: false,
+        priority: "High"
     },
     {
-        name: 'Michael Foster',
-        email: 'michael.foster@example.com',
-        role: 'Co-Founder / CTO',
-        imageUrl:
-        'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-        lastSeen: '3h ago',
-        lastSeenDateTime: '2023-01-23T13:23Z',
+        text: "Review code pull requests",
+        description: "Check the frontend changes and provide feedback",
+        completed: true,
+        priority: "Medium"
     },
     {
-        name: 'Dries Vincent',
-        email: 'dries.vincent@example.com',
-        role: 'Business Relations',
-        imageUrl:
-        'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-        lastSeen: null,
+        text: "Fix authentication bug",
+        description: "Users are being logged out unexpectedly on mobile devices",
+        completed: false,
+        priority: "Critical"
     },
     {
-        name: 'Lindsay Walton',
-        email: 'lindsay.walton@example.com',
-        role: 'Front-end Developer',
-        imageUrl:
-        'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-        lastSeen: '3h ago',
-        lastSeenDateTime: '2023-01-23T13:23Z',
+        text: "Update documentation",
+        description: "Add recent API changes to the developer docs",
+        completed: false,
+        priority: "Low"
     },
     {
-        name: 'Courtney Henry',
-        email: 'courtney.henry@example.com',
-        role: 'Designer',
-        imageUrl:
-        'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-        lastSeen: '3h ago',
-        lastSeenDateTime: '2023-01-23T13:23Z',
-    },
-    {
-        name: 'Tom Cook',
-        email: 'tom.cook@example.com',
-        role: 'Director of Product',
-        imageUrl:
-        'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-        lastSeen: null,
+        text: "Prepare for team meeting",
+        description: "Create slides for tomorrow's sprint planning",
+        completed: false,
+        priority: "Medium"
     }
 ]);
 
-// Computed properties for filtered items
-const topThreeItems = computed(() => items.value.slice(0, 3));
+const lastSortableReorderEvent = ref(null);
 
-const viewItem = (item) => {
-    console.log('View item:', item);
-    // Implement view functionality
-};
+function getTaskPriorityClass(priority) {
+    switch(priority) {
+        case 'Critical': return 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200';
+        case 'High': return 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200';
+        case 'Medium': return 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200';
+        case 'Low': return 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200';
+        default: return 'bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200';
+    }
+}
 
-const deleteItem = (item) => {
-    console.log('Delete item:', item);
-    // Implement delete functionality with confirmation
-};
-&lt;/script&gt;</code></pre>
-            </template>
-        </card-docs>
+function handleSortableReorder(event) {
+    console.log("Sortable list item reordered:", event);
+    lastSortableReorderEvent.value = event;
+}
+
+// Dados e funções para o exemplo Kanban Board
+const kanbanTodoItems = ref([
+    {
+        title: "Implement user authentication",
+        description: "Add login, registration and password reset functionality",
+        tag: "Feature",
+        assignee: "John Doe",
+        dueDate: "2023-05-15"
+    },
+    {
+        title: "Design dashboard UI",
+        description: "Create wireframes and mockups for the main dashboard",
+        tag: "Design",
+        assignee: "Jane Smith",
+        dueDate: "2023-05-20"
+    },
+    {
+        title: "Setup CI/CD pipeline",
+        description: "Configure GitHub Actions for automated testing and deployment",
+        tag: "DevOps",
+        assignee: "Mike Johnson",
+        dueDate: "2023-05-25"
+    }
+]);
+
+const kanbanInProgressItems = ref([
+    {
+        title: "Optimize database queries",
+        description: "Improve performance of main search functionality",
+        tag: "Performance",
+        assignee: "Sarah Williams",
+        dueDate: "2023-05-30"
+    },
+    {
+        title: "Implement dark mode",
+        description: "Add toggle and store user preference",
+        tag: "UI",
+        assignee: "John Doe",
+        dueDate: "2023-06-05"
+    }
+]);
+
+const kanbanDoneItems = ref([
+    {
+        title: "Setup project repository",
+        description: "Initialize Git repo and configure basic project structure",
+        tag: "Setup",
+        assignee: "Mike Johnson",
+        dueDate: "2023-06-10"
+    },
+    {
+        title: "Create component library",
+        description: "Develop reusable UI components for the application",
+        tag: "UI",
+        assignee: "Jane Smith",
+        dueDate: "2023-06-15"
+    }
+]);
+
+const lastKanbanReorderEvent = ref(null);
+const lastKanbanMoveEvent = ref(null);
+
+function getKanbanAvatarUrl(name) {
+    // Generate consistent avatar URL based on name
+    const hash = name.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
+    return `https://i.pravatar.cc/150?img=${hash % 70}`;
+}
+
+function handleKanbanReorder(listName, event) {
+    console.log(`Kanban item reordered within ${listName} list:`, event);
+    lastKanbanReorderEvent.value = { listName, ...event };
+}
+
+function handleKanbanItemMoved(event) {
+    console.log("Kanban item moved between lists:", event);
+    lastKanbanMoveEvent.value = event;
+
+    // Remove the item from source list when it's moved to avoid duplication
+    if (event.fromListId === "todo-list") {
+        const sourceIndex = kanbanTodoItems.value.findIndex(
+            item => item.title === event.item.title && item.description === event.item.description
+        );
+        if (sourceIndex !== -1) {
+            kanbanTodoItems.value.splice(sourceIndex, 1);
+        }
+    } else if (event.fromListId === "progress-list") {
+        const sourceIndex = kanbanInProgressItems.value.findIndex(
+            item => item.title === event.item.title && item.description === event.item.description
+        );
+        if (sourceIndex !== -1) {
+            kanbanInProgressItems.value.splice(sourceIndex, 1);
+        }
+    } else if (event.fromListId === "done-list") {
+        const sourceIndex = kanbanDoneItems.value.findIndex(
+            item => item.title === event.item.title && item.description === event.item.description
+        );
+        if (sourceIndex !== -1) {
+            kanbanDoneItems.value.splice(sourceIndex, 1);
+        }
+    }
+
+    // Add the item to the target list if it has a proper toIndex
+    if (typeof event.toIndex === 'number') {
+        if (event.toListId === "todo-list") {
+            kanbanTodoItems.value.splice(event.toIndex, 0, event.item);
+        } else if (event.toListId === "progress-list") {
+            kanbanInProgressItems.value.splice(event.toIndex, 0, event.item);
+        } else if (event.toListId === "done-list") {
+            kanbanDoneItems.value.splice(event.toIndex, 0, event.item);
+        }
+    }
+}
+&lt;/script&gt;
+</code></pre></template></card-docs>
 
         <h3>WhatsApp Style Chat Interface</h3>
 
@@ -823,9 +858,155 @@ const deleteItem = (item) => {
             </template>
         </card-docs>
 
+        <h3>Sortable List</h3>
+
+        <p>
+            The <code>CList</code> component now supports item reordering through drag and drop. By setting the <code>sortable</code> prop to true,
+            users can rearrange items in the list by dragging the handle that appears on the left side of each item.
+        </p>
+
+        <card-docs>
+            <div class="w-full max-w-[780px] mx-auto">
+                <c-list
+                    v-model="sortableTaskItems"
+                    sortable
+                    class="bg-white dark:bg-neutral-800 rounded-md"
+                    @reorder="handleSortableReorder"
+                >
+                    <template v-slot="{ item }">
+                        <div class="w-full flex justify-between items-center py-3 px-2">
+                            <div class="flex-grow">
+                                <div class="flex items-center">
+                                    <input type="checkbox" v-model="item.completed" class="mr-3 h-4 w-4 rounded" />
+                                    <span :class="{'font-medium': !item.completed, 'line-through text-gray-400': item.completed}">{{ item.text }}</span>
+                                </div>
+                                <p class="mt-1 text-xs text-gray-500">{{ item.description }}</p>
+                            </div>
+                            <div :class="getTaskPriorityClass(item.priority)" class="text-xs ml-2 px-2 py-1 rounded">
+                                {{ item.priority }}
+                            </div>
+                        </div>
+                    </template>
+                </c-list>
+
+                <div class="mt-4 text-sm text-gray-600 dark:text-gray-400">
+                    <p>Try dragging the items using the handle on the left to reorder the task list.</p>
+                    <div v-if="lastSortableReorderEvent" class="mt-2 p-2 bg-gray-100 dark:bg-gray-700 rounded-md">
+                        <p>Last reorder event:</p>
+                        <pre>{{ JSON.stringify(lastSortableReorderEvent, null, 2) }}</pre>
+                    </div>
+                </div>
+            </div>
+
+            <template #code>
+<pre><code class="code-highlight language-vue">&lt;template&gt;
+    &lt;c-list
+        v-model="taskItems"
+        sortable
+        class="bg-white dark:bg-neutral-800 shadow-md rounded-md p-2"
+        @reorder="handleReorder"
+    &gt;
+        &lt;template v-slot="{ item }"&gt;
+            &lt;div class="w-full flex justify-between items-center py-3 px-2"&gt;
+                &lt;div class="flex items-center"&gt;
+                    &lt;input type="checkbox" v-model="item.completed" class="mr-3 h-4 w-4 rounded" /&gt;
+                    &lt;span :class="{'line-through text-gray-400': item.completed}"&gt;&#123;&#123; item.text &#125;&#125;&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;span class="text-xs text-gray-500"&gt;Priority: &#123;&#123; item.priority &#125;&#125;&lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/template&gt;
+    &lt;/c-list&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref } from "vue";
+
+const taskItems = ref([
+    { text: "Complete project proposal", completed: false, priority: "High" },
+    { text: "Review code pull requests", completed: true, priority: "Medium" },
+    { text: "Fix authentication bug", completed: false, priority: "Critical" },
+    { text: "Update documentation", completed: false, priority: "Low" },
+    { text: "Prepare for team meeting", completed: false, priority: "Medium" }
+]);
+
+function handleReorder(event) {
+    console.log("Item reordered within a list:", event);
+}
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
+
+        <code-block lang="vue" :code="crossListDragDropExample" />
+
+        <h3 class="mt-8 text-lg font-medium">Slots</h3>
+        <p class="mb-4">
+            The CList component provides flexible slot options for complete customization:
+        </p>
+
+        <table-docs>
+            <thead>
+                <tr>
+                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Slot Name</th>
+                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Props</th>
+                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="border-b px-4 py-2">default</td>
+                    <td class="border-b px-4 py-2">{ item, index }</td>
+                    <td class="border-b px-4 py-2">Main slot for rendering each list item's content, provides access to the current item and its index.</td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">header</td>
+                    <td class="border-b px-4 py-2">-</td>
+                    <td class="border-b px-4 py-2">Optional slot for adding content at the top of the list, useful for headers or filters.</td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">footer</td>
+                    <td class="border-b px-4 py-2">-</td>
+                    <td class="border-b px-4 py-2">Optional slot for adding content at the bottom of the list, useful for pagination or summary information.</td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">handle</td>
+                    <td class="border-b px-4 py-2">-</td>
+                    <td class="border-b px-4 py-2">Custom slot for the drag handle when useHandler is true. Allows styling the handle element.</td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">empty</td>
+                    <td class="border-b px-4 py-2">-</td>
+                    <td class="border-b px-4 py-2">Content to display when the list is empty.</td>
+                </tr>
+            </tbody>
+        </table-docs>
+
+        <h3 class="mt-8 text-lg font-medium">Events</h3>
+
+        <table-docs>
+            <thead>
+                <tr>
+                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Event</th>
+                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Payload</th>
+                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="border-b px-4 py-2">reorder</td>
+                    <td class="border-b px-4 py-2">{ oldIndex, newIndex, item }</td>
+                    <td class="border-b px-4 py-2">Emitted when an item is reordered within the same list.</td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">itemMoved</td>
+                    <td class="border-b px-4 py-2">{ fromListId, toListId, item, toIndex }</td>
+                    <td class="border-b px-4 py-2">Emitted when an item is moved from one list to another. The source list needs to handle removing the item manually.</td>
+                </tr>
+            </tbody>
+        </table-docs>
+
         <PagePagination
-            previous="Chart Line"
-            previousLink="/chart-line"
+            previous="Tooltip"
+            previousLink="/tooltip"
             next="Pagination"
             nextLink="/pagination"
         />
@@ -990,4 +1171,179 @@ const chatContacts = ref([
     unread: 0
   }
 ]);
+
+// Dados e funções para o exemplo Sortable List melhorado
+const sortableTaskItems = ref([
+    {
+        text: "Complete project proposal",
+        description: "Finalize the scope and deliverables for the Q3 project",
+        completed: false,
+        priority: "High"
+    },
+    {
+        text: "Review code pull requests",
+        description: "Check the frontend changes and provide feedback",
+        completed: true,
+        priority: "Medium"
+    },
+    {
+        text: "Fix authentication bug",
+        description: "Users are being logged out unexpectedly on mobile devices",
+        completed: false,
+        priority: "Critical"
+    },
+    {
+        text: "Update documentation",
+        description: "Add recent API changes to the developer docs",
+        completed: false,
+        priority: "Low"
+    },
+    {
+        text: "Prepare for team meeting",
+        description: "Create slides for tomorrow's sprint planning",
+        completed: false,
+        priority: "Medium"
+    }
+]);
+
+const lastSortableReorderEvent = ref(null);
+
+function getTaskPriorityClass(priority) {
+    switch(priority) {
+        case 'Critical': return 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200';
+        case 'High': return 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200';
+        case 'Medium': return 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200';
+        case 'Low': return 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200';
+        default: return 'bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200';
+    }
+}
+
+function handleSortableReorder(event) {
+    console.log("Sortable list item reordered:", event);
+    lastSortableReorderEvent.value = event;
+}
+
+// Dados e funções para o exemplo Kanban Board
+const kanbanTodoItems = ref([
+    {
+        title: "Implement user authentication",
+        description: "Add login, registration and password reset functionality",
+        tag: "Feature",
+        assignee: "John Doe",
+        dueDate: "2023-05-15"
+    },
+    {
+        title: "Design dashboard UI",
+        description: "Create wireframes and mockups for the main dashboard",
+        tag: "Design",
+        assignee: "Jane Smith",
+        dueDate: "2023-05-20"
+    },
+    {
+        title: "Setup CI/CD pipeline",
+        description: "Configure GitHub Actions for automated testing and deployment",
+        tag: "DevOps",
+        assignee: "Mike Johnson",
+        dueDate: "2023-05-25"
+    }
+]);
+
+const kanbanInProgressItems = ref([
+    {
+        title: "Optimize database queries",
+        description: "Improve performance of main search functionality",
+        tag: "Performance",
+        assignee: "Sarah Williams",
+        dueDate: "2023-05-30"
+    },
+    {
+        title: "Implement dark mode",
+        description: "Add toggle and store user preference",
+        tag: "UI",
+        assignee: "John Doe",
+        dueDate: "2023-06-05"
+    }
+]);
+
+const kanbanDoneItems = ref([
+    {
+        title: "Setup project repository",
+        description: "Initialize Git repo and configure basic project structure",
+        tag: "Setup",
+        assignee: "Mike Johnson",
+        dueDate: "2023-06-10"
+    },
+    {
+        title: "Create component library",
+        description: "Develop reusable UI components for the application",
+        tag: "UI",
+        assignee: "Jane Smith",
+        dueDate: "2023-06-15"
+    }
+]);
+
+const lastKanbanReorderEvent = ref(null);
+const lastKanbanMoveEvent = ref(null);
+
+function getKanbanAvatarUrl(name) {
+    // Generate consistent avatar URL based on name
+    const hash = name.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
+    return `https://i.pravatar.cc/150?img=${hash % 70}`;
+}
+
+function handleKanbanReorder(listName, event) {
+    console.log(`Kanban item reordered within ${listName} list:`, event);
+    lastKanbanReorderEvent.value = { listName, ...event };
+}
+
+function handleKanbanItemMoved(event) {
+    console.log("Kanban item moved between lists:", event);
+    lastKanbanMoveEvent.value = event;
+
+    let sourceList = null;
+    let targetList = null;
+
+    // Identificar a lista de origem
+    if (event.fromListId === "todo-list") {
+        sourceList = kanbanTodoItems;
+    } else if (event.fromListId === "progress-list") {
+        sourceList = kanbanInProgressItems;
+    } else if (event.fromListId === "done-list") {
+        sourceList = kanbanDoneItems;
+    }
+
+    // Identificar a lista de destino
+    if (event.toListId === "todo-list") {
+        targetList = kanbanTodoItems;
+    } else if (event.toListId === "progress-list") {
+        targetList = kanbanInProgressItems;
+    } else if (event.toListId === "done-list") {
+        targetList = kanbanDoneItems;
+    }
+
+    // Verificar se ambas as listas são válidas
+    if (!sourceList || !targetList) {
+        console.warn("Erro: Lista de origem ou destino inválida");
+        return;
+    }
+
+    // Encontrar o item na lista de origem
+    const sourceIndex = sourceList.value.findIndex(
+        item => item.title === event.item.title && item.description === event.item.description
+    );
+
+    if (sourceIndex !== -1) {
+        // **Remove o item da lista de origem antes de adicioná-lo na lista de destino**
+        const [movedItem] = sourceList.value.splice(sourceIndex, 1);
+
+        // Adiciona o item na posição correta na lista de destino
+        if (typeof event.toIndex === "number" && event.toIndex >= 0) {
+            targetList.value.splice(event.toIndex, 0, movedItem);
+        } else {
+            targetList.value.push(movedItem);
+        }
+    }
+}
+
+
 </script>

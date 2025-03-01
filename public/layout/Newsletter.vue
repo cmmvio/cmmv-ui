@@ -6,7 +6,7 @@
         <h3 class="mb-3 text-xl font-medium text-gray-900 dark:text-white">More updates...</h3>
         <p class="mb-5 text-sm font-medium text-gray-500 dark:text-gray-300">Do you want to get notified when a new component is added to CMMV? Sign up for our newsletter and you'll be among the first to find out about new features, components, versions, and tools.</p>
 
-        <div class="flex items-center">
+        <div class="flex items-center mt-2">
             <c-form class="flex w-full">
                 <c-input
                     id="custom"

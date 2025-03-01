@@ -16,12 +16,14 @@
         </div>
 
         <div :class="[outlined ? textColorClass : textColor, 'flex-1']">
-            <div v-if="title" class="font-bold text-lg">
+            <div v-if="title" class="font-bold text-md">
                 {{ title }}
             </div>
-            <slot>
-                <p>{{ defaultMessage }}</p>
-            </slot>
+            <p class="text-sm">
+                <slot>
+                    {{ defaultMessage }}
+                </slot>
+            </p>
         </div>
 
         <button

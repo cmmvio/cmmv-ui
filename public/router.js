@@ -32,6 +32,7 @@ import SidebarPage from "./views/layout/SidebarPage.vue";
 import SpeedDialPage from "./views/layout/SpeedDialPage.vue";
 import TabsPage from "./views/layout/TabsPage.vue";
 import ToolbarPage from "./views/layout/ToolbarPage.vue";
+import NavbarPage from "./views/layout/NavbarPage.vue";
 
 //Form
 import AutocompletePage from "./views/form/AutocompletePage.vue";
@@ -89,6 +90,7 @@ const routes = [
     { path: '/avatar', component: AvatarPage },
 	{ path: '/card', component: CardPage },
     { path: '/dropdown', component: DropdownPage },
+    { path: '/navbar', component: NavbarPage },
     { path: '/sidebar', component: SidebarPage },
     { path: '/speed-dial', component: SpeedDialPage },
     { path: '/tabs', component: TabsPage },

@@ -113,20 +113,9 @@
 
             <template #code>
 <pre><code class="code-highlight language-html">&lt;template&gt;
-    &lt;c-input
-        id="example1"
-        label="Basic Input"
-    /&gt;
-    &lt;c-input
-        id="example2"
-        label="Input with Placeholder"
-        placeholder="Enter text..."
-    /&gt;
-    &lt;c-input
-        id="example3"
-        label="Disabled Input"
-        disabled
-    /&gt;
+    &lt;c-input v-model="example1" id="example1" label="Basic Input" /&gt;
+    &lt;c-input v-model="example2" id="example2" label="Input with Placeholder" placeholder="Enter text..." /&gt;
+    &lt;c-input v-model="example3" id="example3" label="Disabled Input" disabled /&gt;
 &lt;/template&gt;
 
 &lt;script setup&gt;
@@ -455,6 +444,143 @@ const floatingLabelValue = ref("");
             </template>
         </card-docs>
 
+        <!-- Grouped Inputs -->
+        <h3>Grouped Inputs</h3>
+
+        <p>The <code>CInput</code> component can be combined with other components to create compound form controls. By using flexbox utilities from Tailwind CSS, you can create seamlessly integrated input groups that function as a single component.</p>
+
+        <!-- Input with Button -->
+        <h4>Input with Button</h4>
+
+        <p>A common UI pattern is to combine a text input with a button, such as for search forms or code verification inputs. This example shows how to create an input field with a button positioned to its right.</p>
+
+        <card-docs>
+            <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+                <div class="lg:w-3/5 w-full">
+                    <div class="flex items-stretch">
+                        <c-input
+                            v-model="searchQuery"
+                            id="search-with-button"
+                            label="Search"
+                            placeholder="Search anything..."
+                            customClass="!rounded-r-none !border-r-0"
+                        >
+
+                        </c-input>
+
+                        <c-button
+                            variant="primary"
+                            size="lg"
+                            class="!rounded-l-none mb-[1.25rem] w-[100px] px-6 flex items-center justify-center"
+                            @click="handleSearch"
+                        >
+                            <IconMagnifyingGlass class="w-6 h-6 text-white mr-2" aria-hidden="true" /> Search
+                        </c-button>
+                    </div>
+                </div>
+            </div>
+
+            <template #code>
+<pre><code class="code-highlight language-html">&lt;template&gt;
+    &lt;div class="flex items-stretch"&gt;
+        &lt;c-input
+            v-model="searchQuery"
+            id="search-with-button"
+            label="Search"
+            placeholder="Search anything..."
+            customClass="!rounded-r-none !border-r-0"
+        &gt;
+        &lt;/c-input&gt;
+        &lt;c-button
+            variant="primary"
+            size="lg"
+            class="!rounded-l-none mb-[1.25rem] w-[100px] px-2 flex items-center justify-center"
+            @click="handleSearch"
+        &gt;
+            &lt;IconMagnifyingGlass class="w-6 h-6 text-white mr-2" aria-hidden="true" /&gt; Search
+        &lt;/c-button&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref } from "vue";
+
+const searchQuery = ref("");
+
+function handleSearch() {
+    // Handle search functionality
+    console.log("Searching for:", searchQuery.value);
+}
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
+
+        <!-- Input with Combobox -->
+        <h4>Input with Combobox</h4>
+
+        <p>Another useful pattern is combining an input with a combobox (dropdown) for cases like entering values with units or currency selection. This example demonstrates how to create an input field with an attached combobox.</p>
+
+        <card-docs>
+            <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4 h-[300px]">
+                <div class="lg:w-2/5 w-full">
+                    <div class="flex items-stretch">
+                        <c-input
+                            v-model="amountValue"
+                            id="amount-with-select"
+                            label="Amount"
+                            type="number"
+                            floatingLabel
+                            customClass="!rounded-r-none border-r-1"
+                        />
+
+                        <c-combobox
+                            v-model="selectedCurrency"
+                            :options="currencyOptions"
+                            size="lg"
+                            class="!rounded-l-none min-w-[120px]"
+                            customClass="!rounded-l-none border-l-0"
+                        />
+                    </div>
+                </div>
+            </div>
+
+            <template #code>
+<pre><code class="code-highlight language-html">&lt;template&gt;
+    &lt;div class="flex items-stretch"&gt;
+        &lt;c-input
+            v-model="amountValue"
+            id="amount-with-select"
+            label="Amount"
+            type="number"
+            floatingLabel
+            customClass="!rounded-r-none border-r-1"
+        /&gt;
+
+        &lt;c-combobox
+            v-model="selectedCurrency"
+            :options="currencyOptions"
+            size="lg"
+            class="!rounded-l-none min-w-[120px]"
+            customClass="!rounded-l-none border-l-0"
+        /&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref } from "vue";
+
+const amountValue = ref("");
+const selectedCurrency = ref("USD");
+const currencyOptions = [
+    { label: "USD", value: "USD" },
+    { label: "EUR", value: "EUR" },
+    { label: "GBP", value: "GBP" },
+    { label: "JPY", value: "JPY" }
+];
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
+
         <PagePagination
             previous="Form"
             previousLink="/form"
@@ -488,4 +614,18 @@ const validableValue = ref("");
 const passwordValue = ref("");
 const defaultLabel = ref("");
 const floatingLabelValue = ref("");
+const searchQuery = ref("");
+const amountValue = ref("");
+const selectedCurrency = ref("USD");
+const currencyOptions = [
+    { label: "USD", value: "USD" },
+    { label: "EUR", value: "EUR" },
+    { label: "GBP", value: "GBP" },
+    { label: "JPY", value: "JPY" }
+];
+
+function handleSearch() {
+    // Handle search functionality
+    console.log("Searching for:", searchQuery.value);
+}
 </script>

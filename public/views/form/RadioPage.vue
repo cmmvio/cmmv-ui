@@ -61,8 +61,6 @@
             </tbody>
         </table-docs>
 
-        <br/>
-
         <h3>Basic Radio</h3>
 
         <p>

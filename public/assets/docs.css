@@ -1,8 +1,12 @@
-body, html, * {
+body,
+html,
+* {
     transition: background-color 0.1s ease, color 0.1s ease, border-color 0.1s ease;
 }
 
-*,:after,:before {
+*,
+:after,
+:before {
     border: none;
 }
 
@@ -23,11 +27,16 @@ body {
     overflow-x: hidden !important;
 }
 
-body > *, .context-html > ol ol, .context-html > ol ul, .context-html > ul ol, .context-html > ul ul {
+body>*,
+.context-html>ol ol,
+.context-html>ol ul,
+.context-html>ul ol,
+.context-html>ul ul {
     margin: 0;
 }
 
-pre, table {
+pre,
+table {
     overflow: auto;
 }
 
@@ -36,7 +45,7 @@ iframe {
     color-scheme: auto;
 }
 
-.context-html > img {
+.context-html>img {
     border-radius: 10px;
 }
 
@@ -106,7 +115,7 @@ iframe {
     background-color: #777777;
 }
 
-hr{
+hr {
     border-top: 1px solid rgb(107 114 128/var(--tw-text-opacity)) !important;
     border-color: rgb(30 41 59);
     border-top-width: 1px;
@@ -123,22 +132,33 @@ hr{
 @media (max-width: 1024px) {
     #sidebar-menu {
         position: fixed;
-        top: 0;
+        top: 64px;
         left: 0;
-        width: 250px;
-        height: 100%;
-        transform: translateX(-100%);
-        transition: transform 0.3s ease-in-out;
+        width: 18rem !important;
+        height: calc(100% - 64px);
         z-index: 50;
         overflow-y: auto;
     }
 
-    #sidebar-menu.show {
-        transform: translateX(0) !important;
-    }
-
-    .anchor{
+    .anchor {
         display: none;
+    }
+}
+
+#sidebar-menu {
+    transition: transform 0.3s ease-in-out;
+    backface-visibility: hidden;
+    will-change: transform;
+}
+
+#sidebar-menu>div {
+    width: 100%;
+    height: 100%;
+}
+
+@media (max-width: 1024px) {
+    .navbar {
+        width: 100% !important;
     }
 }
 
@@ -154,7 +174,8 @@ hr{
     color: cornflowerblue !important;
 }
 
-h1, h2 {
+h1,
+h2 {
     font-size: 24px !important;
     font-weight: 700 !important;
 }
@@ -164,7 +185,7 @@ h3 {
     font-weight: 200 !important;
 }
 
-.context-html > p {
+.context-html>p {
     line-height: 26px;
     display: block;
     margin-top: 1em !important;
@@ -172,7 +193,10 @@ h3 {
 }
 
 .context-html .c-card p,
+.context-html .card-docs p,
+.context-html .c-list p,
 .card-docs p,
+.c-card p,
 .c-list p {
     line-height: inherit;
     margin-top: 0 !important;
@@ -188,7 +212,7 @@ h3 {
     border-radius: 6px;
     letter-spacing: normal;
     color: #f7f7f7;
-    font-family: Inconsolata,Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;
+    font-family: Inconsolata, Consolas, Monaco, Andale Mono, Ubuntu Mono, monospace;
     text-align: left;
     white-space: pre;
     word-spacing: normal;
@@ -222,7 +246,7 @@ h3 {
     z-index: 399;
 }
 
-.leftbar{
+.leftbar {
     height: calc(100% - 64px);
     margin-top: 64px;
 }
@@ -245,8 +269,8 @@ h3 {
     margin: auto;
 }
 
-.context-html > ul > li,
-.context-html > ol > li {
+.context-html>ul>li,
+.context-html>ol>li {
     display: list-item;
     list-style: disc;
     margin-bottom: 20px;
@@ -254,42 +278,44 @@ h3 {
     text-align: left;
 }
 
-.context-html .c-card li,
+/* Garantir que os elementos dentro dos exemplos não sejam afetados pelos estilos do context-html */
+.context-html .card-docs li,
 .card-docs li,
-.c-list li {
-    list-style: none;
-    margin-bottom: 0;
-    margin-left: 0;
+.context-html .c-card li,
+.context-html .c-list li,
+.c-card li,
+.c-list li,
+.card-docs .c-navbar li,
+.card-docs .c-navbar ul {
+    list-style: none !important;
+    margin-bottom: 0 !important;
+    margin-left: 0 !important;
 }
 
-.context-html a {
+/* Remover estilo de link dos componentes dentro de exemplos */
+.context-html .card-docs a,
+.card-docs a,
+.context-html .c-navbar a,
+.c-navbar a {
+    color: inherit !important;
+    text-decoration: none !important;
+}
+
+.context-html .card-docs a:hover,
+.card-docs a:hover {
+    color: inherit !important;
+}
+
+/* Regras normais para links na documentação */
+.context-html>a {
     color: #6495ED;
     text-decoration: underline;
 }
 
-.context-html a:hover {
+.context-html>a:hover {
     color: #4263a1;
 }
 
-.context-html code:not(.c-card code):not(.card-docs code):not(.c-list code) {
-    background-color: #CCC;
-    color: #2d2d2d;
-    padding: 2px 4px;
-    font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
-    font-size: 0.9em;
-    word-break: break-word;
-    text-align: left !important;
-}
-
-.context-html pre code:not(.c-card pre code):not(.card-docs pre code):not(.c-list pre code) {
-    display: block;
-    max-height: 400px;
-    padding: 10px;
-    background-color: #ffffff;
-    overflow-y: auto;
-    white-space: pre-wrap;
-    color: #2d2d2d;
-}
 
 /* Scrollbar */
 pre code::-webkit-scrollbar {
@@ -320,31 +346,122 @@ pre code::-webkit-scrollbar-thumb:hover {
 }
 
 /* Syntax Highlighting - Light Mode */
-.light pre code.hljs { display: block; overflow-x: auto; padding: 1em; }
-.light code.hljs { padding: 3px 5px; }
+.light pre code.hljs {
+    display: block;
+    overflow-x: auto;
+    padding: 1em;
+}
 
-.light .hljs { background: #ffffff; color: #2d2d2d; }
-.light .hljs-keyword, .hljs-literal, .hljs-name, .hljs-symbol { color: #0077cc; }
-.light .hljs-link { color: #0077cc; text-decoration: underline; }
-.light .hljs-built_in, .hljs-type { color: #00875f; }
-.light .hljs-class, .light .hljs-number { color: #cc7832; }
-.light .hljs-meta .hljs-string, .hljs-string { color: #a31515; }
-.light .hljs-regexp, .light .hljs-template-tag { color: #990000; }
-.light .hljs-formula, .light .hljs-function, .light .hljs-params, .light .hljs-subst, .light .hljs-title { color: #2d2d2d; }
-.light .hljs-comment, .hljs-quote { color: #757575; font-style: italic; }
-.light .hljs-doctag { color: #007700; }
-.light .hljs-meta, .light .hljs-meta .hljs-keyword, .light .hljs-tag { color: #9b9b9b; }
-.light .hljs-template-variable, .light .hljs-variable { color: #b75501; }
-.light .hljs-attr, .hljs-attribute { color: #795da3; }
-.light .hljs-section { color: #ffcc00; }
-.light .hljs-emphasis { font-style: italic; }
-.light .hljs-strong { font-weight: bold; }
-.light .hljs-bullet, .light .hljs-selector-attr, .light .hljs-selector-class, .light .hljs-selector-id, .light .hljs-selector-pseudo, .light .hljs-selector-tag { color: #880000; }
-.light .hljs-addition { background-color: #ddffdd; display: inline-block; width: 100%; }
-.light .hljs-deletion { background-color: #ffdddd; display: inline-block; width: 100%; }
+.light code.hljs {
+    padding: 3px 5px;
+}
+
+.light .hljs {
+    background: #ffffff;
+    color: #2d2d2d;
+}
+
+.light .hljs-keyword,
+.hljs-literal,
+.hljs-name,
+.hljs-symbol {
+    color: #0077cc;
+}
+
+.light .hljs-link {
+    color: #0077cc;
+    text-decoration: underline;
+}
+
+.light .hljs-built_in,
+.hljs-type {
+    color: #00875f;
+}
+
+.light .hljs-class,
+.light .hljs-number {
+    color: #cc7832;
+}
+
+.light .hljs-meta .hljs-string,
+.hljs-string {
+    color: #a31515;
+}
+
+.light .hljs-regexp,
+.light .hljs-template-tag {
+    color: #990000;
+}
+
+.light .hljs-formula,
+.light .hljs-function,
+.light .hljs-params,
+.light .hljs-subst,
+.light .hljs-title {
+    color: #2d2d2d;
+}
+
+.light .hljs-comment,
+.hljs-quote {
+    color: #757575;
+    font-style: italic;
+}
+
+.light .hljs-doctag {
+    color: #007700;
+}
+
+.light .hljs-meta,
+.light .hljs-meta .hljs-keyword,
+.light .hljs-tag {
+    color: #9b9b9b;
+}
+
+.light .hljs-template-variable,
+.light .hljs-variable {
+    color: #b75501;
+}
+
+.light .hljs-attr,
+.hljs-attribute {
+    color: #795da3;
+}
+
+.light .hljs-section {
+    color: #ffcc00;
+}
+
+.light .hljs-emphasis {
+    font-style: italic;
+}
+
+.light .hljs-strong {
+    font-weight: bold;
+}
+
+.light .hljs-bullet,
+.light .hljs-selector-attr,
+.light .hljs-selector-class,
+.light .hljs-selector-id,
+.light .hljs-selector-pseudo,
+.light .hljs-selector-tag {
+    color: #880000;
+}
+
+.light .hljs-addition {
+    background-color: #ddffdd;
+    display: inline-block;
+    width: 100%;
+}
+
+.light .hljs-deletion {
+    background-color: #ffdddd;
+    display: inline-block;
+    width: 100%;
+}
 
 
-.dark .context-html code:not(.c-card code):not(.card-docs code):not(.c-list code) {
+.dark .context-html code:not(.card-docs code):not(.c-card code):not(.c-list code):not(.c-navbar code) {
     background-color: #43464c;
     color: #EFEFFF;
     padding: 2px 4px;
@@ -355,7 +472,7 @@ pre code::-webkit-scrollbar-thumb:hover {
     text-align: left !important;
 }
 
-.dark .context-html pre code:not(.c-card pre code):not(.card-docs pre code):not(.c-list pre code) {
+.dark .context-html pre code:not(.card-docs pre code):not(.c-card pre code):not(.c-list pre code):not(.c-navbar pre code) {
     display: block;
     max-height: 400px;
     padding: 10px;
@@ -391,25 +508,119 @@ pre code::-webkit-scrollbar-thumb:hover {
 }
 
 /* HLJS */
-.dark pre code.hljs{display:block;overflow-x:auto;padding:1em}
-.dark code.hljs{padding:3px 5px}.hljs{background:#1e1e1e;color:#dcdcdc}
-.dark .hljs-keyword,.hljs-literal,.hljs-name,.hljs-symbol{color:#569cd6}
-.dark .hljs-link{color:#569cd6;text-decoration:underline}
-.dark .hljs-built_in,.hljs-type{color:#4ec9b0}
-.dark .hljs-class,.hljs-number{color:#b8d7a3}
-.dark .hljs-meta .hljs-string,.hljs-string{color:#d69d85}
-.dark .hljs-regexp,.hljs-template-tag{color:#9a5334}
-.dark .hljs-formula,.hljs-function,.hljs-params,.hljs-subst,.hljs-title{color:#dcdcdc}
-.dark .hljs-comment,.hljs-quote{color:#57a64a;font-style:italic}
-.dark .hljs-doctag{color:#608b4e}
-.dark .hljs-meta,.hljs-meta .hljs-keyword,.hljs-tag{color:#9b9b9b}
-.dark .hljs-template-variable,.hljs-variable{color:#bd63c5}
-.dark .hljs-attr,.hljs-attribute{color:#9cdcfe}.hljs-section{color:gold}
-.dark .hljs-emphasis{font-style:italic}
-.dark .hljs-strong{font-weight:700}
-.dark .hljs-bullet,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-id,.hljs-selector-pseudo,.hljs-selector-tag{color:#d7ba7d}
-.dark .hljs-addition{background-color:#144212;display:inline-block;width:100%}
-.dark .hljs-deletion{background-color:#600;display:inline-block;width:100%}
+.dark pre code.hljs {
+    display: block;
+    overflow-x: auto;
+    padding: 1em
+}
+
+.dark code.hljs {
+    padding: 3px 5px
+}
+
+.hljs {
+    background: #1e1e1e;
+    color: #dcdcdc
+}
+
+.dark .hljs-keyword,
+.hljs-literal,
+.hljs-name,
+.hljs-symbol {
+    color: #569cd6
+}
+
+.dark .hljs-link {
+    color: #569cd6;
+    text-decoration: underline
+}
+
+.dark .hljs-built_in,
+.hljs-type {
+    color: #4ec9b0
+}
+
+.dark .hljs-class,
+.hljs-number {
+    color: #b8d7a3
+}
+
+.dark .hljs-meta .hljs-string,
+.hljs-string {
+    color: #d69d85
+}
+
+.dark .hljs-regexp,
+.hljs-template-tag {
+    color: #9a5334
+}
+
+.dark .hljs-formula,
+.hljs-function,
+.hljs-params,
+.hljs-subst,
+.hljs-title {
+    color: #dcdcdc
+}
+
+.dark .hljs-comment,
+.hljs-quote {
+    color: #57a64a;
+    font-style: italic
+}
+
+.dark .hljs-doctag {
+    color: #608b4e
+}
+
+.dark .hljs-meta,
+.hljs-meta .hljs-keyword,
+.hljs-tag {
+    color: #9b9b9b
+}
+
+.dark .hljs-template-variable,
+.hljs-variable {
+    color: #bd63c5
+}
+
+.dark .hljs-attr,
+.hljs-attribute {
+    color: #9cdcfe
+}
+
+.hljs-section {
+    color: gold
+}
+
+.dark .hljs-emphasis {
+    font-style: italic
+}
+
+.dark .hljs-strong {
+    font-weight: 700
+}
+
+.dark .hljs-bullet,
+.hljs-selector-attr,
+.hljs-selector-class,
+.hljs-selector-id,
+.hljs-selector-pseudo,
+.hljs-selector-tag {
+    color: #d7ba7d
+}
+
+.dark .hljs-addition {
+    background-color: #144212;
+    display: inline-block;
+    width: 100%
+}
+
+.dark .hljs-deletion {
+    background-color: #600;
+    display: inline-block;
+    width: 100%
+}
 
 /* Variables */
 
@@ -519,7 +730,8 @@ pre code::-webkit-scrollbar-thumb:hover {
     color: #f7f7f7;
 }
 
-.dark .doc-table th, table td {
+.dark .doc-table th,
+table td {
     padding: 12px 15px;
     text-align: left;
     border-bottom: 1px solid #2e3035;
@@ -617,36 +829,16 @@ h2 code {
     background-color: #373739;
 }
 
-/* Regras específicas para componentes de lista */
-.c-list {
-    margin: 0 !important;
-    padding: 0 !important;
-}
-
-.c-list * {
-    margin: 0;
-    padding: 0;
-}
-
-.c-list li {
-    list-style: none !important;
-    margin-left: 0 !important;
-    margin-bottom: 0 !important;
-}
-
-/* Garantir que os componentes dentro de card-docs não sejam afetados */
+.card-docs .c-navbar,
 .card-docs .c-list,
 .card-docs .c-table,
 .card-docs .c-card,
 .card-docs .c-button,
 .card-docs .c-badge {
-    /* Resetar estilos que possam interferir */
     all: revert;
-    /* Manter apenas transições */
     transition: background-color 0.1s ease, color 0.1s ease, border-color 0.1s ease;
 }
 
-/* Garantir que os componentes dentro de exemplos não sejam afetados */
 .example-container * {
     all: revert;
     transition: background-color 0.1s ease, color 0.1s ease, border-color 0.1s ease;

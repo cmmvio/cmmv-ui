@@ -110,7 +110,7 @@ defineProps({
     loadingFillColor: {
         type: String,
         required: false,
-        default: "#3B82F6", // Cor azul padrão
+        default: "#3B82F6",
     },
     closable: {
         type: Boolean,

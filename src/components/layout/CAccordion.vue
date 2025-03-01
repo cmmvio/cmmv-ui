@@ -24,7 +24,7 @@
                     @click="toggle(index)"
                     :aria-expanded="isOpen(index)"
                 >
-                    <span class="font-semibold">{{ item.title }}</span>
+                    <span class="text-sm">{{ item.title }}</span>
                     <span :class="['transition-transform', arrowStyles[arrowStyle], { 'rotate-180': isOpen(index) }]">
                         <IconChevronDown :class="[textColor]" />
                     </span>

@@ -301,7 +301,7 @@ const openCardSidebar = () => {
 
         <card-docs>
             <div class="relative mx-auto flex flex-col items-center w-full min-h-[400px] overflow-hidden p-4">
-                <div class="bg-gray-100 dark:bg-gray-800 min-h-[600px] max-w-[500px] flex flex-col lg:w-6/12 sm:w-full m-auto relative overflow-hidden">
+                <div class="bg-gray-100 dark:bg-gray-800 min-h-[400px] max-w-[300px] flex flex-col sm:w-full m-auto relative overflow-hidden">
                     <c-sidebar
                         v-model="showSidebarToolbar"
                         absolute

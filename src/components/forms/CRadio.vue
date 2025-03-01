@@ -3,25 +3,23 @@
         class="relative inline-flex items-center cursor-pointer select-none"
         @click="toggle"
     >
-        <span class="absolute inset-0 z-0" ref="rippleContainer"></span>
-
         <div
             class="relative z-10 flex items-center justify-center border rounded-full transition-all duration-200 overflow-hidden text-center"
-            :class="[ 
-                sizes[size].box,                 
+            :class="[
+                sizes[size].box,
                 isChecked ? borderColor : 'border-gray-300',
-                disabled ? 'border-gray-600' : borderColor,                
-                disabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer' 
+                disabled ? 'border-gray-600' : borderColor,
+                disabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'
             ]"
         >
-            <div 
+            <div
                 v-if="isChecked"
                 class="absolute inset-0 m-auto rounded-full transition-all duration-200"
-                :class="[ 
+                :class="[
                     'scale-75',
                     disabled ? 'bg-gray-600' : bgColor,
                     disabled ? 'text-gray-400' : textColor,
-                    disabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer' 
+                    disabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'
                 ]"
             ></div>
         </div>
@@ -42,7 +40,7 @@ const props = defineProps({
     modelValue: {
         type: [String, Number],
         required: false,
-        default: undefined, 
+        default: undefined,
     },
     value: {
         type: [String, Number],
@@ -81,7 +79,7 @@ const props = defineProps({
     textColor: {
         type: String,
         required: false,
-        default: "text-white", 
+        default: "text-white",
     },
 });
 
@@ -94,37 +92,13 @@ const isChecked = computed(() => {
         : internalModel.value === props.value;
 });
 
-const rippleContainer = ref<HTMLElement | null>(null);
-
 const toggle = () => {
     if (props.disabled) return;
 
-    createRipple();
-
-    if (props.modelValue !== undefined) 
+    if (props.modelValue !== undefined)
         emit("update:modelValue", props.value);
-    else 
+    else
         internalModel.value = props.value;
-};
-
-const createRipple = () => {
-    if (!rippleContainer.value) return;
-
-    const rect = rippleContainer.value.getBoundingClientRect();
-    const ripple = document.createElement("span");
-    const diameter = rect.width * 0.5;
-    const radius = diameter / 2;
-
-    ripple.style.width = ripple.style.height = `${diameter}px`;
-    ripple.style.left = `${radius}px`;
-    ripple.style.top = `${rect.height / 2 - radius}px`;
-    ripple.classList.add("ripple");
-
-    rippleContainer.value.appendChild(ripple);
-
-    setTimeout(() => {
-        ripple.remove();
-    }, 500);
 };
 
 const sizes: Record<string, { box: string, label: string }> = {
@@ -133,21 +107,3 @@ const sizes: Record<string, { box: string, label: string }> = {
     lg: { box: "w-6 h-6 border-2", label: "text-lg" },
 };
 </script>
-
-<style scoped>
-.ripple {
-    position: absolute;
-    border-radius: 50%;
-    background-color: rgba(0, 0, 0, 0.1);
-    transform: scale(0);
-    animation: ripple-animation 0.4s ease-out;
-    pointer-events: none;
-}
-
-@keyframes ripple-animation {
-    to {
-        transform: scale(0.1);
-        opacity: 0;
-    }
-}
-</style>

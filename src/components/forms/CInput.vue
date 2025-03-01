@@ -11,7 +11,7 @@
                 'pl-10': hasIcon && (!isActive && !currentValue)
             },
             textColor ? textColor : 'text-gray-500 dark:text-gray-400',
-            !disabled ? (bgColor ? bgColor : variantColors[variant]) : '', 'px-1']"
+            !disabled ? (bgColor ? bgColor : variantColors[variant]) : '', 'px-1', customClass]"
         >
             {{ label }}
         </label>
@@ -31,7 +31,7 @@
                 :placeholder="isActive ? placeholder : ''"
                 :value="modelValue"
                 :class="[sizes[size], roundedStyles[rounded], variantStyles[variant], bgColor ? bgColor : variantColors[variant], textColor,
-                    { 'ring-red-500 ring-2': hasError, 'opacity-30': disabled, 'cursor-not-allowed': disabled, 'pl-10': hasIcon }]"
+                    { 'ring-red-500 ring-2': hasError, 'opacity-30': disabled, 'cursor-not-allowed': disabled, 'pl-10': hasIcon }, customClass]"
                 class="c-input-field block w-full border shadow-sm pt-4 pb-2 outline-none"
                 @keyup="handleInput"
                 @change="handleInput"
@@ -238,6 +238,11 @@ const props = defineProps({
     floatingLabel: {
         type: Boolean,
         default: false,
+    },
+    customClass: {
+        type: String,
+        required: false,
+        default: ""
     },
 });
 

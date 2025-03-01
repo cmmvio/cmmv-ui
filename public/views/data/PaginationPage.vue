@@ -2,7 +2,9 @@
     <BaseLayout>
         <h1>Pagination</h1>
 
-        <p>The <code>CPagination (alias: c-pagination)</code> component provides a flexible pagination interface for navigating through large sets of data. It offers intuitive controls for selecting pages and optionally allows users to choose how many items to display per page.</p>
+        <p>The <code>CPagination (alias: c-pagination)</code> component provides a flexible pagination interface for
+            navigating through large sets of data. It offers intuitive controls for selecting pages and optionally
+            allows users to choose how many items to display per page.</p>
 
         <table-docs>
             <thead>
@@ -62,16 +64,14 @@
         <!-- Basic Example -->
         <h3>Basic Example</h3>
 
-        <p>The simplest implementation of the pagination component requires only the current page and total number of items. By default, it displays 10 items per page.</p>
+        <p>The simplest implementation of the pagination component requires only the current page and total number of
+            items. By default, it displays 10 items per page.</p>
 
         <card-docs>
-            <c-pagination
-                v-model="currentPage"
-                :totalItems="100"
-            ></c-pagination>
+            <c-pagination v-model="currentPage" :totalItems="100"></c-pagination>
 
             <template #code>
-<pre><code class="code-highlight language-html">&lt;template&gt;
+                <pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;c-pagination
         v-model="currentPage"
         :totalItems="100"
@@ -90,17 +90,15 @@ const currentPage = ref(1);
         <!-- Centered Pagination -->
         <h3>Centered Pagination</h3>
 
-        <p>You can center the pagination controls by setting the <code>centered</code> property to true. This is useful for creating a more balanced layout.</p>
+        <p>You can center the pagination controls by setting the <code>centered</code> property to true. This is useful
+            for
+            creating a more balanced layout.</p>
 
         <card-docs>
-            <c-pagination
-                v-model="centeredPage"
-                :totalItems="100"
-                :centered="true"
-            ></c-pagination>
+            <c-pagination v-model="centeredPage" :totalItems="100" :centered="true"></c-pagination>
 
             <template #code>
-<pre><code class="code-highlight language-html">&lt;template&gt;
+                <pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;c-pagination
         v-model="currentPage"
         :totalItems="100"
@@ -120,19 +118,16 @@ const currentPage = ref(1);
         <!-- With Items Per Page Selector -->
         <h3>With Items Per Page Selector</h3>
 
-        <p>You can enable the items per page selector by setting the <code>showPerPageSelect</code> property to true. This allows users to choose how many items they want to see on each page.</p>
+        <p>You can enable the items per page selector by setting the <code>showPerPageSelect</code> property to true.
+            This
+            allows users to choose how many items they want to see on each page.</p>
 
         <card-docs>
-            <c-pagination
-                v-model="perPageSelectorPage"
-                :totalItems="100"
-                :perPage="perPage"
-                :showPerPageSelect="true"
-                @update:perPage="perPage = $event"
-            ></c-pagination>
+            <c-pagination v-model="perPageSelectorPage" :visiblePages="3" :totalItems="100" :perPage="perPage"
+                :showPerPageSelect="true" @update:perPage="perPage = $event"></c-pagination>
 
             <template #code>
-<pre><code class="code-highlight language-html">&lt;template&gt;
+                <pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;c-pagination
         v-model="currentPage"
         :totalItems="100"
@@ -155,20 +150,17 @@ const perPage = ref(10);
         <!-- Centered with Items Per Page Selector -->
         <h3>Centered with Items Per Page Selector</h3>
 
-        <p>You can combine the <code>centered</code> property with the items per page selector for a centered layout with full functionality.</p>
+        <p>You can combine the <code>centered</code> property with the items per page selector for a centered layout
+            with full
+            functionality.</p>
 
         <card-docs>
-            <c-pagination
-                v-model="centeredWithSelectorPage"
-                :totalItems="100"
-                :perPage="centeredPerPage"
-                :showPerPageSelect="true"
-                :centered="true"
-                @update:perPage="centeredPerPage = $event"
-            ></c-pagination>
+            <c-pagination v-model="centeredWithSelectorPage" :visiblePages="3" :totalItems="100"
+                :perPage="centeredPerPage" :showPerPageSelect="true" :centered="true"
+                @update:perPage="centeredPerPage = $event"></c-pagination>
 
             <template #code>
-<pre><code class="code-highlight language-html">&lt;template&gt;
+                <pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;c-pagination
         v-model="currentPage"
         :totalItems="100"
@@ -192,22 +184,17 @@ const perPage = ref(10);
         <!-- Customization -->
         <h3>Customization</h3>
 
-        <p>The pagination component can be customized with different options for items per page and the number of visible page buttons. You can also listen to page change events to perform actions when the user navigates.</p>
+        <p>The pagination component can be customized with different options for items per page and the number of
+            visible page
+            buttons. You can also listen to page change events to perform actions when the user navigates.</p>
 
         <card-docs>
-            <c-pagination
-                v-model="customPage"
-                :totalItems="500"
-                :perPage="customPerPage"
-                :perPageOptions="[5, 10, 20, 50, 100]"
-                :visiblePages="5"
-                :showPerPageSelect="true"
-                @update:perPage="customPerPage = $event"
-                @pageChange="handlePageChange"
-            ></c-pagination>
+            <c-pagination v-model="customPage" :totalItems="500" :perPage="customPerPage"
+                :perPageOptions="[5, 10, 20, 50, 100]" :visiblePages="3" :showPerPageSelect="true"
+                @update:perPage="customPerPage = $event" @pageChange="handlePageChange"></c-pagination>
 
             <template #code>
-<pre><code class="code-highlight language-html">&lt;template&gt;
+                <pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;c-pagination
         v-model="customPage"
         :totalItems="500"
@@ -238,19 +225,16 @@ const handlePageChange = (event) => {
         <!-- Few Pages -->
         <h3>Few Pages</h3>
 
-        <p>When there are only a few pages, the pagination component automatically adjusts its display to show only the necessary page buttons.</p>
+        <p>When there are only a few pages, the pagination component automatically adjusts its display to show only the
+            necessary page buttons.</p>
 
         <card-docs>
             <div class="mx-auto">
-                <c-pagination
-                    v-model="fewPagesCurrentPage"
-                    :totalItems="30"
-                    :perPage="10"
-                ></c-pagination>
+                <c-pagination v-model="fewPagesCurrentPage" :totalItems="30" :perPage="10"></c-pagination>
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-html">&lt;template&gt;
+                <pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;c-pagination
         v-model="fewPagesCurrentPage"
         :totalItems="30"
@@ -270,24 +254,18 @@ const fewPagesCurrentPage = ref(1);
         <!-- Internationalization -->
         <h3>Internationalization</h3>
 
-        <p>The pagination component supports internationalization through text props. You can customize all text labels to support different languages.</p>
+        <p>The pagination component supports internationalization through text props. You can customize all text labels
+            to
+            support different languages.</p>
 
         <card-docs>
-            <c-pagination
-                v-model="i18nPage"
-                :totalItems="100"
-                :showPerPageSelect="true"
-                showingText="Mostrando"
-                ofText="de"
-                itemsText="itens"
-                firstPageText="Primeira página"
-                previousPageText="Página anterior"
-                nextPageText="Próxima página"
-                lastPageText="Última página"
-            ></c-pagination>
+            <c-pagination v-model="i18nPage" :visiblePages="3" :totalItems="100" :showPerPageSelect="true"
+                showingText="Mostrando" ofText="de" itemsText="itens" firstPageText="Primeira página"
+                previousPageText="Página anterior" nextPageText="Próxima página"
+                lastPageText="Última página"></c-pagination>
 
             <template #code>
-<pre><code class="code-highlight language-html">&lt;template&gt;
+                <pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;c-pagination
         v-model="currentPage"
         :totalItems="100"
@@ -398,7 +376,8 @@ const currentPage = ref(1);
         <!-- Events -->
         <h3>Events</h3>
 
-        <p>The pagination component emits several events that you can listen to in order to respond to user interactions.</p>
+        <p>The pagination component emits several events that you can listen to in order to respond to user
+            interactions.</p>
 
         <table-docs>
             <thead>
@@ -422,7 +401,8 @@ const currentPage = ref(1);
                 <tr>
                     <td class="border-b px-4 py-2">pageChange</td>
                     <td class="border-b px-4 py-2">Object { page, perPage }</td>
-                    <td class="border-b px-4 py-2">Emitted when the page or items per page change, providing both values.</td>
+                    <td class="border-b px-4 py-2">Emitted when the page or items per page change, providing both
+                        values.</td>
                 </tr>
             </tbody>
         </table-docs>
@@ -430,29 +410,21 @@ const currentPage = ref(1);
         <!-- Usage with Tables -->
         <h3>Usage with Tables</h3>
 
-        <p>The pagination component is frequently used with tables to navigate through large datasets. Below is an example of how you can integrate pagination with the <code>CTable</code> component:</p>
+        <p>The pagination component is frequently used with tables to navigate through large datasets. Below is an
+            example of
+            how you can integrate pagination with the <code>CTable</code> component:</p>
 
         <card-docs>
             <div class="w-full">
-                <c-table
-                    :headers="tableHeaders"
-                    :items="tableItems"
-                    class="mb-4"
-                ></c-table>
+                <c-table :headers="tableHeaders" :items="tableItems" class="mb-4"></c-table>
 
-                <c-pagination
-                    v-model="tablePage"
-                    :totalItems="totalTableItems"
-                    :perPage="tablePerPage"
-                    :showPerPageSelect="true"
-                    :centered="true"
-                    @update:perPage="onTablePerPageChange"
-                    @pageChange="onTablePageChange"
-                ></c-pagination>
+                <c-pagination v-model="tablePage" :visiblePages="3" :totalItems="totalTableItems"
+                    :perPage="tablePerPage" :showPerPageSelect="true" :centered="true"
+                    @update:perPage="onTablePerPageChange" @pageChange="onTablePageChange"></c-pagination>
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-html">&lt;template&gt;
+                <pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;div&gt;
         &lt;c-table
             :headers="tableHeaders"
@@ -538,88 +510,7 @@ onMounted(() => {
             </template>
         </card-docs>
 
-        <card-docs>
-            <div class="mx-auto px-4 py-5 sm:p-6">
-                <c-pagination
-                    v-model="pageSize"
-                    :start-index="startIdx"
-                    :end-index="endIdx"
-                    :total="65"
-                />
-            </div>
-
-            <template #code>
-<pre><code class="code-highlight language-html">&lt;template&gt;
-    &lt;c-pagination
-        v-model="pageSize"
-        :start-index="startIdx"
-        :end-index="endIdx"
-        :total="65"
-    /&gt;
-&lt;/template&gt;
-
-&lt;script setup&gt;
-import { ref, computed } from "vue";
-
-const currentPage = ref(1);
-const pageSize = ref(10);
-
-const startIdx = computed(() => {
-    return (currentPage.value - 1) * pageSize.value + 1;
-});
-
-const endIdx = computed(() => {
-    return Math.min(currentPage.value * pageSize.value, 65);
-});
-&lt;/script&gt;</code></pre>
-            </template>
-        </card-docs>
-
-        <card-docs>
-            <div class="mx-auto px-4 py-5 sm:p-6">
-                <c-pagination
-                    v-model="pageSizeCentered"
-                    :start-index="startIdxCentered"
-                    :end-index="endIdxCentered"
-                    :total="65"
-                    centered
-                />
-            </div>
-
-            <template #code>
-<pre><code class="code-highlight language-html">&lt;template&gt;
-    &lt;c-pagination
-        v-model="pageSize"
-        :start-index="startIdx"
-        :end-index="endIdx"
-        :total="65"
-        centered
-    /&gt;
-&lt;/template&gt;
-
-&lt;script setup&gt;
-import { ref, computed } from "vue";
-
-const currentPage = ref(1);
-const pageSize = ref(10);
-
-const startIdx = computed(() => {
-    return (currentPage.value - 1) * pageSize.value + 1;
-});
-
-const endIdx = computed(() => {
-    return Math.min(currentPage.value * pageSize.value, 65);
-});
-&lt;/script&gt;</code></pre>
-            </template>
-        </card-docs>
-
-        <PagePagination
-            previous="List"
-            previousLink="/list"
-            next="Table"
-            nextLink="/table"
-        />
+        <PagePagination previous="List" previousLink="/list" next="Table" nextLink="/table" />
     </BaseLayout>
 </template>
 
