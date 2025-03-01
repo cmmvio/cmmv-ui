@@ -1,3 +1,15 @@
+## [0.1.1](https://github.com/cmmvio/cmmv-ui/compare/v0.1.0...v0.1.1) (2025-03-01)
+
+
+### Bug Fixes
+
+* cards list ([6404f63](https://github.com/cmmvio/cmmv-ui/commit/6404f63ffa6f6cfa6416e8fc699f286e348b68f4))
+* class ([5c35bfb](https://github.com/cmmvio/cmmv-ui/commit/5c35bfbf80171e2b67627d7054950ed824fb9a8f))
+* icons ([9008059](https://github.com/cmmvio/cmmv-ui/commit/900805983fb163504ad3e09e702efcd50fed56c2))
+* icons, flags ([ffe1cd3](https://github.com/cmmvio/cmmv-ui/commit/ffe1cd327cf5a568c53ec45686e77b5c811d0ff9))
+
+
+
 # [0.1.0](https://github.com/cmmvio/cmmv-ui/compare/v0.0.13...v0.1.0) (2025-02-28)
 
 
