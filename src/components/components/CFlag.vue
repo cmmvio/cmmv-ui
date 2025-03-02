@@ -1,20 +1,12 @@
 <template>
-    <div
-        :class="[
-            'c-flag inline-flex items-center justify-center',
-            sizes[size],
-            roundedStyles[rounded],
-            shadow,
-            border
-        ]"
-        :aria-label="ariaLabel"
-    >
-        <component
-            v-if="Flag"
-            :is="Flag"
-            :class="[roundedStyles[rounded]]"
-            class="c-flag w-full h-full"
-        ></component>
+    <div :class="[
+        'c-flag inline-flex items-center justify-center',
+        sizes[size],
+        roundedStyles[rounded],
+        shadow,
+        border
+    ]" :aria-label="ariaLabel">
+        <component v-if="Flag" :is="Flag" :class="[roundedStyles[rounded]]" class="c-flag w-full h-full"></component>
     </div>
 </template>
 

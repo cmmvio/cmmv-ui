@@ -1,8 +1,7 @@
 <template>
     <div class="c-autocomplete relative w-full">
         <div class="relative">
-            <label
-                :for="id"
+            <label :for="id"
                 class="c-autocomplete-label absolute left-3 text-sm transition-all duration-200 ease-in-out pointer-events-none"
                 :class="[{
                     'c-autocomplete-label--active': isActive,
@@ -11,61 +10,40 @@
                     'pl-8': hasIcon && !isActive
                 },
                 textColor ? textColor : 'text-gray-500 dark:text-gray-400',
-                bgColor ? bgColor : variantColors[variant], 'px-1']"
-            >
+                bgColor ? bgColor : variantColors[variant], 'px-1']">
                 {{ label }}
             </label>
 
             <div class="relative flex items-center">
-                <div
-                    v-if="hasIcon"
-                    class="absolute inset-y-0 left-0 flex items-center pl-3 z-30"
-                >
+                <div v-if="hasIcon" class="absolute inset-y-0 left-0 flex items-center pl-3 z-30">
                     <slot name="icon"></slot>
                 </div>
 
-                <input
-                    :id="id"
-                    type="text"
+                <input :id="id" type="text"
                     :class="[sizes[size], roundedStyles[rounded], variantStyles[variant], bgColor ? bgColor : variantColors[variant], textColor,
-                        { 'ring-red-500 ring-2': hasError, 'opacity-50': disabled, 'cursor-not-allowed': disabled, 'pl-10': hasIcon }]"
+                    { 'ring-red-500 ring-2': hasError, 'opacity-50': disabled, 'cursor-not-allowed': disabled, 'pl-10': hasIcon }]"
                     class="c-autocomplete-field block w-full shadow-sm pt-3 pb-2 outline-none"
-                    :placeholder="isActive ? placeholder : ''"
-                    :value="currentInput"
-                    @input="handleInput"
-                    @change="handleInput"
-                    @focus="activateLabel"
-                    @blur="deactivateLabel"
-                    :disabled="disabled"
-                    :aria-invalid="hasError"
-                />
+                    :placeholder="isActive ? placeholder : ''" :value="currentInput" @input="handleInput"
+                    @change="handleInput" @focus="activateLabel" @blur="deactivateLabel" :disabled="disabled"
+                    :aria-invalid="hasError" />
 
-                <button
-                    v-if="clearable && currentInput && currentValue"
-                    type="button"
-                    :class="[sizes[size], roundedStyles[rounded], variantStyles[variant], bgColor ? bgColor : variantColors[variant], textColor,
-                        { 'opacity-50': disabled, 'cursor-not-allowed': disabled, 'pl-10': hasIcon }]"
-                    class="c-dropdown-field block w-full border shadow-sm pt-3 pb-2 outline-none text-left"
-                    @click="clearInput"
-                    :disabled="disabled"
-                >
+                <button v-if="clearable && currentInput" type="button"
+                    class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-400 hover:text-gray-600"
+                    @click="clearInput">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
-                        <path fill-rule="evenodd" d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+                        <path fill-rule="evenodd"
+                            d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z"
+                            clip-rule="evenodd" />
                     </svg>
                 </button>
             </div>
 
             <transition name="fade">
-                <div
-                    v-if="isActive && isFocus && filteredOptions.length > 0"
-                    class="absolute z-50 w-full bg-white border border-gray-300 dark:bg-zinc-800 dark:border-zinc-700 mt-2 max-h-40 overflow-auto shadow-lg rounded-md"
-                >
+                <div v-if="isActive && isFocus && filteredOptions.length > 0"
+                    class="absolute z-50 w-full bg-white border border-gray-300 dark:bg-zinc-800 dark:border-zinc-700 mt-2 max-h-40 overflow-auto shadow-lg rounded-md">
                     <ul>
-                        <li
-                            v-for="option in filteredOptions"
-                            :key="option.value"
-                            @click="selectOption(option)"
-                            class="px-4 py-2 cursor-pointer hover:bg-gray-200 dark:hover:bg-zinc-700">
+                        <li v-for="option in filteredOptions" :key="option.value" @click="selectOption(option)"
+                            class="px-4 py-2 cursor-pointer hover:bg-gray-200 dark:hover:bg-zinc-700 text-sm">
                             {{ option.label }}
                         </li>
                     </ul>
@@ -223,18 +201,18 @@ const handleInput = (event: Event) => {
 
     let currentValueCheck = null;
 
-    for(const option of props.options){//@ts-ignore
-        if(option.label === currentInput.value)//@ts-ignore
+    for (const option of props.options) {//@ts-ignore
+        if (option.label === currentInput.value)//@ts-ignore
             currentValueCheck = option.value;
     }
 
     //@ts-ignore
     currentValue.value = (currentValueCheck) ? currentValueCheck : undefined;
 
-    if(!currentValue.value)
+    if (!currentValue.value)
         emit("update:modelValue", currentValue.value);
 
-    if(!validate() || !changed.value)
+    if (!validate() || !changed.value)
         errorMessage.value = null;
 
     changed.value = true;
@@ -254,7 +232,7 @@ const clearInput = () => {
 const validateShowError = () => {
     errorMessage.value = null;
 
-    if(!changed.value) return false;
+    if (!changed.value) return false;
 
     for (const rule of props.rules) {
         //@ts-ignore
@@ -286,7 +264,7 @@ const selectOption = (option: { value: string | number; label: string }) => {
     currentInput.value = option.label;
     emit("update:modelValue", option.value);
 
-    if(!validate() || !changed.value)
+    if (!validate() || !changed.value)
         errorMessage.value = null;
 
     changed.value = true;

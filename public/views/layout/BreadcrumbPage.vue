@@ -216,14 +216,14 @@ const iconItems = [
     &lt;/template&gt;
     &lt;template #item="{ item, isLast, index }"&gt;
       &lt;span v-if="isLast" class="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-md"&gt;
-        &#223;&#223; item.text &#225;&#225;
+        &#123;&#123; item.text &#125;&#125;
       &lt;/span&gt;
       &lt;router-link
         v-else
         :to="item.to || '#'"
         class="px-2 py-1 hover:bg-gray-100 dark:hover:bg-zinc-700 rounded-md text-gray-600 dark:text-gray-300"
       &gt;
-        &#223;&#223; item.text &#225;&#225;
+        &#123;&#123; item.text &#125;&#125;
       &lt;/router-link&gt;
     &lt;/template&gt;
   &lt;/c-breadcrumb&gt;

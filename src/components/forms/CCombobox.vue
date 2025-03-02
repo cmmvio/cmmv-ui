@@ -8,12 +8,33 @@
                     <slot name="icon"></slot>
                 </div>
 
-                <button :id="id" type="button" :class="[sizes[size], roundedStyles[rounded], variantStyles[variant], bgColor ? bgColor : variantColors[variant], textColor,
-                { 'opacity-50': disabled, 'cursor-not-allowed': disabled, 'pl-10': hasIcon }, customClass]"
+                <button :id="id" type="button"
+                    :class="[sizes[size], roundedStyles[rounded], variantStyles[variant], bgColor ? bgColor : variantColors[variant], textColor,
+                    { 'opacity-50': disabled || isLoading, 'cursor-not-allowed': disabled || isLoading, 'pl-10': hasIcon }, customClass]"
                     class="c-dropdown-field block w-full border shadow-sm pt-3 pb-2 outline-none text-left"
-                    :disabled="disabled">
-                    <span v-if="$slots.selected && selectedLabel">
+                    :disabled="disabled || isLoading">
+                    <span v-if="isLoading" class="flex items-center">
+                        <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-gray-500" xmlns="http://www.w3.org/2000/svg"
+                            fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4">
+                            </circle>
+                            <path class="opacity-75" fill="currentColor"
+                                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                            </path>
+                        </svg>
+                        Loading options...
+                    </span>
+                    <span v-else-if="$slots.selected && allowCheck">
+                        <slot name="selected" :data="selectedOption" :checked="checkedOptions"
+                            :count="checkedOptions.length"></slot>
+                    </span>
+                    <span v-else-if="$slots.selected && selectedLabel">
                         <slot name="selected" :data="selectedOption"></slot>
+                    </span>
+
+                    <span v-else-if="allowCheck && checkedOptions.length > 0">
+                        <span v-if="checkedOptions.length === 1">{{ checkedOptions[0].label }}</span>
+                        <span v-else>{{ checkedOptions.length }} items selected</span>
                     </span>
 
                     <span v-else-if="selectedLabel">
@@ -26,25 +47,90 @@
                 </button>
 
                 <div class="absolute inset-y-0 right-0 flex items-center px-2 transition-transform duration-300 cursor-pointer"
-                    :class="{ 'rotate-180': isActive, 'opacity-50': disabled, 'cursor-not-allowed': disabled }">
+                    :class="{ 'rotate-180': isActive, 'opacity-50': disabled || isLoading, 'cursor-not-allowed': disabled || isLoading }">
                     <icon-chevron-down class="w-4 h-4 text-neutral-800 dark:text-white" size="sm" aria-hidden="true" />
                 </div>
             </div>
 
             <transition name="fade">
                 <div v-if="isActive"
-                    class="absolute z-50 w-full bg-white border border-gray-300 dark:border-gray-700 dark:bg-zinc-800 mt-2 max-h-40 overflow-auto shadow-lg rounded-md">
-                    <ul>
-                        <li v-for="option in options" :key="option.value" @click="selectOption(option)"
-                            class="px-4 py-2 cursor-pointer text-sm hover:bg-gray-200 dark:hover:bg-zinc-700 transition-colors z-60 ">
-                            <span v-if="$slots.option">
-                                <slot name="option" :data="option"></slot>
-                            </span>
-                            <span v-else>
-                                {{ option.label }}
-                            </span>
-                        </li>
-                    </ul>
+                    class="absolute z-50 w-full bg-white border border-gray-300 dark:border-gray-700 dark:bg-zinc-800 mt-2 max-h-60 shadow-lg rounded-md">
+                    <div v-if="isLoading" class="flex items-center justify-center p-4 text-gray-500">
+                        <svg class="animate-spin mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4">
+                            </circle>
+                            <path class="opacity-75" fill="currentColor"
+                                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                            </path>
+                        </svg>
+                        Loading...
+                    </div>
+
+                    <div v-else-if="hasError" class="p-4 text-red-500 text-center">
+                        <div class="mb-1 font-medium">Error loading options</div>
+                        <div class="text-sm">{{ errorMessage }}</div>
+                    </div>
+
+                    <div v-else-if="localOptions.length === 0" class="p-4 text-gray-500 text-center">
+                        No options available
+                    </div>
+
+                    <div class="overflow-auto max-h-56 relative" v-else>
+                        <ul>
+                            <li v-for="(option, index) in localOptions" :key="option.value"
+                                @click.stop="handleItemClick(option, index)" @mouseenter="handleMouseEnter(index)"
+                                @mouseleave="handleMouseLeave(index)" :class="[
+                                    'px-4 py-2 cursor-pointer text-sm transition-colors z-60',
+                                    'hover:bg-gray-200 dark:hover:bg-zinc-700',
+                                    { 'relative': option.subitems && option.subitems.length > 0 }
+                                ]">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center">
+                                        <div v-if="allowCheck" class="mr-2" @click.stop>
+                                            <c-checkbox :modelValue="option.checked || false"
+                                                @update:modelValue="(val) => updateCheckState(option, val)" size="sm" />
+                                        </div>
+                                        <span v-if="$slots.option">
+                                            <slot name="option" :data="option"></slot>
+                                        </span>
+                                        <span v-else>
+                                            {{ option.label }}
+                                        </span>
+                                    </div>
+                                    <icon-chevron-right v-if="option.subitems && option.subitems.length > 0"
+                                        class="h-4 w-4 text-gray-400" size="sm" />
+                                </div>
+
+                                <div v-if="option.subitems && option.subitems.length > 0 && activeSubItem === index"
+                                    class="absolute top-0 left-full min-w-[200px] bg-white dark:bg-zinc-800 border border-gray-300 dark:border-gray-700 rounded-md shadow-md z-70">
+                                    <ul>
+                                        <li v-for="subitem in option.subitems" :key="subitem.value"
+                                            @click.stop="selectSubItem(subitem, option)"
+                                            class="px-4 py-2 cursor-pointer text-sm hover:bg-gray-200 dark:hover:bg-zinc-700 transition-colors">
+                                            <div v-if="allowCheck" class="flex items-center">
+                                                <div class="mr-2" @click.stop>
+                                                    <c-checkbox :modelValue="subitem.checked || false"
+                                                        @update:modelValue="(val) => updateCheckState(subitem, val)"
+                                                        size="sm" />
+                                                </div>
+                                                <div v-if="$slots.subitem">
+                                                    <slot name="subitem" :data="subitem" :parent="option"></slot>
+                                                </div>
+                                                <span v-else>{{ subitem.label }}</span>
+                                            </div>
+                                            <div v-else>
+                                                <div v-if="$slots.subitem">
+                                                    <slot name="subitem" :data="subitem" :parent="option"></slot>
+                                                </div>
+                                                <span v-else>{{ subitem.label }}</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </transition>
         </div>
@@ -97,15 +183,31 @@
 </style>
 
 <script setup lang="ts">
-import { ref, computed, defineExpose, useSlots, defineProps } from 'vue';
+import { ref, computed, defineExpose, useSlots, defineProps, reactive, watch, nextTick, onMounted } from 'vue';
 import type { PropType } from "vue";
+import IconChevronDown from '@components/icons/IconChevronDown.vue';
+import IconChevronRight from '@components/icons/IconChevronRight.vue';
+import CCheckbox from '@components/forms/CCheckbox.vue';
 
 const slots = useSlots();
 const hasIcon = computed(() => !!slots.icon);
+const isLoading = ref(false);
+const hasError = ref(false);
+const errorMessage = ref('');
+
+interface SubitemOption {
+    value: string | number;
+    label: string;
+    checked?: boolean;
+    parent?: string;
+}
 
 interface DropdownOption {
     value: string | number;
     label: string;
+    checked?: boolean;
+    subitems?: SubitemOption[];
+    parent?: string;
 }
 
 const props = defineProps({
@@ -115,7 +217,7 @@ const props = defineProps({
         default: ""
     },
     options: {
-        type: Array as PropType<DropdownOption[]>,
+        type: [Array, String] as PropType<DropdownOption[] | string>,
         required: true,
         default: () => []
     },
@@ -182,15 +284,125 @@ const props = defineProps({
         required: false,
         default: ""
     },
+    allowCheck: {
+        type: Boolean,
+        default: false
+    },
+    remoteDataPrimaryKey: {
+        type: String,
+        required: false,
+        default: "id"
+    },
+    remoteDataLabelKey: {
+        type: String,
+        required: false,
+        default: "name"
+    },
+    remoteDataKeyValue: {
+        type: Boolean,
+        required: false,
+        default: false
+    }
 });
 
-const emit = defineEmits(["update:modelValue"]);
+const emit = defineEmits(["update:modelValue", "check", "uncheck"]);
 const isActive = ref(false);
 const selectedOption = ref<any>(null);
+const activeSubItem = ref<number | null>(null);
+const localOptions = reactive<DropdownOption[]>([]);
+
+const fetchOptionsFromUrl = async (url: string) => {
+    isLoading.value = true;
+    hasError.value = false;
+    errorMessage.value = '';
+
+    try {
+        const response = await fetch(url);
+
+        if (!response.ok)
+            throw new Error(`HTTP error! Status: ${response.status}`);
+
+        const data = await response.json();
+
+        localOptions.splice(0, localOptions.length);
+
+        if (props.remoteDataKeyValue && typeof data === 'object' && !Array.isArray(data)) {
+            Object.entries(data).forEach(([key, value]) => {
+                localOptions.push({
+                    value: key,
+                    label: value as string
+                });
+            });
+        } else if (Array.isArray(data)) {
+            data.forEach((item: any) => {
+                localOptions.push({
+                    value: item[props.remoteDataPrimaryKey],
+                    label: item[props.remoteDataLabelKey]
+                });
+            });
+        } else if (typeof data === 'object' && data !== null) {
+            const resultsArray = data.results || data.items || data.data;
+
+            if (Array.isArray(resultsArray)) {
+                resultsArray.forEach((item: any) => {
+                    localOptions.push({
+                        value: item[props.remoteDataPrimaryKey],
+                        label: item[props.remoteDataLabelKey]
+                    });
+                });
+            }
+        }
+    } catch (error) {
+        hasError.value = true;
+        errorMessage.value = error instanceof Error ? error.message : 'Failed to fetch options';
+        console.error('Error fetching combobox options:', error);
+    } finally {
+        isLoading.value = false;
+    }
+};
+
+watch(() => props.options, (newOptions) => {
+    if (typeof newOptions === 'string' && newOptions.trim() !== '') {
+        fetchOptionsFromUrl(newOptions);
+    } else if (Array.isArray(newOptions)) {
+        localOptions.splice(0, localOptions.length);
+        if (newOptions && newOptions.length) {
+            newOptions.forEach(option => {
+                localOptions.push({ ...option });
+            });
+        }
+    }
+}, { immediate: true, deep: true });
+
+onMounted(() => {
+    if (typeof props.options === 'string' && props.options.trim() !== '') {
+        fetchOptionsFromUrl(props.options);
+    }
+});
 
 const selectedLabel = computed(() => {
-    selectedOption.value = props.options.find((option) => option.value === props.modelValue);
+    selectedOption.value = localOptions.find((option) => option.value === props.modelValue);
     return selectedOption.value ? selectedOption.value?.label : "";
+});
+
+const checkedOptions = computed(() => {
+    const checked: DropdownOption[] = [];
+
+    localOptions.forEach(option => {
+        if (option.checked) {
+            checked.push(option);
+        }
+
+        if (option.subitems) {
+            option.subitems.forEach(subitem => {
+                if (subitem.checked) {
+                    checked.push({ ...subitem, parent: option.label });
+                }
+            });
+        }
+    });
+
+    return checked;
 });
 
 const toggleDropdown = () => {
@@ -199,11 +411,86 @@ const toggleDropdown = () => {
 
 const closeDropdown = () => {
     isActive.value = false;
+    activeSubItem.value = null;
 };
 
-const selectOption = (option: { value: string | number; label: string }) => {
+const handleItemClick = (option: DropdownOption, index: number) => {
+    if (option.subitems && option.subitems.length > 0)
+        return;
+
+    selectOption(option);
+};
+
+const handleMouseEnter = (index: number) => {
+    if (localOptions[index].subitems && localOptions[index].subitems!.length > 0)
+        activeSubItem.value = index;
+};
+
+const handleMouseLeave = (index: number) => {
+    setTimeout(() => {
+        if (activeSubItem.value === index)
+            activeSubItem.value = null;
+    }, 100);
+};
+
+const selectOption = (option: DropdownOption) => {
     emit("update:modelValue", option.value);
     isActive.value = false;
+    activeSubItem.value = null;
+};
+
+const selectSubItem = (subitem: SubitemOption, parentOption: DropdownOption) => {
+    emit("update:modelValue", subitem.value);
+    isActive.value = false;
+    activeSubItem.value = null;
+};
+
+const updateCheckState = (option: DropdownOption, newValue: boolean) => {
+    const optionIndex = localOptions.findIndex(opt => opt.value === option.value);
+
+    if (optionIndex !== -1) {
+        localOptions[optionIndex] = {
+            ...localOptions[optionIndex],
+            checked: newValue
+        };
+    } else {
+        for (let i = 0; i < localOptions.length; i++) {
+            if (localOptions[i].subitems) {
+                const subItemIndex = localOptions[i].subitems!.findIndex(
+                    sub => sub.value === option.value
+                );
+
+                if (subItemIndex !== -1) {
+                    const newSubitems = [...localOptions[i].subitems!];
+                    newSubitems[subItemIndex] = {
+                        ...newSubitems[subItemIndex],
+                        checked: newValue
+                    };
+
+                    localOptions[i] = {
+                        ...localOptions[i],
+                        subitems: newSubitems
+                    };
+                    break;
+                }
+            }
+        }
+    }
+
+    option.checked = newValue;
+
+    nextTick(() => {
+        if (newValue) {
+            emit("check", option);
+        } else {
+            emit("uncheck", option);
+        }
+    });
+};
+
+const toggleCheck = (option: DropdownOption) => {
+    const isChecked = !option.checked;
+    updateCheckState(option, isChecked);
 };
 
 const sizes = {
@@ -230,5 +517,17 @@ const variantColors = {
     filled: "bg-zinc-200 dark:bg-zinc-800 text-zinc-950 dark:text-white"
 };
 
-defineExpose({ value: props.modelValue });
+const refreshOptions = () => {
+    if (typeof props.options === 'string' && props.options.trim() !== '') {
+        fetchOptionsFromUrl(props.options);
+    }
+};
+
+defineExpose({
+    value: props.modelValue,
+    refresh: refreshOptions,
+    isLoading,
+    hasError,
+    errorMessage
+});
 </script>

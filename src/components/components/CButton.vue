@@ -1,14 +1,17 @@
 <template>
-    <component
-        :is="buttonType"
-        :type="type"
-        class="c-button font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 relative"
-        :class="[sizes[size], roundedStyles[rounded], variantStyles[variant], computedBgColor, textColor, shadow, { 'opacity-50': disabled, 'cursor-not-allowed': disabled }]"
-        :aria-busy="loading ? true : undefined"
-        :disabled="disabled"
-        :tabindex="disabled || loading ? -1 : undefined"
-        @click="handleClick"
-    >
+    <component :is="buttonType" :type="type"
+        class="c-button focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 relative flex items-center justify-center"
+        :class="[
+            inGroup ? sizes[computedSize] : sizes[size],
+            inGroup ? '' : roundedStyles[rounded],
+            variantStyles[computedVariant],
+            computedBgColor,
+            computedTextColor,
+            inGroup ? '' : shadow,
+            { 'opacity-50': disabled, 'cursor-not-allowed': disabled },
+            { 'text-stroke': computedTextStroke }
+        ]" :aria-busy="loading ? true : undefined" :disabled="disabled"
+        :tabindex="disabled || loading ? -1 : undefined" @click="handleClick">
         <slot>Button</slot>
     </component>
 </template>
@@ -19,6 +22,14 @@
     overflow: hidden;
     z-index: 0;
     transition: background-color 0.3s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.text-stroke {
+    -webkit-text-stroke: 1px currentColor;
+    text-stroke: 1px currentColor;
 }
 
 span.ripple {
@@ -39,7 +50,7 @@ span.ripple {
 </style>
 
 <script lang="ts" setup>
-import { reactive, defineEmits, defineProps, computed } from "vue";
+import { reactive, defineEmits, defineProps, computed, inject } from "vue";
 
 const emit = defineEmits([
     "click",
@@ -52,6 +63,22 @@ const emit = defineEmits([
     "beforeUnmount",
     "unmounted"
 ]);
+
+// Define the interface for the injected button group context
+interface ButtonGroup {
+    inGroup: boolean;
+    size?: string;
+    variant?: string;
+    bgColor?: string | string[];
+    textColor?: string;
+    shadow?: string;
+    vertical?: boolean;
+    textStroke?: boolean;
+}
+
+// Check if button is inside a button group with proper typing
+const buttonGroup = inject<ButtonGroup>('buttonGroup', { inGroup: false });
+const inGroup = computed(() => buttonGroup.inGroup === true);
 
 const props = defineProps({
     type: {
@@ -93,10 +120,21 @@ const props = defineProps({
     loading: {
         type: Boolean,
         default: false
+    },
+    textStroke: {
+        type: Boolean,
+        default: false
     }
 });
 
+// If in a group, use the group's props where applicable
+const computedSize = computed(() => inGroup.value && buttonGroup.size ? buttonGroup.size : props.size);
+const computedVariant = computed(() => inGroup.value && buttonGroup.variant ? buttonGroup.variant : props.variant);
+const computedTextColor = computed(() => inGroup.value && buttonGroup.textColor ? buttonGroup.textColor : props.textColor);
+const computedTextStroke = computed(() => inGroup.value && buttonGroup.textStroke !== undefined ? buttonGroup.textStroke : props.textStroke);
+
 const computedBgColor = computed(() => {
+    if (inGroup.value && buttonGroup.bgColor) return Array.isArray(buttonGroup.bgColor) ? buttonGroup.bgColor.join(' ') : buttonGroup.bgColor;
     return Array.isArray(props.bgColor) ? props.bgColor.join(' ') : props.bgColor;
 });
 

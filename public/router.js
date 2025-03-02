@@ -5,6 +5,7 @@ import FirstStepsPage from "./views/FirstStepsPage.vue";
 
 //Components
 import AIChatPage from "./views/components/AIChatPage.vue";
+import ButtonGroupsPage from "./views/components/ButtonGroupsPage.vue";
 import ButtonPage from "./views/components/ButtonPage.vue";
 import TooltipPage from "./views/components/TooltipPage.vue";
 import IconPage from "./views/components/IconPage.vue";
@@ -39,6 +40,7 @@ import NavbarPage from "./views/layout/NavbarPage.vue";
 //Form
 import AutocompletePage from "./views/form/AutocompletePage.vue";
 import FormPage from "./views/form/FormPage.vue";
+import FormBuilderPage from "./views/form/FormBuilderPage.vue";
 import InputPage from "./views/form/InputPage.vue";
 import NumberInputPage from "./views/form/NumberInputPage.vue";
 import OtpInputPage from "./views/form/OtpInputPage.vue";
@@ -71,6 +73,7 @@ const routes = [
     { path: '/ai-chat', component: AIChatPage },
     { path: '/badge', component: BadgePage },
     { path: '/button', component: ButtonPage },
+    { path: '/button-groups', component: ButtonGroupsPage },
     { path: '/flags', component: FlagsPage },
     { path: '/icon', component: IconPage },
 	{ path: '/loader', component: LoaderPage },
@@ -107,6 +110,7 @@ const routes = [
     { path: '/datepicker', component: DatepickerPage },
     { path: '/file-upload', component: FileUploadPage },
 	{ path: '/form', component: FormPage },
+	{ path: '/form-builder', component: FormBuilderPage },
 	{ path: '/input', component: InputPage },
     { path: '/number-input', component: NumberInputPage },
     { path: '/otp-input', component: OtpInputPage },
