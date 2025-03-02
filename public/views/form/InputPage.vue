@@ -493,7 +493,7 @@ const floatingLabelValue = ref("");
                         </c-input>
 
                         <c-button variant="primary" size="lg"
-                            class="!rounded-l-none mb-[0.25rem] w-[100px] px-6 flex items-center justify-center"
+                            class="!rounded-l-none mb-[0.25rem] w-[100px] px-8 flex items-center justify-center border-gray-300 dark:border-gray-700"
                             @click="handleSearch">
                             <IconMagnifyingGlass class="w-6 h-6 text-white mr-2" aria-hidden="true" /> Search
                         </c-button>
@@ -536,7 +536,6 @@ function handleSearch() {
             </template>
         </card-docs>
 
-        <!-- Input with Combobox -->
         <h4>Input with Combobox</h4>
 
         <p>Another useful pattern is combining an input with a combobox (dropdown) for cases like entering values with
@@ -545,13 +544,13 @@ function handleSearch() {
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4 h-[300px]">
-                <div class="lg:w-2/5 w-full">
+                <div class="lg:w-3/5 w-full">
                     <div class="flex items-stretch">
                         <c-input v-model="amountValue" id="amount-with-select" label="Amount" type="number"
-                            floatingLabel customClass="!rounded-r-none border-r-1" />
+                            customClass="!rounded-r-none border-r-1 -mt-1" />
 
-                        <c-combobox v-model="selectedCurrency" :options="currencyOptions" size="lg"
-                            class="!rounded-l-none min-w-[120px]" customClass="!rounded-l-none border-l-0" />
+                        <c-combobox v-model="selectedCurrency" :options="currencyOptions" size="md"
+                            class="!rounded-l-none min-w-[120px]" customClass="!rounded-l-none border-l-0 h-[46px]" />
                     </div>
                 </div>
             </div>
@@ -565,7 +564,7 @@ function handleSearch() {
             label="Amount"
             type="number"
             floatingLabel
-            customClass="!rounded-r-none border-r-1"
+            customClass="!rounded-r-none border-r-1 -mt-1"
         /&gt;
 
         &lt;c-combobox
@@ -573,7 +572,7 @@ function handleSearch() {
             :options="currencyOptions"
             size="lg"
             class="!rounded-l-none min-w-[120px]"
-            customClass="!rounded-l-none border-l-0"
+            customClass="!rounded-l-none border-l-0 h-[46px]"
         /&gt;
     &lt;/div&gt;
 &lt;/template&gt;

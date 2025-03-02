@@ -62,6 +62,16 @@
 </template>
 
 <style scoped>
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
 .c-input {
     position: relative;
 }
@@ -248,8 +258,8 @@ const roundedStyles: Record<string, string> = {
 
 const variantStyles: Record<string, string> = {
     default: "border border-gray-300 dark:border-gray-700",
-    outlined: "border-2 border-zinc-700",
-    filled: "border-1 border-zinc-900 shadow-md",
+    outlined: "border border-2 border-zinc-700",
+    filled: "border border-1 border-zinc-900 shadow-md",
 };
 
 const variantColors: Record<string, string> = {
