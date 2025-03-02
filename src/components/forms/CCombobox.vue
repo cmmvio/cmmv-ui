@@ -8,10 +8,19 @@
                     <slot name="icon"></slot>
                 </div>
 
+                <div v-if="searchable && !selectedOption" class="absolute inset-0 z-20 w-full">
+                    <input type="text" :placeholder="isActive || !selectedLabel ? placeholder : ''"
+                        v-model="searchQuery"
+                        :class="[sizes[size], roundedStyles[rounded], variantStyles[variant], bgColor ? bgColor : variantColors[variant], textColor,
+                        { 'opacity-50': disabled || isLoading, 'cursor-not-allowed': disabled || isLoading, 'pl-10': hasIcon }, customClass]"
+                        class="c-dropdown-field block w-full border shadow-sm pt-3 pb-2 outline-none"
+                        :disabled="disabled || isLoading" @click.stop @focus="activateDropdown" @blur="handleBlur" />
+                </div>
+
                 <button :id="id" type="button"
                     :class="[sizes[size], roundedStyles[rounded], variantStyles[variant], bgColor ? bgColor : variantColors[variant], textColor,
-                    { 'opacity-50': disabled || isLoading, 'cursor-not-allowed': disabled || isLoading, 'pl-10': hasIcon }, customClass]"
-                    class="c-dropdown-field block w-full border shadow-sm pt-3 pb-2 outline-none text-left"
+                    { 'opacity-50': disabled || isLoading, 'cursor-not-allowed': disabled || isLoading, 'pl-10': hasIcon, 'invisible': searchable && !selectedOption }, customClass]"
+                    class="c-dropdown-field block w-full border shadow-sm pt-2 pb-2 -mt-2 outline-none text-left"
                     :disabled="disabled || isLoading">
                     <span v-if="isLoading" class="flex items-center">
                         <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-gray-500" xmlns="http://www.w3.org/2000/svg"
@@ -46,9 +55,21 @@
                     </span>
                 </button>
 
-                <div class="absolute inset-y-0 right-0 flex items-center px-2 transition-transform duration-300 cursor-pointer"
-                    :class="{ 'rotate-180': isActive, 'opacity-50': disabled || isLoading, 'cursor-not-allowed': disabled || isLoading }">
-                    <icon-chevron-down class="w-4 h-4 text-neutral-800 dark:text-white" size="sm" aria-hidden="true" />
+                <div class="absolute right-0 flex items-center z-30">
+                    <button v-if="clearable && selectedOption && !disabled && !isLoading" type="button"
+                        class="text-gray-400 hover:text-gray-600 my-2 mt-0" @click.stop="clearSelection">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5">
+                            <path fill-rule="evenodd"
+                                d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </button>
+
+                    <div class="-mt-2 px-2 transition-transform duration-300 cursor-pointer flex items-center"
+                        :class="{ 'rotate-180': isActive, 'opacity-50': disabled || isLoading, 'cursor-not-allowed': disabled || isLoading }">
+                        <icon-chevron-down class="w-4 h-4 text-neutral-800 dark:text-white" size="sm"
+                            aria-hidden="true" />
+                    </div>
                 </div>
             </div>
 
@@ -72,13 +93,14 @@
                         <div class="text-sm">{{ errorMessage }}</div>
                     </div>
 
-                    <div v-else-if="localOptions.length === 0" class="p-4 text-gray-500 text-center">
+                    <div v-else-if="filteredOptions.length === 0" class="p-4 text-gray-500 text-center">
                         No options available
                     </div>
 
-                    <div class="overflow-auto max-h-56 relative" v-else>
+                    <div :class="[{ 'overflow-auto': filteredOptions.filter(option => option.subitems && option.subitems.length > 0).length <= 0 }, 'max-h-56 relative']"
+                        v-else>
                         <ul>
-                            <li v-for="(option, index) in localOptions" :key="option.value"
+                            <li v-for="(option, index) in filteredOptions" :key="option.value"
                                 @click.stop="handleItemClick(option, index)" @mouseenter="handleMouseEnter(index)"
                                 @mouseleave="handleMouseLeave(index)" :class="[
                                     'px-4 py-2 cursor-pointer text-sm transition-colors z-60',
@@ -168,6 +190,7 @@
 .rotate-180 {
     transform: rotate(180deg);
     transition: transform 0.3s ease;
+    transform-origin: center center;
 }
 
 .fade-enter-active,
@@ -302,14 +325,23 @@ const props = defineProps({
         type: Boolean,
         required: false,
         default: false
+    },
+    searchable: {
+        type: Boolean,
+        default: false
+    },
+    clearable: {
+        type: Boolean,
+        default: false
     }
 });
 
-const emit = defineEmits(["update:modelValue", "check", "uncheck"]);
+const emit = defineEmits(["update:modelValue", "check", "uncheck", "search"]);
 const isActive = ref(false);
 const selectedOption = ref<any>(null);
 const activeSubItem = ref<number | null>(null);
 const localOptions = reactive<DropdownOption[]>([]);
+const searchQuery = ref('');
 
 const fetchOptionsFromUrl = async (url: string) => {
     isLoading.value = true;
@@ -382,7 +414,24 @@ onMounted(() => {
 
 const selectedLabel = computed(() => {
     selectedOption.value = localOptions.find((option) => option.value === props.modelValue);
+
+    if (selectedOption.value && props.searchable && !isActive.value) {
+        searchQuery.value = selectedOption.value.label;
+    }
+
     return selectedOption.value ? selectedOption.value?.label : "";
+});
+
+const filteredOptions = computed(() => {
+    if (!searchQuery.value || !props.searchable) {
+        return localOptions;
+    }
+
+    const query = searchQuery.value.toLowerCase();
+    return localOptions.filter(option =>
+        option.label.toLowerCase().includes(query) ||
+        String(option.value).toLowerCase().includes(query)
+    );
 });
 
 const checkedOptions = computed(() => {
@@ -409,9 +458,31 @@ const toggleDropdown = () => {
     if (!props.disabled) isActive.value = !isActive.value;
 };
 
+const activateDropdown = () => {
+    if (!props.disabled) isActive.value = true;
+};
+
 const closeDropdown = () => {
     isActive.value = false;
     activeSubItem.value = null;
+
+    if (props.searchable && !selectedOption.value) {
+        searchQuery.value = '';
+    }
+};
+
+const handleBlur = () => {
+    setTimeout(() => {
+        if (!isActive.value) return;
+
+        if (selectedOption.value) {
+            searchQuery.value = selectedOption.value.label;
+        } else {
+            searchQuery.value = '';
+        }
+
+        closeDropdown();
+    }, 200);
 };
 
 const handleItemClick = (option: DropdownOption, index: number) => {
@@ -435,14 +506,27 @@ const handleMouseLeave = (index: number) => {
 
 const selectOption = (option: DropdownOption) => {
     emit("update:modelValue", option.value);
+    if (props.searchable) {
+        searchQuery.value = option.label;
+    }
     isActive.value = false;
     activeSubItem.value = null;
 };
 
 const selectSubItem = (subitem: SubitemOption, parentOption: DropdownOption) => {
     emit("update:modelValue", subitem.value);
+    if (props.searchable) {
+        searchQuery.value = subitem.label;
+    }
     isActive.value = false;
     activeSubItem.value = null;
+};
+
+const clearSelection = () => {
+    emit("update:modelValue", "");
+    searchQuery.value = "";
+    selectedOption.value = null;
+    isActive.value = false;
 };
 
 const updateCheckState = (option: DropdownOption, newValue: boolean) => {
@@ -528,6 +612,7 @@ defineExpose({
     refresh: refreshOptions,
     isLoading,
     hasError,
-    errorMessage
+    errorMessage,
+    searchQuery
 });
 </script>

@@ -518,7 +518,7 @@ const onUncheck = (option) => {
                             <div class="flex items-center">
                                 <span>{{ data.label }}</span>
                                 <span v-if="data.price" class="ml-auto text-green-600 dark:text-green-400">{{ data.price
-                                }}</span>
+                                    }}</span>
                             </div>
                         </template>
                     </c-combobox>
@@ -609,9 +609,9 @@ const getSelectedItem = computed(() => {
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4 h-[320px]">
-                <div class="lg:w-2/5 w-full max-w-[400px]">
-                    <c-combobox v-model="countryValue" label="Select a country" options="/json/countries.json"
-                        :remoteDataKeyValue="true" ref="countriesCombobox">
+                <div class="lg:w-3/5 w-full max-w-[400px]">
+                    <c-combobox v-model="countryValue" size="sm" label="Select a country" options="/json/countries.json"
+                        :remoteDataKeyValue="true" ref="countriesCombobox" selectedLabel searchable clearable>
                         <template #selected="{ data }">
                             <div class="flex items-center" v-if="data">
                                 <c-flag :iso="data.value" size="sm" rounded="none" />
