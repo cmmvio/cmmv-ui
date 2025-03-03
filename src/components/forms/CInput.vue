@@ -11,7 +11,7 @@
             },
             textColor ? textColor : 'text-gray-500 dark:text-gray-400',
             !disabled ? (bgColor ? bgColor : variantColors[variant]) : '', 'px-1', customClass]">
-            {{ label }}
+            {{ label }} <span v-if="required" class="text-red-500">*</span>
         </label>
 
         <div class="relative flex items-center">
@@ -54,7 +54,7 @@
             </button>
         </div>
 
-        <div class="mt-1" v-if="!hiddenHint">
+        <div class="mt-1" v-if="!hiddenHint && hasError">
             <p v-if="hasError" class="text-xs text-red-500">{{ errorMessage }}</p>
             <p v-else-if="hint && (hintFixed || isActive)" class="text-xs text-gray-500">{{ hint }}</p>
         </div>
@@ -221,6 +221,10 @@ const props = defineProps({
         required: false,
         default: ""
     },
+    required: {
+        type: Boolean,
+        default: false
+    }
 });
 
 const emit = defineEmits(["update:modelValue"]);
@@ -237,7 +241,7 @@ watch(currentValue, (newValue) => {
 });
 
 const inputType = computed(() => (props.type === "password" && showPassword.value ? "text" : props.type));
-const errorMessage = ref<string | null>(null);
+const errorMessage = ref<string | null | boolean>(null);
 const isActive = ref(false);
 const changed = ref(false);
 
@@ -269,8 +273,7 @@ const variantColors: Record<string, string> = {
 }
 
 const borderColorClass = computed(() => props.borderColor);
-
-const hasError = computed(() => !!errorMessage.value);
+const hasError = computed(() => !!errorMessage.value && errorMessage.value !== true);
 
 const handleInput = (event: Event) => {
     currentValue.value = (event.target as HTMLInputElement).value;

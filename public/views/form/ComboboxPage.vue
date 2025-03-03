@@ -713,7 +713,6 @@ const productOptions = [
     { value: 3, label: "Headphones" }
 ];
 
-// For checkable options example
 const checkableOptions = [
     { value: 1, label: "Electronics", checked: true },
     { value: 2, label: "Clothing" },
@@ -735,7 +734,6 @@ const onUncheck = (option) => {
     }
 };
 
-// For nested subitems example
 const nestedOptions = [
     {
         value: "electronics",
@@ -762,7 +760,6 @@ const nestedOptions = [
 const nestedValue = ref("electronics");
 
 const getSelectedItem = computed(() => {
-    // Search for the selected item in the nested structure
     for (const option of nestedOptions) {
         if (option.value === nestedValue.value) {
             return option.label;
@@ -775,10 +772,10 @@ const getSelectedItem = computed(() => {
             }
         }
     }
+
     return nestedValue.value;
 });
 
-// For combined features example
 const complexOptions = [
     {
         value: "tech",
@@ -837,7 +834,6 @@ const countryValue = ref(null);
 const countriesCombobox = ref(null);
 
 const refreshCountries = () => {
-    // You can programmatically refresh the data
     countriesCombobox.value.refresh();
 };
 </script>

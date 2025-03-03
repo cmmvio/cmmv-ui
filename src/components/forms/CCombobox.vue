@@ -1,26 +1,27 @@
 <template>
     <div class="c-dropdown relative w-full ">
-        <div class="relative h-full">
-            <div v-if="isActive" class="fixed inset-0 z-40 bg-transparent" @click="closeDropdown"></div>
+        <div class="relative">
+            <div v-if="isActive" class="fixed z-40 bg-transparent" @click="closeDropdown"></div>
 
-            <div class="relative flex items-center z-30 h-[46px]" @click="toggleDropdown">
+            <div class="relative flex items-center z-30" @click="toggleDropdown">
                 <div v-if="hasIcon" class="absolute inset-y-0 left-0 flex items-center pl-3 z-30">
                     <slot name="icon"></slot>
                 </div>
 
-                <div v-if="searchable && !selectedOption" class="absolute inset-0 z-20 w-full">
-                    <input type="text" :placeholder="isActive || !selectedLabel ? placeholder : ''"
+                <div v-if="searchable && !selectedOption" class="absolute z-20 w-full">
+                    <input type="text"
+                        :placeholder="(isActive || !selectedLabel ? placeholder : '') + (required ? ' *' : '')"
                         v-model="searchQuery"
-                        :class="[sizes[size], roundedStyles[rounded], variantStyles[variant], bgColor ? bgColor : variantColors[variant], textColor,
-                        { 'opacity-50': disabled || isLoading, 'cursor-not-allowed': disabled || isLoading, 'pl-10': hasIcon }, customClass]"
+                        :class="[sizes[size] || sizes['md'], roundedStyles[rounded], variantStyles[variant], bgColor ? bgColor : variantColors[variant], textColor,
+                        { 'opacity-50': disabled || isLoading, 'cursor-not-allowed': disabled || isLoading, 'pl-10': hasIcon }, customClass, 'w-full']"
                         class="c-dropdown-field block w-full border shadow-sm pt-3 pb-2 outline-none"
                         :disabled="disabled || isLoading" @click.stop @focus="activateDropdown" @blur="handleBlur" />
                 </div>
 
                 <button :id="id" type="button"
-                    :class="[sizes[size], roundedStyles[rounded], variantStyles[variant], bgColor ? bgColor : variantColors[variant], textColor,
-                    { 'opacity-50': disabled || isLoading, 'cursor-not-allowed': disabled || isLoading, 'pl-10': hasIcon, 'invisible': searchable && !selectedOption }, customClass]"
-                    class="c-dropdown-field block w-full border shadow-sm pt-2 pb-2 -mt-2 outline-none text-left"
+                    :class="[sizes[size] || sizes['md'], roundedStyles[rounded], variantStyles[variant], bgColor ? bgColor : variantColors[variant], textColor,
+                    { 'opacity-50': disabled || isLoading, 'cursor-not-allowed': disabled || isLoading, 'pl-10': hasIcon, 'invisible': searchable && !selectedOption }, customClass, 'w-full']"
+                    class="c-dropdown-field block w-full border shadow-sm pt-2 pb-2 outline-none text-left h-full"
                     :disabled="disabled || isLoading">
                     <span v-if="isLoading" class="flex items-center">
                         <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-neutral-500" xmlns="http://www.w3.org/2000/svg"
@@ -51,13 +52,14 @@
                     </span>
 
                     <span v-else>
-                        {{ placeholder }}
+                        {{ placeholder }} <span v-if="required" class="text-red-500">*</span>
                     </span>
                 </button>
 
                 <div class="absolute right-0 flex items-center z-30">
                     <button v-if="clearable && selectedOption && !disabled && !isLoading" type="button"
-                        class="text-neutral-400 hover:text-neutral-600 my-2 mt-0" @click.stop="clearSelection">
+                        class="text-neutral-400 hover:text-neutral-600 flex items-center justify-center h-full"
+                        @click.stop="clearSelection">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5">
                             <path fill-rule="evenodd"
                                 d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z"
@@ -65,8 +67,8 @@
                         </svg>
                     </button>
 
-                    <div class="-mt-2 px-2 transition-transform duration-300 cursor-pointer flex items-center"
-                        :class="{ 'rotate-180': isActive, 'opacity-50': disabled || isLoading, 'cursor-not-allowed': disabled || isLoading }">
+                    <div class="px-2 transition-transform duration-300 cursor-pointer flex items-center justify-center h-full"
+                        :class="[{ 'rotate-180': isActive, 'opacity-50': disabled || isLoading, 'cursor-not-allowed': disabled || isLoading }, sizes[size] || sizes['md']]">
                         <icon-chevron-down class="w-4 h-4 text-neutral-800 dark:text-white" size="sm"
                             aria-hidden="true" />
                     </div>
@@ -330,6 +332,10 @@ const props = defineProps({
         default: false
     },
     clearable: {
+        type: Boolean,
+        default: false
+    },
+    required: {
         type: Boolean,
         default: false
     }

@@ -1,8 +1,5 @@
 <template>
-    <div
-        class="relative inline-flex items-center cursor-pointer select-none"
-        @click="toggle"
-    >
+    <div class="relative inline-flex items-center cursor-pointer select-none" @click="toggle">
         <span
             class="relative z-10 flex items-center justify-center border rounded transition-all duration-200 overflow-hidden"
             :class="[
@@ -11,44 +8,24 @@
                 isChecked || indeterminate ? borderColor : 'border-gray-300',
                 disabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer',
                 hasError ? 'ring-2 ring-red-500 border-red-500 bg-red-300' : ''
-            ]"
-        >
-            <svg
-                v-if="isChecked && !indeterminate"
-                xmlns="http://www.w3.org/2000/svg"
-                class="w-4 h-4"
-                :class="textColor"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                stroke-width="3"
-            >
+            ]">
+            <svg v-if="isChecked && !indeterminate" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4"
+                :class="textColor" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
             </svg>
 
-            <svg
-                v-else-if="indeterminate"
-                xmlns="http://www.w3.org/2000/svg"
-                class="w-4 h-4"
-                :class="textColor"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                stroke-width="3"
-            >
+            <svg v-else-if="indeterminate" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" :class="textColor"
+                fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
                 <line x1="5" y1="12" x2="19" y2="12" stroke-linecap="round" />
             </svg>
         </span>
 
-        <span
-            v-if="label"
-            :class="[
-                'ml-2',
-                sizes[size].label,
-                hasError ? 'text-red-500' : ''
-            ]"
-        >
-            {{ label }}
+        <span v-if="label" :class="[
+            'ml-2',
+            sizes[size].label,
+            hasError ? 'text-red-500' : ''
+        ]">
+            {{ label }} <span v-if="required" class="text-red-500">*</span>
         </span>
     </div>
 </template>
@@ -116,6 +93,10 @@ const props = defineProps({
         type: Array,
         default: () => [],
     },
+    required: {
+        type: Boolean,
+        default: false,
+    },
 });
 
 const emit = defineEmits(["update:modelValue"]);
@@ -171,6 +152,11 @@ const toggle = () => {
 
 const validate = () => {
     hasError.value = false;
+
+    if (props.required && !isChecked.value) {
+        hasError.value = true;
+        return false;
+    }
 
     for (const rule of props.rules) {
         //@ts-ignore

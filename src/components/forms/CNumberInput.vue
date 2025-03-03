@@ -96,7 +96,7 @@ const props = defineProps({
 const emit = defineEmits(["update:modelValue", "change"]);
 
 const internalValue = ref(props.modelValue);
-const valueInput = ref(props.modelValue.toString());
+const valueInput = ref(props.modelValue?.toString());
 
 watch(() => props.modelValue, (newValue) => {
     internalValue.value = newValue;

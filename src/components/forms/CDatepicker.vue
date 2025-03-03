@@ -1,12 +1,14 @@
 <template>
     <div class="c-datepicker relative w-full">
         <div class="relative">
-            <div v-if="showCalendar" class="fixed inset-0 z-40 bg-transparent" @click="closeCalendar"></div>
+            <div v-if="showCalendar" class="fixed z-40 bg-transparent" @click="closeCalendar"></div>
 
             <div class="relative flex items-center z-30" @click="toggleCalendar">
-                <input ref="inputRef" type="text" :value="formattedDate" :placeholder="placeholder" :disabled="disabled"
+                <input ref="inputRef" type="text" :value="formattedDate"
+                    :placeholder="placeholder + (required ? ' *' : '')" :disabled="disabled"
                     class="c-datepicker-field block w-full border shadow-sm outline-none text-left px-3 py-2 text-sm rounded-md"
                     :class="[
+                        sizes[size],
                         disabled ? 'bg-neutral-100 dark:bg-neutral-800 cursor-not-allowed' : 'bg-white dark:bg-neutral-900 cursor-pointer',
                         hasError ? 'border-red-500 focus:border-red-500' : 'border-neutral-300 dark:border-neutral-900',
                         'text-neutral-900 dark:text-white'
@@ -14,7 +16,8 @@
 
                 <div class="absolute inset-y-0 right-0 flex items-center px-2 cursor-pointer"
                     :class="{ 'opacity-50': disabled, 'cursor-not-allowed': disabled }">
-                    <icon-calendar class="w-6 h-6 text-neutral-600 dark:text-white" aria-hidden="true" />
+                    <icon-calendar class="w-5 h-5" size="sm" color="text-neutral-500 dark:text-white"
+                        aria-hidden="true" />
                 </div>
             </div>
 
@@ -113,14 +116,46 @@
 import { ref, computed, watch, onMounted, onBeforeUnmount } from 'vue';
 
 const props = defineProps({
-    modelValue: { type: [Date, Array], default: null },
-    min: { type: Date, default: null },
-    max: { type: Date, default: null },
-    placeholder: { type: String, default: 'Select a date' },
-    format: { type: String, default: 'dd/MM/yyyy' },
-    disabled: { type: Boolean, default: false },
-    rules: { type: Array, default: () => [] },
-    range: { type: Boolean, default: false }
+    modelValue: {
+        type: [Date, Array],
+        default: null
+    },
+    min: {
+        type: Date,
+        default: null
+    },
+    max: {
+        type: Date,
+        default: null
+    },
+    placeholder: {
+        type: String,
+        default: 'Select a date'
+    },
+    format: {
+        type: String,
+        default: 'dd/MM/yyyy'
+    },
+    disabled: {
+        type: Boolean,
+        default: false
+    },
+    rules: {
+        type: Array,
+        default: () => []
+    },
+    range: {
+        type: Boolean,
+        default: false
+    },
+    size: {
+        type: String,
+        default: "md"
+    },
+    required: {
+        type: Boolean,
+        default: false
+    }
 });
 
 const emit = defineEmits(['update:modelValue']);
@@ -406,6 +441,12 @@ const validate = () => {
     hasError.value = false;
     errorMessage.value = null;
 
+    if (props.required && !props.modelValue) {
+        hasError.value = true;
+        errorMessage.value = 'This field is required';
+        return false;
+    }
+
     if (!props.rules.length) return true;
 
     for (const rule of props.rules) {//@ts-ignore
@@ -418,6 +459,12 @@ const validate = () => {
     }
 
     return true;
+};
+
+const sizes = {
+    sm: "px-2 py-1 text-xs",
+    md: "px-3 py-2 text-sm h-[46px]",
+    lg: "px-5 py-4 text-base"
 };
 
 watch(() => props.modelValue, (newValue) => {

@@ -133,6 +133,10 @@
 import { ref, computed, watch } from 'vue';
 
 const props = defineProps({
+    modelValue: {
+        type: Array,
+        default: () => []
+    },
     accept: {
         type: String,
         default: '*/*'
@@ -208,6 +212,7 @@ const props = defineProps({
 });
 
 const emit = defineEmits([
+    'update:modelValue',
     'file-selected',
     'file-removed',
     'upload-start',
@@ -265,7 +270,17 @@ const handleFileSelect = (event) => {
     }
 };
 
-const processFiles = (fileList) => {
+// Função para converter arquivo para base64
+const fileToBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+    });
+};
+
+const processFiles = async (fileList) => {
     const files = Array.from(fileList);
     const validFiles = [];
 
@@ -276,14 +291,14 @@ const processFiles = (fileList) => {
         files.splice(remainingSlots);
     }
 
-    files.forEach(file => {
+    for (const file of files) {
         if (file.size > props.maxFileSize) {
             emit('file-selected', {
                 file,
                 error: 'File size exceeds limit',
                 accepted: false
             });
-            return;
+            continue;
         }
 
         if (props.accept !== '*/*') {
@@ -308,30 +323,60 @@ const processFiles = (fileList) => {
                     error: 'File type not accepted',
                     accepted: false
                 });
-                return;
+                continue;
             }
         }
 
         let preview = null;
+        let fileContent = null;
 
-        if (isImage(file))
+        if (isImage(file)) {
             preview = URL.createObjectURL(file);
+        }
+
+        // Se não há URL de upload configurada, converter o arquivo para base64
+        if (!props.url) {
+            try {
+                fileContent = await fileToBase64(file);
+            } catch (error) {
+                console.error('Error converting file to base64:', error);
+            }
+        }
 
         validFiles.push({
             file,
             preview,
             status: 'pending',
             progress: 0,
-            errorMessage: null
+            errorMessage: null,
+            content: fileContent
         });
 
         emit('file-selected', { file, accepted: true });
-    });
+    }
 
     selectedFiles.value = [...selectedFiles.value, ...validFiles];
+    updateModelValue();
 
     if (props.autoUpload && validFiles.length > 0)
         uploadFiles();
+};
+
+const updateModelValue = () => {
+    const fileData = selectedFiles.value.map(item => {
+        return {
+            name: item.file.name,
+            size: item.file.size,
+            type: item.file.type,
+            lastModified: item.file.lastModified,
+            status: item.status,
+            progress: item.progress,
+            content: item.content,
+            preview: item.preview
+        };
+    });
+
+    emit('update:modelValue', fileData);
 };
 
 const removeFile = (index) => {
@@ -342,6 +387,7 @@ const removeFile = (index) => {
 
     emit('file-removed', file.file);
     selectedFiles.value.splice(index, 1);
+    updateModelValue();
 };
 
 const isImage = (file) => {
@@ -374,10 +420,22 @@ const uploadFiles = async () => {
                 selectedFiles.value[i].status = 'success';
                 selectedFiles.value[i].progress = 100;
 
+                // Se não houver URL, garantir que temos o conteúdo do arquivo
+                if (!selectedFiles.value[i].content) {
+                    try {
+                        selectedFiles.value[i].content = await fileToBase64(selectedFiles.value[i].file);
+                    } catch (error) {
+                        console.error('Error converting file to base64:', error);
+                    }
+                }
+
+                updateModelValue();
+
                 emit('upload-success', {
                     file: selectedFiles.value[i].file,
                     index: i,
-                    response: null
+                    response: null,
+                    content: selectedFiles.value[i].content
                 });
             }
         }
@@ -400,6 +458,7 @@ const uploadFiles = async () => {
         console.error('Upload error:', error);
     } finally {
         isUploading.value = false;
+        updateModelValue();
         emit('upload-complete');
     }
 };
@@ -409,6 +468,7 @@ const uploadFile = async (fileObj, index) => {
 
     fileObj.status = 'uploading';
     fileObj.progress = 0;
+    updateModelValue();
 
     const formData = new FormData();
     formData.append(props.formDataName, fileObj.file);
@@ -420,6 +480,7 @@ const uploadFile = async (fileObj, index) => {
             if (event.lengthComputable) {
                 const progress = Math.round((event.loaded * 100) / event.total);
                 fileObj.progress = progress;
+                updateModelValue();
 
                 emit('upload-progress', {
                     file: fileObj.file,
@@ -434,6 +495,7 @@ const uploadFile = async (fileObj, index) => {
                 if (xhr.status >= 200 && xhr.status < 300) {
                     fileObj.status = 'success';
                     fileObj.progress = 100;
+                    updateModelValue();
 
                     const response = {
                         status: xhr.status,
@@ -457,6 +519,7 @@ const uploadFile = async (fileObj, index) => {
                 } else {
                     fileObj.status = 'error';
                     fileObj.errorMessage = `Error ${xhr.status}: ${xhr.statusText}`;
+                    updateModelValue();
 
                     const error = {
                         status: xhr.status,
@@ -477,6 +540,7 @@ const uploadFile = async (fileObj, index) => {
             xhr.onerror = function () {
                 fileObj.status = 'error';
                 fileObj.errorMessage = 'Network error occurred';
+                updateModelValue();
 
                 const error = {
                     status: 0,
@@ -509,6 +573,7 @@ const uploadFile = async (fileObj, index) => {
     } catch (error) {
         fileObj.status = 'error';
         fileObj.errorMessage = error.message || 'Upload failed';
+        updateModelValue();
 
         emit('upload-error', {
             file: fileObj.file,
@@ -523,10 +588,12 @@ const uploadFile = async (fileObj, index) => {
 const simulateProgress = async (index) => {
     const file = selectedFiles.value[index];
     file.progress = 0;
+    updateModelValue();
 
     return new Promise(resolve => {
         const interval = setInterval(() => {
             file.progress += 5;
+            updateModelValue();
 
             emit('upload-progress', {
                 file: file.file,
@@ -551,6 +618,7 @@ watch(selectedFiles, (newFiles, oldFiles) => {
             }
         });
     }
+    updateModelValue();
 });
 </script>
 
