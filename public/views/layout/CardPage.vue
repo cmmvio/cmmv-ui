@@ -177,8 +177,9 @@
         </p>
 
         <card-docs>
-            <c-card title="Basic Card" subtitle="This is a basic card example." bgColor="bg-white"
-                bgHeaderColor="bg-zinc-200" bgBorderColor="border-b border-b-slate-300" textColor="text-black"
+            <c-card title="Basic Card" subtitle="This is a basic card example." bgColor="bg-white dark:bg-neutral-800"
+                bgHeaderColor="bg-neutral-200 dark:bg-neutral-900" bgBorderColor="border-b border-b-neutral-300 dark:border-b-neutral-900"
+                borderColor="border border-neutral-300 dark:border-neutral-900" textColor="text-black dark:text-white"
                 maxWidth="500px" minHeight="300px" textSize="md" class="m-auto">
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
                 industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and

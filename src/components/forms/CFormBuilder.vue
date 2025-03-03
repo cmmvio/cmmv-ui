@@ -34,7 +34,20 @@
                             :remoteDataLabelKey="item.remoteDataLabelKey" :remoteDataKeyValue="item.remoteDataKeyValue"
                             :rules="item.rules || item.props?.rules || []" v-bind="item.props || {}"
                             @update:modelValue="(value) => updateField(key as string, value)"
-                            :ref="el => { if (el) fieldRefs[key as string] = el; }" class="my-1" />
+                            :ref="el => { if (el) fieldRefs[key as string] = el; }">
+                            <!-- Forward the selected slot -->
+                            <template v-if="$slots[`${key}-selected`]" #selected="slotProps">
+                                <slot :name="`${key}-selected`" v-bind="slotProps"></slot>
+                            </template>
+                            <!-- Forward the option slot -->
+                            <template v-if="$slots[`${key}-option`]" #option="slotProps">
+                                <slot :name="`${key}-option`" v-bind="slotProps"></slot>
+                            </template>
+                            <!-- Forward the subitem slot -->
+                            <template v-if="$slots[`${key}-subitem`]" #subitem="slotProps">
+                                <slot :name="`${key}-subitem`" v-bind="slotProps"></slot>
+                            </template>
+                        </c-combobox>
 
                         <!-- Checkbox -->
                         <c-checkbox v-if="item.type === 'checkbox'" v-model="formData[key]" :label="item.label"
@@ -62,6 +75,27 @@
                             :placeholder="item.placeholder" :required="item.required" :options="item.options || []"
                             :rules="item.rules || item.props?.rules || []" v-bind="item.props || {}"
                             @update:modelValue="(value) => updateField(key as string, value)"
+                            :ref="el => { if (el) fieldRefs[key as string] = el; }" />
+
+                        <!-- Chips Input -->
+                        <c-chips-input v-if="item.type === 'chips' || item.type === 'chipsinput'"
+                            v-model="formData[key]"
+                            :label="item.label"
+                            :placeholder="item.placeholder"
+                            :required="item.required"
+                            :options="item.options || []"
+                            :minTags="item.minTags"
+                            :maxTags="item.maxTags"
+                            :duplicates="item.duplicates"
+                            :allowCustom="item.allowCustom !== false"
+                            :chipBgColor="item.chipBgColor"
+                            :chipTextColor="item.chipTextColor"
+                            :rules="item.rules || item.props?.rules || []"
+                            v-bind="item.props || {}"
+                            @update:modelValue="(value) => updateField(key as string, value)"
+                            @add="(chip) => item.onAdd && item.onAdd(chip)"
+                            @remove="(chip) => item.onRemove && item.onRemove(chip)"
+                            @clear="() => item.onClear && item.onClear()"
                             :ref="el => { if (el) fieldRefs[key as string] = el; }" />
 
                         <!-- File Upload -->
@@ -104,6 +138,46 @@
                             @update:modelValue="(value) => updateField(key as string, value)"
                             :ref="el => { if (el) fieldRefs[key as string] = el; }" />
 
+                        <!-- Header Component -->
+                        <div v-if="item.type === 'header'" :class="`col-span-${item.size || 12}`">
+                            <div :class="[
+                                'mb-3 pb-2 font-medium text-lg border-b',
+                                item.props?.variant === 'primary' ? 'text-primary-600 border-neutral-200 dark:border-neutral-900' :
+                                item.props?.variant === 'secondary' ? 'text-secondary-600 border-neutral-200 dark:border-neutral-800' :
+                                'text-neutral-700 dark:text-neutral-200 border-neutral-200 dark:border-neutral-900'
+                            ]">
+
+                                {{ item.label }}
+                            </div>
+                        </div>
+
+                        <!-- Custom Component for Slots -->
+                        <div v-if="item.type === 'custom'" :class="`col-span-${item.size || 12}`">
+                            <!-- Try both camelCase and kebab-case slot names -->
+                            <slot v-if="$slots[key]" :name="key" v-bind="{
+                                data: typeof item.props?.data === 'function' ? item.props?.data() : item.props?.data
+                            }"></slot>
+                            <slot v-else-if="$slots[toKebabCase(String(key))]" :name="toKebabCase(String(key))" v-bind="{
+                                data: typeof item.props?.data === 'function' ? item.props?.data() : item.props?.data
+                            }"></slot>
+                            <slot v-else-if="$slots[toCamelCase(String(key))]" :name="toCamelCase(String(key))" v-bind="{
+                                data: typeof item.props?.data === 'function' ? item.props?.data() : item.props?.data
+                            }"></slot>
+                        </div>
+
+                        <!-- Custom Object Component - for multiple items with the same structure -->
+                        <div v-if="item.type === 'custom-object'" :class="`col-span-${item.size || 12}`">
+                            <template v-if="item.props?.items && item.props?.templateName">
+                                <div v-for="(itemData, itemKey) in item.props.items" :key="itemKey">
+                                    <slot :name="item.props.templateName" v-bind="{
+                                        data: itemData,
+                                        key: itemKey,
+                                        formData: formData,
+                                    }"></slot>
+                                </div>
+                            </template>
+                        </div>
+
                         <c-button v-if="item.type === 'submit'" class="w-full pb-4 pt-4" type="submit"
                             buttonType="button" size="2xl" @click="handleSubmitButtonClick" :disabled="!isFormValid">
                             {{ item.label || 'Submit' }}
@@ -125,6 +199,7 @@ import CNumberInput from "./CNumberInput.vue";
 import CTextarea from "./CTextarea.vue";
 import CTimepicker from "./CTimepicker.vue";
 import CToggle from "./CToggle.vue";
+import CChipsInput from "./CChipsInput.vue";
 
 interface BaseFieldProps {
     label?: string;
@@ -164,6 +239,20 @@ interface DatepickerFieldProps extends BaseFieldProps {
 interface AutocompleteFieldProps extends BaseFieldProps {
     type: 'autocomplete';
     options?: any[];
+}
+
+interface ChipsInputFieldProps extends BaseFieldProps {
+    type: 'chips' | 'chipsinput';
+    options?: any[];
+    minTags?: number;
+    maxTags?: number;
+    duplicates?: boolean;
+    allowCustom?: boolean;
+    chipBgColor?: string;
+    chipTextColor?: string;
+    onAdd?: (chip: any) => void;
+    onRemove?: (chip: any) => void;
+    onClear?: () => void;
 }
 
 interface FileUploadFieldProps extends BaseFieldProps {
@@ -213,6 +302,30 @@ interface SubmitButtonProps extends BaseFieldProps {
     type: 'submit';
 }
 
+interface HeaderFieldProps extends BaseFieldProps {
+    type: 'header';
+    props?: {
+        variant?: 'primary' | 'secondary' | 'default';
+        icon?: string;
+    };
+}
+
+interface CustomFieldProps extends BaseFieldProps {
+    type: 'custom';
+    props?: {
+        data?: any | (() => any);
+    };
+}
+
+interface CustomObjectFieldProps extends BaseFieldProps {
+    type: 'custom-object';
+    props?: {
+        items?: Record<string, any>;
+        templateName?: string;
+        [key: string]: any;
+    };
+}
+
 type FieldProps =
     | InputFieldProps
     | ComboboxFieldProps
@@ -225,7 +338,11 @@ type FieldProps =
     | TextareaFieldProps
     | TimepickerFieldProps
     | ToggleFieldProps
-    | SubmitButtonProps;
+    | SubmitButtonProps
+    | HeaderFieldProps
+    | CustomFieldProps
+    | CustomObjectFieldProps
+    | ChipsInputFieldProps;
 
 interface IFormBuilderSchema {
     [key: string]: FieldProps & {
@@ -252,19 +369,68 @@ const showValidationAlert = ref(false);
 const invalidFields = ref<Record<string, string>>({});
 
 const updateField = (key: string | number, value: any) => {
-    formData.value[key] = value;
+    // Special handling for chips input - convert from array of objects to array of labels
+    if (props.schema[key]?.type === 'chips' || props.schema[key]?.type === 'chipsinput') {
+        // If value is an array of objects with label property, extract just the labels
+        if (Array.isArray(value) && value.length > 0 && typeof value[0] === 'object' && 'label' in value[0]) {
+            formData.value[key] = value.map(item => item.label);
+        } else {
+            formData.value[key] = value;
+        }
+    } else {
+        formData.value[key] = value;
+    }
+
     validateField(key);
     emit("update:modelValue", { ...formData.value });
     checkFormValidity();
 };
 
 watch(() => props.modelValue, (newValue) => {
-    if (newValue && Object.keys(newValue).length > 0)
-        formData.value = { ...newValue };
+    if (newValue && Object.keys(newValue).length > 0) {
+        const processedData = { ...newValue };
+
+        // For each field in the schema
+        for (const key in props.schema) {
+            // If it's a chips input field and the value is already in processedData
+            if ((props.schema[key].type === 'chips' || props.schema[key].type === 'chipsinput') &&
+                key in processedData && Array.isArray(processedData[key])) {
+
+                // If the array contains strings, convert them to objects for the component
+                if (processedData[key].length > 0 && typeof processedData[key][0] === 'string') {
+                    processedData[key] = processedData[key].map((label: string) => ({
+                        value: `${label}-${Date.now()}`, // Generate a unique value
+                        label: label
+                    }));
+                }
+            }
+        }
+
+        formData.value = processedData;
+    }
 }, { deep: true });
 
 onMounted(() => {
-    formData.value = { ...props.modelValue };
+    // Process the initial data for special handling of chips input fields
+    const processedData = { ...props.modelValue };
+
+    // For each field in the schema
+    for (const key in props.schema) {
+        // If it's a chips input field and the value is already in formData
+        if ((props.schema[key].type === 'chips' || props.schema[key].type === 'chipsinput') &&
+            key in processedData && Array.isArray(processedData[key])) {
+
+            // If the array contains strings, convert them to objects for the component
+            if (processedData[key].length > 0 && typeof processedData[key][0] === 'string') {
+                processedData[key] = processedData[key].map((label: string) => ({
+                    value: `${label}-${Date.now()}`, // Generate a unique value
+                    label: label
+                }));
+            }
+        }
+    }
+
+    formData.value = processedData;
     initializeFieldValidity();
     setTimeout(() => {
         checkFormValidity();
@@ -359,31 +525,23 @@ const isFormValid = computed((): boolean => {
     return true;
 });
 
-// Handlers for file upload component
 const handleFileSelected = (key: string, fileInfo: any) => {
-    // Deprecated - usando v-model direto no componente
     validateField(key);
 };
 
 const handleFileUploadSuccess = (key: string, fileInfo: any) => {
-    // Quando o upload é bem-sucedido, garantimos que a validação seja executada
     validateField(key);
 
-    // Se o fileInfo contém content (base64), vamos garantir que está no model
     if (fileInfo.content && formData.value[key]) {
-        // Encontra o item correspondente no array de arquivos e atualiza seu status
         const fileIndex = formData.value[key].findIndex(f =>
             f.name === fileInfo.file.name &&
             f.size === fileInfo.file.size
         );
 
         if (fileIndex !== -1) {
-            // Garante que o conteúdo base64 seja preservado no modelo
-            if (!formData.value[key][fileIndex].content && fileInfo.content) {
+            if (!formData.value[key][fileIndex].content && fileInfo.content)
                 formData.value[key][fileIndex].content = fileInfo.content;
-            }
 
-            // Atualiza o status para success
             formData.value[key][fileIndex].status = 'success';
         }
 
@@ -416,6 +574,14 @@ const handleSubmitButtonClick = () => {
         emit("submit", formData.value);
     else
         showValidationAlert.value = true;
+};
+
+const toKebabCase = (str: string): string => {
+    return str.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
+};
+
+const toCamelCase = (str: string): string => {
+    return str.replace(/-([a-z])/g, (_, char) => char.toUpperCase());
 };
 
 defineExpose({

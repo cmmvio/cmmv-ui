@@ -200,7 +200,7 @@
                     class="relative flex flex-col items-center justify-center cursor-pointer group"
                     @click="copyToClipboard(icon.code)">
                     <c-tooltip :content="icon.name" position="top">
-                        <component :is="icon.component" class="w-8 h-8 text-neutral-600 dark:text-white mb-2"
+                        <component :is="icon.component" class="w-8 h-8 mb-2" color="text-neutral-600 dark:text-white"
                             aria-hidden="true" />
                     </c-tooltip>
                     <span class="text-xs text-center text-neutral-500 dark:text-neutral-400 truncate w-full">{{
@@ -250,7 +250,7 @@
                     class="relative flex flex-col items-center justify-center cursor-pointer group"
                     @click="copyToClipboard(icon.code)">
                     <c-tooltip :content="icon.name" position="top">
-                        <component :is="icon.component" class="w-8 h-8 text-neutral-600 dark:text-white mb-2"
+                        <component :is="icon.component" class="w-8 h-8 mb-2" color="text-neutral-600 dark:text-white"
                             aria-hidden="true" />
                     </c-tooltip>
                     <span class="text-xs text-center text-neutral-500 dark:text-neutral-400 truncate w-full">{{

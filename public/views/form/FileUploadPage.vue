@@ -13,7 +13,7 @@
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6">
-                <div class="lg:w-2/5 w-full max-w-[600px] mx-auto">
+                <div class="w-full max-w-[600px] mx-auto">
                     <c-file-upload @file-selected="handleFileSelected" @file-removed="handleFileRemoved"
                         @upload-start="handleUploadStart" @upload-complete="handleUploadComplete"></c-file-upload>
                 </div>
@@ -59,7 +59,7 @@ const handleUploadComplete = () => {
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6">
-                <div class="lg:w-2/5 w-full max-w-[600px] mx-auto">
+                <div class="w-full max-w-[600px] mx-auto">
                     <c-file-upload accept="image/*" :maxFileSize="5 * 1024 * 1024"
                         dropzoneText="Drag and drop images here or click to select" :showBrowseButton="true"
                         browseButtonText="Select Images" uploadButtonText="Upload Images"></c-file-upload>
@@ -88,7 +88,7 @@ const handleUploadComplete = () => {
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6">
-                <div class="lg:w-2/5 w-full max-w-[600px] mx-auto">
+                <div class="w-full max-w-[600px] mx-auto">
                     <c-file-upload :autoUpload="true" :multiple="true" :maxFiles="3" accept=".pdf,.doc,.docx"
                         dropzoneText="Drag and drop documents here" @upload-success="handleUploadSuccess"
                         @upload-error="handleUploadError"></c-file-upload>
@@ -128,7 +128,7 @@ const handleUploadError = (event) => {
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6">
-                <div class="lg:w-2/5 w-full max-w-[600px] mx-auto">
+                <div class="w-full max-w-[600px] mx-auto">
                     <c-file-upload url="https://api.example.com/upload" method="POST"
                         :headers="{ Authorization: 'Bearer token123' }" formDataName="uploadedFile"
                         :withCredentials="true" @upload-progress="handleProgress"></c-file-upload>
@@ -163,7 +163,7 @@ const handleProgress = (event) => {
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6">
-                <div class="lg:w-2/5 w-full max-w-[600px] mx-auto">
+                <div class="w-full max-w-[600px] mx-auto">
                     <c-file-upload dropzoneText="Drag your files here or click to browse" browseButtonText="Browse"
                         uploadButtonText="Upload Now" fileText="file" filesText="files"
                         errorText="Upload failed. Please try again."></c-file-upload>
@@ -368,7 +368,7 @@ const handleProgress = (event) => {
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6">
-                <div class="lg:w-2/5 w-full max-w-[600px] mx-auto">
+                <div class="w-full max-w-[600px] mx-auto">
                     <c-file-upload ref="fileUploadRef" accept="image/*,.pdf" :multiple="true" :maxFiles="5"
                         :maxFileSize="2 * 1024 * 1024" :autoUpload="false" dropzoneText="Drag images or PDFs here"
                         browseButtonText="Select Files" uploadButtonText="Upload All" @file-selected="onFileSelected"

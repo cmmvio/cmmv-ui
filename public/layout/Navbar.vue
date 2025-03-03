@@ -204,6 +204,7 @@ const navbarItems = [
         children: [
             { name: "Autocomplete", uri: "/autocomplete" },
             { name: "Checkbox", uri: "/checkbox" },
+            { name: "Chips Input", uri: "/chips-input" },
             { name: "Combobox", uri: "/combobox" },
             { name: "Datepicker", uri: "/datepicker" },
             { name: "File Upload", uri: "/file-upload" },
@@ -243,6 +244,7 @@ const navbarItems = [
             { name: "Sidebar", uri: "/sidebar" },
             { name: "Skeleton", uri: "/skeleton" },
             { name: "Speed Dial", uri: "/speed-dial" },
+            { name: "Stepper", uri: "/stepper" },
             { name: "Tabs", uri: "/tabs" },
             { name: "Toolbar", uri: "/toolbar" },
         ]

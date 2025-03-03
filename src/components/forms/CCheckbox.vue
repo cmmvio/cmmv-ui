@@ -7,7 +7,7 @@
                 (isChecked && !hasError) || indeterminate ? bgColor : 'bg-white',
                 isChecked || indeterminate ? borderColor : 'border-gray-300',
                 disabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer',
-                hasError ? 'ring-2 ring-red-500 border-red-500 bg-red-300' : ''
+                hasError ? 'ring-1 ring-red-500 border-red-500 bg-red-300' : ''
             ]">
             <svg v-if="isChecked && !indeterminate" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4"
                 :class="textColor" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">

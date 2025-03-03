@@ -229,7 +229,7 @@ const otpInstance2 = ref("");
 
         <card-docs>
             <c-card bgColor="bg-neutral-100 dark:bg-neutral-900" textColor="text-neutral-600 dark:text-white"
-                maxWidth="400px" rounded="md">
+                maxWidth="300px" rounded="md">
                 <template #header>
                     <div class="flex items-center space-x-3 p-3">
                         <h3 class="text-2xl m-auto mt-4 font-bold">Verify Your Account</h3>

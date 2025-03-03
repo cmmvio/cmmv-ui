@@ -117,7 +117,7 @@
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4 h-[300px]">
-                <div class="lg:w-2/5 w-full max-w-[400px]">
+                <div class="w-full max-w-[400px]">
                     <c-combobox v-model="basicValue" label="Select an option" :options="basicOptions" />
                     <p class="mt-2 text-neutral-600 dark:text-neutral-300">Selected: {{ basicValue }}</p>
                 </div>
@@ -156,7 +156,7 @@ const basicValue = ref(1);
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4 h-[300px]">
-                <div class="lg:w-2/5 w-full max-w-[400px] space-y-4">
+                <div class="w-full max-w-[400px] space-y-4">
                     <c-combobox v-model="sizeSm" label="Small" size="sm" :options="basicOptions" />
                     <c-combobox v-model="sizeMd" label="Medium" size="md" :options="basicOptions" />
                     <c-combobox v-model="sizeLg" label="Large" size="lg" :options="basicOptions" />
@@ -196,7 +196,7 @@ const sizeLg = ref(1);
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4 h-[300px]">
-                <div class="lg:w-2/5 w-full max-w-[400px] space-y-4">
+                <div class="w-full max-w-[400px] space-y-4">
                     <c-combobox v-model="variantDefault" label="Default" variant="default" :options="basicOptions" />
                     <c-combobox v-model="variantOutlined" label="Outlined" variant="outlined" :options="basicOptions" />
                     <c-combobox v-model="variantFilled" label="Filled" variant="filled" :options="basicOptions" />
@@ -239,7 +239,7 @@ const sizeLg = ref(1);
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4 h-[300px]">
-                <div class="lg:w-2/5 w-full max-w-[400px] space-y-4">
+                <div class="w-full max-w-[400px] space-y-4">
                     <c-combobox v-model="roundedNone" label="No Rounding" rounded="none" :options="basicOptions" />
                     <c-combobox v-model="roundedDefault" label="Default Rounding" rounded="default"
                         :options="basicOptions" />
@@ -284,7 +284,7 @@ const sizeLg = ref(1);
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-                <div class="lg:w-2/5 w-full max-w-[400px]">
+                <div class="w-full max-w-[400px]">
                     <c-combobox v-model="disabledExample" label="Disabled Dropdown" :options="basicOptions" disabled />
                 </div>
             </div>
@@ -321,7 +321,7 @@ const disabledExample = ref(1);
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4 h-[300px]">
-                <div class="lg:w-2/5 w-full max-w-[400px]">
+                <div class="w-full max-w-[400px]">
                     <c-combobox v-model="languageValue" label="Languages Dropdown" :options="languageOptions">
                         <template #selected="{ data }">
                             <div class="flex flex-1 -mt-1">
@@ -429,7 +429,7 @@ const languageValue = ref(1);
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4 h-[300px]">
-                <div class="lg:w-2/5 w-full max-w-[400px]">
+                <div class="w-full max-w-[400px]">
                     <c-combobox v-model="checkableValue" label="Select categories" :options="checkableOptions"
                         allowCheck @check="onCheck" @uncheck="onUncheck">
                         <template #selected="{ checked, count }">
@@ -505,7 +505,7 @@ const onUncheck = (option) => {
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4 h-[420px]">
-                <div class="lg:w-2/5 w-full max-w-[400px]">
+                <div class="w-full max-w-[400px]">
                     <c-combobox v-model="nestedValue" label="Product Categories" :options="nestedOptions">
                         <template #option="{ data }">
                             <div class="flex items-center">
@@ -609,7 +609,7 @@ const getSelectedItem = computed(() => {
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4 h-[320px]">
-                <div class="lg:w-3/5 w-full max-w-[400px]">
+                <div class="w-full max-w-[400px]">
                     <c-combobox v-model="countryValue" size="sm" label="Select a country" options="/json/countries.json"
                         :remoteDataKeyValue="true" ref="countriesCombobox" selectedLabel searchable clearable>
                         <template #selected="{ data }">
@@ -678,7 +678,7 @@ const refreshCountries = () => {
             </template>
         </card-docs>
 
-        <PagePagination previous="Checkbox" previousLink="/checkbox" next="Datepicker" nextLink="/datepicker" />
+        <PagePagination previous="Chips Input" previousLink="/chips-input" next="Datepicker" nextLink="/datepicker" />
     </BaseLayout>
 </template>
 

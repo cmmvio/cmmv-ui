@@ -15,6 +15,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
+
                     <svg v-else class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
                         </path>
@@ -80,15 +81,15 @@
             </div>
         </div>
 
-        <div v-else class="w-full select-none text-slate-700 dark:text-slate-200 p-4">
+        <div v-else class="w-full select-none text-neutral-700 dark:text-neutral-200 p-4">
             <ul>
                 <li v-for="(item, index) in items" :key="index" class="mb-1">
                     <button
-                        class="flex items-center w-full px-3 py-2.5 rounded-lg hover:bg-neutral-100 dark:hover:bg-zinc-700/70 transition-colors duration-200 cursor-pointer"
+                        class="flex items-center w-full px-3 py-2.5 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-700/70 transition-colors duration-200 cursor-pointer"
                         @click="toggleSubmenu(index)">
                         <span class="truncate">{{ item.text }}</span>
 
-                        <icon-chevron-down size="sm" class="w-6 h-6 text-neutral-500 ml-auto transition-transform"
+                        <icon-chevron-down size="sm" class="w-5 h-5 ml-auto transition-transform" color="text-neutral-500 dark:text-neutral-400"
                             :class="{ 'rotate-180': submenuOpen === index }" aria-hidden="true" v-if="item.children" />
                     </button>
 
@@ -96,7 +97,7 @@
                         <ul v-if="submenuOpen === index" class="pl-6">
                             <li v-for="(child, childIndex) in item.children" :key="childIndex">
                                 <a :href="child.href"
-                                    class="block py-2 px-3 text-sm hover:bg-neutral-100 dark:hover:bg-zinc-700/50">
+                                    class="block py-2 px-3 text-sm hover:bg-neutral-100 dark:hover:bg-neutral-700/50 rounded-md">
                                     {{ child.text }}
                                 </a>
                             </li>

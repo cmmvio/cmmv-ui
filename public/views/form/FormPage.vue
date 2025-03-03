@@ -17,7 +17,7 @@
         </p>
 
         <card-docs>
-            <div class="m-auto w-6/12 mb-2 max-w-[500px]">
+            <div class="m-auto mb-2 max-w-[300px]">
                 <h1 class="mb-4">Login</h1>
 
                 <c-form v-model="form" @submit.prevent="handleSubmit">

@@ -2,16 +2,17 @@
     <div class="c-autocomplete relative w-full">
         <div class="relative">
             <label :for="id"
-                class="c-autocomplete-label absolute left-3 text-sm transition-all duration-200 ease-in-out pointer-events-none"
+                class="c-autocomplete-label absolute text-sm transition-all duration-200 ease-in-out pointer-events-none drop-shadow-xs"
                 :class="[{
-                    'c-autocomplete-label--active': isActive,
-                    'top-[50%] -translate-y-1/2': !isFocus && !currentInput,
-                    'top-1/3': currentInput !== undefined && currentInput !== '',
-                    'pl-8': hasIcon && !isActive
+                    'c-autocomplete-label--active': floatingLabel && (isActive || currentInput),
+                    'top-[50%] -translate-y-1/2 left-1': (!isActive && !currentInput),
+                    'top-[30%]': !isActive && hasError,
+                    'scale-75 origin-left text-xs top-1 left-1': (isActive || (currentInput !== undefined && currentInput !== '')) && !floatingLabel,
+                    'pl-10': hasIcon && (!isActive && !currentInput)
                 },
                 textColor ? textColor : 'text-neutral-500 dark:text-neutral-400',
-                bgColor ? bgColor : variantColors[variant], 'px-1']">
-                {{ label }}
+                bgColor ? bgColor : variantColors[variant]]">
+                {{ label }} <span v-if="required" class="text-red-500">*</span>
             </label>
 
             <div class="relative flex items-center">
@@ -21,8 +22,9 @@
 
                 <input :id="id" type="text"
                     :class="[sizes[size], roundedStyles[rounded], variantStyles[variant], bgColor ? bgColor : variantColors[variant], textColor,
-                    { 'ring-red-500 ring-2': hasError, 'opacity-50': disabled, 'cursor-not-allowed': disabled, 'pl-10': hasIcon }]"
-                    class="c-autocomplete-field block w-full shadow-sm pt-3 pb-2 outline-none"
+                    { 'ring-red-500 ring-2': hasError, 'opacity-50': disabled, 'cursor-not-allowed': disabled, 'pl-10': hasIcon },
+                    { 'pt-4': !hasIcon, 'pb-3': hasIcon, 'pt-3': hasIcon }]"
+                    class="c-autocomplete-field block w-full shadow-sm outline-none"
                     :placeholder="isActive ? placeholder : ''" :value="currentInput" @input="handleInput"
                     @change="handleInput" @focus="activateLabel" @blur="deactivateLabel" :disabled="disabled"
                     :aria-invalid="hasError" />
@@ -142,6 +144,14 @@ const props = defineProps({
         type: Array,
         default: () => []
     },
+    floatingLabel: {
+        type: Boolean,
+        default: false
+    },
+    required: {
+        type: Boolean,
+        default: false
+    }
 });
 
 const emit = defineEmits(["update:modelValue"]);
@@ -171,8 +181,8 @@ const filteredOptions = computed<{ value: string | number; label: string }[]>(()
 
 const sizes: Record<string, string> = {
     sm: "px-2 py-1 text-xs",
-    md: "px-3 py-2 text-sm",
-    lg: "px-5 py-4 text-base",
+    md: "px-2 py-1 text-sm",
+    lg: "px-2 py-2 text-base",
 };
 
 const roundedStyles: Record<string, string> = {
@@ -317,12 +327,16 @@ defineExpose({
 .c-autocomplete-label {
     transform: translate(0, -50%);
     z-index: 1;
-    left: 0.75rem;
+    left: 0.60rem;
 }
 
 .c-autocomplete-label--active {
     transform: translate(0, -2rem) scale(0.85);
     top: 1.3rem;
     left: 0.3rem;
+}
+
+.scale-75 {
+    transform: scale(0.75);
 }
 </style>

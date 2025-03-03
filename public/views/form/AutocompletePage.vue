@@ -118,7 +118,7 @@
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4 h-[300px]">
-                <div class="lg:w-2/5 w-full max-w-[400px]">
+                <div class="w-full max-w-[400px]">
                     <c-autocomplete id="example1" label="Basic Autocomplete" v-model="basicValue"
                         :options="basicOptions" />
                 </div>
@@ -176,7 +176,7 @@ const basicOptions = [
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4 h-[300px]">
-                <div class="lg:w-2/5 w-full max-w-[400px]">
+                <div class="w-full max-w-[400px]">
                     <c-autocomplete id="small" label="Small Autocomplete" size="sm" :options="basicOptions"
                         class="mb-4" />
                     <c-autocomplete id="medium" label="Medium Autocomplete" size="md" :options="basicOptions"
@@ -221,7 +221,7 @@ const basicOptions = [
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4 h-[300px]">
-                <div class="lg:w-2/5 w-full max-w-[400px]">
+                <div class="w-full max-w-[400px]">
                     <c-autocomplete id="validation" label="Autocomplete with Validation"
                         :rules="[value => (value ? null : 'This field is required')]" :options="basicOptions"
                         v-model="validableValue" />
@@ -247,7 +247,7 @@ const basicOptions = [
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4 h-[300px]">
-                <div class="lg:w-2/5 w-full max-w-[400px]">
+                <div class="w-full max-w-[400px]">
                     <c-autocomplete v-model="clearableValue" id="clearable" label="Clearable Input"
                         :options="basicOptions" clearable />
                 </div>
@@ -278,8 +278,8 @@ const basicOptions = [
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4 h-[300px]">
-                <div class="lg:w-2/5 w-full max-w-[400px]">
-                    <c-autocomplete v-model="search" label="Search Input" :options="basicOptions">
+                <div class="w-full max-w-[400px]">
+                    <c-autocomplete v-model="search" label="Search Input" :options="basicOptions" floatingLabel>
                         <template #icon>
                             <IconMagnifyingGlass class="w-6 h-6 text-neutral-600 dark:text-white" aria-hidden="true" />
                         </template>
@@ -314,7 +314,7 @@ const basicOptions = [
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4 h-[300px]">
-                <div class="lg:w-2/5 w-full max-w-[400px]">
+                <div class="w-full max-w-[400px]">
                     <c-autocomplete v-model="customStyle" label="Custom Styled Autocomplete" :options="basicOptions"
                         bgColor="bg-blue-50 dark:bg-blue-900" textColor="text-blue-800 dark:text-blue-100"
                         class="border-blue-300 dark:border-blue-700 rounded-xl" />

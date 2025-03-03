@@ -96,7 +96,7 @@ defineProps({
     bgColor: {
         type: String,
         required: false,
-        default: "bg-white dark:bg-zinc-800",
+        default: "bg-white dark:bg-neutral-800",
     },
     bgHeaderColor: {
         type: String,
@@ -111,7 +111,7 @@ defineProps({
     textColor: {
         type: String,
         required: false,
-        default: "text-slate-800 dark:text-white",
+        default: "text-neutral-800 dark:text-white",
     },
     borderColor: {
         type: String,

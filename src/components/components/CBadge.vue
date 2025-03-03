@@ -10,11 +10,20 @@
     >
         <span
             v-if="!dot"
-            class="text-xs font-semibold flex items-center justify-center px-1 py-0.2"
+            class="text-xs flex items-center justify-center px-1 py-0.2"
             :class="[bgColor, textColor, rounded, customClass]"
         >
             <span v-if="!$slots.default">{{ content }}</span>
             <slot v-else></slot>
+
+            <button
+                v-if="deletable"
+                type="button"
+                class="ml-1 flex items-center justify-center focus:outline-none"
+                @click.stop="handleDelete"
+            >
+                <icon-x-mark class="w-4 h-4" size="sm" color="text-current" />
+            </button>
         </span>
 
         <span
@@ -26,7 +35,9 @@
 </template>
 
 <script setup>
-import { computed, defineProps } from "vue";
+import { computed, defineProps, defineEmits } from "vue";
+
+const emit = defineEmits(['delete']);
 
 const props = defineProps({
     content: {
@@ -70,10 +81,18 @@ const props = defineProps({
         type: String,
         default: "0.3rem",
     },
+    deletable: {
+        type: Boolean,
+        default: false,
+    },
 });
 
 const badgeStyle = computed(() => ({
     top: props.floating ? props.offsetY : undefined,
     right: props.floating ? props.offsetX : undefined,
 }));
+
+const handleDelete = () => {
+    emit('delete');
+};
 </script>

@@ -342,7 +342,7 @@ const selectedOptions = ref([]);
             </template>
         </card-docs>
 
-        <PagePagination previous="Autocomplete" previousLink="/autocomplete" next="Combobox" nextLink="/combobox" />
+        <PagePagination previous="Autocomplete" previousLink="/autocomplete" next="Chips Input" nextLink="/chips-input" />
     </BaseLayout>
 </template>
 

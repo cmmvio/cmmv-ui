@@ -80,7 +80,7 @@
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4 h-[400px]">
-                <div class="lg:w-2/5 w-full max-w-[400px]">
+                <div class="w-full max-w-[400px]">
                     <c-datepicker id="example1" label="Basic Datepicker" v-model="basicDate" />
                 </div>
 
@@ -115,7 +115,7 @@ const date = ref(null);
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4 h-[400px]">
-                <div class="lg:w-2/5 w-full max-w-[400px]">
+                <div class="w-full max-w-[400px]">
                     <c-datepicker id="format" label="Custom Format" format="MM/dd/yyyy" v-model="customFormatDate" />
                 </div>
             </div>
@@ -149,7 +149,7 @@ const date = ref(null);
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4 h-[400px]">
-                <div class="lg:w-2/5 w-full max-w-[400px]">
+                <div class="w-full max-w-[400px]">
                     <c-datepicker id="minmax" label="Date Range (This month only)" v-model="rangeDate" :min="minDate"
                         :max="maxDate" />
                 </div>
@@ -187,7 +187,7 @@ const maxDate = new Date(today.getFullYear(), today.getMonth() + 1, 0);
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4 h-[400px]">
-                <div class="lg:w-2/5 w-full max-w-[400px]">
+                <div class="w-full max-w-[400px]">
                     <c-datepicker id="validation" label="Required Date" v-model="validationDate"
                         :rules="[value => (value ? null : 'Please select a date')]" />
                 </div>
@@ -221,7 +221,7 @@ const date = ref(null);
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-                <div class="lg:w-2/5 w-full max-w-[400px]">
+                <div class="w-full max-w-[400px]">
                     <c-datepicker id="disabled" label="Disabled Datepicker" disabled v-model="disabledDate" />
                 </div>
             </div>
@@ -258,7 +258,7 @@ const date = ref(new Date());
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4 h-[400px]">
-                <div class=" w-full max-w-[300px]">
+                <div class="w-full max-w-[300px]">
                     <c-datepicker id="range" label="Travel Dates" v-model="travelDates" range
                         placeholder="Select departure and return dates" />
                 </div>

@@ -83,7 +83,7 @@
             <div v-if="isMenuVisible" class="fixed inset-0 top-16 bg-black/20 backdrop-blur-sm z-30 lg:hidden"
                 @click="isMenuVisible = false"></div>
 
-            <div class="w-full lg:pl-72 flex flex-col flex-1 transition-all duration-300">
+            <div class="w-full lg:pl-72 flex flex-col flex-1">
                 <div class="w-full max-w-full px-4 sm:px-6 lg:px-8 py-8 mx-auto">
                     <div class="text-slate-800 relative dark:text-white mb-12 context-html overflow-x-hidden">
                         <slot />
@@ -186,16 +186,6 @@ onBeforeUnmount(() => {
     border-radius: 20px;
 }
 
-@keyframes slideIn {
-    from {
-        transform: translateX(-100%);
-    }
-
-    to {
-        transform: translateX(0);
-    }
-}
-
 [v-cloak] {
     display: none;
 }
@@ -204,7 +194,6 @@ onBeforeUnmount(() => {
     margin-bottom: 3rem;
 }
 
-/* Efeito de grade no fundo com linhas contínuas */
 :root {
     --color-white: #ffffff;
     --color-black: #000000;
@@ -213,7 +202,7 @@ onBeforeUnmount(() => {
 
 .grid-pattern {
     --pattern-fg: rgba(0, 0, 0, 0.03);
-    /* Fallback para navegadores sem suporte a color-mix */
+
     background-image:
         linear-gradient(315deg, transparent calc(var(--grid-size) - 1px), var(--pattern-fg) calc(var(--grid-size) - 1px), var(--pattern-fg) var(--grid-size), transparent var(--grid-size)),
         linear-gradient(45deg, transparent calc(var(--grid-size) - 1px), var(--pattern-fg) calc(var(--grid-size) - 1px), var(--pattern-fg) var(--grid-size), transparent var(--grid-size));
@@ -222,7 +211,6 @@ onBeforeUnmount(() => {
     pointer-events: none;
 }
 
-/* Versões modernas dos navegadores que suportam color-mix */
 @supports (background: color-mix(in srgb, white, black)) {
     .grid-pattern {
         --pattern-fg: color-mix(in oklab, var(--color-black) 5%, transparent);
@@ -233,7 +221,6 @@ onBeforeUnmount(() => {
     }
 }
 
-/* Fallback para navegadores sem suporte a color-mix */
 .dark .grid-pattern {
     --pattern-fg: rgba(255, 255, 255, 0.06);
 }

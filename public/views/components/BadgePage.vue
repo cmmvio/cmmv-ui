@@ -82,6 +82,12 @@
                     <td class="border-b px-4 py-2">""</td>
                     <td class="border-b px-4 py-2">Additional custom classes for advanced styling.</td>
                 </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">deletable</td>
+                    <td class="border-b px-4 py-2">Boolean</td>
+                    <td class="border-b px-4 py-2">false</td>
+                    <td class="border-b px-4 py-2">When true, displays an X icon that emits a delete event when clicked.</td>
+                </tr>
             </tbody>
         </table-docs>
 
@@ -332,6 +338,85 @@
             </template>
         </card-docs>
 
+        <h3>Deletable Badge</h3>
+
+        <p>
+            The <code>deletable</code> prop adds an X icon to the badge that emits a <code>delete</code> event when clicked.
+            This is useful for tags, filters, or any element that needs to be removable by the user.
+        </p>
+
+        <card-docs>
+            <div class="flex flex-wrap items-center justify-center gap-2">
+                <c-badge
+                    bgColor="bg-blue-100 dark:bg-blue-900"
+                    textColor="text-blue-800 dark:text-blue-300"
+                    rounded="rounded-md"
+                    customClass="px-2.5 py-0.5"
+                    deletable
+                    @delete="() => alert('Blue badge deleted!')"
+                >
+                    Blue
+                </c-badge>
+
+                <c-badge
+                    bgColor="bg-green-100 dark:bg-green-900"
+                    textColor="text-green-800 dark:text-green-300"
+                    rounded="rounded-md"
+                    customClass="px-2.5 py-0.5"
+                    deletable
+                    @delete="() => alert('Green badge deleted!')"
+                >
+                    Green
+                </c-badge>
+
+                <c-badge
+                    content="Tag"
+                    bgColor="bg-neutral-100 dark:bg-neutral-900"
+                    textColor="text-neutral-800 dark:text-neutral-300"
+                    rounded="rounded-md"
+                    customClass="px-2.5 py-0.5"
+                    deletable
+                    @delete="() => alert('Tag badge deleted!')"
+                />
+            </div>
+
+            <template #code>
+                <pre><code class="code-highlight language-html">&lt;!-- Deletable Blue Badge --&gt;
+&lt;c-badge
+    bgColor="bg-blue-100 dark:bg-blue-900"
+    textColor="text-blue-800 dark:text-blue-300"
+    rounded="rounded-md"
+    customClass="px-2.5 py-0.5"
+    deletable
+    @delete="handleDeleteBadge"
+&gt;
+    Blue
+&lt;/c-badge&gt;
+
+&lt;!-- Deletable Green Badge --&gt;
+&lt;c-badge
+    bgColor="bg-green-100 dark:bg-green-900"
+    textColor="text-green-800 dark:text-green-300"
+    rounded="rounded-md"
+    customClass="px-2.5 py-0.5"
+    deletable
+    @delete="handleDeleteBadge"
+&gt;
+    Green
+&lt;/c-badge&gt;
+
+&lt;!-- Deletable Tag Badge --&gt;
+&lt;c-badge
+    content="Tag"
+    bgColor="bg-neutral-100 dark:bg-neutral-900"
+    textColor="text-neutral-800 dark:text-neutral-300"
+    rounded="rounded-md"
+    customClass="px-2.5 py-0.5"
+    deletable
+    @delete="handleDeleteBadge"
+/&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <PagePagination previous="AI Chat" previousLink="/ai-chat" next="Button" nextLink="/button" />
     </BaseLayout>

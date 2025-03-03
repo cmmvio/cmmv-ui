@@ -6,7 +6,7 @@
                 'c-input-label--active': floatingLabel && (isActive || currentValue),
                 'top-[50%] -translate-y-1/2 left-3': (!isActive && !currentValue),
                 'top-[30%]': !isActive && hasError,
-                'scale-75 origin-left text-xs top-1 left-3': (isActive || (currentValue !== undefined && currentValue !== '')) && !floatingLabel,
+                'scale-75 origin-left text-xs top-1 left-1': (isActive || (currentValue !== undefined && currentValue !== '')) && !floatingLabel,
                 'pl-10': hasIcon && (!isActive && !currentValue)
             },
             textColor ? textColor : 'text-gray-500 dark:text-gray-400',
@@ -22,8 +22,9 @@
             <input :id="id" :type="inputType" :name="name" :placeholder="isActive ? placeholder : ''"
                 :value="modelValue"
                 :class="[sizes[size], roundedStyles[rounded], variantStyles[variant], bgColor ? bgColor : variantColors[variant], textColor,
-                { 'ring-red-500 ring-2': hasError, 'opacity-30': disabled, 'cursor-not-allowed': disabled, 'pl-10': hasIcon }, customClass]"
-                class="c-input-field block w-full border shadow-sm pt-4 pb-2 outline-none" @keyup="handleInput"
+                { 'ring-red-500 ring-2': hasError, 'opacity-30': disabled, 'cursor-not-allowed': disabled, 'pl-12': hasIcon }, customClass,
+                { 'pt-4': !hasIcon, 'pb-3': hasIcon, 'pt-3': hasIcon }]"
+                class="c-input-field block w-full border shadow-sm pb-1 outline-none" @keyup="handleInput"
                 @change="handleInput" @focus="activateLabel" @blur="deactivateLabel" :disabled="disabled"
                 :aria-invalid="hasError" />
 
@@ -250,8 +251,8 @@ const id = computed(() => props.id || generatedId);
 
 const sizes: Record<string, string> = {
     sm: "px-2 py-1 text-xs",
-    md: "px-3 py-2 text-sm",
-    lg: "px-5 py-4 text-base",
+    md: "px-2 py-1 text-sm",
+    lg: "px-2 py-2 text-base",
 };
 
 const roundedStyles: Record<string, string> = {

@@ -34,6 +34,7 @@ import CardPage from "./views/layout/CardPage.vue";
 import DropdownPage from "./views/layout/DropdownPage.vue";
 import SidebarPage from "./views/layout/SidebarPage.vue";
 import SpeedDialPage from "./views/layout/SpeedDialPage.vue";
+import StepperPage from "./views/layout/StepperPage.vue";
 import SkeletonPage from "./views/layout/SkeletonPage.vue";
 import TabsPage from "./views/layout/TabsPage.vue";
 import ToolbarPage from "./views/layout/ToolbarPage.vue";
@@ -55,6 +56,7 @@ import ComboboxPage from "./views/form/ComboboxPage.vue";
 import TimepickerPage from "./views/form/TimepickerPage.vue";
 import DatepickerPage from "./views/form/DatepickerPage.vue";
 import FileUploadPage from "./views/form/FileUploadPage.vue";
+import ChipsInputPage from "./views/form/ChipsInputPage.vue";
 
 //Graph
 import GraphBoxPage from "./views/graph/GraphBoxPage.vue";
@@ -103,6 +105,7 @@ const routes = [
     { path: '/navbar', component: NavbarPage },
     { path: '/sidebar', component: SidebarPage },
     { path: '/speed-dial', component: SpeedDialPage },
+    { path: '/stepper', component: StepperPage },
     { path: '/skeleton', component: SkeletonPage },
     { path: '/tabs', component: TabsPage },
     { path: '/toolbar', component: ToolbarPage },
@@ -110,6 +113,7 @@ const routes = [
 	//Form
     { path: '/autocomplete', component: AutocompletePage },
     { path: '/checkbox', component: CheckboxPage },
+    { path: '/chips-input', component: ChipsInputPage },
     { path: '/combobox', component: ComboboxPage },
     { path: '/datepicker', component: DatepickerPage },
     { path: '/file-upload', component: FileUploadPage },

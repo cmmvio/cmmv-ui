@@ -115,7 +115,7 @@
         <!-- Basic Examples -->
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-                <div class="lg:w-2/5 w-full">
+                <div class="w-full max-w-[400px]">
                     <c-input v-model="example1" id="example1" label="Basic Input" class="mb-4" />
                     <c-input v-model="example2" id="example2" label="Input with Placeholder" placeholder="Enter text..."
                         class="mb-4" />
@@ -149,7 +149,7 @@ const example3 = ref("");
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-                <div class="lg:w-2/5 w-full">
+                <div class="w-full max-w-[400px]">
                     <c-input id="validation" label="Input with Validation"
                         :rules="[value => (value ? null : 'This field is required')]" v-model="validableValue" />
                 </div>
@@ -181,7 +181,7 @@ const validableValue = ref("");
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-                <div class="lg:w-2/5 w-full">
+                <div class="w-full max-w-[400px]">
                     <c-input v-model="example4" id="small" label="Small Input" size="sm" class="mb-4" />
                     <c-input v-model="example5" id="medium" label="Medium Input" size="md" class="mb-4" />
                     <c-input v-model="example6" id="large" label="Large Input" size="lg" class="mb-4" />
@@ -208,7 +208,7 @@ const validableValue = ref("");
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-                <div class="lg:w-2/5 w-full">
+                <div class="w-full max-w-[400px]">
                     <c-input id="default" label="Default Variant" variant="default" class="mb-4" />
                     <c-input id="outlined" label="Outlined Variant" variant="outlined" class="mb-4" />
                     <c-input id="filled" label="Filled Variant" variant="filled" />
@@ -235,7 +235,7 @@ const validableValue = ref("");
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-                <div class="lg:w-2/5 w-full">
+                <div class="w-full max-w-[400px]">
                     <c-input v-model="passwordValue" id="password" label="Password" type="password" />
                 </div>
             </div>
@@ -265,7 +265,7 @@ const passwordValue = ref("");
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-                <div class="lg:w-2/5 w-full">
+                <div class="w-full max-w-[400px]">
                     <c-input v-model="clearableValue" id="clearable" label="Clearable Input" clearable />
                 </div>
             </div>
@@ -295,7 +295,7 @@ const clearableValue = ref("");
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-                <div class="lg:w-2/5 w-full">
+                <div class="w-full max-w-[400px]">
                     <c-input id="loading" label="Loading Input" loading />
                 </div>
             </div>
@@ -323,7 +323,7 @@ const clearableValue = ref("");
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-                <div class="lg:w-2/5 w-full">
+                <div class="w-full max-w-[400px]">
                     <c-input v-model="defaultLabel" id="default-label" label="Default Label (inside)" class="mb-4" />
                     <c-input v-model="floatingLabelValue" id="floating-label" label="Floating Label (outside)"
                         floatingLabel />
@@ -376,7 +376,7 @@ const floatingLabelValue = ref("");
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-                <div class="lg:w-2/5 w-full">
+                <div class="w-full max-w-[400px]">
                     <c-input id="search" label="Search Input" floatingLabel>
                         <template #icon>
                             <IconMagnifyingGlass class="w-6 h-6 text-neutral-600 dark:text-white" aria-hidden="true" />
@@ -448,7 +448,7 @@ const floatingLabelValue = ref("");
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-                <div class="lg:w-2/5 w-full">
+                <div class="w-full max-w-[400px]">
                     <c-input id="custom" label="Custom Input" bgColor="bg-blue-600" textColor="text-white"
                         borderColor="focus:ring focus:ring-purple-700 focus:ring-opacity-50"></c-input>
                 </div>
@@ -485,7 +485,7 @@ const floatingLabelValue = ref("");
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-                <div class="lg:w-3/5 w-full">
+                <div class="w-full max-w-[400px]">
                     <div class="flex items-stretch">
                         <c-input v-model="searchQuery" id="search-with-button" label="Search"
                             placeholder="Search anything..." customClass="!rounded-r-none !border-r-0">
@@ -493,7 +493,7 @@ const floatingLabelValue = ref("");
                         </c-input>
 
                         <c-button variant="primary" size="lg"
-                            class="!rounded-l-none mb-[0.25rem] w-[100px] px-8 flex items-center justify-center border-neutral-300 dark:border-neutral-700"
+                            class="!rounded-l-none  w-[100px] px-8 flex items-center justify-center border-neutral-300 dark:border-neutral-700"
                             @click="handleSearch">
                             <IconMagnifyingGlass class="w-6 h-6 text-white mr-2" aria-hidden="true" /> Search
                         </c-button>
@@ -544,10 +544,10 @@ function handleSearch() {
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4 h-[300px]">
-                <div class="lg:w-3/5 w-full">
+                <div class="w-full max-w-[400px]">
                     <div class="flex items-stretch">
                         <c-input v-model="amountValue" id="amount-with-select" label="Amount" type="number"
-                            customClass="!rounded-r-none border-r-1 -mt-1" />
+                            customClass="!rounded-r-none border-r-1 " size="sm" />
 
                         <c-combobox v-model="selectedCurrency" :options="currencyOptions" size="md"
                             class="!rounded-l-none min-w-[120px]" customClass="!rounded-l-none border-l-0 h-[46px]" />

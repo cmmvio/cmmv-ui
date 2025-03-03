@@ -463,7 +463,7 @@ const validate = () => {
 
 const sizes = {
     sm: "px-2 py-1 text-xs",
-    md: "px-3 py-2 text-sm h-[46px]",
+    md: "px-3 py-1 text-sm h-[42px]",
     lg: "px-5 py-4 text-base"
 };
 

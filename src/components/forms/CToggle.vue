@@ -96,7 +96,7 @@ const sizes: Record<string, {
 }> = {
     "sm": {
         track: "w-10 h-5",
-        thumb: "w-4 h-4",
+        thumb: "w-4 h-4 ml-0.5",
         thumbTranslate: "translate-x-5",
         label: "text-sm",
     },

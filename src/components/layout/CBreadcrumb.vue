@@ -1,10 +1,10 @@
 <template>
-    <nav class="flex text-sm" aria-label="Breadcrumb" :class="[bgColor]">
+    <nav class="flex text-sm overflow-hidden" aria-label="Breadcrumb" :class="[bgColor]">
         <ol class="flex items-center space-x-2">
             <li v-if="icon || $slots.icon" class="flex items-center">
                 <div :class="[iconClass, 'flex-shrink-0']">
                     <slot name="icon">
-                        <component :is="icon" customClass="h-3 w-3 text-neutral-500" size="md" :class="[textColor]" />
+                        <component :is="icon" customClass="h-3 w-3 text-neutral-500 mt-0.5" size="sm" :class="[textColor]" />
                     </slot>
                 </div>
             </li>

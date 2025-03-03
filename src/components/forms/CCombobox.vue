@@ -34,10 +34,12 @@
                         </svg>
                         Loading options...
                     </span>
+
                     <span v-else-if="$slots.selected && allowCheck">
                         <slot name="selected" :data="selectedOption" :checked="checkedOptions"
                             :count="checkedOptions.length"></slot>
                     </span>
+
                     <span v-else-if="$slots.selected && selectedLabel">
                         <slot name="selected" :data="selectedOption"></slot>
                     </span>

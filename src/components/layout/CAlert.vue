@@ -1,17 +1,8 @@
 <template>
-    <div
-        class="p-4 rounded-md my-6 flex items-start"
-        :class="computedClasses"
-        role="alert"
-        :aria-label="ariaLabel"
-    >
+    <div class="p-4 rounded-md flex items-start" :class="computedClasses" role="alert" :aria-label="ariaLabel">
         <div v-if="icon" class="mr-3">
             <slot name="icon">
-                <component
-                    :is="computedIcon"
-                    class="h-6 w-6"
-                    :class="textColorClass"
-                />
+                <component :is="computedIcon" class="h-6 w-6" :class="textColorClass" />
             </slot>
         </div>
 
@@ -26,18 +17,10 @@
             </p>
         </div>
 
-        <button
-            v-if="closable"
-            class="ml-4 p-2 rounded-md focus:outline-none"
-            :class="textColorClass"
-            @click="$emit('close')"
-            aria-label="Close alert"
-        >
+        <button v-if="closable" class="ml-4 p-2 rounded-md focus:outline-none" :class="textColorClass"
+            @click="$emit('close')" aria-label="Close alert">
             <slot name="close-icon">
-                <icon-x-mark
-                    class="w-6 h-6 text-white"
-                    aria-label="Close"
-                />
+                <icon-x-mark class="w-6 h-6 text-white" aria-label="Close" />
             </slot>
         </button>
     </div>
@@ -91,6 +74,10 @@ const props = defineProps({
         type: String,
         default: 'Alert',
     },
+    margin: {
+        type: String,
+        default: '',
+    },
 });
 
 const colorByType: Record<string, string> = {
@@ -106,6 +93,7 @@ const computedClasses = computed(() => {
         props.outlined
             ? `border border-${colorByType[props.type]}-400`
             : `border-l-4 border-${colorByType[props.type]}-500`,
+        props.margin,
     ].join(' ');
 });
 

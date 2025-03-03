@@ -320,7 +320,7 @@ const selectedPlan = ref(pricingPlans[0]);
                         <template v-slot="{ checked }">
                             <div :class="[
                                 checked ? 'border-indigo-600 ring-2 ring-indigo-600' : 'border-neutral-300',
-                                'relative flex cursor-pointer rounded-lg border bg-white dark:bg-zinc-800 p-4 shadow-sm focus:outline-none'
+                                'relative flex cursor-pointer rounded-lg border bg-white dark:bg-neutral-800 p-4 shadow-sm focus:outline-none'
                             ]">
                                 <span class="flex flex-1">
                                     <span class="flex flex-col">
