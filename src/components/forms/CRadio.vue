@@ -4,14 +4,14 @@
             <div class="relative z-10 flex items-center justify-center border rounded-full transition-all duration-200 overflow-hidden text-center"
                 :class="[
                     sizes[size].box,
-                    isChecked ? borderColor : 'border-gray-300',
-                    disabled ? 'border-gray-600' : borderColor,
+                    isChecked ? borderColor : 'border-neutral-300',
+                    disabled ? 'border-neutral-600' : borderColor,
                     disabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'
                 ]">
                 <div v-if="isChecked" class="absolute inset-0 m-auto rounded-full transition-all duration-200" :class="[
                     'scale-75',
-                    disabled ? 'bg-gray-600' : bgColor,
-                    disabled ? 'text-gray-400' : textColor,
+                    disabled ? 'bg-neutral-600' : bgColor,
+                    disabled ? 'text-neutral-400' : textColor,
                     disabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'
                 ]"></div>
             </div>

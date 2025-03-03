@@ -2,7 +2,7 @@
     <div class="p-4 select-none text-slate-700 dark:text-slate-200">
         <div class="mb-4 flex items-center justify-between lg:hidden">
             <h2 class="text-base font-bold">Menu</h2>
-            <button @click="$emit('close')" class="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-zinc-700/70">
+            <button @click="$emit('close')" class="p-1.5 rounded-lg hover:bg-neutral-100 dark:hover:bg-zinc-700/70">
                 <IconXMark class="h-5 w-5" />
             </button>
         </div>
@@ -10,40 +10,41 @@
         <div class="mb-6 px-3">
             <div class="relative">
                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <IconMagnifyingGlass class="h-5 w-5 " color="text-gray-400 dark:text-gray-100" />
+                    <IconMagnifyingGlass class="h-5 w-5 " color="text-neutral-400 dark:text-neutral-100" />
                 </div>
 
                 <input type="search" placeholder="Search components..."
-                    class="pl-10 pr-4 py-2 w-full bg-gray-100 dark:bg-zinc-700/50 border-0 rounded-lg text-sm transition-all duration-200"
+                    class="pl-10 pr-4 py-2 w-full bg-neutral-100 dark:bg-zinc-700/50 border-0 rounded-lg text-sm transition-all duration-200"
                     v-model="searchQuery" @keydown.esc="clearSearch">
-                <!-- Resultados da pesquisa -->
+
                 <div v-if="searchQuery && filteredResults.length > 0"
-                    class="absolute z-50 mt-1 w-full bg-white dark:bg-zinc-800 rounded-lg shadow-lg border border-gray-200 dark:border-zinc-700 overflow-hidden max-h-[300px] overflow-y-auto">
+                    class="absolute z-50 mt-1 w-full bg-white dark:bg-zinc-800 rounded-lg shadow-lg border border-neutral-200 dark:border-zinc-700 overflow-hidden max-h-[300px] overflow-y-auto">
                     <div v-for="(result, index) in filteredResults" :key="index"
-                        class="px-3 py-2 hover:bg-gray-100 dark:hover:bg-zinc-700/70 cursor-pointer"
+                        class="px-3 py-2 hover:bg-neutral-100 dark:hover:bg-zinc-700/70 cursor-pointer"
                         @click="navigateTo(result)">
                         <div class="flex items-center">
                             <div>
                                 <span class="text-sm">{{ result.name }}</span>
-                                <span v-if="result.parent" class="text-xs text-gray-500 dark:text-gray-400 ml-2">({{
-                                    result.parent }})</span>
+                                <span v-if="result.parent"
+                                    class="text-xs text-neutral-500 dark:text-neutral-400 ml-2">({{
+                                        result.parent }})</span>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div v-else-if="searchQuery && filteredResults.length === 0"
-                    class="absolute z-50 mt-1 w-full bg-white dark:bg-zinc-800 rounded-lg shadow-lg border border-gray-200 dark:border-zinc-700 py-3 px-4 text-center">
-                    <span class="text-gray-500 dark:text-gray-400 text-sm">Nenhum resultado encontrado</span>
+                    class="absolute z-50 mt-1 w-full bg-white dark:bg-zinc-800 rounded-lg shadow-lg border border-neutral-200 dark:border-zinc-700 py-3 px-4 text-center">
+                    <span class="text-neutral-500 dark:text-neutral-400 text-sm">Nenhum resultado encontrado</span>
                 </div>
             </div>
         </div>
         <div v-if="!searchQuery" v-for="(item, key) in navbarItems" :key="key" class="mb-1">
-            <div class="flex items-center px-3 py-2.5 rounded-lg hover:bg-gray-100 dark:hover:bg-zinc-700/70 transition-colors duration-200 cursor-pointer group"
+            <div class="flex items-center px-3 py-2.5 rounded-lg hover:bg-neutral-100 dark:hover:bg-zinc-700/70 transition-colors duration-200 cursor-pointer group"
                 :id="item?.name.replace(/\s/g, '_')" @click.stop="toggle(item.name?.replace(/\s/g, '_'))">
                 <div class="flex flex-1 items-center">
-                    <div class="mr-4 text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200 flex-shrink-0"
+                    <div class="mr-4 text-neutral-500 dark:text-neutral-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200 flex-shrink-0"
                         :class="{ 'text-blue-600 dark:text-blue-400': navbar[item?.name.replace(/\s/g, '_')] }">
-                        <component :is="item.icon" class="h-5 w-5" color="text-gray-500 dark:text-gray-400" />
+                        <component :is="item.icon" class="h-5 w-5" color="text-neutral-500 dark:text-neutral-400" />
                     </div>
 
                     <div class="truncate" :class="item?.isDir ? 'navbar-text-dir' : 'navbar-text'">
@@ -53,7 +54,7 @@
 
                 <div v-if="item?.isDir" class="transform transition-transform duration-200 flex-shrink-0"
                     :class="[navbar[item?.name.replace(/\s/g, '_')] ? 'rotate-180' : '']">
-                    <IconChevronDown class="w-4 h-4" />
+                    <IconChevronDown class="w-4 h-4" color="text-neutral-500 dark:text-neutral-400" />
                 </div>
             </div>
 
@@ -61,7 +62,7 @@
                 :id="`${item?.name.replace(/\s/g, '_')}_contents`" class="py-1 pl-10 pr-3 mb-1 transition duration-200">
                 <div v-for="(child) in item.children" :key="child.name" class="mb-1">
                     <a :href="child.uri"
-                        class="block py-2 px-3 rounded-md text-sm hover:bg-gray-100 dark:hover:bg-zinc-700/50 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
+                        class="block py-2 px-3 rounded-md text-sm hover:bg-neutral-100 dark:hover:bg-zinc-700/50 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
                         :class="{ 'bg-blue-50 dark:bg-blue-900/10 text-blue-700 dark:text-blue-400 font-medium': isCurrentPath(child.uri) }">
                         {{ child.name }}
                     </a>
@@ -179,6 +180,7 @@ const navbarItems = [
             { name: "Progress Bar", uri: "/progress-bar" },
             { name: "Progress Circular", uri: "/progress-circular" },
             { name: "Rating", uri: "/rating" },
+            { name: "System Bar", uri: "/system-bar" },
             { name: "Tooltip", uri: "/tooltip" }
         ],
     },
@@ -239,6 +241,7 @@ const navbarItems = [
             { name: "Dropdown", uri: "/dropdown" },
             { name: "Navbar", uri: "/navbar" },
             { name: "Sidebar", uri: "/sidebar" },
+            { name: "Skeleton", uri: "/skeleton" },
             { name: "Speed Dial", uri: "/speed-dial" },
             { name: "Tabs", uri: "/tabs" },
             { name: "Toolbar", uri: "/toolbar" },

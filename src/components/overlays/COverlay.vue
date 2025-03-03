@@ -1,17 +1,11 @@
 <template>
-    <div
-        v-if="modelValue"
+    <div v-if="modelValue"
         class="fixed inset-0 z-[var(--z-index)] flex items-center justify-center transition-opacity c-overlay"
-        style="--z-index: 50; transition-timing-function: cubic-bezier(.4,0,.2,1)"
-    >
-        <div
-            class="absolute inset-0"
-            :style="{
-                backgroundColor: bgColor,
-                opacity: opacity / 100,
-            }"
-            @click.self="handleClose"
-        ></div>
+        style="--z-index: 50; transition-timing-function: cubic-bezier(.4,0,.2,1)">
+        <div class="absolute inset-0" :style="{
+            backgroundColor: bgColor,
+            opacity: opacity / 100,
+        }" @click.self="handleClose"></div>
 
         <div class="relative z-[calc(var(--z-index)+1)]">
             <slot></slot>

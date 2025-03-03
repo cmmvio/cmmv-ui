@@ -9,7 +9,7 @@
                     'top-1/3': currentInput !== undefined && currentInput !== '',
                     'pl-8': hasIcon && !isActive
                 },
-                textColor ? textColor : 'text-gray-500 dark:text-gray-400',
+                textColor ? textColor : 'text-neutral-500 dark:text-neutral-400',
                 bgColor ? bgColor : variantColors[variant], 'px-1']">
                 {{ label }}
             </label>
@@ -28,7 +28,7 @@
                     :aria-invalid="hasError" />
 
                 <button v-if="clearable && currentInput" type="button"
-                    class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-400 hover:text-gray-600"
+                    class="absolute inset-y-0 right-0 flex items-center px-2 text-neutral-400 hover:text-neutral-600"
                     @click="clearInput">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
                         <path fill-rule="evenodd"
@@ -40,10 +40,10 @@
 
             <transition name="fade">
                 <div v-if="isActive && isFocus && filteredOptions.length > 0"
-                    class="absolute z-50 w-full bg-white border border-gray-300 dark:bg-zinc-800 dark:border-zinc-700 mt-2 max-h-40 overflow-auto shadow-lg rounded-md">
+                    class="absolute z-50 w-full bg-white border border-neutral-300 dark:bg-neutral-800 dark:border-neutral-900 mt-2 max-h-40 overflow-auto shadow-lg rounded-md">
                     <ul>
                         <li v-for="option in filteredOptions" :key="option.value" @click="selectOption(option)"
-                            class="px-4 py-2 cursor-pointer hover:bg-gray-200 dark:hover:bg-zinc-700 text-sm">
+                            class="px-4 py-2 cursor-pointer hover:bg-neutral-200 dark:hover:bg-neutral-900 text-sm">
                             {{ option.label }}
                         </li>
                     </ul>
@@ -53,7 +53,7 @@
 
         <div class="mt-1" v-if="!hiddenHint">
             <p v-if="hasError" class="text-xs text-red-500">{{ errorMessage }}</p>
-            <p v-else-if="hint && (hintFixed || isActive)" class="text-xs text-gray-500">{{ hint }}</p>
+            <p v-else-if="hint && (hintFixed || isActive)" class="text-xs text-neutral-500">{{ hint }}</p>
         </div>
     </div>
 </template>
@@ -136,7 +136,7 @@ const props = defineProps({
     borderColor: {
         type: String,
         required: false,
-        default: "focus:ring focus:ring-zinc-700 focus:ring-opacity-50",
+        default: "focus:ring focus:ring-neutral-700 focus:ring-opacity-50",
     },
     rules: {
         type: Array,
@@ -182,15 +182,15 @@ const roundedStyles: Record<string, string> = {
 };
 
 const variantStyles: Record<string, string> = {
-    default: "border border-gray-300 dark:border-gray-700",
-    outlined: "border-2 border-zinc-700",
-    filled: "border-1 border-zinc-900 shadow-md",
+    default: "border border-neutral-300 dark:border-neutral-900",
+    outlined: "border-2 border-neutral-700",
+    filled: "border-1 border-neutral-900 shadow-md",
 };
 
 const variantColors: Record<string, string> = {
-    default: "bg-zinc-200 dark:bg-zinc-900 text-zinc-950 dark:text-white",
-    outlined: "bg-zinc-100 dark:bg-zinc-800 text-zinc-950 dark:text-white",
-    filled: "bg-zinc-200 dark:bg-zinc-800 text-zinc-950 dark:text-white",
+    default: "bg-neutral-200 dark:bg-neutral-900 text-neutral-950 dark:text-white",
+    outlined: "bg-neutral-100 dark:bg-neutral-800 text-neutral-950 dark:text-white",
+    filled: "bg-neutral-200 dark:bg-neutral-800 text-neutral-950 dark:text-white",
 };
 
 const borderColorClass = computed(() => props.borderColor);

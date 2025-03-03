@@ -74,7 +74,7 @@
                 <tr>
                     <td>portColor</td>
                     <td>String</td>
-                    <td>"bg-gray-500"</td>
+                    <td>"bg-neutral-500"</td>
                     <td>Default color for node connectors.</td>
                 </tr>
             </tbody>
@@ -90,27 +90,15 @@
         <card-docs>
             <div class="w-full h-96">
                 <c-graph-box ref="graph" :gridSize="30">
-                    <c-graph-node
-                        id="start"
-                        :x="50"
-                        :y="50"
-                        label="Start Node"
-                        :outputs="outputs1"
-                    />
+                    <c-graph-node id="start" :x="50" :y="50" label="Start Node" :outputs="outputs1" />
 
-                    <c-graph-node
-                        id="process"
-                        :x="300"
-                        :y="150"
-                        label="Process Node"
-                        :inputs="inputs1"
-                        :outputs="outputs2"
-                    />
+                    <c-graph-node id="process" :x="300" :y="150" label="Process Node" :inputs="inputs1"
+                        :outputs="outputs2" />
                 </c-graph-box>
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-vue">&lt;template&gt;
+                <pre><code class="code-highlight language-vue">&lt;template&gt;
     &lt;c-graph-box :gridSize="30"&gt;
         &lt;c-graph-node
             id="start"
@@ -161,24 +149,17 @@ const graph = ref(null);
         <card-docs>
             <div class="w-full h-96">
                 <c-graph-box ref="graph">
-                    <c-graph-node
-                        id="math-addition"
-                        :x="200"
-                        :y="100"
-                        label="Addition"
-                        :inputs="[
-                            { id: 'a', type: 'int', label: 'A' },
-                            { id: 'b', type: 'int', label: 'B' }
-                        ]"
-                        :outputs="[
+                    <c-graph-node id="math-addition" :x="200" :y="100" label="Addition" :inputs="[
+                        { id: 'a', type: 'int', label: 'A' },
+                        { id: 'b', type: 'int', label: 'B' }
+                    ]" :outputs="[
                             { id: 'result', type: 'int', label: 'Result' }
-                        ]"
-                    />
+                        ]" />
                 </c-graph-box>
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-vue">&lt;template&gt;
+                <pre><code class="code-highlight language-vue">&lt;template&gt;
     &lt;c-graph-node
         id="math-addition"
         :x="200"

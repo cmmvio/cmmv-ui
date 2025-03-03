@@ -1,9 +1,11 @@
 <template>
     <div class="flex items-center justify-between flex-column flex-wrap"
-        :class="{ 'border-b border-gray-200 dark:border-neutral-700 px-2 py-2': !card }">
+        :class="{ 'border-b border-neutral-200 dark:border-neutral-900 px-2 py-2': !card }">
         <div v-if="captionTitle || captionSubtitle">
-            <h2 v-if="captionTitle" class="text-xl font-semibold">{{ captionTitle }}</h2>
-            <span v-if="captionSubtitle" class="text-sm text-gray-500">{{ captionSubtitle }}</span>
+            <h2 v-if="captionTitle" class="text-xl font-semibold text-neutral-900 dark:text-white">{{ captionTitle }}
+            </h2>
+            <span v-if="captionSubtitle" class="text-sm text-neutral-500 dark:text-neutral-400">{{ captionSubtitle
+            }}</span>
         </div>
 
         <div class="relative">
@@ -13,7 +15,7 @@
                     :customClass="searchableFields.length > 0 ? '!rounded-r-none border-r-1' : ''"
                     style="min-width: 250px; flex: 1;">
                     <template #icon>
-                        <IconMagnifyingGlass class="w-6 h-6 text-gray-600 dark:text-white" aria-hidden="true" />
+                        <IconMagnifyingGlass class="w-6 h-6 text-neutral-600 dark:text-white" aria-hidden="true" />
                     </template>
                 </c-input>
 
@@ -31,7 +33,7 @@
         :bg-caption-color="bgCaptionColor" :border-color="borderColor" :text-color="textColor" :text-size="textSize"
         :enable-sort="enableLocalSort || enableApiSort" :fixed-headers="fixedHeaders" :max-height="maxHeight"
         @update:selected="handleSelected" @sorting="handleSorting"
-        :class="{ 'border-b border-gray-200 dark:border-neutral-700': !card }">
+        :class="{ 'border-b border-neutral-200 dark:border-neutral-900': !card }">
 
         <template v-for="(_, name) in $slots" #[name]="slotData">
             <slot :name="name" v-bind="slotData"></slot>
@@ -46,7 +48,7 @@
         </template>
 
         <template v-else-if="tableItems.length === 0" #empty>
-            <div class="py-8 text-center text-gray-500 dark:text-gray-400">
+            <div class="py-8 text-center text-neutral-500 dark:text-neutral-400">
                 {{ emptyText }}
             </div>
         </template>
@@ -55,7 +57,7 @@
     <div class="flex justify-between items-center ml-2 mt-2">
         <div v-if="availableActions && availableActions.length > 0" class="flex items-center gap-2">
             <select v-model="selectedAction"
-                class="h-8 rounded-md ring-1 ring-inset ring-gray-300 dark:ring-gray-700 dark:bg-neutral-800 py-0 px-2 text-sm outline-none focus:ring-2 focus:ring-indigo-500"
+                class="h-8 rounded-md ring-1 ring-inset ring-neutral-300 dark:ring-neutral-700 dark:bg-neutral-800 py-0 px-2 text-sm outline-none focus:ring-2 focus:ring-indigo-500"
                 :disabled="(selectedAction && getActionById(selectedAction)?.requiresSelection && selectedItems.length === 0) || loading">
                 <option value="" disabled selected>{{ i18n.selectAction }}</option>
                 <option v-for="action in availableActionsFiltered" :key="action.id" :value="action.id"

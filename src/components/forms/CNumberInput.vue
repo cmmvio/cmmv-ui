@@ -5,39 +5,30 @@
         </label>
 
         <div class="relative flex items-center" :class="sizeClasses">
-            <button
-                type="button"
-                class="border border-neutral-300 dark:border-neutral-600 bg-neutral-100 dark:bg-neutral-700 dark:hover:bg-neutral-600 hover:bg-neutral-200 p-3 focus:ring-2 focus:outline-none"
-                :class="['rounded-l-lg', disabled ? 'opacity-50 cursor-not-allowed' : '']"
-                @click="decrement"
-                :disabled="disabled || internalValue <= min"
-            >
-                <svg class="w-3 h-3 text-neutral-900 dark:text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h16"/>
+            <button type="button"
+                class="border border-neutral-300 dark:border-neutral-900 bg-neutral-100 dark:bg-neutral-800 dark:hover:bg-neutral-700 hover:bg-neutral-200 p-3 focus:ring-2 focus:outline-none"
+                :class="['rounded-l-lg', disabled ? 'opacity-50 cursor-not-allowed' : '']" @click="decrement"
+                :disabled="disabled || internalValue <= min">
+                <svg class="w-3 h-3 text-neutral-900 dark:text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 18 2">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M1 1h16" />
                 </svg>
             </button>
 
-            <input
-                :id="id"
-                type="text"
-                v-model="valueInput"
-                class="bg-neutral-50 dark:bg-neutral-700 border-x-0 border-t border-b dark:border-neutral-600 text-center text-neutral-900 dark:text-white focus:ring-blue-500 focus:border-blue-500 block w-full py-2 outline-none"
-                :class="inputClasses"
-                :disabled="disabled"
-                @blur="applyLimits"
-                @keydown="preventNonNumeric"
-                @keyup="preventNonNumeric"
-            />
+            <input :id="id" type="text" v-model="valueInput"
+                class="bg-neutral-50 dark:bg-neutral-800 border-x-0 border-t border-b dark:border-neutral-900 text-center text-neutral-900 dark:text-white focus:ring-blue-500 focus:border-blue-500 block w-full py-2 outline-none"
+                :class="[inputClasses, disabled ? 'opacity-50 cursor-not-allowed' : '']" :disabled="disabled"
+                @blur="applyLimits" @keydown="preventNonNumeric" @keyup="preventNonNumeric" />
 
-            <button
-                type="button"
-                class="border border-neutral-300 dark:border-neutral-600 bg-neutral-100 dark:bg-neutral-700 dark:hover:bg-neutral-600 hover:bg-neutral-200 p-3 focus:ring-2 focus:outline-none"
-                :class="['rounded-r-lg', disabled ? 'opacity-50 cursor-not-allowed' : '']"
-                @click="increment"
-                :disabled="disabled || internalValue >= max"
-            >
-                <svg class="w-3 h-3 text-neutral-900 dark:text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
+            <button type="button"
+                class="border border-neutral-300 dark:border-neutral-900 bg-neutral-100 dark:bg-neutral-800 dark:hover:bg-neutral-700 hover:bg-neutral-200 p-3 focus:ring-2 focus:outline-none"
+                :class="['rounded-r-lg', disabled ? 'opacity-50 cursor-not-allowed' : '']" @click="increment"
+                :disabled="disabled || internalValue >= max">
+                <svg class="w-3 h-3 text-neutral-900 dark:text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 18 18">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 1v16M1 9h16" />
                 </svg>
             </button>
         </div>

@@ -1,9 +1,7 @@
 <template>
     <code-preview :padding="padding" :default-view="hasDefaultSlot ? 'preview' : 'code'"
-        :show-preview-button="hasDefaultSlot">
-        <template #preview v-if="hasDefaultSlot">
-            <slot></slot>
-        </template>
+        :show-preview-button="hasDefaultSlot" :source-code="previewContent" ref="codePreviewRef">
+        <slot></slot>
         <template #code>
             <slot name="code"></slot>
         </template>
@@ -11,8 +9,24 @@
 </template>
 
 <script setup>
-import { useSlots, computed, defineProps } from 'vue';
+import { useSlots, computed, defineProps, onMounted, nextTick, ref } from 'vue';
 import CodePreview from './CodePreview.vue';
+
+const codePreviewRef = ref(null);
+const previewContent = ref('');
+
+onMounted(() => {
+    nextTick(() => {
+        try {
+            const slotContainer = document.querySelector('.code-preview-container .preview-container > div');
+            if (slotContainer) {
+                previewContent.value = slotContainer.outerHTML;
+            }
+        } catch (err) {
+            console.error('Error accessing content:', err);
+        }
+    });
+});
 
 const props = defineProps({
     padding: {
@@ -23,4 +37,15 @@ const props = defineProps({
 
 const slots = useSlots();
 const hasDefaultSlot = computed(() => !!slots.default);
+
+defineExpose({
+    updateContent() {
+        nextTick(() => {
+            const slotContainer = document.querySelector('.code-preview-container .preview-container > div');
+            if (slotContainer) {
+                previewContent.value = slotContainer.outerHTML;
+            }
+        });
+    }
+});
 </script>

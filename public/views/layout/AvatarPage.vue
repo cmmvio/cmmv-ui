@@ -11,10 +11,10 @@
         <table-docs>
             <thead>
                 <tr>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Type</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Default</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Description</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Prop</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Type</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Default</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Description</th>
                 </tr>
             </thead>
             <tbody>
@@ -72,7 +72,7 @@
                 <tr>
                     <td class="border-b px-4 py-2">bgColor</td>
                     <td class="border-b px-4 py-2">String</td>
-                    <td class="border-b px-4 py-2">'bg-gray-300'</td>
+                    <td class="border-b px-4 py-2">'bg-neutral-300'</td>
                     <td class="border-b px-4 py-2">
                         Sets the background color of the avatar when displaying initials or an icon.
                     </td>
@@ -248,16 +248,16 @@
             <div class="flex items-center justify-center gap-x-4">
                 <c-avatar src="https://i.pravatar.cc/150?img=1" alt="User Avatar" size="lg"
                     borderColor="border-2 border-blue-500" stacked>
-                    <img class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800"
+                    <img class="w-10 h-10 border-2 border-white rounded-full dark:border-neutral-800"
                         src="https://i.pravatar.cc/150?img=1" alt="">
-                    <img class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800"
+                    <img class="w-10 h-10 border-2 border-white rounded-full dark:border-neutral-800"
                         src="https://i.pravatar.cc/150?img=2" alt="">
-                    <img class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800"
+                    <img class="w-10 h-10 border-2 border-white rounded-full dark:border-neutral-800"
                         src="https://i.pravatar.cc/150?img=3" alt="">
-                    <img class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800"
+                    <img class="w-10 h-10 border-2 border-white rounded-full dark:border-neutral-800"
                         src="https://i.pravatar.cc/150?img=4" alt="">
                     <div
-                        class="flex items-center justify-center w-10 h-10 text-xs font-medium text-white bg-gray-700 border-2 border-white rounded-full dark:border-gray-800">
+                        class="flex items-center justify-center w-10 h-10 text-xs font-medium text-white bg-neutral-700 border-2 border-white rounded-full dark:border-neutral-800">
                         +99</div>
                 </c-avatar>
             </div>
@@ -287,7 +287,7 @@
                 alt=""
             &gt;
             &lt;div
-                class="flex items-center justify-center w-10 h-10 text-xs font-medium text-white bg-gray-700 border-2 border-white rounded-full dark:border-gray-800"
+                class="flex items-center justify-center w-10 h-10 text-xs font-medium text-white bg-neutral-700 border-2 border-white rounded-full dark:border-neutral-800"
             &gt;
                 +99
             &lt;/div&gt;

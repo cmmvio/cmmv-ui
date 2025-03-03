@@ -78,22 +78,22 @@
         <h3>Core Principles</h3>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-            <div class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6">
+            <div class="border border-neutral-200 dark:border-neutral-700 rounded-lg p-6">
                 <h4 class="text-base font-semibold mb-3">Contract-First Development</h4>
                 <p>CMMV encourages defining clear contracts between system components before implementation. This
                     approach enables parallel development and better system integration.</p>
             </div>
-            <div class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6">
+            <div class="border border-neutral-200 dark:border-neutral-700 rounded-lg p-6">
                 <h4 class="text-base font-semibold mb-3">Separation of Concerns</h4>
                 <p>By separating domain logic, presentation logic, and UI components, CMMV creates more maintainable
                     code with reduced interdependencies.</p>
             </div>
-            <div class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6">
+            <div class="border border-neutral-200 dark:border-neutral-700 rounded-lg p-6">
                 <h4 class="text-base font-semibold mb-3">Testability</h4>
                 <p>The clean separation between layers makes unit testing much simpler, as each component can be tested
                     in isolation with clear boundaries.</p>
             </div>
-            <div class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6">
+            <div class="border border-neutral-200 dark:border-neutral-700 rounded-lg p-6">
                 <h4 class="text-base font-semibold mb-3">Scalability</h4>
                 <p>CMMV applications are designed to scale from small prototypes to enterprise applications without
                     requiring architectural redesigns.</p>

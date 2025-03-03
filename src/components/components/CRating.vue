@@ -1,36 +1,15 @@
 <template>
     <div class="flex items-center gap-1">
-        <button
-            v-for="index in total"
-            :key="index"
-            type="button"
-            class="focus:outline-none transition relative"
-            :class="[getColor(index)]"
-            :disabled="fixed"
-            @click="setRating(index)"
-            @mouseover="hoverRating = fixed ? rating : index"
-            @mouseleave="hoverRating = 0"
-        >
+        <button v-for="index in total" :key="index" type="button" class="focus:outline-none transition relative"
+            :class="[getColor(index)]" :disabled="fixed" @click="setRating(index)"
+            @mouseover="hoverRating = fixed ? rating : index" @mouseleave="hoverRating = 0">
             <!-- Ícone completo -->
-            <component
-                :is="iconComponent"
-                color="color"
-                :size="size"
-                aria-hidden="true"
-            />
+            <component :is="iconComponent" color="color" :size="size" aria-hidden="true" />
 
             <!-- Ícone parcial (meio preenchido) -->
-            <div
-                v-if="showPartialIcon(index)"
-                class="absolute top-0 left-0 overflow-hidden"
-                :style="{ width: `${getPartialWidth(index)}%` }"
-            >
-                <component
-                    :is="iconComponent"
-                    :color="props.color"
-                    :size="size"
-                    aria-hidden="true"
-                />
+            <div v-if="showPartialIcon(index)" class="absolute top-0 left-0 overflow-hidden"
+                :style="{ width: `${getPartialWidth(index)}%` }">
+                <component :is="iconComponent" :color="props.color" :size="size" aria-hidden="true" />
             </div>
         </button>
 
@@ -65,7 +44,7 @@ const props = defineProps({
     },
     inactiveColor: {
         type: String,
-        default: "text-gray-300 dark:text-gray-600"
+        default: "text-neutral-300 dark:text-neutral-600"
     },
     fixed: {
         type: Boolean,

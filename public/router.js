@@ -15,6 +15,7 @@ import ProgressCircularPage from "./views/components/ProgressCircularPage.vue";
 import BadgePage from "./views/components/BadgePage.vue";
 import LoaderPage from "./views/components/LoaderPage.vue";
 import RatingPage from "./views/components/RatingPage.vue";
+import SystemBarPage from "./views/components/SystemBarPage.vue";
 
 //Data
 import ChartBarPage from "./views/data/ChartBarPage.vue";
@@ -33,6 +34,7 @@ import CardPage from "./views/layout/CardPage.vue";
 import DropdownPage from "./views/layout/DropdownPage.vue";
 import SidebarPage from "./views/layout/SidebarPage.vue";
 import SpeedDialPage from "./views/layout/SpeedDialPage.vue";
+import SkeletonPage from "./views/layout/SkeletonPage.vue";
 import TabsPage from "./views/layout/TabsPage.vue";
 import ToolbarPage from "./views/layout/ToolbarPage.vue";
 import NavbarPage from "./views/layout/NavbarPage.vue";
@@ -80,6 +82,7 @@ const routes = [
     { path: '/progress-bar', component: ProgressBarPage },
     { path: '/progress-circular', component: ProgressCircularPage },
     { path: '/rating', component: RatingPage },
+    { path: '/system-bar', component: SystemBarPage },
     { path: '/tooltip', component: TooltipPage },
 
     //Data
@@ -100,6 +103,7 @@ const routes = [
     { path: '/navbar', component: NavbarPage },
     { path: '/sidebar', component: SidebarPage },
     { path: '/speed-dial', component: SpeedDialPage },
+    { path: '/skeleton', component: SkeletonPage },
     { path: '/tabs', component: TabsPage },
     { path: '/toolbar', component: ToolbarPage },
 

@@ -3,54 +3,38 @@
         <h1>Form</h1>
 
         <p>
-            The <code>CForm (alias: c-form)</code> component in the <code>@cmmv/ui</code> framework provides an easy-to-use form container with built-in support for validation, submission handling, and data binding via <code>v-model</code>. It is designed to work seamlessly with input components like <code>CInput</code>, allowing developers to create robust forms with minimal effort.
+            The <code>CForm (alias: c-form)</code> component in the <code>@cmmv/ui</code> framework provides an
+            easy-to-use form container with built-in support for validation, submission handling, and data binding via
+            <code>v-model</code>. It is designed to work seamlessly with input components like <code>CInput</code>,
+            allowing developers to create robust forms with minimal effort.
         </p>
 
-        <!-- Basic Example -->
         <h3 class="text-lg font-semibold mt-8">Example</h3>
 
         <p>
-            Below is a basic example of using the <code>CForm</code> component to create a login form. It demonstrates the integration with <code>CInput</code> for validation and <code>CButton</code> for form submission.
+            Below is a basic example of using the <code>CForm</code> component to create a login form. It demonstrates
+            the integration with <code>CInput</code> for validation and <code>CButton</code> for form submission.
         </p>
 
         <card-docs>
             <div class="m-auto w-6/12 mb-2 max-w-[500px]">
                 <h1 class="mb-4">Login</h1>
 
-                <c-form
-                    v-model="form"
-                    @submit.prevent="handleSubmit"
-                >
-                    <c-input
-                        v-model="data.email"
-                        label="Email"
-                        type="email"
-                        placeholder="Enter your email"
-                        hint="Enter your email to login"
-                        :rules="[value => !value && 'Email is required']"
-                        clearable
-                    />
+                <c-form v-model="form" @submit.prevent="handleSubmit">
+                    <c-input v-model="data.email" label="Email" type="email" placeholder="Enter your email"
+                        hint="Enter your email to login" :rules="[value => !value && 'Email is required']" class="mb-4"
+                        clearable />
 
-                    <c-input
-                        v-model="data.password"
-                        type="password"
-                        label="Password"
-                        placeholder="Enter your password"
-                        :rules="[value => !value && 'Password is required']"
-                    />
+                    <c-input v-model="data.password" type="password" label="Password" placeholder="Enter your password"
+                        :rules="[value => !value && 'Password is required']" class="mb-4" />
 
-                    <c-button
-                        class="w-full pb-4 pt-4"
-                        type="submit"
-                        buttonType="button"
-                        size="2xl"
-                        :disabled="!form"
-                    >Login</c-button>
+                    <c-button class="w-full pb-4 pt-4" type="submit" buttonType="button" size="2xl"
+                        :disabled="!form">Login</c-button>
                 </c-form>
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-html">&lt;template&gt;
+                <pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;c-form
         v-model="form"
         @submit.prevent="handleSubmit"
@@ -103,7 +87,7 @@ const handleSubmit = () => {
         <!-- Features -->
         <h3>Features</h3>
 
-        <br/>
+        <br />
 
         <ul class="list-disc pl-6">
             <li><strong>Two-way Binding:</strong> Sync form data effortlessly using <code>v-model</code>.</li>
@@ -118,10 +102,10 @@ const handleSubmit = () => {
         <table-docs>
             <thead>
                 <tr>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Type</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Default</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Description</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Prop</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Type</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Default</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Description</th>
                 </tr>
             </thead>
             <tbody>
@@ -140,8 +124,8 @@ const handleSubmit = () => {
         <table-docs>
             <thead>
                 <tr>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Event</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Description</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Event</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Description</th>
                 </tr>
             </thead>
             <tbody>
@@ -152,12 +136,7 @@ const handleSubmit = () => {
             </tbody>
         </table-docs>
 
-        <PagePagination
-            previous="File Upload"
-            previousLink="/file-upload"
-            next="Input"
-            nextLink="/input"
-        />
+        <PagePagination previous="File Upload" previousLink="/file-upload" next="Input" nextLink="/input" />
     </BaseLayout>
 </template>
 

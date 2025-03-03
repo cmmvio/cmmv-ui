@@ -11,10 +11,10 @@
         <table-docs>
             <thead>
                 <tr>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Type</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Default</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Description</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Prop</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Type</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Default</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Description</th>
                 </tr>
             </thead>
             <tbody>
@@ -170,7 +170,7 @@ const tableData = ref([
             <div class="w-full max-w-[780px] mx-auto">
                 <c-table :items="items" :headers="headers" checked @update:selected="onSelectionChange"></c-table>
 
-                <div class="mt-4 p-4 bg-gray-100 dark:bg-gray-800 rounded">
+                <div class="mt-4 p-4 bg-neutral-100 dark:bg-neutral-800 rounded">
                     <p class="font-medium mb-2">Selected Items:</p>
                     <pre class="text-sm">{{ selectedItems }}</pre>
                 </div>
@@ -186,7 +186,7 @@ const tableData = ref([
             @update:selected="onSelectionChange"
         /&gt;
 
-        &lt;div class="mt-4 p-4 bg-gray-100 dark:bg-gray-800 rounded"&gt;
+        &lt;div class="mt-4 p-4 bg-neutral-100 dark:bg-neutral-800 rounded"&gt;
             &lt;p class="font-medium mb-2"&gt;Selected Items:&lt;/p&gt;
             &lt;pre class="text-sm"&gt;&#123;&#123; selectedItems &#125;&#125;&lt;/pre&gt;
         &lt;/div&gt;
@@ -620,7 +620,7 @@ const loadMore = () => {
                         <div class="flex items-center justify-between flex-column flex-wrap">
                             <div>
                                 <h2 class="text-xl font-semibold">Users</h2>
-                                <span class="text-sm text-gray-500">See information about all members</span>
+                                <span class="text-sm text-neutral-500">See information about all members</span>
                             </div>
                             <div class="relative">
                                 <c-input id="search" label="Search Input" placeholder="Search users...">
@@ -634,7 +634,7 @@ const loadMore = () => {
                     </template>
 
                     <template #name="{ item }">
-                        <div class="flex items-center px-2 py-2 text-gray-900 whitespace-nowrap dark:text-white">
+                        <div class="flex items-center px-2 py-2 text-neutral-900 whitespace-nowrap dark:text-white">
                             <c-avatar :src="item.avatar" />
 
                             <div class="ps-3">
@@ -676,7 +676,7 @@ const loadMore = () => {
             &lt;div class="flex items-center justify-between flex-column flex-wrap mb-4"&gt;
                 &lt;div&gt;
                     &lt;h2 class="text-xl font-semibold"&gt;Users&lt;/h2&gt;
-                    &lt;span class="text-sm text-gray-500"&gt;See information about all members&lt;/span&gt;
+                    &lt;span class="text-sm text-neutral-500"&gt;See information about all members&lt;/span&gt;
                 &lt;/div&gt;
                 &lt;div class="relative"&gt;
                     &lt;c-input
@@ -696,7 +696,7 @@ const loadMore = () => {
 
         &lt;!-- Custom user profile column with avatar --&gt;
         &lt;template #name="{ item }"&gt;
-            &lt;div class="flex items-center px-2 py-2 text-gray-900 whitespace-nowrap dark:text-white"&gt;
+            &lt;div class="flex items-center px-2 py-2 text-neutral-900 whitespace-nowrap dark:text-white"&gt;
                 &lt;c-avatar :src="item.avatar" /&gt;
                 &lt;div class="ps-3"&gt;
                     &lt;div class="text-base font-semibold"&gt;&#123;&#123; item.name &#125;&#125;&lt;/div&gt;

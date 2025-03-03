@@ -9,10 +9,10 @@
         <table-docs>
             <thead>
                 <tr>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Type</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Default</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Description</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Prop</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Type</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Default</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Description</th>
                 </tr>
             </thead>
             <tbody>
@@ -337,10 +337,10 @@ const currentPage = ref(1);
         <table-docs>
             <thead>
                 <tr>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Type</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Default</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Description</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Prop</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Type</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Default</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Description</th>
                 </tr>
             </thead>
             <tbody>
@@ -422,9 +422,9 @@ const currentPage = ref(1);
         <table-docs>
             <thead>
                 <tr>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Event</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Parameters</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Description</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Event</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Parameters</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Description</th>
                 </tr>
             </thead>
             <tbody>

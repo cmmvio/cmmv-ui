@@ -257,7 +257,7 @@ const roundedStyles: Record<string, string> = {
 };
 
 const variantStyles: Record<string, string> = {
-    default: "border border-gray-300 dark:border-gray-700",
+    default: "border border-gray-300 dark:border-neutral-900",
     outlined: "border border-2 border-zinc-700",
     filled: "border border-1 border-zinc-900 shadow-md",
 };

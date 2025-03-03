@@ -41,7 +41,8 @@
                     <td>"bottom-left"</td>
                     <td>Defines dropdown positioning: <code>top-left</code>, <code>top-right</code>,
                         <code>bottom-left</code>, <code>bottom-right</code>, <code>bottom-center</code>,
-                        <code>top-center</code>.</td>
+                        <code>top-center</code>.
+                    </td>
                 </tr>
             </tbody>
         </table-docs>
@@ -156,7 +157,7 @@ const menuOptions = ref([
             <div class="p-40 grid gap-6 h-[600px]">
                 <c-dropdown v-model="selectedItem" :options="menuOptions" position="top-left">
                     <template #activator>
-                        <button class="px-4 py-2 bg-gray-500 text-white rounded-md">
+                        <button class="px-4 py-2 bg-neutral-500 text-white rounded-md">
                             Top Left
                         </button>
                     </template>
@@ -164,7 +165,7 @@ const menuOptions = ref([
 
                 <c-dropdown v-model="selectedItem" :options="menuOptions" position="top-right">
                     <template #activator>
-                        <button class="px-4 py-2 bg-gray-500 text-white rounded-md">
+                        <button class="px-4 py-2 bg-neutral-500 text-white rounded-md">
                             Top Right
                         </button>
                     </template>
@@ -172,7 +173,7 @@ const menuOptions = ref([
 
                 <c-dropdown v-model="selectedItem" :options="menuOptions" position="bottom-left">
                     <template #activator>
-                        <button class="px-4 py-2 bg-gray-500 text-white rounded-md">
+                        <button class="px-4 py-2 bg-neutral-500 text-white rounded-md">
                             Bottom Left
                         </button>
                     </template>
@@ -180,7 +181,7 @@ const menuOptions = ref([
 
                 <c-dropdown v-model="selectedItem" :options="menuOptions" position="bottom-right">
                     <template #activator>
-                        <button class="px-4 py-2 bg-gray-500 text-white rounded-md">
+                        <button class="px-4 py-2 bg-neutral-500 text-white rounded-md">
                             Bottom Right
                         </button>
                     </template>
@@ -188,7 +189,7 @@ const menuOptions = ref([
 
                 <c-dropdown v-model="selectedItem" :options="menuOptions" position="bottom-center">
                     <template #activator>
-                        <button class="px-4 py-2 bg-gray-500 text-white rounded-md">
+                        <button class="px-4 py-2 bg-neutral-500 text-white rounded-md">
                             Bottom Center
                         </button>
                     </template>
@@ -203,7 +204,7 @@ const menuOptions = ref([
         position="top-left"
     &gt;
         &lt;template #activator&gt;
-            &lt;button class="px-4 py-2 bg-gray-500 text-white rounded-md"&gt;
+            &lt;button class="px-4 py-2 bg-neutral-500 text-white rounded-md"&gt;
                 Top Left
             &lt;/button&gt;
         &lt;/template&gt;
@@ -215,7 +216,7 @@ const menuOptions = ref([
         position="top-right"
     &gt;
         &lt;template #activator&gt;
-            &lt;button class="px-4 py-2 bg-gray-500 text-white rounded-md"&gt;
+            &lt;button class="px-4 py-2 bg-neutral-500 text-white rounded-md"&gt;
                 Top Right
             &lt;/button&gt;
         &lt;/template&gt;
@@ -227,7 +228,7 @@ const menuOptions = ref([
         position="bottom-left"
     &gt;
         &lt;template #activator&gt;
-            &lt;button class="px-4 py-2 bg-gray-500 text-white rounded-md"&gt;
+            &lt;button class="px-4 py-2 bg-neutral-500 text-white rounded-md"&gt;
                 Bottom Left
             &lt;/button&gt;
         &lt;/template&gt;
@@ -239,7 +240,7 @@ const menuOptions = ref([
         position="bottom-right"
     &gt;
         &lt;template #activator&gt;
-            &lt;button class="px-4 py-2 bg-gray-500 text-white rounded-md"&gt;
+            &lt;button class="px-4 py-2 bg-neutral-500 text-white rounded-md"&gt;
                 Bottom Right
             &lt;/button&gt;
         &lt;/template&gt;
@@ -251,7 +252,7 @@ const menuOptions = ref([
         position="bottom-center"
     &gt;
         &lt;template #activator&gt;
-            &lt;button class="px-4 py-2 bg-gray-500 text-white rounded-md"&gt;
+            &lt;button class="px-4 py-2 bg-neutral-500 text-white rounded-md"&gt;
                 Bottom Center
             &lt;/button&gt;
         &lt;/template&gt;

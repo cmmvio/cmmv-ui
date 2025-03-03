@@ -15,10 +15,10 @@
         <table-docs>
             <thead>
                 <tr>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Type</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Default</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Description</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Prop</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Type</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Default</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Description</th>
                 </tr>
             </thead>
             <tbody>
@@ -96,7 +96,7 @@
             default slot.
         </p>
 
-        <card-docs>
+        <card-docs padding="p-2">
             <div class="w-full max-w-[780px] mx-auto">
                 <c-list v-model="items" class="w-full">
                     <template v-slot="{ item }">
@@ -114,7 +114,7 @@
                             <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
                                 <p class="text-sm/6 text-neutral-900 dark:text-neutral-200">{{ item.role }}</p>
 
-                                <p v-if="item.lastSeen" class="mt-1 text-xs/5 text-gray-500">
+                                <p v-if="item.lastSeen" class="mt-1 text-xs/5 text-neutral-500">
                                     Last seen <time :datetime="item.lastSeenDateTime">{{ item.lastSeen }}</time>
                                 </p>
 
@@ -122,7 +122,7 @@
                                     <div class="flex-none rounded-full bg-emerald-500/20 p-1">
                                         <div class="size-1.5 rounded-full bg-emerald-500" />
                                     </div>
-                                    <p class="text-xs/5 text-gray-500">Online</p>
+                                    <p class="text-xs/5 text-neutral-500">Online</p>
                                 </div>
                             </div>
                         </div>
@@ -142,8 +142,12 @@
                         alt=""
                     /&gt;
                     &lt;div class="min-w-0 flex-auto"&gt;
-                        &lt;p class="text-sm/6 font-semibold text-neutral-900 dark:text-neutral-200"&gt;&#123;&#123; item.name &#125;&#125;&lt;/p&gt;
-                        &lt;p class="mt-1 truncate text-xs/5 text-neutral-500 dark:text-neutral-500"&gt;&#123;&#123; item.email &#125;&#125;&lt;/p&gt;
+                        &lt;p class="text-sm/6 font-semibold text-neutral-900 dark:text-neutral-200"&gt;
+                            &#123;&#123; item.name &#125;&#125;
+                        &lt;/p&gt;
+                        &lt;p class="mt-1 truncate text-xs/5 text-neutral-500 dark:text-neutral-500"&gt;
+                            &#123;&#123; item.email &#125;&#125;
+                        &lt;/p&gt;
                     &lt;/div&gt;
                 &lt;/div&gt;
                 &lt;div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end"&gt;
@@ -153,7 +157,7 @@
 
                     &lt;p
                         v-if="item.lastSeen"
-                        class="mt-1 text-xs/5 text-gray-500"
+                        class="mt-1 text-xs/5 text-neutral-500"
                     &gt;
                         Last seen &lt;time
                             :datetime="item.lastSeenDateTime"&gt;&#123;&#123;
@@ -168,7 +172,7 @@
                             &lt;div class="size-1.5 rounded-full bg-emerald-500" /&gt;
                         &lt;/div&gt;
 
-                        &lt;p class="text-xs/5 text-gray-500"&gt;Online&lt;/p&gt;
+                        &lt;p class="text-xs/5 text-neutral-500"&gt;Online&lt;/p&gt;
                     &lt;/div&gt;
                 &lt;/div&gt;
             &lt;/div&gt;
@@ -417,10 +421,8 @@ const items = ref([
     }
 ]);
 
-// Computed properties for filtered items
 const topThreeItems = computed(() => items.value.slice(0, 3));
 
-// Adicionar a variável chatContacts para o exemplo do WhatsApp
 const chatContacts = ref([
   {
     id: 1,
@@ -514,7 +516,6 @@ const chatContacts = ref([
   }
 ]);
 
-// Dados e funções para o exemplo Sortable List melhorado
 const sortableTaskItems = ref([
     {
         text: "Complete project proposal",
@@ -556,7 +557,7 @@ function getTaskPriorityClass(priority) {
         case 'High': return 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200';
         case 'Medium': return 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200';
         case 'Low': return 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200';
-        default: return 'bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200';
+        default: return 'bg-neutral-100 text-neutral-800 dark:bg-neutral-800 dark:text-neutral-200';
     }
 }
 
@@ -565,7 +566,6 @@ function handleSortableReorder(event) {
     lastSortableReorderEvent.value = event;
 }
 
-// Dados e funções para o exemplo Kanban Board
 const kanbanTodoItems = ref([
     {
         title: "Implement user authentication",
@@ -628,7 +628,6 @@ const lastKanbanReorderEvent = ref(null);
 const lastKanbanMoveEvent = ref(null);
 
 function getKanbanAvatarUrl(name) {
-    // Generate consistent avatar URL based on name
     const hash = name.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
     return `https://i.pravatar.cc/150?img=${hash % 70}`;
 }
@@ -642,7 +641,6 @@ function handleKanbanItemMoved(event) {
     console.log("Kanban item moved between lists:", event);
     lastKanbanMoveEvent.value = event;
 
-    // Remove the item from source list when it's moved to avoid duplication
     if (event.fromListId === "todo-list") {
         const sourceIndex = kanbanTodoItems.value.findIndex(
             item => item.title === event.item.title && item.description === event.item.description
@@ -666,7 +664,6 @@ function handleKanbanItemMoved(event) {
         }
     }
 
-    // Add the item to the target list if it has a proper toIndex
     if (typeof event.toIndex === 'number') {
         if (event.toListId === "todo-list") {
             kanbanTodoItems.value.splice(event.toIndex, 0, event.item);
@@ -692,9 +689,7 @@ function handleKanbanItemMoved(event) {
         <card-docs>
             <div class="w-full max-w-[900px] mx-auto">
                 <div class="flex h-[600px] border dark:border-neutral-800 rounded-lg overflow-hidden shadow-lg">
-                    <!-- Painel de contatos (lado esquerdo) -->
                     <div class="w-2/5 flex flex-col border-r dark:border-neutral-800">
-                        <!-- Cabeçalho do painel de contatos -->
                         <div
                             class="bg-emerald-700 dark:bg-emerald-800 text-white p-2 flex justify-between items-center">
                             <div class="flex items-center">
@@ -722,7 +717,6 @@ function handleKanbanItemMoved(event) {
                             </div>
                         </div>
 
-                        <!-- Barra de pesquisa -->
                         <div class="bg-emerald-50 dark:bg-neutral-800 p-2">
                             <div class="relative">
                                 <input type="text" placeholder="Pesquisar contatos"
@@ -737,7 +731,6 @@ function handleKanbanItemMoved(event) {
                             </div>
                         </div>
 
-                        <!-- Lista de contatos -->
                         <div class="flex-1 overflow-y-auto bg-white dark:bg-neutral-900">
                             <c-list v-model="chatContacts" class="w-full"
                                 divideColor="divide-neutral-100 dark:divide-neutral-800" shadow="shadow-none"
@@ -769,9 +762,7 @@ function handleKanbanItemMoved(event) {
                         </div>
                     </div>
 
-                    <!-- Painel de chat (lado direito) -->
                     <div class="w-3/5 flex flex-col">
-                        <!-- Cabeçalho do chat -->
                         <div
                             class="bg-emerald-50 dark:bg-neutral-800 p-2 flex justify-between items-center border-b dark:border-neutral-700">
                             <div class="flex items-center">
@@ -781,7 +772,7 @@ function handleKanbanItemMoved(event) {
                                 <div>
                                     <p class="font-medium text-sm text-neutral-900 dark:text-neutral-100">{{
                                         chatContacts &&
-                                        chatContacts.length > 0 ? chatContacts[0].name : 'Usuário' }}</p>
+                                            chatContacts.length > 0 ? chatContacts[0].name : 'Usuário' }}</p>
                                     <p class="text-xs text-neutral-500">online</p>
                                 </div>
                             </div>
@@ -810,16 +801,12 @@ function handleKanbanItemMoved(event) {
                             </div>
                         </div>
 
-                        <!-- Área de mensagens -->
                         <div class="flex-1 overflow-y-auto p-4 bg-neutral-100 dark:bg-neutral-900 relative">
-                            <!-- Padrão de fundo do WhatsApp -->
                             <div class="absolute inset-0 opacity-10 dark:opacity-5 "
                                 style="background-image: url('https://camo.githubusercontent.com/ebf18cd85f7aa9dc79fb74c58dc94febf3a6441d8d689cd5a400b2707e19ec0e/68747470733a2f2f7765622e77686174736170702e636f6d2f696d672f62672d636861742d74696c652d6461726b5f61346265353132653731393562366237333364393131306234303866303735642e706e67'); background-repeat: repeat;">
                             </div>
 
-                            <!-- Mensagens -->
                             <div class="space-y-3 relative z-10">
-                                <!-- Mensagem recebida -->
                                 <div class="flex items-end">
                                     <img class="size-7 rounded-full mr-2"
                                         :src="chatContacts && chatContacts.length > 0 ? chatContacts[0].avatar : ''"
@@ -832,7 +819,6 @@ function handleKanbanItemMoved(event) {
                                     </div>
                                 </div>
 
-                                <!-- Mensagem enviada -->
                                 <div class="flex items-end justify-end">
                                     <div
                                         class="bg-green-100 dark:bg-green-800 rounded-lg rounded-br-none p-2 max-w-[70%] shadow-sm">
@@ -851,7 +837,6 @@ function handleKanbanItemMoved(event) {
                                     </div>
                                 </div>
 
-                                <!-- Outra mensagem recebida -->
                                 <div class="flex items-end">
                                     <img class="size-7 rounded-full mr-2"
                                         :src="chatContacts && chatContacts.length > 0 ? chatContacts[0].avatar : ''"
@@ -867,7 +852,6 @@ function handleKanbanItemMoved(event) {
                             </div>
                         </div>
 
-                        <!-- Área de digitação -->
                         <div class="bg-emerald-50 dark:bg-neutral-800 p-2 flex items-center">
                             <button class="text-neutral-600 dark:text-neutral-300 mr-2 focus:outline-none">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
@@ -923,10 +907,10 @@ function handleKanbanItemMoved(event) {
                                 <div class="flex items-center">
                                     <input type="checkbox" v-model="item.completed" class="mr-3 h-4 w-4 rounded" />
                                     <span
-                                        :class="{ 'font-medium': !item.completed, 'line-through text-gray-400': item.completed }">{{
-                                        item.text }}</span>
+                                        :class="{ 'font-medium': !item.completed, 'line-through text-neutral-400': item.completed }">{{
+                                            item.text }}</span>
                                 </div>
-                                <p class="mt-1 text-xs text-gray-500">{{ item.description }}</p>
+                                <p class="mt-1 text-xs text-neutral-500">{{ item.description }}</p>
                             </div>
                             <div :class="getTaskPriorityClass(item.priority)" class="text-xs ml-2 px-2 py-1 rounded">
                                 {{ item.priority }}
@@ -935,9 +919,9 @@ function handleKanbanItemMoved(event) {
                     </template>
                 </c-list>
 
-                <div class="mt-4 text-sm text-gray-600 dark:text-gray-400">
+                <div class="mt-4 text-sm text-neutral-600 dark:text-neutral-400">
                     <p>Try dragging the items using the handle on the left to reorder the task list.</p>
-                    <div v-if="lastSortableReorderEvent" class="mt-2 p-2 bg-gray-100 dark:bg-gray-700 rounded-md">
+                    <div v-if="lastSortableReorderEvent" class="mt-2 p-2 bg-neutral-100 dark:bg-neutral-700 rounded-md">
                         <p>Last reorder event:</p>
                         <pre>{{ JSON.stringify(lastSortableReorderEvent, null, 2) }}</pre>
                     </div>
@@ -956,9 +940,9 @@ function handleKanbanItemMoved(event) {
             &lt;div class="w-full flex justify-between items-center py-3 px-2"&gt;
                 &lt;div class="flex items-center"&gt;
                     &lt;input type="checkbox" v-model="item.completed" class="mr-3 h-4 w-4 rounded" /&gt;
-                    &lt;span :class="{'line-through text-gray-400': item.completed}"&gt;&#123;&#123; item.text &#125;&#125;&lt;/span&gt;
+                    &lt;span :class="{'line-through text-neutral-400': item.completed}"&gt;&#123;&#123; item.text &#125;&#125;&lt;/span&gt;
                 &lt;/div&gt;
-                &lt;span class="text-xs text-gray-500"&gt;Priority: &#123;&#123; item.priority &#125;&#125;&lt;/span&gt;
+                &lt;span class="text-xs text-neutral-500"&gt;Priority: &#123;&#123; item.priority &#125;&#125;&lt;/span&gt;
             &lt;/div&gt;
         &lt;/template&gt;
     &lt;/c-list&gt;
@@ -992,9 +976,9 @@ function handleReorder(event) {
         <table-docs>
             <thead>
                 <tr>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Slot Name</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Props</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Description</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Slot Name</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Props</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Description</th>
                 </tr>
             </thead>
             <tbody>
@@ -1039,9 +1023,9 @@ function handleReorder(event) {
         <table-docs>
             <thead>
                 <tr>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Event</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Payload</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Description</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Event</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Payload</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Description</th>
                 </tr>
             </thead>
             <tbody>
@@ -1265,7 +1249,7 @@ function getTaskPriorityClass(priority) {
         case 'High': return 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200';
         case 'Medium': return 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200';
         case 'Low': return 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200';
-        default: return 'bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200';
+        default: return 'bg-neutral-100 text-neutral-800 dark:bg-neutral-800 dark:text-neutral-200';
     }
 }
 

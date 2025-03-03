@@ -13,10 +13,10 @@
         <table-docs>
             <thead>
                 <tr>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Type</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Default</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Description</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Prop</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Type</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Default</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Description</th>
                 </tr>
             </thead>
             <tbody>
@@ -158,7 +158,7 @@
             </div>
 
             <div class="mt-4 p-4">
-                <div class="p-4 bg-gray-50 dark:bg-neutral-800 rounded-md">
+                <div class="p-4 bg-neutral-50 dark:bg-neutral-800 rounded-md">
                     <h4 class="text-sm font-medium mb-2">Last API Request:</h4>
                     <pre class="text-xs overflow-auto max-h-24">{{ lastApiRequest }}</pre>
 
@@ -232,7 +232,7 @@
             </div>
 
             <div class="mt-4 p-4">
-                <div class="p-4 bg-gray-50 dark:bg-neutral-800 rounded-md">
+                <div class="p-4 bg-neutral-50 dark:bg-neutral-800 rounded-md">
                     <h4 class="text-sm font-medium mb-2">Search Parameters:</h4>
                     <pre class="text-xs overflow-auto">{{ JSON.stringify(lastSearchParams, null, 2) }}</pre>
                 </div>
@@ -277,9 +277,9 @@
         <table-docs>
             <thead>
                 <tr>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Event</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Payload</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Description</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Event</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Payload</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Description</th>
                 </tr>
             </thead>
             <tbody>
@@ -339,8 +339,8 @@
         <table-docs>
             <thead>
                 <tr>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Method</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Description</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Method</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Description</th>
                 </tr>
             </thead>
             <tbody>
@@ -487,7 +487,7 @@ const getStatusColor = (status) => {
         case 'Pending':
             return { bg: 'bg-yellow-100 dark:bg-yellow-900', text: 'text-yellow-800 dark:text-yellow-300' };
         case 'Suspended':
-            return { bg: 'bg-gray-100 dark:bg-gray-900', text: 'text-gray-800 dark:text-gray-300' };
+            return { bg: 'bg-neutral-100 dark:bg-neutral-900', text: 'text-neutral-800 dark:text-neutral-300' };
         default:
             return { bg: 'bg-blue-100 dark:bg-blue-900', text: 'text-blue-800 dark:text-blue-300' };
     }

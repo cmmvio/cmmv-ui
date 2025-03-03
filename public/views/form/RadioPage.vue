@@ -13,10 +13,10 @@
         <table-docs>
             <thead>
                 <tr>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Type</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Default</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Description</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Prop</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Type</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Default</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Description</th>
                 </tr>
             </thead>
             <tbody>
@@ -221,7 +221,7 @@ const selectedOption = ref("option1");
                             </template>
                         </c-radio>
                     </div>
-                    <p class="mt-4 text-sm text-gray-700 dark:text-gray-300">
+                    <p class="mt-4 text-sm text-neutral-700 dark:text-neutral-300">
                         Selected color: <span class="font-semibold">{{ selectedColorName }}</span>
                     </p>
                 </div>
@@ -255,7 +255,7 @@ const selectedOption = ref("option1");
                     &lt;/template&gt;
                 &lt;/c-radio&gt;
             &lt;/div&gt;
-            &lt;p class="mt-4 text-sm text-gray-700 dark:text-gray-300"&gt;
+            &lt;p class="mt-4 text-sm text-neutral-700 dark:text-neutral-300"&gt;
                 Selected color: &lt;span class="font-semibold"&gt;&#123;&#123; selectedColorName &#125;&#125;&lt;/span&gt;
             &lt;/p&gt;
         &lt;/div&gt;
@@ -302,7 +302,6 @@ const selectedPlan = ref(pricingPlans[0]);
             </template>
         </card-docs>
 
-        <!-- Mailing List Selection Example -->
         <h3>Mailing List Selection</h3>
 
         <p>
@@ -320,24 +319,24 @@ const selectedPlan = ref(pricingPlans[0]);
                         :value="mailingList" :aria-label="mailingList.title">
                         <template v-slot="{ checked }">
                             <div :class="[
-                                checked ? 'border-indigo-600 ring-2 ring-indigo-600' : 'border-gray-300',
+                                checked ? 'border-indigo-600 ring-2 ring-indigo-600' : 'border-neutral-300',
                                 'relative flex cursor-pointer rounded-lg border bg-white dark:bg-zinc-800 p-4 shadow-sm focus:outline-none'
                             ]">
                                 <span class="flex flex-1">
                                     <span class="flex flex-col">
                                         <span
-                                            class="text-left block text-sm font-medium text-gray-900 dark:text-white">{{
+                                            class="text-left block text-sm font-medium text-neutral-900 dark:text-white">{{
                                                 mailingList.title }}</span>
-                                        <span class="mt-1 text-left text-sm text-gray-500 dark:text-gray-400">{{
+                                        <span class="mt-1 text-left text-sm text-neutral-500 dark:text-neutral-400">{{
                                             mailingList.description }}</span>
                                         <span
-                                            class="text-left  mt-6 text-sm font-medium text-gray-900 dark:text-white">{{
+                                            class="text-left  mt-6 text-sm font-medium text-neutral-900 dark:text-white">{{
                                                 mailingList.users }}</span>
                                     </span>
                                 </span>
                                 <icon-check-circle v-if="checked"
                                     class="w-6 h-6 -mt-2 -mr-2 size-5 text-indigo-600 absolute top-4 right-4"
-                                    aria-hidden="true" />
+                                    aria-hidden="true" color="text-indigo-600" />
                                 <span :class="[
                                     checked ? 'border-indigo-600' : 'border-transparent',
                                     'pointer-events-none absolute -inset-px rounded-lg border-2'
@@ -346,14 +345,14 @@ const selectedPlan = ref(pricingPlans[0]);
                         </template>
                     </c-radio>
                 </div>
-                <p class="m-auto mt-4 text-sm text-gray-700 dark:text-gray-300" v-if="selectedMailingList">
+                <p class="m-auto mt-4 text-sm text-neutral-700 dark:text-neutral-300" v-if="selectedMailingList">
                     Selected: <span class="font-semibold">{{ selectedMailingList.title }}</span>
                 </p>
             </div>
 
             <template #code>
                 <pre><code class="code-highlight language-vue">&lt;template&gt;
-    &lt;h4 class="text-sm/6 font-semibold text-gray-900 dark:text-white"&gt;Select a mailing list&lt;/h4&gt;
+    &lt;h4 class="text-sm/6 font-semibold text-neutral-900 dark:text-white"&gt;Select a mailing list&lt;/h4&gt;
     &lt;div class="mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-3 sm:gap-x-4"&gt;
         &lt;c-radio
             v-for="mailingList in mailingLists"
@@ -364,14 +363,14 @@ const selectedPlan = ref(pricingPlans[0]);
         &gt;
             &lt;template v-slot="{ checked }"&gt;
                 &lt;div :class="[
-                    checked ? 'border-indigo-600 ring-2 ring-indigo-600' : 'border-gray-300',
+                    checked ? 'border-indigo-600 ring-2 ring-indigo-600' : 'border-neutral-300',
                     'relative flex cursor-pointer rounded-lg border bg-white dark:bg-zinc-800 p-4 shadow-sm focus:outline-none'
                 ]"&gt;
                     &lt;span class="flex flex-1"&gt;
                         &lt;span class="flex flex-col"&gt;
-                            &lt;span class="block text-sm font-medium text-gray-900 dark:text-white"&gt;&#123;&#123; mailingList.title &#125;&#125;&lt;/span&gt;
-                            &lt;span class="mt-1 flex items-center text-sm text-gray-500 dark:text-gray-400"&gt;&#123;&#123; mailingList.description &#125;&#125;&lt;/span&gt;
-                            &lt;span class="mt-6 text-sm font-medium text-gray-900 dark:text-white"&gt;&#123;&#123; mailingList.users &#125;&#125;&lt;/span&gt;
+                            &lt;span class="block text-sm font-medium text-neutral-900 dark:text-white"&gt;&#123;&#123; mailingList.title &#125;&#125;&lt;/span&gt;
+                            &lt;span class="mt-1 flex items-center text-sm text-neutral-500 dark:text-neutral-400"&gt;&#123;&#123; mailingList.description &#125;&#125;&lt;/span&gt;
+                            &lt;span class="mt-6 text-sm font-medium text-neutral-900 dark:text-white"&gt;&#123;&#123; mailingList.users &#125;&#125;&lt;/span&gt;
                         &lt;/span&gt;
                     &lt;/span&gt;
                     &lt;svg v-if="checked" class="h-5 w-5 text-indigo-600 absolute top-4 right-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"&gt;
@@ -385,7 +384,7 @@ const selectedPlan = ref(pricingPlans[0]);
             &lt;/template&gt;
         &lt;/c-radio&gt;
     &lt;/div&gt;
-    &lt;p class="mt-4 text-sm text-gray-700 dark:text-gray-300" v-if="selectedMailingList"&gt;
+    &lt;p class="mt-4 text-sm text-neutral-700 dark:text-neutral-300" v-if="selectedMailingList"&gt;
         Selected: &lt;span class="font-semibold"&gt;&#123;&#123; selectedMailingList.title &#125;&#125;&lt;/span&gt;
     &lt;/p&gt;
 &lt;/template&gt;
@@ -414,7 +413,6 @@ const selectedPlan = ref(pricingPlans[0]);
             </template>
         </card-docs>
 
-        <!-- Pricing Table Example -->
         <h3>Pricing Table Selection</h3>
 
         <p>
@@ -432,7 +430,7 @@ const selectedPlan = ref(pricingPlans[0]);
                         :aria-label="plan.name">
                         <template v-slot="{ checked }">
                             <div :class="[
-                                'group flex cursor-pointer flex-col border border-gray-200 dark:border-gray-700 p-4 focus:outline-none',
+                                'group flex cursor-pointer flex-col border border-neutral-200 dark:border-neutral-700 p-4 focus:outline-none',
                                 checked ? 'relative border-indigo-200 bg-indigo-50 dark:border-indigo-800 dark:bg-indigo-900/30' : '',
                                 'md:grid md:grid-cols-3 md:pl-4 md:pr-6  md:w-[550px] w-[350px]',
                                 plan.name === 'Startup' ? 'first:rounded-tl-md first:rounded-tr-md' : '',
@@ -440,28 +438,29 @@ const selectedPlan = ref(pricingPlans[0]);
                             ]">
                                 <span class="flex items-center gap-3 text-sm">
                                     <span class="relative size-4 flex items-center justify-center">
-                                        <span class="size-4 rounded-full border border-gray-300 dark:border-gray-600"
+                                        <span
+                                            class="size-4 rounded-full border border-neutral-300 dark:border-neutral-600"
                                             :class="checked ? 'border-indigo-600 bg-indigo-600 dark:border-indigo-500 dark:bg-indigo-500' : ''"></span>
                                         <span v-if="checked" class="absolute inset-0 flex items-center justify-center">
                                             <span class="size-1.5 rounded-full bg-white dark:bg-white"></span>
                                         </span>
                                     </span>
-                                    <span class="font-medium text-gray-900 dark:text-white"
+                                    <span class="font-medium text-neutral-900 dark:text-white"
                                         :class="checked ? 'text-indigo-900 dark:text-indigo-300' : ''">{{ plan.name
                                         }}</span>
                                 </span>
                                 <span class="ml-6 pl-1 text-sm md:ml-0 md:pl-0 md:text-center">
-                                    <span class="font-medium text-gray-900 dark:text-white"
+                                    <span class="font-medium text-neutral-900 dark:text-white"
                                         :class="checked ? 'text-indigo-900 dark:text-indigo-300' : ''">{{
                                             plan.priceMonthly }} / mo</span>
                                     {{ ' ' }}
-                                    <span class="text-gray-500 dark:text-gray-400"
+                                    <span class="text-neutral-500 dark:text-neutral-400"
                                         :class="checked ? 'text-indigo-700 dark:text-indigo-400' : ''">
                                         ({{ plan.priceYearly }} / yr)
                                     </span>
                                 </span>
                                 <span
-                                    class="ml-6 pl-1 text-sm text-gray-500 dark:text-gray-400 md:ml-0 md:pl-0 md:text-right"
+                                    class="ml-6 pl-1 text-sm text-neutral-500 dark:text-neutral-400 md:ml-0 md:pl-0 md:text-right"
                                     :class="checked ? 'text-indigo-700 dark:text-indigo-400' : ''">
                                     {{ plan.limit }}
                                 </span>
@@ -469,7 +468,7 @@ const selectedPlan = ref(pricingPlans[0]);
                         </template>
                     </c-radio>
                 </fieldset>
-                <p class="mt-4 text-sm text-gray-700 dark:text-gray-300 text-center" v-if="selectedPlan">
+                <p class="mt-4 text-sm text-neutral-700 dark:text-neutral-300 text-center" v-if="selectedPlan">
                     Selected plan: <span class="font-semibold">{{ selectedPlan.name }}</span> -
                     <span class="font-medium">{{ selectedPlan.priceMonthly }}/month</span>
                 </p>
@@ -487,7 +486,7 @@ const selectedPlan = ref(pricingPlans[0]);
         &gt;
             &lt;template v-slot="{ checked }"&gt;
                 &lt;div :class="[
-                    'group flex cursor-pointer flex-col border border-gray-200 dark:border-gray-700 p-4 focus:outline-none',
+                    'group flex cursor-pointer flex-col border border-neutral-200 dark:border-neutral-700 p-4 focus:outline-none',
                     checked ? 'relative border-indigo-200 bg-indigo-50 dark:border-indigo-800 dark:bg-indigo-900/30' : '',
                     'md:grid md:grid-cols-3 md:pl-4 md:pr-6',
                     plan.name === 'Startup' ? 'first:rounded-tl-md first:rounded-tr-md' : '',
@@ -495,26 +494,26 @@ const selectedPlan = ref(pricingPlans[0]);
                 ]"&gt;
                     &lt;span class="flex items-center gap-3 text-sm"&gt;
                         &lt;span class="relative size-4 flex items-center justify-center"&gt;
-                            &lt;span class="size-4 rounded-full border border-gray-300 dark:border-gray-600"
+                            &lt;span class="size-4 rounded-full border border-neutral-300 dark:border-neutral-600"
                                 :class="checked ? 'border-indigo-600 bg-indigo-600 dark:border-indigo-500 dark:bg-indigo-500' : ''"&gt;&lt;/span&gt;
                             &lt;span v-if="checked"
                                 class="absolute inset-0 flex items-center justify-center"&gt;
                                 &lt;span class="size-1.5 rounded-full bg-white dark:bg-white"&gt;&lt;/span&gt;
                             &lt;/span&gt;
                         &lt;/span&gt;
-                        &lt;span class="font-medium text-gray-900 dark:text-white"
+                        &lt;span class="font-medium text-neutral-900 dark:text-white"
                             :class="checked ? 'text-indigo-900 dark:text-indigo-300' : ''"&gt;&#123;&#123; plan.name &#125;&#125;&lt;/span&gt;
                     &lt;/span&gt;
                     &lt;span class="ml-6 pl-1 text-sm md:ml-0 md:pl-0 md:text-center"&gt;
-                        &lt;span class="font-medium text-gray-900 dark:text-white"
+                        &lt;span class="font-medium text-neutral-900 dark:text-white"
                             :class="checked ? 'text-indigo-900 dark:text-indigo-300' : ''"&gt;&#123;&#123; plan.priceMonthly &#125;&#125; / mo&lt;/span&gt;
                         &#123;&#123; ' ' &#125;&#125;
-                        &lt;span class="text-gray-500 dark:text-gray-400"
+                        &lt;span class="text-neutral-500 dark:text-neutral-400"
                             :class="checked ? 'text-indigo-700 dark:text-indigo-400' : ''"&gt;
                             (&#123;&#123; plan.priceYearly &#125;&#125; / yr)
                         &lt;/span&gt;
                     &lt;/span&gt;
-                    &lt;span class="ml-6 pl-1 text-sm text-gray-500 dark:text-gray-400 md:ml-0 md:pl-0 md:text-right"
+                    &lt;span class="ml-6 pl-1 text-sm text-neutral-500 dark:text-neutral-400 md:ml-0 md:pl-0 md:text-right"
                         :class="checked ? 'text-indigo-700 dark:text-indigo-400' : ''"&gt;
                         &#123;&#123; plan.limit &#125;&#125;
                     &lt;/span&gt;
@@ -522,7 +521,7 @@ const selectedPlan = ref(pricingPlans[0]);
             &lt;/template&gt;
         &lt;/c-radio&gt;
     &lt;/fieldset&gt;
-    &lt;p class="mt-4 text-sm text-gray-700 dark:text-gray-300" v-if="selectedPlan"&gt;
+    &lt;p class="mt-4 text-sm text-neutral-700 dark:text-neutral-300" v-if="selectedPlan"&gt;
         Selected plan: &lt;span class="font-semibold"&gt;&#123;&#123; selectedPlan.name &#125;&#125;&lt;/span&gt; -
         &lt;span class="font-medium"&gt;&#123;&#123; selectedPlan.priceMonthly &#125;&#125;/month&lt;/span&gt;
     &lt;/p&gt;

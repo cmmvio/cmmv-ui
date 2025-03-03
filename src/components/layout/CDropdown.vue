@@ -1,12 +1,7 @@
 <template>
     <div class="relative inline-block text-left m-auto">
         <div>
-            <button
-                type="button"
-                @click="toggleDropdown"
-                :disabled="disabled"
-                class="focus:outline-none"
-            >
+            <button type="button" @click="toggleDropdown" :disabled="disabled" class="focus:outline-none">
                 <slot name="activator">
                     <span>{{ selectedLabel || placeholder }}</span>
                 </slot>
@@ -14,27 +9,16 @@
         </div>
 
         <transition name="fade">
-            <div
-                v-if="isOpen"
-                class="fixed inset-0 z-40 bg-transparent"
-                @click="closeDropdown"
-            ></div>
+            <div v-if="isOpen" class="fixed inset-0 z-40 bg-transparent" @click="closeDropdown"></div>
         </transition>
 
         <transition :name="transitionEffect">
-            <div
-                v-if="isOpen"
-                class="absolute z-50 mt-2 w-56 bg-white dark:bg-neutral-800 border border-gray-300 dark:border-neutral-700 shadow-lg rounded-md"
-                :class="[positionClasses]"
-                :style="positionStyle"
-            >
-                <ul class="py-1 text-gray-700 dark:text-gray-300">
-                    <li
-                        v-for="option in options"
-                        :key="option.value"
-                        @click="selectOption(option)"
-                        class="px-4 py-2 cursor-pointer hover:bg-gray-200 dark:hover:bg-zinc-700 transition"
-                    >
+            <div v-if="isOpen"
+                class="absolute z-50 mt-2 w-56 bg-white dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-900 shadow-lg rounded-md"
+                :class="[positionClasses]" :style="positionStyle">
+                <ul class="py-1 text-neutral-700 dark:text-neutral-300">
+                    <li v-for="option in options" :key="option.value" @click="selectOption(option)"
+                        class="px-4 py-2 cursor-pointer hover:bg-neutral-200 dark:hover:bg-neutral-700 transition text-sm">
                         <slot name="option" :data="option">
                             {{ option.label }}
                         </slot>
@@ -46,17 +30,23 @@
 </template>
 
 <style scoped>
-.fade-enter-active, .fade-leave-active {
+.fade-enter-active,
+.fade-leave-active {
     transition: opacity 0.2s ease-in-out;
 }
-.fade-enter-from, .fade-leave-to {
+
+.fade-enter-from,
+.fade-leave-to {
     opacity: 0;
 }
 
-.slide-fade-enter-active, .slide-fade-leave-active {
+.slide-fade-enter-active,
+.slide-fade-leave-active {
     transition: opacity 0.2s ease, transform 0.2s ease;
 }
-.slide-fade-enter-from, .slide-fade-leave-to {
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
     opacity: 0;
     transform: translateY(-5px);
 }
@@ -105,11 +95,11 @@ const props = defineProps({
     },
     textColor: {
         type: String,
-        default: "text-gray-800 dark:text-white"
+        default: "text-neutral-800 dark:text-white"
     },
     borderColor: {
         type: String,
-        default: "border-gray-300 dark:border-gray-700"
+        default: "border-neutral-300 dark:border-neutral-900"
     },
     rounded: {
         type: String,

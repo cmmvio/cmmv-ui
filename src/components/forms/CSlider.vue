@@ -1,47 +1,26 @@
 <template>
-    <div
-        class="relative w-full"
-        :class="[thumb ? 'mt-10' : '']"
-    >
+    <div class="relative w-full" :class="[thumb ? 'mt-10' : '']">
         <div class="relative flex items-center">
             <slot name="icon-before" />
 
-            <div
-                ref="track"
-                class="relative flex-1 h-2 rounded-full transition-all shadow-md"
-                :class="[disabled ? 'bg-gray-300' : bgColor, hasError ? 'bg-red-300' : '']"
-                @mousedown="startDrag"
-                @touchstart="startDrag"
-            >
-                <div
-                    class="absolute h-full rounded-full transition-all"
-                    :style="{ width: `${percentage}%` }"
-                    :class="[disabled ? 'bg-blue-300' : activeTrackColor, activeTrackTextColor]"
-                ></div>
+            <div ref="track" class="relative flex-1 h-2 rounded-full transition-all shadow-md"
+                :class="[disabled ? 'bg-neutral-300' : bgColor, hasError ? 'bg-red-300' : '']" @mousedown="startDrag"
+                @touchstart="startDrag">
+                <div class="absolute h-full rounded-full transition-all" :style="{ width: `${percentage}%` }"
+                    :class="[disabled ? 'bg-blue-300' : activeTrackColor, activeTrackTextColor]"></div>
 
                 <template v-if="showTicks">
-                    <div
-                        v-for="tick in tickPositions"
-                        :key="tick"
-                        class="absolute border-l"
+                    <div v-for="tick in tickPositions" :key="tick" class="absolute border-l"
                         :style="{ left: `${tick}%`, height: `${tickSize}px` }"
-                        :class="[disabled ? 'border-gray-400' : tickMarkColor]"
-                    ></div>
+                        :class="[disabled ? 'border-neutral-400' : tickMarkColor]"></div>
                 </template>
 
-                <div
-                    ref="thumb"
+                <div ref="thumb"
                     class="absolute w-5 h-5 rounded-full flex items-center justify-center transition-all select-none transform shadow-md border border-neutral-200"
-                    :class="[disabled ? 'bg-gray-500 cursor-not-allowed' : thumbColor || bgColor, hasError ? 'bg-red-500' : '', 'cursor-pointer']"
-                    :style="{ left: `${percentage - 1}%`, top: '-70%' }"
-                    @mousedown="startDrag"
-                    @touchstart="startDrag"
-                >
-                    <div
-                        v-if="thumb"
-                        class="absolute -top-10 px-2 py-1 rounded-md text-sm shadow-lg"
-                        :class="[disabled ? 'bg-blue-300' : activeTrackColor, activeTrackTextColor]"
-                    >
+                    :class="[disabled ? 'bg-neutral-500 cursor-not-allowed' : thumbColor || bgColor, hasError ? 'bg-red-500' : '', 'cursor-pointer']"
+                    :style="{ left: `${percentage - 1}%`, top: '-70%' }" @mousedown="startDrag" @touchstart="startDrag">
+                    <div v-if="thumb" class="absolute -top-10 px-2 py-1 rounded-md text-sm shadow-lg"
+                        :class="[disabled ? 'bg-blue-300' : activeTrackColor, activeTrackTextColor]">
                         {{ currentValue }}
                     </div>
                 </div>
@@ -52,10 +31,7 @@
 
         <slot name="append" />
 
-        <div
-            v-if="hasError"
-            class="text-xs text-center text-red-500 mt-4 mb-0 pb-0"
-        >{{ errorMessage }}</div>
+        <div v-if="hasError" class="text-xs text-center text-red-500 mt-4 mb-0 pb-0">{{ errorMessage }}</div>
     </div>
 </template>
 
@@ -132,9 +108,9 @@ const tickPositions = computed(() => {
     return props.ticks.length//@ts-ignore
         ? props.ticks.map((tick) => ((tick - props.min) / range) * 100)
         : Array.from(
-              { length: Math.floor(range / stepValue.value) + 1 },
-              (_, i) => (i * stepValue.value) / range * 100
-          );
+            { length: Math.floor(range / stepValue.value) + 1 },
+            (_, i) => (i * stepValue.value) / range * 100
+        );
 });
 
 const startDrag = (event: MouseEvent | TouchEvent) => {

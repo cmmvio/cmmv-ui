@@ -23,12 +23,14 @@
                 { 'fixed': fixed && !absolute }
             ]">
                 <slot v-if="$slots.header || $slots.title" name="header">
-                    <div class="p-4 flex justify-between items-center border-b border-gray-200 dark:border-neutral-800">
-                        <h2 class="text-lg font-semibold text-gray-800 dark:text-white">
+                    <div
+                        class="p-4 flex justify-between items-center border-b border-neutral-200 dark:border-neutral-800">
+                        <h2 class="text-lg font-semibold text-neutral-800 dark:text-white">
                             <slot name="title">Sidebar</slot>
                         </h2>
 
-                        <button @click="close" class="p-2 rounded-md hover:bg-gray-300 dark:hover:bg-gray-700 h-10">
+                        <button @click="close"
+                            class="p-2 rounded-md hover:bg-neutral-300 dark:hover:bg-neutral-700 h-10">
                             <icon-x-mark class="w-6 h-6 text-neutral-600 dark:text-white" size="md"
                                 aria-hidden="true" />
                         </button>
@@ -41,7 +43,7 @@
 
                 <slot v-if="$slots.footer || $slots['footer-content']" name="footer">
                     <div
-                        class="p-4 border-t border-gray-200 dark:border-black text-center text-sm text-gray-600 dark:text-gray-400">
+                        class="p-4 border-t border-neutral-200 dark:border-black text-center text-sm text-neutral-600 dark:text-neutral-400">
                         <slot name="footer-content">Footer content</slot>
                     </div>
                 </slot>

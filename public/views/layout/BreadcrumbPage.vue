@@ -11,10 +11,10 @@
         <table-docs>
             <thead>
                 <tr>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Type</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Default</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Description</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Prop</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Type</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Default</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Description</th>
                 </tr>
             </thead>
             <tbody>
@@ -37,19 +37,19 @@
                 <tr>
                     <td class="border-b px-4 py-2">separatorClass</td>
                     <td class="border-b px-4 py-2">String</td>
-                    <td class="border-b px-4 py-2">text-gray-400 dark:text-gray-600</td>
+                    <td class="border-b px-4 py-2">text-neutral-400 dark:text-neutral-600</td>
                     <td class="border-b px-4 py-2">CSS class applied to the separator elements.</td>
                 </tr>
                 <tr>
                     <td class="border-b px-4 py-2">textColor</td>
                     <td class="border-b px-4 py-2">String</td>
-                    <td class="border-b px-4 py-2">text-gray-500 dark:text-gray-400</td>
+                    <td class="border-b px-4 py-2">text-neutral-500 dark:text-neutral-400</td>
                     <td class="border-b px-4 py-2">CSS class for the text color of non-active breadcrumb items.</td>
                 </tr>
                 <tr>
                     <td class="border-b px-4 py-2">activeTextColor</td>
                     <td class="border-b px-4 py-2">String</td>
-                    <td class="border-b px-4 py-2">text-gray-900 dark:text-white font-medium</td>
+                    <td class="border-b px-4 py-2">text-neutral-900 dark:text-white font-medium</td>
                     <td class="border-b px-4 py-2">CSS class for the text color of the active (current) breadcrumb item.
                     </td>
                 </tr>
@@ -68,7 +68,7 @@
                 <tr>
                     <td class="border-b px-4 py-2">iconClass</td>
                     <td class="border-b px-4 py-2">String</td>
-                    <td class="border-b px-4 py-2">text-gray-500 dark:text-gray-400</td>
+                    <td class="border-b px-4 py-2">text-neutral-500 dark:text-neutral-400</td>
                     <td class="border-b px-4 py-2">CSS class applied to the icon at the beginning of the breadcrumb.
                     </td>
                 </tr>
@@ -151,7 +151,7 @@ const basicItems = [
         <card-docs>
             <div class="p-4">
                 <c-breadcrumb :items="iconItems" :icon="IconHome"
-                    bgColor="bg-gray-100 dark:bg-zinc-800 px-4 py-2 rounded-lg" />
+                    bgColor="bg-neutral-100 dark:bg-zinc-800 px-4 py-2 rounded-lg" />
             </div>
 
             <template #code>
@@ -159,7 +159,7 @@ const basicItems = [
   &lt;c-breadcrumb
     :items="iconItems"
     :icon="IconHome"
-    bgColor="bg-gray-100 dark:bg-zinc-800 px-4 py-2 rounded-lg"
+    bgColor="bg-neutral-100 dark:bg-zinc-800 px-4 py-2 rounded-lg"
   /&gt;
 &lt;/template&gt;
 
@@ -189,7 +189,7 @@ const iconItems = [
             <div class="p-4">
                 <c-breadcrumb :items="basicItems">
                     <template #separator>
-                        <svg class="rtl:rotate-180 w-3 h-3 mx-1 text-gray-400" aria-hidden="true"
+                        <svg class="rtl:rotate-180 w-3 h-3 mx-1 text-neutral-400" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="m1 9 4-4-4-4" />
@@ -201,7 +201,7 @@ const iconItems = [
                             {{ item.text }}
                         </span>
                         <router-link v-else :to="item.to || '#'"
-                            class="px-2 py-1 hover:bg-gray-100 dark:hover:bg-zinc-700 rounded-md text-gray-600 dark:text-gray-300">
+                            class="px-2 py-1 hover:bg-neutral-100 dark:hover:bg-zinc-700 rounded-md text-neutral-600 dark:text-neutral-300">
                             {{ item.text }}
                         </router-link>
                     </template>
@@ -212,7 +212,7 @@ const iconItems = [
                 <pre><code class="code-highlight language-vue">&lt;template&gt;
   &lt;c-breadcrumb :items="basicItems"&gt;
     &lt;template #separator&gt;
-      &lt;icon-chevron-right class="h-4 w-4 text-gray-400" /&gt;
+      &lt;icon-chevron-right class="h-4 w-4 text-neutral-400" /&gt;
     &lt;/template&gt;
     &lt;template #item="{ item, isLast, index }"&gt;
       &lt;span v-if="isLast" class="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-md"&gt;
@@ -221,7 +221,7 @@ const iconItems = [
       &lt;router-link
         v-else
         :to="item.to || '#'"
-        class="px-2 py-1 hover:bg-gray-100 dark:hover:bg-zinc-700 rounded-md text-gray-600 dark:text-gray-300"
+        class="px-2 py-1 hover:bg-neutral-100 dark:hover:bg-zinc-700 rounded-md text-neutral-600 dark:text-neutral-300"
       &gt;
         &#123;&#123; item.text &#125;&#125;
       &lt;/router-link&gt;
@@ -255,18 +255,16 @@ import TableDocs from '../../components/TableDocs.vue';
 import PagePagination from "../../layout/PagePagination.vue";
 import CBreadcrumb from '@components/layout/CBreadcrumb.vue';
 import IconHome from '@components/icons/IconHome.vue';
-import IconShoppingBag from '@components/icons/IconShoppingBag.vue';
-import IconChevronRight from '@components/icons/IconChevronRight.vue';
 
 const basicItems = [
-    { text: 'Home', to: '/' },
-    { text: 'Products', to: '/products' },
+    { text: 'Home', to: '#' },
+    { text: 'Products', to: '#' },
     { text: 'Laptops' }
 ];
 
 const iconItems = [
-    { text: 'Products', to: '/products' },
-    { text: 'Electronics', to: '/products/electronics' },
+    { text: 'Products', to: '#' },
+    { text: 'Electronics', to: '#' },
     { text: 'Computers' }
 ];
 

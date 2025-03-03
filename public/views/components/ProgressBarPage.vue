@@ -2,15 +2,17 @@
     <BaseLayout>
         <h1>Progress Bar</h1>
 
-        <p>The <code>CProgressBar (alias: c-progress-bar)</code> component is a flexible and customizable progress indicator for determinate, indeterminate, buffering, and striped states. Below, you'll find examples and detailed usage of all the props supported by this component.</p>
+        <p>The <code>CProgressBar (alias: c-progress-bar)</code> component is a flexible and customizable progress
+            indicator for determinate, indeterminate, buffering, and striped states. Below, you'll find examples and
+            detailed usage of all the props supported by this component.</p>
 
         <table-docs>
             <thead>
                 <tr>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Type</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Default</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Description</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Prop</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Type</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Default</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Description</th>
                 </tr>
             </thead>
             <tbody>
@@ -73,7 +75,10 @@
 
         <h3>Basic Progress Bars</h3>
 
-        <p>Determinate progress bars are perfect for tasks where the progress percentage is calculable, such as file uploads or data processing. This example showcases how varying <code>height</code> and <code>fillColor</code> can enhance the visual appeal of the progress bar. By customizing these properties, you can align the component's design with your application's theme and user needs.</p>
+        <p>Determinate progress bars are perfect for tasks where the progress percentage is calculable, such as file
+            uploads or data processing. This example showcases how varying <code>height</code> and
+            <code>fillColor</code> can enhance the visual appeal of the progress bar. By customizing these properties,
+            you can align the component's design with your application's theme and user needs.</p>
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6">
@@ -83,7 +88,7 @@
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-html">&lt;template&gt;
+                <pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;c-progress-bar
         :value="25"
         :height="10"
@@ -109,22 +114,22 @@
 
         <h3>Buffering Progress with Animation</h3>
 
-        <p>Buffering progress bars excel in scenarios like streaming or file transfers, where preloading occurs alongside primary task progress. The <code>bufferValue</code> and <code>buffering</code> props work together to create a seamless dual-progress effect. Animation adds a dynamic touch, ensuring users remain engaged while understanding the buffering process.</p>
+        <p>Buffering progress bars excel in scenarios like streaming or file transfers, where preloading occurs
+            alongside
+            primary task progress. The <code>bufferValue</code> and <code>buffering</code> props work together to create
+            a
+            seamless dual-progress effect. Animation adds a dynamic touch, ensuring users remain engaged while
+            understanding the
+            buffering process.</p>
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6">
-                <c-progress-bar
-                    :value="dynamicValue"
-                    :bufferValue="dynamicValueBuffer"
-                    :buffering="true"
-                    :height="20"
-                    fillColor="#2196f3"
-                    bufferColor="#7cc0f4"
-                ></c-progress-bar>
+                <c-progress-bar :value="dynamicValue" :bufferValue="dynamicValueBuffer" :buffering="true" :height="20"
+                    fillColor="#2196f3" bufferColor="#7cc0f4"></c-progress-bar>
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-html">&lt;template&gt;
+                <pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;c-progress-bar
         :value="dynamicValue"
         :bufferValue="dynamicValueBuffer"
@@ -153,19 +158,21 @@ onMounted(() => {
 
         <h3>Indeterminate Progress</h3>
 
-        <p>Indeterminate progress bars are ideal for situations where the completion time is unknown, such as network requests or background tasks. The continuous animation conveys ongoing activity, assuring users that the system is working even when specific progress metrics aren't available. This mode enhances user trust and reduces perceived wait times.</p>
+        <p>Indeterminate progress bars are ideal for situations where the completion time is unknown, such as network
+            requests
+            or background tasks. The continuous animation conveys ongoing activity, assuring users that the system is
+            working
+            even when specific progress metrics aren't available. This mode enhances user trust and reduces perceived
+            wait
+            times.</p>
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6">
-                <c-progress-bar
-                    indeterminate
-                    :height="20"
-                    fillColor="#f44336"
-                ></c-progress-bar>
+                <c-progress-bar indeterminate :height="20" fillColor="#f44336"></c-progress-bar>
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-html">&lt;template&gt;
+                <pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;c-progress-bar
         indeterminate
         :height="20"
@@ -177,36 +184,25 @@ onMounted(() => {
 
         <h3>Striped Progress with Animation</h3>
 
-        <p>The striped mode brings a modern, dynamic visual to progress bars, making them stand out for active or foreground tasks. Combined with animation, the diagonal stripes add motion that captures user attention. This is especially useful for visually emphasizing processes like data loading or intensive computations.</p>
+        <p>The striped mode brings a modern, dynamic visual to progress bars, making them stand out for active or
+            foreground
+            tasks. Combined with animation, the diagonal stripes add motion that captures user attention. This is
+            especially
+            useful for visually emphasizing processes like data loading or intensive computations.</p>
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6">
-                <c-progress-bar
-                    :value="70"
-                    :striped="true"
-                    :height="20"
-                    fillColor="#ff9800"
-                    class="mb-4"
-                ></c-progress-bar>
+                <c-progress-bar :value="70" :striped="true" :height="20" fillColor="#ff9800"
+                    class="mb-4"></c-progress-bar>
 
-                <c-progress-bar
-                    :value="dynamicValue"
-                    :striped="true"
-                    :height="30"
-                    fillColor="#FF0000"
-                    class="mb-4"
-                ></c-progress-bar>
+                <c-progress-bar :value="dynamicValue" :striped="true" :height="30" fillColor="#FF0000"
+                    class="mb-4"></c-progress-bar>
 
-                <c-progress-bar
-                    :value="90"
-                    :striped="true"
-                    :height="50"
-                    fillColor="#0000FF"
-                ></c-progress-bar>
+                <c-progress-bar :value="90" :striped="true" :height="50" fillColor="#0000FF"></c-progress-bar>
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-html">&lt;template&gt;
+                <pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;c-progress-bar
         :value="70"
         :striped="true"
@@ -247,7 +243,12 @@ onMounted(() => {
 
         <h3>Real-Time Progress with Slot</h3>
 
-        <p>Using the default slot, you can inject custom content, such as progress percentages or status messages, directly into the progress bar. This example demonstrates real-time updates, where the progress value changes dynamically. This feature is particularly useful for applications requiring live feedback, like dashboards or monitoring tools.</p>
+        <p>Using the default slot, you can inject custom content, such as progress percentages or status messages,
+            directly into
+            the progress bar. This example demonstrates real-time updates, where the progress value changes dynamically.
+            This
+            feature is particularly useful for applications requiring live feedback, like dashboards or monitoring
+            tools.</p>
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6">
@@ -257,7 +258,7 @@ onMounted(() => {
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-html">&lt;template&gt;
+                <pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;c-progress-bar
         :value="dynamicValue"
         :height="20"
@@ -284,7 +285,9 @@ onMounted(() => {
 
         <h3>Application Loading Example</h3>
 
-        <p>This example demonstrates the integration of the CProgressBar component in an application loader, showcasing how it can be used in a real-world UI context to provide visual feedback during loading operations.</p>
+        <p>This example demonstrates the integration of the CProgressBar component in an application loader, showcasing
+            how it
+            can be used in a real-world UI context to provide visual feedback during loading operations.</p>
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6">
@@ -294,34 +297,26 @@ onMounted(() => {
                         <c-toolbar-title>My App</c-toolbar-title>
                         <c-spacer />
 
-                        <c-button
-                            type="button"
-                            variant="plain"
-                            rounded="full"
-                            bgColor="bg-purple-800 hover:bg-purple-500"
-                        >
+                        <c-button type="button" variant="plain" rounded="full"
+                            bgColor="bg-purple-800 hover:bg-purple-500">
                             <IconMagnifyingGlass class="text-white" />
                         </c-button>
                     </c-toolbar>
 
-                    <c-container style="height: 400px;" class="bg-zinc-900 flex justify-center items-center rounded-t-none">
+                    <c-container style="height: 400px;"
+                        class="bg-zinc-900 flex justify-center items-center rounded-t-none">
                         <div class="text-center w-6/12">
                             <span class="text-white text-sm block mb-4">Getting your files</span>
 
-                            <c-progress-bar
-                                :height="8"
-                                fillColor="#6B21A8"
-                                bgColor="#8f45d1"
-                                class="rounded-md w-2/6 m-auto"
-                                indeterminate
-                            ></c-progress-bar>
+                            <c-progress-bar :height="8" fillColor="#6B21A8" bgColor="#8f45d1"
+                                class="rounded-md w-2/6 m-auto" indeterminate></c-progress-bar>
                         </div>
                     </c-container>
                 </div>
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-html">&lt;template&gt;
+                <pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;div class="md:w-6/12 sm:w-full m-auto rounded-md"&gt;
         &lt;c-toolbar class="bg-purple-800 text-white rounded-t-md"&gt;
             &lt;c-app-bar-nav /&gt;
@@ -364,22 +359,18 @@ onMounted(() => {
         <p>
             The <code>CProgressBar</code> component can be effectively utilized to create a
             <strong>custom video player progress bar</strong>, similar to <strong>YouTube's</strong> progress indicator.
-            This example demonstrates how to integrate the progress bar with video playback controls and buffer tracking.
+            This example demonstrates how to integrate the progress bar with video playback controls and buffer
+            tracking.
         </p>
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6">
                 <div class="max-w-3xl mx-auto bg-black rounded-md overflow-hidden shadow-lg relative">
-                    <video
-                        ref="video"
-                        class="w-full h-auto"
-                        :src="videoSrc"
-                        @timeupdate="updateProgress"
-                        @progress="updateBuffer"
-                        @ended="isPlaying = false"
-                    ></video>
+                    <video ref="video" class="w-full h-auto" :src="videoSrc" @timeupdate="updateProgress"
+                        @progress="updateBuffer" @ended="isPlaying = false"></video>
 
-                    <div class="bg-neutral-800 p-4 flex items-center gap-4 bg-opacity-60 absolute bottom-0 left-0 right-0">
+                    <div
+                        class="bg-neutral-800 p-4 flex items-center gap-4 bg-opacity-60 absolute bottom-0 left-0 right-0">
                         <button @click="togglePlay" class="text-white text-2xl h-6">
                             <IconPlay v-if="!isPlaying" class="w-6 h-6 text-white" />
                             <IconPause v-else class="w-6 h-6 text-white" />
@@ -389,20 +380,17 @@ onMounted(() => {
                             {{ formatTime(currentTime) }} / {{ formatTime(duration) }}
                         </span>
 
-                        <div class="flex-1 relative h-2 bg-gray-700 rounded-md overflow-hidden cursor-pointer" @click="seekVideo">
-                            <c-progress-bar
-                                :value="progressPercentage"
-                                :bufferValue="bufferPercentage"
-                                :buffering="true"
-                                :height="8"
-                            />
+                        <div class="flex-1 relative h-2 bg-neutral-700 rounded-md overflow-hidden cursor-pointer"
+                            @click="seekVideo">
+                            <c-progress-bar :value="progressPercentage" :bufferValue="bufferPercentage"
+                                :buffering="true" :height="8" />
                         </div>
                     </div>
                 </div>
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-html">&lt;template&gt;
+                <pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;div class="max-w-3xl mx-auto bg-black rounded-md overflow-hidden shadow-lg relative"&gt;
         &lt;video
             ref="video"
@@ -423,7 +411,7 @@ onMounted(() => {
                 {{ formatTime(currentTime) }} / {{ formatTime(duration) }}
             &lt;/span&gt;
 
-            &lt;div class="flex-1 relative h-2 bg-gray-700 rounded-md overflow-hidden cursor-pointer" @click="seekVideo"&gt;
+            &lt;div class="flex-1 relative h-2 bg-neutral-700 rounded-md overflow-hidden cursor-pointer" @click="seekVideo"&gt;
                 &lt;c-progress-bar
                     :value="progressPercentage"
                     :bufferValue="bufferPercentage"
@@ -491,12 +479,8 @@ const formatTime = (seconds) => {
             </template>
         </card-docs>
 
-        <PagePagination
-            previous="Loader"
-            previousLink="/loader"
-            next="Progress Circular"
-            nextLink="/progress-circular"
-        />
+        <PagePagination previous="Loader" previousLink="/loader" next="Progress Circular"
+            nextLink="/progress-circular" />
     </BaseLayout>
 </template>
 
@@ -504,9 +488,11 @@ const formatTime = (seconds) => {
 button {
     transition: transform 0.2s ease-in-out;
 }
+
 button:hover {
     transform: scale(1.1);
 }
+
 .code-highlight {
     white-space: pre;
     font-family: monospace;

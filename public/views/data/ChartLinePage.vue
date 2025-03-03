@@ -228,16 +228,20 @@ const chartData = ref({
             </div>
             <template #code>
                 <pre><code class="code-highlight language-html">&lt;template&gt;
-  &lt;c-chart-line
+&lt;c-chart-line
     :data="chartData"
     title="Chart with Custom Animation"
     height="300px"
     :animation="animation"
-  /&gt;
-  &lt;c-button color="primary" class="mt-2 inline-flex items-center gap-x-2" @click="updateData"&gt;
-    &lt;IconStar class="h-5 w-5" aria-hidden="true" /&gt;
-    Update Data
-  &lt;/c-button&gt;
+/&gt;
+    &lt;c-button
+        color="primary"
+        class="mt-2 inline-flex items-center gap-x-2"
+        @click="updateData"
+    &gt;
+        &lt;IconStar class="h-5 w-5" aria-hidden="true" /&gt;
+        Update Data
+    &lt;/c-button&gt;
 &lt;/template&gt;
 
 &lt;script setup&gt;
@@ -294,7 +298,8 @@ const updateData = () => {
     @chart-hover="handleChartHover"
   /&gt;
   &lt;div v-if="selectedPoint" class="mt-2 p-2 border rounded"&gt;
-    &lt;strong&gt;Selected point:&lt;/strong&gt; &#123;&#123; selectedPoint.label &#125;&#125; - &#123;&#123; selectedPoint.value &#125;&#125;
+    &lt;strong&gt;Selected point:&lt;/strong&gt;
+    &#123;&#123; selectedPoint.label &#125;&#125; - &#123;&#123; selectedPoint.value &#125;&#125;
   &lt;/div&gt;
 &lt;/template&gt;
 
@@ -369,19 +374,36 @@ const handleChartHover = (event) => {
     height="300px"
   /&gt;
   &lt;div class="mt-2 flex flex-wrap gap-2"&gt;
-    &lt;c-button color="primary" @click="addDataPoint" class="inline-flex items-center gap-x-2"&gt;
+    &lt;c-button
+        color="primary"
+        @click="addDataPoint"
+        class="inline-flex items-center gap-x-2"
+    &gt;
       &lt;IconPlus class="h-5 w-5" aria-hidden="true" /&gt;
       Add Point
     &lt;/c-button&gt;
-    &lt;c-button color="danger" @click="removeDataPoint" class="inline-flex items-center gap-x-2"&gt;
+    &lt;c-button
+        color="danger"
+        @click="removeDataPoint"
+        class="inline-flex items-center gap-x-2"
+    &gt;
       &lt;IconMinus class="h-5 w-5" aria-hidden="true" /&gt;
       Remove Point
     &lt;/c-button&gt;
-    &lt;c-button v-if="!autoUpdateActive" color="success" @click="startAutoUpdate" class="inline-flex items-center gap-x-2"&gt;
+    &lt;c-button
+        v-if="!autoUpdateActive"
+        color="success" @click="startAutoUpdate"
+        class="inline-flex items-center gap-x-2"
+    &gt;
       &lt;IconBolt class="h-5 w-5" aria-hidden="true" /&gt;
       Start Update
     &lt;/c-button&gt;
-    &lt;c-button v-if="autoUpdateActive" color="warning" @click="stopAutoUpdate" class="inline-flex items-center gap-x-2"&gt;
+    &lt;c-button
+        v-if="autoUpdateActive"
+        color="warning"
+        @click="stopAutoUpdate"
+        class="inline-flex items-center gap-x-2"
+    &gt;
       &lt;IconStop class="h-5 w-5" aria-hidden="true" /&gt;
       Stop Update
     &lt;/c-button&gt;

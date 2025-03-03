@@ -11,10 +11,10 @@
         <table-docs>
             <thead>
                 <tr>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Type</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Default</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Description</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Prop</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Type</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Default</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Description</th>
                 </tr>
             </thead>
             <tbody>
@@ -119,7 +119,7 @@
             <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4 h-[300px]">
                 <div class="lg:w-2/5 w-full max-w-[400px]">
                     <c-combobox v-model="basicValue" label="Select an option" :options="basicOptions" />
-                    <p class="mt-2 text-gray-600 dark:text-gray-300">Selected: {{ basicValue }}</p>
+                    <p class="mt-2 text-neutral-600 dark:text-neutral-300">Selected: {{ basicValue }}</p>
                 </div>
             </div>
 
@@ -383,9 +383,9 @@ const languageValue = ref(1);
         <table-docs>
             <thead>
                 <tr>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Event</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Payload</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Description</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Event</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Payload</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Description</th>
                 </tr>
             </thead>
             <tbody>
@@ -438,7 +438,7 @@ const languageValue = ref(1);
                             </div>
                         </template>
                     </c-combobox>
-                    <div class="mt-2 text-gray-600 dark:text-gray-300">
+                    <div class="mt-2 text-neutral-600 dark:text-neutral-300">
                         <ul class="pl-5 list-disc">
                             <li v-for="item in checkedItems" :key="item">{{ item }}</li>
                         </ul>
@@ -510,7 +510,7 @@ const onUncheck = (option) => {
                         <template #option="{ data }">
                             <div class="flex items-center">
                                 <span class="font-medium">{{ data.label }}</span>
-                                <span v-if="data.count" class="ml-2 text-xs text-gray-500 dark:text-gray-400">({{
+                                <span v-if="data.count" class="ml-2 text-xs text-neutral-500 dark:text-neutral-400">({{
                                     data.count }})</span>
                             </div>
                         </template>
@@ -518,11 +518,11 @@ const onUncheck = (option) => {
                             <div class="flex items-center">
                                 <span>{{ data.label }}</span>
                                 <span v-if="data.price" class="ml-auto text-green-600 dark:text-green-400">{{ data.price
-                                    }}</span>
+                                }}</span>
                             </div>
                         </template>
                     </c-combobox>
-                    <p class="mt-2 text-gray-600 dark:text-gray-300">Selected: {{ getSelectedItem }}</p>
+                    <p class="mt-2 text-neutral-600 dark:text-neutral-300">Selected: {{ getSelectedItem }}</p>
                 </div>
             </div>
 
@@ -536,7 +536,7 @@ const onUncheck = (option) => {
     &lt;template #option="{ data }"&gt;
       &lt;div class="flex items-center"&gt;
         &lt;span class="font-medium"&gt;&#123;&#123; data.label &#125;&#125;&lt;/span&gt;
-        &lt;span v-if="data.count" class="ml-2 text-xs text-gray-500"&gt;(&#123;&#123; data.count &#125;&#125;)&lt;/span&gt;
+        &lt;span v-if="data.count" class="ml-2 text-xs text-neutral-500"&gt;(&#123;&#123; data.count &#125;&#125;)&lt;/span&gt;
       &lt;/div&gt;
     &lt;/template&gt;
     &lt;template #subitem="{ data, parent }"&gt;
@@ -628,7 +628,7 @@ const getSelectedItem = computed(() => {
                         </template>
                     </c-combobox>
                     <div class="flex mt-3">
-                        <p class="text-gray-600 dark:text-gray-300">Selected: {{ countryValue }}</p>
+                        <p class="text-neutral-600 dark:text-neutral-300">Selected: {{ countryValue }}</p>
                     </div>
                 </div>
             </div>

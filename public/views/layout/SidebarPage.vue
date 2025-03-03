@@ -70,17 +70,20 @@
                         Navigation
                     </template>
 
-                    <ul class="space-y-2 text-gray-700 dark:text-gray-300">
-                        <li><a href="#" class="block p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">Dashboard</a>
+                    <ul class="space-y-2 text-neutral-700 dark:text-neutral-300">
+                        <li><a href="#"
+                                class="block p-2 hover:bg-neutral-100 dark:hover:bg-neutral-700 rounded">Dashboard</a>
                         </li>
-                        <li><a href="#" class="block p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">Settings</a>
+                        <li><a href="#"
+                                class="block p-2 hover:bg-neutral-100 dark:hover:bg-neutral-700 rounded">Settings</a>
                         </li>
-                        <li><a href="#" class="block p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">Logout</a>
+                        <li><a href="#"
+                                class="block p-2 hover:bg-neutral-100 dark:hover:bg-neutral-700 rounded">Logout</a>
                         </li>
                     </ul>
 
                     <template #footer>
-                        <p class="text-center text-gray-500 text-sm">© 2025 MyApp</p>
+                        <p class="text-center text-neutral-500 text-sm">© 2025 MyApp</p>
                     </template>
                 </c-sidebar>
 
@@ -102,14 +105,14 @@
             Navigation
         &lt;/template&gt;
 
-        &lt;ul class="space-y-2 text-gray-700 dark:text-gray-300"&gt;
-            &lt;li&gt;&lt;a href="#" class="block p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded"&gt;Dashboard&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="#" class="block p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded"&gt;Settings&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="#" class="block p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded"&gt;Logout&lt;/a&gt;&lt;/li&gt;
+        &lt;ul class="space-y-2 text-neutral-700 dark:text-neutral-300"&gt;
+            &lt;li&gt;&lt;a href="#" class="block p-2 hover:bg-neutral-100 dark:hover:bg-neutral-700 rounded"&gt;Dashboard&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#" class="block p-2 hover:bg-neutral-100 dark:hover:bg-neutral-700 rounded"&gt;Settings&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#" class="block p-2 hover:bg-neutral-100 dark:hover:bg-neutral-700 rounded"&gt;Logout&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
 
         &lt;template #footer&gt;
-            &lt;p class="text-center text-gray-500 text-sm"&gt;© 2025 MyApp&lt;/p&gt;
+            &lt;p class="text-center text-neutral-500 text-sm"&gt;© 2025 MyApp&lt;/p&gt;
         &lt;/template&gt;
     &lt;/c-sidebar&gt;
 
@@ -137,15 +140,15 @@ const showSidebar = ref(false);
 
         <card-docs>
             <div class="mx-auto p-4 sm:p-6 flex flex-col items-center">
-                <c-sidebar v-model="showRightSidebar" side="right" bgColor="bg-gray-100 dark:bg-zinc-800">
+                <c-sidebar v-model="showRightSidebar" side="right" bgColor="bg-neutral-100 dark:bg-zinc-800">
                     <template #title>
                         Right Sidebar
                     </template>
 
-                    <p class="text-gray-700 dark:text-gray-300">Content inside the sidebar...</p>
+                    <p class="text-neutral-700 dark:text-neutral-300">Content inside the sidebar...</p>
 
                     <template #footer>
-                        <p class="text-center text-gray-500 text-sm">Footer content</p>
+                        <p class="text-center text-neutral-500 text-sm">Footer content</p>
                     </template>
                 </c-sidebar>
 
@@ -160,16 +163,16 @@ const showSidebar = ref(false);
     &lt;c-sidebar
         v-model="showRightSidebar"
         side="right"
-        bgColor="bg-gray-100 dark:bg-zinc-800"
+        bgColor="bg-neutral-100 dark:bg-zinc-800"
     &gt;
         &lt;template #title&gt;
             Right Sidebar
         &lt;/template&gt;
 
-        &lt;p class="text-gray-700 dark:text-gray-300"&gt;Content inside the sidebar...&lt;/p&gt;
+        &lt;p class="text-neutral-700 dark:text-neutral-300"&gt;Content inside the sidebar...&lt;/p&gt;
 
         &lt;template #footer&gt;
-            &lt;p class="text-center text-gray-500 text-sm"&gt;Footer content&lt;/p&gt;
+            &lt;p class="text-center text-neutral-500 text-sm"&gt;Footer content&lt;/p&gt;
         &lt;/template&gt;
     &lt;/c-sidebar&gt;
 
@@ -192,13 +195,13 @@ const showSidebar = ref(false);
 
         <card-docs>
             <div class="mx-auto p-4 sm:p-6 flex flex-col items-center">
-                <c-sidebar v-model="showWideSidebar" side="left" width="w-96" bgColor="bg-gray-100 dark:bg-zinc-800"
+                <c-sidebar v-model="showWideSidebar" side="left" width="w-96" bgColor="bg-neutral-100 dark:bg-zinc-800"
                     bgColorOverlay="bg-black/70">
                     <template #title>
                         Wide Sidebar
                     </template>
 
-                    <p class="text-gray-700 dark:text-gray-300">This sidebar is wider than usual.</p>
+                    <p class="text-neutral-700 dark:text-neutral-300">This sidebar is wider than usual.</p>
                 </c-sidebar>
 
                 <button @click="showWideSidebar = true"
@@ -213,14 +216,14 @@ const showSidebar = ref(false);
         v-model="showWideSidebar"
         side="left"
         width="w-96"
-        bgColor="bg-gray-100 dark:bg-zinc-800"
+        bgColor="bg-neutral-100 dark:bg-zinc-800"
         bgColorOverlay="bg-black/70"
     &gt;
         &lt;template #title&gt;
             Wide Sidebar
         &lt;/template&gt;
 
-        &lt;p class="text-gray-700 dark:text-gray-300"&gt;This sidebar is wider than usual.&lt;/p&gt;
+        &lt;p class="text-neutral-700 dark:text-neutral-300"&gt;This sidebar is wider than usual.&lt;/p&gt;
     &lt;/c-sidebar&gt;
 
     &lt;button
@@ -245,7 +248,7 @@ const showSidebar = ref(false);
                 class="relative mx-auto flex flex-col justify-center items-center w-full min-h-[400px] overflow-hidden">
                 <c-sidebar ref="cardSidebar" absolute shadow="" rounded="md" width="w-48" class="rounded-l-md">
                     <template #title>Panel</template>
-                    <p class="text-gray-700 dark:text-gray-300">This is a floating sidebar inside the card.</p>
+                    <p class="text-neutral-700 dark:text-neutral-300">This is a floating sidebar inside the card.</p>
                 </c-sidebar>
 
                 <button @click="openCardSidebar"
@@ -266,7 +269,7 @@ const showSidebar = ref(false);
             class="rounded-l-md"
         &gt;
             &lt;template #title&gt;Panel&lt;/template&gt;
-            &lt;p class="text-gray-700 dark:text-gray-300"&gt;This is a floating sidebar inside the card.&lt;/p&gt;
+            &lt;p class="text-neutral-700 dark:text-neutral-300"&gt;This is a floating sidebar inside the card.&lt;/p&gt;
         &lt;/c-sidebar&gt;
 
         &lt;button
@@ -302,11 +305,12 @@ const openCardSidebar = () => {
         <card-docs>
             <div class="relative mx-auto flex flex-col items-center w-full min-h-[400px] overflow-hidden p-4">
                 <div
-                    class="bg-gray-100 dark:bg-gray-800 min-h-[400px] max-w-[300px] flex flex-col sm:w-full m-auto relative overflow-hidden">
+                    class="bg-neutral-100 dark:bg-neutral-800 min-h-[400px] max-w-[300px] flex flex-col sm:w-full m-auto relative overflow-hidden">
                     <c-sidebar v-model="showSidebarToolbar" absolute shadow="" rounded="md" width="w-48"
                         class="rounded-l-md w-full">
                         <template #title>Panel</template>
-                        <p class="text-gray-700 dark:text-gray-300">This is a floating sidebar inside the card.</p>
+                        <p class="text-neutral-700 dark:text-neutral-300">This is a floating sidebar inside the card.
+                        </p>
                     </c-sidebar>
 
                     <c-toolbar class="bg-blue-600 text-white rounded-t-md shadow-md">
@@ -340,7 +344,7 @@ const openCardSidebar = () => {
             class="rounded-l-md w-full"
         &gt;
             &lt;template #title&gt;Panel&lt;/template&gt;
-            &lt;p class="text-gray-700 dark:text-gray-300"&gt;This is a floating sidebar inside the card.&lt;/p&gt;
+            &lt;p class="text-neutral-700 dark:text-neutral-300"&gt;This is a floating sidebar inside the card.&lt;/p&gt;
         &lt;/c-sidebar&gt;
 
         &lt;c-toolbar class="bg-blue-600 text-white rounded-t-md shadow-md"&gt;
@@ -364,7 +368,7 @@ const openCardSidebar = () => {
             </template>
         </card-docs>
 
-        <PagePagination previous="Navbar" previousLink="/navbar" next="Speed Dial" nextLink="/speed-dial" />
+        <PagePagination previous="Navbar" previousLink="/navbar" next="Skeleton" nextLink="/skeleton" />
     </BaseLayout>
 </template>
 

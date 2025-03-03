@@ -1,12 +1,13 @@
 <template>
-    <div class="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 dark:from-zinc-900 dark:to-zinc-950" v-cloak>
+    <div class="min-h-screen bg-gradient-to-br from-neutral-100 to-neutral-200 dark:from-zinc-900 dark:to-zinc-950"
+        v-cloak>
         <nav
-            class="navbar bg-white dark:bg-zinc-800 h-16 top-0 w-full fixed flex z-40 shadow-md border-b border-gray-200 dark:border-zinc-700 transition-all duration-300">
+            class="navbar bg-white dark:bg-zinc-800 h-16 top-0 w-full fixed flex z-40 shadow-md border-b border-neutral-200 dark:border-zinc-700 transition-all duration-300">
             <div class="w-full mx-auto flex items-center px-3" style="background-color: transparent !important;">
                 <button id="menu-toggle" name="Navbar Button" aria-label="Navbar Button"
-                    class="text-slate-700 dark:text-slate-200 p-2 lg:hidden rounded-md hover:bg-gray-100 dark:hover:bg-zinc-700 transition-colors duration-200 mr-2"
+                    class="text-slate-700 dark:text-slate-200 p-2 lg:hidden rounded-md hover:bg-neutral-100 dark:hover:bg-zinc-700 transition-colors duration-200 mr-2"
                     @click="toggleMenu">
-                    <IconBars3 class="w-6 h-6 text-gray-700 dark:text-slate-100"></IconBars3>
+                    <IconBars3 class="w-6 h-6 text-neutral-700 dark:text-slate-100"></IconBars3>
                 </button>
 
                 <div class="w-60 flex-shrink-0">
@@ -15,7 +16,7 @@
                         <img src="/assets/android-chrome-192x192.png" alt="CMMV Logo" height="36" width="36"
                             class="transition-transform duration-300 group-hover:scale-110">
                         <span
-                            class="ml-2 text-lg text-gray-800 dark:text-slate-100 font-semibold tracking-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200">CMMV</span>
+                            class="ml-2 text-lg text-neutral-800 dark:text-slate-100 font-semibold tracking-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200">CMMV</span>
                     </a>
                 </div>
 
@@ -24,27 +25,27 @@
                         <ul class="flex gap-x-8 items-center lg:flex">
                             <li class="relative">
                                 <a href="https://cmmv.io/docs/overview/first-steps"
-                                    class="text-sm/6 font-semibold flex items-center gap-1 hover:text-blue-600 dark:hover:text-blue-400 py-1 px-2 rounded-md transition-colors duration-200 hover:bg-gray-50 dark:hover:bg-zinc-700"
+                                    class="text-sm/6 font-semibold flex items-center gap-1 hover:text-blue-600 dark:hover:text-blue-400 py-1 px-2 rounded-md transition-colors duration-200 hover:bg-neutral-50 dark:hover:bg-zinc-700"
                                     title="Server">Getting Started</a>
                             </li>
                             <li class="relative">
                                 <a href="https://cmmv.io/docs/server/overview"
-                                    class="text-sm/6 font-semibold flex items-center gap-1 hover:text-blue-600 dark:hover:text-blue-400 py-1 px-2 rounded-md transition-colors duration-200 hover:bg-gray-50 dark:hover:bg-zinc-700"
+                                    class="text-sm/6 font-semibold flex items-center gap-1 hover:text-blue-600 dark:hover:text-blue-400 py-1 px-2 rounded-md transition-colors duration-200 hover:bg-neutral-50 dark:hover:bg-zinc-700"
                                     title="Server">Server</a>
                             </li>
                             <li class="relative">
                                 <a href="https://cmmv.io/docs/contracts/overview"
-                                    class="text-sm/6 font-semibold flex items-center gap-1 hover:text-blue-600 dark:hover:text-blue-400 py-1 px-2 rounded-md transition-colors duration-200 hover:bg-gray-50 dark:hover:bg-zinc-700"
+                                    class="text-sm/6 font-semibold flex items-center gap-1 hover:text-blue-600 dark:hover:text-blue-400 py-1 px-2 rounded-md transition-colors duration-200 hover:bg-neutral-50 dark:hover:bg-zinc-700"
                                     title="Contracts">Contracts</a>
                             </li>
                             <li class="relative">
                                 <a href="https://cmmv.io/docs/rpc/overview"
-                                    class="text-sm/6 font-semibold flex items-center gap-1 hover:text-blue-600 dark:hover:text-blue-400 py-1 px-2 rounded-md transition-colors duration-200 hover:bg-gray-50 dark:hover:bg-zinc-700"
+                                    class="text-sm/6 font-semibold flex items-center gap-1 hover:text-blue-600 dark:hover:text-blue-400 py-1 px-2 rounded-md transition-colors duration-200 hover:bg-neutral-50 dark:hover:bg-zinc-700"
                                     title="RPC">RPC</a>
                             </li>
                             <li class="relative">
                                 <a href="https://cmmv.io/docs/view/overview"
-                                    class="text-sm/6 font-semibold flex items-center gap-1 hover:text-blue-600 dark:hover:text-blue-400 py-1 px-2 rounded-md transition-colors duration-200 hover:bg-gray-50 dark:hover:bg-zinc-700"
+                                    class="text-sm/6 font-semibold flex items-center gap-1 hover:text-blue-600 dark:hover:text-blue-400 py-1 px-2 rounded-md transition-colors duration-200 hover:bg-neutral-50 dark:hover:bg-zinc-700"
                                     title="View">View</a>
                             </li>
                             <li class="relative">
@@ -64,8 +65,8 @@
                     <SwitchTheme />
 
                     <a href="https://github.com/cmmvio/cmmv-ui" title="Github" target="_blank"
-                        class="p-1.5 rounded-md hover:bg-gray-100 dark:hover:bg-zinc-700 transition-colors duration-200">
-                        <IconGithub class="w-5 h-5 text-gray-700 dark:text-slate-100"></IconGithub>
+                        class="p-1.5 rounded-md hover:bg-neutral-100 dark:hover:bg-zinc-700 transition-colors duration-200">
+                        <IconGithub class="w-5 h-5 text-neutral-700 dark:text-slate-100"></IconGithub>
                     </a>
                 </div>
             </div>
@@ -74,7 +75,7 @@
         <main class="flex flex-wrap mx-auto pt-16 relative">
             <div id="sidebar-menu" :class="[
                 { 'translate-x-0 shadow-2xl': isMenuVisible, '-translate-x-full lg:translate-x-0': !isMenuVisible },
-                'bg-white dark:bg-zinc-800 w-72 fixed top-16 bottom-0 z-40 overflow-auto text-slate-800 pb-10 border-r border-gray-200 dark:border-zinc-700 transition-all duration-300 ease-in-out'
+                'bg-white dark:bg-zinc-800 w-72 fixed top-16 bottom-0 z-40 overflow-auto text-slate-800 pb-10 border-r border-neutral-200 dark:border-zinc-700 transition-all duration-300 ease-in-out'
             ]">
                 <Navbar ref="navbar" :isOpen="isMenuVisible" @close="isMenuVisible = false"></Navbar>
             </div>
@@ -82,12 +83,10 @@
             <div v-if="isMenuVisible" class="fixed inset-0 top-16 bg-black/20 backdrop-blur-sm z-30 lg:hidden"
                 @click="isMenuVisible = false"></div>
 
-            <div class="lg:ml-80 sm:ml-4 ml-2 sm:mr-4 lg:mr-6 text-justify relative m-auto max-w-[calc(100%-0.3rem)]">
-                <div class="content-container rounded-lg overflow-hidden">
-                    <div class="m-auto py-8 w-full">
-                        <div class="text-slate-800 relative dark:text-white mb-12 context-html">
-                            <slot />
-                        </div>
+            <div class="w-full lg:pl-72 flex flex-col flex-1 transition-all duration-300">
+                <div class="w-full max-w-full px-4 sm:px-6 lg:px-8 py-8 mx-auto">
+                    <div class="text-slate-800 relative dark:text-white mb-12 context-html overflow-x-hidden">
+                        <slot />
                     </div>
                 </div>
             </div>

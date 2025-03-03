@@ -1,18 +1,11 @@
 <template>
-    <div
-        class="tooltip-container relative inline-block"
-        @mouseenter="showTooltip"
-        @mouseleave="hideTooltip"
-    >
+    <div class="tooltip-container relative inline-block" @mouseenter="showTooltip" @mouseleave="hideTooltip">
         <slot></slot>
 
         <transition name="fade">
-            <div
-                v-if="visible"
-                class="tooltip-content absolute z-50 px-4 py-2 rounded shadow-lg"
+            <div v-if="visible" class="tooltip-content absolute z-50 px-4 py-2 rounded shadow-lg"
                 :class="[positionClasses[position], bgColor, textColor, `opacity-${opacity}`]"
-                :style="{ maxWidth: maxWidth ? maxWidth + 'px' : 'auto' }"
-            >
+                :style="{ maxWidth: maxWidth ? maxWidth + 'px' : 'auto' }">
                 <div class="overflow-hidden text-ellipsis">{{ content }}</div>
                 <div class="tooltip-arrow" :class="[arrowClasses[position], arrowColor, `opacity-${opacity}`]"></div>
             </div>
@@ -76,7 +69,7 @@ const props = defineProps({
     },
     bgColor: {
         type: String,
-        default: "bg-gray-200 dark:bg-zinc-900",
+        default: "bg-neutral-200 dark:bg-zinc-900",
     },
     textColor: {
         type: String,
@@ -111,18 +104,14 @@ const arrowClasses = computed<Record<string, string>>(() => {
     const customColor = props.arrowColor !== "zinc-900" ? props.arrowColor : "";
 
     return {
-        top: `bottom-[-13px] left-1/2 transform -translate-x-1/2 border-[8px] border-l-transparent border-r-transparent border-b-transparent ${
-            customColor ? `border-t-${customColor}` : `dark:border-t-${props.arrowColor}`
-        }`,
-        bottom: `top-[-13px] left-1/2 transform -translate-x-1/2 border-[8px] border-l-transparent border-r-transparent border-t-transparent ${
-            customColor ? `border-b-${customColor}` : `dark:border-b-${props.arrowColor}`
-        }`,
-        left: `right-[-13px] top-1/2 transform -translate-y-1/2 border-[8px] border-t-transparent border-b-transparent border-r-transparent ${
-            customColor ? `border-l-${customColor}` : `dark:border-l-${props.arrowColor}`
-        }`,
-        right: `left-[-13px] top-1/2 transform -translate-y-1/2 border-[8px] border-t-transparent border-b-transparent border-l-transparent ${
-            customColor ? `border-r-${customColor}` : `dark:border-r-${props.arrowColor}`
-        }`,
+        top: `bottom-[-13px] left-1/2 transform -translate-x-1/2 border-[8px] border-l-transparent border-r-transparent border-b-transparent ${customColor ? `border-t-${customColor}` : `dark:border-t-${props.arrowColor}`
+            }`,
+        bottom: `top-[-13px] left-1/2 transform -translate-x-1/2 border-[8px] border-l-transparent border-r-transparent border-t-transparent ${customColor ? `border-b-${customColor}` : `dark:border-b-${props.arrowColor}`
+            }`,
+        left: `right-[-13px] top-1/2 transform -translate-y-1/2 border-[8px] border-t-transparent border-b-transparent border-r-transparent ${customColor ? `border-l-${customColor}` : `dark:border-l-${props.arrowColor}`
+            }`,
+        right: `left-[-13px] top-1/2 transform -translate-y-1/2 border-[8px] border-t-transparent border-b-transparent border-l-transparent ${customColor ? `border-r-${customColor}` : `dark:border-r-${props.arrowColor}`
+            }`,
     };
 });
 

@@ -16,10 +16,10 @@
         <table-docs>
             <thead>
                 <tr>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Type</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Default</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Description</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Prop</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Type</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Default</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Description</th>
                 </tr>
             </thead>
             <tbody>
@@ -62,7 +62,7 @@
                 <tr>
                     <td class="border-b px-4 py-2">hoverBgColor</td>
                     <td class="border-b px-4 py-2">String</td>
-                    <td class="border-b px-4 py-2">'bg-gray-100'</td>
+                    <td class="border-b px-4 py-2">'bg-neutral-100'</td>
                     <td class="border-b px-4 py-2">
                         The <code>hoverBgColor</code> prop defines the background color class applied when hovering over
                         navbar items, providing visual feedback.
@@ -116,7 +116,7 @@
                 <tr>
                     <td class="border-b px-4 py-2">borderColor</td>
                     <td class="border-b px-4 py-2">String</td>
-                    <td class="border-b px-4 py-2">'border-gray-200'</td>
+                    <td class="border-b px-4 py-2">'border-neutral-200'</td>
                     <td class="border-b px-4 py-2">
                         The <code>borderColor</code> prop sets the color class for the navbar's border when the border
                         prop is enabled.
@@ -134,7 +134,7 @@
                 <tr>
                     <td class="border-b px-4 py-2">toggleButtonClass</td>
                     <td class="border-b px-4 py-2">String</td>
-                    <td class="border-b px-4 py-2">'text-slate-700 hover:bg-gray-100'</td>
+                    <td class="border-b px-4 py-2">'text-slate-700 hover:bg-neutral-100'</td>
                     <td class="border-b px-4 py-2">
                         The <code>toggleButtonClass</code> prop allows customization of the toggle button's appearance
                         through CSS classes.
@@ -218,8 +218,9 @@ const items = [
 
         <card-docs>
             <div>
-                <div class="flex min-h-[200px] border border-gray-200 dark:border-zinc-700 rounded-lg overflow-hidden">
-                    <div class="w-56 bg-white dark:bg-zinc-800 border-r border-gray-200 dark:border-zinc-700">
+                <div
+                    class="flex min-h-[200px] border border-neutral-200 dark:border-zinc-700 rounded-lg overflow-hidden">
+                    <div class="w-56 bg-white dark:bg-zinc-800 border-r border-neutral-200 dark:border-zinc-700">
                         <c-navbar mode="vertical" :items="verticalItems" />
                     </div>
                     <div class="flex-1 bg-slate-50 dark:bg-neutral-900 flex justify-center items-center">
@@ -374,7 +375,7 @@ const items = [
       :items="items"
     /&gt;
     &lt;div class="flex items-center space-x-2"&gt;
-      &lt;button class="p-1.5 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700"&gt;
+      &lt;button class="p-1.5 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-700"&gt;
         &lt;icon-user class="w-5 h-5" /&gt;
       &lt;/button&gt;
     &lt;/div&gt;
@@ -422,7 +423,7 @@ const items = [
             <div
                 class="relative mx-auto flex flex-col items-center w-full min-h-[400px] overflow-hidden p-4 rounded-md">
                 <div
-                    class="bg-gray-100 dark:bg-gray-800 min-h-[400px] max-w-[600px] flex flex-col sm:w-full m-auto relative overflow-hidden">
+                    class="bg-neutral-100 dark:bg-neutral-800 min-h-[400px] max-w-[600px] flex flex-col sm:w-full m-auto relative overflow-hidden">
 
                     <c-sidebar v-model="showSidebarNavbar" absolute shadow="" width="w-64"
                         class="w-full rounded-none overflow-hidden" bgColor="bg-white dark:bg-zinc-800">
@@ -442,7 +443,7 @@ const items = [
                     </c-toolbar>
 
                     <div class="flex-1 p-4 flex items-center justify-center">
-                        <p class="text-gray-700 dark:text-gray-300">Content area</p>
+                        <p class="text-neutral-700 dark:text-neutral-300">Content area</p>
                     </div>
                 </div>
             </div>

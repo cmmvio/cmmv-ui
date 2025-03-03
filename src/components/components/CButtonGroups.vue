@@ -15,7 +15,7 @@ const props = defineProps({
     },
     variant: {
         type: String,
-        default: 'elevated',
+        default: 'flat',
         validator: (value: string) => ['elevated', 'flat', 'tonal', 'outlined', 'text', 'plain'].includes(value)
     },
     bgColor: {

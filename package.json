@@ -96,6 +96,7 @@
         "fs-extra": "^11.3.0",
         "glob": "^11.0.1",
         "highlight.js": "^11.11.1",
+        "js-beautify": "^1.15.4",
         "json5": "^1.0.2",
         "lodash": "4.17.21",
         "markdown-it": "^14.1.0",

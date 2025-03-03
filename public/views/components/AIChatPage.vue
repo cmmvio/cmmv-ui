@@ -12,10 +12,10 @@
         <table-docs>
             <thead>
                 <tr>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Type</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Default</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Description</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Prop</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Type</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Default</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Description</th>
                 </tr>
             </thead>
             <tbody>
@@ -24,7 +24,8 @@
                     <td class="border-b px-4 py-2">Array</td>
                     <td class="border-b px-4 py-2">[]</td>
                     <td class="border-b px-4 py-2">Initial messages to display in the chat. Each message should have
-                        <code>role</code> ('user' or 'assistant') and <code>content</code> properties.</td>
+                        <code>role</code> ('user' or 'assistant') and <code>content</code> properties.
+                    </td>
                 </tr>
                 <tr>
                     <td class="border-b px-4 py-2">suggestions</td>
@@ -60,9 +61,9 @@
         <table-docs>
             <thead>
                 <tr>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Event</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Payload</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Description</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Event</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Payload</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Description</th>
                 </tr>
             </thead>
             <tbody>
@@ -261,7 +262,6 @@ import PagePagination from "../../layout/PagePagination.vue";
 import CAIChat from "@components/components/CAIChat.vue";
 import CCard from "@components/layout/CCard.vue";
 
-// Example messages for the demo
 const basicExampleMessages = ref([
     {
         role: 'assistant',
@@ -269,7 +269,6 @@ const basicExampleMessages = ref([
     }
 ]);
 
-// Event handlers
 const handleMessageSent = (message) => {
     console.log('Message sent:', message);
 };
@@ -282,9 +281,7 @@ const handleStopGenerating = () => {
     console.log('Generation stopped');
 };
 
-// Prevent auto-scrolling when the page loads
 onMounted(() => {
-    // Reset scroll position to top when component mounts
     window.scrollTo(0, 0);
 });
 </script>

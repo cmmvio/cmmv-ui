@@ -2,15 +2,17 @@
     <BaseLayout>
         <h1>OTP Input</h1>
 
-        <p>The <code>COtpInput (alias: c-otp-input)</code> component in the <code>@cmmv/ui</code> framework provides a multi-digit input field, designed for OTP (One-Time Password) or similar use cases. It offers customization for length, validation, error states, loading overlays, and seamless interaction via keyboard.</p>
+        <p>The <code>COtpInput (alias: c-otp-input)</code> component in the <code>@cmmv/ui</code> framework provides a
+            multi-digit input field, designed for OTP (One-Time Password) or similar use cases. It offers customization
+            for length, validation, error states, loading overlays, and seamless interaction via keyboard.</p>
 
         <table-docs>
             <thead>
                 <tr>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Type</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Default</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Description</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Prop</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Type</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Default</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Description</th>
                 </tr>
             </thead>
             <tbody>
@@ -18,43 +20,50 @@
                     <td class="border-b px-4 py-2">modelValue</td>
                     <td class="border-b px-4 py-2">String</td>
                     <td class="border-b px-4 py-2">""</td>
-                    <td class="border-b px-4 py-2">The value bound to the OTP input field using <code>v-model</code>.</td>
+                    <td class="border-b px-4 py-2">The value bound to the OTP input field using <code>v-model</code>.
+                    </td>
                 </tr>
                 <tr>
                     <td class="border-b px-4 py-2">length</td>
                     <td class="border-b px-4 py-2">Number</td>
                     <td class="border-b px-4 py-2">6</td>
-                    <td class="border-b px-4 py-2">Specifies the number of input boxes (OTP length). Allowed range: 4 to 8.</td>
+                    <td class="border-b px-4 py-2">Specifies the number of input boxes (OTP length). Allowed range: 4 to
+                        8.</td>
                 </tr>
                 <tr>
                     <td class="border-b px-4 py-2">error</td>
                     <td class="border-b px-4 py-2">Boolean</td>
                     <td class="border-b px-4 py-2">false</td>
-                    <td class="border-b px-4 py-2">Highlights the input fields with a red border to indicate a validation error.</td>
+                    <td class="border-b px-4 py-2">Highlights the input fields with a red border to indicate a
+                        validation error.</td>
                 </tr>
                 <tr>
                     <td class="border-b px-4 py-2">loading</td>
                     <td class="border-b px-4 py-2">Boolean</td>
                     <td class="border-b px-4 py-2">false</td>
-                    <td class="border-b px-4 py-2">Displays a loading overlay to disable interactions with the input fields.</td>
+                    <td class="border-b px-4 py-2">Displays a loading overlay to disable interactions with the input
+                        fields.</td>
                 </tr>
                 <tr>
                     <td class="border-b px-4 py-2">bgColor</td>
                     <td class="border-b px-4 py-2">String</td>
                     <td class="border-b px-4 py-2">"bg-white dark:bg-zinc-800"</td>
-                    <td class="border-b px-4 py-2">Sets the background color of the input boxes. Accepts TailwindCSS classes.</td>
+                    <td class="border-b px-4 py-2">Sets the background color of the input boxes. Accepts TailwindCSS
+                        classes.</td>
                 </tr>
                 <tr>
                     <td class="border-b px-4 py-2">textColor</td>
                     <td class="border-b px-4 py-2">String</td>
                     <td class="border-b px-4 py-2">"text-black dark:text-white"</td>
-                    <td class="border-b px-4 py-2">Sets the text color of the input boxes. Accepts TailwindCSS classes.</td>
+                    <td class="border-b px-4 py-2">Sets the text color of the input boxes. Accepts TailwindCSS classes.
+                    </td>
                 </tr>
                 <tr>
                     <td class="border-b px-4 py-2">borderColor</td>
                     <td class="border-b px-4 py-2">String</td>
                     <td class="border-b px-4 py-2">"border-zinc-800 dark:border-zinc-600 focus:ring-blue-500"</td>
-                    <td class="border-b px-4 py-2">Sets the border and focus ring color of the input boxes. Accepts TailwindCSS classes.</td>
+                    <td class="border-b px-4 py-2">Sets the border and focus ring color of the input boxes. Accepts
+                        TailwindCSS classes.</td>
                 </tr>
             </tbody>
         </table-docs>
@@ -74,7 +83,7 @@
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-vue">&lt;template&gt;
+                <pre><code class="code-highlight language-vue">&lt;template&gt;
     &lt;c-otp-input v-model="otpValue" /&gt;
 &lt;/template&gt;
 
@@ -99,7 +108,7 @@ const otpValue = ref("");
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-vue">&lt;template&gt;
+                <pre><code class="code-highlight language-vue">&lt;template&gt;
     &lt;c-otp-input v-model="otpValueLength8" :length="8" /&gt;
 &lt;/template&gt;
 
@@ -124,7 +133,7 @@ const otpValueLength8 = ref("");
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-vue">&lt;template&gt;
+                <pre><code class="code-highlight language-vue">&lt;template&gt;
     &lt;c-otp-input v-model="otpErrorValue" error /&gt;
 &lt;/template&gt;
 
@@ -147,17 +156,13 @@ const otpErrorValue = ref("");
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
                 <div class="lg:w-2/5 w-full">
-                    <c-otp-input
-                        v-model="otpCustomValue"
-                        bgColor="bg-blue-100"
-                        textColor="text-blue-800"
-                        borderColor="focus:ring-blue-400 border-blue-200"
-                    />
+                    <c-otp-input v-model="otpCustomValue" bgColor="bg-blue-100" textColor="text-blue-800"
+                        borderColor="focus:ring-blue-400 border-blue-200" />
                 </div>
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-vue">&lt;template&gt;
+                <pre><code class="code-highlight language-vue">&lt;template&gt;
     &lt;c-otp-input
         v-model="otpCustomValue"
         bgColor="bg-blue-100"
@@ -186,18 +191,19 @@ const otpCustomValue = ref("");
             <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
                 <div class="lg:w-2/5 w-full">
                     <c-otp-input v-model="otpInstance1" />
-                    <c-otp-input v-model="otpInstance2" :length="8" bgColor="bg-gray-100" textColor="text-gray-800" />
+                    <c-otp-input v-model="otpInstance2" :length="8" bgColor="bg-neutral-100"
+                        textColor="text-neutral-800" />
                 </div>
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-vue">&lt;template&gt;
+                <pre><code class="code-highlight language-vue">&lt;template&gt;
     &lt;c-otp-input v-model="otpInstance1" /&gt;
     &lt;c-otp-input
         v-model="otpInstance2"
         :length="8"
-        bgColor="bg-gray-100"
-        textColor="text-gray-800"
+        bgColor="bg-neutral-100"
+        textColor="text-neutral-800"
     /&gt;
 &lt;/template&gt;
 
@@ -212,15 +218,18 @@ const otpInstance2 = ref("");
 
         <h3>Exemples</h3>
 
-        <p>Here is an example of using the <code>c-otp-input</code> component within a card layout to create a verification screen. The card contains a title, instructions for entering a verification code, and a button to proceed with the verification. Additionally, it includes a link for users to resend the code if they didn't receive it. This implementation demonstrates a practical use case of combining multiple <code>@cmmv/ui</code> components to create an interactive and visually appealing UI.</p>
+        <p>Here is an example of using the <code>c-otp-input</code> component within a card layout to create a
+            verification
+            screen. The card contains a title, instructions for entering a verification code, and a button to proceed
+            with the
+            verification. Additionally, it includes a link for users to resend the code if they didn't receive it. This
+            implementation demonstrates a practical use case of combining multiple <code>@cmmv/ui</code> components to
+            create an
+            interactive and visually appealing UI.</p>
 
         <card-docs>
-            <c-card
-                bgColor="bg-neutral-100 dark:bg-neutral-900"
-                textColor="text-neutral-600 dark:text-white"
-                maxWidth="400px"
-                rounded="md"
-            >
+            <c-card bgColor="bg-neutral-100 dark:bg-neutral-900" textColor="text-neutral-600 dark:text-white"
+                maxWidth="400px" rounded="md">
                 <template #header>
                     <div class="flex items-center space-x-3 p-3">
                         <h3 class="text-2xl m-auto mt-4 font-bold">Verify Your Account</h3>
@@ -230,17 +239,13 @@ const otpInstance2 = ref("");
                 <template #content>
                     <div class="py-10 pt-4 text-sm px-8 text-center">
                         <div class="mb-2">
-                            A verification code has been sent to and..@gmail.com. Please check your inbox and enter the code below to verify your email address.
+                            A verification code has been sent to and..@gmail.com. Please check your inbox and enter the
+                            code below to verify your email address.
                         </div>
 
                         <c-otp-input v-model="otpValue" />
 
-                        <c-button
-                            size="2xl"
-                            type="button"
-                            class="w-8/12 my-4"
-                            :disabled="otpValue.length < 6"
-                        >
+                        <c-button size="2xl" type="button" class="w-8/12 my-4" :disabled="otpValue.length < 6">
                             VERIFY
                         </c-button>
 
@@ -250,7 +255,7 @@ const otpInstance2 = ref("");
             </c-card>
 
             <template #code>
-<pre><code class="code-highlight language-vue">&lt;template&gt;
+                <pre><code class="code-highlight language-vue">&lt;template&gt;
     &lt;c-card
         bgColor="bg-neutral-100 dark:bg-neutral-900"
         textColor="text-neutral-600 dark:text-white"
@@ -295,12 +300,7 @@ const otpValue = ref("");
             </template>
         </card-docs>
 
-        <PagePagination
-            previous="Number Input"
-            previousLink="/number-input"
-            next="Radio"
-            nextLink="/radio"
-        />
+        <PagePagination previous="Number Input" previousLink="/number-input" next="Radio" nextLink="/radio" />
     </BaseLayout>
 </template>
 

@@ -11,10 +11,10 @@
         <table-docs>
             <thead>
                 <tr>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Type</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Default</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Description</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Prop</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Type</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Default</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Description</th>
                 </tr>
             </thead>
             <tbody>
@@ -94,7 +94,7 @@
                 <tr>
                     <td class="border-b px-4 py-2">borderColor</td>
                     <td class="border-b px-4 py-2">String</td>
-                    <td class="border-b px-4 py-2">border-gray-300 dark:border-gray-600</td>
+                    <td class="border-b px-4 py-2">border-neutral-300 dark:border-neutral-600</td>
                     <td class="border-b px-4 py-2">
                         The <code>borderColor</code> prop sets the border color of the card. This is particularly
                         relevant when using the "outlined" variant.
@@ -295,7 +295,7 @@
 
         <card-docs>
             <c-card title="Card with Actions" subtitle="This is a loading card example." bgColor="bg-white"
-                borderColor="border-gray-200" textColor="text-black" maxWidth="500px" minHeight="150px" actions>
+                borderColor="border-neutral-200" textColor="text-black" maxWidth="500px" minHeight="150px" actions>
                 <template #action-buttons>
                     <c-button type="button" variant="text">Accept</c-button>
 
@@ -308,7 +308,7 @@
     title="Card with Actions"
     subtitle="This is a loading card example."
     bgColor="bg-white"
-    borderColor="border-gray-200"
+    borderColor="border-neutral-200"
     textColor="text-black"
     maxWidth="500px"
     minHeight="150px"
@@ -375,7 +375,7 @@
         <card-docs>
             <c-card title="Advanced Card" subtitle="This card demonstrates all configurations."
                 customClass="overflow-hidden" bgColor="bg-white" bgHeaderColor="bg-blue-500 text-white"
-                bgBorderColor="border-b border-gray-300" textColor="text-gray-800" borderColor="border-blue-700"
+                bgBorderColor="border-b border-neutral-300" textColor="text-neutral-800" borderColor="border-blue-700"
                 closeColor="text-white" textSize="lg" variant="outlined" maxWidth="600px" minHeight="200px" hover
                 closable @close="onClose" actions>
                 <template #default>
@@ -406,7 +406,7 @@
     bgColor="bg-white"
     bgHeaderColor="bg-blue-500"
     bgBorderColor="border-b border-blue-700"
-    textColor="text-gray-800"
+    textColor="text-neutral-800"
     borderColor="border-blue-700"
     closeColor="text-white"
     textSize="lg"
@@ -560,156 +560,6 @@
             </template>
         </card-docs>
 
-
-        <h3>Weather card</h3>
-
-        <p>
-            The <strong>Weather Card</strong> example illustrates how to create an informative weather dashboard with
-            real-time
-            data visualization. This card combines icons, metrics, and interactive elements to provide a comprehensive
-            weather
-            report. The expandable section allows users to access additional forecast information without cluttering the
-            initial
-            view.
-        </p>
-
-        <card-docs>
-            <c-card title="Florida" subtitle="Extreme Weather Alert" bgColor="bg-gray-800" textColor="text-white"
-                borderColor="border-gray-900" maxWidth="368px" rounded="md" actions>
-                <template #header>
-                    <div class="flex items-center space-x-3 p-3 border-b border-gray-900">
-                        <icon-exclamation-triangle class="w-8 h-8 text-red-500" aria-hidden="true" />
-
-                        <div>
-                            <h3 class="font-bold text-lg">Florida</h3>
-                            <div class="text-sm text-red-200 flex items-center space-x-1">
-                                <span>Extreme Weather Alert</span>
-                            </div>
-                        </div>
-                    </div>
-                </template>
-
-                <template #content>
-                    <div class="flex items-center justify-between px-4 py-2">
-                        <div class="text-h1 text-6xl">64&deg;F</div>
-                        <icon-weather-hurricane class="w-16 h-16 text-red-500" />
-                    </div>
-
-                    <div class="flex justify-between py-3 px-4">
-                        <div class="flex items-center space-x-2">
-                            <icon-wind class="w-5 h-5 text-white" />
-                            <span>123 km/h</span>
-                        </div>
-                        <div class="flex items-center space-x-2">
-                            <icon-rainy class="w-5 h-5 text-white" />
-                            <span>48%</span>
-                        </div>
-                    </div>
-
-                    <div v-if="expand" class="p-4">
-                        <c-slider v-model="time" :min="0" :max="6" step="1"
-                            tickLabels="['Now', '1h', '2h', '3h', '4h', '5h', '6h']" showTicks
-                            thumbSize="10px"></c-slider>
-
-                        <c-list class="bg-transparent">
-                            <c-list-item v-for="item in forecast" :key="item.day" :title="item.day"
-                                :subtitle="item.temp" :icon="item.icon" textColor="text-white"></c-list-item>
-                        </c-list>
-                    </div>
-                </template>
-
-                <template #actions>
-                    <div class="flex justify-between items-center px-4 py-4 border-t border-gray-900">
-                        <c-button type="button" variant="text"
-                            class="text-blue-500 font-semibold bg-transparent hover:bg-gray-700"
-                            @click="expand = !expand">
-                            {{ expand ? 'Hide Report' : 'Full Report' }}
-                        </c-button>
-                    </div>
-                </template>
-            </c-card>
-
-            <template #code>
-                <pre><code class="code-highlight language-html">&lt;c-card
-    title="Florida"
-    subtitle="Extreme Weather Alert"
-    bgColor="bg-gray-800"
-    textColor="text-white"
-    borderColor="border-gray-900"
-    maxWidth="368px"
-    rounded="md"
-    actions
-&gt;
-    &lt;template #header&gt;
-        &lt;div class="flex items-center space-x-3 p-3 border-b border-gray-900"&gt;
-            &lt;icon-exclamation-triangle class="w-8 h-8 text-red-500" aria-hidden="true" /&gt;
-
-            &lt;div&gt;
-                &lt;h3 class="font-bold text-lg"&gt;Florida&lt;/h3&gt;
-                &lt;div class="text-sm text-red-200 flex items-center space-x-1"&gt;
-                    &lt;span&gt;Extreme Weather Alert&lt;/span&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/template&gt;
-
-    &lt;template #content&gt;
-        &lt;div class="flex items-center justify-between px-4 py-2"&gt;
-            &lt;div class="text-h1 text-6xl"&gt;64&amp;deg;F&lt;/div&gt;
-            &lt;icon-weather-hurricane class="w-16 h-16 text-red-500" /&gt;
-        &lt;/div&gt;
-
-        &lt;div class="flex justify-between py-3 px-4"&gt;
-            &lt;div class="flex items-center space-x-2"&gt;
-                &lt;icon-wind class="w-5 h-5 text-white" /&gt;
-                &lt;span&gt;123 km/h&lt;/span&gt;
-            &lt;/div&gt;
-            &lt;div class="flex items-center space-x-2"&gt;
-                &lt;icon-rainy class="w-5 h-5 text-white" /&gt;
-                &lt;span&gt;48%&lt;/span&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-
-        &lt;div v-if="expand" class="p-4"&gt;
-            &lt;c-slider
-                v-model="time"
-                :min="0"
-                :max="6"
-                step="1"
-                tickLabels="['Now', '1h', '2h', '3h', '4h', '5h', '6h']"
-                showTicks
-                thumbSize="10px"
-            &gt;&lt;/c-slider&gt;
-
-            &lt;c-list class="bg-transparent"&gt;
-                &lt;c-list-item
-                    v-for="item in forecast"
-                    :key="item.day"
-                    :title="item.day"
-                    :subtitle="item.temp"
-                    :icon="item.icon"
-                    textColor="text-white"
-                &gt;&lt;/c-list-item&gt;
-            &lt;/c-list&gt;
-        &lt;/div&gt;
-    &lt;/template&gt;
-
-    &lt;template #actions&gt;
-        &lt;div class="flex justify-between items-center px-4 py-4 border-t border-gray-900"&gt;
-            &lt;c-button
-                type="button"
-                variant="text"
-                class="text-blue-500 font-semibold bg-transparent hover:bg-gray-700"
-                @click="expand = !expand"
-            &gt;
-                {{ expand ? 'Hide Report' : 'Full Report' }}
-            &lt;/c-button&gt;
-        &lt;/div&gt;
-    &lt;/template&gt;
-&lt;/c-card&gt;</code></pre>
-            </template>
-        </card-docs>
-
         <h3>Hotel Reservation Card</h3>
 
         <p>
@@ -724,9 +574,9 @@
 
         <card-docs>
             <c-card title="Grand Resort & Spa" subtitle="Cancún, México" bgColor="bg-white dark:bg-neutral-800"
-                textColor="text-gray-900 dark:text-white" borderColor="border-gray-200 dark:border-gray-700"
+                textColor="text-neutral-900 dark:text-white" borderColor="border-neutral-200 dark:border-neutral-700"
                 maxWidth="350px" rounded="md" variant="outlined"
-                customClass="shadow-md border-2 border-gray-300 dark:border-gray-600 overflow-hidden" actions>
+                customClass="shadow-md border-2 border-neutral-300 dark:border-neutral-600 overflow-hidden" actions>
                 <template #header>
                     <div class="relative w-full h-48 overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400&q=80"
@@ -743,15 +593,16 @@
                         <div class="flex justify-between items-center mb-2">
                             <div class="flex items-center">
                                 <c-rating :model-value="4.5" size="sm" fixed />
-                                <span class="ml-2 text-sm text-gray-600 dark:text-gray-400">4.5 (128 reviews)</span>
+                                <span class="ml-2 text-sm text-neutral-600 dark:text-neutral-400">4.5 (128
+                                    reviews)</span>
                             </div>
-                            <div class="text-sm text-gray-600 dark:text-gray-400">
+                            <div class="text-sm text-neutral-600 dark:text-neutral-400">
                                 <icon-map-pin class="inline-block w-4 h-4 mr-1" />
                                 <span>Hotel Zone</span>
                             </div>
                         </div>
 
-                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                        <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-4">
                             Luxury beachfront resort with 3 pools, full-service spa and 5 restaurants. Spacious rooms
                             with ocean views and all amenities.
                         </p>
@@ -773,12 +624,14 @@
                         <div class="flex justify-between items-center">
                             <div>
                                 <span class="text-2xl font-bold">$750</span>
-                                <span class="text-sm text-gray-500 dark:text-gray-400 line-through ml-2">$1,000</span>
-                                <div class="text-xs text-gray-500 dark:text-gray-400">per night, taxes included</div>
+                                <span
+                                    class="text-sm text-neutral-500 dark:text-neutral-400 line-through ml-2">$1,000</span>
+                                <div class="text-xs text-neutral-500 dark:text-neutral-400">per night, taxes included
+                                </div>
                             </div>
                             <div class="flex items-center gap-2">
-                                <icon-calendar class="w-5 h-5 text-gray-600 dark:text-gray-400" />
-                                <span class="text-sm text-gray-600 dark:text-gray-400">3 nights</span>
+                                <icon-calendar class="w-5 h-5 text-neutral-600 dark:text-neutral-400" />
+                                <span class="text-sm text-neutral-600 dark:text-neutral-400">3 nights</span>
                             </div>
                         </div>
                     </div>
@@ -786,7 +639,7 @@
 
                 <template #actions>
                     <div
-                        class="flex justify-between items-center px-4 py-3 border-t border-gray-200 dark:border-gray-700">
+                        class="flex justify-between items-center px-4 py-3 border-t border-neutral-200 dark:border-neutral-700">
                         <c-button type="button" variant="text"
                             class="text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/30">
                             View details
@@ -804,12 +657,12 @@
     title="Grand Resort & Spa"
     subtitle="Cancún, México"
     bgColor="bg-white dark:bg-neutral-800"
-    textColor="text-gray-900 dark:text-white"
-    borderColor="border-gray-200 dark:border-gray-700"
+    textColor="text-neutral-900 dark:text-white"
+    borderColor="border-neutral-200 dark:border-neutral-700"
     maxWidth="450px"
     rounded="md"
     variant="outlined"
-    customClass="shadow-md border-2 border-gray-300 dark:border-gray-600 overflow-hidden"
+    customClass="shadow-md border-2 border-neutral-300 dark:border-neutral-600 overflow-hidden"
     actions
 &gt;
     &lt;template #header&gt;
@@ -830,15 +683,15 @@
             &lt;div class="flex justify-between items-center mb-2"&gt;
                 &lt;div class="flex items-center"&gt;
                     &lt;c-rating :model-value="4.5" size="sm" fixed /&gt;
-                    &lt;span class="ml-2 text-sm text-gray-600 dark:text-gray-400"&gt;4.5 (128 reviews)&lt;/span&gt;
+                    &lt;span class="ml-2 text-sm text-neutral-600 dark:text-neutral-400"&gt;4.5 (128 reviews)&lt;/span&gt;
                 &lt;/div&gt;
-                &lt;div class="text-sm text-gray-600 dark:text-gray-400"&gt;
+                &lt;div class="text-sm text-neutral-600 dark:text-neutral-400"&gt;
                     &lt;icon-map-pin class="inline-block w-4 h-4 mr-1" /&gt;
                     &lt;span&gt;Hotel Zone&lt;/span&gt;
                 &lt;/div&gt;
             &lt;/div&gt;
 
-            &lt;p class="text-sm text-gray-600 dark:text-gray-400 mb-4"&gt;
+            &lt;p class="text-sm text-neutral-600 dark:text-neutral-400 mb-4"&gt;
                 Luxury beachfront resort with 3 pools, full-service spa and 5 restaurants. Spacious rooms with ocean views and all amenities.
             &lt;/p&gt;
 
@@ -853,19 +706,19 @@
             &lt;div class="flex justify-between items-center"&gt;
                 &lt;div&gt;
                     &lt;span class="text-2xl font-bold"&gt;$750&lt;/span&gt;
-                    &lt;span class="text-sm text-gray-500 dark:text-gray-400 line-through ml-2"&gt;$1,000&lt;/span&gt;
-                    &lt;div class="text-xs text-gray-500 dark:text-gray-400"&gt;per night, taxes included&lt;/div&gt;
+                    &lt;span class="text-sm text-neutral-500 dark:text-neutral-400 line-through ml-2"&gt;$1,000&lt;/span&gt;
+                    &lt;div class="text-xs text-neutral-500 dark:text-neutral-400"&gt;per night, taxes included&lt;/div&gt;
                 &lt;/div&gt;
                 &lt;div class="flex items-center gap-2"&gt;
-                    &lt;icon-calendar class="w-5 h-5 text-gray-600 dark:text-gray-400" /&gt;
-                    &lt;span class="text-sm text-gray-600 dark:text-gray-400"&gt;3 nights&lt;/span&gt;
+                    &lt;icon-calendar class="w-5 h-5 text-neutral-600 dark:text-neutral-400" /&gt;
+                    &lt;span class="text-sm text-neutral-600 dark:text-neutral-400"&gt;3 nights&lt;/span&gt;
                 &lt;/div&gt;
             &lt;/div&gt;
         &lt;/div&gt;
     &lt;/template&gt;
 
     &lt;template #actions&gt;
-        &lt;div class="flex justify-between items-center px-4 py-3 border-t border-gray-200 dark:border-gray-700"&gt;
+        &lt;div class="flex justify-between items-center px-4 py-3 border-t border-neutral-200 dark:border-neutral-700"&gt;
             &lt;c-button
                 type="button"
                 variant="text"
@@ -898,12 +751,12 @@
 
         <card-docs>
             <c-card title="Wireless Noise-Cancelling Headphones" subtitle="Premium Audio Series"
-                bgColor="bg-white dark:bg-neutral-800" textColor="text-gray-900 dark:text-white"
-                borderColor="border-gray-200 dark:border-neutral-700" maxWidth="350px" rounded="lg" variant="elevated"
-                customClass="shadow-lg overflow-hidden" actions>
+                bgColor="bg-white dark:bg-neutral-800" textColor="text-neutral-900 dark:text-white"
+                borderColor="border-neutral-200 dark:border-neutral-700" maxWidth="350px" rounded="lg"
+                variant="elevated" customClass="shadow-lg overflow-hidden" actions>
                 <template #header>
                     <div class="relative">
-                        <div class="flex items-center justify-center bg-gray-100 dark:bg-neutral-700 p-6 h-52">
+                        <div class="flex items-center justify-center bg-neutral-100 dark:bg-neutral-700 p-6 h-52">
                             <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=300&q=80"
                                 alt="Wireless Headphones" class="max-h-full max-w-full object-contain" />
                         </div>
@@ -921,7 +774,8 @@
                         <div class="flex justify-between items-center mb-2">
                             <div class="flex items-center">
                                 <c-rating :model-value="4" size="sm" fixed />
-                                <span class="ml-2 text-sm text-gray-600 dark:text-neutral-400">4.0 (42 reviews)</span>
+                                <span class="ml-2 text-sm text-neutral-600 dark:text-neutral-400">4.0 (42
+                                    reviews)</span>
                             </div>
                             <span
                                 class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
@@ -931,32 +785,32 @@
 
                         <div class="mt-3 mb-4">
                             <div class="flex items-baseline">
-                                <span class="text-2xl font-bold text-gray-900 dark:text-white">$249.99</span>
+                                <span class="text-2xl font-bold text-neutral-900 dark:text-white">$249.99</span>
                                 <span
-                                    class="ml-2 text-sm text-gray-500 dark:text-neutral-400 line-through">$299.99</span>
+                                    class="ml-2 text-sm text-neutral-500 dark:text-neutral-400 line-through">$299.99</span>
                                 <span class="ml-2 text-sm font-medium text-green-600 dark:text-green-400">Save
                                     17%</span>
                             </div>
-                            <div class="text-xs text-gray-500 dark:text-neutral-400 mt-1">
+                            <div class="text-xs text-neutral-500 dark:text-neutral-400 mt-1">
                                 Free shipping on orders over $50
                             </div>
                         </div>
 
                         <div class="mb-4">
-                            <div class="text-sm font-medium text-gray-700 dark:text-neutral-300 mb-1">Color</div>
+                            <div class="text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1">Color</div>
                             <div class="flex space-x-2">
                                 <button
-                                    class="w-6 h-6 rounded-full bg-black border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"></button>
+                                    class="w-6 h-6 rounded-full bg-black border-2 border-neutral-300 focus:outline-none focus:ring-2 focus:ring-blue-500"></button>
                                 <button
-                                    class="w-6 h-6 rounded-full bg-white border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"></button>
+                                    class="w-6 h-6 rounded-full bg-white border-2 border-neutral-300 focus:outline-none focus:ring-2 focus:ring-blue-500"></button>
                                 <button
-                                    class="w-6 h-6 rounded-full bg-blue-600 border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"></button>
+                                    class="w-6 h-6 rounded-full bg-blue-600 border-2 border-neutral-300 focus:outline-none focus:ring-2 focus:ring-blue-500"></button>
                                 <button
-                                    class="w-6 h-6 rounded-full bg-red-600 border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"></button>
+                                    class="w-6 h-6 rounded-full bg-red-600 border-2 border-neutral-300 focus:outline-none focus:ring-2 focus:ring-blue-500"></button>
                             </div>
                         </div>
 
-                        <div class="text-sm text-gray-600 dark:text-neutral-400">
+                        <div class="text-sm text-neutral-600 dark:text-neutral-400">
                             <ul class="list-disc list-inside space-y-1">
                                 <li>Active noise cancellation</li>
                                 <li>40-hour battery life</li>
@@ -969,7 +823,7 @@
 
                 <template #actions>
                     <div
-                        class="flex justify-between items-center px-4 py-3 border-t border-gray-200 dark:border-neutral-700">
+                        class="flex justify-between items-center px-4 py-3 border-t border-neutral-200 dark:border-neutral-700">
                         <c-button type="button" variant="text"
                             class="text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/30 flex items-center">
                             <icon-heart class="w-4 h-4 mr-1.5 text-white" /> Wishlist
@@ -986,8 +840,8 @@
     title="Wireless Noise-Cancelling Headphones"
     subtitle="Premium Audio Series"
     bgColor="bg-white dark:bg-neutral-800"
-    textColor="text-gray-900 dark:text-white"
-    borderColor="border-gray-200 dark:border-neutral-700"
+    textColor="text-neutral-900 dark:text-white"
+    borderColor="border-neutral-200 dark:border-neutral-700"
     maxWidth="350px"
     rounded="lg"
     variant="elevated"
@@ -996,7 +850,7 @@
 &gt;
     &lt;template #header&gt;
         &lt;div class="relative"&gt;
-            &lt;div class="flex items-center justify-center bg-gray-100 dark:bg-neutral-700 p-6 h-52"&gt;
+            &lt;div class="flex items-center justify-center bg-neutral-100 dark:bg-neutral-700 p-6 h-52"&gt;
                 &lt;img
                     src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=300&q=80"
                     alt="Wireless Headphones"
@@ -1017,7 +871,7 @@
             &lt;div class="flex justify-between items-center mb-2"&gt;
                 &lt;div class="flex items-center"&gt;
                     &lt;c-rating :model-value="4" size="sm" fixed /&gt;
-                    &lt;span class="ml-2 text-sm text-gray-600 dark:text-neutral-400"&gt;4.0 (42 reviews)&lt;/span&gt;
+                    &lt;span class="ml-2 text-sm text-neutral-600 dark:text-neutral-400"&gt;4.0 (42 reviews)&lt;/span&gt;
                 &lt;/div&gt;
                 &lt;span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"&gt;
                     In Stock
@@ -1026,26 +880,26 @@
 
             &lt;div class="mt-3 mb-4"&gt;
                 &lt;div class="flex items-baseline"&gt;
-                    &lt;span class="text-2xl font-bold text-gray-900 dark:text-white"&gt;$249.99&lt;/span&gt;
-                    &lt;span class="ml-2 text-sm text-gray-500 dark:text-neutral-400 line-through"&gt;$299.99&lt;/span&gt;
+                    &lt;span class="text-2xl font-bold text-neutral-900 dark:text-white"&gt;$249.99&lt;/span&gt;
+                    &lt;span class="ml-2 text-sm text-neutral-500 dark:text-neutral-400 line-through"&gt;$299.99&lt;/span&gt;
                     &lt;span class="ml-2 text-sm font-medium text-green-600 dark:text-green-400"&gt;Save 17%&lt;/span&gt;
                 &lt;/div&gt;
-                &lt;div class="text-xs text-gray-500 dark:text-neutral-400 mt-1"&gt;
+                &lt;div class="text-xs text-neutral-500 dark:text-neutral-400 mt-1"&gt;
                     Free shipping on orders over $50
                 &lt;/div&gt;
             &lt;/div&gt;
 
             &lt;div class="mb-4"&gt;
-                &lt;div class="text-sm font-medium text-gray-700 dark:text-neutral-300 mb-1"&gt;Color&lt;/div&gt;
+                &lt;div class="text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1"&gt;Color&lt;/div&gt;
                 &lt;div class="flex space-x-2"&gt;
-                    &lt;button class="w-6 h-6 rounded-full bg-black border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"&gt;&lt;/button&gt;
-                    &lt;button class="w-6 h-6 rounded-full bg-white border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"&gt;&lt;/button&gt;
-                    &lt;button class="w-6 h-6 rounded-full bg-blue-600 border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"&gt;&lt;/button&gt;
-                    &lt;button class="w-6 h-6 rounded-full bg-red-600 border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"&gt;&lt;/button&gt;
+                    &lt;button class="w-6 h-6 rounded-full bg-black border-2 border-neutral-300 focus:outline-none focus:ring-2 focus:ring-blue-500"&gt;&lt;/button&gt;
+                    &lt;button class="w-6 h-6 rounded-full bg-white border-2 border-neutral-300 focus:outline-none focus:ring-2 focus:ring-blue-500"&gt;&lt;/button&gt;
+                    &lt;button class="w-6 h-6 rounded-full bg-blue-600 border-2 border-neutral-300 focus:outline-none focus:ring-2 focus:ring-blue-500"&gt;&lt;/button&gt;
+                    &lt;button class="w-6 h-6 rounded-full bg-red-600 border-2 border-neutral-300 focus:outline-none focus:ring-2 focus:ring-blue-500"&gt;&lt;/button&gt;
                 &lt;/div&gt;
             &lt;/div&gt;
 
-            &lt;div class="text-sm text-gray-600 dark:text-neutral-400"&gt;
+            &lt;div class="text-sm text-neutral-600 dark:text-neutral-400"&gt;
                 &lt;ul class="list-disc list-inside space-y-1"&gt;
                     &lt;li&gt;Active noise cancellation&lt;/li&gt;
                     &lt;li&gt;40-hour battery life&lt;/li&gt;
@@ -1057,7 +911,7 @@
     &lt;/template&gt;
 
     &lt;template #actions&gt;
-        &lt;div class="flex justify-between items-center px-4 py-3 border-t border-gray-200 dark:border-neutral-700"&gt;
+        &lt;div class="flex justify-between items-center px-4 py-3 border-t border-neutral-200 dark:border-neutral-700"&gt;
             &lt;c-button
                 type="button"
                 variant="text"

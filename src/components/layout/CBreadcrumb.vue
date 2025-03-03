@@ -92,15 +92,15 @@ const props = defineProps({
     },
     separatorClass: {
         type: String,
-        default: "text-gray-400 dark:text-gray-600",
+        default: "text-neutral-400 dark:text-neutral-600",
     },
     textColor: {
         type: String,
-        default: "text-gray-500 dark:text-gray-400",
+        default: "text-neutral-500 dark:text-neutral-400",
     },
     activeTextColor: {
         type: String,
-        default: "text-gray-900 dark:text-white font-medium",
+        default: "text-neutral-900 dark:text-white font-medium",
     },
     bgColor: {
         type: String,
@@ -112,7 +112,7 @@ const props = defineProps({
     },
     iconClass: {
         type: String,
-        default: "text-gray-500 dark:text-gray-400",
+        default: "text-neutral-500 dark:text-neutral-400",
     },
 });
 </script>

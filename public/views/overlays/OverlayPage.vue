@@ -3,84 +3,88 @@
         <h1>Overlay</h1>
 
         <p>
-            The <code>COverlay (alias c-overlay)</code> component provides a full-screen overlay that can be used for modals, loading states, or any scenario requiring a dimmed background. It is highly customizable and integrates seamlessly with other components.
+            The <code>COverlay (alias c-overlay)</code> component provides a full-screen overlay that can be used for
+            modals, loading states, or any scenario requiring a dimmed background. It is highly customizable and
+            integrates seamlessly with other components.
         </p>
 
         <h3>Props</h3>
 
         <table-docs>
             <thead>
-            <tr>
-                <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
-                <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Type</th>
-                <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Default</th>
-                <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Description</th>
-            </tr>
+                <tr>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Prop</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Type</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Default</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Description</th>
+                </tr>
             </thead>
             <tbody>
-            <tr>
-                <td class="border-b px-4 py-2">modelValue</td>
-                <td class="border-b px-4 py-2">Boolean</td>
-                <td class="border-b px-4 py-2">false</td>
-                <td class="border-b px-4 py-2">
-                Controls the visibility of the overlay. Use with <code>v-model</code> to toggle its display.
-                </td>
-            </tr>
-            <tr>
-                <td class="border-b px-4 py-2">bgColor</td>
-                <td class="border-b px-4 py-2">String</td>
-                <td class="border-b px-4 py-2">"bg-white"</td>
-                <td class="border-b px-4 py-2">
-                Sets the background color of the overlay. Accepts TailwindCSS classes for customization.
-                </td>
-            </tr>
-            <tr>
-                <td class="border-b px-4 py-2">opacity</td>
-                <td class="border-b px-4 py-2">Number</td>
-                <td class="border-b px-4 py-2">50</td>
-                <td class="border-b px-4 py-2">
-                Adjusts the overlay's opacity level (0-100), where 0 is fully transparent and 100 is completely opaque.
-                </td>
-            </tr>
-            <tr>
-                <td class="border-b px-4 py-2">zIndex</td>
-                <td class="border-b px-4 py-2">Number</td>
-                <td class="border-b px-4 py-2">50</td>
-                <td class="border-b px-4 py-2">
-                Determines the stacking order of the overlay by setting its <code>z-index</code>.
-                </td>
-            </tr>
-            <tr>
-                <td class="border-b px-4 py-2">closeOnClick</td>
-                <td class="border-b px-4 py-2">Boolean</td>
-                <td class="border-b px-4 py-2">true</td>
-                <td class="border-b px-4 py-2">
-                Enables closing the overlay by clicking on the background. Set to <code>false</code> to disable.
-                </td>
-            </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">modelValue</td>
+                    <td class="border-b px-4 py-2">Boolean</td>
+                    <td class="border-b px-4 py-2">false</td>
+                    <td class="border-b px-4 py-2">
+                        Controls the visibility of the overlay. Use with <code>v-model</code> to toggle its display.
+                    </td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">bgColor</td>
+                    <td class="border-b px-4 py-2">String</td>
+                    <td class="border-b px-4 py-2">"bg-white"</td>
+                    <td class="border-b px-4 py-2">
+                        Sets the background color of the overlay. Accepts TailwindCSS classes for customization.
+                    </td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">opacity</td>
+                    <td class="border-b px-4 py-2">Number</td>
+                    <td class="border-b px-4 py-2">50</td>
+                    <td class="border-b px-4 py-2">
+                        Adjusts the overlay's opacity level (0-100), where 0 is fully transparent and 100 is completely
+                        opaque.
+                    </td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">zIndex</td>
+                    <td class="border-b px-4 py-2">Number</td>
+                    <td class="border-b px-4 py-2">50</td>
+                    <td class="border-b px-4 py-2">
+                        Determines the stacking order of the overlay by setting its <code>z-index</code>.
+                    </td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">closeOnClick</td>
+                    <td class="border-b px-4 py-2">Boolean</td>
+                    <td class="border-b px-4 py-2">true</td>
+                    <td class="border-b px-4 py-2">
+                        Enables closing the overlay by clicking on the background. Set to <code>false</code> to disable.
+                    </td>
+                </tr>
             </tbody>
         </table-docs>
 
         <h3>Slots</h3>
 
-        <p>The <code>COverlay</code> component includes a default slot for placing custom content inside the overlay.</p>
+        <p>The <code>COverlay</code> component includes a default slot for placing custom content inside the overlay.
+        </p>
 
         <h3>Events</h3>
 
         <table-docs>
             <thead>
-            <tr>
-                <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Event</th>
-                <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Description</th>
-            </tr>
+                <tr>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Event</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Description</th>
+                </tr>
             </thead>
             <tbody>
-            <tr>
-                <td class="border-b px-4 py-2">update:modelValue</td>
-                <td class="border-b px-4 py-2">
-                Emitted when the overlay visibility is toggled.
-                </td>
-            </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">update:modelValue</td>
+                    <td class="border-b px-4 py-2">
+                        Emitted when the overlay visibility is toggled.
+                    </td>
+                </tr>
             </tbody>
         </table-docs>
 
@@ -90,11 +94,7 @@
 
         <card-docs>
             <div class="flex items-center justify-center gap-x-4">
-                <c-button
-                    size="2xl"
-                    @click="isOverlayVisible = true"
-                    class="w-6/12 py-6 m-auto"
-                >Show Overlay</c-button>
+                <c-button size="2xl" @click="isOverlayVisible = true" class="w-6/12 py-6 m-auto">Show Overlay</c-button>
             </div>
 
             <c-overlay v-model="isOverlayVisible">
@@ -134,20 +134,12 @@ const isOverlayVisible = ref(false);
 
         <card-docs>
             <div class="flex items-center justify-center gap-x-4">
-                <c-button
-                    size="2xl"
-                    variant="primary"
-                    @click="isCustomOverlayVisible = true"
-                    class="w-6/12 py-6 m-auto"
-                >Show Custom Overlay</c-button>
+                <c-button size="2xl" variant="primary" @click="isCustomOverlayVisible = true"
+                    class="w-6/12 py-6 m-auto">Show
+                    Custom Overlay</c-button>
             </div>
 
-            <c-overlay
-                v-model="isCustomOverlayVisible"
-                bg-color="bg-blue-500"
-                :opacity="70"
-                :z-index="100"
-            >
+            <c-overlay v-model="isCustomOverlayVisible" bg-color="bg-blue-500" :opacity="70" :z-index="100">
                 <c-card class="text-center p-4">
                     <h1 class="text-2xl font-bold">Custom Overlay</h1>
                     <p>This overlay has custom background color and opacity.</p>
@@ -185,22 +177,18 @@ const isCustomOverlayVisible = ref(false);
 
         <h3>Preventing Close on Click</h3>
 
-        <p>You can prevent the overlay from closing when clicked by setting the <code>closeOnClick</code> prop to <code>false</code>.</p>
+        <p>You can prevent the overlay from closing when clicked by setting the <code>closeOnClick</code> prop to
+            <code>false</code>.
+        </p>
 
         <card-docs>
             <div class="flex items-center justify-center gap-x-4">
-                <c-button
-                    size="2xl"
-                    variant="warning"
-                    @click="isModalOverlayVisible = true"
-                    class="w-6/12 py-6 m-auto"
-                >Show Modal Overlay</c-button>
+                <c-button size="2xl" variant="warning" @click="isModalOverlayVisible = true"
+                    class="w-6/12 py-6 m-auto">Show
+                    Modal Overlay</c-button>
             </div>
 
-            <c-overlay
-                v-model="isModalOverlayVisible"
-                :close-on-click="false"
-            >
+            <c-overlay v-model="isModalOverlayVisible" :close-on-click="false">
                 <c-card class="text-center p-4">
                     <h1 class="text-2xl font-bold">Modal Overlay</h1>
                     <p>This overlay won't close when you click outside. You must use the button.</p>
@@ -234,10 +222,7 @@ const isModalOverlayVisible = ref(false);
             </template>
         </card-docs>
 
-        <PagePagination
-            previous="Notification"
-            previousLink="/notification"
-        />
+        <PagePagination previous="Notification" previousLink="/notification" />
     </BaseLayout>
 </template>
 

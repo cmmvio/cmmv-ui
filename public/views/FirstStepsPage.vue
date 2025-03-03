@@ -154,7 +154,7 @@ app.mount('#app')</code></pre>
         <p>Now you can start using <code>@cmmv/ui</code> components in your application. Here's a simple example:</p>
 
         <card-docs>
-            <h1 class="text-2xl font-bold mb-4">Welcome to CMMV UI</h1>
+            <h1 class="text-2xl font-bold mb-4 dark:text-white text-neutral-800">Welcome to CMMV UI</h1>
 
             <c-button variant="primary" @click="showNotification">
                 Click me!

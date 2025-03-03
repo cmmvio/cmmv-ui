@@ -11,10 +11,10 @@
         <table-docs>
             <thead>
                 <tr>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Type</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Default</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Description</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Prop</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Type</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Default</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Description</th>
                 </tr>
             </thead>
             <tbody>
@@ -60,13 +60,16 @@
         <h3>Basic Dialog</h3>
 
         <p>
-            The <strong>Basic Dialog</strong> example demonstrates how to use the <code>CDialog</code> component with an activator slot.
+            The <strong>Basic Dialog</strong> example demonstrates how to use the <code>CDialog</code> component with an
+            activator slot.
         </p>
 
         <card-docs>
             <c-dialog v-model="showDialog" class="m-auto" closable>
                 <template #activator>
-                    <c-button @click="showDialog = true">Open Dialog</c-button>
+                    <div class="flex items-center justify-center gap-x-4">
+                        <c-button @click="showDialog = true" size="2xl">Open Dialog</c-button>
+                    </div>
                 </template>
 
                 <template #header>
@@ -74,20 +77,33 @@
                 </template>
 
                 <template #content>
-                    <p class="mb-0 text-sm opacity-75">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae feugiat nisi. Aliquam consectetur ex neque, at sagittis ante elementum a. Duis semper gravida semper. Ut sollicitudin diam ut risus suscipit, in tristique metus mollis. Donec sit amet sapien magna. Nunc interdum laoreet fermentum. Fusce condimentum vehicula sapien, nec efficitur enim placerat eget. Mauris urna quam, mollis at consequat a, aliquam non nisi. Donec arcu nisi, mollis id posuere vel, consequat quis nisl. Suspendisse cursus et nisi ac condimentum. Donec non cursus arcu. Ut rhoncus elit leo, vel facilisis sapien ullamcorper id. Aenean non condimentum purus, ac congue diam.</p>
+                    <p class="mb-0 text-sm opacity-75">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
+                        vitae feugiat nisi. Aliquam consectetur ex neque, at sagittis ante elementum a. Duis semper
+                        gravida semper. Ut sollicitudin diam ut risus suscipit, in tristique metus mollis. Donec sit
+                        amet sapien magna. Nunc interdum laoreet fermentum. Fusce condimentum vehicula sapien, nec
+                        efficitur enim placerat eget. Mauris urna quam, mollis at consequat a, aliquam non nisi. Donec
+                        arcu nisi, mollis id posuere vel, consequat quis nisl. Suspendisse cursus et nisi ac
+                        condimentum. Donec non cursus arcu. Ut rhoncus elit leo, vel facilisis sapien ullamcorper id.
+                        Aenean non condimentum purus, ac congue diam.</p>
 
-                    <p class="mb-0 text-sm opacity-75">Donec et est orci. Nulla pretium, nisi vel consectetur porttitor, enim neque viverra lacus, nec aliquet nisl leo sed lectus. Phasellus vitae lacus id lorem consectetur vehicula faucibus a augue. Aliquam sit amet massa sollicitudin, efficitur sapien at, porttitor ante. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer aliquam ultrices sapien, eget aliquam tellus pharetra et. Nam bibendum justo a enim convallis, a tincidunt augue maximus. Sed lacinia varius nibh, eget sollicitudin urna tempus a. Curabitur rutrum mollis augue at tincidunt. Suspendisse ultrices hendrerit elit consectetur finibus. Praesent quis sapien sodales felis aliquam cursus vel mollis sem. Nam nec mauris mauris. Fusce vitae dapibus libero.</p>
+                    <p class="mb-0 text-sm opacity-75">Donec et est orci. Nulla pretium, nisi vel consectetur porttitor,
+                        enim neque viverra lacus, nec aliquet nisl leo sed lectus. Phasellus vitae lacus id lorem
+                        consectetur vehicula faucibus a augue. Aliquam sit amet massa sollicitudin, efficitur sapien at,
+                        porttitor ante. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer aliquam
+                        ultrices sapien, eget aliquam tellus pharetra et. Nam bibendum justo a enim convallis, a
+                        tincidunt augue maximus. Sed lacinia varius nibh, eget sollicitudin urna tempus a. Curabitur
+                        rutrum mollis augue at tincidunt. Suspendisse ultrices hendrerit elit consectetur finibus.
+                        Praesent quis sapien sodales felis aliquam cursus vel mollis sem. Nam nec mauris mauris. Fusce
+                        vitae dapibus libero.</p>
                 </template>
 
                 <template #actions>
-                    <c-button
-                        @click="showDialog = false"
-                    >Close</c-button>
+                    <c-button @click="showDialog = false">Close</c-button>
                 </template>
             </c-dialog>
 
             <template #code>
-<pre><code class="code-highlight language-vue">&lt;template&gt;
+                <pre><code class="code-highlight language-vue">&lt;template&gt;
     &lt;c-dialog v-model="showDialog" closable&gt;
         &lt;template #activator&gt;
             &lt;c-button @click="showDialog = true"&gt;Open Dialog&lt;/c-button&gt;
@@ -122,16 +138,11 @@ const showDialog = ref(false);
         </p>
 
         <card-docs>
-            <c-dialog
-                v-model="fullscreenDialog"
-                class="m-auto"
-                fullscreen
-                closable
-            >
+            <c-dialog v-model="fullscreenDialog" class="m-auto" fullscreen closable>
                 <template #activator>
-                    <c-button
-                        @click="fullscreenDialog = true"
-                    >Open Fullscreen Dialog</c-button>
+                    <div class="flex items-center justify-center gap-x-4">
+                        <c-button @click="fullscreenDialog = true" size="2xl">Open Fullscreen Dialog</c-button>
+                    </div>
                 </template>
 
                 <template #header>
@@ -148,7 +159,7 @@ const showDialog = ref(false);
             </c-dialog>
 
             <template #code>
-<pre><code class="code-highlight language-vue">&lt;template&gt;
+                <pre><code class="code-highlight language-vue">&lt;template&gt;
     &lt;c-dialog
         v-model="fullscreenDialog"
         fullscreen
@@ -180,12 +191,7 @@ const fullscreenDialog = ref(false);
             </template>
         </card-docs>
 
-        <PagePagination
-            previous="Toggle"
-            previousLink="/toggle"
-            next="Notification"
-            nextLink="/notification"
-        />
+        <PagePagination previous="Toggle" previousLink="/toggle" next="Notification" nextLink="/notification" />
     </BaseLayout>
 </template>
 

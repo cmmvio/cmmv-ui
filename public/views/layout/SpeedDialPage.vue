@@ -3,7 +3,8 @@
         <h1>Speed Dial</h1>
 
         <p>
-            The <code>c-speed-dial</code> component provides a floating action button that expands to show multiple quick actions.
+            The <code>c-speed-dial</code> component provides a floating action button that expands to show multiple
+            quick actions.
             It supports different positions, vertical and horizontal layouts, and customizable icons.
         </p>
 
@@ -27,7 +28,8 @@
                     <td>position</td>
                     <td>String</td>
                     <td>"bottom-right"</td>
-                    <td>Defines the position of the speed dial: <code>top-left</code>, <code>top-right</code>, <code>bottom-left</code>, <code>bottom-right</code>.</td>
+                    <td>Defines the position of the speed dial: <code>top-left</code>, <code>top-right</code>,
+                        <code>bottom-left</code>, <code>bottom-right</code>.</td>
                 </tr>
                 <tr>
                     <td>vertical</td>
@@ -41,21 +43,17 @@
         <h3>Basic Example</h3>
 
         <p>
-            Below is a basic usage example of the <code>c-speed-dial</code> component. Click the floating button to expand the actions.
+            Below is a basic usage example of the <code>c-speed-dial</code> component. Click the floating button to
+            expand the actions.
         </p>
 
         <card-docs>
             <div class="relative mx-auto flex flex-col min-h-[400px] items-center p-10">
-                <c-speed-dial
-                    :actions="sampleActions"
-                    absolute
-                    position="bottom-right"
-                    @select="handleAction"
-                />
+                <c-speed-dial :actions="sampleActions" absolute position="bottom-right" @select="handleAction" />
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-vue">&lt;template&gt;
+                <pre><code class="code-highlight language-vue">&lt;template&gt;
     &lt;div class="relative min-h-[400px]"&gt;
         &lt;c-speed-dial
             :actions="sampleActions"
@@ -102,7 +100,7 @@ const handleAction = (action) => {
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-vue">&lt;template&gt;
+                <pre><code class="code-highlight language-vue">&lt;template&gt;
     &lt;div class="grid grid-cols-2 gap-10 relative min-h-[400px]"&gt;
         &lt;c-speed-dial
             absolute
@@ -129,11 +127,7 @@ const handleAction = (action) => {
             </template>
         </card-docs>
 
-        <PagePagination
-            previous="Sidebar"
-            previousLink="/sidebar"
-            next="Tabs"
-            nextLink="/tabs" />
+        <PagePagination previous="Skeleton" previousLink="/skeleton" next="Tabs" nextLink="/tabs" />
     </BaseLayout>
 </template>
 

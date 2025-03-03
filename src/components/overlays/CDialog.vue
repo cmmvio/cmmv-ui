@@ -1,50 +1,30 @@
 <template>
     <div>
         <slot name="activator"></slot>
-          
-        <c-overlay
-            v-if="showDialog"
-            v-model="showDialog"
-            :bgColor="overlayBgColor"
-            :opacity="overlayOpacity"
+
+        <c-overlay v-if="showDialog" v-model="showDialog" :bgColor="overlayBgColor" :opacity="overlayOpacity"
             :closeOnOverlayClick="!modal"
             :class="[{ 'h-full fixed': fullscreen, 'fade-out': !showDialog, 'fade-in': showDialog }]"
-            :style="{ display: fullscreen ? 'block !important' : 'flex !important' }"
-            @update:modelValue="closeDialog"
-        >
-            <c-card
-                :maxWidth="fullscreen ? '100%' : cardMaxWidth"
-                :minHeight="fullscreen ? '100vh' : 'auto'"
-                :class="['dialog-animation', { 'w-full h-full relative': fullscreen }]"
-                :bgColor="cardBgColor"
-                :textColor="cardTextColor"
-                :borderColor="cardBorderColor"
-                :closable="closable"
-                :hover="false"
-                actions
-                @close="handleClose"
-            >
+            :style="{ display: fullscreen ? 'block !important' : 'flex !important' }" @update:modelValue="closeDialog">
+            <c-card :maxWidth="fullscreen ? '100%' : cardMaxWidth" :minHeight="fullscreen ? '100vh' : 'auto'"
+                :class="['dialog-animation', { 'w-full h-full relative': fullscreen }]" :bgColor="cardBgColor"
+                :textColor="cardTextColor" :borderColor="cardBorderColor" :closable="closable" :hover="false" actions
+                @close="handleClose" :rounded="fullscreen ? 'none' : 'default'">
                 <template v-if="$slots.header" #header>
-                    <div 
-                        class="px-4 py-4 flex justify-between items-center relative rounded-t-md border-b bottom-0"
-                        :class="[cardBorderColor, headerBgColor ? headerBgColor : cardBgColor]"
-                    >
+                    <div class="px-4 py-4 flex justify-between items-center relative border-b bottom-0" :class="[
+                        cardBorderColor,
+                        fullscreen ? '' : 'rounded-t-md',
+                        headerBgColor ? headerBgColor : cardBgColor]">
                         <div>
                             <slot name="header"></slot>
                         </div>
 
                         <div class="top-2 right-1 absolute">
-                            <c-button
-                                type="button"
-                                rounded="full"
-                                size="md"
-                                variant="flat"
-                                v-if="closable"
+                            <c-button type="button" rounded="full" size="md" variant="flat" v-if="closable"
                                 @click="handleClose"
                                 :bgColor="[headerBgColor ? headerBgColor : cardBgColor, 'bg-opacity-50 hover:bg-opacity-100'].join(' ')"
-                                class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300"
-                                aria-label="Close"
-                            >
+                                class="text-neutral-500 hover:text-neutral-700 dark:hover:text-neutral-300"
+                                aria-label="Close">
                                 <IconXMark :class="cardTextColor ? cardTextColor : 'text-white'" />
                             </c-button>
                         </div>
@@ -52,19 +32,17 @@
                 </template>
 
                 <template v-if="$slots.content" v-slot:content>
-                    <div class="px-4 py-3 pt-0 w-full pb-14">
+                    <div class="px-4 py-3 w-full pb-16 mb-1">
                         <slot name="content"></slot>
                     </div>
                 </template>
 
                 <template v-if="$slots.actions" v-slot:actions>
-                    <div 
-                        class="flex justify-end space-x-2 px-4 py-3 border-t bottom-0 absolute w-full" 
-                        :class="cardBorderColor"
-                    >
+                    <div class="flex justify-end space-x-2 px-4 py-3 border-t bottom-0 absolute w-full"
+                        :class="cardBorderColor">
                         <slot name="actions"></slot>
-                    </div>                
-                </template>           
+                    </div>
+                </template>
             </c-card>
         </c-overlay>
     </div>
@@ -91,6 +69,7 @@
     from {
         opacity: 0;
     }
+
     to {
         opacity: 1;
     }
@@ -100,6 +79,7 @@
     from {
         opacity: 1;
     }
+
     to {
         opacity: 0;
     }
@@ -110,6 +90,7 @@
         opacity: 0;
         transform: scale(0.9);
     }
+
     to {
         opacity: 1;
         transform: scale(1);
@@ -121,6 +102,7 @@
         opacity: 1;
         transform: scale(1);
     }
+
     to {
         opacity: 0;
         transform: scale(0.9);
@@ -133,19 +115,58 @@ import { ref, watch, nextTick, defineProps, defineEmits } from "vue";
 import IconXMark from "@components/icons/IconXMark.vue";
 
 const props = defineProps({
-    modelValue: { type: Boolean, required: true },
-    modal: { type: Boolean, default: false },
-    fullscreen: { type: Boolean, default: false },
-    overlayBgColor: { type: String, default: "#000" },
-    overlayOpacity: { type: Number, default: 50 },
-    cardBgColor: { type: String, default: "bg-white" },
-    cardTextColor: { type: String, default: "text-black" },
-    cardBorderColor: { type: String, default: "border-gray-300" },
-    cardMaxWidth: { type: String, default: "600px" },
-    headerBgColor: { type: String, default: "bg-gray-200" },
-    closable: { type: Boolean, default: true },
-    transitionEnter: { type: String, default: "fade-enter-active" },
-    transitionLeave: { type: String, default: "fade-leave-active" },
+    modelValue: {
+        type: Boolean,
+        required: true
+    },
+    modal: {
+        type: Boolean,
+        default: false
+    },
+    fullscreen: {
+        type: Boolean,
+        default: false
+    },
+    overlayBgColor: {
+        type: String,
+        default: "#000"
+    },
+    overlayOpacity: {
+        type: Number,
+        default: 50
+    },
+    cardBgColor: {
+        type: String,
+        default: "bg-white dark:bg-neutral-800"
+    },
+    cardTextColor: {
+        type: String,
+        default: "text-black dark:text-white"
+    },
+    cardBorderColor: {
+        type: String,
+        default: "border-neutral-300 dark:border-neutral-900"
+    },
+    cardMaxWidth: {
+        type: String,
+        default: "600px"
+    },
+    headerBgColor: {
+        type: String,
+        default: "bg-neutral-200 dark:bg-neutral-800"
+    },
+    closable: {
+        type: Boolean,
+        default: true
+    },
+    transitionEnter: {
+        type: String,
+        default: "fade-enter-active"
+    },
+    transitionLeave: {
+        type: String,
+        default: "fade-leave-active"
+    },
 });
 
 const emit = defineEmits(["update:modelValue"]);

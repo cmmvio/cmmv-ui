@@ -1,7 +1,6 @@
 <template>
     <div class="c-textarea relative w-full">
-        <label
-            :for="id"
+        <label :for="id"
             class="c-textarea-label absolute left-3 text-sm transition-all duration-200 ease-in-out pointer-events-none drop-shadow-xs"
             :class="[{
                 'c-textarea-label--active': isActive,
@@ -9,20 +8,13 @@
                 'top-[30%]': !isActive && hasError,
                 'top-1/3': currentValue !== undefined && currentValue !== ''
             },
-            textColor ? textColor : 'text-gray-500 dark:text-gray-400',
-            bgColor ? bgColor : variantColors[variant], 'px-1']"
-        >
+            textColor ? textColor : 'text-neutral-500 dark:text-neutral-400',
+            bgColor ? bgColor : variantColors[variant], 'px-1']">
             {{ label }}
         </label>
 
-        <textarea
-            ref="textarea"
-            :id="id"
-            :name="name"
-            :placeholder="isActive ? placeholder : ''"
-            :maxlength="maxlength"
-            :value="currentValue"
-            :class="[
+        <textarea ref="textarea" :id="id" :name="name" :placeholder="isActive ? placeholder : ''" :maxlength="maxlength"
+            :value="currentValue" :class="[
                 sizes[size],
                 roundedStyles[rounded],
                 variantStyles[variant],
@@ -33,22 +25,16 @@
                     'opacity-50': disabled,
                     'resize-none': !resize
                 }
-            ]"
-            class="c-textarea-field block w-full pt-4 pb-2 outline-none"
-            @input="handleInput"
-            @focus="activateLabel"
-            @blur="deactivateLabel"
-            :disabled="disabled"
-            :aria-invalid="hasError"
-        />
+            ]" class="c-textarea-field block w-full pt-4 pb-2 outline-none" @input="handleInput" @focus="activateLabel"
+            @blur="deactivateLabel" :disabled="disabled" :aria-invalid="hasError" />
 
-        <div v-if="lengthCount" class="absolute bottom-1 right-3 text-xs text-gray-500">
+        <div v-if="lengthCount" class="absolute bottom-1 right-3 text-xs text-neutral-500">
             {{ currentValue.length }} / {{ maxlength }}
         </div>
 
         <div class="mt-1" v-if="!hiddenHint">
             <p v-if="hasError" class="text-xs text-red-500">{{ errorMessage }}</p>
-            <p v-else-if="hint && (hintFixed || isActive)" class="text-xs text-gray-500">{{ hint }}</p>
+            <p v-else-if="hint && (hintFixed || isActive)" class="text-xs text-neutral-500">{{ hint }}</p>
         </div>
     </div>
 </template>
@@ -161,7 +147,7 @@ const props = defineProps({
     borderColor: {
         type: String,
         required: false,
-        default: "focus:ring focus:ring-zinc-700 focus:ring-opacity-50"
+        default: ""
     },
 });
 
@@ -187,15 +173,15 @@ const roundedStyles: Record<string, string> = {
 };
 
 const variantStyles: Record<string, string> = {
-    default: "border border-gray-300 dark:border-gray-700",
-    outlined: "border-2 border-zinc-700",
-    filled: "bg-gray-100 dark:bg-zinc-800 border-none",
+    default: "border border-neutral-300 dark:border-neutral-900",
+    outlined: "border-2 border-neutral-700",
+    filled: "bg-neutral-100 dark:bg-neutral-800 border-none",
 };
 
 const variantColors: Record<string, string> = {
-    default: "bg-zinc-200 dark:bg-zinc-900 text-zinc-950 dark:text-white",
-    outlined: "bg-zinc-100 dark:bg-zinc-800 text-zinc-950 dark:text-white",
-    filled: "bg-zinc-200 dark:bg-zinc-800 text-zinc-950 dark:text-white",
+    default: "bg-neutral-200 dark:bg-neutral-900 text-neutral-950 dark:text-white",
+    outlined: "bg-neutral-100 dark:bg-neutral-800 text-neutral-950 dark:text-white",
+    filled: "bg-neutral-200 dark:bg-neutral-800 text-neutral-950 dark:text-white",
 };
 
 const borderColorClass = computed(() => props.borderColor);

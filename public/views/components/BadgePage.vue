@@ -3,16 +3,18 @@
         <h1>Badge</h1>
 
         <p>
-            The <code>CBadge (alias: c-badge)</code> component is a versatile utility for adding small count indicators, status dots, or labels to elements like buttons, icons, or other components. It offers extensive customization options for appearance and placement.
+            The <code>CBadge (alias: c-badge)</code> component is a versatile utility for adding small count indicators,
+            status dots, or labels to elements like buttons, icons, or other components. It offers extensive
+            customization options for appearance and placement.
         </p>
 
         <table-docs>
             <thead>
                 <tr>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Type</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Default</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Description</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Prop</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Type</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Default</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Description</th>
                 </tr>
             </thead>
             <tbody>
@@ -20,13 +22,15 @@
                     <td class="border-b px-4 py-2">content</td>
                     <td class="border-b px-4 py-2">String</td>
                     <td class="border-b px-4 py-2">""</td>
-                    <td class="border-b px-4 py-2">The content displayed inside the badge. Used for numbers or labels.</td>
+                    <td class="border-b px-4 py-2">The content displayed inside the badge. Used for numbers or labels.
+                    </td>
                 </tr>
                 <tr>
                     <td class="border-b px-4 py-2">bgColor</td>
                     <td class="border-b px-4 py-2">String</td>
                     <td class="border-b px-4 py-2">bg-red-500</td>
-                    <td class="border-b px-4 py-2">Sets the background color of the badge, based on Tailwind classes.</td>
+                    <td class="border-b px-4 py-2">Sets the background color of the badge, based on Tailwind classes.
+                    </td>
                 </tr>
                 <tr>
                     <td class="border-b px-4 py-2">textColor</td>
@@ -44,13 +48,15 @@
                     <td class="border-b px-4 py-2">floating</td>
                     <td class="border-b px-4 py-2">Boolean</td>
                     <td class="border-b px-4 py-2">false</td>
-                    <td class="border-b px-4 py-2">When true, positions the badge absolutely relative to its parent.</td>
+                    <td class="border-b px-4 py-2">When true, positions the badge absolutely relative to its parent.
+                    </td>
                 </tr>
                 <tr>
                     <td class="border-b px-4 py-2">dot</td>
                     <td class="border-b px-4 py-2">Boolean</td>
                     <td class="border-b px-4 py-2">false</td>
-                    <td class="border-b px-4 py-2">Displays the badge as a small dot, typically used for status indicators.</td>
+                    <td class="border-b px-4 py-2">Displays the badge as a small dot, typically used for status
+                        indicators.</td>
                 </tr>
                 <tr>
                     <td class="border-b px-4 py-2">offsetX</td>
@@ -85,20 +91,14 @@
 
         <card-docs>
             <div class="flex justify-center">
-                <c-button
-                    type="button"
-                    variant="plain"
-                    rounded="md"
-                    shadow=""
-                    class="relative shadow-none"
-                >
+                <c-button type="button" variant="plain" rounded="md" shadow="" class="relative shadow-none">
                     <IconBell class="text-neutral-600 dark:text-white" />
                     <c-badge content="5" class="absolute top-0 right-0" />
                 </c-button>
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-html">&lt;c-button
+                <pre><code class="code-highlight language-html">&lt;c-button
     type="button"
     variant="plain"
     rounded="full"
@@ -120,54 +120,34 @@
 
         <card-docs>
             <div class="flex flex-wrap items-center justify-center gap-2">
-                <c-badge
-                    bgColor="bg-blue-100 dark:bg-blue-900"
-                    textColor="text-blue-800 dark:text-blue-300"
-                    rounded="rounded-md"
-                    customClass="px-2.5 py-0.5"
-                >
+                <c-badge bgColor="bg-blue-100 dark:bg-blue-900" textColor="text-blue-800 dark:text-blue-300"
+                    rounded="rounded-md" customClass="px-2.5 py-0.5">
                     Blue
                 </c-badge>
 
-                <c-badge
-                    bgColor="bg-neutral-100 dark:bg-neutral-900"
-                    textColor="text-neutral-800 dark:text-neutral-300"
-                    rounded="rounded-md"
-                    customClass="px-2.5 py-0.5"
-                >
+                <c-badge bgColor="bg-neutral-100 dark:bg-neutral-900" textColor="text-neutral-800 dark:text-neutral-300"
+                    rounded="rounded-md" customClass="px-2.5 py-0.5">
                     Dark
                 </c-badge>
 
-                <c-badge
-                    bgColor="bg-red-100 dark:bg-red-900"
-                    textColor="text-red-800 dark:text-red-300"
-                    rounded="rounded-md"
-                    customClass="px-2.5 py-0.5"
-                >
+                <c-badge bgColor="bg-red-100 dark:bg-red-900" textColor="text-red-800 dark:text-red-300"
+                    rounded="rounded-md" customClass="px-2.5 py-0.5">
                     Red
                 </c-badge>
 
-                <c-badge
-                    bgColor="bg-green-100 dark:bg-green-900"
-                    textColor="text-green-800 dark:text-green-300"
-                    rounded="rounded-md"
-                    customClass="px-2.5 py-0.5"
-                >
+                <c-badge bgColor="bg-green-100 dark:bg-green-900" textColor="text-green-800 dark:text-green-300"
+                    rounded="rounded-md" customClass="px-2.5 py-0.5">
                     Green
                 </c-badge>
 
-                <c-badge
-                    bgColor="bg-yellow-100 dark:bg-yellow-900"
-                    textColor="text-yellow-800 dark:text-yellow-300"
-                    rounded="rounded-md"
-                    customClass="px-2.5 py-0.5"
-                >
+                <c-badge bgColor="bg-yellow-100 dark:bg-yellow-900" textColor="text-yellow-800 dark:text-yellow-300"
+                    rounded="rounded-md" customClass="px-2.5 py-0.5">
                     Yellow
                 </c-badge>
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-html">&lt;!-- Blue Badge --&gt;
+                <pre><code class="code-highlight language-html">&lt;!-- Blue Badge --&gt;
 &lt;c-badge
     bgColor="bg-blue-100 dark:bg-blue-900"
     textColor="text-blue-800 dark:text-blue-300"
@@ -197,29 +177,19 @@
 
         <card-docs>
             <div class="flex justify-center gap-4">
-                <c-button
-                    type="button"
-                    variant="plain"
-                    rounded="full"
-                    class="relative shadow-none"
-                >
+                <c-button type="button" variant="plain" rounded="full" class="relative shadow-none">
                     <IconBell class="text-neutral-800 dark:text-white" />
                     <c-badge dot floating bgColor="bg-green-500" class="absolute top-0 right-0" />
                 </c-button>
 
-                <c-button
-                    type="button"
-                    variant="plain"
-                    rounded="full"
-                    class="relative shadow-none"
-                >
+                <c-button type="button" variant="plain" rounded="full" class="relative shadow-none">
                     <IconBell class="text-neutral-800 dark:text-white" />
                     <c-badge dot floating bgColor="bg-red-500" class="absolute top-0 right-0" />
                 </c-button>
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-html">&lt;!-- Green Dot Badge (Status: Active) --&gt;
+                <pre><code class="code-highlight language-html">&lt;!-- Green Dot Badge (Status: Active) --&gt;
 &lt;c-button type="button" class="relative shadow-none"&gt;
     &lt;IconBell class="text-neutral-800 dark:text-white" /&gt;
     &lt;c-badge dot floating bgColor="bg-green-500" class="absolute top-0 right-0" /&gt;
@@ -239,25 +209,15 @@
 
         <card-docs>
             <div class="flex justify-center">
-                <c-button
-                    type="button"
-                    variant="plain"
-                    shadow=""
-                    class="px-6 relative"
-                >
+                <c-button type="button" variant="plain" shadow="" class="px-6 relative">
                     <IconBell class="text-neutral-800 dark:text-white" />
-                    <c-badge
-                        content="99+"
-                        bgColor="bg-blue-600"
-                        textColor="text-white"
-                        class="absolute"
-                        style="right: 0px; top: 0px;"
-                    />
+                    <c-badge content="99+" bgColor="bg-blue-600" textColor="text-white" class="absolute"
+                        style="right: 0px; top: 0px;" />
                 </c-button>
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-html">&lt;c-button type="button" class="px-6 relative"&gt;
+                <pre><code class="code-highlight language-html">&lt;c-button type="button" class="px-6 relative"&gt;
     &lt;IconBell class="text-neutral-800 dark:text-white" /&gt;
     &lt;c-badge
         content="99+"
@@ -276,19 +236,15 @@
 
         <card-docs>
             <div class="flex justify-center">
-                <c-button
-                    type="button"
-                    variant="plain"
-                    shadow=""
-                    class="px-6 py-4 relative"
-                >
+                <c-button type="button" variant="plain" shadow="" class="px-6 py-4 relative">
                     <IconBell class="text-neutral-800 dark:text-white" />
-                    <c-badge content="3" floating offsetX="10px" offsetY="0px" bgColor="bg-yellow-800" class="absolute" />
+                    <c-badge content="3" floating offsetX="10px" offsetY="0px" bgColor="bg-yellow-800"
+                        class="absolute" />
                 </c-button>
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-html">&lt;c-button type="button" class="px-6 py-4 relative"&gt;
+                <pre><code class="code-highlight language-html">&lt;c-button type="button" class="px-6 py-4 relative"&gt;
     &lt;IconBell class="text-neutral-800 dark:text-white" /&gt;
     &lt;c-badge
         content="3"
@@ -305,28 +261,23 @@
         <h3>Button with Badge</h3>
 
         <p>
-            The <code>CBadge</code> component can be used inside buttons to display notifications, message counts, or any relevant information.
+            The <code>CBadge</code> component can be used inside buttons to display notifications, message counts, or
+            any
+            relevant information.
             This setup is useful for indicating updates or alerts within interactive elements.
         </p>
 
         <card-docs>
             <div class="flex justify-center">
-                <c-button
-                    type="button"
-                    class="px-6 py-2"
-                    inline
-                >
+                <c-button type="button" class="px-6 py-2" inline>
                     Messages
-                    <c-badge
-                        content="3"
-                        bgColor="bg-indigo-500"
-                        customClass="inline-flex ml-1 items-center justify-center px-2 py-0.5 text-xs font-semibold"
-                    />
+                    <c-badge content="3" bgColor="bg-indigo-500"
+                        customClass="inline-flex ml-1 items-center justify-center px-2 py-0.5 text-xs font-semibold" />
                 </c-button>
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-html">&lt;c-button type="button" class="px-6 py-2" inline&gt;
+                <pre><code class="code-highlight language-html">&lt;c-button type="button" class="px-6 py-2" inline&gt;
     Messages
     &lt;c-badge
         content="3"
@@ -346,32 +297,26 @@
 
         <card-docs>
             <div class="flex items-center justify-center gap-x-4">
-                <c-badge
-                    bgColor="bg-gray-500"
-                    customClass="inline-flex items-center justify-center w-6 h-6 text-sm font-semibold rounded-full"
-                >
+                <c-badge bgColor="bg-neutral-500"
+                    customClass="inline-flex items-center justify-center w-6 h-6 text-sm font-semibold rounded-full">
                     <IconCheck class="w-4 h-3 text-white" aria-hidden="true" />
                 </c-badge>
 
-                <c-badge
-                    bgColor="bg-gray-500"
-                    customClass="inline-flex items-center justify-center w-6 h-6 text-sm font-semibold rounded-full"
-                >
+                <c-badge bgColor="bg-neutral-500"
+                    customClass="inline-flex items-center justify-center w-6 h-6 text-sm font-semibold rounded-full">
                     <IconBolt class="w-4 h-3 text-yellow-500" aria-hidden="true" />
                 </c-badge>
 
-                <c-badge
-                    bgColor="bg-gray-500"
-                    customClass="inline-flex items-center justify-center w-6 h-6 text-sm font-semibold rounded-full"
-                >
-                    <IconCog class="w-4 h-3 text-gray-800" aria-hidden="true" />
+                <c-badge bgColor="bg-neutral-500"
+                    customClass="inline-flex items-center justify-center w-6 h-6 text-sm font-semibold rounded-full">
+                    <IconCog class="w-4 h-3 text-neutral-800" aria-hidden="true" />
                 </c-badge>
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-html">&lt;!-- Badge with check icon --&gt;
+                <pre><code class="code-highlight language-html">&lt;!-- Badge with check icon --&gt;
 &lt;c-badge
-    bgColor="bg-gray-500"
+    bgColor="bg-neutral-500"
     customClass="inline-flex items-center justify-center w-6 h-6 text-sm font-semibold rounded-full"
 &gt;
     &lt;IconCheck class="w-4 h-3 text-white" aria-hidden="true" /&gt;
@@ -379,7 +324,7 @@
 
 &lt;!-- Badge with bolt icon --&gt;
 &lt;c-badge
-    bgColor="bg-gray-500"
+    bgColor="bg-neutral-500"
     customClass="inline-flex items-center justify-center w-6 h-6 text-sm font-semibold rounded-full"
 &gt;
     &lt;IconBolt class="w-4 h-3 text-yellow-500" aria-hidden="true" /&gt;
@@ -388,12 +333,7 @@
         </card-docs>
 
 
-        <PagePagination
-            previous="AI Chat"
-            previousLink="/ai-chat"
-            next="Button"
-            nextLink="/button"
-        />
+        <PagePagination previous="AI Chat" previousLink="/ai-chat" next="Button" nextLink="/button" />
     </BaseLayout>
 </template>
 

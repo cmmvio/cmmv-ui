@@ -3,7 +3,10 @@
         <h1>Notification</h1>
 
         <p>
-            The <code>CNotification (alias: c-notification)</code> is designed to display temporary or persistent notifications with optional icons, titles, and progress bars. Notifications are positioned in the top-right corner by default and can be dismissed manually or automatically after a set duration. The component supports transitions for smooth appearance and dismissal.
+            The <code>CNotification (alias: c-notification)</code> is designed to display temporary or persistent
+            notifications with optional icons, titles, and progress bars. Notifications are positioned in the top-right
+            corner by default and can be dismissed manually or automatically after a set duration. The component
+            supports transitions for smooth appearance and dismissal.
         </p>
 
         <h3>Props</h3>
@@ -11,10 +14,10 @@
         <table-docs>
             <thead>
                 <tr>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Type</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Default</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Description</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Prop</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Type</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Default</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Description</th>
                 </tr>
             </thead>
             <tbody>
@@ -28,7 +31,8 @@
                     <td class="border-b px-4 py-2">position</td>
                     <td class="border-b px-4 py-2">String</td>
                     <td class="border-b px-4 py-2">"top-right"</td>
-                    <td class="border-b px-4 py-2">Controls the position of notifications. Options: "top-right", "top-left", "bottom-right", "bottom-left", "top-center", "bottom-center".</td>
+                    <td class="border-b px-4 py-2">Controls the position of notifications. Options: "top-right",
+                        "top-left", "bottom-right", "bottom-left", "top-center", "bottom-center".</td>
                 </tr>
                 <tr>
                     <td class="border-b px-4 py-2">bgColor</td>
@@ -51,7 +55,8 @@
                 <tr>
                     <td class="border-b px-4 py-2">permanent</td>
                     <td class="border-b px-4 py-2">Boolean</td>
-                    <td class="border-b px-4 py-2">Determines whether notifications persist until manually dismissed.</td>
+                    <td class="border-b px-4 py-2">Determines whether notifications persist until manually dismissed.
+                    </td>
                 </tr>
                 <tr>
                     <td class="border-b px-4 py-2">width</td>
@@ -73,16 +78,17 @@
         <table-docs>
             <thead>
                 <tr>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Method</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Parameters</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Description</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Method</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Parameters</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Description</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td class="border-b px-4 py-2">showNotification</td>
                     <td class="border-b px-4 py-2">options: Object</td>
-                    <td class="border-b px-4 py-2">Displays a new notification with the specified options. Returns the notification ID.</td>
+                    <td class="border-b px-4 py-2">Displays a new notification with the specified options. Returns the
+                        notification ID.</td>
                 </tr>
                 <tr>
                     <td class="border-b px-4 py-2">updateNotification</td>
@@ -107,9 +113,9 @@
         <table-docs>
             <thead>
                 <tr>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Option</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Type</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Description</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Option</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Type</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Description</th>
                 </tr>
             </thead>
             <tbody>
@@ -136,7 +142,8 @@
                 <tr>
                     <td class="border-b px-4 py-2">permanent</td>
                     <td class="border-b px-4 py-2">Boolean</td>
-                    <td class="border-b px-4 py-2">Whether the notification should persist until manually dismissed.</td>
+                    <td class="border-b px-4 py-2">Whether the notification should persist until manually dismissed.
+                    </td>
                 </tr>
                 <tr>
                     <td class="border-b px-4 py-2">bgColor</td>
@@ -171,14 +178,15 @@
         <table-docs>
             <thead>
                 <tr>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Slot</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Description</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Slot</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Description</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td class="border-b px-4 py-2">icon</td>
-                    <td class="border-b px-4 py-2">Slot for a custom icon component or SVG to display in the notification.</td>
+                    <td class="border-b px-4 py-2">Slot for a custom icon component or SVG to display in the
+                        notification.</td>
                 </tr>
                 <tr>
                     <td class="border-b px-4 py-2">title</td>
@@ -194,19 +202,15 @@
         <h3>Basic Usage</h3>
 
         <p>
-            Below is an example of how to use the <code>CNotification</code> component to show a notification with an icon, title, and content.
+            Below is an example of how to use the <code>CNotification</code> component to show a notification with an
+            icon, title, and content.
         </p>
 
         <card-docs>
             <div class="flex items-center justify-center gap-x-4">
-            <c-button
-                type="button"
-                size="2xl"
-                class="m-auto"
-                        @click="triggerBasicNotification"
-            >
-                Show Notification
-            </c-button>
+                <c-button type="button" size="2xl" class="m-auto" @click="triggerBasicNotification">
+                    Show Notification
+                </c-button>
             </div>
 
             <c-notification ref="basicNotification" />
@@ -250,12 +254,8 @@ function triggerNotification() {
 
         <card-docs>
             <div class="flex flex-wrap items-center justify-center gap-4">
-                <c-button
-                    v-for="position in positions"
-                    :key="position"
-                    type="button"
-                    @click="() => showPositionedNotification(position)"
-                >
+                <c-button v-for="position in positions" :key="position" type="button"
+                    @click="() => showPositionedNotification(position)">
                     {{ position }}
                 </c-button>
             </div>
@@ -312,28 +312,16 @@ function showPositionedNotification(position) {
 
         <card-docs>
             <div class="flex flex-wrap items-center justify-center gap-4">
-                <c-button
-                    variant="success"
-                    @click="showSuccessNotification"
-                >
+                <c-button variant="success" @click="showSuccessNotification">
                     Success
                 </c-button>
-                <c-button
-                    variant="error"
-                    @click="showErrorNotification"
-                >
+                <c-button variant="error" @click="showErrorNotification">
                     Error
                 </c-button>
-                <c-button
-                    variant="warning"
-                    @click="showWarningNotification"
-                >
+                <c-button variant="warning" @click="showWarningNotification">
                     Warning
                 </c-button>
-                <c-button
-                    variant="info"
-                    @click="showInfoNotification"
-                >
+                <c-button variant="info" @click="showInfoNotification">
                     Info
                 </c-button>
             </div>
@@ -427,10 +415,7 @@ function showInfoNotification() {
 
         <card-docs>
             <div class="flex items-center justify-center gap-x-4">
-                <c-button
-                    type="button"
-                    @click="showMultipleNotifications"
-                >
+                <c-button type="button" @click="showMultipleNotifications">
                     Show Multiple Notifications
                 </c-button>
             </div>
@@ -492,10 +477,7 @@ function showMultipleNotifications() {
 
         <card-docs>
             <div class="flex items-center justify-center gap-x-4">
-                <c-button
-                    type="button"
-                    @click="showPermanentNotification"
-                >
+                <c-button type="button" @click="showPermanentNotification">
                     Show Permanent Notification
                 </c-button>
             </div>
@@ -542,10 +524,7 @@ function showPermanentNotification() {
 
         <card-docs>
             <div class="flex items-center justify-center gap-x-4">
-                <c-button
-                    type="button"
-                    @click="showUpdatingNotification"
-                >
+                <c-button type="button" @click="showUpdatingNotification">
                     Show Updating Notification
                 </c-button>
             </div>
@@ -599,12 +578,7 @@ function showUpdatingNotification() {
             </template>
         </card-docs>
 
-        <PagePagination
-            previous="Dialog"
-            previousLink="/dialog"
-            next="Overlay"
-            nextLink="/overlay"
-        />
+        <PagePagination previous="Dialog" previousLink="/dialog" next="Overlay" nextLink="/overlay" />
     </BaseLayout>
 </template>
 

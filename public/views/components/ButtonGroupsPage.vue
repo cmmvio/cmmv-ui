@@ -10,10 +10,10 @@
         <table-docs>
             <thead>
                 <tr>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Type</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Default</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Description</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Prop</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Type</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Default</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Description</th>
                 </tr>
             </thead>
             <tbody>
@@ -44,7 +44,7 @@
                 <tr>
                     <td class="border-b px-4 py-2">textColor</td>
                     <td class="border-b px-4 py-2">String</td>
-                    <td class="border-b px-4 py-2">"text-gray-900 dark:text-gray-100"</td>
+                    <td class="border-b px-4 py-2">"text-neutral-900 dark:text-neutral-100"</td>
                     <td class="border-b px-4 py-2">Sets the text color for all buttons in the group.</td>
                 </tr>
                 <tr>
@@ -202,7 +202,6 @@
             </template>
         </card-docs>
 
-        <!-- Custom Styling -->
         <h3>Custom Styling</h3>
 
         <p>Button groups can be customized with different background colors, text colors, and other styling options. By
@@ -245,7 +244,6 @@
             </template>
         </card-docs>
 
-        <!-- Button Group Use Cases -->
         <h3>Common Use Cases</h3>
 
         <p>Button groups are versatile components that can be applied in various UI scenarios. Here are some common use
@@ -267,8 +265,8 @@
 
                 <div class="flex flex-col items-center">
                     <h4 class="text-lg font-semibold mb-2">Toggle Options</h4>
-                    <c-button-groups bg-color="bg-gray-100 dark:bg-gray-800"
-                        text-color="text-gray-800 dark:text-gray-200">
+                    <c-button-groups bg-color="bg-neutral-100 dark:bg-neutral-800"
+                        text-color="text-neutral-800 dark:text-neutral-200">
                         <c-button>List</c-button>
                         <c-button>Grid</c-button>
                         <c-button>Table</c-button>
@@ -297,7 +295,7 @@
 &lt;/c-button-groups&gt;
 
 &lt;!-- Toggle Options --&gt;
-&lt;c-button-groups bg-color="bg-gray-100 dark:bg-gray-800" text-color="text-gray-800 dark:text-gray-200"&gt;
+&lt;c-button-groups bg-color="bg-neutral-100 dark:bg-neutral-800" text-color="text-neutral-800 dark:text-neutral-200"&gt;
   &lt;c-button&gt;List&lt;/c-button&gt;
   &lt;c-button&gt;Grid&lt;/c-button&gt;
   &lt;c-button&gt;Table&lt;/c-button&gt;
@@ -312,7 +310,6 @@
             </template>
         </card-docs>
 
-        <!-- Text Editor Example -->
         <h3>Text Editor Example</h3>
 
         <p>Button groups are excellent for creating toolbar interfaces, such as those found in text editors. This
@@ -323,96 +320,95 @@
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center gap-6">
                 <div
-                    class="max-w-4xl w-full bg-white dark:bg-neutral-900 border border-gray-200 dark:border-neutral-700 rounded-lg shadow-sm overflow-hidden">
+                    class="max-w-4xl w-full bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 rounded-lg shadow-sm overflow-hidden">
                     <div
-                        class="p-2 border-b border-gray-200 dark:border-neutral-700 flex flex-wrap items-center gap-2 bg-gray-50 dark:bg-neutral-800">
-                        <!-- Text formatting controls -->
+                        class="p-2 border-b border-neutral-200 dark:border-neutral-700 flex flex-wrap items-center gap-2 bg-neutral-50 dark:bg-neutral-800">
+
                         <c-button-groups size="sm" variant="flat"
-                            bg-color="bg-gray-50 hover:bg-gray-100 dark:bg-neutral-800 dark:hover:bg-neutral-700"
-                            text-color="text-gray-700 dark:text-gray-300" shadow="shadow-sm">
+                            bg-color="bg-neutral-50 hover:bg-neutral-100 dark:bg-neutral-800 dark:hover:bg-neutral-700"
+                            text-color="text-neutral-700 dark:text-neutral-300" shadow="shadow-sm">
                             <c-button>
-                                <icon-bold size="sm" ariaLabel="Bold" customClass="text-gray-700 dark:text-gray-300" />
+                                <icon-bold size="sm" ariaLabel="Bold"
+                                    customClass="text-neutral-700 dark:text-neutral-300" />
                             </c-button>
                             <c-button>
                                 <icon-underline size="sm" ariaLabel="Underline"
-                                    customClass="text-gray-700 dark:text-gray-300" />
+                                    customClass="text-neutral-700 dark:text-neutral-300" />
                             </c-button>
                             <c-button>
                                 <icon-strikethrough size="sm" ariaLabel="Strikethrough"
-                                    customClass="text-gray-700 dark:text-gray-300" />
+                                    customClass="text-neutral-700 dark:text-neutral-300" />
                             </c-button>
                         </c-button-groups>
 
-                        <!-- Alignment and layout controls -->
                         <c-button-groups size="sm" variant="flat"
-                            bg-color="bg-gray-50 hover:bg-gray-100 dark:bg-neutral-800 dark:hover:bg-neutral-700"
-                            text-color="text-gray-700 dark:text-gray-300" shadow="shadow-sm">
+                            bg-color="bg-neutral-50 hover:bg-neutral-100 dark:bg-neutral-800 dark:hover:bg-neutral-700"
+                            text-color="text-neutral-700 dark:text-neutral-300" shadow="shadow-sm">
                             <c-button>
                                 <icon-squares-plus size="sm" ariaLabel="Add section"
-                                    customClass="text-gray-700 dark:text-gray-300" />
+                                    customClass="text-neutral-700 dark:text-neutral-300" />
                             </c-button>
                             <c-button>
                                 <icon-squares-2x2 size="sm" ariaLabel="Grid layout"
-                                    customClass="text-gray-700 dark:text-gray-300" />
+                                    customClass="text-neutral-700 dark:text-neutral-300" />
                             </c-button>
                         </c-button-groups>
 
-                        <!-- Color and style controls -->
                         <c-button-groups size="sm" variant="flat"
-                            bg-color="bg-gray-50 hover:bg-gray-100 dark:bg-neutral-800 dark:hover:bg-neutral-700"
-                            text-color="text-gray-700 dark:text-gray-300" shadow="shadow-sm">
+                            bg-color="bg-neutral-50 hover:bg-neutral-100 dark:bg-neutral-800 dark:hover:bg-neutral-700"
+                            text-color="text-neutral-700 dark:text-neutral-300" shadow="shadow-sm">
                             <c-button>
                                 <icon-swatch size="sm" ariaLabel="Color picker"
-                                    customClass="text-gray-700 dark:text-gray-300" />
+                                    customClass="text-neutral-700 dark:text-neutral-300" />
                             </c-button>
                             <c-button>
                                 <icon-sparkles size="sm" ariaLabel="Special effects"
-                                    customClass="text-gray-700 dark:text-gray-300" />
+                                    customClass="text-neutral-700 dark:text-neutral-300" />
                             </c-button>
                         </c-button-groups>
 
-                        <!-- Insert controls -->
                         <c-button-groups size="sm" variant="flat"
-                            bg-color="bg-gray-50 hover:bg-gray-100 dark:bg-neutral-800 dark:hover:bg-neutral-700"
-                            text-color="text-gray-700 dark:text-gray-300" shadow="shadow-sm">
+                            bg-color="bg-neutral-50 hover:bg-neutral-100 dark:bg-neutral-800 dark:hover:bg-neutral-700"
+                            text-color="text-neutral-700 dark:text-neutral-300" shadow="shadow-sm">
                             <c-button>
                                 <icon-photo size="sm" ariaLabel="Insert image"
-                                    customClass="text-gray-700 dark:text-gray-300" />
+                                    customClass="text-neutral-700 dark:text-neutral-300" />
                             </c-button>
                             <c-button>
                                 <icon-link size="sm" ariaLabel="Insert link"
-                                    customClass="text-gray-700 dark:text-gray-300" />
+                                    customClass="text-neutral-700 dark:text-neutral-300" />
                             </c-button>
                             <c-button>
                                 <icon-table-cells size="sm" ariaLabel="Insert table"
-                                    customClass="text-gray-700 dark:text-gray-300" />
+                                    customClass="text-neutral-700 dark:text-neutral-300" />
                             </c-button>
                         </c-button-groups>
 
                         <div class="ml-auto"></div>
 
-                        <!-- Action controls -->
                         <c-button-groups size="sm" variant="flat" bg-color="bg-white dark:bg-neutral-800"
-                            text-color="text-gray-700 dark:text-gray-300" shadow="shadow-sm">
+                            text-color="text-neutral-700 dark:text-neutral-300" shadow="shadow-sm">
                             <c-button text-color="text-green-600 dark:text-green-400" class="px-2.5 py-1">
                                 <icon-check size="sm" ariaLabel="Save"
-                                    customClass="mr-1 text-gray-700 dark:text-gray-300" />
+                                    customClass="mr-1 text-neutral-700 dark:text-neutral-300" />
                                 Save
                             </c-button>
                             <c-button text-color="text-red-600 dark:text-red-400" class="px-2.5 py-1">
                                 <icon-x-mark size="sm" ariaLabel="Cancel"
-                                    customClass="mr-1 text-gray-700 dark:text-gray-300" />
+                                    customClass="mr-1 text-neutral-700 dark:text-neutral-300" />
                                 Cancel
                             </c-button>
                         </c-button-groups>
                     </div>
 
                     <div class="p-4 min-h-[150px] bg-white dark:bg-neutral-900 font-sans">
-                        <p class="text-gray-800 dark:text-gray-200 mb-2 text-sm font-medium">Sample Document</p>
-                        <p class="text-gray-700 dark:text-gray-300 text-sm mb-2">This is a sample text editor interface
+                        <p class="text-neutral-800 dark:text-neutral-200 mb-2 text-sm font-medium">Sample Document</p>
+                        <p class="text-neutral-700 dark:text-neutral-300 text-sm mb-2">This is a sample text editor
+                            interface
                             created
                             with button groups.</p>
-                        <p class="text-gray-500 dark:text-gray-400 text-sm italic">Click on the toolbar buttons above to
+                        <p class="text-neutral-500 dark:text-neutral-400 text-sm italic">Click on the toolbar buttons
+                            above to
                             format
                             text or insert content...</p>
                     </div>
@@ -420,55 +416,55 @@
             </div>
 
             <template #code>
-                <pre><code class="code-highlight language-html">&lt;div class="max-w-4xl w-full bg-white dark:bg-neutral-900 border border-gray-200 dark:border-neutral-700 rounded-lg shadow-sm overflow-hidden"&gt;
-  &lt;div class="p-2 border-b border-gray-200 dark:border-neutral-700 flex flex-wrap items-center gap-2 bg-gray-50 dark:bg-neutral-800"&gt;
+                <pre><code class="code-highlight language-html">&lt;div class="max-w-4xl w-full bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 rounded-lg shadow-sm overflow-hidden"&gt;
+  &lt;div class="p-2 border-b border-neutral-200 dark:border-neutral-700 flex flex-wrap items-center gap-2 bg-neutral-50 dark:bg-neutral-800"&gt;
     &lt;!-- Text formatting controls --&gt;
-    &lt;c-button-groups size="sm" variant="flat" bg-color="bg-gray-50 hover:bg-gray-100 dark:bg-neutral-800 dark:hover:bg-neutral-700"
-      text-color="text-gray-700 dark:text-gray-300" shadow="shadow-sm"&gt;
+    &lt;c-button-groups size="sm" variant="flat" bg-color="bg-neutral-50 hover:bg-neutral-100 dark:bg-neutral-800 dark:hover:bg-neutral-700"
+      text-color="text-neutral-700 dark:text-neutral-300" shadow="shadow-sm"&gt;
       &lt;c-button&gt;
-        &lt;icon-bold size="sm" ariaLabel="Bold" customClass="text-gray-700 dark:text-gray-300" /&gt;
+        &lt;icon-bold size="sm" ariaLabel="Bold" customClass="text-neutral-700 dark:text-neutral-300" /&gt;
       &lt;/c-button&gt;
       &lt;c-button&gt;
-        &lt;icon-underline size="sm" ariaLabel="Underline" customClass="text-gray-700 dark:text-gray-300" /&gt;
+        &lt;icon-underline size="sm" ariaLabel="Underline" customClass="text-neutral-700 dark:text-neutral-300" /&gt;
       &lt;/c-button&gt;
       &lt;c-button&gt;
-        &lt;icon-strikethrough size="sm" ariaLabel="Strikethrough" customClass="text-gray-700 dark:text-gray-300" /&gt;
+        &lt;icon-strikethrough size="sm" ariaLabel="Strikethrough" customClass="text-neutral-700 dark:text-neutral-300" /&gt;
       &lt;/c-button&gt;
     &lt;/c-button-groups&gt;
 
     &lt;!-- Alignment and layout controls --&gt;
-    &lt;c-button-groups size="sm" variant="flat" bg-color="bg-gray-50 hover:bg-gray-100 dark:bg-neutral-800 dark:hover:bg-neutral-700"
-      text-color="text-gray-700 dark:text-gray-300" shadow="shadow-sm"&gt;
+    &lt;c-button-groups size="sm" variant="flat" bg-color="bg-neutral-50 hover:bg-neutral-100 dark:bg-neutral-800 dark:hover:bg-neutral-700"
+      text-color="text-neutral-700 dark:text-neutral-300" shadow="shadow-sm"&gt;
       &lt;c-button&gt;
-        &lt;icon-squares-plus size="sm" ariaLabel="Add section" customClass="text-gray-700 dark:text-gray-300" /&gt;
+        &lt;icon-squares-plus size="sm" ariaLabel="Add section" customClass="text-neutral-700 dark:text-neutral-300" /&gt;
       &lt;/c-button&gt;
       &lt;c-button&gt;
-        &lt;icon-squares-2x2 size="sm" ariaLabel="Grid layout" customClass="text-gray-700 dark:text-gray-300" /&gt;
+        &lt;icon-squares-2x2 size="sm" ariaLabel="Grid layout" customClass="text-neutral-700 dark:text-neutral-300" /&gt;
       &lt;/c-button&gt;
     &lt;/c-button-groups&gt;
 
     &lt;!-- Color and style controls --&gt;
-    &lt;c-button-groups size="sm" variant="flat" bg-color="bg-gray-50 hover:bg-gray-100 dark:bg-neutral-800 dark:hover:bg-neutral-700"
-      text-color="text-gray-700 dark:text-gray-300" shadow="shadow-sm"&gt;
+    &lt;c-button-groups size="sm" variant="flat" bg-color="bg-neutral-50 hover:bg-neutral-100 dark:bg-neutral-800 dark:hover:bg-neutral-700"
+      text-color="text-neutral-700 dark:text-neutral-300" shadow="shadow-sm"&gt;
       &lt;c-button&gt;
-        &lt;icon-swatch size="sm" ariaLabel="Color picker" customClass="text-gray-700 dark:text-gray-300" /&gt;
+        &lt;icon-swatch size="sm" ariaLabel="Color picker" customClass="text-neutral-700 dark:text-neutral-300" /&gt;
       &lt;/c-button&gt;
       &lt;c-button&gt;
-        &lt;icon-sparkles size="sm" ariaLabel="Special effects" customClass="text-gray-700 dark:text-gray-300" /&gt;
+        &lt;icon-sparkles size="sm" ariaLabel="Special effects" customClass="text-neutral-700 dark:text-neutral-300" /&gt;
       &lt;/c-button&gt;
     &lt;/c-button-groups&gt;
 
     &lt;!-- Insert controls --&gt;
-    &lt;c-button-groups size="sm" variant="flat" bg-color="bg-gray-50 hover:bg-gray-100 dark:bg-neutral-800 dark:hover:bg-neutral-700"
-      text-color="text-gray-700 dark:text-gray-300" shadow="shadow-sm"&gt;
+    &lt;c-button-groups size="sm" variant="flat" bg-color="bg-neutral-50 hover:bg-neutral-100 dark:bg-neutral-800 dark:hover:bg-neutral-700"
+      text-color="text-neutral-700 dark:text-neutral-300" shadow="shadow-sm"&gt;
       &lt;c-button&gt;
-        &lt;icon-photo size="sm" ariaLabel="Insert image" customClass="text-gray-700 dark:text-gray-300" /&gt;
+        &lt;icon-photo size="sm" ariaLabel="Insert image" customClass="text-neutral-700 dark:text-neutral-300" /&gt;
       &lt;/c-button&gt;
       &lt;c-button&gt;
-        &lt;icon-link size="sm" ariaLabel="Insert link" customClass="text-gray-700 dark:text-gray-300" /&gt;
+        &lt;icon-link size="sm" ariaLabel="Insert link" customClass="text-neutral-700 dark:text-neutral-300" /&gt;
       &lt;/c-button&gt;
       &lt;c-button&gt;
-        &lt;icon-table-cells size="sm" ariaLabel="Insert table" customClass="text-gray-700 dark:text-gray-300" /&gt;
+        &lt;icon-table-cells size="sm" ariaLabel="Insert table" customClass="text-neutral-700 dark:text-neutral-300" /&gt;
       &lt;/c-button&gt;
     &lt;/c-button-groups&gt;
 
@@ -476,7 +472,7 @@
 
     &lt;!-- Action controls --&gt;
     &lt;c-button-groups size="sm" variant="outlined" bg-color="bg-white dark:bg-neutral-800"
-      text-color="text-gray-700 dark:text-gray-300" shadow="shadow-sm"&gt;
+      text-color="text-neutral-700 dark:text-neutral-300" shadow="shadow-sm"&gt;
       &lt;c-button text-color="text-green-600 dark:text-green-400" class="px-2.5 py-1"&gt;
         &lt;icon-check size="sm" ariaLabel="Save" customClass="mr-1" /&gt;
         Save
@@ -489,9 +485,9 @@
   &lt;/div&gt;
 
   &lt;div class="p-4 min-h-[150px] bg-white dark:bg-neutral-900 font-sans"&gt;
-    &lt;p class="text-gray-800 dark:text-gray-200 mb-2 text-sm font-medium"&gt;Sample Document&lt;/p&gt;
-    &lt;p class="text-gray-700 dark:text-gray-300 text-sm mb-2"&gt;This is a sample text editor interface created with button groups.&lt;/p&gt;
-    &lt;p class="text-gray-500 dark:text-gray-400 text-sm italic"&gt;Click on the toolbar buttons above to format text or insert content...&lt;/p&gt;
+    &lt;p class="text-neutral-800 dark:text-neutral-200 mb-2 text-sm font-medium"&gt;Sample Document&lt;/p&gt;
+    &lt;p class="text-neutral-700 dark:text-neutral-300 text-sm mb-2"&gt;This is a sample text editor interface created with button groups.&lt;/p&gt;
+    &lt;p class="text-neutral-500 dark:text-neutral-400 text-sm italic"&gt;Click on the toolbar buttons above to format text or insert content...&lt;/p&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
             </template>

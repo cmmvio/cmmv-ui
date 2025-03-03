@@ -2,15 +2,17 @@
     <BaseLayout>
         <h1>Alert</h1>
 
-        <p>The <code>CAlert (alias: c-alert)</code> component provides a customizable alert message box for your application. It supports multiple types, styles, and interactive options for various use cases like success messages, warnings, or error notifications.</p>
+        <p>The <code>CAlert (alias: c-alert)</code> component provides a customizable alert message box for your
+            application. It supports multiple types, styles, and interactive options for various use cases like success
+            messages, warnings, or error notifications.</p>
 
         <table-docs>
             <thead>
                 <tr>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Type</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Default</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Description</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Prop</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Type</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Default</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Description</th>
                 </tr>
             </thead>
             <tbody>
@@ -69,7 +71,8 @@
 
         <h3>Basic Usage</h3>
 
-        <p>Using the default setup, you can quickly create alerts for user feedback. These alerts integrate seamlessly into your application's UI with minimal configuration.</p>
+        <p>Using the default setup, you can quickly create alerts for user feedback. These alerts integrate seamlessly
+            into your application's UI with minimal configuration.</p>
 
         <card-docs>
             <c-alert type="success" title="Success" icon>
@@ -77,7 +80,7 @@
             </c-alert>
 
             <template #code>
-<pre><code class="code-highlight language-vue">&lt;template&gt;
+                <pre><code class="code-highlight language-vue">&lt;template&gt;
     &lt;c-alert type="success" title="Success" icon&gt;
         Operation completed successfully.
     &lt;/c-alert&gt;
@@ -88,7 +91,9 @@
         <!-- Closable -->
         <h3>Closable</h3>
 
-        <p>Add interactivity to your alerts by enabling the close button. This allows users to dismiss messages after reading them.</p>
+        <p>Add interactivity to your alerts by enabling the close button. This allows users to dismiss messages after
+            reading
+            them.</p>
 
         <card-docs>
             <c-alert type="error" title="Error" closable>
@@ -96,7 +101,7 @@
             </c-alert>
 
             <template #code>
-<pre><code class="code-highlight language-vue">&lt;template&gt;
+                <pre><code class="code-highlight language-vue">&lt;template&gt;
     &lt;c-alert type="error" title="Error" closable&gt;
         Something went wrong. Please try again.
     &lt;/c-alert&gt;
@@ -106,20 +111,16 @@
 
         <h3>Custom Colors</h3>
 
-        <p>For unique branding or design requirements, you can define custom background and text colors to match your application's theme.</p>
+        <p>For unique branding or design requirements, you can define custom background and text colors to match your
+            application's theme.</p>
 
         <card-docs>
-            <c-alert
-                title="Custom Alert"
-                bgColor="bg-purple-500"
-                textColor="text-white"
-                icon
-            >
+            <c-alert title="Custom Alert" bgColor="bg-purple-500" textColor="text-white" icon>
                 This is a custom alert with overridden colors.
             </c-alert>
 
             <template #code>
-<pre><code class="code-highlight language-vue">&lt;template&gt;
+                <pre><code class="code-highlight language-vue">&lt;template&gt;
     &lt;c-alert
         title="Custom Alert"
         bgColor="bg-purple-500"
@@ -135,7 +136,8 @@
         <!-- Outlined -->
         <h3>Outlined</h3>
 
-        <p>Use outlined styles for a minimalist design. These alerts are subtle yet clear, ideal for less intrusive notifications.</p>
+        <p>Use outlined styles for a minimalist design. These alerts are subtle yet clear, ideal for less intrusive
+            notifications.</p>
 
         <card-docs>
             <div class="px-6">
@@ -157,7 +159,7 @@
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-vue">&lt;template&gt;
+                <pre><code class="code-highlight language-vue">&lt;template&gt;
     &lt;c-alert type="warning" outlined&gt;
         This is an outlined warning alert.
     &lt;/c-alert&gt;
@@ -180,7 +182,9 @@
         <!-- Icon -->
         <h3>Icon</h3>
 
-        <p>Icons enhance visual feedback and help users quickly identify the purpose of an alert. They can be customized or hidden as needed.</p>
+        <p>Icons enhance visual feedback and help users quickly identify the purpose of an alert. They can be customized
+            or
+            hidden as needed.</p>
 
         <card-docs>
             <c-alert type="info" title="Information" icon>
@@ -188,7 +192,7 @@
             </c-alert>
 
             <template #code>
-<pre><code class="code-highlight language-vue">&lt;template&gt;
+                <pre><code class="code-highlight language-vue">&lt;template&gt;
     &lt;c-alert type="info" title="Information" icon&gt;
         This alert includes an informational icon for better context.
     &lt;/c-alert&gt;
@@ -199,7 +203,9 @@
         <!-- Accessibility -->
         <h3>Accessibility</h3>
 
-        <p>The <code>CAlert</code> component includes built-in ARIA support to ensure alerts are accessible to all users, including those relying on screen readers.</p>
+        <p>The <code>CAlert</code> component includes built-in ARIA support to ensure alerts are accessible to all
+            users,
+            including those relying on screen readers.</p>
 
         <card-docs>
             <c-alert aria-label="Important alert" type="error" title="Critical Error">
@@ -207,7 +213,7 @@
             </c-alert>
 
             <template #code>
-<pre><code class="code-highlight language-vue">&lt;template&gt;
+                <pre><code class="code-highlight language-vue">&lt;template&gt;
     &lt;c-alert aria-label="Important alert" type="error" title="Critical Error"&gt;
         A critical error has occurred. Please contact support.
     &lt;/c-alert&gt;
@@ -215,12 +221,7 @@
             </template>
         </card-docs>
 
-        <PagePagination
-            previous="Accordion"
-            previousLink="/accordion"
-            next="Avatar"
-            nextLink="/avatar"
-        />
+        <PagePagination previous="Accordion" previousLink="/accordion" next="Avatar" nextLink="/avatar" />
     </BaseLayout>
 </template>
 

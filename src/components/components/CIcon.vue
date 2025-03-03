@@ -20,7 +20,7 @@ defineProps({
     },
     color: {
         type: String,
-        default: "text-gray-800",
+        default: "text-neutral-800",
     },
     ariaLabel: {
         type: String,

@@ -9,10 +9,10 @@
         <table-docs>
             <thead>
                 <tr>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Type</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Default</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Description</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Prop</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Type</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Default</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Description</th>
                 </tr>
             </thead>
             <tbody>
@@ -379,7 +379,7 @@ const floatingLabelValue = ref("");
                 <div class="lg:w-2/5 w-full">
                     <c-input id="search" label="Search Input" floatingLabel>
                         <template #icon>
-                            <IconMagnifyingGlass class="w-6 h-6 text-gray-600 dark:text-white" aria-hidden="true" />
+                            <IconMagnifyingGlass class="w-6 h-6 text-neutral-600 dark:text-white" aria-hidden="true" />
                         </template>
                     </c-input>
                 </div>
@@ -389,7 +389,7 @@ const floatingLabelValue = ref("");
                 <pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;c-input id="search" label="Search Input" floatingLabel&gt;
         &lt;template #icon&gt;
-            &lt;IconMagnifyingGlass class="w-6 h-6 text-gray-600 dark:text-white" aria-hidden="true" /&gt;
+            &lt;IconMagnifyingGlass class="w-6 h-6 text-neutral-600 dark:text-white" aria-hidden="true" /&gt;
         &lt;/template&gt;
     &lt;/c-input&gt;
 &lt;/template&gt;</code></pre>
@@ -418,10 +418,10 @@ const floatingLabelValue = ref("");
         <table-docs>
             <thead>
                 <tr>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Type</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Default</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Description</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Prop</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Type</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Default</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Description</th>
                 </tr>
             </thead>
             <tbody>
@@ -493,7 +493,7 @@ const floatingLabelValue = ref("");
                         </c-input>
 
                         <c-button variant="primary" size="lg"
-                            class="!rounded-l-none mb-[0.25rem] w-[100px] px-8 flex items-center justify-center border-gray-300 dark:border-gray-700"
+                            class="!rounded-l-none mb-[0.25rem] w-[100px] px-8 flex items-center justify-center border-neutral-300 dark:border-neutral-700"
                             @click="handleSearch">
                             <IconMagnifyingGlass class="w-6 h-6 text-white mr-2" aria-hidden="true" /> Search
                         </c-button>

@@ -64,7 +64,6 @@ const emit = defineEmits([
     "unmounted"
 ]);
 
-// Define the interface for the injected button group context
 interface ButtonGroup {
     inGroup: boolean;
     size?: string;
@@ -76,7 +75,6 @@ interface ButtonGroup {
     textStroke?: boolean;
 }
 
-// Check if button is inside a button group with proper typing
 const buttonGroup = inject<ButtonGroup>('buttonGroup', { inGroup: false });
 const inGroup = computed(() => buttonGroup.inGroup === true);
 
@@ -99,7 +97,7 @@ const props = defineProps({
     },
     variant: {
         type: String,
-        default: "elevated"
+        default: "default"
     },
     bgColor: {
         type: [String, Array],
@@ -111,7 +109,7 @@ const props = defineProps({
     },
     shadow: {
         type: String,
-        default: "shadow-sm"
+        default: ""
     },
     disabled: {
         type: Boolean,
@@ -127,7 +125,6 @@ const props = defineProps({
     }
 });
 
-// If in a group, use the group's props where applicable
 const computedSize = computed(() => inGroup.value && buttonGroup.size ? buttonGroup.size : props.size);
 const computedVariant = computed(() => inGroup.value && buttonGroup.variant ? buttonGroup.variant : props.variant);
 const computedTextColor = computed(() => inGroup.value && buttonGroup.textColor ? buttonGroup.textColor : props.textColor);
@@ -157,7 +154,7 @@ const variantStyles: Record<string, string> = reactive({
     elevated: "text-black shadow-md",
     flat: "text-black",
     tonal: "",
-    outlined: "border border-gray-300 text-black",
+    outlined: "border border-neutral-300 text-black",
     text: "text-blue-600 hover:underline",
     plain: "bg-transparent text-black"
 });

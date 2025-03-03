@@ -23,7 +23,7 @@
                     class="c-dropdown-field block w-full border shadow-sm pt-2 pb-2 -mt-2 outline-none text-left"
                     :disabled="disabled || isLoading">
                     <span v-if="isLoading" class="flex items-center">
-                        <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-gray-500" xmlns="http://www.w3.org/2000/svg"
+                        <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-neutral-500" xmlns="http://www.w3.org/2000/svg"
                             fill="none" viewBox="0 0 24 24">
                             <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4">
                             </circle>
@@ -57,7 +57,7 @@
 
                 <div class="absolute right-0 flex items-center z-30">
                     <button v-if="clearable && selectedOption && !disabled && !isLoading" type="button"
-                        class="text-gray-400 hover:text-gray-600 my-2 mt-0" @click.stop="clearSelection">
+                        class="text-neutral-400 hover:text-neutral-600 my-2 mt-0" @click.stop="clearSelection">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5">
                             <path fill-rule="evenodd"
                                 d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z"
@@ -75,8 +75,8 @@
 
             <transition name="fade">
                 <div v-if="isActive"
-                    class="absolute z-50 w-full bg-white border border-gray-300 dark:border-gray-700 dark:bg-zinc-800 mt-2 max-h-60 shadow-lg rounded-md">
-                    <div v-if="isLoading" class="flex items-center justify-center p-4 text-gray-500">
+                    class="absolute z-50 w-full bg-white border border-neutral-300 dark:border-neutral-900 dark:bg-neutral-800 mt-2 max-h-60 shadow-lg rounded-md">
+                    <div v-if="isLoading" class="flex items-center justify-center p-4 text-neutral-500">
                         <svg class="animate-spin mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none"
                             viewBox="0 0 24 24">
                             <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4">
@@ -93,7 +93,7 @@
                         <div class="text-sm">{{ errorMessage }}</div>
                     </div>
 
-                    <div v-else-if="filteredOptions.length === 0" class="p-4 text-gray-500 text-center">
+                    <div v-else-if="filteredOptions.length === 0" class="p-4 text-neutral-500 text-center">
                         No options available
                     </div>
 
@@ -104,10 +104,10 @@
                                 @click.stop="handleItemClick(option, index)" @mouseenter="handleMouseEnter(index)"
                                 @mouseleave="handleMouseLeave(index)" :class="[
                                     'px-4 py-2 cursor-pointer text-sm transition-colors z-60',
-                                    'hover:bg-gray-200 dark:hover:bg-zinc-700',
+                                    'hover:bg-neutral-200 dark:hover:bg-neutral-700',
                                     { 'relative': option.subitems && option.subitems.length > 0 }
-                                ]">
-                                <div class="flex items-center justify-between">
+                                ]" class="rounded-md">
+                                <div class="flex items-center justify-between overflow-hidden rounded-md">
                                     <div class="flex items-center">
                                         <div v-if="allowCheck" class="mr-2" @click.stop>
                                             <c-checkbox :modelValue="option.checked || false"
@@ -121,15 +121,15 @@
                                         </span>
                                     </div>
                                     <icon-chevron-right v-if="option.subitems && option.subitems.length > 0"
-                                        class="h-4 w-4 text-gray-400" size="sm" />
+                                        class="h-4 w-4 text-neutral-400 dark:text-white" size="sm" />
                                 </div>
 
                                 <div v-if="option.subitems && option.subitems.length > 0 && activeSubItem === index"
-                                    class="absolute top-0 left-full min-w-[200px] bg-white dark:bg-zinc-800 border border-gray-300 dark:border-gray-700 rounded-md shadow-md z-70">
+                                    class="absolute top-0 left-full min-w-[200px] bg-white dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-900 rounded-md shadow-md z-70 overflow-auto">
                                     <ul>
                                         <li v-for="subitem in option.subitems" :key="subitem.value"
                                             @click.stop="selectSubItem(subitem, option)"
-                                            class="px-4 py-2 cursor-pointer text-sm hover:bg-gray-200 dark:hover:bg-zinc-700 transition-colors">
+                                            class="px-4 py-2 cursor-pointer text-sm hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors rounded-md">
                                             <div v-if="allowCheck" class="flex items-center">
                                                 <div class="mr-2" @click.stop>
                                                     <c-checkbox :modelValue="subitem.checked || false"
@@ -156,7 +156,6 @@
                 </div>
             </transition>
         </div>
-
     </div>
 </template>
 

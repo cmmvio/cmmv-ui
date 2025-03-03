@@ -3,8 +3,10 @@
         <h1>Accordion</h1>
 
         <p>
-            The <code>CAccordion (alias: c-accordion)</code> component allows users to toggle between different sections of content.
-            It supports multiple configurations, such as always open mode, color customization, flush styling, and different arrow styles.
+            The <code>CAccordion (alias: c-accordion)</code> component allows users to toggle between different sections
+            of content.
+            It supports multiple configurations, such as always open mode, color customization, flush styling, and
+            different arrow styles.
         </p>
 
         <table-docs>
@@ -38,31 +40,31 @@
                 <tr>
                     <td>headerColor</td>
                     <td>String</td>
-                    <td>"bg-gray-100 dark:bg-gray-800"</td>
+                    <td>"bg-neutral-100 dark:bg-neutral-800"</td>
                     <td>CSS classes for styling the accordion header background and text.</td>
                 </tr>
                 <tr>
                     <td>bgColor</td>
                     <td>String</td>
-                    <td>"bg-white dark:bg-gray-900"</td>
+                    <td>"bg-white dark:bg-neutral-900"</td>
                     <td>CSS classes for styling the accordion background.</td>
                 </tr>
                 <tr>
                     <td>bgColorContent</td>
                     <td>String</td>
-                    <td>"bg-white dark:bg-gray-900"</td>
+                    <td>"bg-white dark:bg-neutral-900"</td>
                     <td>CSS classes for styling the accordion content background.</td>
                 </tr>
                 <tr>
                     <td>textColor</td>
                     <td>String</td>
-                    <td>"text-gray-800 dark:text-white"</td>
+                    <td>"text-neutral-800 dark:text-white"</td>
                     <td>CSS classes for styling the accordion content text.</td>
                 </tr>
                 <tr>
                     <td>borderColor</td>
                     <td>String</td>
-                    <td>"border-gray-200 dark:border-gray-700"</td>
+                    <td>"border-neutral-200 dark:border-neutral-700"</td>
                     <td>CSS classes for styling the accordion borders.</td>
                 </tr>
                 <tr>
@@ -78,7 +80,7 @@
             <c-accordion :items="accordionItems" />
 
             <template #code>
-<pre><code class="code-highlight language-vue">&lt;template&gt;
+                <pre><code class="code-highlight language-vue">&lt;template&gt;
     &lt;c-accordion :items="accordionItems" /&gt;
 &lt;/template&gt;
 
@@ -104,7 +106,7 @@ const accordionItems = [
             <c-accordion :items="accordionItems" alwaysOpen />
 
             <template #code>
-<pre><code class="code-highlight language-vue">&lt;template&gt;
+                <pre><code class="code-highlight language-vue">&lt;template&gt;
     &lt;c-accordion
         :items="accordionItems"
         alwaysOpen
@@ -133,7 +135,7 @@ const accordionItems = [
             <c-accordion :items="accordionItems" flush />
 
             <template #code>
-<pre><code class="code-highlight language-vue">&lt;template&gt;
+                <pre><code class="code-highlight language-vue">&lt;template&gt;
     &lt;c-accordion
         :items="accordionItems"
         flush
@@ -155,21 +157,16 @@ const accordionItems = [
         <h3>Custom Colors</h3>
 
         <p>
-            You can set different colors for the accordion header, background, and text using <code>headerColor</code>, <code>bgColor</code>, and <code>textColor</code> props.
+            You can set different colors for the accordion header, background, and text using <code>headerColor</code>,
+            <code>bgColor</code>, and <code>textColor</code> props.
         </p>
 
         <card-docs>
-            <c-accordion
-                :items="accordionItems"
-                headerColor="bg-blue-500 text-white"
-                bgColorContent="bg-blue-800"
-                bgColor="bg-blue-100"
-                borderColor="border-blue-300 dark:border-blue-700"
-                textColor="text-white"
-            />
+            <c-accordion :items="accordionItems" headerColor="bg-blue-500 text-white" bgColorContent="bg-blue-800"
+                bgColor="bg-blue-100" borderColor="border-blue-300 dark:border-blue-700" textColor="text-white" />
 
             <template #code>
-<pre><code class="code-highlight language-vue">&lt;template&gt;
+                <pre><code class="code-highlight language-vue">&lt;template&gt;
     &lt;c-accordion
         :items="accordionItems"
         headerColor="bg-blue-500 text-white"
@@ -192,12 +189,7 @@ const accordionItems = [
             </template>
         </card-docs>
 
-        <PagePagination
-            previous="Table"
-            previousLink="/table"
-            next="Alert"
-            nextLink="/alert"
-        />
+        <PagePagination previous="Table" previousLink="/table" next="Alert" nextLink="/alert" />
     </BaseLayout>
 </template>
 

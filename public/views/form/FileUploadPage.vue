@@ -2,26 +2,25 @@
     <BaseLayout>
         <h1>File Upload</h1>
 
-        <p>The <code>CFileUpload (alias: c-file-upload)</code> component offers a complete solution for file uploads, with support for traditional input selection, drag and drop area (dropzone), preview, multiple selection, progress bar, and more.</p>
+        <p>The <code>CFileUpload (alias: c-file-upload)</code> component offers a complete solution for file uploads,
+            with support for traditional input selection, drag and drop area (dropzone), preview, multiple selection,
+            progress bar, and more.</p>
 
         <h3>Basic Example</h3>
 
-        <p>The simplest example of the file upload component allows users to select files by dragging them to the dropzone area or clicking to open the file selector.</p>
+        <p>The simplest example of the file upload component allows users to select files by dragging them to the
+            dropzone area or clicking to open the file selector.</p>
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6">
                 <div class="lg:w-2/5 w-full max-w-[600px] mx-auto">
-                    <c-file-upload
-                        @file-selected="handleFileSelected"
-                        @file-removed="handleFileRemoved"
-                        @upload-start="handleUploadStart"
-                        @upload-complete="handleUploadComplete"
-                    ></c-file-upload>
+                    <c-file-upload @file-selected="handleFileSelected" @file-removed="handleFileRemoved"
+                        @upload-start="handleUploadStart" @upload-complete="handleUploadComplete"></c-file-upload>
                 </div>
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-html">&lt;template&gt;
+                <pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;c-file-upload
         @file-selected="handleFileSelected"
         @file-removed="handleFileRemoved"
@@ -54,24 +53,21 @@ const handleUploadComplete = () => {
 
         <h3>Image Upload with Preview</h3>
 
-        <p>This example shows how to configure the component to accept only images, allowing users to see a preview before uploading.</p>
+        <p>This example shows how to configure the component to accept only images, allowing users to see a preview
+            before
+            uploading.</p>
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6">
                 <div class="lg:w-2/5 w-full max-w-[600px] mx-auto">
-                    <c-file-upload
-                        accept="image/*"
-                        :maxFileSize="5 * 1024 * 1024"
-                        dropzoneText="Drag and drop images here or click to select"
-                        :showBrowseButton="true"
-                        browseButtonText="Select Images"
-                        uploadButtonText="Upload Images"
-                    ></c-file-upload>
+                    <c-file-upload accept="image/*" :maxFileSize="5 * 1024 * 1024"
+                        dropzoneText="Drag and drop images here or click to select" :showBrowseButton="true"
+                        browseButtonText="Select Images" uploadButtonText="Upload Images"></c-file-upload>
                 </div>
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-html">&lt;template&gt;
+                <pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;c-file-upload
         accept="image/*"
         :maxFileSize="5 * 1024 * 1024"
@@ -86,25 +82,21 @@ const handleUploadComplete = () => {
 
         <h3>Automatic Upload</h3>
 
-        <p>In this example, files are automatically uploaded as soon as they are selected, without the need to click an upload button.</p>
+        <p>In this example, files are automatically uploaded as soon as they are selected, without the need to click an
+            upload
+            button.</p>
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6">
                 <div class="lg:w-2/5 w-full max-w-[600px] mx-auto">
-                    <c-file-upload
-                        :autoUpload="true"
-                        :multiple="true"
-                        :maxFiles="3"
-                        accept=".pdf,.doc,.docx"
-                        dropzoneText="Drag and drop documents here"
-                        @upload-success="handleUploadSuccess"
-                        @upload-error="handleUploadError"
-                    ></c-file-upload>
+                    <c-file-upload :autoUpload="true" :multiple="true" :maxFiles="3" accept=".pdf,.doc,.docx"
+                        dropzoneText="Drag and drop documents here" @upload-success="handleUploadSuccess"
+                        @upload-error="handleUploadError"></c-file-upload>
                 </div>
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-html">&lt;template&gt;
+                <pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;c-file-upload
         :autoUpload="true"
         :multiple="true"
@@ -137,19 +129,14 @@ const handleUploadError = (event) => {
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6">
                 <div class="lg:w-2/5 w-full max-w-[600px] mx-auto">
-                    <c-file-upload
-                        url="https://api.example.com/upload"
-                        method="POST"
-                        :headers="{ Authorization: 'Bearer token123' }"
-                        formDataName="uploadedFile"
-                        :withCredentials="true"
-                        @upload-progress="handleProgress"
-                    ></c-file-upload>
+                    <c-file-upload url="https://api.example.com/upload" method="POST"
+                        :headers="{ Authorization: 'Bearer token123' }" formDataName="uploadedFile"
+                        :withCredentials="true" @upload-progress="handleProgress"></c-file-upload>
                 </div>
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-html">&lt;template&gt;
+                <pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;c-file-upload
         url="https://api.example.com/upload"
         method="POST"
@@ -177,19 +164,14 @@ const handleProgress = (event) => {
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6">
                 <div class="lg:w-2/5 w-full max-w-[600px] mx-auto">
-                    <c-file-upload
-                        dropzoneText="Drag your files here or click to browse"
-                        browseButtonText="Browse"
-                        uploadButtonText="Upload Now"
-                        fileText="file"
-                        filesText="files"
-                        errorText="Upload failed. Please try again."
-                    ></c-file-upload>
+                    <c-file-upload dropzoneText="Drag your files here or click to browse" browseButtonText="Browse"
+                        uploadButtonText="Upload Now" fileText="file" filesText="files"
+                        errorText="Upload failed. Please try again."></c-file-upload>
                 </div>
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-html">&lt;template&gt;
+                <pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;c-file-upload
         dropzoneText="Drag your files here or click to browse"
         browseButtonText="Browse"
@@ -209,10 +191,10 @@ const handleProgress = (event) => {
         <table-docs>
             <thead>
                 <tr>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Type</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Default</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Description</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Prop</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Type</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Default</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Description</th>
                 </tr>
             </thead>
             <tbody>
@@ -329,14 +311,15 @@ const handleProgress = (event) => {
 
         <h3>Events</h3>
 
-        <p>The component emits various events that allow you to control the upload process and respond to user interactions.</p>
+        <p>The component emits various events that allow you to control the upload process and respond to user
+            interactions.</p>
 
         <table-docs>
             <thead>
                 <tr>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Event</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Parameters</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Description</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Event</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Parameters</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Description</th>
                 </tr>
             </thead>
             <tbody>
@@ -380,34 +363,23 @@ const handleProgress = (event) => {
 
         <h3>Complete Example</h3>
 
-        <p>This example demonstrates a complete use case of the component, including event handling and customization.</p>
+        <p>This example demonstrates a complete use case of the component, including event handling and customization.
+        </p>
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6">
                 <div class="lg:w-2/5 w-full max-w-[600px] mx-auto">
-                    <c-file-upload
-                        ref="fileUploadRef"
-                        accept="image/*,.pdf"
-                        :multiple="true"
-                        :maxFiles="5"
-                        :maxFileSize="2 * 1024 * 1024"
-                        :autoUpload="false"
-                        dropzoneText="Drag images or PDFs here"
-                        browseButtonText="Select Files"
-                        uploadButtonText="Upload All"
-                        @file-selected="onFileSelected"
-                        @file-removed="onFileRemoved"
-                        @upload-start="onUploadStart"
-                        @upload-progress="onUploadProgress"
-                        @upload-success="onUploadSuccess"
-                        @upload-error="onUploadError"
-                        @upload-complete="onUploadComplete"
-                    ></c-file-upload>
+                    <c-file-upload ref="fileUploadRef" accept="image/*,.pdf" :multiple="true" :maxFiles="5"
+                        :maxFileSize="2 * 1024 * 1024" :autoUpload="false" dropzoneText="Drag images or PDFs here"
+                        browseButtonText="Select Files" uploadButtonText="Upload All" @file-selected="onFileSelected"
+                        @file-removed="onFileRemoved" @upload-start="onUploadStart" @upload-progress="onUploadProgress"
+                        @upload-success="onUploadSuccess" @upload-error="onUploadError"
+                        @upload-complete="onUploadComplete"></c-file-upload>
                 </div>
             </div>
 
             <template #code>
-<pre><code class="code-highlight language-html">&lt;template&gt;
+                <pre><code class="code-highlight language-html">&lt;template&gt;
     &lt;c-file-upload
         ref="fileUploadRef"
         accept="image/*,.pdf"
@@ -478,12 +450,7 @@ const onUploadComplete = () => {
             </template>
         </card-docs>
 
-        <PagePagination
-            previous="Datepicker"
-            previousLink="/datepicker"
-            next="Form"
-            nextLink="/form"
-        />
+        <PagePagination previous="Datepicker" previousLink="/datepicker" next="Form" nextLink="/form" />
     </BaseLayout>
 </template>
 

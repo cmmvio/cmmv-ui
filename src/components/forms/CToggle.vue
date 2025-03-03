@@ -1,24 +1,12 @@
 <template>
-    <div
-        class="relative inline-flex items-center cursor-pointer select-none"
-        @click="toggle"
-    >
-        <span class="absolute inset-0 z-0" ref="rippleContainer"></span>
-
-        <span
-            class="relative z-10 flex items-center rounded-full transition-all duration-200"
-            :class="[sizes[size].track, isChecked ? trackColor : bgColor, disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer']"
-        >
-            <span
-                class="absolute rounded-full shadow transition-transform transform border"
-                :class="[sizes[size].thumb, thumbColor, thumbBorderColor, isChecked ? sizes[size].thumbTranslate : 'translate-x-0']"
-            ></span>
+    <div class="relative inline-flex items-center cursor-pointer select-none text-sm" @click="toggle">
+        <span class="relative z-10 flex items-center rounded-full transition-all duration-200"
+            :class="[sizes[size].track, isChecked ? trackColor : bgColor, disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer']">
+            <span class="absolute rounded-full shadow transition-transform transform border"
+                :class="[sizes[size].thumb, thumbColor, thumbBorderColor, isChecked ? sizes[size].thumbTranslate : 'translate-x-0']"></span>
         </span>
 
-        <span
-            v-if="label"
-            :class="['ml-2', sizes[size].label]"
-        >
+        <span v-if="label" :class="['ml-2', sizes[size].label]">
             {{ label }}
         </span>
     </div>
@@ -77,7 +65,6 @@ const props = defineProps({
 
 const emit = defineEmits(["update:modelValue"]);
 const internalChecked = ref(props.modelValue ?? props.checked);
-const rippleContainer = ref<HTMLElement | null>(null);
 
 watch(
     () => props.modelValue,
@@ -97,30 +84,8 @@ const isChecked = computed({
 });
 
 const toggle = () => {
-    if (!props.disabled) {
+    if (!props.disabled)
         isChecked.value = !isChecked.value;
-        createRipple();
-    }
-};
-
-const createRipple = () => {
-    if (!rippleContainer.value) return;
-
-    const rect = rippleContainer.value.getBoundingClientRect();
-    const ripple = document.createElement("span");
-    const diameter = rect.height * 0.9;
-    const radius = diameter / 2;
-
-    ripple.style.width = ripple.style.height = `${diameter}px`;
-    ripple.style.left = `${radius}px`;
-    ripple.style.top = `${rect.height / 2 - radius}px`;
-    ripple.classList.add("ripple");
-
-    rippleContainer.value.appendChild(ripple);
-
-    setTimeout(() => {
-        ripple.remove();
-    }, 500);
 };
 
 const sizes: Record<string, {
@@ -139,7 +104,7 @@ const sizes: Record<string, {
         track: "w-12 h-6",
         thumb: "w-6 h-6",
         thumbTranslate: "translate-x-6",
-        label: "text-base",
+        label: "text-md",
     },
     "lg": {
         track: "w-14 h-7",
@@ -149,21 +114,3 @@ const sizes: Record<string, {
     },
 };
 </script>
-
-<style scoped>
-.ripple {
-    position: absolute;
-    border-radius: 50%;
-    background-color: rgba(0, 0, 0, 0.1);
-    transform: scale(0);
-    animation: ripple-animation 0.4s ease-out;
-    pointer-events: none;
-}
-
-@keyframes ripple-animation {
-    to {
-        transform: scale(1.5);
-        opacity: 0;
-    }
-}
-</style>

@@ -11,10 +11,10 @@
         <table-docs>
             <thead>
                 <tr>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Prop</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Type</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Default</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Description</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Prop</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Type</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Default</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Description</th>
                 </tr>
             </thead>
             <tbody>
@@ -87,18 +87,18 @@
         <div class="mb-6 mt-4">
             <div class="relative">
                 <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                    <svg class="w-5 h-5 text-gray-500 dark:text-neutral-400" fill="none" stroke="currentColor"
+                    <svg class="w-5 h-5 text-neutral-500 dark:text-neutral-400" fill="none" stroke="currentColor"
                         viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                     </svg>
                 </div>
                 <input type="search" v-model="searchCountryQuery"
-                    class="block w-full p-3 pl-10 text-sm border border-gray-300 dark:border-neutral-600 rounded-lg bg-white dark:bg-neutral-800 focus:ring-blue-500 focus:border-blue-500 dark:focus:ring-blue-400 dark:focus:border-blue-400"
+                    class="block w-full p-3 pl-10 text-sm border border-neutral-300 dark:border-neutral-600 rounded-lg bg-white dark:bg-neutral-800 focus:ring-blue-500 focus:border-blue-500 dark:focus:ring-blue-400 dark:focus:border-blue-400"
                     placeholder="Search countries by name or ISO code..." />
             </div>
             <p v-if="filteredCountries.length === 0 && searchCountryQuery"
-                class="mt-2 text-sm text-gray-500 dark:text-neutral-400">
+                class="mt-2 text-sm text-neutral-500 dark:text-neutral-400">
                 No countries found matching "{{ searchCountryQuery }}". Try a different search term.
             </p>
         </div>
@@ -106,11 +106,11 @@
         <table-docs>
             <thead>
                 <tr>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Country</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Preview</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">ISO Code</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Alpha 3</th>
-                    <th class="border-b px-4 py-2 font-semibold text-gray-800 dark:text-white">Numeric</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Country</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Preview</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">ISO Code</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Alpha 3</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Numeric</th>
                 </tr>
             </thead>
             <tbody>
@@ -128,7 +128,8 @@
             </tbody>
         </table-docs>
 
-        <div v-if="filteredCountries.length > 0" class="text-sm text-gray-500 dark:text-neutral-400 mt-4 text-center">
+        <div v-if="filteredCountries.length > 0"
+            class="text-sm text-neutral-500 dark:text-neutral-400 mt-4 text-center">
             Showing {{ filteredCountries.length }} of {{ countries.length }} countries
         </div>
 
@@ -235,13 +236,13 @@
             <div
                 class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0 sm:space-x-4">
                 <c-flag iso="fr" size="lg" shadow="shadow-md" />
-                <c-flag iso="fr" size="lg" border="border-2 border-gray-300" />
+                <c-flag iso="fr" size="lg" border="border-2 border-neutral-300" />
                 <c-flag iso="fr" size="lg" shadow="shadow-lg" border="border-2 border-blue-300" rounded="full" />
             </div>
 
             <template #code>
                 <pre><code class="code-highlight language-html">&lt;c-flag iso="fr" size="lg" shadow="shadow-md" /&gt;
-&lt;c-flag iso="fr" size="lg" border="border-2 border-gray-300" /&gt;
+&lt;c-flag iso="fr" size="lg" border="border-2 border-neutral-300" /&gt;
 &lt;c-flag iso="fr" size="lg" shadow="shadow-lg" border="border-2 border-blue-300" rounded="full" /&gt;</code></pre>
             </template>
         </card-docs>
