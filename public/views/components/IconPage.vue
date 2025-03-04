@@ -303,19 +303,19 @@ const searchQuery = ref('');
 const searchBrandQuery = ref('');
 
 const filteredIcons = computed(() => {
-    if (!searchQuery.value) return resolvedIcons;
+    if (!searchQuery.value) return resolvedIcons.sort((a, b) => a.name.localeCompare(b.name));
     const query = searchQuery.value.toLowerCase();
     return resolvedIcons.filter(icon =>
         icon.name.toLowerCase().includes(query)
-    );
+    ).sort((a, b) => a.name.localeCompare(b.name));
 });
 
 const filteredBrandIcons = computed(() => {
-    if (!searchBrandQuery.value) return resolvedBrandsIcons;
+    if (!searchBrandQuery.value) return resolvedBrandsIcons.sort((a, b) => a.name.localeCompare(b.name));
     const query = searchBrandQuery.value.toLowerCase();
     return resolvedBrandsIcons.filter(icon =>
         icon.name.toLowerCase().includes(query)
-    );
+    ).sort((a, b) => a.name.localeCompare(b.name));
 });
 
 onMounted(async () => {
