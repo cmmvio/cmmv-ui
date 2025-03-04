@@ -313,7 +313,6 @@ const initializeActiveFilters = () => {
 };
 
 const handleClickOutside = (event) => {
-    // Handle sort dropdown
     if (sortMenuOpen.value &&
         sortButton.value &&
         sortDropdown.value &&
@@ -322,7 +321,6 @@ const handleClickOutside = (event) => {
         sortMenuOpen.value = false;
     }
 
-    // Handle filter dropdowns
     if (openFilterDropdown.value) {
         const sectionId = openFilterDropdown.value;
         const buttonEl = filterButtonRefs.value[sectionId];

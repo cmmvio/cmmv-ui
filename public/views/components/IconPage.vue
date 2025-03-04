@@ -141,8 +141,8 @@
 
         <h3>Best Practices</h3>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-            <div class="border border-neutral-200 dark:border-neutral-700 rounded-lg p-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 mt-2">
+            <div class="border border-neutral-200 dark:border-neutral-700 rounded-lg p-6 bg-neutral-50 dark:bg-neutral-800">
                 <h4 class="text-base font-semibold mb-3">When to use icons</h4>
                 <ul class="list-disc pl-5 space-y-2">
                     <li>Use icons to provide visual cues that help users quickly understand actions or information.</li>
@@ -153,7 +153,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="border border-neutral-200 dark:border-neutral-700 rounded-lg p-6">
+            <div class="border border-neutral-200 dark:border-neutral-700 rounded-lg p-6 bg-neutral-50 dark:bg-neutral-800">
                 <h4 class="text-base font-semibold mb-3">Accessibility considerations</h4>
                 <ul class="list-disc pl-5 space-y-2">
                     <li>Always provide an <code>ariaLabel</code> for icons that convey meaning.</li>

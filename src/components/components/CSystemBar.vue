@@ -4,13 +4,11 @@
         colorClass,
         { 'dark-theme': dark }
     ]" :style="{ height: `${height}px` }">
-        <!-- Left side (always shows time) -->
         <div class="left-icons flex items-center">
             <div class="time px-2">
                 {{ currentTime }}
             </div>
 
-            <!-- Android shows notification icons on the left -->
             <div v-if="platform === 'android' && notifications" class="notifications flex items-center gap-1 ml-2">
                 <div v-if="notifications.app" class="app-icon">
                     <slot name="app-icon">
@@ -26,14 +24,11 @@
             </div>
         </div>
 
-        <!-- Notch for iPhone (centered) -->
         <div v-if="platform === 'ios' && showNotch" class="notch-container order-1 flex-grow flex justify-center">
             <div v-if="notch" class="notch bg-black rounded-b-2xl" :style="{ width: '180px', height: '25px' }"></div>
         </div>
 
-        <!-- Right side (common icons) -->
         <div class="right-icons flex items-center gap-2 order-2">
-            <!-- Cellular signal -->
             <div v-if="cellularSignal !== false" class="cellular">
                 <div v-if="platform === 'ios'" class="ios-cellular flex items-end h-3">
                     <div v-for="i in 4" :key="`cell-${i}`" class="cellular-bar w-1"
@@ -49,7 +44,6 @@
                 </div>
             </div>
 
-            <!-- Wifi -->
             <div v-if="wifiSignal !== false" class="wifi">
                 <div v-if="platform === 'ios'" class="ios-wifi">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor">
@@ -72,7 +66,6 @@
                 </div>
             </div>
 
-            <!-- Bluetooth -->
             <div v-if="bluetooth" class="bluetooth">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor">
                     <path
@@ -80,7 +73,6 @@
                 </svg>
             </div>
 
-            <!-- Battery -->
             <div v-if="batteryLevel !== false" class="battery flex items-center">
                 <div v-if="platform === 'ios'"
                     class="ios-battery relative w-6 h-3 border rounded-sm flex items-center overflow-hidden">
@@ -109,15 +101,14 @@
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue';
 
 const props = defineProps({
-    // Appearance
     platform: {
         type: String,
-        default: 'auto', // 'auto', 'ios', 'android'
+        default: 'auto',
         validator: (val) => ['auto', 'ios', 'android'].includes(val)
     },
     color: {
         type: String,
-        default: 'transparent', // 'transparent', 'light', 'dark', 'primary'
+        default: 'transparent',
         validator: (val) => ['transparent', 'light', 'dark', 'primary'].includes(val)
     },
     dark: {
@@ -128,8 +119,6 @@ const props = defineProps({
         type: Number,
         default: 24
     },
-
-    // Notch
     showNotch: {
         type: Boolean,
         default: false
@@ -138,8 +127,6 @@ const props = defineProps({
         type: Boolean,
         default: true
     },
-
-    // Status bar elements
     batteryLevel: {
         type: [Number, Boolean],
         default: 70,
@@ -167,11 +154,9 @@ const props = defineProps({
         type: [Object, Boolean],
         default: () => ({ app: false, count: undefined })
     },
-
-    // Clock customization
     timeFormat: {
         type: String,
-        default: '24h', // '12h', '24h'
+        default: '24h',
         validator: (val) => ['12h', '24h'].includes(val)
     },
     staticTime: {
@@ -181,27 +166,23 @@ const props = defineProps({
     }
 });
 
-// Platform detection
 const detectedPlatform = ref('');
 
 onMounted(() => {
     const userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
-    if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+    if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream)
         detectedPlatform.value = 'ios';
-    } else if (/android/i.test(userAgent)) {
+    else if (/android/i.test(userAgent))
         detectedPlatform.value = 'android';
-    } else {
-        // Fallback for desktop or unidentified devices
+    else
         detectedPlatform.value = 'android';
-    }
 });
 
 const platform = computed(() => {
     return props.platform === 'auto' ? detectedPlatform.value : props.platform;
 });
 
-// CSS classes based on props
 const platformClass = computed(() => {
     return platform.value === 'ios' ? 'ios-system-bar' : 'android-system-bar';
 });
@@ -214,7 +195,6 @@ const colorClass = computed(() => {
     return 'bg-transparent';
 });
 
-// Real-time clock
 const currentTime = ref('');
 let clockInterval = null;
 
@@ -226,11 +206,10 @@ const updateTime = () => {
 
     const now = new Date();
 
-    if (props.timeFormat === '24h') {
+    if (props.timeFormat === '24h')
         currentTime.value = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
-    } else {
+    else
         currentTime.value = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true });
-    }
 };
 
 onMounted(() => {

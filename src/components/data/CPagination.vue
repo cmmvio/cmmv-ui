@@ -62,7 +62,7 @@
 
         <nav v-else class="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
             <button @click="selectPage(1)" :disabled="currentPage === 1"
-                class="relative inline-flex items-center rounded-l-md px-2 py-2 text-neutral-400 ring-1 ring-inset ring-neutral-300 dark:ring-neutral-900 hover:bg-neutral-50 dark:hover:bg-neutral-700 focus:z-20 focus:outline-offset-0 disabled:opacity-50 disabled:cursor-not-allowed"
+                class="relative inline-flex items-center rounded-l-md px-2 py-1 text-neutral-400 ring-1 ring-inset ring-neutral-300 dark:ring-neutral-900 hover:bg-neutral-50 dark:hover:bg-neutral-700 focus:z-20 focus:outline-offset-0 disabled:opacity-50 disabled:cursor-not-allowed"
                 :title="texts.firstPage">
                 <span class="sr-only">{{ texts.first }}</span>
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-neutral-600 dark:text-white"
@@ -74,7 +74,7 @@
             </button>
 
             <button @click="selectPage(currentPage - 1)" :disabled="currentPage === 1"
-                class="relative inline-flex items-center px-2 py-2 text-neutral-400 ring-1 ring-inset ring-neutral-300 dark:ring-neutral-900 hover:bg-neutral-50 dark:hover:bg-neutral-700 focus:z-20 focus:outline-offset-0 disabled:opacity-50 disabled:cursor-not-allowed"
+                class="relative inline-flex items-center px-2 py-1 text-neutral-400 ring-1 ring-inset ring-neutral-300 dark:ring-neutral-900 hover:bg-neutral-50 dark:hover:bg-neutral-700 focus:z-20 focus:outline-offset-0 disabled:opacity-50 disabled:cursor-not-allowed"
                 :title="texts.previousPage">
                 <span class="sr-only">{{ texts.previous }}</span>
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-neutral-600 dark:text-white"
@@ -86,7 +86,7 @@
 
             <template v-for="page in paginatedPages" :key="page">
                 <button v-if="page === '...'"
-                    class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-neutral-700 dark:text-neutral-300 ring-1 ring-inset ring-neutral-300 dark:ring-neutral-900 focus:outline-offset-0"
+                    class="relative inline-flex items-center px-3 py-1 text-sm font-semibold text-neutral-700 dark:text-neutral-300 ring-1 ring-inset ring-neutral-300 dark:ring-neutral-900 focus:outline-offset-0"
                     disabled>
                     ...
                 </button>
@@ -94,14 +94,14 @@
                     page === currentPage
                         ? 'bg-indigo-600 text-white'
                         : 'text-neutral-900 dark:text-white hover:bg-neutral-50 dark:hover:bg-neutral-700 ring-1 ring-inset ring-neutral-300 dark:ring-neutral-900',
-                    'relative inline-flex items-center px-4 py-2 text-sm font-semibold focus:z-20 focus:outline-offset-0'
+                    'relative inline-flex items-center px-4 py-2 text-sm focus:z-20 focus:outline-offset-0'
                 ]">
                     {{ page }}
                 </button>
             </template>
 
             <button @click="selectPage(currentPage + 1)" :disabled="currentPage === totalPages"
-                class="relative inline-flex items-center px-2 py-2 text-neutral-400 ring-1 ring-inset ring-neutral-300 dark:ring-neutral-900 hover:bg-neutral-50 dark:hover:bg-neutral-700 focus:z-20 focus:outline-offset-0 disabled:opacity-50 disabled:cursor-not-allowed"
+                class="relative inline-flex items-center px-2 py-1 text-neutral-400 ring-1 ring-inset ring-neutral-300 dark:ring-neutral-900 hover:bg-neutral-50 dark:hover:bg-neutral-700 focus:z-20 focus:outline-offset-0 disabled:opacity-50 disabled:cursor-not-allowed"
                 :title="texts.nextPage">
                 <span class="sr-only">{{ texts.next }}</span>
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-neutral-600 dark:text-white"
@@ -112,7 +112,7 @@
             </button>
 
             <button @click="selectPage(totalPages)" :disabled="currentPage === totalPages"
-                class="relative inline-flex items-center rounded-r-md px-2 py-2 text-neutral-400 ring-1 ring-inset ring-neutral-300 dark:ring-neutral-900 hover:bg-neutral-50 dark:hover:bg-neutral-700 focus:z-20 focus:outline-offset-0 disabled:opacity-50 disabled:cursor-not-allowed"
+                class="relative inline-flex items-center rounded-r-md px-2 py-1 text-neutral-400 ring-1 ring-inset ring-neutral-300 dark:ring-neutral-900 hover:bg-neutral-50 dark:hover:bg-neutral-700 focus:z-20 focus:outline-offset-0 disabled:opacity-50 disabled:cursor-not-allowed"
                 :title="texts.lastPage">
                 <span class="sr-only">{{ texts.last }}</span>
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-neutral-600 dark:text-white"

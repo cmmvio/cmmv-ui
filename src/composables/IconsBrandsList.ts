@@ -218,6 +218,56 @@ const Icons = [
         name: "icon-youtube",
         path: "components/icons/IconYoutube.vue",
         code: `<icon-youtube class="w-8 h-8 text-white" aria-hidden="true" />`
+    },
+    {
+        name: "icon-apple",
+        path: "components/icons/IconApple.vue",
+        code: `<icon-apple class="w-8 h-8 text-white" aria-hidden="true" />`
+    },
+    {
+        name: "icon-digital-ocean",
+        path: "components/icons/IconDigitalOcean.vue",
+        code: `<icon-digital-ocean class="w-8 h-8 text-white" aria-hidden="true" />`
+    },
+    {
+        name: "icon-firebase",
+        path: "components/icons/IconFirebase.vue",
+        code: `<icon-firebase class="w-8 h-8 text-white" aria-hidden="true" />`
+    },
+    {
+        name: "icon-google-drive",
+        path: "components/icons/IconGoogleDrive.vue",
+        code: `<icon-google-drive class="w-8 h-8 text-white" aria-hidden="true" />`
+    },
+    {
+        name: "icon-grafana",
+        path: "components/icons/IconGrafana.vue",
+        code: `<icon-grafana class="w-8 h-8 text-white" aria-hidden="true" />`
+    },
+    {
+        name: "icon-graphql",
+        path: "components/icons/IconGraphql.vue",
+        code: `<icon-graphql class="w-8 h-8 text-white" aria-hidden="true" />`
+    },
+    {
+        name: "icon-html5",
+        path: "components/icons/IconHtml5.vue",
+        code: `<icon-html5 class="w-8 h-8 text-white" aria-hidden="true" />`
+    },
+    {
+        name: "icon-neo4j",
+        path: "components/icons/IconNeo4j.vue",
+        code: `<icon-neo4j class="w-8 h-8 text-white" aria-hidden="true" />`
+    },
+    {
+        name: "icon-redis",
+        path: "components/icons/IconRedis.vue",
+        code: `<icon-redis class="w-8 h-8 text-white" aria-hidden="true" />`
+    },
+    {
+        name: "icon-unity",
+        path: "components/icons/IconUnity.vue",
+        code: `<icon-unity class="w-8 h-8 text-white" aria-hidden="true" />`
     }
 ]
 

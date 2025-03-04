@@ -98,7 +98,7 @@
 
         <card-docs padding="p-2">
             <div class="w-full max-w-[780px] mx-auto">
-                <c-list v-model="items" class="w-full">
+                <c-list v-model="items" class="w-full" itemPadding="py-4">
                     <template v-slot="{ item }">
                         <div class="w-full flex justify-between">
                             <div class="flex min-w-0 gap-x-4">
@@ -897,14 +897,14 @@ function handleKanbanItemMoved(event) {
             users can rearrange items in the list by dragging the handle that appears on the left side of each item.
         </p>
 
-        <card-docs>
+        <card-docs padding="p-0">
             <div class="w-full max-w-[780px] mx-auto">
                 <c-list v-model="sortableTaskItems" sortable class="bg-white dark:bg-neutral-800 rounded-md"
-                    @reorder="handleSortableReorder">
+                    itemPadding="px-4 py-2" @reorder="handleSortableReorder">
                     <template v-slot="{ item }">
-                        <div class="w-full flex justify-between items-center py-3 px-2">
+                        <div class="w-full flex justify-between items-center px-2">
                             <div class="flex-grow">
-                                <div class="flex items-center">
+                                <div class="flex items-center dark:text-neutral-100 text-sm">
                                     <input type="checkbox" v-model="item.completed" class="mr-3 h-4 w-4 rounded" />
                                     <span
                                         :class="{ 'font-medium': !item.completed, 'line-through text-neutral-400': item.completed }">{{
@@ -919,11 +919,10 @@ function handleKanbanItemMoved(event) {
                     </template>
                 </c-list>
 
-                <div class="mt-4 text-sm text-neutral-600 dark:text-neutral-400">
+                <div class="m-4 m-auto text-center text-sm text-neutral-600 dark:text-neutral-400">
                     <p>Try dragging the items using the handle on the left to reorder the task list.</p>
                     <div v-if="lastSortableReorderEvent" class="mt-2 p-2 bg-neutral-100 dark:bg-neutral-700 rounded-md">
-                        <p>Last reorder event:</p>
-                        <pre>{{ JSON.stringify(lastSortableReorderEvent, null, 2) }}</pre>
+                        <pre class="text-xs text-left">{{ JSON.stringify(lastSortableReorderEvent, null, 2) }}</pre>
                     </div>
                 </div>
             </div>
@@ -966,9 +965,8 @@ function handleReorder(event) {
             </template>
         </card-docs>
 
-        <code-block lang="vue" :code="crossListDragDropExample" />
+        <h3>Slots</h3>
 
-        <h3 class="mt-8 text-lg font-medium">Slots</h3>
         <p class="mb-4">
             The CList component provides flexible slot options for complete customization:
         </p>
@@ -1018,7 +1016,7 @@ function handleReorder(event) {
             </tbody>
         </table-docs>
 
-        <h3 class="mt-8 text-lg font-medium">Events</h3>
+        <h3>Events</h3>
 
         <table-docs>
             <thead>

@@ -566,9 +566,8 @@ const fetchData = async () => {
         if (searchQuery.value) {
             params.search = searchQuery.value;
 
-            if (searchField.value) {
+            if (searchField.value)
                 params.searchField = searchField.value;
-            }
         }
 
         if (Object.keys(activeFilters.value).length > 0) {
@@ -584,9 +583,8 @@ const fetchData = async () => {
             });
         }
 
-        if (props.transformRequestParams) {
+        if (props.transformRequestParams)
             params = props.transformRequestParams(params);
-        }
 
         const urlWithParams = new URL(props.apiUrl, window.location.origin);
 
@@ -613,9 +611,8 @@ const fetchData = async () => {
 
         const response = await fetch(urlWithParams.toString(), fetchOpts);
 
-        if (!response.ok) {
+        if (!response.ok)
             throw new Error(`HTTP error! Status: ${response.status}`);
-        }
 
         const data: ApiResponse = await response.json();
 

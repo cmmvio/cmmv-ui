@@ -2,7 +2,7 @@
     <div :class="['overflow-auto', width, height, rounded, customClass]">
         <ul role="list" :class="['divide-y list-none', divideColor]">
             <li v-for="(item, index) in modelValue" :key="index"
-                :class="['p-0 m-0 flex justify-between gap-x-6', itemPadding, sortable && !useHandler ? 'cursor-grab active:cursor-grabbing' : '']"
+                :class="['p-0 m-0 flex justify-between gap-x-2', itemPadding, sortable && !useHandler ? 'cursor-grab active:cursor-grabbing' : '']"
                 :draggable="sortable && !useHandler"
                 @dragstart="sortable && !useHandler ? handleDragStart($event, index) : null"
                 @dragover="sortable ? handleDragOver($event, index) : null"
@@ -65,7 +65,7 @@ const props = defineProps({
     itemPadding: {
         type: String,
         required: false,
-        default: "py-5"
+        default: "py-2"
     },
     customClass: {
         type: String,
