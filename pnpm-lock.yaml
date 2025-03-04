@@ -20,6 +20,9 @@ importers:
       '@heroicons/vue':
         specifier: ^2.2.0
         version: 2.2.0(vue@3.5.13(typescript@5.6.3))
+      '@ssibrahimbas/v-mask':
+        specifier: ^1.0.0
+        version: 1.0.0
       '@vueuse/core':
         specifier: ^12.7.0
         version: 12.7.0(typescript@5.6.3)
@@ -80,9 +83,18 @@ importers:
       reflect-metadata:
         specifier: ^0.2.2
         version: 0.2.2
+      text-mask-addons:
+        specifier: ^3.8.0
+        version: 3.8.0
       typeorm:
         specifier: ^0.3.20
         version: 0.3.20(ts-node@10.9.2(@swc/core@1.11.4(@swc/helpers@0.5.15))(@types/node@22.13.5)(typescript@5.6.3))
+      v-mask:
+        specifier: ^2.3.0
+        version: 2.3.0
+      v-money3:
+        specifier: ^3.24.1
+        version: 3.24.1(vue@3.5.13(typescript@5.6.3))
       vite-plugin-css-injected-by-js:
         specifier: ^3.5.2
         version: 3.5.2(vite@6.2.0(@types/node@22.13.5)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
@@ -1292,6 +1304,9 @@ packages:
 
   '@sqltools/formatter@1.2.5':
     resolution: {integrity: sha512-Uy0+khmZqUrUGm5dmMqVlnvufZRSK0FbYzVgp0UMstm+F5+W2/jnEEQyc9vo1ZR/E5ZI/B1WjjoTqBqwJL6Krw==}
+
+  '@ssibrahimbas/v-mask@1.0.0':
+    resolution: {integrity: sha512-pWBjvDf1R0L/Ef0pbDvgjoLjbG4s80IktU3kEXiCNgBTKIFNJWLE5i38N8Uvg49Zd1GNxkGtRylfHtCkuUMMTw==}
 
   '@swc-node/core@1.13.3':
     resolution: {integrity: sha512-OGsvXIid2Go21kiNqeTIn79jcaX4l0G93X2rAnas4LFoDyA9wAwVK7xZdm+QsKoMn5Mus2yFLCc4OtX2dD/PWA==}
@@ -4127,6 +4142,9 @@ packages:
     resolution: {integrity: sha512-te/NtwBwfiNRLf9Ijqx3T0nlqZiQ2XrrtBvu+cLL8ZRrGkO0NHTug8MYFKyoSrv/sHTaSKfilUkizV6XhxMJ3g==}
     engines: {node: '>=8'}
 
+  text-mask-addons@3.8.0:
+    resolution: {integrity: sha512-VSZSdc/tKn4zGxgpJ+uNBzoW1t472AoAFIlbw1K7hSNXz0DfSBYDJNRxLqgxOfWw1BY2z6DQpm7g0sYZn5qLpg==}
+
   thenify-all@1.6.0:
     resolution: {integrity: sha512-RNxQH/qI8/t3thXJDwcstUO4zeqo64+Uy/+sNVRBx4Xn2OX+OZ9oP+iJnNFqplFra2ZUVeKCSa2oVWi3T4uVmA==}
     engines: {node: '>=0.8'}
@@ -4391,6 +4409,14 @@ packages:
   uuid@9.0.1:
     resolution: {integrity: sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA==}
     hasBin: true
+
+  v-mask@2.3.0:
+    resolution: {integrity: sha512-ap7pTtCTvj25CqX4VYXqudCBd0+XvYyhiiLbzWQQR7AMQosJ2+DPu0a94P9stk0EGmGcmYxJaPkFkfjD8hquWQ==}
+
+  v-money3@3.24.1:
+    resolution: {integrity: sha512-nGnxS06jkNsVzkuMQJ/0we6PSA4HO7jH1B7NeCF3Tv7Xm61poEUW7D1fdXXWR0IWLWneMSsCt3d4YQo6fTeBZA==}
+    peerDependencies:
+      vue: '>= 3.2.0'
 
   v8-compile-cache-lib@3.0.1:
     resolution: {integrity: sha512-wa7YjyUGfNZngI/vtK0UHAN+lgDCxBPCylVXGp0zu59Fz5aiGtNXaq3DhIov063MorB+VfufLh3JlF2KdTK3xg==}
@@ -5855,6 +5881,8 @@ snapshots:
   '@sindresorhus/merge-streams@4.0.0': {}
 
   '@sqltools/formatter@1.2.5': {}
+
+  '@ssibrahimbas/v-mask@1.0.0': {}
 
   '@swc-node/core@1.13.3(@swc/core@1.11.4(@swc/helpers@0.5.15))(@swc/types@0.1.19)':
     dependencies:
@@ -8831,6 +8859,8 @@ snapshots:
 
   text-extensions@2.4.0: {}
 
+  text-mask-addons@3.8.0: {}
+
   thenify-all@1.6.0:
     dependencies:
       thenify: 3.3.1
@@ -9044,6 +9074,12 @@ snapshots:
   uuid@10.0.0: {}
 
   uuid@9.0.1: {}
+
+  v-mask@2.3.0: {}
+
+  v-money3@3.24.1(vue@3.5.13(typescript@5.6.3)):
+    dependencies:
+      vue: 3.5.13(typescript@5.6.3)
 
   v8-compile-cache-lib@3.0.1: {}
 

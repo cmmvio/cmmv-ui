@@ -27,9 +27,8 @@
                         <slot name="icon"></slot>
                     </div>
 
-                    <!-- Selected chips/tags - with reduced gap between badges and min-height -->
                     <div class="flex flex-wrap items-center gap-0.5 p-1 flex-grow overflow-x-auto min-h-[36px]"
-                         :class="{'mt-4': !floatingLabel && label && selectedChips.length > 0, 'mt-5': !floatingLabel && label && selectedChips.length === 0}">
+                         :class="{'mt-4': !floatingLabel && label && selectedChips.length > 0, 'mt-3': !floatingLabel && label && selectedChips.length === 0}">
                         <c-badge
                             v-for="(chip, index) in selectedChips"
                             :key="index"
@@ -43,7 +42,6 @@
                             {{ chip.label }}
                         </c-badge>
 
-                        <!-- Input field -->
                         <input
                             ref="inputRef"
                             type="text"
@@ -59,7 +57,6 @@
                         />
                     </div>
 
-                    <!-- Clear button - positioned at the top right -->
                     <button v-if="clearable && selectedChips.length > 0 && !disabled" type="button"
                         class="text-neutral-400 hover:text-neutral-600 flex items-center justify-center px-2 self-start shrink-0 mt-1 mr-1"
                         @click.stop="clearAll">
@@ -71,7 +68,6 @@
                     </button>
                 </div>
 
-                <!-- Dropdown for options -->
                 <transition name="fade">
                     <div v-if="isActive && filteredOptions.length > 0"
                         class="absolute z-50 w-full bg-white border border-neutral-300 dark:border-neutral-900 dark:bg-neutral-800 mt-1 max-h-60 overflow-auto shadow-lg rounded-md">
@@ -227,20 +223,15 @@ const hasIcon = computed(() => !!slots.icon);
 const hasError = computed(() => !!errorMessage.value);
 const changed = ref(false);
 
-// Generate a unique ID if none is provided
 const generatedId = `c-chips-input-${Math.random().toString(36).substr(2, 9)}`;
 const id = computed(() => props.id || generatedId);
 
-// Initialize available options and selected chips
 onMounted(() => {
-    // Initialize available options
     availableOptions.value = [...props.options];
 
-    // Initialize selected chips from modelValue
     if (props.modelValue && props.modelValue.length) {
         selectedChips.value = [...props.modelValue];
 
-        // Remove selected items from available options
         selectedChips.value.forEach(chip => {
             const index = availableOptions.value.findIndex(
                 option => option.value === chip.value
@@ -252,9 +243,7 @@ onMounted(() => {
     }
 });
 
-// Watch for changes in props.options
 watch(() => props.options, (newOptions) => {
-    // Recompute available options while preserving selected chips
     availableOptions.value = newOptions.filter(
         option => !selectedChips.value.some(
             chip => chip.value === option.value
@@ -262,12 +251,10 @@ watch(() => props.options, (newOptions) => {
     );
 }, { deep: true });
 
-// Watch for changes in modelValue
 watch(() => props.modelValue, (newValue) => {
     if (JSON.stringify(newValue) !== JSON.stringify(selectedChips.value)) {
         selectedChips.value = [...newValue];
 
-        // Recompute available options
         availableOptions.value = props.options.filter(
             option => !selectedChips.value.some(
                 chip => chip.value === option.value
@@ -276,7 +263,6 @@ watch(() => props.modelValue, (newValue) => {
     }
 }, { deep: true });
 
-// Watch for changes in selected chips
 watch(selectedChips, (newValue) => {
     emit("update:modelValue", newValue);
     validateShowError();
@@ -305,16 +291,12 @@ const closeDropdown = () => {
 
 const handleBlur = () => {
     setTimeout(() => {
-        // If there's text in the input, add it as a custom tag
-        if (inputValue.value && props.allowCustom) {
+        if (inputValue.value && props.allowCustom)
             addCustomChip();
-        }
 
-        // Don't set inputFocused to false immediately to prevent UI flicker
         inputFocused.value = false;
         closeDropdown();
 
-        // Validate on blur
         validateShowError();
     }, 200);
 };
@@ -331,13 +313,11 @@ const handleInput = () => {
 };
 
 const handleKeyDown = (event: KeyboardEvent) => {
-    // Add tag on space, comma, or Enter if there's text
     if ((event.key === ' ' || event.key === ',' || event.key === 'Enter') && inputValue.value.trim() && props.allowCustom) {
         event.preventDefault();
         addCustomChip();
     }
 
-    // Remove last tag on backspace if input is empty
     if (event.key === 'Backspace' && !inputValue.value && selectedChips.value.length > 0) {
         removeChip(selectedChips.value.length - 1);
     }
@@ -347,16 +327,12 @@ const addCustomChip = () => {
     const value = inputValue.value.trim();
     if (!value) return;
 
-    // Remove trailing comma if present
     const label = value.endsWith(',') ? value.slice(0, -1).trim() : value;
 
     if (label) {
-        // Check for max tags limit
-        if (selectedChips.value.length >= props.maxTags) {
+        if (selectedChips.value.length >= props.maxTags)
             return;
-        }
 
-        // Check for duplicates if not allowed
         if (!props.duplicates && isDuplicate(label)) {
             return;
         }
@@ -371,7 +347,6 @@ const addCustomChip = () => {
         inputValue.value = '';
         changed.value = true;
 
-        // Validate after adding
         validateShowError();
     }
 };
@@ -382,46 +357,35 @@ const isDuplicate = (label: string) => {
     );
 };
 
-// New method to add chip without closing dropdown
 const addChipKeepDropdown = (option: ChipOption) => {
-    // Check for max tags limit
-    if (selectedChips.value.length >= props.maxTags) {
+    if (selectedChips.value.length >= props.maxTags)
         return;
-    }
 
-    // Check for duplicates if not allowed
-    if (!props.duplicates && selectedChips.value.some(chip => chip.value === option.value)) {
+    if (!props.duplicates && selectedChips.value.some(chip => chip.value === option.value))
         return;
-    }
 
-    // Add to selected chips
     selectedChips.value.push(option);
     emit("add", option);
     changed.value = true;
 
-    // Remove from available options
     const index = availableOptions.value.findIndex(
         availableOption => availableOption.value === option.value
     );
-    if (index !== -1) {
-        availableOptions.value.splice(index, 1);
-    }
 
-    // Clear input and focus
+    if (index !== -1)
+        availableOptions.value.splice(index, 1);
+
     inputValue.value = '';
     nextTick(() => {
         if (inputRef.value) {
             inputRef.value.focus();
-            // Keep dropdown active
             isActive.value = true;
         }
     });
 
-    // Validate after adding
     validateShowError();
 };
 
-// Keep original method for backward compatibility
 const addChip = addChipKeepDropdown;
 
 const removeChip = (index: number) => {
@@ -430,7 +394,6 @@ const removeChip = (index: number) => {
     emit("remove", removedChip);
     changed.value = true;
 
-    // If it's from original options, add it back to available options
     const isFromOriginalOptions = props.options.some(
         option => option.value === removedChip.value
     );
@@ -444,10 +407,8 @@ const removeChip = (index: number) => {
         }
     }
 
-    // Validate after removing
     validateShowError();
 
-    // Maintain focus on input after removing a chip
     nextTick(() => {
         if (inputRef.value) {
             inputRef.value.focus();
@@ -457,7 +418,6 @@ const removeChip = (index: number) => {
 };
 
 const clearAll = () => {
-    // Return all selected chips to available options
     selectedChips.value.forEach(chip => {
         const isFromOriginalOptions = props.options.some(
             option => option.value === chip.value
@@ -477,10 +437,8 @@ const clearAll = () => {
     emit("clear");
     changed.value = true;
 
-    // Validate after clearing
     validateShowError();
 
-    // Focus input after clearing
     nextTick(() => {
         if (inputRef.value) {
             inputRef.value.focus();
@@ -493,19 +451,16 @@ const validateShowError = () => {
 
     if (!changed.value) return false;
 
-    // Validate min tags
     if (selectedChips.value.length < props.minTags) {
         errorMessage.value = `Minimum ${props.minTags} tags required`;
         return true;
     }
 
-    // Validate max tags
     if (selectedChips.value.length > props.maxTags) {
         errorMessage.value = `Maximum ${props.maxTags} tags allowed`;
         return true;
     }
 
-    // Run through custom validation rules
     for (const rule of props.rules) {
         const error = rule(selectedChips.value);
         if (error) {
@@ -543,7 +498,6 @@ const slots = defineSlots<{
     icon?: (props: {}) => any;
 }>();
 
-// Expose validate method for form validation
 defineExpose({
     validate,
     value: selectedChips

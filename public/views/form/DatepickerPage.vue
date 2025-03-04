@@ -293,12 +293,6 @@ const travelDates = ref([]);
     </BaseLayout>
 </template>
 
-<style scoped>
-.code-highlight {
-    white-space: pre;
-}
-</style>
-
 <script setup>
 import { ref } from "vue";
 import BaseLayout from "../../layout/BaseLayout.vue";

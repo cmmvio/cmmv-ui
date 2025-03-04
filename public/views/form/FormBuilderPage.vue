@@ -833,24 +833,16 @@ const productSchema = ref({
             { value: "accessories", label: "Accessories" }
         ]
     },
-    description: {
-        type: "textarea",
-        label: "Product Description",
-        placeholder: "Detailed description of the product",
-        required: true,
-        size: 12,
-        maxlength: 500,
-        lengthCount: true,
-        autoresize: true
-    },
     price: {
-        type: "number",
+        type: "currency",
         label: "Price ($)",
         min: 0.01,
         max: 9999.99,
         step: 0.01,
         required: true,
-        size: 6
+        size: 6,
+        currencyCode: "USD",
+        showCurrencySymbol: true
     },
     stock: {
         type: "number",
@@ -860,6 +852,16 @@ const productSchema = ref({
         step: 1,
         required: true,
         size: 6
+    },
+    description: {
+        type: "textarea",
+        label: "Product Description",
+        placeholder: "Detailed description of the product",
+        required: true,
+        size: 12,
+        maxlength: 500,
+        lengthCount: true,
+        autoresize: true
     },
     productImage: {
         type: "file",
@@ -1363,8 +1365,3 @@ const handlePermissionsSubmit = (data) => {
 };
 </script>
 
-<style scoped>
-.code-highlight {
-    white-space: pre;
-}
-</style>

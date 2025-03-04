@@ -498,7 +498,6 @@ import TableDocs from "../../components/TableDocs.vue";
 import PagePagination from "../../layout/PagePagination.vue";
 import CardDocs from "../../components/CardDocs.vue";
 
-// Basic example
 const availableTags = [
     { value: 'vue', label: 'Vue.js' },
     { value: 'react', label: 'React' },
@@ -506,12 +505,10 @@ const availableTags = [
     { value: 'svelte', label: 'Svelte' },
     { value: 'typescript', label: 'TypeScript' }
 ];
-const selectedTags = ref([]);
 
-// Custom tags example
+const selectedTags = ref([]);
 const customTags = ref([]);
 
-// Preselected tags example
 const languageTags = [
     { value: 'js', label: 'JavaScript' },
     { value: 'py', label: 'Python' },
@@ -524,7 +521,6 @@ const preselectedTags = ref([
     { value: 'py', label: 'Python' }
 ]);
 
-// Custom styling example
 const categoryTags = [
     { value: 'electronics', label: 'Electronics' },
     { value: 'books', label: 'Books' },
@@ -532,9 +528,9 @@ const categoryTags = [
     { value: 'home', label: 'Home & Garden' },
     { value: 'sports', label: 'Sports' }
 ];
+
 const customStyledTags = ref([]);
 
-// Max tags example
 const interestTags = [
     { value: 'art', label: 'Art' },
     { value: 'music', label: 'Music' },
@@ -544,9 +540,9 @@ const interestTags = [
     { value: 'photography', label: 'Photography' },
     { value: 'technology', label: 'Technology' }
 ];
+
 const limitedTags = ref([]);
 
-// Events example
 const fruitTags = [
     { value: 'apple', label: 'Apple' },
     { value: 'banana', label: 'Banana' },
@@ -569,10 +565,3 @@ const onTagsCleared = () => {
     eventLogs.value.unshift('All tags cleared');
 };
 </script>
-
-<style scoped>
-.code-highlight {
-    white-space: pre;
-    font-family: monospace;
-}
-</style>

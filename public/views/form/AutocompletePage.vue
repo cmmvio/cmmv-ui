@@ -339,12 +339,6 @@ const basicOptions = [
     </BaseLayout>
 </template>
 
-<style scoped>
-.code-hightlight {
-    white-space: pre;
-}
-</style>
-
 <script setup>
 import { ref } from "vue";
 import BaseLayout from "../../layout/BaseLayout.vue";

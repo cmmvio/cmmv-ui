@@ -21,6 +21,14 @@
                     ]">
                         Code
                     </button>
+                    <button v-if="showSchemaButton" @click="activeTab = 'schema'" :class="[
+                        'px-3 py-1.5 text-sm font-medium rounded-md transition-colors',
+                        activeTab === 'schema'
+                            ? 'bg-white dark:bg-neutral-700 text-blue-600 dark:text-blue-400 shadow-sm'
+                            : 'text-gray-600 dark:text-neutral-300 hover:bg-gray-200 dark:hover:bg-neutral-700'
+                    ]">
+                        Schema
+                    </button>
                 </div>
 
                 <div class="flex items-center space-x-4">
@@ -89,6 +97,12 @@
                         <slot name="code"></slot>
                     </div>
                 </div>
+
+                <div v-show="activeTab === 'schema'" class="overflow-auto max-h-[500px]">
+                    <div class="overflow-x-auto">
+                        <slot name="schema"></slot>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -101,11 +115,15 @@ const props = defineProps({
     defaultView: {
         type: String,
         default: 'preview',
-        validator: (value) => ['preview', 'code'].includes(value)
+        validator: (value) => ['preview', 'code', 'schema'].includes(value)
     },
     showPreviewButton: {
         type: Boolean,
         default: true
+    },
+    showSchemaButton: {
+        type: Boolean,
+        default: false
     },
     padding: {
         type: String,

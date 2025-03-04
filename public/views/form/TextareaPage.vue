@@ -119,7 +119,7 @@
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-                <div class="lg:w-2/5 w-full">
+                <div class="w-full max-w-[400px]">
                     <c-textarea label="Input with Placeholder" placeholder="Enter the text..."></c-textarea>
                 </div>
             </div>
@@ -146,7 +146,7 @@
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-                <div class="lg:w-2/5 w-full">
+                <div class="w-full max-w-[400px]">
                     <c-textarea label="Textarea with Validation"
                         :rules="[value => (value ? null : 'This field is required')]" v-model="validableValue"
                         placeholder="Enter text here..." />
@@ -179,10 +179,10 @@ const validableValue = ref("");
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-                <div class="lg:w-2/5 w-full">
-                    <c-textarea label="Small Textarea" placeholder="Enter text here..." size="sm" />
-                    <c-textarea label="Medium Textarea" placeholder="Enter text here..." size="md" />
-                    <c-textarea label="Large Textarea" placeholder="Enter text here..." size="lg" />
+                <div class="w-full max-w-[400px]">
+                    <c-textarea label="Small Textarea" placeholder="Enter text here..." size="sm" class="mb-4" />
+                    <c-textarea label="Medium Textarea" placeholder="Enter text here..." size="md" class="mb-4" />
+                    <c-textarea label="Large Textarea" placeholder="Enter text here..." size="lg" class="mb-4" />
                 </div>
             </div>
 
@@ -207,7 +207,7 @@ const validableValue = ref("");
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-                <div class="lg:w-2/5 w-full">
+                <div class="w-full max-w-[400px]">
                     <c-textarea label="Textarea with Length Count" lengthCount maxlength="100"
                         placeholder="Enter up to 100 characters..." />
                 </div>
@@ -238,8 +238,8 @@ const validableValue = ref("");
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-                <div class="lg:w-2/5 w-full">
-                    <c-textarea label="Autoresize Enabled" placeholder="Type something..." />
+                <div class="w-full max-w-[400px]">
+                    <c-textarea label="Autoresize Enabled" placeholder="Type something..." class="mb-4" />
 
                     <c-textarea label="Autoresize Disabled" placeholder="Fixed height textarea" :autoresize="false" />
                 </div>
@@ -286,16 +286,16 @@ const validableValue = ref("");
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-                <div class="lg:w-2/5 w-full">
+                <div class="w-full max-w-[400px]">
                     <c-textarea label="Custom Background" placeholder="Custom Background"
                         bgColor="bg-blue-100 dark:bg-blue-900" textColor="text-blue-700 dark:text-blue-300"
-                        borderColor="focus:ring focus:ring-blue-500" />
+                        borderColor="focus:ring focus:ring-blue-500" class="mb-4" />
                     <c-textarea label="Custom Text Color" placeholder="Custom Text Color"
                         bgColor="bg-neutral-100 dark:bg-neutral-800" textColor="text-green-600 dark:text-green-400"
-                        borderColor="focus:ring focus:ring-green-600" />
+                        borderColor="focus:ring focus:ring-green-600" class="mb-4" />
                     <c-textarea label="Custom Border" placeholder="Custom Border"
                         bgColor="bg-yellow-50 dark:bg-yellow-900" textColor="text-yellow-700 dark:text-yellow-300"
-                        borderColor="focus:ring focus:ring-yellow-500" />
+                        borderColor="focus:ring focus:ring-yellow-500" class="mb-4" />
                 </div>
             </div>
 
@@ -339,9 +339,3 @@ import PagePagination from "../../layout/PagePagination.vue";
 
 const validableValue = ref("");
 </script>
-
-<style scoped>
-.code-highlight {
-    white-space: pre;
-}
-</style>

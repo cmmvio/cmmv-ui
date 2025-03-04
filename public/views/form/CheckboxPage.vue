@@ -360,10 +360,3 @@ const isChecked = ref(false);
 const newsletterConsent = ref(false);
 const termsAccepted = ref(false);
 </script>
-
-<style scoped>
-.code-highlight {
-    white-space: pre;
-    font-family: monospace;
-}
-</style>

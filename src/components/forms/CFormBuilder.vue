@@ -98,6 +98,26 @@
                             @clear="() => item.onClear && item.onClear()"
                             :ref="el => { if (el) fieldRefs[key as string] = el; }" />
 
+                        <!-- Currency Input -->
+                        <c-currency-input v-if="item.type === 'currency'"
+                            v-model="formData[key]"
+                            :label="item.label"
+                            :placeholder="item.placeholder"
+                            :required="item.required"
+                            :currency-code="item.currencyCode || 'USD'"
+                            :show-currency-symbol="item.showCurrencySymbol !== false"
+                            :hint="item.hint"
+                            :error="item.error"
+                            :disabled="item.disabled"
+                            :readonly="item.readonly"
+                            :variant="item.variant"
+                            :rounded="item.rounded"
+                            :floating-label="item.floatingLabel"
+                            :rules="item.rules || item.props?.rules || []"
+                            v-bind="item.props || {}"
+                            @update:modelValue="(value) => updateField(key as string, value)"
+                            :ref="el => { if (el) fieldRefs[key as string] = el; }" />
+
                         <!-- File Upload -->
                         <c-file-upload v-if="item.type === 'file' || item.type === 'fileupload'" v-model="formData[key]"
                             :accept="item.accept" :multiple="item.multiple" :max-files="item.maxFiles"
@@ -200,6 +220,7 @@ import CTextarea from "./CTextarea.vue";
 import CTimepicker from "./CTimepicker.vue";
 import CToggle from "./CToggle.vue";
 import CChipsInput from "./CChipsInput.vue";
+import CCurrencyInput from "./CCurrencyInput.vue";
 
 interface BaseFieldProps {
     label?: string;
@@ -253,6 +274,19 @@ interface ChipsInputFieldProps extends BaseFieldProps {
     onAdd?: (chip: any) => void;
     onRemove?: (chip: any) => void;
     onClear?: () => void;
+}
+
+interface CurrencyInputFieldProps extends BaseFieldProps {
+    type: 'currency';
+    currencyCode?: string;
+    showCurrencySymbol?: boolean;
+    hint?: string;
+    error?: string;
+    disabled?: boolean;
+    readonly?: boolean;
+    variant?: 'outline' | 'filled' | 'underlined';
+    rounded?: 'none' | 'sm' | 'md' | 'lg' | 'full';
+    floatingLabel?: boolean;
 }
 
 interface FileUploadFieldProps extends BaseFieldProps {
@@ -342,7 +376,8 @@ type FieldProps =
     | HeaderFieldProps
     | CustomFieldProps
     | CustomObjectFieldProps
-    | ChipsInputFieldProps;
+    | ChipsInputFieldProps
+    | CurrencyInputFieldProps
 
 interface IFormBuilderSchema {
     [key: string]: FieldProps & {

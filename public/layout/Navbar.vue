@@ -206,6 +206,7 @@ const navbarItems = [
             { name: "Checkbox", uri: "/checkbox" },
             { name: "Chips Input", uri: "/chips-input" },
             { name: "Combobox", uri: "/combobox" },
+            { name: "Currency Input", uri: "/currency-input" },
             { name: "Datepicker", uri: "/datepicker" },
             { name: "File Upload", uri: "/file-upload" },
             { name: "Form", uri: "/form" },

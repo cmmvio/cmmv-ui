@@ -57,6 +57,7 @@ import TimepickerPage from "./views/form/TimepickerPage.vue";
 import DatepickerPage from "./views/form/DatepickerPage.vue";
 import FileUploadPage from "./views/form/FileUploadPage.vue";
 import ChipsInputPage from "./views/form/ChipsInputPage.vue";
+import CurrencyInputPage from "./views/form/CurrencyInputPage.vue";
 
 //Graph
 import GraphBoxPage from "./views/graph/GraphBoxPage.vue";
@@ -115,6 +116,7 @@ const routes = [
     { path: '/checkbox', component: CheckboxPage },
     { path: '/chips-input', component: ChipsInputPage },
     { path: '/combobox', component: ComboboxPage },
+    { path: '/currency-input', component: CurrencyInputPage },
     { path: '/datepicker', component: DatepickerPage },
     { path: '/file-upload', component: FileUploadPage },
 	{ path: '/form', component: FormPage },

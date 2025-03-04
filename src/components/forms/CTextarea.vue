@@ -42,7 +42,6 @@
 
 <style scoped>
 .c-textarea {
-    margin-bottom: 1rem;
     position: relative;
 }
 

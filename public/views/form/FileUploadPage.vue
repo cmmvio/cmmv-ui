@@ -461,7 +461,6 @@ import TableDocs from "../../components/TableDocs.vue";
 import PagePagination from "../../layout/PagePagination.vue";
 import CardDocs from "../../components/CardDocs.vue";
 
-// Handlers for examples
 const handleFileSelected = (event) => {
     console.log('File selected:', event.file.name);
 };
@@ -490,7 +489,6 @@ const handleProgress = (event) => {
     console.log(`${event.file.name}: ${event.progress}% uploaded`);
 };
 
-// For the complete example
 const fileUploadRef = ref(null);
 const uploadedFiles = ref([]);
 
@@ -536,8 +534,3 @@ const onUploadComplete = () => {
 };
 </script>
 
-<style scoped>
-.code-highlight {
-    white-space: pre;
-}
-</style>

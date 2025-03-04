@@ -23,10 +23,10 @@
                 :value="modelValue"
                 :class="[sizes[size], roundedStyles[rounded], variantStyles[variant], bgColor ? bgColor : variantColors[variant], textColor,
                 { 'ring-red-500 ring-2': hasError, 'opacity-30': disabled, 'cursor-not-allowed': disabled, 'pl-12': hasIcon }, customClass,
-                { 'pt-4': !hasIcon, 'pb-3': hasIcon, 'pt-3': hasIcon }]"
+                { 'pt-4': !hasIcon, 'pb-3': hasIcon, 'pt-3': hasIcon, 'px-2': currencyMask }]"
                 class="c-input-field block w-full border shadow-sm pb-1 outline-none" @keyup="handleInput"
                 @change="handleInput" @focus="activateLabel" @blur="deactivateLabel" :disabled="disabled"
-                :aria-invalid="hasError" />
+                :aria-invalid="hasError" v-money3="currencyMask ? currencyMask : undefined" />
 
             <button v-if="clearable && currentValue !== ''" type="button"
                 class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-400 hover:text-gray-600"
@@ -46,11 +46,11 @@
                 @click="togglePasswordVisibility" :aria-pressed="showPassword" aria-label="Toggle password visibility"
                 role="switch">
                 <icon-eye-slash
-                    :class="[textColor ? textColor : 'text-neutral-400 dark:text-neutral-400 hover:text-neutral-200']"
+                    :color="[textColor ? textColor : 'text-neutral-400 dark:text-neutral-400 hover:text-neutral-200']"
                     tabindex="-1" v-if="showPassword"></icon-eye-slash>
 
                 <icon-eye
-                    :class="[textColor ? textColor : 'text-neutral-400 dark:text-neutral-400 hover:text-neutral-200']"
+                    :color="[textColor ? textColor : 'text-neutral-400 dark:text-neutral-400 hover:text-neutral-200']"
                     tabindex="-1" v-else></icon-eye>
             </button>
         </div>
@@ -123,11 +123,10 @@ input[type=number] {
 }
 </style>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import { ref, computed, defineExpose, watch, useSlots } from 'vue';
 
 const slots = useSlots();
-
 const hasIcon = computed(() => !!slots.icon);
 
 const props = defineProps({
@@ -225,6 +224,14 @@ const props = defineProps({
     required: {
         type: Boolean,
         default: false
+    },
+    mask: {
+        type: [Object, Array, Function, String],
+        default: null
+    },
+    currencyMask: {
+        type: Object,
+        default: null
     }
 });
 
