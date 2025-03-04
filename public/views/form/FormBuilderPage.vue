@@ -52,16 +52,7 @@
     const formData = ref({});
 &lt;/script&gt;</code></pre>
             </template>
-        </card-docs>
-
-        <h3>Form Schema</h3>
-
-        <p class="mb-4">The form is built using the following schema configuration:</p>
-
-        <card-docs>
-            <template #code>
-                <pre><code class="code-highlight language-html">&lt;script setup lang="ts"&gt;
-const schema = ref({
+            <template #schema><pre><code class="code-highlight language-json">{
     firstName: {
         type: "input",
         label: "First Name",
@@ -178,8 +169,7 @@ const schema = ref({
         label: "Submit",
         size: 12
     }
-});
-&lt;/script&gt;</code></pre>
+}</code></pre>
             </template>
         </card-docs>
 
@@ -220,12 +210,9 @@ const schema = ref({
     const formData = ref({});
 &lt;/script&gt;</code></pre>
             </template>
-        </card-docs>
 
-        <card-docs>
-            <template #code>
-                <pre><code class="code-highlight language-html">&lt;script setup lang="ts"&gt;
-const productSchema = ref({
+            <template #schema>
+                <pre><code class="code-highlight language-json">{
     productName: {
         type: "input",
         label: "Product Name",
@@ -330,8 +317,7 @@ const productSchema = ref({
         label: "Save Product",
         size: 12
     }
-});
-&lt;/script&gt;</code></pre>
+}</code></pre>
             </template>
         </card-docs>
 
@@ -410,12 +396,17 @@ const productSchema = ref({
         &lt;!-- Single reusable template for all modules --&gt;
         &lt;template #module-permissions="slotProps"&gt;
             &lt;div class="flex items-center border-b border-gray-100 py-1.5"&gt;
-                &lt;div class="w-1/5 font-medium text-sm"&gt;&#123;&#123; slotProps.key ? slotProps.key.charAt(0).toUpperCase() + slotProps.key.slice(1) : 'Module' &#125;&#125;&lt;/div&gt;
+                &lt;div class="w-1/5 font-medium text-sm"&gt;
+                    &#123;&#123; slotProps.key ? slotProps.key.charAt(0).toUpperCase() + slotProps.key.slice(1) :
+                    slotProps.formData ? Object.keys(slotProps.formData)[0] : 'Module' &#125;&#125;&lt;/div&gt;
                 &lt;div class="w-4/5 grid grid-cols-6 gap-2"&gt;
-                    &lt;div class="text-center"&gt;
-                        &lt;c-toggle v-if="slotProps.key && rolePermissionsData[slotProps.key].view" v-model="rolePermissionsData[slotProps.key].view" size="sm" /&gt;
-                    &lt;/div&gt;
-                    &lt;!-- Other toggles with size="sm" --&gt;
+                    &lt;div v-for="perm in ['view', 'insert', 'update', 'delete', 'import', 'export']" :key="perm" class="text-center"&gt;
+                        &lt;c-toggle
+                            v-if="slotProps.key && rolePermissionsData[slotProps.key]"
+                            v-model="rolePermissionsData[slotProps.key][perm]"
+                            size="sm"
+                        /&gt;
+                    &lt;/div>
                 &lt;/div&gt;
             &lt;/div&gt;
         &lt;/template&gt;
@@ -423,26 +414,72 @@ const productSchema = ref({
 &lt;/div&gt;
 
 &lt;script setup lang="ts"&gt;
-const permissionsSchema = {
+const rolePermissionsData = ref({
+    groupName: "Administrator",
+    groupDescription: "Full system access role",
+    users: {
+        view: true,
+        insert: true,
+        update: true,
+        delete: false,
+        import: false,
+        export: true
+    },
+    products: {
+        view: true,
+        insert: false,
+        update: false,
+        delete: false,
+        import: false,
+        export: false
+    },
+    orders: {
+        view: true,
+        insert: true,
+        update: true,
+        delete: false,
+        import: true,
+        export: true
+    },
+    customers: {
+        view: true,
+        insert: true,
+        update: true,
+        delete: false,
+        import: false,
+        export: true
+    },
+    reports: {
+        view: true,
+        insert: false,
+        update: false,
+        delete: false,
+        import: false,
+        export: true
+    }
+});
+&lt;/script&gt;</code></pre>
+            </template>
+
+            <template #schema>
+                <pre><code class="code-highlight language-json">{
     groupName: {
         type: "input",
         label: "Group Name",
         placeholder: "Enter group name",
         required: true,
-        size: 6
+        size: 12
     },
     groupDescription: {
         type: "textarea",
         label: "Description",
         placeholder: "Enter group description",
-        size: 6
+        size: 12
     },
-    // Table header
     tableHeader: {
         type: "custom",
         size: 12
     },
-    // All modules in one custom-object
     modulePermissions: {
         type: "custom-object",
         size: 12,
@@ -462,8 +499,7 @@ const permissionsSchema = {
         label: "Save Permissions",
         size: 12
     }
-};
-&lt;/script&gt;</code></pre>
+}</code></pre>
             </template>
         </card-docs>
 
@@ -861,7 +897,8 @@ const productSchema = ref({
         size: 12,
         maxlength: 500,
         lengthCount: true,
-        autoresize: true
+        autoresize: false,
+        resize: false
     },
     productImage: {
         type: "file",
@@ -1112,160 +1149,6 @@ const handleMultiStepFormSubmit = async () => {
         alert("Form submitted successfully!");
     }
 };
-
-const integratedFormBuilder = ref(null);
-const integratedStepperForm = ref({
-    registrationFlow: {}
-});
-const integratedStepperSchema = ref({
-    registrationFlow: {
-        type: "stepper",
-        size: "md",
-        steps: [
-            {
-                title: 'Personal Info',
-                subtitle: 'Basic details',
-                content: 'Enter your basic personal information.'
-            },
-            {
-                title: 'Contact',
-                subtitle: 'Contact details',
-                content: 'How can we reach you?'
-            },
-            {
-                title: 'Account',
-                subtitle: 'Setup access',
-                content: 'Create your login credentials.'
-            },
-            {
-                title: 'Confirmation',
-                subtitle: 'Verify',
-                content: 'Review and confirm your information.'
-            }
-        ],
-        schemas: [
-            {
-                fullName: {
-                    type: "input",
-                    label: "Full Name",
-                    placeholder: "Enter your full name",
-                    required: true,
-                    size: 12
-                },
-                birthDate: {
-                    type: "date",
-                    label: "Date of Birth",
-                    placeholder: "Select your birthday",
-                    required: true,
-                    size: 12
-                },
-                gender: {
-                    type: "combobox",
-                    label: "Gender",
-                    placeholder: "Select gender",
-                    size: 12,
-                    items: [
-                        { value: "male", label: "Male" },
-                        { value: "female", label: "Female" },
-                        { value: "other", label: "Other" },
-                        { value: "prefer-not", label: "Prefer not to say" }
-                    ]
-                }
-            },
-            {
-                email: {
-                    type: "input",
-                    label: "Email Address",
-                    placeholder: "you@example.com",
-                    required: true,
-                    size: 12,
-                    props: {
-                        rules: [
-                            (v) => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || "Email must be valid"
-                        ],
-                        type: "email"
-                    }
-                },
-                phone: {
-                    type: "input",
-                    label: "Phone Number",
-                    placeholder: "(123) 456-7890",
-                    size: 12,
-                    props: {
-                        type: "tel"
-                    }
-                },
-                address: {
-                    type: "textarea",
-                    label: "Address",
-                    placeholder: "Enter your full address",
-                    size: 12,
-                    autoresize: true
-                }
-            },
-            {
-                username: {
-                    type: "input",
-                    label: "Username",
-                    placeholder: "Choose a username",
-                    required: true,
-                    size: 12
-                },
-                password: {
-                    type: "input",
-                    label: "Password",
-                    placeholder: "Create a password",
-                    required: true,
-                    size: 12,
-                    props: {
-                        type: "password",
-                        rules: [
-                            (v) => (v && v.length >= 8) || "Password must be at least 8 characters"
-                        ]
-                    }
-                },
-                notifications: {
-                    type: "toggle",
-                    label: "Receive email notifications",
-                    size: 12
-                }
-            },
-            {
-                termsAndConditions: {
-                    type: "checkbox",
-                    label: "I agree to the Terms and Conditions",
-                    required: true,
-                    size: 12
-                },
-                privacyPolicy: {
-                    type: "checkbox",
-                    label: "I have read and agree to the Privacy Policy",
-                    required: true,
-                    size: 12
-                },
-                comments: {
-                    type: "textarea",
-                    label: "Additional Comments",
-                    placeholder: "Any additional information you'd like to share",
-                    size: 12,
-                    maxlength: 500,
-                    lengthCount: true,
-                    autoresize: true
-                }
-            }
-        ],
-        stepperProps: {
-            shadow: "sm",
-            contentShadow: "none",
-            validateBeforeNext: true
-        }
-    },
-    submit: {
-        type: "submit",
-        label: "Complete Registration",
-        size: 12
-    }
-});
 
 const handleIntegratedStepperSubmit = (data) => {
     console.log("Integrated stepper form submitted:", data);

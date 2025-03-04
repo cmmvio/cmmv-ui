@@ -127,7 +127,7 @@ const handleAction = (action) => {
             </template>
         </card-docs>
 
-        <PagePagination previous="Skeleton" previousLink="/skeleton" next="Tabs" nextLink="/tabs" />
+        <PagePagination previous="Skeleton" previousLink="/skeleton" next="Stepper" nextLink="/stepper" />
     </BaseLayout>
 </template>
 

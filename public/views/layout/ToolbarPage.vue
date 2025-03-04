@@ -235,7 +235,7 @@ import IconBell from "@components/icons/IconBell.vue";
             </template>
         </card-docs>
 
-        <PagePagination previous="Tabs" previousLink="/tabs" next="Autocomplete" nextLink="/autocomplete" />
+        <PagePagination previous="Tabs" previousLink="/tabs" next="Dialog" nextLink="/dialog" />
     </BaseLayout>
 </template>
 

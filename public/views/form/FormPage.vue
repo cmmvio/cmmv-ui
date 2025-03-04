@@ -136,7 +136,7 @@ const handleSubmit = () => {
             </tbody>
         </table-docs>
 
-        <PagePagination previous="File Upload" previousLink="/file-upload" next="Input" nextLink="/input" />
+        <PagePagination previous="File Upload" previousLink="/file-upload" next="Form Builder" nextLink="/form-builder" />
     </BaseLayout>
 </template>
 

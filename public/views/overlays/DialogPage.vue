@@ -191,7 +191,7 @@ const fullscreenDialog = ref(false);
             </template>
         </card-docs>
 
-        <PagePagination previous="Toggle" previousLink="/toggle" next="Notification" nextLink="/notification" />
+        <PagePagination previous="Toolbar" previousLink="/toolbar" next="Notification" nextLink="/notification" />
     </BaseLayout>
 </template>
 

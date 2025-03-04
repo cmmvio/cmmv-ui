@@ -18,7 +18,7 @@
 
                 <tr>
                     <th v-if="checked"
-                        :class="[textColor, bgHeaderColor, borderColor, 'border-b text-xs font-normal', dense ? 'py-1 px-2' : 'p-3']"
+                        :class="[bgHeaderColor, textColor, borderColor, 'border-b text-xs font-normal', dense ? 'py-1 px-2' : 'p-3']"
                         style="width: 40px">
                         <c-checkbox v-model="selectAll"
                             :indeterminate="items.length !== selectedItems.length && selectedItems.length > 0"
@@ -26,7 +26,7 @@
                             :size="dense ? 'sm' : 'sm'" ignoreClick @click="toggleSelectAll" />
                     </th>
 
-                    <th v-for="item in headers" :class="[textColor, bgHeaderColor, borderColor, 'border-b select-none',
+                    <th v-for="item in headers" :class="[bgHeaderColor, textColor, borderColor, 'border-b select-none',
                         dense ? 'text-xs py-1 px-2' : 'text-xs font-normal p-3']"
                         :style="{ width: item.width ?? 'auto' }">
                         <span v-if="enableSort" class="cursor-pointer flex items-center" @click="sortByField(item.key)">
@@ -100,7 +100,6 @@
     z-index: 10;
 }
 
-/* Estilos para o cabeçalho */
 .c-table thead th {
     color: #666;
     font-weight: normal;
@@ -111,7 +110,6 @@
     color: #aaa;
 }
 
-/* Estilo para versão condensada */
 .c-table-dense thead th {
     font-size: 0.7rem;
     letter-spacing: 0.01em;
@@ -122,7 +120,6 @@
     line-height: 1.2;
 }
 
-/* Scroll styles - Light Theme */
 :deep(.light .c-table)::-webkit-scrollbar,
 :deep(.light) .c-table::-webkit-scrollbar,
 .light .c-table::-webkit-scrollbar,
@@ -175,7 +172,6 @@
     background-color: #BFBFBF;
 }
 
-/* Scroll styles - Dark Theme */
 :deep(.dark .c-table)::-webkit-scrollbar,
 :deep(.dark) .c-table::-webkit-scrollbar,
 .dark .c-table::-webkit-scrollbar,
@@ -289,7 +285,7 @@ const props = defineProps({
     },
     bgHeaderColor: {
         type: String,
-        default: "bg-white dark:bg-neutral-900",
+        default: "bg-neutral-100 dark:bg-gray-800",
     },
     bgCaptionColor: {
         type: String,

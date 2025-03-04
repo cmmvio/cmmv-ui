@@ -508,19 +508,156 @@ const reviewRating = ref(0);
             </template>
         </card-docs>
 
-        <PagePagination previous="Progress Circular" previousLink="/progress-circular" next="System Bar"
-            nextLink="/system-bar" />
+        <h3>Advanced Example: Customer Reviews Dashboard</h3>
+
+        <p>
+            This example shows how to create a comprehensive customer reviews dashboard using the <code>CRating</code> component.
+            It includes a summary of ratings, distribution chart, and a list of featured reviews.
+        </p>
+
+        <card-docs>
+            <div class="mx-auto">
+                <div class="overflow-hidden">
+                    <div class="p-6 ">
+                        <div class="lg:col-span-4">
+                            <h2 class="text-2xl font-bold tracking-tight text-neutral-900 dark:text-white">Customer Reviews</h2>
+
+                            <div class="mt-3 flex items-center">
+                                <div>
+                                    <c-rating v-model="customerReviews.average" fixed color="text-yellow-400" :showValue="true" />
+                                    <p class="sr-only">{{ customerReviews.average }} out of 5 stars</p>
+                                </div>
+                                <p class="ml-2 text-sm text-neutral-600 dark:text-neutral-400">
+                                    Based on {{ customerReviews.totalCount }} reviews
+                                </p>
+                            </div>
+
+                            <div class="mt-6">
+                                <h3 class="sr-only">Review data</h3>
+                                <dl class="space-y-3">
+                                    <div v-for="count in customerReviews.counts" :key="count.rating" class="flex items-center text-sm">
+                                        <dt class="flex flex-1 items-center">
+                                            <p class="w-3 font-medium text-neutral-900 dark:text-white">
+                                                {{ count.rating }}<span class="sr-only"> star reviews</span>
+                                            </p>
+                                            <div aria-hidden="true" class="ml-1 flex flex-1 items-center">
+                                                <c-rating v-model="count.rating" fixed size="sm" :total="1" />
+                                                <div class="relative ml-3 flex-1">
+                                                    <div class="h-3 rounded-full border border-neutral-200 bg-neutral-100 dark:border-neutral-700 dark:bg-neutral-900" />
+                                                    <div v-if="count.count > 0"
+                                                        class="absolute inset-y-0 rounded-full border border-yellow-400 bg-yellow-400"
+                                                        :style="{ width: `calc(${count.count} / ${customerReviews.totalCount} * 100%)` }"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </dt>
+                                        <dd class="ml-3 w-10 text-right text-sm tabular-nums text-neutral-900 dark:text-white">
+                                            {{ Math.round((count.count / customerReviews.totalCount) * 100) }}%
+                                        </dd>
+                                    </div>
+                                </dl>
+                            </div>
+
+                            <div class="mt-8">
+                                <h3 class="text-lg font-medium text-neutral-900 dark:text-white">Share your thoughts</h3>
+                                <p class="mt-1 text-sm text-neutral-600 dark:text-neutral-400">
+                                    If you've used this product, share your thoughts with other customers
+                                </p>
+                                <button class="mt-4 w-full px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">
+                                    Write a review
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <template #code>
+                <pre><code class="code-highlight language-html">&lt;div class="p-6 "&gt;
+    &lt;div class="lg:col-span-4"&gt;
+        &lt;h2 class="text-2xl font-bold tracking-tight text-neutral-900 dark:text-white"&gt;Customer Reviews&lt;/h2&gt;
+
+        &lt;div class="mt-3 flex items-center"&gt;
+            &lt;div&gt;
+                &lt;c-rating v-model="customerReviews.average" fixed color="text-yellow-400" :showValue="true" /&gt;
+                &lt;p class="sr-only"&gt;&#123;&#123; customerReviews.average &#125;&#125; out of 5 stars&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;p class="ml-2 text-sm text-neutral-600 dark:text-neutral-400"&gt;
+                Based on &#123;&#123; customerReviews.totalCount &#125;&#125; reviews
+            &lt;/p&gt;
+        &lt;/div&gt;
+
+        &lt;div class="mt-6"&gt;
+            &lt;h3 class="sr-only"&gt;Review data&lt;/h3&gt;
+            &lt;dl class="space-y-3"&gt;
+                &lt;div v-for="count in customerReviews.counts" :key="count.rating" class="flex items-center text-sm"&gt;
+                    &lt;dt class="flex flex-1 items-center"&gt;
+                        &lt;p class="w-3 font-medium text-neutral-900 dark:text-white"&gt;
+                            &#123;&#123; count.rating &#125;&#125;&lt;span class="sr-only"&gt; star reviews&lt;/span&gt;
+                        &lt;/p&gt;
+                        &lt;div aria-hidden="true" class="ml-1 flex flex-1 items-center"&gt;
+                            &lt;c-rating v-model="count.rating" fixed size="sm" :total="1" /&gt;
+                            &lt;div class="relative ml-3 flex-1"&gt;
+                                &lt;div class="h-3 rounded-full border border-neutral-200 bg-neutral-100 dark:border-neutral-700 dark:bg-neutral-900" /&gt;
+                                &lt;div v-if="count.count &gt; 0"
+                                    class="absolute inset-y-0 rounded-full border border-yellow-400 bg-yellow-400"
+                                    :style="&#123; width: `calc($&#123;count.count&#125; / $&#123;customerReviews.totalCount&#125; * 100%)` &#125;"
+                                /&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/dt&gt;
+                    &lt;dd class="ml-3 w-10 text-right text-sm tabular-nums text-neutral-900 dark:text-white"&gt;
+                        &#123;&#123; Math.round((count.count / customerReviews.totalCount) * 100) &#125;&#125;%
+                    &lt;/dd&gt;
+                &lt;/div&gt;
+            &lt;/dl&gt;
+        &lt;/div&gt;
+
+        &lt;div class="mt-8"&gt;
+            &lt;h3 class="text-lg font-medium text-neutral-900 dark:text-white"&gt;Share your thoughts&lt;/h3&gt;
+            &lt;p class="mt-1 text-sm text-neutral-600 dark:text-neutral-400"&gt;
+                If you've used this product, share your thoughts with other customers
+            &lt;/p&gt;
+            &lt;button class="mt-4 w-full px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"&gt;
+                Write a review
+            &lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script setup&gt;
+const customerReviews = reactive(&#123;
+    average: 4,
+    totalCount: 1624,
+    counts: [
+        &#123; rating: 5, count: 1019 &#125;,
+        &#123; rating: 4, count: 162 &#125;,
+        &#123; rating: 3, count: 97 &#125;,
+        &#123; rating: 2, count: 199 &#125;,
+        &#123; rating: 1, count: 147 &#125;,
+    ],
+&#125;);
+&lt;/script&gt;
+</code></pre>
+
+            </template>
+        </card-docs>
+
+        <PagePagination
+            previous="Progress Circular"
+            previousLink="/progress-circular"
+            next="Tooltip"
+            nextLink="/tooltip"
+        />
     </BaseLayout>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, reactive } from 'vue';
 import BaseLayout from "../../layout/BaseLayout.vue";
 import TableDocs from "../../components/TableDocs.vue";
-import PagePagination from "../../layout/PagePagination.vue";
 import CardDocs from "../../components/CardDocs.vue";
-import IconHeart from "@components/icons/IconHeart.vue";
-import CRating from "@components/components/CRating.vue";
+import PagePagination from "../../layout/PagePagination.vue";
 
 const ratingValue = ref(3);
 const fixedRating = ref(4);
@@ -537,8 +674,20 @@ const ratingQuarter = ref(3.75);
 const ratingWhole = ref(4);
 const ratingWithValue = ref(3.5);
 
+const customerReviews = reactive({
+    average: 4,
+    totalCount: 1624,
+    counts: [
+        { rating: 5, count: 1019 },
+        { rating: 4, count: 162 },
+        { rating: 3, count: 97 },
+        { rating: 2, count: 199 },
+        { rating: 1, count: 147 },
+    ],
+});
+
 const handleChange = (value) => {
-    lastChanged.value = `User selected ${value}`;
+    customerReviews.average = value;
 };
 </script>
 

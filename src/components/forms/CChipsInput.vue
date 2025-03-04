@@ -9,7 +9,7 @@
                     :class="[{
                         'c-chips-input-label--active': floatingLabel && (inputFocused || selectedChips.length > 0),
                         'top-[50%] -translate-y-1/2 left-1': !inputFocused && selectedChips.length === 0,
-                        'top-0 left-1 text-xs': inputFocused || selectedChips.length > 0,
+                        'top-1 left-1 text-xs': inputFocused || selectedChips.length > 0,
                         'scale-75 origin-left': (inputFocused || selectedChips.length > 0) && !floatingLabel,
                         'pl-10': hasIcon && (!inputFocused && selectedChips.length === 0)
                     },

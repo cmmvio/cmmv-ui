@@ -133,7 +133,7 @@
                     ref="dataTable" @page-change="handlePageChange" @sort-change="handleSortChange"
                     @fetch-success="handleFetchSuccess" :available-actions="tableActions"
                     @action-execute="handleActionExecute" captionTitle="Users" captionSubtitle="Manage all users"
-                    rounded="rounded-none">
+                    rounded="rounded-none" show-search-bar>
                     <template #actions="{ item }">
                         <div class="flex gap-2">
                             <button class="p-1 text-blue-500 hover:text-blue-700" @click="viewItem(item)">
@@ -166,6 +166,48 @@
                     <pre class="text-xs overflow-auto max-h-36">{{ JSON.stringify(currentDataSample, null, 2) }}</pre>
                 </div>
             </div>
+
+            <template #code>
+                <pre><code class="code-highlight language-html">&lt;div class="w-full mx-auto"&gt;
+    &lt;c-data-table :card="false" :api-url="mockApiUrl" :headers="headers" :selectable="true"
+        :enable-api-sort="true" :initial-limit="10" :initial-sort-by="'username'" :visiblePages="3"
+        ref="dataTable" @page-change="handlePageChange" @sort-change="handleSortChange"
+        @fetch-success="handleFetchSuccess" :available-actions="tableActions"
+        @action-execute="handleActionExecute" captionTitle="Users" captionSubtitle="Manage all users"
+        rounded="rounded-none"&gt;
+        &lt;template #actions="&#123; item &#125;"&gt;
+            &lt;div class="flex gap-2"&gt;
+                &lt;button class="p-1 text-blue-500 hover:text-blue-700" @click="viewItem(item)"&gt;
+                    &lt;svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor"&gt;
+                        &lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /&gt;
+                        &lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /&gt;
+                    &lt;/svg&gt;
+                &lt;/button&gt;
+                &lt;button class="p-1 text-red-500 hover:text-red-700" @click="deleteItem(item)"&gt;
+                    &lt;svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor"&gt;
+                        &lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /&gt;
+                    &lt;/svg&gt;
+                &lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/template&gt;
+    &lt;/c-data-table&gt;
+&lt;/div&gt;
+
+&lt;div class="mt-4 p-4"&gt;
+    &lt;div class="p-4 bg-neutral-50 dark:bg-neutral-800 rounded-md"&gt;
+        &lt;h4 class="text-sm font-medium mb-2"&gt;Last API Request:&lt;/h4&gt;
+        &lt;pre class="text-xs overflow-auto max-h-24"&gt;&#123;&#123; lastApiRequest &#125;&#125;&lt;/pre&gt;
+
+        &lt;h4 class="text-sm font-medium mt-3 mb-2"&gt;Current Data Sample:&lt;/h4&gt;
+        &lt;pre class="text-xs overflow-auto max-h-36"&gt;&#123;&#123; JSON.stringify(currentDataSample, null, 2) &#125;&#125;&lt;/pre&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </template>
         </card-docs>
 
         <!-- API Response Format -->
@@ -237,6 +279,20 @@
                     <pre class="text-xs overflow-auto">{{ JSON.stringify(lastSearchParams, null, 2) }}</pre>
                 </div>
             </div>
+
+            <template #code><pre><code class="code-highlight language-html">&lt;div class="w-full mx-auto"&gt;
+    &lt;c-data-table :card="false" :api-url="mockApiUrl" :headers="headersWithoutActions" :visiblePages="3"
+            :searchable-fields="searchableFields" :initial-limit="10" ref="searchDataTable"
+            @search-change="handleSearchChange" rounded="rounded-none"&gt;&lt;/c-data-table&gt;
+    &lt;/div&gt;
+
+    &lt;div class="mt-4 p-4"&gt;
+        &lt;div class="p-4 bg-neutral-50 dark:bg-neutral-800 rounded-md"&gt;
+            &lt;h4 class="text-sm font-medium mb-2"&gt;Search Parameters:&lt;/h4&gt;
+            &lt;pre class="text-xs overflow-auto"&gt;&#123;&#123; JSON.stringify(lastSearchParams, null, 2) &#125;&#125;&lt;/pre&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre></template>
         </card-docs>
 
         <!-- Custom Templates -->
@@ -398,12 +454,12 @@
             </template>
         </card-docs>
 
-        <PagePagination previous="Chart Line" previousLink="/chart-line" next="List" nextLink="/list" />
+        <PagePagination previous="Data Filter" previousLink="/data-filter" next="List" nextLink="/list" />
     </BaseLayout>
 </template>
 
 <script setup>
-import { ref, onMounted, watch } from "vue";
+import { ref, onMounted } from "vue";
 import BaseLayout from "../../layout/BaseLayout.vue";
 import TableDocs from "../../components/TableDocs.vue";
 import CardDocs from "../../components/CardDocs.vue";
@@ -440,7 +496,6 @@ const searchableFields = ref([
     { label: 'Role', value: 'role' }
 ]);
 
-// Gerador de dados mock para criar uma grande quantidade de registros
 const generateMockData = (count) => {
     const roles = ['Admin', 'Editor', 'Viewer', 'Manager', 'Developer'];
     const statuses = ['Active', 'Inactive', 'Pending', 'Suspended'];
@@ -465,7 +520,6 @@ const generateMockData = (count) => {
     });
 };
 
-// Variáveis para rastreamento de estado e debug
 const allMockData = ref(generateMockData(500));
 const dataLoaded = ref(false);
 const mockApiUrl = ref('/api/mock-users');
@@ -477,7 +531,6 @@ const dataTable = ref(null);
 const searchDataTable = ref(null);
 const customDataTable = ref(null);
 
-// Status colors for badges
 const getStatusColor = (status) => {
     switch (status) {
         case 'Active':
@@ -493,7 +546,6 @@ const getStatusColor = (status) => {
     }
 };
 
-// Define available actions for the table
 const tableActions = ref([
     {
         id: 'delete-selected',
@@ -515,7 +567,6 @@ const tableActions = ref([
     }
 ]);
 
-// Event handlers for debugging
 const handlePageChange = (event) => {
     console.log('Page changed:', event);
 };
@@ -536,28 +587,19 @@ const handleFetchSuccess = (data) => {
 };
 
 const loadMockData = () => {
-    // Restaurar o fetch original se já existir uma interceptação
-    if (window._originalFetch) {
+    if (window._originalFetch)
         window.fetch = window._originalFetch;
-    }
 
-    // Salvar o fetch original
     window._originalFetch = window.fetch;
 
-    // Esta função irá interceptar as chamadas fetch e simular uma API real
     window.fetch = async (url, options) => {
         if (url.toString().includes('/api/mock-users')) {
-            // Registrar a requisição para debug
             lastApiRequest.value = url.toString();
-
-            // Extrair parâmetros da URL
             const urlObj = new URL(url);
             const params = {};
 
-            // Capturar todos os parâmetros
-            for (const [key, value] of urlObj.searchParams.entries()) {
+            for (const [key, value] of urlObj.searchParams.entries())
                 params[key] = value;
-            }
 
             const limit = parseInt(params.limit || '10');
             const offset = parseInt(params.offset || '0');
@@ -567,18 +609,14 @@ const loadMockData = () => {
             const searchField = params.searchField || '';
 
             console.log('API Request:', { limit, offset, sortBy, sort, search, searchField });
-
-            // Filtrar dados com base nos parâmetros de busca
             let filteredData = [...allMockData.value];
 
             if (search) {
                 filteredData = filteredData.filter(item => {
                     if (searchField) {
-                        // Busca em campo específico
                         const fieldValue = item[searchField]?.toString().toLowerCase();
                         return fieldValue && fieldValue.includes(search.toLowerCase());
                     } else {
-                        // Busca em todos os campos
                         return Object.values(item).some(
                             value => value?.toString().toLowerCase().includes(search.toLowerCase())
                         );
@@ -586,40 +624,32 @@ const loadMockData = () => {
                 });
             }
 
-            // Ordenar dados
             filteredData.sort((a, b) => {
                 const valueA = a[sortBy];
                 const valueB = b[sortBy];
 
-                // Verificar se são strings numéricas (como IDs)
                 if (typeof valueA === 'string' && typeof valueB === 'string') {
-                    // Se ambos podem ser convertidos para números, faça uma comparação numérica
                     if (!isNaN(Number(valueA)) && !isNaN(Number(valueB))) {
                         return sort === 'ASC'
                             ? Number(valueA) - Number(valueB)
                             : Number(valueB) - Number(valueA);
                     }
-                    // Caso contrário, continue com a comparação de strings
+
                     return sort === 'ASC'
                         ? valueA.localeCompare(valueB)
                         : valueB.localeCompare(valueA);
                 }
 
-                // Ordenação de números
                 return sort === 'ASC'
                     ? valueA - valueB
                     : valueB - valueA;
             });
 
-            // Aplicar paginação
+
             const paginatedData = filteredData.slice(offset, offset + limit);
-
             console.log(`Returning ${paginatedData.length} items from offset ${offset}`);
-
-            // Simular delay de rede
             await new Promise(resolve => setTimeout(resolve, 300));
 
-            // Retornar resposta formatada
             return {
                 ok: true,
                 json: async () => ({
@@ -627,7 +657,7 @@ const loadMockData = () => {
                     processingTime: Math.floor(Math.random() * 50) + 10,
                     result: {
                         success: true,
-                        count: filteredData.length, // Total após filtros
+                        count: filteredData.length,
                         pagination: {
                             limit,
                             offset,
@@ -637,30 +667,25 @@ const loadMockData = () => {
                             searchField,
                             filters: {}
                         },
-                        data: paginatedData // Somente os dados da página atual
+                        data: paginatedData
                     }
                 })
             };
         }
 
-        // Para outras URLs, use o fetch original
         return window._originalFetch(url, options);
     };
 
     dataLoaded.value = true;
 
-    // Atualizar as tabelas
-    if (dataTable.value) {
+    if (dataTable.value)
         dataTable.value.fetchData();
-    }
 
-    if (searchDataTable.value) {
+    if (searchDataTable.value)
         searchDataTable.value.fetchData();
-    }
 
-    if (customDataTable.value) {
+    if (customDataTable.value)
         customDataTable.value.fetchData();
-    }
 };
 
 const viewItem = (item) => {
@@ -674,7 +699,6 @@ const deleteItem = (item) => {
 };
 
 onMounted(() => {
-    // Iniciar com a interceptação de fetch para simular API
     loadMockData();
 });
 </script>

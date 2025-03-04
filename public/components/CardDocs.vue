@@ -1,9 +1,13 @@
 <template>
     <code-preview :padding="padding" :default-view="hasDefaultSlot ? 'preview' : 'code'"
-        :show-preview-button="hasDefaultSlot" :source-code="previewContent" ref="codePreviewRef">
+        :show-preview-button="hasDefaultSlot" :show-schema-button="hasSchemaSlot" :source-code="previewContent"
+        ref="codePreviewRef">
         <slot></slot>
         <template #code>
             <slot name="code"></slot>
+        </template>
+        <template #schema>
+            <slot name="schema"></slot>
         </template>
     </code-preview>
 </template>
@@ -37,7 +41,7 @@ const props = defineProps({
 
 const slots = useSlots();
 const hasDefaultSlot = computed(() => !!slots.default);
-
+const hasSchemaSlot = computed(() => !!slots.schema);
 defineExpose({
     updateContent() {
         nextTick(() => {

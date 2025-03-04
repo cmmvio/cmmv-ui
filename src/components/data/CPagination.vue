@@ -15,11 +15,11 @@
 
         <div v-else-if="!centered && mode !== 'input'" class="sm:flex-1"></div>
 
-        <div v-if="mode === 'input'" class="flex items-center space-x-3">
+        <div v-if="mode === 'input'" class="flex items-center space-x-2 text-xs">
             <button @click="selectPage(currentPage - 1)" :disabled="currentPage === 1"
                 class="relative inline-flex items-center rounded-md px-2 py-2 text-neutral-400 ring-1 ring-inset ring-neutral-300 dark:ring-neutral-900 hover:bg-neutral-50 dark:hover:bg-neutral-700 focus:z-20 focus:outline-offset-0 disabled:opacity-50 disabled:cursor-not-allowed"
                 :title="texts.previousPage">
-                <span class="sr-only">{{ texts.previous }}</span>
+                <span class="sr-only text-xs">{{ texts.previous }}</span>
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-neutral-600 dark:text-white"
                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round">
@@ -28,10 +28,10 @@
             </button>
 
             <div class="flex items-center">
-                <span class="text-sm text-neutral-700 dark:text-neutral-300 mr-2">{{ texts.page }}</span>
+                <span class="text-xs text-neutral-700 dark:text-neutral-300 mr-2">{{ texts.page }}</span>
                 <input type="number" v-model.number="inputPage" @change="handleInputChange"
                     @keydown.enter="handleInputChange"
-                    class="w-10 h-8 rounded-md ring-1 ring-inset ring-neutral-300 dark:ring-neutral-900 dark:bg-neutral-800 py-1 px-2 text-center text-neutral-900 dark:text-white outline-none focus:ring-2 focus:ring-indigo-500"
+                    class="w-8 h-8 rounded-md ring-1 ring-inset ring-neutral-300 dark:ring-neutral-900 dark:bg-neutral-900 py-1 px-2 text-center text-neutral-900 dark:text-white outline-none focus:ring-2 focus:ring-indigo-500"
                     min="1" :max="totalPages">
                 <span class="mx-2 text-neutral-700 dark:text-neutral-300">{{ texts.of }} {{ totalPages }}</span>
             </div>
@@ -48,9 +48,9 @@
             </button>
 
             <div v-if="showPerPageSelect"
-                class="flex items-center gap-2 text-sm text-neutral-700 dark:text-neutral-300 ml-2">
+                class="flex items-center gap-2 text-xs text-neutral-700 dark:text-neutral-300 ml-2">
                 <select v-model="itemsPerPage"
-                    class="h-8 w-16 rounded-md ring-1 ring-inset ring-neutral-300 dark:ring-neutral-900 dark:bg-neutral-800 px-2 py-0 text-sm outline-none focus:ring-2 focus:ring-indigo-500 text-center appearance-none"
+                    class="h-8 w-16 rounded-md ring-1 ring-inset ring-neutral-300 dark:ring-neutral-900 dark:bg-neutral-800 px-2 py-0 text-xs outline-none focus:ring-2 focus:ring-indigo-500 text-center appearance-none"
                     @change="changeItemsPerPage">
                     <option v-for="option in itemsPerPageOptions" :key="option" :value="option">
                         {{ option }}

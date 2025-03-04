@@ -1,27 +1,32 @@
 <template>
-    <div class="flex items-center justify-between flex-column flex-wrap"
-        :class="{ 'border-b border-neutral-200 dark:border-neutral-900 px-2 py-2': !card }">
+    <div class="flex items-center justify-between flex-column flex-wrap transition-all duration-300"
+        :class="[{ 'border-b border-neutral-200 dark:border-neutral-900': !card }, headerPadding]" v-if="showSearchBar">
         <div v-if="captionTitle || captionSubtitle">
-            <h2 v-if="captionTitle" class="text-xl font-semibold text-neutral-900 dark:text-white">{{ captionTitle }}
-            </h2>
-            <span v-if="captionSubtitle" class="text-sm text-neutral-500 dark:text-neutral-400">{{ captionSubtitle
-            }}</span>
+            <h2 v-if="captionTitle" class="text-xl font-semibold text-neutral-900 dark:text-white">{{ captionTitle }}</h2>
+            <span v-if="captionSubtitle" class="text-sm text-neutral-500 dark:text-neutral-400">{{ captionSubtitle }}</span>
         </div>
 
-        <div class="relative">
+        <div
+            class="relative"
+            :class="{' w-full': searchInputFullWidth }"
+        >
             <div class="flex items-stretch">
-                <c-input id="search" label="Search Input" v-model="searchQuery" :placeholder="searchPlaceholder"
-                    @keyup.enter="handleSearch" floatingLabel size="md"
-                    :customClass="searchableFields.length > 0 ? '!rounded-r-none border-r-1' : ''"
-                    style="min-width: 250px; flex: 1;">
+                <c-input id="search" label="Search" v-model="searchQuery" bgColor="bg-transparent" clearable
+                    @keyup.enter="handleSearch" size="sm"
+                    :customClass="[
+                        'transition-all duration-300',
+                        searchableFields.length > 0 ? '!rounded-r-none  border-r-1' : '',
+                        searchableFields.length > 0 ? '' : 'border-none'
+                    ]"
+                    style="min-width: 250px;" shadow="shadow-none">
                     <template #icon>
-                        <IconMagnifyingGlass class="w-6 h-6 text-neutral-600 dark:text-white" aria-hidden="true" />
+                        <IconMagnifyingGlass class="w-6 h-6" color="text-neutral-600 dark:text-white" aria-hidden="true" />
                     </template>
                 </c-input>
 
                 <c-combobox v-if="searchableFields.length > 0" v-model="searchField" :options="searchableFields"
-                    size="md" :placeholder="searchFieldPlaceholder" style="min-width: 150px; "
-                    customClass="!rounded-l-none border-l-0 h-full" />
+                    size="lg" :placeholder="searchFieldPlaceholder" style="min-width: 150px; "
+                    customClass="!rounded-l-none border-l-0 h-full text-sm pb-2.5 pt-2.5" />
             </div>
 
             <slot name="filters"></slot>
@@ -54,10 +59,22 @@
         </template>
     </c-table>
 
-    <div class="flex justify-between items-center ml-2 mt-2">
-        <div v-if="availableActions && availableActions.length > 0" class="flex items-center gap-2">
+    <div v-if="error"
+        class="bg-red-50 dark:bg-red-900/20 p-4 rounded-md text-red-600 dark:text-red-400 border border-red-200 dark:border-red-800 mt-4 m-4">
+        <div class="font-semibold">{{ i18n.errorTitle }}</div>
+        <div>{{ error }}</div>
+    </div>
+
+    <div
+        class="flex justify-between items-center mt-2 mb-4 pb-2"
+        :class="{ 'border-b border-neutral-200 dark:border-neutral-900': !card }"
+    >
+        <div
+            v-if="availableActions && availableActions.length > 0"
+            class="flex items-center gap-2 ml-2"
+        >
             <select v-model="selectedAction"
-                class="h-8 rounded-md ring-1 ring-inset ring-neutral-300 dark:ring-neutral-700 dark:bg-neutral-800 py-0 px-2 text-sm outline-none focus:ring-2 focus:ring-indigo-500"
+                class="h-8 rounded-md ring-1 ring-inset ring-neutral-300 dark:ring-neutral-900 dark:bg-neutral-800 py-0 px-2 text-sm outline-none focus:ring-2 focus:ring-indigo-500s"
                 :disabled="(selectedAction && getActionById(selectedAction)?.requiresSelection && selectedItems.length === 0) || loading">
                 <option value="" disabled selected>{{ i18n.selectAction }}</option>
                 <option v-for="action in availableActionsFiltered" :key="action.id" :value="action.id"
@@ -65,9 +82,10 @@
                     {{ action.label }}
                 </option>
             </select>
+
             <button @click="executeAction"
                 :disabled="!selectedAction || (getActionById(selectedAction)?.requiresSelection && selectedItems.length === 0) || loading"
-                class="inline-flex items-center px-3 h-8 rounded-md bg-indigo-600 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed">
+                class="inline-flex items-center px-3 h-8 rounded-md bg-white dark:bg-neutral-800 text-xs text-neutral-900 dark:text-neutral-50 shadow-sm hover:bg-neutral-100 dark:hover:bg-neutral-700 disabled:opacity-50 disabled:cursor-not-allowed border border-neutral-200 dark:border-neutral-900">
                 {{ i18n.executeAction }}
             </button>
         </div>
@@ -80,13 +98,7 @@
             :showing-text="i18n.showing" :of-text="i18n.of" :items-text="i18n.items" :first-page-text="i18n.firstPage"
             :previous-page-text="i18n.previousPage" :next-page-text="i18n.nextPage" :last-page-text="i18n.lastPage"
             :first-text="i18n.first" :previous-text="i18n.previous" :next-text="i18n.next" :last-text="i18n.last"
-            class="px-2" />
-    </div>
-
-    <div v-if="error"
-        class="bg-red-50 dark:bg-red-900/20 p-4 rounded-md text-red-600 dark:text-red-400 border border-red-200 dark:border-red-800 mt-4">
-        <div class="font-semibold">{{ i18n.errorTitle }}</div>
-        <div>{{ error }}</div>
+            class="px-3" />
     </div>
 </template>
 
@@ -143,7 +155,15 @@ interface TableAction {
     visible?: boolean | ((items: TableItem[]) => boolean);
 }
 
+interface TableFilter {
+    [key: string]: string[] | number[] | boolean[];
+}
+
 const props = defineProps({
+    name: {
+        type: String,
+        default: ''
+    },
     apiUrl: {
         type: String,
         required: true
@@ -210,7 +230,11 @@ const props = defineProps({
     },
     showSearchBar: {
         type: Boolean,
-        default: true
+        default: false
+    },
+    headerPadding: {
+        type: String,
+        default: "p-4"
     },
     searchPlaceholder: {
         type: String,
@@ -254,7 +278,7 @@ const props = defineProps({
     },
     bgHeaderColor: {
         type: String,
-        default: 'bg-white dark:bg-neutral-900'
+        default: 'bg-neutral-100 dark:bg-neutral-900'
     },
     bgCaptionColor: {
         type: String,
@@ -356,6 +380,14 @@ const props = defineProps({
     autoLoad: {
         type: Boolean,
         default: true
+    },
+    searchInputFullWidth: {
+        type: Boolean,
+        default: false
+    },
+    filters: {
+        type: Object as PropType<TableFilter>,
+        default: () => ({})
     }
 });
 
@@ -367,7 +399,8 @@ const emit = defineEmits([
     'sort-change',
     'page-change',
     'search-change',
-    'action-execute'
+    'action-execute',
+    'filters-change'
 ]);
 
 const loading = ref(false);
@@ -386,6 +419,8 @@ const sortDirection = ref(props.initialSortDirection.toUpperCase());
 
 const searchQuery = ref(props.initialSearchQuery);
 const searchField = ref(props.initialSearchField);
+
+const activeFilters = ref<TableFilter>(props.filters || {});
 
 const availableActionsFiltered = computed(() => {
     return props.availableActions.filter(action => {
@@ -431,6 +466,13 @@ watch([sortField, sortDirection], () => {
         fetchData();
     }
 });
+
+watch(() => props.filters, (newFilters) => {
+    activeFilters.value = newFilters || {};
+    if (props.autoLoad) {
+        fetchData();
+    }
+}, { deep: true });
 
 const calculateOffset = () => {
     currentOffset.value = (currentPage.value - 1) * limitPerPage.value;
@@ -529,14 +571,34 @@ const fetchData = async () => {
             }
         }
 
+        if (Object.keys(activeFilters.value).length > 0) {
+            Object.entries(activeFilters.value).forEach(([key, values]) => {
+                if (Array.isArray(values) && values.length > 0) {
+                    values.forEach((value) => {
+                        params[`filter_${key}`] = params[`filter_${key}`] || [];
+                        if (Array.isArray(params[`filter_${key}`])) {
+                            params[`filter_${key}`].push(value);
+                        }
+                    });
+                }
+            });
+        }
+
         if (props.transformRequestParams) {
             params = props.transformRequestParams(params);
         }
 
         const urlWithParams = new URL(props.apiUrl, window.location.origin);
+
         Object.entries(params).forEach(([key, value]) => {
             if (value !== null && value !== undefined) {
-                urlWithParams.searchParams.append(key, value.toString());
+                if (Array.isArray(value)) {
+                    value.forEach((val) => {
+                        urlWithParams.searchParams.append(key, val.toString());
+                    });
+                } else {
+                    urlWithParams.searchParams.append(key, value.toString());
+                }
             }
         });
 
@@ -582,6 +644,13 @@ const fetchData = async () => {
     }
 };
 
+const updateFilters = (newFilters: TableFilter) => {
+    activeFilters.value = newFilters;
+    currentPage.value = 1;
+    fetchData();
+    emit('filters-change', activeFilters.value);
+};
+
 const reset = () => {
     currentPage.value = props.initialPage;
     limitPerPage.value = props.initialLimit;
@@ -589,6 +658,7 @@ const reset = () => {
     sortDirection.value = props.initialSortDirection.toUpperCase();
     searchQuery.value = props.initialSearchQuery;
     searchField.value = props.initialSearchField;
+    activeFilters.value = {};
     calculateOffset();
     fetchData();
 };
@@ -607,7 +677,9 @@ defineExpose({
     loading,
     error,
     executeAction,
-    selectedAction
+    selectedAction,
+    updateFilters,
+    activeFilters
 });
 
 onMounted(() => {

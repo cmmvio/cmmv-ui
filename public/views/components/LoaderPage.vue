@@ -325,7 +325,7 @@
 
         <br />
 
-        <PagePagination previous="Icon" previousLink="/icon" next="Progress Bar" nextLink="/progress-bar" />
+        <PagePagination previous="Image" previousLink="/image" next="Progress Bar" nextLink="/progress-bar" />
     </BaseLayout>
 </template>
 

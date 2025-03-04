@@ -7,7 +7,8 @@
                 'top-[50%] -translate-y-1/2 left-3': (!isActive && !currentValue),
                 'top-[30%]': !isActive && hasError,
                 'scale-75 origin-left text-xs top-1 left-1': (isActive || (currentValue !== undefined && currentValue !== '')) && !floatingLabel,
-                'pl-10': hasIcon && (!isActive && !currentValue)
+                'pl-10': hasIcon && (!isActive && !currentValue),
+                'ml-10 -mt-2': hasIcon && ((isActive || currentValue) &&!floatingLabel)
             },
             textColor ? textColor : 'text-gray-500 dark:text-gray-400',
             !disabled ? (bgColor ? bgColor : variantColors[variant]) : '', 'px-1', customClass]">
@@ -15,7 +16,7 @@
         </label>
 
         <div class="relative flex items-center">
-            <div v-if="hasIcon" class="absolute inset-y-0 left-0 flex items-center pl-3 z-50">
+            <div v-if="hasIcon" class="absolute inset-y-0 left-0 flex items-center pl-3 z-20">
                 <slot name="icon"></slot>
             </div>
 
@@ -23,8 +24,8 @@
                 :value="modelValue"
                 :class="[sizes[size], roundedStyles[rounded], variantStyles[variant], bgColor ? bgColor : variantColors[variant], textColor,
                 { 'ring-red-500 ring-2': hasError, 'opacity-30': disabled, 'cursor-not-allowed': disabled, 'pl-12': hasIcon }, customClass,
-                { 'pt-4': !hasIcon, 'pb-3': hasIcon, 'pt-3': hasIcon, 'px-2': currencyMask }]"
-                class="c-input-field block w-full border shadow-sm pb-1 outline-none" @keyup="handleInput"
+                { 'pt-4': !hasIcon, 'pb-3': hasIcon, 'pt-3': hasIcon, 'px-2': currencyMask }, shadow]"
+                class="c-input-field block w-full border pb-1 outline-none" @keyup="handleInput"
                 @change="handleInput" @focus="activateLabel" @blur="deactivateLabel" :disabled="disabled"
                 :aria-invalid="hasError" v-money3="currencyMask ? currencyMask : undefined" />
 
@@ -232,6 +233,10 @@ const props = defineProps({
     currencyMask: {
         type: Object,
         default: null
+    },
+    shadow: {
+        type: String,
+        default: "shadow-sm"
     }
 });
 

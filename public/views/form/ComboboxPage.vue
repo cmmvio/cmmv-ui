@@ -577,7 +577,6 @@ const nestedOptions = [
 const nestedValue = ref("electronics");
 
 const getSelectedItem = computed(() => {
-  // Logic to find the selected item from nested structure
   for (const option of nestedOptions) {
     if (option.value === nestedValue.value) {
       return option.label;
@@ -671,14 +670,13 @@ const countryValue = ref(null);
 const countriesCombobox = ref(null);
 
 const refreshCountries = () => {
-  // You can programmatically refresh the data
   countriesCombobox.value.refresh();
 };
 &lt;/script&gt;</code></pre>
             </template>
         </card-docs>
 
-        <PagePagination previous="Chips Input" previousLink="/chips-input" next="Datepicker" nextLink="/datepicker" />
+        <PagePagination previous="Chips Input" previousLink="/chips-input" next="Currency Input" nextLink="/currency-input" />
     </BaseLayout>
 </template>
 

@@ -115,7 +115,7 @@
                             :floating-label="item.floatingLabel"
                             :rules="item.rules || item.props?.rules || []"
                             v-bind="item.props || {}"
-                            @update:modelValue="(value) => updateField(key as string, value)"
+                            @update:modelValue="(value) => updateField(key as string, parseFloat(value))"
                             :ref="el => { if (el) fieldRefs[key as string] = el; }" />
 
                         <!-- File Upload -->
@@ -404,9 +404,7 @@ const showValidationAlert = ref(false);
 const invalidFields = ref<Record<string, string>>({});
 
 const updateField = (key: string | number, value: any) => {
-    // Special handling for chips input - convert from array of objects to array of labels
     if (props.schema[key]?.type === 'chips' || props.schema[key]?.type === 'chipsinput') {
-        // If value is an array of objects with label property, extract just the labels
         if (Array.isArray(value) && value.length > 0 && typeof value[0] === 'object' && 'label' in value[0]) {
             formData.value[key] = value.map(item => item.label);
         } else {

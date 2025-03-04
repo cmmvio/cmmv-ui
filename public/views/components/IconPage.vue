@@ -269,7 +269,7 @@
 
         <br />
 
-        <PagePagination previous="Flags" previousLink="/flags" next="Loader" nextLink="/loader" />
+        <PagePagination previous="Flags" previousLink="/flags" next="Image" nextLink="/image" />
     </BaseLayout>
 </template>
 

@@ -138,7 +138,7 @@ onMounted(() => {
             </template>
         </card-docs>
 
-        <PagePagination previous="Toolbar" previousLink="/toolbar" next="Graph Node" nextLink="/graph-node" />
+        <PagePagination previous="Toggle" previousLink="/toggle" next="Graph Node" nextLink="/graph-node" />
     </BaseLayout>
 </template>
 

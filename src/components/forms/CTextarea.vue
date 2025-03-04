@@ -20,6 +20,7 @@
                 variantStyles[variant],
                 bgColor ? bgColor : variantColors[variant],
                 textColor,
+                customClass,
                 {
                     'ring-red-500 ring-2': hasError,
                     'opacity-50': disabled,
@@ -259,7 +260,7 @@ const props = defineProps({
     maxlength: {
         type: Number,
         required: false,
-        default: 255,
+        default: 99999,
     },
     lengthCount: {
         type: Boolean,
@@ -312,6 +313,11 @@ const props = defineProps({
     required: {
         type: Boolean,
         default: false
+    },
+    customClass: {
+        type: String,
+        required: false,
+        default: ""
     }
 });
 

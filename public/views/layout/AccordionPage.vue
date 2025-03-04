@@ -189,7 +189,7 @@ const accordionItems = [
             </template>
         </card-docs>
 
-        <PagePagination previous="Table" previousLink="/table" next="Alert" nextLink="/alert" />
+        <PagePagination previous="Graph Node" previousLink="/graph-node" next="Alert" nextLink="/alert" />
     </BaseLayout>
 </template>
 

@@ -290,7 +290,7 @@ const tabs = ref([
             </template>
         </card-docs>
 
-        <PagePagination previous="Sidebar" previousLink="/sidebar" next="Toolbar" nextLink="/toolbar" />
+        <PagePagination previous="Stepper" previousLink="/stepper" next="Toolbar" nextLink="/toolbar" />
     </BaseLayout>
 </template>
 

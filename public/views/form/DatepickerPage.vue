@@ -289,7 +289,7 @@ const travelDates = ref([]);
             </template>
         </card-docs>
 
-        <PagePagination previous="Combobox" previousLink="/combobox" next="File Upload" nextLink="/file-upload" />
+        <PagePagination previous="Currency Input" previousLink="/currency-input" next="File Upload" nextLink="/file-upload" />
     </BaseLayout>
 </template>
 

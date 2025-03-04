@@ -176,6 +176,7 @@ const navbarItems = [
             { name: "Button Groups", uri: "/button-groups" },
             { name: "Flags", uri: "/flags" },
             { name: "Icon", uri: "/icon" },
+            { name: "Image", uri: "/image" },
             { name: "Loader", uri: "/loader" },
             { name: "Progress Bar", uri: "/progress-bar" },
             { name: "Progress Circular", uri: "/progress-circular" },
@@ -191,6 +192,7 @@ const navbarItems = [
         children: [
             { name: "Chart Bar", uri: "/chart-bar" },
             { name: "Chart Line", uri: "/chart-line" },
+            { name: "Data Filter", uri: "/data-filter" },
             { name: "Data Table", uri: "/data-table" },
             { name: "List", uri: "/list" },
             { name: "Pagination", uri: "/pagination" },

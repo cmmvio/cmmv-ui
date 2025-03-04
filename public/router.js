@@ -9,6 +9,7 @@ import ButtonGroupsPage from "./views/components/ButtonGroupsPage.vue";
 import ButtonPage from "./views/components/ButtonPage.vue";
 import TooltipPage from "./views/components/TooltipPage.vue";
 import IconPage from "./views/components/IconPage.vue";
+import ImagePage from "./views/components/ImagePage.vue";
 import FlagsPage from "./views/components/FlagsPage.vue";
 import ProgressBarPage from "./views/components/ProgressBarPage.vue";
 import ProgressCircularPage from "./views/components/ProgressCircularPage.vue";
@@ -20,6 +21,7 @@ import SystemBarPage from "./views/components/SystemBarPage.vue";
 //Data
 import ChartBarPage from "./views/data/ChartBarPage.vue";
 import ChartLinePage from "./views/data/ChartLinePage.vue";
+import DataFilterPage from "./views/data/DataFilterPage.vue";
 import DataTablePage from "./views/data/DataTablePage.vue";
 import ListPage from "./views/data/ListPage.vue";
 import PaginationPage from "./views/data/PaginationPage.vue";
@@ -68,6 +70,9 @@ import DialogPage from "./views/overlays/DialogPage.vue";
 import NotificationPage from "./views/overlays/NotificationPage.vue";
 import OverlayPage from "./views/overlays/OverlayPage.vue";
 
+//Tools
+import CodeEditorPage from "./views/tools/CodeEditorPage.vue";
+
 const routes = [
     //
     { path: '/', component: IndexPage },
@@ -81,6 +86,7 @@ const routes = [
     { path: '/button-groups', component: ButtonGroupsPage },
     { path: '/flags', component: FlagsPage },
     { path: '/icon', component: IconPage },
+    { path: '/image', component: ImagePage },
 	{ path: '/loader', component: LoaderPage },
     { path: '/progress-bar', component: ProgressBarPage },
     { path: '/progress-circular', component: ProgressCircularPage },
@@ -92,6 +98,7 @@ const routes = [
     { path: '/chart-bar', component: ChartBarPage },
     { path: '/chart-line', component: ChartLinePage },
     { path: '/data-table', component: DataTablePage },
+    { path: '/data-filter', component: DataFilterPage },
     { path: '/list', component: ListPage },
     { path: '/pagination', component: PaginationPage },
     { path: '/table', component: TablePage },
@@ -138,6 +145,9 @@ const routes = [
     { path: '/dialog', component: DialogPage },
     { path: '/notification', component: NotificationPage },
     { path: '/overlay', component: OverlayPage },
+
+    //Tools
+    { path: '/code-editor', component: CodeEditorPage },
 ]
 
 const router = createRouter({
