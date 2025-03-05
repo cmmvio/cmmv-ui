@@ -36,7 +36,7 @@
                 <tr>
                     <td class="border-b px-4 py-2">color</td>
                     <td class="border-b px-4 py-2">String</td>
-                    <td class="border-b px-4 py-2">"text-neutral-800"</td>
+                    <td class="border-b px-4 py-2">"text-neutral-600 dark:text-white"</td>
                     <td class="border-b px-4 py-2">Defines the text color of the icon. Accepts any valid Tailwind CSS
                         text color class.</td>
                 </tr>
@@ -144,7 +144,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 mt-2">
             <div class="border border-neutral-200 dark:border-neutral-700 rounded-lg p-6 bg-neutral-50 dark:bg-neutral-800">
                 <h4 class="text-base font-semibold mb-3">When to use icons</h4>
-                <ul class="list-disc pl-5 space-y-2">
+                <ul class="list-disc pl-5 space-y-2 text-sm">
                     <li>Use icons to provide visual cues that help users quickly understand actions or information.</li>
                     <li>Pair icons with text labels for better clarity, especially for actions that might be ambiguous.
                     </li>
@@ -155,7 +155,7 @@
             </div>
             <div class="border border-neutral-200 dark:border-neutral-700 rounded-lg p-6 bg-neutral-50 dark:bg-neutral-800">
                 <h4 class="text-base font-semibold mb-3">Accessibility considerations</h4>
-                <ul class="list-disc pl-5 space-y-2">
+                <ul class="list-disc pl-5 space-y-2 text-sm">
                     <li>Always provide an <code>ariaLabel</code> for icons that convey meaning.</li>
                     <li>For decorative icons that don't convey meaning, set <code>aria-hidden="true"</code>.</li>
                     <li>Ensure sufficient color contrast between the icon and its background.</li>

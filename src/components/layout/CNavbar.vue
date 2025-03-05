@@ -1,11 +1,16 @@
 <template>
     <nav :class="[
-        'c-navbar transition-all duration-300',
+        'c-navbar transition-all duration-300 overflow-visible',
         mode === 'horizontal' ? 'flex items-center' : 'flex flex-col',
         elevated ? 'shadow-md' : '',
-        border ? (mode === 'horizontal' ? 'border-b' : 'border-r') : '',
         borderColor
-    ]" :style="{ backgroundColor: bgColor, color: textColor }">
+    ]" :style="{
+        backgroundColor: bgColor,
+        color: textColor,
+        width: mode === 'vertical' ? (collapsed && !isExpanded ? '3.25rem' : '13rem') : 'auto'
+    }"
+    @mouseenter="handleMouseEnter"
+    @mouseleave="handleMouseLeave">
 
         <div v-if="mode === 'horizontal'" class="w-full flex items-center">
             <div v-if="toggleable" class="lg:hidden">
@@ -26,7 +31,7 @@
             <div :class="['relative',
                 {
                     'hidden lg:block flex-grow': !mobileMenuOpen,
-                    'absolute top-full left-0 right-0 z-50 bg-white dark:bg-zinc-800 shadow-md border-b border-neutral-200 dark:border-neutral-700 lg:static lg:border-0 lg:shadow-none lg:block lg:bg-transparent': mobileMenuOpen
+                    'absolute top-full left-0 right-0 z-50 bg-white dark:bg-zinc-800 border-b border-neutral-200 dark:border-neutral-700 lg:static lg:border-0 lg:shadow-none lg:block lg:bg-transparent': mobileMenuOpen
                 }
             ]">
                 <slot name="items">
@@ -63,14 +68,14 @@
 
                                 <transition name="slide-fade">
                                     <div v-if="openDropdownIndex === index"
-                                        class="absolute left-0 mt-2 w-56 bg-white dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-700 shadow-lg rounded-md z-50">
+                                        class="absolute left-0 mt-2 w-56 bg-white dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-700 rounded-md z-50">
                                         <a v-for="(child, childIndex) in item.children" :key="childIndex"
                                             :href="child.href"
                                             class="block px-4 py-2 text-sm hover:bg-neutral-100 dark:hover:bg-zinc-700/50 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
                                             :class="{ 'bg-blue-50 dark:bg-blue-900/10 text-blue-700 dark:text-blue-400 font-medium': child.active }">
                                             <component v-if="showIcons && child.icon" :is="child.icon"
                                                 class="w-3.5 h-3.5 mr-2 flex-shrink-0" />
-                                            <span class="truncate">{{ child.text }}</span>
+                                            <span class="truncate max-w-[9rem]">{{ child.text }}</span>
                                         </a>
                                     </div>
                                 </transition>
@@ -81,24 +86,65 @@
             </div>
         </div>
 
-        <div v-else class="w-full select-none text-neutral-700 dark:text-neutral-200 p-4">
+        <div v-else
+            class="w-full select-none text-neutral-700 dark:text-neutral-200 p-2"
+        >
             <ul>
                 <li v-for="(item, index) in items" :key="index" class="mb-1">
-                    <button
-                        class="flex items-center w-full px-3 py-2.5 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-700/70 transition-colors duration-200 cursor-pointer"
-                        @click="toggleSubmenu(index)">
-                        <span class="truncate">{{ item.text }}</span>
+                    <c-tooltip v-if="collapsed && !isExpanded" :content="item.text" position="right" :maxWidth="200">
+                        <button
+                            class="flex items-center w-full p-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-700/70 transition-colors duration-200 cursor-pointer"
+                            @click="toggleSubmenu(index)"
+                            :title="item.title || item.text">
+                            <div class="flex items-center justify-center w-full">
+                                <component v-if="showIcons && item.icon" :is="item.icon"
+                                    class="w-5 h-5 flex-shrink-0" color="text-neutral-500 dark:text-neutral-400" :class="iconClass" size="sm" />
+                            </div>
+                        </button>
+                    </c-tooltip>
 
-                        <icon-chevron-down size="sm" class="w-5 h-5 ml-auto transition-transform" color="text-neutral-500 dark:text-neutral-400"
-                            :class="{ 'rotate-180': submenuOpen === index }" aria-hidden="true" v-if="item.children" />
+                    <button v-else
+                        class="flex items-center w-full p-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-700/70 transition-colors duration-200 cursor-pointer"
+                        @click="toggleSubmenu(index)"
+                        :title="item.title || item.text">
+                        <div class="flex items-center">
+                            <component v-if="showIcons && item.icon" :is="item.icon"
+                                class="w-5 h-5 flex-shrink-0" color="text-neutral-500 dark:text-neutral-400" :class="iconClass" size="sm" />
+                            <span class="truncate ml-2 transition-opacity duration-200 text-sm max-w-[9rem]"
+                                :class="[mode === 'vertical' && collapsed && !isExpanded ? 'opacity-0 w-0 overflow-hidden' : 'opacity-100 w-auto']">
+                                {{ item.text }}
+                            </span>
+                        </div>
+
+                        <icon-chevron-down v-if="item.children" size="sm"
+                            class="w-4 h-4 ml-auto transition-transform ml-3"
+                            color="text-neutral-500 dark:text-neutral-400"
+                            :class="[
+                                { 'rotate-180': submenuOpen === index },
+                                mode === 'vertical' && collapsed && !isExpanded ? 'opacity-0 w-0 overflow-hidden' : 'opacity-100'
+                            ]"
+                            aria-hidden="true" />
                     </button>
 
                     <transition name="slide-fade">
-                        <ul v-if="submenuOpen === index" class="pl-6">
+                        <ul v-if="submenuOpen === index"
+                            :class="[
+                                'pl-6',
+                                mode === 'vertical' && collapsed && !isExpanded ? 'hidden' : 'block'
+                            ]">
                             <li v-for="(child, childIndex) in item.children" :key="childIndex">
-                                <a :href="child.href"
-                                    class="block py-2 px-3 text-sm hover:bg-neutral-100 dark:hover:bg-neutral-700/50 rounded-md">
-                                    {{ child.text }}
+                                <c-tooltip v-if="collapsed && !isExpanded" :content="child.text" position="right" :maxWidth="200">
+                                    <a :href="child.href"
+                                        class="flex items-center justify-center py-2 px-3 text-sm hover:bg-neutral-100 dark:hover:bg-neutral-700/50 rounded-md">
+                                        <component v-if="showIcons && child.icon" :is="child.icon"
+                                            class="w-4 h-4 flex-shrink-0" :class="iconClass" />
+                                    </a>
+                                </c-tooltip>
+                                <a v-else :href="child.href"
+                                    class="flex items-center py-2 px-3 text-sm hover:bg-neutral-100 dark:hover:bg-neutral-700/50 rounded-md">
+                                    <component v-if="showIcons && child.icon" :is="child.icon"
+                                        class="w-4 h-4 flex-shrink-0 mr-2" :class="iconClass" />
+                                    <span class="truncate max-w-[9rem]">{{ child.text }}</span>
                                 </a>
                             </li>
                         </ul>
@@ -110,7 +156,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, defineProps, defineEmits } from 'vue';
+import { ref, defineProps, defineEmits, computed } from 'vue';
+import IconChevronDown from '@components/icons/IconChevronDown.vue';
+import CTooltip from '@components/components/CTooltip.vue';
 
 interface NavbarItem {
     text: string;
@@ -122,31 +170,94 @@ interface NavbarItem {
     children?: NavbarItem[];
 }
 
-const props = defineProps<{
-    mode?: 'horizontal' | 'vertical';
-    bgColor?: string;
-    textColor?: string;
-    hoverColor?: string;
-    hoverBgColor?: string;
-    activeClass?: string;
-    itemClass?: string;
-    size?: 'sm' | 'md' | 'lg';
-    elevated?: boolean;
-    border?: boolean;
-    borderColor?: string;
-    toggleable?: boolean;
-    toggleButtonClass?: string;
-    toggleAriaLabel?: string;
-    items: NavbarItem[];
-    showIcons?: boolean;
-}>();
+const props = defineProps({
+    mode: {
+        type: String as () => 'horizontal' | 'vertical',
+        default: 'horizontal'
+    },
+    bgColor: {
+        type: String,
+        default: undefined
+    },
+    textColor: {
+        type: String,
+        default: undefined
+    },
+    hoverColor: {
+        type: String,
+        default: undefined
+    },
+    hoverBgColor: {
+        type: String,
+        default: undefined
+    },
+    activeClass: {
+        type: String,
+        default: 'bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-white'
+    },
+    itemClass: {
+        type: String,
+        default: 'text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white'
+    },
+    iconClass: {
+        type: String,
+        default: 'text-neutral-500 dark:text-neutral-400'
+    },
+    size: {
+        type: String as () => 'sm' | 'md' | 'lg',
+        default: 'md'
+    },
+    elevated: {
+        type: Boolean,
+        default: false
+    },
+    border: {
+        type: Boolean,
+        default: true
+    },
+    borderColor: {
+        type: String,
+        default: 'border-neutral-200 dark:border-neutral-700'
+    },
+    toggleable: {
+        type: Boolean,
+        default: false
+    },
+    toggleButtonClass: {
+        type: String,
+        default: 'text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800'
+    },
+    toggleAriaLabel: {
+        type: String,
+        default: 'Toggle menu'
+    },
+    items: {
+        type: Array as () => NavbarItem[],
+        required: true
+    },
+    showIcons: {
+        type: Boolean,
+        default: false
+    },
+    collapsed: {
+        type: Boolean,
+        default: false
+    },
+    expandOnHover: {
+        type: Boolean,
+        default: true
+    }
+});
 
 const emit = defineEmits(['toggle']);
-const toggleAriaLabel = props.toggleAriaLabel || 'Toggle menu';
-
 const mobileMenuOpen = ref(false);
 const openDropdownIndex = ref<number | null>(null);
 const submenuOpen = ref<number | null>(null);
+const hoverExpanded = ref(false);
+
+const isExpanded = computed(() => {
+    return props.expandOnHover && hoverExpanded.value;
+});
 
 const toggleMobileMenu = () => {
     mobileMenuOpen.value = !mobileMenuOpen.value;
@@ -160,4 +271,33 @@ const toggleDropdown = (index: number) => {
 const toggleSubmenu = (index: number) => {
     submenuOpen.value = submenuOpen.value === index ? null : index;
 };
+
+const handleMouseEnter = () => {
+    if (props.mode === 'vertical' && props.collapsed && props.expandOnHover) {
+        hoverExpanded.value = true;
+    }
+};
+
+const handleMouseLeave = () => {
+    if (props.mode === 'vertical' && props.collapsed && props.expandOnHover) {
+        hoverExpanded.value = false;
+    }
+};
 </script>
+
+<style scoped>
+.c-navbar {
+    transition: all 0.3s ease-in-out;
+}
+
+.slide-fade-enter-active,
+.slide-fade-leave-active {
+    transition: all 0.3s ease-out;
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+    transform: translateY(-20px);
+    opacity: 0;
+}
+</style>

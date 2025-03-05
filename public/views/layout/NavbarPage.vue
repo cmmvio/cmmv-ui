@@ -158,6 +158,30 @@
                         text when provided in the items array.
                     </td>
                 </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">iconClass</td>
+                    <td class="border-b px-4 py-2">String</td>
+                    <td class="border-b px-4 py-2">'text-neutral-500 dark:text-neutral-400'</td>
+                    <td class="border-b px-4 py-2">
+                        The <code>iconClass</code> prop allows you to define custom styles for icons in the navigation items.
+                    </td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">collapsed</td>
+                    <td class="border-b px-4 py-2">Boolean</td>
+                    <td class="border-b px-4 py-2">false</td>
+                    <td class="border-b px-4 py-2">
+                        The <code>collapsed</code> prop (for vertical mode only) collapses the navbar to show only icons, saving space in the UI.
+                    </td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">expandOnHover</td>
+                    <td class="border-b px-4 py-2">Boolean</td>
+                    <td class="border-b px-4 py-2">true</td>
+                    <td class="border-b px-4 py-2">
+                        The <code>expandOnHover</code> prop (works with collapsed mode) expands the navbar when the user hovers over it.
+                    </td>
+                </tr>
             </tbody>
         </table-docs>
 
@@ -220,8 +244,8 @@ const items = [
             <div>
                 <div
                     class="flex min-h-[200px] border border-neutral-200 dark:border-neutral-700 rounded-lg overflow-hidden">
-                    <div class="w-56 bg-white dark:bg-neutral-800 border-r border-neutral-200 dark:border-neutral-700">
-                        <c-navbar mode="vertical" :items="verticalItems" />
+                    <div class="bg-white dark:bg-neutral-800 border-r border-neutral-200 dark:border-neutral-700">
+                        <c-navbar mode="vertical" :items="verticalItems" :showIcons="true" />
                     </div>
                     <div class="flex-1 bg-neutral-50 dark:bg-neutral-900 flex justify-center items-center">
                         <p class="text-neutral-700 dark:text-neutral-200">Content area</p>
@@ -234,6 +258,7 @@ const items = [
   &lt;c-navbar
     mode="vertical"
     :items="items"
+    :showIcons="true"
   /&gt;
 &lt;/div&gt;
 
@@ -261,6 +286,157 @@ const items = [
     href: '#',
     icon: IconUser,
     active: true
+  }
+];
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
+
+        <h3>Collapsed Sidebar with Expand on Hover</h3>
+
+        <p>
+            For space-efficient navigation, the <code>CNavbar</code> can be collapsed to show only icons,
+            with the option to expand when users hover over it. This pattern is commonly used in modern
+            applications to maximize content area while keeping navigation easily accessible.
+        </p>
+
+        <card-docs>
+            <div>
+                <div
+                    class="flex min-h-[300px] border border-neutral-200 dark:border-neutral-700 rounded-lg overflow-hidden">
+                    <div class="bg-white dark:bg-neutral-800 border-r border-neutral-200 dark:border-neutral-700">
+                        <c-navbar
+                            mode="vertical"
+                            :items="verticalItems"
+                            :showIcons="true"
+                            :collapsed="true"
+                            :expandOnHover="true"
+                            iconClass="text-blue-500 dark:text-blue-400"
+                        />
+                    </div>
+                    <div class="flex-1 bg-neutral-50 dark:bg-neutral-900 flex justify-center items-center">
+                        <p class="text-neutral-700 dark:text-neutral-200">Hover over the sidebar to expand</p>
+                    </div>
+                </div>
+            </div>
+
+            <template #code>
+                <pre><code class="code-highlight language-html">&lt;div class="sidebar-container"&gt;
+  &lt;c-navbar
+    mode="vertical"
+    :items="items"
+    :showIcons="true"
+    :collapsed="true"
+    :expandOnHover="true"
+    iconClass="text-blue-500 dark:text-blue-400"
+  /&gt;
+&lt;/div&gt;
+
+&lt;script setup&gt;
+import IconUser from '@components/icons/IconUser.vue';
+import IconStar from '@components/icons/IconStar.vue';
+import IconHeart from '@components/icons/IconHeart.vue';
+
+const items = [
+  {
+    text: 'Home',
+    href: '#',
+    icon: IconUser
+  },
+  {
+    text: 'Components',
+    icon: IconStar,
+    children: [
+      { text: 'Button', href: '#button' },
+      { text: 'Card', href: '#card' },
+      { text: 'Modal', href: '#modal' }
+    ]
+  },
+  {
+    text: 'Users',
+    href: '#',
+    icon: IconUser,
+    active: true
+  },
+  {
+    text: 'Favorites',
+    href: '#favorites',
+    icon: IconHeart
+  }
+];
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
+
+        <h3>Fixed Width Collapsed Sidebar</h3>
+
+        <p>
+            For cases when you don't want the sidebar to expand on hover, you can disable the <code>expandOnHover</code> property.
+            This creates a permanently collapsed navigation bar that displays only icons, ideal for applications where space is at a premium.
+        </p>
+
+        <card-docs>
+            <div>
+                <div
+                    class="flex min-h-[300px] border border-neutral-200 dark:border-neutral-700 rounded-lg overflow-hidden">
+                    <div class="bg-white dark:bg-neutral-800 border-r border-neutral-200 dark:border-neutral-700">
+                        <c-navbar
+                            mode="vertical"
+                            :items="verticalItems"
+                            :showIcons="true"
+                            :collapsed="true"
+                            :expandOnHover="false"
+                            iconClass="text-indigo-500 dark:text-indigo-400"
+                        />
+                    </div>
+                    <div class="flex-1 bg-neutral-50 dark:bg-neutral-900 flex justify-center items-center">
+                        <p class="text-neutral-700 dark:text-neutral-200">Icon-only navigation</p>
+                    </div>
+                </div>
+            </div>
+
+            <template #code>
+                <pre><code class="code-highlight language-html">&lt;div class="sidebar-container"&gt;
+  &lt;c-navbar
+    mode="vertical"
+    :items="items"
+    :showIcons="true"
+    :collapsed="true"
+    :expandOnHover="false"
+    iconClass="text-indigo-500 dark:text-indigo-400"
+  /&gt;
+&lt;/div&gt;
+
+&lt;script setup&gt;
+import IconUser from '@components/icons/IconUser.vue';
+import IconStar from '@components/icons/IconStar.vue';
+import IconHeart from '@components/icons/IconHeart.vue';
+
+const items = [
+  {
+    text: 'Home',
+    href: '#',
+    icon: IconUser
+  },
+  {
+    text: 'Components',
+    icon: IconStar,
+    children: [
+      { text: 'Button', href: '#button' },
+      { text: 'Card', href: '#card' },
+      { text: 'Modal', href: '#modal' }
+    ]
+  },
+  {
+    text: 'Users',
+    href: '#',
+    icon: IconUser,
+    active: true
+  },
+  {
+    text: 'Favorites',
+    href: '#favorites',
+    icon: IconHeart
   }
 ];
 &lt;/script&gt;</code></pre>
