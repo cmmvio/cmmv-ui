@@ -1,3 +1,25 @@
+# [0.2.0](https://github.com/cmmvio/cmmv-ui/compare/v0.1.3...v0.2.0) (2025-03-05)
+
+
+### Bug Fixes
+
+* code review ([b383e77](https://github.com/cmmvio/cmmv-ui/commit/b383e7792aa5ace67eb73cd20e00b03e9a0f082b))
+* code review, chips input ([cd64087](https://github.com/cmmvio/cmmv-ui/commit/cd64087c4c1046ed8a789e9c4c028b9415b567f3))
+* icons ([d9fef67](https://github.com/cmmvio/cmmv-ui/commit/d9fef6713663495f87770cf63dfb40aee758351c))
+* input class ([3212080](https://github.com/cmmvio/cmmv-ui/commit/3212080d893f8f0c398436d40cc1872c319e8710))
+* page pagination ([e08cf09](https://github.com/cmmvio/cmmv-ui/commit/e08cf09bcf6ff8063c3939de7b258f319ecaa88c))
+
+
+### Features
+
+* combobox clearble, search ([8bc40ea](https://github.com/cmmvio/cmmv-ui/commit/8bc40ea0714c52108e0137d5f85d78b614735891))
+* currency input ([dec1bed](https://github.com/cmmvio/cmmv-ui/commit/dec1bed1aa1da5a9f43aad429a768adfbe3c28bc))
+* data filter ([faa1502](https://github.com/cmmvio/cmmv-ui/commit/faa15028c6d04de643917c3f7be9f61664476b00))
+* more brand icons ([7bf0cb9](https://github.com/cmmvio/cmmv-ui/commit/7bf0cb97b7cf1a51bbfc9bbffee376fcc7961459))
+* more flags ([59226c6](https://github.com/cmmvio/cmmv-ui/commit/59226c6063c11d82afea95b166277d9314cb1435))
+
+
+
 ## [0.1.3](https://github.com/cmmvio/cmmv-ui/compare/v0.1.2...v0.1.3) (2025-03-01)
 
 
