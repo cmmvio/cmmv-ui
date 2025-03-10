@@ -57,6 +57,7 @@ declare module 'vue' {
     CSidebar: typeof import('./src/components/layout/CSidebar.vue')['default']
     CSkeleton: typeof import('./src/components/layout/CSkeleton.vue')['default']
     CSlider: typeof import('./src/components/forms/CSlider.vue')['default']
+    CSliderOld: typeof import('./src/components/forms/CSlider-old.vue')['default']
     CSpacer: typeof import('./src/components/layout/CSpacer.vue')['default']
     CSpeedDial: typeof import('./src/components/layout/CSpeedDial.vue')['default']
     CStepper: typeof import('./src/components/layout/CStepper.vue')['default']
