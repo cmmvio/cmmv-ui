@@ -191,7 +191,11 @@ const navbarItems = [
         icon: IconChartBar,
         children: [
             { name: "Chart Bar", uri: "/chart-bar" },
+            { name: "Chart Doughnut", uri: "/chart-doughnut" },
             { name: "Chart Line", uri: "/chart-line" },
+            { name: "Chart Pie", uri: "/chart-pie" },
+            { name: "Chart Polar", uri: "/chart-polar" },
+            { name: "Chart Radar", uri: "/chart-radar" },
             { name: "Data Filter", uri: "/data-filter" },
             { name: "Data Table", uri: "/data-table" },
             { name: "List", uri: "/list" },

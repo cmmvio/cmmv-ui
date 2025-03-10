@@ -20,12 +20,17 @@ import SystemBarPage from "./views/components/SystemBarPage.vue";
 
 //Data
 import ChartBarPage from "./views/data/ChartBarPage.vue";
+import ChartDoughnutPage from './views/data/ChartDoughnutPage.vue';
 import ChartLinePage from "./views/data/ChartLinePage.vue";
+import ChartPiePage from './views/data/ChartPiePage.vue';
+import ChartPolarPage from './views/data/ChartPolarPage.vue';
+import ChartRadarPage from './views/data/ChartRadarPage.vue';
 import DataFilterPage from "./views/data/DataFilterPage.vue";
 import DataTablePage from "./views/data/DataTablePage.vue";
 import ListPage from "./views/data/ListPage.vue";
 import PaginationPage from "./views/data/PaginationPage.vue";
 import TablePage from "./views/data/TablePage.vue";
+
 
 //Editor
 import TreeViewPage from "./views/editor/TreeViewPage.vue";
@@ -100,7 +105,11 @@ const routes = [
 
     //Data
     { path: '/chart-bar', component: ChartBarPage },
+    { path: '/chart-doughnut', component: ChartDoughnutPage },
     { path: '/chart-line', component: ChartLinePage },
+    { path: '/chart-pie', component: ChartPiePage },
+    { path: '/chart-polar', component: ChartPolarPage },
+    { path: '/chart-radar', component: ChartRadarPage },
     { path: '/data-table', component: DataTablePage },
     { path: '/data-filter', component: DataFilterPage },
     { path: '/list', component: ListPage },
