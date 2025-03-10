@@ -288,6 +288,147 @@ const clearableValue = ref("");
             </template>
         </card-docs>
 
+        <!-- Input Masks -->
+        <h3>Input Masks</h3>
+
+        <p>The <code>CInput</code> component supports input masks using the <code>vue-the-mask</code> library. Masks help to automatically format user input for specific patterns such as phone numbers, documents, dates, and other formats.</p>
+
+        <table-docs>
+            <thead>
+                <tr>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Prop</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Type</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Default</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="border-b px-4 py-2">mask</td>
+                    <td class="border-b px-4 py-2">String | Array | Object | Function</td>
+                    <td class="border-b px-4 py-2">null</td>
+                    <td class="border-b px-4 py-2">
+                        Mask pattern to format input. Uses <code>vue-the-mask</code> to apply formats for phone numbers, documents, dates, etc.
+                        <br><br>
+                        The mask characters are:
+                        <ul class="pl-4 list-disc">
+                            <li><code>#</code> - Represents a number (0-9)</li>
+                            <li><code>A</code> - Represents a letter (a-z, A-Z)</li>
+                            <li><code>S</code> - Represents a letter or number</li>
+                            <li><code>N</code> - Represents a number or space</li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table-docs>
+
+        <card-docs>
+            <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+                <div class="w-full max-w-[400px]">
+                    <c-input v-model="phoneMask" id="phone-mask" label="Phone" mask="(##) #####-####" placeholder="(12) 34567-8901" class="mb-4" />
+                    <c-input v-model="cpfMask" id="cpf-mask" label="CPF (Brazilian ID)" mask="###.###.###-##" placeholder="123.456.789-01" class="mb-4" />
+                    <c-input v-model="cnpjMask" id="cnpj-mask" label="CNPJ (Brazilian Company ID)" mask="##.###.###/####-##" placeholder="12.345.678/0001-90" class="mb-4" />
+                    <c-input v-model="dateMask" id="date-mask" label="Date" mask="##/##/####" placeholder="DD/MM/YYYY" class="mb-4" />
+                    <c-input v-model="cepMask" id="cep-mask" label="ZIP Code" mask="#####-###" placeholder="12345-678" class="mb-4" />
+                    <c-input v-model="creditCardMask" id="creditcard-mask" label="Credit Card" mask="#### #### #### ####" placeholder="1234 5678 9012 3456" class="mb-4" />
+                    <c-input v-model="timeMask" id="time-mask" label="Time" mask="##:##" placeholder="HH:MM" class="mb-4" />
+                    <c-input v-model="licenseMask" id="license-mask" label="License Plate" mask="AAA-####" placeholder="ABC-1234" class="mb-4" />
+                </div>
+            </div>
+
+            <template #code>
+                <pre><code class="code-highlight language-html">&lt;template&gt;
+    &lt;!-- Phone number mask --&gt;
+    &lt;c-input v-model="phoneMask" label="Phone" mask="(##) #####-####" placeholder="(12) 34567-8901" /&gt;
+
+    &lt;!-- CPF (Brazilian ID) mask --&gt;
+    &lt;c-input v-model="cpfMask" label="CPF (Brazilian ID)" mask="###.###.###-##" placeholder="123.456.789-01" /&gt;
+
+    &lt;!-- CNPJ (Brazilian Company ID) mask --&gt;
+    &lt;c-input v-model="cnpjMask" label="CNPJ (Brazilian Company ID)" mask="##.###.###/####-##" placeholder="12.345.678/0001-90" /&gt;
+
+    &lt;!-- Date mask --&gt;
+    &lt;c-input v-model="dateMask" label="Date" mask="##/##/####" placeholder="DD/MM/YYYY" /&gt;
+
+    &lt;!-- ZIP Code mask --&gt;
+    &lt;c-input v-model="cepMask" label="ZIP Code" mask="#####-###" placeholder="12345-678" /&gt;
+
+    &lt;!-- Credit card mask --&gt;
+    &lt;c-input v-model="creditCardMask" label="Credit Card" mask="#### #### #### ####" placeholder="1234 5678 9012 3456" /&gt;
+
+    &lt;!-- Time mask --&gt;
+    &lt;c-input v-model="timeMask" label="Time" mask="##:##" placeholder="HH:MM" /&gt;
+
+    &lt;!-- License plate mask --&gt;
+    &lt;c-input v-model="licenseMask" label="License Plate" mask="AAA-####" placeholder="ABC-1234" /&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref } from "vue";
+
+const phoneMask = ref("");
+const cpfMask = ref("");
+const cnpjMask = ref("");
+const dateMask = ref("");
+const cepMask = ref("");
+const creditCardMask = ref("");
+const timeMask = ref("");
+const licenseMask = ref("");
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
+
+        <!-- Dynamic Masks -->
+        <h4>Dynamic Masks</h4>
+
+        <p>You can also use dynamic masks that change as the user types. For example, a mask that can accept both CPF and CNPJ depending on the number of characters entered.</p>
+
+        <card-docs>
+            <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
+                <div class="w-full max-w-[400px]">
+                    <c-input v-model="dynamicMask" id="dynamic-mask" label="CPF or CNPJ" :mask="documentMask" placeholder="123.456.789-01 or 12.345.678/0001-90" class="mb-4" />
+                    <c-input v-model="phoneInternationalMask" id="phone-international" label="International Phone" :mask="phoneMaskFn" placeholder="+1 (234) 567-8901" class="mb-4" />
+                </div>
+            </div>
+
+            <template #code>
+                <pre><code class="code-highlight language-html">&lt;template&gt;
+    &lt;!-- Dynamic mask for CPF or CNPJ --&gt;
+    &lt;c-input v-model="dynamicMask" label="CPF or CNPJ" :mask="documentMask" placeholder="123.456.789-01 or 12.345.678/0001-90" /&gt;
+
+    &lt;!-- Dynamic mask for international phone --&gt;
+    &lt;c-input v-model="phoneInternationalMask" label="International Phone" :mask="phoneMaskFn" placeholder="+1 (234) 567-8901" /&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref, computed } from "vue";
+
+const dynamicMask = ref("");
+
+// Mask that adapts based on user input length
+const documentMask = computed(() => {
+    return dynamicMask.value.length > 11
+        ? "##.###.###/####-##" // CNPJ format
+        : "###.###.###-##"; // CPF format
+});
+
+const phoneInternationalMask = ref("");
+
+// Function for international phone mask
+const phoneMaskFn = (value) => {
+    if (value.startsWith("+1")) {
+        return "+# (###) ###-####"; // US format
+    } else if (value.startsWith("+44")) {
+        return "+## ## #### ####"; // UK format
+    } else if (value.startsWith("+55")) {
+        return "+## (##) #####-####"; // Brazil format
+    }
+    return "+## ### ### ####"; // Generic format
+};
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
+
         <!-- Loading -->
         <h3>Loading</h3>
 
@@ -603,7 +744,7 @@ const currencyOptions = [
 </style>
 
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import BaseLayout from "../../layout/BaseLayout.vue";
 import TableDocs from "../../components/TableDocs.vue";
 import PagePagination from "../../layout/PagePagination.vue";
@@ -623,6 +764,31 @@ const floatingLabelValue = ref("");
 const searchQuery = ref("");
 const amountValue = ref("");
 const selectedCurrency = ref("USD");
+
+const phoneMask = ref("");
+const cpfMask = ref("");
+const cnpjMask = ref("");
+const dateMask = ref("");
+const cepMask = ref("");
+const creditCardMask = ref("");
+const timeMask = ref("");
+const licenseMask = ref("");
+
+const dynamicMask = ref("");
+const documentMask = ref(['###.###.###-##', '##.###.###/####-##']);
+
+const phoneInternationalMask = ref("");
+const phoneMaskFn = (value) => {
+    if (value.startsWith("+1")) {
+        return "+# (###) ###-####";
+    } else if (value.startsWith("+44")) {
+        return "+## ## #### ####";
+    } else if (value.startsWith("+55")) {
+        return "+## (##) #####-####";
+    }
+    return "+## ### ### ####";
+};
+
 const currencyOptions = [
     { label: "USD", value: "USD" },
     { label: "EUR", value: "EUR" },
@@ -631,7 +797,6 @@ const currencyOptions = [
 ];
 
 function handleSearch() {
-    // Handle search functionality
     console.log("Searching for:", searchQuery.value);
 }
 </script>

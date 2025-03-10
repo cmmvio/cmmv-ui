@@ -27,7 +27,30 @@
                 { 'pt-4': !hasIcon, 'pb-3': hasIcon, 'pt-3': hasIcon, 'px-2': currencyMask }, shadow]"
                 class="c-input-field block w-full border pb-1 outline-none" @keyup="handleInput"
                 @change="handleInput" @focus="activateLabel" @blur="deactivateLabel" :disabled="disabled"
-                :aria-invalid="hasError" v-money3="currencyMask ? currencyMask : undefined" />
+                :aria-invalid="hasError"
+                v-money3="currencyMask ? currencyMask : undefined"
+                v-if="currencyMask" />
+
+            <input :id="id" :type="inputType" :name="name" :placeholder="isActive ? placeholder : ''"
+                :value="modelValue"
+                :class="[sizes[size], roundedStyles[rounded], variantStyles[variant], bgColor ? bgColor : variantColors[variant], textColor,
+                { 'ring-red-500 ring-2': hasError, 'opacity-30': disabled, 'cursor-not-allowed': disabled, 'pl-12': hasIcon }, customClass,
+                { 'pt-4': !hasIcon, 'pb-3': hasIcon, 'pt-3': hasIcon }, shadow]"
+                class="c-input-field block w-full border pb-1 outline-none" @keyup="handleInput"
+                @change="handleInput" @focus="activateLabel" @blur="deactivateLabel" :disabled="disabled"
+                :aria-invalid="hasError"
+                v-mask="mask || undefined"
+                v-else-if="mask" />
+
+            <input :id="id" :type="inputType" :name="name" :placeholder="isActive ? placeholder : ''"
+                :value="modelValue"
+                :class="[sizes[size], roundedStyles[rounded], variantStyles[variant], bgColor ? bgColor : variantColors[variant], textColor,
+                { 'ring-red-500 ring-2': hasError, 'opacity-30': disabled, 'cursor-not-allowed': disabled, 'pl-12': hasIcon }, customClass,
+                { 'pt-4': !hasIcon, 'pb-3': hasIcon, 'pt-3': hasIcon }, shadow]"
+                class="c-input-field block w-full border pb-1 outline-none" @keyup="handleInput"
+                @change="handleInput" @focus="activateLabel" @blur="deactivateLabel" :disabled="disabled"
+                :aria-invalid="hasError"
+                v-else />
 
             <button v-if="clearable && currentValue !== ''" type="button"
                 class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-400 hover:text-gray-600"
@@ -126,6 +149,7 @@ input[type=number] {
 
 <script lang="ts" setup>
 import { ref, computed, defineExpose, watch, useSlots } from 'vue';
+import { mask as vMask } from 'vue-the-mask';
 
 const slots = useSlots();
 const hasIcon = computed(() => !!slots.icon);
