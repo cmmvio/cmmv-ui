@@ -1,7 +1,24 @@
 <template>
-    <c-icon>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-            <path fill-rule="evenodd" d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z" clip-rule="evenodd" />
-        </svg>
-    </c-icon>
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" :width="size" :height="size" :class="colorClass">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+  </svg>
 </template>
+
+<script setup lang="ts">
+import { computed } from 'vue';
+
+const props = defineProps({
+  size: {
+    type: [String, Number],
+    default: 24
+  },
+  color: {
+    type: String,
+    default: 'currentColor'
+  }
+});
+
+const colorClass = computed(() => {
+  return props.color.startsWith('text-') ? props.color : '';
+});
+</script>

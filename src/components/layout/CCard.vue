@@ -11,7 +11,7 @@
         <c-progress-bar class="top-0 absolute rounded-t-md" indeterminate :height="5" :fillColor="loadingFillColor"
             v-if="loading" />
 
-        <slot name="header">
+        <slot v-if="$slots.header" name="header">
             <div v-if="title || subtitle || closable"
                 class="px-4 py-3 pb-0 flex justify-between items-center relative rounded-t-md"
                 :class="[bgHeaderColor ? bgHeaderColor : bgColor, bgBorderColor]">
@@ -31,7 +31,7 @@
             </div>
         </slot>
 
-        <slot name="content" class="relative">
+        <slot v-if="$slots.content" name="content" class="relative">
             <div class="w-full" :class="[textSizes[textSize], padding]">
                 <div :class="customClass">
                     <slot></slot>
@@ -39,7 +39,7 @@
             </div>
         </slot>
 
-        <slot name="actions">
+        <slot v-if="$slots.actions" name="actions">
             <div v-if="actions" class="flex justify-end space-x-2 px-4 py-3 border-t"
                 :class="[bgBorderColor ? bgBorderColor : borderColor]">
                 <slot name="action-buttons"></slot>

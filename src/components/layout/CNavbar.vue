@@ -35,11 +35,11 @@
                 }
             ]">
                 <slot name="items">
-                    <ul class="flex flex-col lg:flex-row lg:gap-x-8 p-3 lg:p-0 items-center">
+                    <ul class="flex flex-col lg:flex-row lg:gap-x-4 p-3 lg:p-0 items-center">
                         <template v-for="(item, index) in items" :key="index">
                             <li v-if="!item.children" class="relative">
                                 <a :href="item.href" :class="[
-                                    'text-sm font-semibold flex items-center gap-1 py-1 px-2 rounded-md',
+                                    'text-sm flex items-center gap-1 py-1 px-2 rounded-md',
                                     item.active ? activeClass : itemClass,
                                     hoverBgColor
                                 ]" :title="item.title">
@@ -50,7 +50,7 @@
                             </li>
 
                             <li v-else class="relative">
-                                <button @click="toggleDropdown(index)" :class="['text-sm font-semibold flex items-center gap-1 py-1 px-2 rounded-md w-full text-left',
+                                <button @click="toggleDropdown(index)" :class="['text-sm flex items-center gap-1 py-1 px-2 rounded-md w-full text-left',
                                     openDropdownIndex === index ? activeClass : itemClass,
                                     hoverBgColor]" :title="item.title">
                                     <component v-if="showIcons && item.icon" :is="item.icon"

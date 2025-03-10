@@ -1,17 +1,17 @@
 <template>
     <div
         class="inline-flex items-center justify-center select-none"
-        :class="{
+        :class="[{
             'inline-flex': inline,
             'absolute': floating === true,
             'rounded-full': dot,
-        }"
+        }]"
         :style="!inline ? badgeStyle : {}"
     >
         <span
             v-if="!dot"
             class="text-xs flex items-center justify-center px-1 py-0.2"
-            :class="[bgColor, textColor, rounded, customClass]"
+            :class="[bgColor, textColor, rounded, customClass, borderColor]"
         >
             <span v-if="!$slots.default">{{ content }}</span>
             <slot v-else></slot>
@@ -56,6 +56,10 @@ const props = defineProps({
     textColor: {
         type: String,
         default: "text-white",
+    },
+    borderColor: {
+        type: String,
+        default: "",
     },
     inline: {
         type: Boolean,

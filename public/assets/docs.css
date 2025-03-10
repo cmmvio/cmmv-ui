@@ -278,7 +278,6 @@ h3 {
     text-align: left;
 }
 
-/* Garantir que os elementos dentro dos exemplos não sejam afetados pelos estilos do context-html */
 .context-html .card-docs li,
 .card-docs li,
 .context-html .c-card li,
@@ -292,7 +291,6 @@ h3 {
     margin-left: 0 !important;
 }
 
-/* Remover estilo de link dos componentes dentro de exemplos */
 .context-html .card-docs a,
 .card-docs a,
 .context-html .c-navbar a,
@@ -306,7 +304,6 @@ h3 {
     color: inherit !important;
 }
 
-/* Regras normais para links na documentação */
 .context-html>a {
     color: #6495ED;
     text-decoration: underline;
@@ -317,7 +314,6 @@ h3 {
 }
 
 
-/* Scrollbar */
 pre code::-webkit-scrollbar {
     width: 8px;
     height: 8px;
@@ -336,7 +332,6 @@ pre code::-webkit-scrollbar-thumb:hover {
     background: #8d8d8d;
 }
 
-/* Backdrop blur for navbar */
 @supports ((-webkit-backdrop-filter: var(--tw)) or (backdrop-filter: var(--tw))) {
     html:not(.plugin-redoc) .navbar:not(.navbar-sidebar--show) {
         -webkit-backdrop-filter: blur(12px);
@@ -345,7 +340,7 @@ pre code::-webkit-scrollbar-thumb:hover {
     }
 }
 
-/* Syntax Highlighting - Light Mode */
+
 .light pre code.hljs {
     display: block;
     overflow-x: auto;

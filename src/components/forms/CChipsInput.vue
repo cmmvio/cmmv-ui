@@ -34,6 +34,7 @@
                             :key="index"
                             :bgColor="chipBgColor"
                             :textColor="chipTextColor"
+                            :borderColor="chipBorderColor"
                             rounded="rounded-md"
                             customClass="px-2 py-0.5 m-0.5 shrink-0 text-xs"
                             deletable
@@ -58,7 +59,7 @@
                     </div>
 
                     <button v-if="clearable && selectedChips.length > 0 && !disabled" type="button"
-                        class="text-neutral-400 hover:text-neutral-600 flex items-center justify-center px-2 self-start shrink-0 mt-1 mr-1"
+                        class="text-neutral-400 hover:text-neutral-600 flex items-center justify-center px-2 pr-1 self-start shrink-0 mt-1"
                         @click.stop="clearAll">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5">
                             <path fill-rule="evenodd"
@@ -161,6 +162,11 @@ const props = defineProps({
         required: false,
         default: ""
     },
+    chipBorderColor: {
+        type: String,
+        required: false,
+        default: "border border-blue-300 dark:border-blue-700"
+    },
     chipBgColor: {
         type: String,
         required: false,
@@ -170,11 +176,6 @@ const props = defineProps({
         type: String,
         required: false,
         default: "text-blue-800 dark:text-blue-300"
-    },
-    borderColor: {
-        type: String,
-        required: false,
-        default: "focus:ring focus:ring-neutral-700 focus:ring-opacity-50"
     },
     allowCustom: {
         type: Boolean,

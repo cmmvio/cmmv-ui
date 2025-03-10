@@ -1,5 +1,8 @@
 <template>
-    <div class="c-button-group inline-flex rounded-md isolate justify-center" :class="{ 'flex-col': vertical }">
+    <div
+        class="c-button-group inline-flex rounded-md isolate justify-center border"
+        :class="[{ 'flex-col': vertical }, borderColor]"
+    >
         <slot></slot>
     </div>
 </template>
@@ -37,10 +40,13 @@ const props = defineProps({
     textStroke: {
         type: Boolean,
         default: false
+    },
+    borderColor: {
+        type: String,
+        default: 'border-gray-300 dark:border-gray-700'
     }
 });
 
-// Create a reactive object for the button group context
 const buttonGroupContext = reactive({
     inGroup: true,
     size: props.size,
@@ -52,7 +58,6 @@ const buttonGroupContext = reactive({
     textStroke: props.textStroke
 });
 
-// Watch for changes to props and update the context
 watch(() => props.size, (newVal) => { buttonGroupContext.size = newVal });
 watch(() => props.variant, (newVal) => { buttonGroupContext.variant = newVal });
 watch(() => props.bgColor, (newVal) => { buttonGroupContext.bgColor = newVal });
@@ -61,7 +66,6 @@ watch(() => props.shadow, (newVal) => { buttonGroupContext.shadow = newVal });
 watch(() => props.vertical, (newVal) => { buttonGroupContext.vertical = newVal });
 watch(() => props.textStroke, (newVal) => { buttonGroupContext.textStroke = newVal });
 
-// Provide context to child buttons
 provide('buttonGroup', buttonGroupContext);
 </script>
 

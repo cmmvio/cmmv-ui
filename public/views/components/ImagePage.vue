@@ -20,9 +20,9 @@
             <tbody>
                 <tr>
                     <td class="border-b px-4 py-2">src</td>
-                    <td class="border-b px-4 py-2">String</td>
+                    <td class="border-b px-4 py-2">[String, Array]</td>
                     <td class="border-b px-4 py-2">""</td>
-                    <td class="border-b px-4 py-2">URL of the image to display.</td>
+                    <td class="border-b px-4 py-2">URL of the image to display, or array of image URLs for gallery mode.</td>
                 </tr>
                 <tr>
                     <td class="border-b px-4 py-2">alt</td>
@@ -131,6 +131,24 @@
                     <td class="border-b px-4 py-2">[String, Number]</td>
                     <td class="border-b px-4 py-2">null</td>
                     <td class="border-b px-4 py-2">Sets a fixed aspect ratio for the image container (e.g., 16/9, 4/3).</td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">showGalleryControls</td>
+                    <td class="border-b px-4 py-2">Boolean</td>
+                    <td class="border-b px-4 py-2">true</td>
+                    <td class="border-b px-4 py-2">Shows or hides the navigation arrows in gallery mode.</td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">showGalleryIndicators</td>
+                    <td class="border-b px-4 py-2">Boolean</td>
+                    <td class="border-b px-4 py-2">true</td>
+                    <td class="border-b px-4 py-2">Shows or hides the pagination indicators in gallery mode.</td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">startIndex</td>
+                    <td class="border-b px-4 py-2">Number</td>
+                    <td class="border-b px-4 py-2">0</td>
+                    <td class="border-b px-4 py-2">Initial image index to display in gallery mode.</td>
                 </tr>
             </tbody>
         </table-docs>
@@ -533,6 +551,53 @@
             </template>
         </card-docs>
 
+        <h3>Image Carousel Gallery</h3>
+
+        <p>
+            The <code>CImage</code> component now supports a carousel gallery mode when provided with an array of images instead of a single string URL.
+            This mode automatically adds navigation arrows and pagination indicators, similar to the Instagram-style dialog example.
+        </p>
+
+        <card-docs>
+            <div class="mx-auto px-4 py-5 sm:p-6">
+                <div class="max-w-lg mx-auto">
+                    <c-image
+                        :src="[
+                            '/images/freepik__the-style-is-candid-image-photography-with-natural__78231.jpeg',
+                            'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?q=80&w=800',
+                            'https://images.unsplash.com/photo-1433086966358-54859d0ed716?q=80&w=800',
+                            'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=800'
+                        ]"
+                        alt="Landscape gallery"
+                        :aspectRatio="16/9"
+                        :cover="true"
+                        rounded="md"
+                        caption="Use the arrows or dots to navigate between images"
+                    />
+                </div>
+            </div>
+
+            <template #code>
+                <pre><code class="code-highlight language-html">&lt;template&gt;
+    &lt;div class="max-w-lg mx-auto"&gt;
+        &lt;c-image
+            :src="[
+                '/path/to/image1.jpg',
+                '/path/to/image2.jpg',
+                '/path/to/image3.jpg',
+                '/path/to/image4.jpg'
+            ]"
+            alt="Landscape gallery"
+            :aspectRatio="16/9"
+            :cover="true"
+            rounded="md"
+            caption="Use the arrows or dots to navigate between images"
+        /&gt;
+    &lt;/div&gt;
+&lt;/template&gt;</code></pre>
+            </template>
+        </card-docs>
+
         <PagePagination previous="Icon" previousLink="/icon" next="Loader" nextLink="/loader" />
     </BaseLayout>
 </template>
@@ -544,6 +609,14 @@ import TableDocs from "../../components/TableDocs.vue";
 import PagePagination from "../../layout/PagePagination.vue";
 import CardDocs from "../../components/CardDocs.vue";
 import CImage from "@components/components/CImage.vue";
+
+// Array of image URLs for the carousel examples (mantido para referência)
+const carouselImages = ref([
+    '/images/freepik__the-style-is-candid-image-photography-with-natural__78231.jpeg',
+    'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?q=80&w=800',
+    'https://images.unsplash.com/photo-1433086966358-54859d0ed716?q=80&w=800',
+    'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=800'
+]);
 </script>
 
 <style scoped>

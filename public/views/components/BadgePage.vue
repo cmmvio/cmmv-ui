@@ -126,28 +126,52 @@
 
         <card-docs>
             <div class="flex flex-wrap items-center justify-center gap-2">
-                <c-badge bgColor="bg-blue-100 dark:bg-blue-900" textColor="text-blue-800 dark:text-blue-300"
-                    rounded="rounded-md" customClass="px-2.5 py-0.5">
+                <c-badge
+                    bgColor="bg-blue-100 dark:bg-blue-900"
+                    textColor="text-blue-800 dark:text-blue-300"
+                    rounded="rounded-md" customClass="px-2.5 py-0.5"
+                    borderColor="border border-blue-300 dark:border-blue-700"
+                >
                     Blue
                 </c-badge>
 
-                <c-badge bgColor="bg-neutral-100 dark:bg-neutral-900" textColor="text-neutral-800 dark:text-neutral-300"
-                    rounded="rounded-md" customClass="px-2.5 py-0.5">
+                <c-badge
+                    bgColor="bg-neutral-100 dark:bg-neutral-900"
+                    textColor="text-neutral-800 dark:text-neutral-300"
+                    rounded="rounded-md"
+                    customClass="px-2.5 py-0.5"
+                    borderColor="border border-neutral-300 dark:border-neutral-700"
+                >
                     Dark
                 </c-badge>
 
-                <c-badge bgColor="bg-red-100 dark:bg-red-900" textColor="text-red-800 dark:text-red-300"
-                    rounded="rounded-md" customClass="px-2.5 py-0.5">
+                <c-badge
+                    bgColor="bg-red-100 dark:bg-red-900"
+                    textColor="text-red-800 dark:text-red-300"
+                    rounded="rounded-md"
+                    customClass="px-2.5 py-0.5"
+                    borderColor="border border-red-300 dark:border-red-700"
+                >
                     Red
                 </c-badge>
 
-                <c-badge bgColor="bg-green-100 dark:bg-green-900" textColor="text-green-800 dark:text-green-300"
-                    rounded="rounded-md" customClass="px-2.5 py-0.5">
+                <c-badge
+                    bgColor="bg-green-100 dark:bg-green-900"
+                    textColor="text-green-800 dark:text-green-300"
+                    rounded="rounded-md"
+                    customClass="px-2.5 py-0.5"
+                    borderColor="border border-green-300 dark:border-green-700"
+                >
                     Green
                 </c-badge>
 
-                <c-badge bgColor="bg-yellow-100 dark:bg-yellow-900" textColor="text-yellow-800 dark:text-yellow-300"
-                    rounded="rounded-md" customClass="px-2.5 py-0.5">
+                <c-badge
+                    bgColor="bg-yellow-100 dark:bg-yellow-900"
+                    textColor="text-yellow-800 dark:text-yellow-300"
+                    rounded="rounded-md"
+                    customClass="px-2.5 py-0.5"
+                    borderColor="border border-yellow-300 dark:border-yellow-700"
+                >
                     Yellow
                 </c-badge>
             </div>
@@ -350,6 +374,7 @@
                 <c-badge
                     bgColor="bg-blue-100 dark:bg-blue-900"
                     textColor="text-blue-800 dark:text-blue-300"
+                    borderColor="border border-blue-300 dark:border-blue-700"
                     rounded="rounded-md"
                     customClass="px-2.5 py-0.5"
                     deletable
@@ -361,6 +386,7 @@
                 <c-badge
                     bgColor="bg-green-100 dark:bg-green-900"
                     textColor="text-green-800 dark:text-green-300"
+                    borderColor="border border-green-300 dark:border-green-700"
                     rounded="rounded-md"
                     customClass="px-2.5 py-0.5"
                     deletable
@@ -373,6 +399,7 @@
                     content="Tag"
                     bgColor="bg-neutral-100 dark:bg-neutral-900"
                     textColor="text-neutral-800 dark:text-neutral-300"
+                    borderColor="border border-neutral-300 dark:border-neutral-700"
                     rounded="rounded-md"
                     customClass="px-2.5 py-0.5"
                     deletable

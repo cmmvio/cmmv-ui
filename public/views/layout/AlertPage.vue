@@ -141,19 +141,19 @@
 
         <card-docs>
             <div class="px-6">
-                <c-alert type="warning" outlined>
+                <c-alert type="warning" outlined class="mb-4">
                     This is an outlined warning alert.
                 </c-alert>
 
-                <c-alert type="success" outlined>
+                <c-alert type="success" outlined class="mb-4">
                     This is an outlined success alert.
                 </c-alert>
 
-                <c-alert type="error" outlined>
+                <c-alert type="error" outlined class="mb-4">
                     This is an outlined error alert.
                 </c-alert>
 
-                <c-alert type="info" outlined>
+                <c-alert type="info" outlined class="mb-4">
                     This is an outlined info alert.
                 </c-alert>
             </div>

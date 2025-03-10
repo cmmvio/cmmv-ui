@@ -27,6 +27,9 @@ import ListPage from "./views/data/ListPage.vue";
 import PaginationPage from "./views/data/PaginationPage.vue";
 import TablePage from "./views/data/TablePage.vue";
 
+//Editor
+import TreeViewPage from "./views/editor/TreeViewPage.vue";
+
 //Layout
 import AccordionPage from "./views/layout/AccordionPage.vue";
 import AlertPage from "./views/layout/AlertPage.vue";
@@ -102,6 +105,9 @@ const routes = [
     { path: '/list', component: ListPage },
     { path: '/pagination', component: PaginationPage },
     { path: '/table', component: TablePage },
+
+    //Editor
+    { path: '/tree-view', component: TreeViewPage },
 
 	//Layout
     { path: '/accordion', component: AccordionPage },

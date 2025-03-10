@@ -108,6 +108,12 @@
                     <td class="border-b px-4 py-2">Custom text color class for the input text.</td>
                 </tr>
                 <tr>
+                    <td class="border-b px-4 py-2">chipBorderColor</td>
+                    <td class="border-b px-4 py-2">String</td>
+                    <td class="border-b px-4 py-2"><code>"border border-blue-300 dark:border-blue-700"</code></td>
+                    <td class="border-b px-4 py-2">Border color for the chip badges.</td>
+                </tr>
+                <tr>
                     <td class="border-b px-4 py-2">chipBgColor</td>
                     <td class="border-b px-4 py-2">String</td>
                     <td class="border-b px-4 py-2"><code>"bg-blue-100 dark:bg-blue-900"</code></td>
@@ -297,6 +303,7 @@ const preselectedTags = ref([
                         rounded="full"
                         chipBgColor="bg-purple-100 dark:bg-purple-900"
                         chipTextColor="text-purple-800 dark:text-purple-300"
+                        chipBorderColor="border border-purple-300 dark:border-purple-700"
                     />
                 </div>
             </div>
