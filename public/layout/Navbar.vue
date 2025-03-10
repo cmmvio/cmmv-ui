@@ -216,6 +216,7 @@ const navbarItems = [
             { name: "Input", uri: "/input" },
             { name: "Number Input", uri: "/number-input" },
             { name: "OTP Input", uri: "/otp-input" },
+            //{ name: "Phone Input", uri: "/phone-input" },
             { name: "Radio", uri: "/radio" },
             { name: "Slider", uri: "/slider" },
             { name: "Textarea", uri: "/textarea" },

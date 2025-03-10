@@ -50,6 +50,7 @@ declare module 'vue' {
     COtpInput: typeof import('./src/components/forms/COtpInput.vue')['default']
     COverlay: typeof import('./src/components/overlays/COverlay.vue')['default']
     CPagination: typeof import('./src/components/data/CPagination.vue')['default']
+    CPhoneInput: typeof import('./src/components/forms/CPhoneInput.vue')['default']
     CProgressBar: typeof import('./src/components/components/CProgressBar.vue')['default']
     CProgressCircular: typeof import('./src/components/components/CProgressCircular.vue')['default']
     CRadio: typeof import('./src/components/forms/CRadio.vue')['default']
