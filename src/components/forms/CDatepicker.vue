@@ -23,69 +23,204 @@
 
             <transition name="dropdown">
                 <div v-if="showCalendar" ref="calendarRef"
-                    class="absolute z-50 mt-2 bg-white dark:bg-neutral-800 rounded-md shadow-lg border border-neutral-300 dark:border-neutral-900 p-2 w-72 calendar">
-                    <div class="flex justify-between items-center mb-2">
-                        <button
-                            class="p-1 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-colors text-neutral-700 dark:text-neutral-300"
-                            @click.stop="prevMonth">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <polyline points="15 18 9 12 15 6"></polyline>
-                            </svg>
-                        </button>
+                    class="absolute z-50 mt-2 bg-white dark:bg-neutral-800 rounded-md shadow-lg border border-neutral-300 dark:border-neutral-900 p-2 calendar"
+                    :class="{ 'w-72': !range, 'w-[36rem]': range }">
 
-                        <div class="flex items-center space-x-1">
-                            <select v-model="currentMonth"
-                                class="appearance-none bg-transparent px-1 py-0.5 rounded hover:bg-neutral-100 dark:hover:bg-neutral-700 cursor-pointer text-neutral-900 dark:text-white"
-                                @change.stop="updateCalendar" @click.stop>
-                                <option v-for="(month, index) in monthNames" :key="index" :value="index">
-                                    {{ month }}
-                                </option>
-                            </select>
+                    <div v-if="range" class="flex justify-between items-start space-x-4">
+                        <!-- Start Date Calendar -->
+                        <div class="w-1/2">
+                            <div class="flex justify-between items-center mb-2">
+                                <button
+                                    class="p-1 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-colors text-neutral-700 dark:text-neutral-300"
+                                    @click.stop="prevMonth('start')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="15 18 9 12 15 6"></polyline>
+                                    </svg>
+                                </button>
 
-                            <select v-model="currentYear"
-                                class="appearance-none bg-transparent px-1 py-0.5 rounded hover:bg-neutral-100 dark:hover:bg-neutral-700 cursor-pointer text-neutral-900 dark:text-white"
-                                @change.stop="updateCalendar" @click.stop>
-                                <option v-for="year in yearRange" :key="year" :value="year">
-                                    {{ year }}
-                                </option>
-                            </select>
+                                <div class="flex items-center space-x-1">
+                                    <select v-model="startCalendarMonth"
+                                        class="appearance-none bg-transparent px-1 py-0.5 rounded hover:bg-neutral-100 dark:hover:bg-neutral-700 cursor-pointer text-neutral-900 dark:text-white"
+                                        @change.stop="updateCalendar('start')" @click.stop>
+                                        <option v-for="(month, index) in monthNames" :key="index" :value="index">
+                                            {{ month }}
+                                        </option>
+                                    </select>
+
+                                    <select v-model="startCalendarYear"
+                                        class="appearance-none bg-transparent px-1 py-0.5 rounded hover:bg-neutral-100 dark:hover:bg-neutral-700 cursor-pointer text-neutral-900 dark:text-white"
+                                        @change.stop="updateCalendar('start')" @click.stop>
+                                        <option v-for="year in yearRange" :key="year" :value="year">
+                                            {{ year }}
+                                        </option>
+                                    </select>
+                                </div>
+
+                                <button
+                                    class="p-1 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-colors text-neutral-700 dark:text-neutral-300"
+                                    @click.stop="nextMonth('start')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="9 18 15 12 9 6"></polyline>
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <div class="text-xs text-neutral-600 dark:text-neutral-400 mb-2 text-center">
+                                {{ startDate ? formatDate(startDate, 'dd/MM/yyyy') : 'Start date' }}
+                            </div>
+
+                            <div class="grid grid-cols-7 gap-1 mb-1">
+                                <div v-for="day in weekDays" :key="day"
+                                    class="text-center text-xs font-medium text-neutral-500 dark:text-neutral-400 py-1">
+                                    {{ day }}
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-7 gap-1">
+                                <div v-for="(day, index) in startCalendarDays" :key="index"
+                                    class="text-center py-1 text-sm rounded-md transition-colors" :class="[
+                                        day.isCurrentMonth && isDateInRange(day.date) ? 'cursor-pointer hover:bg-neutral-100 dark:hover:bg-neutral-700' : 'text-neutral-400 dark:text-neutral-500 cursor-not-allowed opacity-50',
+                                        isSelectedDate(day.date) ? 'bg-blue-600 text-white hover:bg-blue-700' : '',
+                                        isInSelectedRange(day.date) ? 'bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200' : '',
+                                        isToday(day.date) && !isSelectedDate(day.date) && !isInSelectedRange(day.date) ? 'border border-blue-600 dark:border-blue-500' : '',
+                                        !isSelectedDate(day.date) && !isInSelectedRange(day.date) && day.isCurrentMonth && isDateInRange(day.date) ? 'text-neutral-900 dark:text-white' : ''
+                                    ]" @click.stop="day.isCurrentMonth && isDateInRange(day.date) && selectStartDate(day.date)">
+                                    {{ day.day }}
+                                </div>
+                            </div>
                         </div>
 
-                        <button
-                            class="p-1 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-colors text-neutral-700 dark:text-neutral-300"
-                            @click.stop="nextMonth">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <polyline points="9 18 15 12 9 6"></polyline>
-                            </svg>
-                        </button>
-                    </div>
+                        <!-- End Date Calendar -->
+                        <div class="w-1/2">
+                            <div class="flex justify-between items-center mb-2">
+                                <button
+                                    class="p-1 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-colors text-neutral-700 dark:text-neutral-300"
+                                    @click.stop="prevMonth('end')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="15 18 9 12 15 6"></polyline>
+                                    </svg>
+                                </button>
 
-                    <div v-if="range" class="flex justify-between mb-2 text-xs text-neutral-600 dark:text-neutral-400">
-                        <span>{{ startDate ? formatDate(startDate, 'dd/MM/yyyy') : 'Start date' }}</span>
-                        <span>{{ endDate ? formatDate(endDate, 'dd/MM/yyyy') : 'End date' }}</span>
-                    </div>
+                                <div class="flex items-center space-x-1">
+                                    <select v-model="endCalendarMonth"
+                                        class="appearance-none bg-transparent px-1 py-0.5 rounded hover:bg-neutral-100 dark:hover:bg-neutral-700 cursor-pointer text-neutral-900 dark:text-white"
+                                        @change.stop="updateCalendar('end')" @click.stop>
+                                        <option v-for="(month, index) in monthNames" :key="index" :value="index">
+                                            {{ month }}
+                                        </option>
+                                    </select>
 
-                    <div class="grid grid-cols-7 gap-1 mb-1">
-                        <div v-for="day in weekDays" :key="day"
-                            class="text-center text-xs font-medium text-neutral-500 dark:text-neutral-400 py-1">
-                            {{ day }}
+                                    <select v-model="endCalendarYear"
+                                        class="appearance-none bg-transparent px-1 py-0.5 rounded hover:bg-neutral-100 dark:hover:bg-neutral-700 cursor-pointer text-neutral-900 dark:text-white"
+                                        @change.stop="updateCalendar('end')" @click.stop>
+                                        <option v-for="year in yearRange" :key="year" :value="year">
+                                            {{ year }}
+                                        </option>
+                                    </select>
+                                </div>
+
+                                <button
+                                    class="p-1 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-colors text-neutral-700 dark:text-neutral-300"
+                                    @click.stop="nextMonth('end')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="9 18 15 12 9 6"></polyline>
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <div class="text-xs text-neutral-600 dark:text-neutral-400 mb-2 text-center">
+                                {{ endDate ? formatDate(endDate, 'dd/MM/yyyy') : 'End date' }}
+                            </div>
+
+                            <div class="grid grid-cols-7 gap-1 mb-1">
+                                <div v-for="day in weekDays" :key="day"
+                                    class="text-center text-xs font-medium text-neutral-500 dark:text-neutral-400 py-1">
+                                    {{ day }}
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-7 gap-1">
+                                <div v-for="(day, index) in endCalendarDays" :key="index"
+                                    class="text-center py-1 text-sm rounded-md transition-colors" :class="[
+                                        day.isCurrentMonth && isDateInRange(day.date) && (!startDate || day.date >= startDate) ? 'cursor-pointer hover:bg-neutral-100 dark:hover:bg-neutral-700' : 'text-neutral-400 dark:text-neutral-500 cursor-not-allowed opacity-50',
+                                        isSelectedDate(day.date) ? 'bg-blue-600 text-white hover:bg-blue-700' : '',
+                                        isInSelectedRange(day.date) ? 'bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200' : '',
+                                        isToday(day.date) && !isSelectedDate(day.date) && !isInSelectedRange(day.date) ? 'border border-blue-600 dark:border-blue-500' : '',
+                                        !isSelectedDate(day.date) && !isInSelectedRange(day.date) && day.isCurrentMonth && isDateInRange(day.date) ? 'text-neutral-900 dark:text-white' : ''
+                                    ]" @click.stop="day.isCurrentMonth && isDateInRange(day.date) && (!startDate || day.date >= startDate) && selectEndDate(day.date)">
+                                    {{ day.day }}
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="grid grid-cols-7 gap-1">
-                        <div v-for="(day, index) in calendarDays" :key="index"
-                            class="text-center py-1 text-sm rounded-md transition-colors" :class="[
-                                day.isCurrentMonth && isDateInRange(day.date) ? 'cursor-pointer hover:bg-neutral-100 dark:hover:bg-neutral-700' : 'text-neutral-400 dark:text-neutral-500 cursor-not-allowed opacity-50',
-                                isSelectedDate(day.date) ? 'bg-blue-600 text-white hover:bg-blue-700' : '',
-                                isInSelectedRange(day.date) ? 'bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200' : '',
-                                isToday(day.date) && !isSelectedDate(day.date) && !isInSelectedRange(day.date) ? 'border border-blue-600 dark:border-blue-500' : '',
-                                !isSelectedDate(day.date) && !isInSelectedRange(day.date) && day.isCurrentMonth && isDateInRange(day.date) ? 'text-neutral-900 dark:text-white' : ''
-                            ]" @click.stop="day.isCurrentMonth && isDateInRange(day.date) && selectDate(day.date)">
-                            {{ day.day }}
+                    <div v-if="!range" class="single-calendar">
+                        <div class="flex justify-between items-center mb-2">
+                            <button
+                                class="p-1 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-colors text-neutral-700 dark:text-neutral-300"
+                                @click.stop="prevMonth()">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="15 18 9 12 15 6"></polyline>
+                                </svg>
+                            </button>
+
+                            <div class="flex items-center space-x-1">
+                                <select v-model="currentMonth"
+                                    class="appearance-none bg-transparent px-1 py-0.5 rounded hover:bg-neutral-100 dark:hover:bg-neutral-700 cursor-pointer text-neutral-900 dark:text-white"
+                                    @change.stop="updateCalendar()" @click.stop>
+                                    <option v-for="(month, index) in monthNames" :key="index" :value="index">
+                                        {{ month }}
+                                    </option>
+                                </select>
+
+                                <select v-model="currentYear"
+                                    class="appearance-none bg-transparent px-1 py-0.5 rounded hover:bg-neutral-100 dark:hover:bg-neutral-700 cursor-pointer text-neutral-900 dark:text-white"
+                                    @change.stop="updateCalendar()" @click.stop>
+                                    <option v-for="year in yearRange" :key="year" :value="year">
+                                        {{ year }}
+                                    </option>
+                                </select>
+                            </div>
+
+                            <button
+                                class="p-1 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-colors text-neutral-700 dark:text-neutral-300"
+                                @click.stop="nextMonth()">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <div class="grid grid-cols-7 gap-1 mb-1">
+                            <div v-for="day in weekDays" :key="day"
+                                class="text-center text-xs font-medium text-neutral-500 dark:text-neutral-400 py-1">
+                                {{ day }}
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-7 gap-1">
+                            <div v-for="(day, index) in calendarDays" :key="index"
+                                class="text-center py-1 text-sm rounded-md transition-colors" :class="[
+                                    day.isCurrentMonth && isDateInRange(day.date) ? 'cursor-pointer hover:bg-neutral-100 dark:hover:bg-neutral-700' : 'text-neutral-400 dark:text-neutral-500 cursor-not-allowed opacity-50',
+                                    isSelectedDate(day.date) ? 'bg-blue-600 text-white hover:bg-blue-700' : '',
+                                    isInSelectedRange(day.date) ? 'bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200' : '',
+                                    isToday(day.date) && !isSelectedDate(day.date) && !isInSelectedRange(day.date) ? 'border border-blue-600 dark:border-blue-500' : '',
+                                    !isSelectedDate(day.date) && !isInSelectedRange(day.date) && day.isCurrentMonth && isDateInRange(day.date) ? 'text-neutral-900 dark:text-white' : ''
+                                ]" @click.stop="day.isCurrentMonth && isDateInRange(day.date) && selectDate(day.date)">
+                                {{ day.day }}
+                            </div>
                         </div>
                     </div>
 
@@ -190,6 +325,19 @@ const startDate = ref<Date | null>(null);
 const endDate = ref<Date | null>(null);
 const selectionPhase = ref<'start' | 'end'>('start');
 
+// Variáveis para o calendário de data inicial
+const startCalendarMonth = ref(initialDate.getMonth());
+const startCalendarYear = ref(initialDate.getFullYear());
+
+// Variáveis para o calendário de data final
+const endCalendarMonth = ref(initialDate.getMonth());
+const endCalendarYear = ref(initialDate.getFullYear() + (initialDate.getMonth() === 11 ? 1 : 0));
+if (endCalendarMonth.value === 11) {
+    endCalendarMonth.value = 0;
+} else {
+    endCalendarMonth.value += 1;
+}
+
 const userLocale = navigator.language || 'en-US';
 
 const weekDays = Array.from({ length: 7 }, (_, i) => {
@@ -240,6 +388,7 @@ const formattedDate = computed(() => {
 });
 
 const calendarDays = computed<CalendarDay[]>(() => {
+    // Lógica para o calendário único (quando !range)
     const days: CalendarDay[] = [];
     const firstDay = new Date(currentYear.value, currentMonth.value, 1);
     const lastDay = new Date(currentYear.value, currentMonth.value + 1, 0);
@@ -268,6 +417,66 @@ const calendarDays = computed<CalendarDay[]>(() => {
     return days;
 });
 
+// Calendário para data inicial
+const startCalendarDays = computed<CalendarDay[]>(() => {
+    const days: CalendarDay[] = [];
+    const firstDay = new Date(startCalendarYear.value, startCalendarMonth.value, 1);
+    const lastDay = new Date(startCalendarYear.value, startCalendarMonth.value + 1, 0);
+
+    const firstDayOfWeek = firstDay.getDay();
+    const prevMonthLastDay = new Date(startCalendarYear.value, startCalendarMonth.value, 0).getDate();
+
+    for (let i = firstDayOfWeek - 1; i >= 0; i--) {
+        const day = prevMonthLastDay - i;
+        const date = new Date(startCalendarYear.value, startCalendarMonth.value - 1, day);
+        days.push({ day, date, isCurrentMonth: false });
+    }
+
+    for (let day = 1; day <= lastDay.getDate(); day++) {
+        const date = new Date(startCalendarYear.value, startCalendarMonth.value, day);
+        days.push({ day, date, isCurrentMonth: true });
+    }
+
+    const remainingDays = 42 - days.length;
+
+    for (let day = 1; day <= remainingDays; day++) {
+        const date = new Date(startCalendarYear.value, startCalendarMonth.value + 1, day);
+        days.push({ day, date, isCurrentMonth: false });
+    }
+
+    return days;
+});
+
+// Calendário para data final
+const endCalendarDays = computed<CalendarDay[]>(() => {
+    const days: CalendarDay[] = [];
+    const firstDay = new Date(endCalendarYear.value, endCalendarMonth.value, 1);
+    const lastDay = new Date(endCalendarYear.value, endCalendarMonth.value + 1, 0);
+
+    const firstDayOfWeek = firstDay.getDay();
+    const prevMonthLastDay = new Date(endCalendarYear.value, endCalendarMonth.value, 0).getDate();
+
+    for (let i = firstDayOfWeek - 1; i >= 0; i--) {
+        const day = prevMonthLastDay - i;
+        const date = new Date(endCalendarYear.value, endCalendarMonth.value - 1, day);
+        days.push({ day, date, isCurrentMonth: false });
+    }
+
+    for (let day = 1; day <= lastDay.getDate(); day++) {
+        const date = new Date(endCalendarYear.value, endCalendarMonth.value, day);
+        days.push({ day, date, isCurrentMonth: true });
+    }
+
+    const remainingDays = 42 - days.length;
+
+    for (let day = 1; day <= remainingDays; day++) {
+        const date = new Date(endCalendarYear.value, endCalendarMonth.value + 1, day);
+        days.push({ day, date, isCurrentMonth: false });
+    }
+
+    return days;
+});
+
 const toggleCalendar = () => {
     if (props.disabled) return;
 
@@ -277,17 +486,31 @@ const toggleCalendar = () => {
         if (props.range && Array.isArray(props.modelValue)) {
             if (props.modelValue.length >= 1 && isValidDate(props.modelValue[0])) {
                 startDate.value = new Date(props.modelValue[0].getTime());
-                selectionPhase.value = 'end';
+                // Configurar o calendário inicial para mostrar o mês da data inicial
+                startCalendarMonth.value = startDate.value.getMonth();
+                startCalendarYear.value = startDate.value.getFullYear();
+
+                // Configurar o calendário final para mostrar o mês seguinte
+                if (startCalendarMonth.value === 11) {
+                    endCalendarMonth.value = 0;
+                    endCalendarYear.value = startCalendarYear.value + 1;
+                } else {
+                    endCalendarMonth.value = startCalendarMonth.value + 1;
+                    endCalendarYear.value = startCalendarYear.value;
+                }
             }
             if (props.modelValue.length >= 2 && isValidDate(props.modelValue[1])) {
                 endDate.value = new Date(props.modelValue[1].getTime());
-                selectionPhase.value = 'start'; // Reset for new selection
-            }
-        }
 
-        const dateToShow = getSafeDate(props.modelValue);
-        currentMonth.value = dateToShow.getMonth();
-        currentYear.value = dateToShow.getFullYear();
+                // Se já temos uma data final, configurar o calendário final para mostrar o mês correspondente
+                endCalendarMonth.value = endDate.value.getMonth();
+                endCalendarYear.value = endDate.value.getFullYear();
+            }
+        } else {
+            const dateToShow = getSafeDate(props.modelValue);
+            currentMonth.value = dateToShow.getMonth();
+            currentYear.value = dateToShow.getFullYear();
+        }
 
         setTimeout(() => {
             document.addEventListener('click', handleClickOutside);
@@ -296,13 +519,28 @@ const toggleCalendar = () => {
 };
 
 const closeCalendar = () => {
+    // Se estivermos no modo range e ambas as datas não estiverem selecionadas, não fechamos o calendário
+    if (props.range && (!startDate.value || !endDate.value)) {
+        // Permitimos fechar manualmente apenas se o botão "Close" for clicado
+        if (event && (event.target as HTMLElement).textContent === 'Close') {
+            showCalendar.value = false;
+            document.removeEventListener('click', handleClickOutside);
+            // Restaurar valores anteriores se existirem
+            if (Array.isArray(props.modelValue)) {
+                startDate.value = props.modelValue.length > 0 && isValidDate(props.modelValue[0])
+                    ? new Date(props.modelValue[0].getTime())
+                    : null;
+
+                endDate.value = props.modelValue.length > 1 && isValidDate(props.modelValue[1])
+                    ? new Date(props.modelValue[1].getTime())
+                    : null;
+            }
+        }
+        return;
+    }
+
     showCalendar.value = false;
     document.removeEventListener('click', handleClickOutside);
-
-    if (props.range && selectionPhase.value === 'end' && !endDate.value) {
-        selectionPhase.value = 'start';
-        startDate.value = null;
-    }
 };
 
 const handleClickOutside = (event: MouseEvent) => {
@@ -316,28 +554,101 @@ const handleClickOutside = (event: MouseEvent) => {
     }
 };
 
-const prevMonth = () => {
-    if (currentMonth.value === 0) {
-        currentMonth.value = 11;
-        currentYear.value--;
-    } else {
-        currentMonth.value--;
+const prevMonth = (calendar?: 'start' | 'end') => {
+    if (!calendar) {
+        // Calendário único
+        if (currentMonth.value === 0) {
+            currentMonth.value = 11;
+            currentYear.value--;
+        } else {
+            currentMonth.value--;
+        }
+    } else if (calendar === 'start') {
+        if (startCalendarMonth.value === 0) {
+            startCalendarMonth.value = 11;
+            startCalendarYear.value--;
+        } else {
+            startCalendarMonth.value--;
+        }
+
+        // Ajustar o calendário final se necessário
+        if (startCalendarYear.value === endCalendarYear.value &&
+            startCalendarMonth.value >= endCalendarMonth.value) {
+            if (endCalendarMonth.value === 11) {
+                endCalendarMonth.value = 0;
+                endCalendarYear.value++;
+            } else {
+                endCalendarMonth.value = startCalendarMonth.value + 1;
+            }
+        }
+    } else if (calendar === 'end') {
+        if (endCalendarMonth.value === 0) {
+            endCalendarMonth.value = 11;
+            endCalendarYear.value--;
+        } else {
+            endCalendarMonth.value--;
+        }
+
+        // Não permitir que o calendário final seja anterior ao inicial
+        if (endCalendarYear.value < startCalendarYear.value ||
+            (endCalendarYear.value === startCalendarYear.value &&
+             endCalendarMonth.value < startCalendarMonth.value)) {
+            endCalendarMonth.value = startCalendarMonth.value;
+            endCalendarYear.value = startCalendarYear.value;
+        }
     }
-    updateCalendar();
+    updateCalendar(calendar);
 };
 
-const nextMonth = () => {
-    if (currentMonth.value === 11) {
-        currentMonth.value = 0;
-        currentYear.value++;
-    } else {
-        currentMonth.value++;
+const nextMonth = (calendar?: 'start' | 'end') => {
+    if (!calendar) {
+        // Calendário único
+        if (currentMonth.value === 11) {
+            currentMonth.value = 0;
+            currentYear.value++;
+        } else {
+            currentMonth.value++;
+        }
+    } else if (calendar === 'start') {
+        if (startCalendarMonth.value === 11) {
+            startCalendarMonth.value = 0;
+            startCalendarYear.value++;
+        } else {
+            startCalendarMonth.value++;
+        }
+
+        // Ajustar o calendário final se necessário
+        if (startCalendarYear.value > endCalendarYear.value ||
+            (startCalendarYear.value === endCalendarYear.value &&
+             startCalendarMonth.value >= endCalendarMonth.value)) {
+            if (startCalendarMonth.value === 11) {
+                endCalendarMonth.value = 0;
+                endCalendarYear.value = startCalendarYear.value + 1;
+            } else {
+                endCalendarMonth.value = startCalendarMonth.value + 1;
+                endCalendarYear.value = startCalendarYear.value;
+            }
+        }
+    } else if (calendar === 'end') {
+        if (endCalendarMonth.value === 11) {
+            endCalendarMonth.value = 0;
+            endCalendarYear.value++;
+        } else {
+            endCalendarMonth.value++;
+        }
     }
-    updateCalendar();
+    updateCalendar(calendar);
 };
 
-const updateCalendar = () => {
-
+const updateCalendar = (calendar?: 'start' | 'end') => {
+    if (calendar === 'start') {
+        startDate.value = new Date(currentYear.value, currentMonth.value, 1);
+        endDate.value = null;
+        selectionPhase.value = 'end';
+    } else if (calendar === 'end') {
+        endDate.value = new Date(currentYear.value, currentMonth.value, 1);
+        selectionPhase.value = 'start';
+    }
 };
 
 const isDateInRange = (date: Date): boolean => {
@@ -350,32 +661,40 @@ const selectDate = (date: Date) => {
     if (!isDateInRange(date)) return;
 
     const newDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+    emit('update:modelValue', newDate);
+    validate();
 
-    if (props.range) {
-        if (selectionPhase.value === 'start') {
-            startDate.value = newDate;
-            endDate.value = null;
-            selectionPhase.value = 'end';
-            emit('update:modelValue', [newDate]);
-        } else {
-            if (startDate.value && newDate < startDate.value) {
-                endDate.value = startDate.value;
-                startDate.value = newDate;
-            } else {
-                endDate.value = newDate;
-            }
+    setTimeout(() => {
+        closeCalendar();
+    }, 100);
+};
 
-            selectionPhase.value = 'start';
-            emit('update:modelValue', [startDate.value, endDate.value]);
+const selectStartDate = (date: Date) => {
+    if (!isDateInRange(date)) return;
 
-            setTimeout(() => {
-                closeCalendar();
-            }, 100);
-        }
-    } else {
-        emit('update:modelValue', newDate);
-        validate();
+    const newDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+    startDate.value = newDate;
 
+    // Se a data final já existir e for anterior à nova data inicial
+    if (endDate.value && endDate.value < newDate) {
+        endDate.value = null;
+    }
+
+    emit('update:modelValue', endDate.value ? [newDate, endDate.value] : [newDate]);
+    validate();
+};
+
+const selectEndDate = (date: Date) => {
+    if (!isDateInRange(date) || !startDate.value || date < startDate.value) return;
+
+    const newDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+    endDate.value = newDate;
+
+    emit('update:modelValue', [startDate.value, newDate]);
+    validate();
+
+    // Fechar o calendário apenas quando ambas as datas estiverem selecionadas
+    if (startDate.value && endDate.value) {
         setTimeout(() => {
             closeCalendar();
         }, 100);
@@ -384,12 +703,40 @@ const selectDate = (date: Date) => {
 
 const selectToday = () => {
     const today = new Date();
-    currentMonth.value = today.getMonth();
-    currentYear.value = today.getFullYear();
 
     if (!isDateInRange(today)) return;
 
-    selectDate(today);
+    if (props.range) {
+        // No modo range, define a data atual como data inicial ou final,
+        // dependendo do estado atual
+        if (!startDate.value) {
+            selectStartDate(today);
+        } else if (!endDate.value && today >= startDate.value) {
+            selectEndDate(today);
+        } else {
+            // Se ambas as datas já existirem, reinicie e use hoje como data inicial
+            startDate.value = today;
+            endDate.value = null;
+            emit('update:modelValue', [today]);
+        }
+
+        // Atualizar os calendários para mostrar o mês atual
+        startCalendarMonth.value = today.getMonth();
+        startCalendarYear.value = today.getFullYear();
+
+        if (endCalendarMonth.value === 11) {
+            endCalendarMonth.value = 0;
+            endCalendarYear.value = startCalendarYear.value + 1;
+        } else {
+            endCalendarMonth.value = startCalendarMonth.value + 1;
+            endCalendarYear.value = startCalendarYear.value;
+        }
+    } else {
+        // Modo único, comportamento original
+        currentMonth.value = today.getMonth();
+        currentYear.value = today.getFullYear();
+        selectDate(today);
+    }
 };
 
 const isSelectedDate = (date: Date) => {
@@ -479,7 +826,21 @@ watch(() => props.modelValue, (newValue) => {
             ? new Date(newValue[1].getTime())
             : null;
 
-        selectionPhase.value = endDate.value ? 'start' : 'end';
+        // Atualizar calendários se datas mudarem externamente
+        if (startDate.value) {
+            startCalendarMonth.value = startDate.value.getMonth();
+            startCalendarYear.value = startDate.value.getFullYear();
+
+            // Configurar calendário final
+            const endDateToShow = endDate.value || startDate.value;
+            if (endDateToShow.getMonth() === 11) {
+                endCalendarMonth.value = 0;
+                endCalendarYear.value = endDateToShow.getFullYear() + 1;
+            } else {
+                endCalendarMonth.value = endDateToShow.getMonth() + 1;
+                endCalendarYear.value = endDateToShow.getFullYear();
+            }
+        }
     }
 });
 
@@ -495,7 +856,27 @@ onMounted(() => {
             ? new Date(props.modelValue[1].getTime())
             : null;
 
-        selectionPhase.value = endDate.value ? 'start' : 'end';
+        // Configurar os calendários iniciais
+        if (startDate.value) {
+            startCalendarMonth.value = startDate.value.getMonth();
+            startCalendarYear.value = startDate.value.getFullYear();
+        }
+
+        if (endDate.value) {
+            endCalendarMonth.value = endDate.value.getMonth();
+            endCalendarYear.value = endDate.value.getFullYear();
+        } else {
+            // Se não houver data final, mostrar o mês seguinte ao da data inicial
+            if (startDate.value) {
+                if (startCalendarMonth.value === 11) {
+                    endCalendarMonth.value = 0;
+                    endCalendarYear.value = startCalendarYear.value + 1;
+                } else {
+                    endCalendarMonth.value = startCalendarMonth.value + 1;
+                    endCalendarYear.value = startCalendarYear.value;
+                }
+            }
+        }
     }
 });
 
@@ -527,5 +908,10 @@ onBeforeUnmount(() => {
 .dropdown-leave-to {
     opacity: 0;
     transform: translateY(-10px) translateX(-50%);
+}
+
+/* Estilos para os calendários em modo range */
+.calendar .single-calendar {
+    width: 100%;
 }
 </style>

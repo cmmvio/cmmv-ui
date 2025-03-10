@@ -45,7 +45,8 @@
 
 <script setup lang="ts">
 import { ref, computed, watch, onMounted } from 'vue';
-import Countries from '@/composables/CountriesList';
+import Countries, { getPhoneMaskByIso, getPhoneMaskByDDI } from '@/composables/CountriesList';
+import type { Country } from '@/composables/CountriesList';
 // @ts-ignore
 import { mask as vMask } from 'vue-the-mask';
 import CInput from './CInput.vue';
@@ -159,33 +160,15 @@ const selectedCountry = computed(() => {
         Countries.find(country => country.iso === 'us'); // Default to US
 });
 
+// Usar a função getPhoneMaskByIso para obter a máscara correta
 const currentMask = computed(() => {
-    const ddi = selectedCountry.value?.ddi;
-
-    if (ddi === '1') { // US & Canada: +1 (XXX) XXX-XXXX
-        return '(###) ###-####';
-    } else if (ddi === '44') { // UK: +44 XXXX XXXXXX
-        return '#### ######';
-    } else if (ddi === '55') { // Brazil: +55 (XX) XXXXX-XXXX
-        return '(##) #####-####';
-    } else if (ddi === '33') { // France: +33 X XX XX XX XX
-        return '# ## ## ## ##';
-    } else if (ddi === '86') { // China: +86 XXX XXXX XXXX
-        return '### #### ####';
-    } else if (ddi === '91') { // India: +91 XXXXX XXXXX
-        return '##### #####';
-    } else if (ddi === '49') { // Germany: +49 XXX XXXXXXX
-        return '### #######';
-    } else if (ddi === '61') { // Australia: +61 XXX XXX XXX
-        return '### ### ###';
-    } else if (ddi === '81') { // Japan: +81 XX XXXX XXXX
-        return '## #### ####';
-    } else if (ddi === '52') { // Mexico: +52 XXX XXX XXXX
-        return '### ### ####';
-    } else {
-        // Default mask for other countries: XXXX XXXX XXXX
-        return '#### #### ####';
+    // Se o país tiver uma máscara específica definida, usá-la
+    if (selectedCountryIso.value) {
+        return getPhoneMaskByIso(selectedCountryIso.value);
     }
+
+    // Caso contrário, usar uma máscara padrão
+    return "#### #### ####";
 });
 
 const formattedValue = computed(() => {
@@ -197,7 +180,7 @@ const updateModelValue = () => {
     emit('update:modelValue', formattedValue.value);
 };
 
-const onCountryChange = (value) => {
+const onCountryChange = (value: string) => {
     const country = Countries.find(c => c.iso === value);
     if (country) {
         selectedCountryIso.value = country.iso;
@@ -206,8 +189,8 @@ const onCountryChange = (value) => {
     }
 };
 
-const onPhoneInput = (event) => {
-    const value = event.target.value;
+const onPhoneInput = (event: Event) => {
+    const value = (event.target as HTMLInputElement).value;
 
     if (value.startsWith('+') || value.startsWith('00')) {
         const cleaned = value.replace(/\D/g, '');
