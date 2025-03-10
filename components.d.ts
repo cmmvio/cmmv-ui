@@ -58,7 +58,6 @@ declare module 'vue' {
     CSidebar: typeof import('./src/components/layout/CSidebar.vue')['default']
     CSkeleton: typeof import('./src/components/layout/CSkeleton.vue')['default']
     CSlider: typeof import('./src/components/forms/CSlider.vue')['default']
-    CSliderOld: typeof import('./src/components/forms/CSlider-old.vue')['default']
     CSpacer: typeof import('./src/components/layout/CSpacer.vue')['default']
     CSpeedDial: typeof import('./src/components/layout/CSpeedDial.vue')['default']
     CStepper: typeof import('./src/components/layout/CStepper.vue')['default']
@@ -73,7 +72,6 @@ declare module 'vue' {
     CTooltip: typeof import('./src/components/components/CTooltip.vue')['default']
     CTreeView: typeof import('./src/components/editor/CTreeView.vue')['default']
     CTreeViewContextMenu: typeof import('./src/components/editor/CTreeViewContextMenu.vue')['default']
-    CTreeViewExample: typeof import('./src/components/editor/CTreeViewExample.vue')['default']
     CTreeViewItem: typeof import('./src/components/editor/CTreeViewItem.vue')['default']
     FlagAD: typeof import('./src/components/flags/FlagAD.vue')['default']
     FlagAE: typeof import('./src/components/flags/FlagAE.vue')['default']
@@ -748,6 +746,5 @@ declare module 'vue' {
     LoaderWindToy: typeof import('./src/components/loader/LoaderWindToy.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    TreeViewPage: typeof import('./src/components/editor/TreeViewPage.vue')['default']
   }
 }
