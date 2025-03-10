@@ -11,7 +11,7 @@
         <c-progress-bar class="top-0 absolute rounded-t-md" indeterminate :height="5" :fillColor="loadingFillColor"
             v-if="loading" />
 
-        <slot v-if="$slots.header" name="header">
+        <slot name="header">
             <div v-if="title || subtitle || closable"
                 class="px-4 py-3 pb-0 flex justify-between items-center relative rounded-t-md"
                 :class="[bgHeaderColor ? bgHeaderColor : bgColor, bgBorderColor]">
@@ -31,7 +31,7 @@
             </div>
         </slot>
 
-        <slot v-if="$slots.content" name="content" class="relative">
+        <slot name="content" class="relative">
             <div class="w-full" :class="[textSizes[textSize], padding]">
                 <div :class="customClass">
                     <slot></slot>

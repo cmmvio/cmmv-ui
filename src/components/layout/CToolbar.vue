@@ -1,5 +1,5 @@
 <template>
-    <header class="c-toolbar" :class="{ 'c-toolbar--dense': dense }">
+    <header class="c-toolbar" :class="{ 'c-toolbar--dense': dense || minified }">
         <slot></slot>
     </header>
 </template>
@@ -7,6 +7,10 @@
 <script setup lang="ts">
 defineProps({
     dense: {
+        type: Boolean,
+        default: false,
+    },
+    minified: {
         type: Boolean,
         default: false,
     },

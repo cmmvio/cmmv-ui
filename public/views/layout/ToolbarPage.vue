@@ -34,6 +34,18 @@
                     <td class="border-b px-4 py-2">''</td>
                     <td class="border-b px-4 py-2">Controls the rounded corners of the toolbar.</td>
                 </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">dense</td>
+                    <td class="border-b px-4 py-2">Boolean</td>
+                    <td class="border-b px-4 py-2">false</td>
+                    <td class="border-b px-4 py-2">Reduces the toolbar height to 48px.</td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">minified</td>
+                    <td class="border-b px-4 py-2">Boolean</td>
+                    <td class="border-b px-4 py-2">false</td>
+                    <td class="border-b px-4 py-2">Alternative to dense, reduces height to 48px. Ideal for applications with system menu bars.</td>
+                </tr>
             </tbody>
         </table-docs>
 
@@ -231,6 +243,82 @@ import IconMagnifyingGlass from "@components/icons/IconMagnifyingGlass.vue";
 &lt;script setup&gt;
 import IconMagnifyingGlass from "@components/icons/IconMagnifyingGlass.vue";
 import IconBell from "@components/icons/IconBell.vue";
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
+
+        <h3>Minified Toolbar</h3>
+
+        <p>
+            The <code>minified</code> property (or <code>dense</code>) reduces the toolbar height to 48px,
+            making it ideal for applications with a system menu bar at the top or for interfaces where
+            vertical space is at a premium. This compact design maintains functionality while providing
+            a more streamlined appearance.
+        </p>
+
+        <card-docs>
+            <div class="flex flex-col space-y-8 w-full">
+                <div>
+                    <p class="mb-2 text-neutral-500 dark:text-neutral-400 text-sm">Standard Toolbar (64px)</p>
+                    <c-toolbar class="bg-green-600 text-white">
+                        <c-app-bar-nav />
+                        <c-toolbar-title>Standard Height</c-toolbar-title>
+                        <c-spacer />
+                        <c-button type="button" variant="plain" rounded="full" bgColor="bg-green-700 hover:bg-green-800">
+                            <IconMagnifyingGlass class="text-white" />
+                        </c-button>
+                    </c-toolbar>
+                </div>
+
+                <div>
+                    <p class="mb-2 text-neutral-500 dark:text-neutral-400 text-sm">Minified Toolbar (48px)</p>
+                    <c-toolbar minified class="bg-green-600 text-white">
+                        <c-app-bar-nav />
+                        <c-toolbar-title>Minified Height</c-toolbar-title>
+                        <c-spacer />
+                        <c-button type="button" variant="plain" rounded="full" bgColor="bg-green-700 hover:bg-green-800" size="sm">
+                            <IconMagnifyingGlass class="text-white" />
+                        </c-button>
+                    </c-toolbar>
+                </div>
+            </div>
+
+            <template #code>
+                <pre><code class="code-highlight language-vue">&lt;template&gt;
+    &lt;!-- Standard Toolbar (64px height) --&gt;
+    &lt;c-toolbar class="bg-green-600 text-white"&gt;
+        &lt;c-app-bar-nav /&gt;
+        &lt;c-toolbar-title&gt;Standard Height&lt;/c-toolbar-title&gt;
+        &lt;c-spacer /&gt;
+        &lt;c-button
+            type="button"
+            variant="plain"
+            rounded="full"
+            bgColor="bg-green-700 hover:bg-green-800"
+        &gt;
+            &lt;IconMagnifyingGlass class="text-white" /&gt;
+        &lt;/c-button&gt;
+    &lt;/c-toolbar&gt;
+
+    &lt;!-- Minified Toolbar (48px height) --&gt;
+    &lt;c-toolbar minified class="bg-green-600 text-white"&gt;
+        &lt;c-app-bar-nav /&gt;
+        &lt;c-toolbar-title&gt;Minified Height&lt;/c-toolbar-title&gt;
+        &lt;c-spacer /&gt;
+        &lt;c-button
+            type="button"
+            variant="plain"
+            rounded="full"
+            bgColor="bg-green-700 hover:bg-green-800"
+            size="sm"
+        &gt;
+            &lt;IconMagnifyingGlass class="text-white" /&gt;
+        &lt;/c-button&gt;
+    &lt;/c-toolbar&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import IconMagnifyingGlass from "@components/icons/IconMagnifyingGlass.vue";
 &lt;/script&gt;</code></pre>
             </template>
         </card-docs>
