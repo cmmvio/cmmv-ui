@@ -340,9 +340,7 @@ const showDialog = ref(false);
 const isClosing = ref(false);
 const hasActionsContent = ref(false);
 
-// Verificar se o slot de actions tem conteúdo real
 onMounted(() => {
-    // Verificar apenas na próxima atualização do DOM
     nextTick(() => {
         if (document.querySelector('.dialog-card .actions-container')?.innerHTML.trim()) {
             hasActionsContent.value = true;
@@ -350,13 +348,11 @@ onMounted(() => {
     });
 });
 
-// Em vez de usar uma solução baseada em DOM, vamos usar uma verificação via props
 watch(() => props.modelValue, () => {
     if (props.modelValue) {
-        // Quando o dialog é aberto, verificamos novamente o conteúdo
         nextTick(() => {
             const actionsContainer = document.querySelector('.dialog-card .actions-container');
-            hasActionsContent.value = actionsContainer && actionsContainer.innerHTML.trim() !== '';
+            hasActionsContent.value = actionsContainer?.innerHTML.trim() !== '';
         });
     }
 });
