@@ -26,7 +26,8 @@
                     { 'pt-4': !hasIcon, 'pb-3': hasIcon, 'pt-3': hasIcon }]"
                     class="c-autocomplete-field block w-full shadow-sm outline-none"
                     :placeholder="isActive ? placeholder : ''" :value="currentInput" @input="handleInput"
-                    @change="handleInput" @focus="activateLabel" @blur="deactivateLabel" :disabled="disabled"
+                    @change="handleInput" @focus="activateLabel" @blur="deactivateLabel" @keydown="handleKeyDown"
+                    :disabled="disabled"
                     :aria-invalid="hasError" />
 
                 <button v-if="clearable && currentInput" type="button"
@@ -44,7 +45,9 @@
                 <div v-if="isActive && isFocus && filteredOptions.length > 0"
                     class="absolute z-50 w-full bg-white border border-neutral-300 dark:bg-neutral-800 dark:border-neutral-900 mt-2 max-h-40 overflow-auto shadow-lg rounded-md">
                     <ul>
-                        <li v-for="option in filteredOptions" :key="option.value" @click="selectOption(option)"
+                        <li v-for="(option, index) in filteredOptions" :key="option.value"
+                            @click="selectOption(option)"
+                            :class="{ 'bg-neutral-200 dark:bg-neutral-900': keyboardSelectedIndex === index }"
                             class="px-4 py-2 cursor-pointer hover:bg-neutral-200 dark:hover:bg-neutral-900 text-sm">
                             {{ option.label }}
                         </li>
@@ -162,6 +165,7 @@ const isActive = ref(false);
 const isFocus = ref(false);
 const changed = ref(false);
 const errorMessage = ref<string | null>(null);
+const keyboardSelectedIndex = ref(-1);
 
 watch(() => props.modelValue, (newValue) => {
     currentValue.value = newValue;
@@ -177,6 +181,10 @@ const filteredOptions = computed<{ value: string | number; label: string }[]>(()
     return (props.options as { value: string | number; label: string }[]).filter((option) =>
         option.label.toLowerCase().includes(currentInput.value.toLowerCase())
     );
+});
+
+watch(filteredOptions, () => {
+    keyboardSelectedIndex.value = -1;
 });
 
 const sizes: Record<string, string> = {
@@ -205,6 +213,46 @@ const variantColors: Record<string, string> = {
 
 const borderColorClass = computed(() => props.borderColor);
 const hasError = computed(() => !!errorMessage.value);
+
+const handleKeyDown = (event: KeyboardEvent) => {
+    // Caso especial: se a tecla for ArrowDown e o campo estiver em foco mas a lista não estiver visível
+    if (event.key === 'ArrowDown' && isFocus.value && (!isActive || !filteredOptions.value.length)) {
+        event.preventDefault();
+        isActive.value = true; // Força a abertura da lista
+        return;
+    }
+
+    if (!filteredOptions.value.length || !isFocus.value) return;
+
+    switch (event.key) {
+        case 'ArrowDown':
+            event.preventDefault();
+            if (keyboardSelectedIndex.value < filteredOptions.value.length - 1) {
+                keyboardSelectedIndex.value++;
+            } else {
+                keyboardSelectedIndex.value = 0;
+            }
+            break;
+        case 'ArrowUp':
+            event.preventDefault();
+            if (keyboardSelectedIndex.value > 0) {
+                keyboardSelectedIndex.value--;
+            } else {
+                keyboardSelectedIndex.value = filteredOptions.value.length - 1;
+            }
+            break;
+        case 'Enter':
+            event.preventDefault();
+            if (keyboardSelectedIndex.value >= 0 && keyboardSelectedIndex.value < filteredOptions.value.length) {
+                selectOption(filteredOptions.value[keyboardSelectedIndex.value]);
+            }
+            break;
+        case 'Escape':
+            event.preventDefault();
+            deactivateLabel();
+            break;
+    }
+};
 
 const handleInput = (event: Event) => {
     currentInput.value = (event.target as HTMLInputElement).value;
@@ -281,6 +329,7 @@ const selectOption = (option: { value: string | number; label: string }) => {
 
     isActive.value = true;
     isFocus.value = false;
+    keyboardSelectedIndex.value = -1;
 };
 
 const activateLabel = () => {
@@ -294,6 +343,7 @@ const deactivateLabel = () => {
             isActive.value = false;
 
         isFocus.value = false;
+        keyboardSelectedIndex.value = -1;
     }, 100);
 };
 
