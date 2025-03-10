@@ -1,3 +1,22 @@
+## [0.2.1](https://github.com/cmmvio/cmmv-ui/compare/v0.2.0...v0.2.1) (2025-03-10)
+
+
+### Bug Fixes
+
+* combobox ([4858271](https://github.com/cmmvio/cmmv-ui/commit/4858271fb4eeb5450f11c65b53b1201c19763d97))
+* dialog ([57ab60f](https://github.com/cmmvio/cmmv-ui/commit/57ab60f3eb41db6cdbd3ca9e56bb22f3d074a332))
+* fixes pre version ([d4373ab](https://github.com/cmmvio/cmmv-ui/commit/d4373ab056d1c5827db1197debfbe61b32218f1a))
+* remove graph from navbar ([441ed58](https://github.com/cmmvio/cmmv-ui/commit/441ed5855dbb62006e03e884ed1729413fcd13ce))
+* tooltip, navbar ([687080f](https://github.com/cmmvio/cmmv-ui/commit/687080fad749a29e74fffc641c412a559cc075bc))
+
+
+### Features
+
+* image galery, instagram sample ([98758e5](https://github.com/cmmvio/cmmv-ui/commit/98758e59189d5575608142416a0554b0fdcaf9c4))
+* keyboard suport control ([9949219](https://github.com/cmmvio/cmmv-ui/commit/9949219c1fdf6f3a27d422009bb1f628efaea3a3))
+
+
+
 # [0.2.0](https://github.com/cmmvio/cmmv-ui/compare/v0.1.3...v0.2.0) (2025-03-05)
 
 
