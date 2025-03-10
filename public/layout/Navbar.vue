@@ -223,7 +223,7 @@ const navbarItems = [
             { name: "Toggle", uri: "/toggle" },
         ],
     },
-    {
+    /*{
         name: "Graph",
         isDir: true,
         icon: IconViewfinderCircle,
@@ -231,7 +231,7 @@ const navbarItems = [
             { name: "Box", uri: "/graph-box" },
             { name: "Node", uri: "/graph-node" },
         ]
-    },
+    },*/
     {
         name: "Layout",
         isDir: true,
