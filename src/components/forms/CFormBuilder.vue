@@ -197,6 +197,24 @@
                             </template>
                         </div>
 
+                        <!-- Password Input -->
+                        <c-password-input v-if="item.type === 'password'" v-model="formData[key]"
+                            :label="item.label" :placeholder="item.placeholder" :required="item.required"
+                            :require-uppercase="item.requireUppercase" :require-lowercase="item.requireLowercase"
+                            :require-numbers="item.requireNumbers" :require-special-chars="item.requireSpecialChars"
+                            :min-length="item.minLength" :show-strength-bar="item.showStrengthBar"
+                            :show-requirements="item.showRequirements" :rules="item.rules || item.props?.rules || []"
+                            v-bind="item.props || {}" @update:modelValue="(value) => updateField(key as string, value)"
+                            :ref="el => { if (el) fieldRefs[key as string] = el; }" />
+
+                        <!-- WYSIWYG Editor -->
+                        <c-wysiwyg-editor v-if="item.type === 'wysiwyg' || item.type === 'richtext' || item.type === 'editor'"
+                            v-model="formData[key]" :label="item.label" :placeholder="item.placeholder"
+                            :required="item.required" :disabled="item.disabled" :output-format="item.outputFormat"
+                            :rules="item.rules || item.props?.rules || []" v-bind="item.props || {}"
+                            @update:modelValue="(value) => updateField(key as string, value)"
+                            :ref="el => { if (el) fieldRefs[key as string] = el; }" />
+
                         <c-button v-if="item.type === 'submit'" class="w-full pb-4 pt-4" type="submit"
                             buttonType="button" size="2xl" @click="handleSubmitButtonClick" :disabled="!isFormValid">
                             {{ item.label || 'Submit' }}
@@ -220,6 +238,8 @@ import CTimepicker from "./CTimepicker.vue";
 import CToggle from "./CToggle.vue";
 import CChipsInput from "./CChipsInput.vue";
 import CCurrencyInput from "./CCurrencyInput.vue";
+import CPasswordInput from "./CPasswordInput.vue";
+import CWysiwygEditor from "./CWysiwygEditor.vue";
 
 interface BaseFieldProps {
     label?: string;
@@ -359,6 +379,23 @@ interface CustomObjectFieldProps extends BaseFieldProps {
     };
 }
 
+interface PasswordInputFieldProps extends BaseFieldProps {
+    type: 'password';
+    requireUppercase?: boolean;
+    requireLowercase?: boolean;
+    requireNumbers?: boolean;
+    requireSpecialChars?: boolean;
+    minLength?: number;
+    showStrengthBar?: boolean;
+    showRequirements?: boolean;
+}
+
+interface WysiwygEditorFieldProps extends BaseFieldProps {
+    type: 'wysiwyg' | 'richtext' | 'editor';
+    placeholder?: string;
+    outputFormat?: 'html' | 'markdown';
+}
+
 type FieldProps =
     | InputFieldProps
     | ComboboxFieldProps
@@ -377,6 +414,8 @@ type FieldProps =
     | CustomObjectFieldProps
     | ChipsInputFieldProps
     | CurrencyInputFieldProps
+    | PasswordInputFieldProps
+    | WysiwygEditorFieldProps
 
 interface IFormBuilderSchema {
     [key: string]: FieldProps & {

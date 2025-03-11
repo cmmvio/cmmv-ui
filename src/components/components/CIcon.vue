@@ -33,6 +33,7 @@ defineProps({
 });
 
 const sizes: Record<string, string> = {
+    sx: "h-3 w-3",
     sm: "h-4 w-4",
     md: "h-6 w-6",
     lg: "h-8 w-8",

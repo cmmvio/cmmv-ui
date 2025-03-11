@@ -311,7 +311,6 @@ const calculateStrength = () => {
     const lengthFactor = Math.min(password.value.length / 12, 1) * 25;
     strength += lengthFactor;
 
-    // Character variety contribution (up to 75%)
     if (hasUppercase.value) strength += 15;
     if (hasLowercase.value) strength += 15;
     if (hasNumber.value) strength += 15;

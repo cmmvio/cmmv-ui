@@ -71,6 +71,7 @@ import ChipsInputPage from "./views/form/ChipsInputPage.vue";
 import CurrencyInputPage from "./views/form/CurrencyInputPage.vue";
 import PasswordInputPage from "./views/form/PasswordInputPage.vue";
 import PhoneInputPage from "./views/form/PhoneInputPage.vue";
+import WysiwygEditorPage from "./views/form/WysiwygEditorPage.vue";
 
 //Graph
 import GraphBoxPage from "./views/graph/GraphBoxPage.vue";
@@ -157,7 +158,7 @@ const routes = [
     { path: '/textarea', component: TextareaPage },
     { path: '/timepicker', component: TimepickerPage },
     { path: '/toggle', component: TogglePage },
-
+    { path: '/wysiwyg-editor', component: WysiwygEditorPage },
     //Graph
     { path: '/graph-box', component: GraphBoxPage },
     { path: '/graph-node', component: GraphNodePage },

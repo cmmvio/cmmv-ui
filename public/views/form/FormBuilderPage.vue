@@ -503,6 +503,156 @@ const rolePermissionsData = ref({
             </template>
         </card-docs>
 
+        <h3>Blog Post Creation Example</h3>
+
+        <p class="mb-4">
+            This example demonstrates a blog post creation form using the WYSIWYG editor component for content and the password input component for author authentication.
+        </p>
+
+        <card-docs>
+            <div class="max-w-[800px] m-auto">
+                <c-form-builder v-model="blogPostData" :schema="blogPostSchema" @submit="handleBlogPostSubmit" />
+            </div>
+
+            <div class="mt-4">
+                <div class="p-4 bg-neutral-50 dark:bg-neutral-800 rounded-md">
+                    <h4 class="text-sm font-medium mb-2">Blog Post Form Data (modelValue)</h4>
+                    <pre
+                        class="whitespace-pre-wrap text-xs overflow-auto max-h-[500px] p-2 rounded bg-white dark:bg-neutral-900">{{ JSON.stringify(blogPostData, null, 2) }}</pre>
+                </div>
+            </div>
+
+            <template #code>
+                <pre><code class="code-highlight language-html">&lt;div class="max-w-[800px] m-auto"&gt;
+    &lt;c-form-builder
+        v-model="blogPostData"
+        :schema="blogPostSchema"
+        @submit="handleBlogPostSubmit"
+    /&gt;
+&lt;/div&gt;
+
+&lt;script setup lang="ts"&gt;
+    const blogPostData = ref({
+        title: "",
+        category: "",
+        tags: [],
+        excerpt: "",
+        content: "<p>Start writing your amazing blog post here...</p>",
+        featuredImage: [],
+        authorPassword: "",
+        publishNow: true,
+        publishDate: null
+    });
+&lt;/script&gt;</code></pre>
+            </template>
+
+            <template #schema>
+                <pre><code class="code-highlight language-json">{
+    blogHeader: {
+        type: "header",
+        label: "Create New Blog Post",
+        size: 12,
+        props: {
+            variant: "primary"
+        }
+    },
+    title: {
+        type: "input",
+        label: "Post Title",
+        placeholder: "Enter post title",
+        required: true,
+        size: 12
+    },
+    category: {
+        type: "combobox",
+        label: "Category",
+        placeholder: "Select a category",
+        required: true,
+        size: 6,
+        items: [
+            { value: "technology", label: "Technology" },
+            { value: "design", label: "Design & UI" },
+            { value: "business", label: "Business" },
+            { value: "development", label: "Development" },
+            { value: "tutorial", label: "Tutorial" }
+        ]
+    },
+    tags: {
+        type: "chips",
+        label: "Tags",
+        placeholder: "Add tags and press Enter",
+        size: 6,
+        minTags: 1,
+        maxTags: 5,
+        allowCustom: true
+    },
+    excerpt: {
+        type: "textarea",
+        label: "Post Excerpt",
+        placeholder: "Brief summary of your post",
+        required: true,
+        size: 12,
+        maxlength: 200,
+        lengthCount: true
+    },
+    content: {
+        type: "wysiwyg",
+        label: "Post Content",
+        placeholder: "Write your blog post here...",
+        required: true,
+        size: 12,
+        outputFormat: "html"
+    },
+    featuredImage: {
+        type: "file",
+        label: "Featured Image",
+        accept: "image/*",
+        multiple: false,
+        required: true,
+        size: 12,
+        dropzoneText: "Drop your feature image here or click to browse"
+    },
+    authorSection: {
+        type: "header",
+        label: "Author Details",
+        size: 12,
+        props: {
+            variant: "secondary"
+        }
+    },
+    authorPassword: {
+        type: "password",
+        label: "Author Password",
+        placeholder: "Verify your identity",
+        required: true,
+        size: 12,
+        requireUppercase: true,
+        requireLowercase: true,
+        requireNumbers: true,
+        requireSpecialChars: true,
+        minLength: 8,
+        showStrengthBar: true
+    },
+    publishNow: {
+        type: "toggle",
+        label: "Publish Immediately",
+        size: 6
+    },
+    publishDate: {
+        type: "date",
+        label: "Schedule Publication",
+        placeholder: "Select publication date",
+        size: 6
+    },
+    submit: {
+        type: "submit",
+        label: "Save & Publish",
+        size: 12
+    }
+}</code></pre>
+            </template>
+        </card-docs>
+
         <h3>Props</h3>
 
         <table-docs>
@@ -550,8 +700,8 @@ const rolePermissionsData = ref({
                     <td class="border-b px-4 py-2">Required</td>
                     <td class="border-b px-4 py-2">The type of the form field. Possible values: 'input', 'combobox',
                         'select', 'checkbox', 'radio', 'date', 'datepicker', 'autocomplete', 'file', 'fileupload',
-                        'number',
-                        'textarea', 'time', 'timepicker', 'toggle', 'stepper'.</td>
+                        'number', 'textarea', 'time', 'timepicker', 'toggle', 'stepper', 'password', 'wysiwyg',
+                        'richtext', 'editor'.</td>
                 </tr>
                 <tr>
                     <td class="border-b px-4 py-2">label</td>
@@ -646,6 +796,54 @@ const rolePermissionsData = ref({
                     <td class="border-b px-4 py-2">{}</td>
                     <td class="border-b px-4 py-2">For stepper type. Additional props to pass to the CStepper component.
                     </td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">requireUppercase</td>
+                    <td class="border-b px-4 py-2">Boolean</td>
+                    <td class="border-b px-4 py-2">true</td>
+                    <td class="border-b px-4 py-2">For password type. Requires the password to contain at least one uppercase letter.</td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">requireLowercase</td>
+                    <td class="border-b px-4 py-2">Boolean</td>
+                    <td class="border-b px-4 py-2">true</td>
+                    <td class="border-b px-4 py-2">For password type. Requires the password to contain at least one lowercase letter.</td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">requireNumbers</td>
+                    <td class="border-b px-4 py-2">Boolean</td>
+                    <td class="border-b px-4 py-2">true</td>
+                    <td class="border-b px-4 py-2">For password type. Requires the password to contain at least one number.</td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">requireSpecialChars</td>
+                    <td class="border-b px-4 py-2">Boolean</td>
+                    <td class="border-b px-4 py-2">true</td>
+                    <td class="border-b px-4 py-2">For password type. Requires the password to contain at least one special character.</td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">minLength</td>
+                    <td class="border-b px-4 py-2">Number</td>
+                    <td class="border-b px-4 py-2">8</td>
+                    <td class="border-b px-4 py-2">For password type. Minimum required length for the password.</td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">showStrengthBar</td>
+                    <td class="border-b px-4 py-2">Boolean</td>
+                    <td class="border-b px-4 py-2">true</td>
+                    <td class="border-b px-4 py-2">For password type. Shows a strength indicator for the password.</td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">showRequirements</td>
+                    <td class="border-b px-4 py-2">Boolean</td>
+                    <td class="border-b px-4 py-2">true</td>
+                    <td class="border-b px-4 py-2">For password type. Shows a list of password requirements.</td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">outputFormat</td>
+                    <td class="border-b px-4 py-2">String</td>
+                    <td class="border-b px-4 py-2">html</td>
+                    <td class="border-b px-4 py-2">For wysiwyg/richtext/editor type. Output format of the editor content ('html' or 'markdown').</td>
                 </tr>
             </tbody>
         </table-docs>
@@ -758,7 +956,7 @@ const schema = ref({
         label: "Country",
         placeholder: "Select your country",
         required: true,
-        size: 12,
+        size: 6,
         props: {
             clearable: true,
             searchable: true,
@@ -776,8 +974,11 @@ const schema = ref({
     zipCode: {
         type: "input",
         label: "Zip/Postal Code",
-        placeholder: "12345",
-        size: 6
+        placeholder: "22222-222",
+        size: 6,
+        props: {
+            mask: "#####-###"
+        }
     },
     username: {
         type: "input",
@@ -787,11 +988,16 @@ const schema = ref({
         size: 6,
     },
     password: {
-        type: "input",
+        type: "password",
         label: "Password",
-        placeholder: "Create a password",
         required: true,
-        size: 6,
+        size: 12,
+        requireUppercase: true,
+        requireLowercase: true,
+        requireNumbers: true,
+        requireSpecialChars: true,
+        minLength: 8,
+        showStrengthBar: true
     },
     notifications: {
         type: "checkbox",
@@ -824,7 +1030,7 @@ const productData = ref({
     subcategory: "",
     description: "",
     price: 0,
-    stock: 0,
+    stock: 1,
     productImage: [],
     restockDate: null,
     featured: false,
@@ -846,9 +1052,6 @@ const productSchema = ref({
         placeholder: "Select or type a category",
         required: true,
         size: 6,
-        props: {
-            size: "sm"
-        },
         options: [
             { value: "electronics", label: "Electronics" },
             { value: "clothing", label: "Clothing & Apparel" },
@@ -869,6 +1072,16 @@ const productSchema = ref({
             { value: "accessories", label: "Accessories" }
         ]
     },
+    description: {
+        type: "textarea",
+        label: "Product Description",
+        placeholder: "Detailed description of the product",
+        required: true,
+        size: 12,
+        maxlength: 500,
+        lengthCount: true,
+        autoresize: true
+    },
     price: {
         type: "currency",
         label: "Price ($)",
@@ -881,24 +1094,15 @@ const productSchema = ref({
         showCurrencySymbol: true
     },
     stock: {
-        type: "number",
+        type: "input",
         label: "Stock Quantity",
-        min: 0,
-        max: 10000,
-        step: 1,
+        placeholder: "Enter stock quantity",
         required: true,
-        size: 6
-    },
-    description: {
-        type: "textarea",
-        label: "Product Description",
-        placeholder: "Detailed description of the product",
-        required: true,
-        size: 12,
-        maxlength: 500,
-        lengthCount: true,
-        autoresize: false,
-        resize: false
+        size: 6,
+        value: 1,
+        props: {
+            mask: "####"
+        }
     },
     productImage: {
         type: "file",
@@ -1245,6 +1449,113 @@ const permissionsSchema = {
 
 const handlePermissionsSubmit = (data) => {
     console.log("Role permissions submitted:", data);
+};
+
+const blogPostData = ref({
+    title: "",
+    category: "",
+    tags: [],
+    excerpt: "",
+    content: "<p>Start writing your amazing blog post here...</p>",
+    featuredImage: [],
+    publishNow: true,
+    publishDate: null
+});
+
+const blogPostSchema = ref({
+    blogHeader: {
+        type: "header",
+        label: "Create New Blog Post",
+        size: 12,
+        props: {
+            variant: "primary"
+        }
+    },
+    title: {
+        type: "input",
+        label: "Post Title",
+        placeholder: "Enter post title",
+        required: true,
+        size: 12
+    },
+    category: {
+        type: "combobox",
+        label: "Category",
+        placeholder: "Select a category",
+        required: true,
+        size: 6,
+        items: [
+            { value: "technology", label: "Technology" },
+            { value: "design", label: "Design & UI" },
+            { value: "business", label: "Business" },
+            { value: "development", label: "Development" },
+            { value: "tutorial", label: "Tutorial" }
+        ]
+    },
+    tags: {
+        type: "chips",
+        label: "Tags",
+        placeholder: "Add tags and press Enter",
+        size: 6,
+        minTags: 1,
+        maxTags: 5,
+        allowCustom: true
+    },
+    excerpt: {
+        type: "textarea",
+        label: "Post Excerpt",
+        placeholder: "Brief summary of your post",
+        required: true,
+        size: 12,
+        maxlength: 200,
+        lengthCount: true
+    },
+    content: {
+        type: "wysiwyg",
+        label: "Post Content",
+        placeholder: "Write your blog post here...",
+        required: true,
+        size: 12,
+        outputFormat: "html"
+    },
+    featuredImage: {
+        type: "file",
+        label: "Featured Image",
+        accept: "image/*",
+        multiple: false,
+        required: true,
+        size: 12,
+        dropzoneText: "Drop your feature image here or click to browse"
+    },
+    authorSection: {
+        type: "header",
+        label: "Author Details",
+        size: 12,
+        props: {
+            variant: "secondary"
+        }
+    },
+    publishNow: {
+        type: "toggle",
+        label: "Publish Immediately",
+        size: 6
+    },
+    publishDate: {
+        type: "date",
+        label: "Schedule Publication",
+        placeholder: "Select publication date",
+        size: 6
+    },
+    submit: {
+        type: "submit",
+        label: "Save & Publish",
+        size: 12
+    }
+});
+
+const handleBlogPostSubmit = (data) => {
+    console.log("Blog post submitted:", data);
+    // In a real application, you would save the blog post data to a database
 };
 </script>
 

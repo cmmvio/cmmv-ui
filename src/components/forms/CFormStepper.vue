@@ -1,6 +1,5 @@
 <template>
     <div class="form-stepper">
-        <!-- Validation Error Alert Area -->
         <div v-if="validationErrors.length > 0">
             <c-alert type="error" title="Form Validation Error" icon :closable="true" @close="validationErrors = []"
                 margin="mb-6">
@@ -35,7 +34,6 @@
             </template>
         </c-stepper>
 
-        <!-- Navigation Area -->
         <div class="mt-4">
             <slot name="navigation"
                 v-bind="{ currentStep, nextStep: validateAndNextStep, prevStep, goToStep: validateAndGoToStep, finish: validateAndFinish, formData }">

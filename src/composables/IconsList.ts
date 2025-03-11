@@ -1150,11 +1150,6 @@ const Icons = [
         "code": "<icon-stop class=\"h-6 w-6 text-neutral-600 dark:text-white\" aria-hidden=\"true\" />"
     },
     {
-        "name": "icon-stop",
-        "path": "components/icons/IconStop.vue",
-        "code": "<icon-stop class=\"h-6 w-6 text-neutral-600 dark:text-white\" aria-hidden=\"true\" />"
-    },
-    {
         "name": "icon-sun",
         "path": "components/icons/IconSun.vue",
         "code": "<icon-sun class=\"h-6 w-6 text-neutral-600 dark:text-white\" aria-hidden=\"true\" />"
@@ -1243,6 +1238,141 @@ const Icons = [
         "name": "icon-x-mark",
         "path": "components/icons/IconXMark.vue",
         "code": "<icon-x-mark class=\"h-6 w-6 text-neutral-600 dark:text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-refresh",
+        "path": "components/icons/IconRefresh.vue",
+        "code": "<icon-refresh class=\"h-6 w-6 text-neutral-600 dark:text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-loading",
+        "path": "components/icons/IconLoading.vue",
+        "code": "<icon-loading class=\"h-6 w-6 text-neutral-600 dark:text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-duplicate",
+        "path": "components/icons/IconDuplicate.vue",
+        "code": "<icon-duplicate class=\"h-6 w-6 text-neutral-600 dark:text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-chevron-up-down",
+        "path": "components/icons/IconChevronUpDown.vue",
+        "code": "<icon-chevron-up-down class=\"h-6 w-6 text-neutral-600 dark:text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-file-plus",
+        "path": "components/icons/IconFilePlus.vue",
+        "code": "<icon-file-plus class=\"h-6 w-6 text-neutral-600 dark:text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-file-open",
+        "path": "components/icons/IconFileOpen.vue",
+        "code": "<icon-file-open class=\"h-6 w-6 text-neutral-600 dark:text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-robot",
+        "path": "components/icons/IconRobot.vue",
+        "code": "<icon-robot class=\"h-6 w-6 text-neutral-600 dark:text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-send",
+        "path": "components/icons/IconSend.vue",
+        "code": "<icon-send class=\"h-6 w-6 text-neutral-600 dark:text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-bold",
+        "path": "components/icons/IconBold.vue",
+        "code": "<icon-bold class=\"h-6 w-6 text-neutral-600 dark:text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-italic",
+        "path": "components/icons/IconItalic.vue",
+        "code": "<icon-italic class=\"h-6 w-6 text-neutral-600 dark:text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-strikethrough",
+        "path": "components/icons/IconStrikethrough.vue",
+        "code": "<icon-strikethrough class=\"h-6 w-6 text-neutral-600 dark:text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-list-bullet",
+        "path": "components/icons/IconListBullet.vue",
+        "code": "<icon-list-bullet class=\"h-6 w-6 text-neutral-600 dark:text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-list",
+        "path": "components/icons/IconList.vue",
+        "code": "<icon-list class=\"h-6 w-6 text-neutral-600 dark:text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-list-number",
+        "path": "components/icons/IconListNumber.vue",
+        "code": "<icon-list-number class=\"h-6 w-6 text-neutral-600 dark:text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-font",
+        "path": "components/icons/IconFont.vue",
+        "code": "<icon-font class=\"h-6 w-6 text-neutral-600 dark:text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-font-size",
+        "path": "components/icons/IconFontSize.vue",
+        "code": "<icon-font-size class=\"h-6 w-6 text-neutral-600 dark:text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-paragraph",
+        "path": "components/icons/IconParagraph.vue",
+        "code": "<icon-paragraph class=\"h-6 w-6 text-neutral-600 dark:text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-spellcheck",
+        "path": "components/icons/IconSpellcheck.vue",
+        "code": "<icon-spellcheck class=\"h-6 w-6 text-neutral-600 dark:text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-speech-recognize",
+        "path": "components/icons/IconSpeechRecognize.vue",
+        "code": "<icon-speech-recognize class=\"h-6 w-6 text-neutral-600 dark:text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-copy",
+        "path": "components/icons/IconCopy.vue",
+        "code": "<icon-copy class=\"h-6 w-6 text-neutral-600 dark:text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-paste",
+        "path": "components/icons/IconPaste.vue",
+        "code": "<icon-paste class=\"h-6 w-6 text-neutral-600 dark:text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-select-all",
+        "path": "components/icons/IconSelectAll.vue",
+        "code": "<icon-select-all class=\"h-6 w-6 text-neutral-600 dark:text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-hr",
+        "path": "components/icons/IconHR.vue",
+        "code": "<icon-hr class=\"h-6 w-6 text-neutral-600 dark:text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-redo",
+        "path": "components/icons/IconRedo.vue",
+        "code": "<icon-redo class=\"h-6 w-6 text-neutral-600 dark:text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-undo",
+        "path": "components/icons/IconUndo.vue",
+        "code": "<icon-undo class=\"h-6 w-6 text-neutral-600 dark:text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-indent",
+        "path": "components/icons/IconIndent.vue",
+        "code": "<icon-indent class=\"h-6 w-6 text-neutral-600 dark:text-white\" aria-hidden=\"true\" />"
+    },
+    {
+        "name": "icon-outdent",
+        "path": "components/icons/IconOutdent.vue",
+        "code": "<icon-outdent class=\"h-6 w-6 text-neutral-600 dark:text-white\" aria-hidden=\"true\" />"
     }
 ]
 

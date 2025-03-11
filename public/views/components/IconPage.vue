@@ -265,9 +265,57 @@
             Showing {{ filteredBrandIcons.length }} of {{ resolvedBrandsIcons.length }} brand icons
         </div>
 
-        <c-notification ref="notification" iconColor="text-green-500"></c-notification>
+       <!-- <h3>Fontawesome</h3>
+
+        <p>
+            The following fontawesome icons are available for use in your application. These icons are particularly
+            useful for displaying technology stacks or representing actions.
+        </p>
+
+        <div class="mb-6 mt-4">
+            <div class="relative">
+                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                    <svg class="w-5 h-5 text-neutral-500 dark:text-neutral-400" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                </div>
+                <input type="search" v-model="searchFontawesomeQuery"
+                    class="block w-full p-3 pl-10 text-sm border border-neutral-300 dark:border-neutral-600 rounded-lg bg-white dark:bg-neutral-800 focus:ring-blue-500 focus:border-blue-500 dark:focus:ring-blue-400 dark:focus:border-blue-400"
+                    placeholder="Search fontawesome icons by name..." />
+            </div>
+            <p v-if="filteredFontawesomeIcons.length === 0 && searchFontawesomeQuery"
+                class="mt-2 text-sm text-neutral-500 dark:text-neutral-400">
+                No fontawesome icons found matching "{{ searchFontawesomeQuery }}". Try a different search term.
+            </p>
+        </div>
+
+        <c-card variant="flat" class="m-auto mt-4 px-4 py-10 items-center">
+            <div
+                class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 2xl:grid-cols-10 gap-4">
+                <div v-for="icon in filteredFontawesomeIcons" :key="icon.name"
+                    class="relative flex flex-col items-center justify-center cursor-pointer group"
+                    @click="copyToClipboard(icon.code)">
+                    <c-tooltip :content="icon.name" position="top">
+                        <component :is="icon.component" class="w-8 h-8 mb-2" color="text-neutral-600 dark:text-white"
+                            aria-hidden="true" />
+                    </c-tooltip>
+                    <span class="text-xs text-center text-neutral-500 dark:text-neutral-400 truncate w-full">{{
+                        icon.name
+                        }}</span>
+                </div>
+            </div>
+        </c-card>
+
+        <div v-if="filteredFontawesomeIcons.length > 0"
+            class="text-sm text-neutral-500 dark:text-neutral-400 mt-4 text-center">
+            Showing {{ filteredFontawesomeIcons.length }} of {{ resolvedFontawesomeIcons.length }} fontawesome icons
+        </div>-->
 
         <br />
+
+        <c-notification ref="notification" iconColor="text-green-500"></c-notification>
 
         <PagePagination previous="Flags" previousLink="/flags" next="Image" nextLink="/image" />
     </BaseLayout>
@@ -284,6 +332,7 @@
 import { ref, markRaw, reactive, onMounted, computed } from "vue";
 import IconsList from "@composables/IconsList.ts";
 import IconsBrandsList from "@composables/IconsBrandsList.ts";
+import IconsFontawesome from "@composables/IconsFontawesome.ts";
 import BaseLayout from "../../layout/BaseLayout.vue";
 import PagePagination from "../../layout/PagePagination.vue";
 import TableDocs from "../../components/TableDocs.vue";
@@ -297,10 +346,13 @@ import * as Icons from "../../../src";
 const notification = ref(null);
 const icons = IconsList;
 const iconsBrands = IconsBrandsList;
+const iconsFontawesome = IconsFontawesome;
 const resolvedIcons = reactive([]);
 const resolvedBrandsIcons = reactive([]);
+const resolvedFontawesomeIcons = reactive([]);
 const searchQuery = ref('');
 const searchBrandQuery = ref('');
+const searchFontawesomeQuery = ref('');
 
 const filteredIcons = computed(() => {
     if (!searchQuery.value) return resolvedIcons.sort((a, b) => a.name.localeCompare(b.name));
@@ -314,6 +366,14 @@ const filteredBrandIcons = computed(() => {
     if (!searchBrandQuery.value) return resolvedBrandsIcons.sort((a, b) => a.name.localeCompare(b.name));
     const query = searchBrandQuery.value.toLowerCase();
     return resolvedBrandsIcons.filter(icon =>
+        icon.name.toLowerCase().includes(query)
+    ).sort((a, b) => a.name.localeCompare(b.name));
+});
+
+const filteredFontawesomeIcons = computed(() => {
+    if (!searchFontawesomeQuery.value) return resolvedFontawesomeIcons.sort((a, b) => a.name.localeCompare(b.name));
+    const query = searchFontawesomeQuery.value.toLowerCase();
+    return resolvedFontawesomeIcons.filter(icon =>
         icon.name.toLowerCase().includes(query)
     ).sort((a, b) => a.name.localeCompare(b.name));
 });
@@ -351,6 +411,20 @@ onMounted(async () => {
                 }
             }
         }
+
+        for (const icon of iconsFontawesome) {
+            if (icon.path) {
+                try {
+                    const imported = await import(`../../../src/${icon.path}`);
+                    resolvedFontawesomeIcons.push({
+                        ...icon,
+                        component: markRaw(imported.default),
+                    });
+                } catch (e) {
+                    console.warn(`Failed to import fontawesome icon: ${icon.path}`, e);
+                }
+            }
+        }
     } else {
         for (const icon of iconsBrands) {
             if (icon.path) {
@@ -376,6 +450,20 @@ onMounted(async () => {
                     });
                 } catch (e) {
                     console.warn(`Failed to import icon: ${icon.path}`, e);
+                }
+            }
+        }
+
+        for (const icon of iconsFontawesome) {
+            if (icon.path) {
+                try {
+                    const imported = await import(`../../../src/${icon.path}`);
+                    resolvedFontawesomeIcons.push({
+                        ...icon,
+                        component: markRaw(imported.default),
+                    });
+                } catch (e) {
+                    console.warn(`Failed to import fontawesome icon: ${icon.path}`, e);
                 }
             }
         }

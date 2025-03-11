@@ -228,6 +228,7 @@ const navbarItems = [
             { name: "Textarea", uri: "/textarea" },
             { name: "Timepicker", uri: "/timepicker" },
             { name: "Toggle", uri: "/toggle" },
+            { name: "Wysiwyg Editor", uri: "/wysiwyg-editor" },
         ],
     },
     /*{
