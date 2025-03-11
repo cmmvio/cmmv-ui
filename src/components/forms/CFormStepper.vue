@@ -44,10 +44,10 @@
                         <c-button v-if="currentStep > 0" @click="prevStep" variant="secondary" size="md">
                             {{ prevButtonText || 'Previous' }}
                         </c-button>
-                        <div v-else class="w-20"></div> <!-- Espaço vazio para manter o layout -->
+                        <div v-else class="w-20"></div>
                     </div>
 
-                    <div class="flex-grow"></div> <!-- Espaço flexível -->
+                    <div class="flex-grow"></div>
 
                     <div>
                         <c-button v-if="currentStep < steps.length - 1" @click="validateAndNextStep" variant="primary"
@@ -148,11 +148,6 @@ const currentStep = ref(props.modelValue);
 const validationErrors = ref<string[]>([]);
 const formRefs = ref<any[]>([]);
 
-const handleStepChange = (step: number) => {
-    // Apenas para tratar o evento, já temos um watcher para currentStep
-    // que emite os eventos necessários
-};
-
 watch(() => props.modelValue, (value) => {
     currentStep.value = value;
 });
@@ -162,38 +157,28 @@ watch(currentStep, (value) => {
     emit('step-change', value);
 });
 
-// Find form components in slots
-onMounted(() => {
-    // This can be implemented with more complex DOM queries if needed
-    // Currently we expect forms to be passed via refs
-});
-
 const validateCurrentStep = async (): Promise<boolean> => {
     validationErrors.value = [];
 
-    // Emitir evento de validação e permitir que o componente pai valide também
     let externalValidationResult: boolean | string[] = true;
 
-    // Usando Promise para suportar validação assíncrona do componente pai
     try {
         const validatePromise = new Promise<boolean | string[]>((resolve) => {
             emit('validate-step', currentStep.value, (result: boolean | string[]) => {
                 resolve(result);
             });
 
-            // Resolver após um pequeno timeout caso o callback não seja chamado
             setTimeout(() => resolve(true), 100);
         });
 
         externalValidationResult = await validatePromise;
 
-        // Se o resultado externo for um array de strings, são mensagens de erro
         if (Array.isArray(externalValidationResult) && externalValidationResult.length > 0) {
             validationErrors.value = externalValidationResult;
             emit('validation-error', validationErrors.value);
             return false;
         }
-        // Se for false, validação falhou sem mensagens específicas
+
         else if (externalValidationResult === false) {
             validationErrors.value = ['Validation failed'];
             emit('validation-error', validationErrors.value);
@@ -203,7 +188,7 @@ const validateCurrentStep = async (): Promise<boolean> => {
         console.error('Error during external validation:', error);
     }
 
-    // Continuar com a validação interna
+
     if (props.stepValidators && props.stepValidators[currentStep.value]) {
         try {
             const validationResult = await props.stepValidators[currentStep.value](props.formData, currentStep.value);
@@ -226,7 +211,6 @@ const validateCurrentStep = async (): Promise<boolean> => {
         }
     }
 
-    // Se chegou até aqui, a validação foi bem-sucedida
     return true;
 };
 
@@ -256,7 +240,6 @@ const prevStep = () => {
     }
 };
 
-// Expose methods
 defineExpose({
     validateCurrentStep,
     nextStep: validateAndNextStep,

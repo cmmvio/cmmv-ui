@@ -20,6 +20,7 @@ declare module 'vue' {
     CCard: typeof import('./src/components/layout/CCard.vue')['default']
     CChartBar: typeof import('./src/components/data/CChartBar.vue')['default']
     CChartDoughnut: typeof import('./src/components/data/CChartDoughnut.vue')['default']
+    CChartFinancial: typeof import('./src/components/data/CChartFinancial.vue')['default']
     CChartLine: typeof import('./src/components/data/CChartLine.vue')['default']
     CChartPie: typeof import('./src/components/data/CChartPie.vue')['default']
     CChartPolar: typeof import('./src/components/data/CChartPolar.vue')['default']

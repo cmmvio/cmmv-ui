@@ -103,6 +103,35 @@ const props = defineProps({
     plugins: {
         type: Object,
         default: () => ({})
+    },
+    enableZoom: {
+        type: Boolean,
+        default: true
+    },
+    zoomOptions: {
+        type: Object,
+        default: () => ({
+            pan: {
+                enabled: true,
+                mode: 'xy',
+                modifierKey: 'shift'
+            },
+            zoom: {
+                wheel: {
+                    enabled: true,
+                },
+                pinch: {
+                    enabled: true
+                },
+                mode: 'xy',
+                drag: {
+                    enabled: true,
+                    backgroundColor: 'rgba(225,225,225,0.3)',
+                    borderColor: 'rgba(54, 162, 235, 0.8)',
+                    borderWidth: 1
+                }
+            }
+        })
     }
 });
 
@@ -154,7 +183,8 @@ function prepareChartOptions() {
                     size: 16,
                     weight: 'bold'
                 }
-            }
+            },
+            zoom: props.enableZoom ? simpleClone(props.zoomOptions) : { zoom: { enabled: false }, pan: { enabled: false } }
         },
         scales: simpleClone(props.scales),
         onClick: (event, elements) => {
@@ -391,6 +421,16 @@ function resizeChart() {
     }
 }
 
+function resetZoom() {
+    if (chartInstance) {
+        try {
+            chartInstance.resetZoom();
+        } catch (error) {
+            console.error('Error resetting zoom:', error);
+        }
+    }
+}
+
 watch(() => simpleClone(props.data), () => {
     nextTick(() => {
         createChart();
@@ -441,7 +481,8 @@ defineExpose({
     removeData,
     updateLabels,
     resizeChart,
-    recreateChart: createChart
+    recreateChart: createChart,
+    resetZoom
 });
 </script>
 

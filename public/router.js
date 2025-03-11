@@ -21,6 +21,7 @@ import SystemBarPage from "./views/components/SystemBarPage.vue";
 //Data
 import ChartBarPage from "./views/data/ChartBarPage.vue";
 import ChartDoughnutPage from './views/data/ChartDoughnutPage.vue';
+import ChartFinancialPage from './views/data/ChartFinancialPage.vue';
 import ChartLinePage from "./views/data/ChartLinePage.vue";
 import ChartPiePage from './views/data/ChartPiePage.vue';
 import ChartPolarPage from './views/data/ChartPolarPage.vue';
@@ -106,6 +107,7 @@ const routes = [
     //Data
     { path: '/chart-bar', component: ChartBarPage },
     { path: '/chart-doughnut', component: ChartDoughnutPage },
+    { path: '/chart-financial', component: ChartFinancialPage },
     { path: '/chart-line', component: ChartLinePage },
     { path: '/chart-pie', component: ChartPiePage },
     { path: '/chart-polar', component: ChartPolarPage },

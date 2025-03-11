@@ -192,6 +192,7 @@ const navbarItems = [
         children: [
             { name: "Chart Bar", uri: "/chart-bar" },
             { name: "Chart Doughnut", uri: "/chart-doughnut" },
+            { name: "Chart Financial", uri: "/chart-financial" },
             { name: "Chart Line", uri: "/chart-line" },
             { name: "Chart Pie", uri: "/chart-pie" },
             { name: "Chart Polar", uri: "/chart-polar" },

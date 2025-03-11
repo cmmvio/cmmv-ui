@@ -173,7 +173,6 @@
 
                         <!-- Custom Component for Slots -->
                         <div v-if="item.type === 'custom'" :class="`col-span-${item.size || 12}`">
-                            <!-- Try both camelCase and kebab-case slot names -->
                             <slot v-if="$slots[key]" :name="key" v-bind="{
                                 data: typeof item.props?.data === 'function' ? item.props?.data() : item.props?.data
                             }"></slot>
@@ -423,16 +422,13 @@ watch(() => props.modelValue, (newValue) => {
     if (newValue && Object.keys(newValue).length > 0) {
         const processedData = { ...newValue };
 
-        // For each field in the schema
         for (const key in props.schema) {
-            // If it's a chips input field and the value is already in processedData
             if ((props.schema[key].type === 'chips' || props.schema[key].type === 'chipsinput') &&
                 key in processedData && Array.isArray(processedData[key])) {
 
-                // If the array contains strings, convert them to objects for the component
                 if (processedData[key].length > 0 && typeof processedData[key][0] === 'string') {
                     processedData[key] = processedData[key].map((label: string) => ({
-                        value: `${label}-${Date.now()}`, // Generate a unique value
+                        value: `${label}-${Date.now()}`,
                         label: label
                     }));
                 }
@@ -444,19 +440,15 @@ watch(() => props.modelValue, (newValue) => {
 }, { deep: true });
 
 onMounted(() => {
-    // Process the initial data for special handling of chips input fields
     const processedData = { ...props.modelValue };
 
-    // For each field in the schema
     for (const key in props.schema) {
-        // If it's a chips input field and the value is already in formData
         if ((props.schema[key].type === 'chips' || props.schema[key].type === 'chipsinput') &&
             key in processedData && Array.isArray(processedData[key])) {
 
-            // If the array contains strings, convert them to objects for the component
             if (processedData[key].length > 0 && typeof processedData[key][0] === 'string') {
                 processedData[key] = processedData[key].map((label: string) => ({
-                    value: `${label}-${Date.now()}`, // Generate a unique value
+                    value: `${label}-${Date.now()}`,
                     label: label
                 }));
             }
