@@ -69,6 +69,7 @@ import DatepickerPage from "./views/form/DatepickerPage.vue";
 import FileUploadPage from "./views/form/FileUploadPage.vue";
 import ChipsInputPage from "./views/form/ChipsInputPage.vue";
 import CurrencyInputPage from "./views/form/CurrencyInputPage.vue";
+import PasswordInputPage from "./views/form/PasswordInputPage.vue";
 import PhoneInputPage from "./views/form/PhoneInputPage.vue";
 
 //Graph
@@ -149,6 +150,7 @@ const routes = [
 	{ path: '/input', component: InputPage },
     { path: '/number-input', component: NumberInputPage },
     { path: '/otp-input', component: OtpInputPage },
+    { path: '/password-input', component: PasswordInputPage },
     { path: '/phone-input', component: PhoneInputPage },
 	{ path: '/radio', component: RadioPage },
     { path: '/slider', component: SliderPage },
