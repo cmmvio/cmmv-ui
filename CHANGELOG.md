@@ -1,3 +1,12 @@
+## [0.2.3](https://github.com/cmmvio/cmmv-ui/compare/v0.2.2...v0.2.3) (2025-03-11)
+
+
+### Features
+
+* monaco, menu ([1e46206](https://github.com/cmmvio/cmmv-ui/commit/1e46206eba8684d3fe8e6d4dc27fa7683c70a27c))
+
+
+
 ## [0.2.2](https://github.com/cmmvio/cmmv-ui/compare/v0.2.1...v0.2.2) (2025-03-11)
 
 
