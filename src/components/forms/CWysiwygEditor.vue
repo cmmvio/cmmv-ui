@@ -247,6 +247,7 @@ import TextAlign from '@tiptap/extension-text-align';
 import Placeholder from '@tiptap/extension-placeholder';
 import { Markdown } from 'tiptap-markdown';
 import CButton from '@components/components/CButton.vue';
+import CTooltip from '@components/components/CTooltip.vue';
 
 const props = defineProps({
     modelValue: {
@@ -276,6 +277,9 @@ const emit = defineEmits(['update:modelValue']);
 
 const headingMenuOpen = ref(false);
 const fileInput = ref<HTMLInputElement | null>(null);
+
+// Define o tipo Level como união dos valores literais aceitos
+type Level = 1 | 2 | 3;
 
 const editor = useEditor({
     extensions: [
@@ -325,7 +329,7 @@ const isHeadingActive = computed(() => {
            editor.value.isActive('heading', { level: 3 });
 });
 
-const setHeading = (level: number) => {
+const setHeading = (level: Level) => {
     editor.value?.chain().focus().toggleHeading({ level }).run();
 };
 
