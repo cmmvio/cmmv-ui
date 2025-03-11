@@ -1,3 +1,25 @@
+## [0.2.2](https://github.com/cmmvio/cmmv-ui/compare/v0.2.1...v0.2.2) (2025-03-11)
+
+
+### Bug Fixes
+
+* build ([2e2a902](https://github.com/cmmvio/cmmv-ui/commit/2e2a90212f7415803ef2847edbc2900ef2acd965))
+* datapicker ([a482d52](https://github.com/cmmvio/cmmv-ui/commit/a482d524355e80fe949b5f2dd7c29ee156a8e2b5))
+* phone ([16cd091](https://github.com/cmmvio/cmmv-ui/commit/16cd091859f03b61b12a27053748b9c40560c625))
+* stepper ([dc605ec](https://github.com/cmmvio/cmmv-ui/commit/dc605ec9e4a9f88b38d00d28ccaef435ccad4d5a))
+* vulnerability i18n ([3afcb98](https://github.com/cmmvio/cmmv-ui/commit/3afcb9809742d823c116725d4493396bae11b24a))
+
+
+### Features
+
+* doughnut, pie, polar, radar ([f238664](https://github.com/cmmvio/cmmv-ui/commit/f23866499cdc884ae590895e24a530162d4edfc8))
+* financial chart ([6161a9e](https://github.com/cmmvio/cmmv-ui/commit/6161a9e2f1c64e162d77b3a7e19577f02ed7b879))
+* input mask ([a1e2ce9](https://github.com/cmmvio/cmmv-ui/commit/a1e2ce91411f10c8132902fe11ade54553955a71))
+* password input ([4ea012a](https://github.com/cmmvio/cmmv-ui/commit/4ea012ab79363bf40b1b78c709a3608779b523eb))
+* wysiwyng, update formbuilder ([1bb07d7](https://github.com/cmmvio/cmmv-ui/commit/1bb07d712e423957abf9fa33b97b4d2560a00abe))
+
+
+
 ## [0.2.1](https://github.com/cmmvio/cmmv-ui/compare/v0.2.0...v0.2.1) (2025-03-10)
 
 
