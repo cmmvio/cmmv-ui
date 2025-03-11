@@ -101,6 +101,9 @@ importers:
       moment:
         specifier: 2.29.4
         version: 2.29.4
+      monaco-editor:
+        specifier: ^0.52.2
+        version: 0.52.2
       path-to-regexp:
         specifier: 0.1.12
         version: 0.1.12
@@ -125,6 +128,9 @@ importers:
       typeorm:
         specifier: ^0.3.21
         version: 0.3.21(reflect-metadata@0.2.2)(ts-node@10.9.2(@swc/core@1.11.8(@swc/helpers@0.5.15))(@types/node@22.13.10)(typescript@5.6.3))
+      uuid:
+        specifier: ^11.1.0
+        version: 11.1.0
       v-mask:
         specifier: ^2.3.0
         version: 2.3.0
@@ -3575,6 +3581,9 @@ packages:
 
   moment@2.29.4:
     resolution: {integrity: sha512-5LC9SOxjSc2HF6vO2CyuTDNivEdoz2IvyJJGj6X8DJ0eFyfszE0QiEd+iXmBvUP3WHxSjFH/vIsA0EN00cgr8w==}
+
+  monaco-editor@0.52.2:
+    resolution: {integrity: sha512-GEQWEZmfkOGLdd3XK8ryrfWz3AIP8YymVXiPHEdewrUq7mh0qrKrfHLNCXcbB6sTnMLnOZ3ztSiKcciFUkIJwQ==}
 
   mrmime@2.0.1:
     resolution: {integrity: sha512-Y3wQdFg2Va6etvQ5I82yUhGdsKrcYox6p7FfL1LbK2J4V01F9TGlepTIhnK24t7koZibmg82KGglhA1XK5IsLQ==}
@@ -8522,6 +8531,8 @@ snapshots:
       ufo: 1.5.4
 
   moment@2.29.4: {}
+
+  monaco-editor@0.52.2: {}
 
   mrmime@2.0.1: {}
 

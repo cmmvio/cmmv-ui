@@ -83,7 +83,7 @@ import IconViewfinderCircle from '../../src/components/icons/IconViewfinderCircl
 import IconSquare2Stack from '../../src/components/icons/IconSquare2Stack.vue';
 import IconXMark from '../../src/components/icons/IconXMark.vue';
 import IconChevronDown from '../../src/components/icons/IconChevronDown.vue';
-import IconChevronRight from '../../src/components/icons/IconChevronRight.vue';
+import IconFolderOpen from '../../src/components/icons/IconFolderOpen.vue';
 import IconMagnifyingGlass from '../../src/components/icons/IconMagnifyingGlass.vue';
 
 const props = defineProps({
@@ -205,6 +205,16 @@ const navbarItems = [
         ]
     },
     {
+        name: "Editor",
+        isDir: true,
+        icon: IconFolderOpen,
+        children: [
+            { name: "Code Editor", uri: "/code-editor" },
+            { name: "Menu", uri: "/menu" },
+            { name: "Tree View", uri: "/tree-view" },
+        ]
+    },
+    {
         name: "Form",
         isDir: true,
         icon: IconDocument,
@@ -228,7 +238,7 @@ const navbarItems = [
             { name: "Textarea", uri: "/textarea" },
             { name: "Timepicker", uri: "/timepicker" },
             { name: "Toggle", uri: "/toggle" },
-            { name: "Wysiwyg Editor", uri: "/wysiwyg-editor" },
+            { name: "WYSIWYG Editor", uri: "/wysiwyg-editor" },
         ],
     },
     /*{

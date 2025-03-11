@@ -962,7 +962,7 @@ onMounted(() => {
             </template>
         </card-docs>
 
-        <PagePagination previous="Pagination" previousLink="/pagination" next="Autocomplete" nextLink="/autocomplete" />
+        <PagePagination previous="Pagination" previousLink="/pagination" next="Code Editor" nextLink="/code-editor" />
     </BaseLayout>
 </template>
 

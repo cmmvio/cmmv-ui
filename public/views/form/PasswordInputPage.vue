@@ -596,7 +596,7 @@ const confirmPassword = ref("");
             </tbody>
         </table-docs>
 
-        <PagePagination previous="Input" previousLink="/input" next="Number Input" nextLink="/number-input" />
+        <PagePagination previous="Option Input" previousLink="/option-input" next="Radio" nextLink="/radio" />
     </BaseLayout>
 </template>
 

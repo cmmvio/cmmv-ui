@@ -542,7 +542,7 @@ const selectedPlan = ref(pricingPlans[0]);
             </template>
         </card-docs>
 
-        <PagePagination previous="OTP Input" previousLink="/otp-input" next="Slider" nextLink="/slider" />
+        <PagePagination previous="Password Input" previousLink="/password-input" next="Slider" nextLink="/slider" />
     </BaseLayout>
 </template>
 

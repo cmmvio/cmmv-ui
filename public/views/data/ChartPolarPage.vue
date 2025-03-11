@@ -394,7 +394,7 @@ const randomizeData = () => {
             </template>
         </card-docs>
 
-        <PagePagination previous="Chart Radar" previousLink="/chart-radar" next="Chart Doughnut" nextLink="/chart-doughnut" />
+        <PagePagination previous="Chart Pie" previousLink="/chart-pie" next="Chart Radar" nextLink="/chart-radar" />
     </BaseLayout>
 </template>
 

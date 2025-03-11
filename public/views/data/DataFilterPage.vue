@@ -452,7 +452,7 @@ onMounted(() => {
             </tbody>
         </table-docs>
 
-        <PagePagination previous="Chart Line" previousLink="/chart-line" next="Data Table" nextLink="/data-table" />
+        <PagePagination previous="Chart Radar" previousLink="/chart-radar" next="Data Table" nextLink="/data-table" />
     </BaseLayout>
 </template>
 

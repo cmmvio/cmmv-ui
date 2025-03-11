@@ -209,7 +209,7 @@ const toggleCustom3 = ref(false);
             </template>
         </card-docs>
 
-        <PagePagination previous="Timepicker" previousLink="/timepicker" next="Graph Box" nextLink="/graph-box" />
+        <PagePagination previous="Timepicker" previousLink="/timepicker" next="WYSIWYG Editor" nextLink="/wysiwyg-editor" />
     </BaseLayout>
 </template>
 

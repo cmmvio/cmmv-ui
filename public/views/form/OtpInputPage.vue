@@ -300,7 +300,7 @@ const otpValue = ref("");
             </template>
         </card-docs>
 
-        <PagePagination previous="Number Input" previousLink="/number-input" next="Radio" nextLink="/radio" />
+        <PagePagination previous="Number Input" previousLink="/number-input" next="Password Input" nextLink="/password-input" />
     </BaseLayout>
 </template>
 

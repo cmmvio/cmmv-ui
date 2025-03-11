@@ -478,7 +478,7 @@ onUnmounted(() => {
             </template>
         </card-docs>
 
-        <PagePagination previous="Chart Bar" previousLink="/chart-bar" next="Data Table" nextLink="/data-table" />
+        <PagePagination previous="Chart Financial" previousLink="/chart-financial" next="Chart Pie" nextLink="/chart-pie" />
     </BaseLayout>
 </template>
 

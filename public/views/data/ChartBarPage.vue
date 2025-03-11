@@ -690,7 +690,7 @@
             </tbody>
         </table-docs>
 
-        <PagePagination previous="Tooltip" previousLink="/tooltip" next="Chart Line" nextLink="/chart-line" />
+        <PagePagination previous="Tooltip" previousLink="/tooltip" next="Chart Doughnut" nextLink="/chart-doughnut" />
     </BaseLayout>
 </template>
 

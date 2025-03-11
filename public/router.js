@@ -34,7 +34,9 @@ import TablePage from "./views/data/TablePage.vue";
 
 
 //Editor
+import CodeEditorPage from "./views/editor/CodeEditorPage.vue";
 import TreeViewPage from "./views/editor/TreeViewPage.vue";
+import MenuPage from "./views/editor/MenuPage.vue";
 
 //Layout
 import AccordionPage from "./views/layout/AccordionPage.vue";
@@ -82,9 +84,6 @@ import DialogPage from "./views/overlays/DialogPage.vue";
 import NotificationPage from "./views/overlays/NotificationPage.vue";
 import OverlayPage from "./views/overlays/OverlayPage.vue";
 
-//Tools
-import CodeEditorPage from "./views/tools/CodeEditorPage.vue";
-
 const routes = [
     //
     { path: '/', component: IndexPage },
@@ -121,7 +120,9 @@ const routes = [
     { path: '/table', component: TablePage },
 
     //Editor
+    { path: '/code-editor', component: CodeEditorPage },
     { path: '/tree-view', component: TreeViewPage },
+    { path: '/menu', component: MenuPage },
 
 	//Layout
     { path: '/accordion', component: AccordionPage },
@@ -159,6 +160,7 @@ const routes = [
     { path: '/timepicker', component: TimepickerPage },
     { path: '/toggle', component: TogglePage },
     { path: '/wysiwyg-editor', component: WysiwygEditorPage },
+
     //Graph
     { path: '/graph-box', component: GraphBoxPage },
     { path: '/graph-node', component: GraphNodePage },

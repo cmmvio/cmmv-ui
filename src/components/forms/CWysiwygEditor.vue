@@ -1,9 +1,8 @@
 <template>
     <div class="c-wysiwyg-editor" v-if="editor">
-        <!-- Toolbar em estilo de card -->
         <div
             class="toolbar flex flex-wrap gap-1 p-2 border border-neutral-300 dark:border-neutral-700 rounded-t-md bg-neutral-50 dark:bg-neutral-800 shadow-sm">
-            <!-- Formato de texto -->
+
             <div class="toolbar-group flex">
                 <c-button
                     @click="editor?.chain().focus().toggleBold().run()"
@@ -53,7 +52,6 @@
 
             <div class="toolbar-divider"></div>
 
-            <!-- Cabeçalhos -->
             <div class="relative inline-block heading-dropdown">
                 <c-button
                     @click="headingMenuOpen = !headingMenuOpen"
@@ -109,7 +107,6 @@
 
             <div class="toolbar-divider"></div>
 
-            <!-- Listas -->
             <div class="toolbar-group flex">
                 <c-button
                     @click="editor?.chain().focus().toggleBulletList().run()"
@@ -137,7 +134,6 @@
 
             <div class="toolbar-divider"></div>
 
-            <!-- Indentação -->
             <div class="toolbar-group flex">
                 <c-button
                     @click="editor?.chain().focus().liftListItem('listItem').run()"
@@ -165,7 +161,6 @@
 
             <div class="toolbar-divider"></div>
 
-            <!-- Links e Anexos -->
             <div class="toolbar-group flex">
                 <c-button
                     @click="setLink"
@@ -193,7 +188,6 @@
 
             <div class="toolbar-divider"></div>
 
-            <!-- Undo/Redo -->
             <div class="toolbar-group flex">
                 <c-button
                     @click="editor?.chain().focus().undo().run()"
@@ -246,8 +240,6 @@ import Underline from '@tiptap/extension-underline';
 import TextAlign from '@tiptap/extension-text-align';
 import Placeholder from '@tiptap/extension-placeholder';
 import { Markdown } from 'tiptap-markdown';
-import CButton from '@components/components/CButton.vue';
-import CTooltip from '@components/components/CTooltip.vue';
 
 const props = defineProps({
     modelValue: {
@@ -277,8 +269,6 @@ const emit = defineEmits(['update:modelValue']);
 
 const headingMenuOpen = ref(false);
 const fileInput = ref<HTMLInputElement | null>(null);
-
-// Define o tipo Level como união dos valores literais aceitos
 type Level = 1 | 2 | 3;
 
 const editor = useEditor({

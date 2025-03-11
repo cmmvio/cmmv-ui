@@ -335,7 +335,7 @@ const basicOptions = [
             </template>
         </card-docs>
 
-        <PagePagination previous="Table" previousLink="/table" next="Checkbox" nextLink="/checkbox" />
+        <PagePagination previous="Tree View" previousLink="/tree-view" next="Checkbox" nextLink="/checkbox" />
     </BaseLayout>
 </template>
 

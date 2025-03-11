@@ -645,7 +645,7 @@ onUnmounted(() => {
 
         <br/>
 
-        <PagePagination previous="Chart Pie" previousLink="/chart-pie" next="Data Table" nextLink="/data-table" />
+        <PagePagination previous="Chart Doughnut" previousLink="/chart-doughnut" next="Chart Line" nextLink="/chart-line" />
     </BaseLayout>
 </template>
 

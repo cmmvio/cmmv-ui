@@ -327,23 +327,9 @@ const getMarkdownContent = () => {
             </tbody>
         </table-docs>
 
-        <!-- TipTap Information -->
-        <h3>About TipTap</h3>
-
-        <p>This component is built on <a href="https://tiptap.dev/" target="_blank" rel="noopener noreferrer">TipTap</a>, a headless and framework-agnostic rich text editor for the web. TipTap is built on <a href="https://prosemirror.net/" target="_blank" rel="noopener noreferrer">ProseMirror</a>, which provides a solid foundation for complex editing interfaces.</p>
-
-        <p>Key features of TipTap that are leveraged in this component:</p>
-        <ul class="list-disc pl-5 space-y-1 mb-4">
-            <li>Extensible architecture with a wide range of available extensions</li>
-            <li>First-class Vue integration</li>
-            <li>Accessibility support</li>
-            <li>TypeScript support</li>
-            <li>Markdown support</li>
-        </ul>
-
         <p>For more information about TipTap and its capabilities, visit the <a href="https://tiptap.dev/docs" target="_blank" rel="noopener noreferrer">TipTap documentation</a>.</p>
 
-        <PagePagination previous="Phone Input" previousLink="/phone-input" next="Form Builder" nextLink="/form-builder" />
+        <PagePagination previous="Toggle" previousLink="/toggle" next="Accordion" nextLink="/accordion" />
     </BaseLayout>
 </template>
 
