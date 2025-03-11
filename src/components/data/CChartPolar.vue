@@ -96,9 +96,9 @@ const chartContainer = ref(null);
 let chartInstance = null;
 
 function simpleClone(obj) {
-    if (obj === null || typeof obj !== 'object') {
+    if (obj === null || typeof obj !== 'object')
         return obj;
-    }
+
     return JSON.parse(JSON.stringify(obj));
 }
 
@@ -113,7 +113,7 @@ function prepareChartData() {
             const borderColor = dataset.borderColor ||
                 props.data.labels.map((_, i) => {
                     const color = props.colors[i % props.colors.length];
-                    return color.replace(/[^,]+(?=\))/, '1'); // Make border fully opaque
+                    return color.replace(/[^,]+(?=\))/, '1');
                 });
 
             return {
@@ -322,10 +322,8 @@ function addData(label, data) {
             newData.push(data[i] || 0);
             dataset.data = newData;
 
-            // Update background and border colors
-            if (Array.isArray(dataset.backgroundColor)) {
+            if (Array.isArray(dataset.backgroundColor))
                 dataset.backgroundColor.push(props.colors[newLabels.length % props.colors.length]);
-            }
 
             if (Array.isArray(dataset.borderColor)) {
                 const color = props.colors[newLabels.length % props.colors.length];
@@ -356,18 +354,14 @@ function removeData(index) {
         newLabels.splice(removeIndex, 1);
 
         newDatasets.forEach(dataset => {
-            if (dataset.data && Array.isArray(dataset.data)) {
+            if (dataset.data && Array.isArray(dataset.data))
                 dataset.data = dataset.data.filter((_, i) => i !== removeIndex);
-            }
 
-            // Update background and border colors if they're arrays
-            if (Array.isArray(dataset.backgroundColor)) {
+            if (Array.isArray(dataset.backgroundColor))
                 dataset.backgroundColor = dataset.backgroundColor.filter((_, i) => i !== removeIndex);
-            }
 
-            if (Array.isArray(dataset.borderColor)) {
+            if (Array.isArray(dataset.borderColor))
                 dataset.borderColor = dataset.borderColor.filter((_, i) => i !== removeIndex);
-            }
         });
 
         props.data.labels = newLabels;

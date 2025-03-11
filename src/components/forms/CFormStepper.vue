@@ -14,7 +14,7 @@
 
         <c-stepper v-model="currentStep" :steps="steps" :orientation="orientation" :size="size" :linear="linear"
             :completed-steps="completedSteps" :disabled="disabled" :show-content="showContent" :show-navigation="false"
-            :show-checkmarks="showCheckmarks" v-bind="$attrs" @step-change="handleStepChange">
+            :show-checkmarks="showCheckmarks" v-bind="$attrs">
             <template #content="slotProps">
                 <slot name="content" v-bind="{ ...slotProps, formData }">
                     <slot :name="`step-${slotProps.index}`"
