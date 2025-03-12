@@ -82,9 +82,8 @@
         "vue-tsc": "^2.2.8"
     },
     "dependencies": {
-        "@cmmv/core": "^0.8.32",
-        "@cmmv/http": "^0.8.32",
-        "@cmmv/view": "^0.8.32",
+        "@cmmv/core": "^0.8.33",
+        "@cmmv/http": "^0.8.33",
         "@heroicons/vue": "^2.2.0",
         "@ssibrahimbas/v-mask": "^1.0.0",
         "@tiptap/extension-image": "^2.11.5",

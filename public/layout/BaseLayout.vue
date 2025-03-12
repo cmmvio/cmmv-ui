@@ -44,11 +44,6 @@
                                     title="RPC">RPC</a>
                             </li>
                             <li class="relative">
-                                <a href="https://cmmv.io/docs/view/overview"
-                                    class="text-sm/6 font-semibold flex items-center gap-1 hover:text-blue-600 dark:hover:text-blue-400 py-1 px-2 rounded-md transition-colors duration-200 hover:bg-neutral-50 dark:hover:bg-zinc-700"
-                                    title="View">View</a>
-                            </li>
-                            <li class="relative">
                                 <a href="https://ui.cmmv.io"
                                     class="text-sm/6 font-semibold flex items-center gap-1 bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400 py-1 px-3 rounded-md transition-colors duration-200"
                                     title="UI">UI</a>
