@@ -6,6 +6,7 @@ import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers';
 import viteTsconfigPaths from 'vite-tsconfig-paths';
 import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js'
 import dts from 'vite-plugin-dts';
+import checker from 'vite-plugin-checker';
 
 export default defineConfig(({ mode }) => {
     const isDocs = mode === 'docs';
@@ -24,6 +25,9 @@ export default defineConfig(({ mode }) => {
         plugins: [
             vue(),
             viteTsconfigPaths(),
+            checker({
+                vueTsc: true,
+            }),
             Components({
                 resolvers: [AntDesignVueResolver()],
                 dirs: ['src/components'],
@@ -31,7 +35,12 @@ export default defineConfig(({ mode }) => {
                 include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
                 dts: !isDocs,
             }),
-            ...(isDocs ? [] : [dts({ include: ['src/**/*.ts', 'src/**/*.vue'], insertTypesEntry: true })]),
+            dts({
+                include: ['src/**/*.ts', 'src/**/*.vue'],
+                insertTypesEntry: true,
+                copyDtsFiles: true,
+                tsconfigPath: './tsconfig.app.json'
+            }),
             ...(isDocs ? [] : [cssInjectedByJsPlugin()]),
         ],
 
