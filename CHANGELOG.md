@@ -1,3 +1,17 @@
+## [0.3.1](https://github.com/cmmvio/cmmv-ui/compare/v0.3.0...v0.3.1) (2025-03-14)
+
+
+### Bug Fixes
+
+* dropdown icon position ([774d5d3](https://github.com/cmmvio/cmmv-ui/commit/774d5d3fac9676a38ce104e4c5d5de162c2bfca7))
+
+
+### Features
+
+* navbar divider, fixed, headers ([be9240b](https://github.com/cmmvio/cmmv-ui/commit/be9240bdebbf752fce6045ee521eb6e22b43618b))
+
+
+
 # [0.3.0](https://github.com/cmmvio/cmmv-ui/compare/v0.2.3...v0.3.0) (2025-03-14)
 
 
