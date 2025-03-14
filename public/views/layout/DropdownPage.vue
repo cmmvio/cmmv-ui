@@ -261,6 +261,175 @@ const menuOptions = ref([
             </template>
         </card-docs>
 
+        <h3>Toolbar Menu Icons</h3>
+
+        <p>
+            Dropdowns can be used in a toolbar layout with icons as activators. This pattern works well for
+            application headers, providing a clean interface for navigation and actions.
+        </p>
+
+        <card-docs>
+            <div class="mx-auto p-4 flex justify-center">
+                <div class="bg-white dark:bg-neutral-900 shadow rounded-lg p-4 w-full max-w-2xl h-[300px]">
+                    <div class="flex items-center gap-x-3 justify-center py-2">
+                        <c-dropdown position="bottom-right" :options="toolbarOptions">
+                            <template #activator>
+                                <c-button
+                                    bgColor="bg-white dark:bg-neutral-900"
+                                    textColor="text-neutral-600 dark:text-neutral-200"
+                                    class="border border-neutral-200 dark:border-neutral-800"
+                                    >Feedback</c-button
+                                >
+                            </template>
+                        </c-dropdown>
+
+                        <c-dropdown position="bottom-right" :options="notificationOptions">
+                            <template #activator>
+                                <c-button class="bg-transparent hover:bg-neutral-300 dark:hover:bg-neutral-700">
+                                    <icon-inbox
+                                        class="h-5 w-5 text-neutral-600 dark:text-white cursor-pointer"
+                                        aria-hidden="true"
+                                        size="sm"
+                                    />
+                                </c-button>
+                            </template>
+                            <template #items>
+                                <li class="p-4 border-b border-neutral-200 dark:border-neutral-700">
+                                    <div class="font-medium">Notifications</div>
+                                    <div class="text-sm text-neutral-500">You have 3 unread messages</div>
+                                </li>
+                                <li class="px-4 py-2 cursor-pointer hover:bg-neutral-100 dark:hover:bg-neutral-700">
+                                    <div class="flex items-center">
+                                        <icon-user class="w-4 h-4 mr-2 text-blue-500" />
+                                        <span>New message from Sarah</span>
+                                    </div>
+                                </li>
+                                <li class="px-4 py-2 cursor-pointer hover:bg-neutral-100 dark:hover:bg-neutral-700">
+                                    <div class="flex items-center">
+                                        <icon-document class="w-4 h-4 mr-2 text-green-500" />
+                                        <span>Document updated</span>
+                                    </div>
+                                </li>
+                            </template>
+                        </c-dropdown>
+
+                        <c-dropdown position="bottom-right" :options="helpOptions">
+                            <template #activator>
+                                <c-button class="bg-transparent hover:bg-neutral-300 dark:hover:bg-neutral-700">
+                                    <icon-question-mark-circle
+                                        class="h-5 w-5 text-neutral-600 dark:text-white cursor-pointer"
+                                        aria-hidden="true"
+                                        size="sm"
+                                    />
+                                </c-button>
+                            </template>
+                            <template #content>
+                                <div class="p-4">
+                                    <h3 class="font-medium mb-2">Help Center</h3>
+                                    <ul class="space-y-2">
+                                        <li class="text-sm">
+                                            <a href="#" class="text-blue-500 hover:text-blue-600">Documentation</a>
+                                        </li>
+                                        <li class="text-sm">
+                                            <a href="#" class="text-blue-500 hover:text-blue-600">FAQs</a>
+                                        </li>
+                                        <li class="text-sm">
+                                            <a href="#" class="text-blue-500 hover:text-blue-600">Contact Support</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </template>
+                        </c-dropdown>
+
+                        <c-button
+                            size="sm"
+                            textColor="text-neutral-600 dark:text-neutral-200"
+                            bgColor="bg-white dark:bg-neutral-900"
+                            class="border border-neutral-200 dark:border-neutral-800">
+                            <icon-moon class="h-5 w-5" />
+                        </c-button>
+                    </div>
+                </div>
+            </div>
+
+            <template #code>
+                <pre><code class="code-highlight language-vue">&lt;div class="flex items-center gap-x-3 justify-center py-2"&gt;
+    &lt;c-dropdown position="bottom-right" :options="feedbackOptions"&gt;
+        &lt;template #activator&gt;
+            &lt;c-button
+                bgColor="bg-white dark:bg-neutral-900"
+                textColor="text-neutral-600 dark:text-neutral-200"
+                class="border border-neutral-200 dark:border-neutral-800"
+                &gt;Feedback&lt;/c-button
+            &gt;
+        &lt;/template&gt;
+    &lt;/c-dropdown&gt;
+
+    &lt;c-dropdown position="bottom-right" :options="notificationOptions"&gt;
+        &lt;template #activator&gt;
+            &lt;icon-inbox
+                class="h-5 w-5 text-neutral-600 dark:text-white cursor-pointer"
+                aria-hidden="true"
+                size="sm"
+            /&gt;
+        &lt;/template&gt;
+        &lt;template #items&gt;
+            &lt;li class="p-4 border-b border-neutral-200 dark:border-neutral-700"&gt;
+                &lt;div class="font-medium"&gt;Notifications&lt;/div&gt;
+                &lt;div class="text-sm text-neutral-500"&gt;You have 3 unread messages&lt;/div&gt;
+            &lt;/li&gt;
+            &lt;li class="px-4 py-2 cursor-pointer hover:bg-neutral-100 dark:hover:bg-neutral-700"&gt;
+                &lt;div class="flex items-center"&gt;
+                    &lt;icon-user class="w-4 h-4 mr-2 text-blue-500" /&gt;
+                    &lt;span&gt;New message from Sarah&lt;/span&gt;
+                &lt;/div&gt;
+            &lt;/li&gt;
+            &lt;li class="px-4 py-2 cursor-pointer hover:bg-neutral-100 dark:hover:bg-neutral-700"&gt;
+                &lt;div class="flex items-center"&gt;
+                    &lt;icon-document class="w-4 h-4 mr-2 text-green-500" /&gt;
+                    &lt;span&gt;Document updated&lt;/span&gt;
+                &lt;/div&gt;
+            &lt;/li&gt;
+        &lt;/template&gt;
+    &lt;/c-dropdown&gt;
+
+    &lt;c-dropdown position="bottom-right" :options="helpOptions"&gt;
+        &lt;template #activator&gt;
+            &lt;icon-question-mark-circle
+                class="h-5 w-5 text-neutral-600 dark:text-white cursor-pointer"
+                aria-hidden="true"
+                size="sm"
+            /&gt;
+        &lt;/template&gt;
+        &lt;template #content&gt;
+            &lt;div class="p-4"&gt;
+                &lt;h3 class="font-medium mb-2"&gt;Help Center&lt;/h3&gt;
+                &lt;ul class="space-y-2"&gt;
+                    &lt;li class="text-sm"&gt;
+                        &lt;a href="#" class="text-blue-500 hover:text-blue-600"&gt;Documentation&lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;li class="text-sm"&gt;
+                        &lt;a href="#" class="text-blue-500 hover:text-blue-600"&gt;FAQs&lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;li class="text-sm"&gt;
+                        &lt;a href="#" class="text-blue-500 hover:text-blue-600"&gt;Contact Support&lt;/a&gt;
+                    &lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+        &lt;/template&gt;
+    &lt;/c-dropdown&gt;
+
+    &lt;c-button
+        size="sm"
+        textColor="text-neutral-600 dark:text-neutral-200"
+        bgColor="bg-white dark:bg-neutral-900"
+        class="border border-neutral-200 dark:border-neutral-800"&gt;
+        &lt;icon-moon class="h-5 w-5" /&gt;
+    &lt;/c-button&gt;
+&lt;/div&gt;</code></pre>
+            </template>
+        </card-docs>
+
         <PagePagination previous="Card" previousLink="/card" next="Navbar" nextLink="/navbar" />
     </BaseLayout>
 </template>
@@ -272,12 +441,35 @@ import TableDocs from "../../components/TableDocs.vue";
 import CardDocs from "../../components/CardDocs.vue";
 import PagePagination from "../../layout/PagePagination.vue";
 import IconCheckCircle from "@components/icons/IconCheckCircle.vue";
+import IconUser from "@components/icons/IconUser.vue";
+import IconDocument from "@components/icons/IconDocument.vue";
+import IconInbox from "@components/icons/IconInbox.vue";
+import IconQuestionMarkCircle from "@components/icons/IconQuestionMarkCircle.vue";
+import IconMoon from "@components/icons/IconMoon.vue";
 
 const selectedItem = ref(null);
 const menuOptions = ref([
     { value: "home", label: "Home" },
     { value: "profile", label: "Profile" },
     { value: "settings", label: "Settings" }
+]);
+
+const toolbarOptions = ref([
+    { value: "bug", label: "Report Bug" },
+    { value: "feature", label: "Request Feature" },
+    { value: "feedback", label: "General Feedback" }
+]);
+
+const notificationOptions = ref([
+    { value: "message", label: "New message from Sarah" },
+    { value: "update", label: "Document updated" },
+    { value: "invite", label: "Team invite" }
+]);
+
+const helpOptions = ref([
+    { value: "docs", label: "Documentation" },
+    { value: "faqs", label: "FAQs" },
+    { value: "support", label: "Contact Support" }
 ]);
 </script>
 

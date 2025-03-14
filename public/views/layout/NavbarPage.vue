@@ -394,7 +394,7 @@ const items = [
                 <div
                     class="flex min-h-[200px] border border-neutral-200 dark:border-neutral-700 rounded-lg overflow-hidden">
                     <div class="bg-white dark:bg-neutral-800 border-r border-neutral-200 dark:border-neutral-700">
-                        <c-navbar mode="vertical" :items="verticalItems" :showIcons="true" class="p-2" />
+                        <c-navbar mode="vertical" :items="verticalItems" :showIcons="true" class="p-2 w-56" />
                     </div>
                     <div class="flex-1 bg-neutral-50 dark:bg-neutral-900 flex justify-center items-center">
                         <p class="text-neutral-700 dark:text-neutral-200">Content area</p>
@@ -461,7 +461,7 @@ const items = [
                             :collapsed="true"
                             :expandOnHover="true"
                             iconClass="text-blue-500 dark:text-blue-400"
-                            class="p-2"
+                            class="p-2 w-56"
                         />
                     </div>
                     <div class="flex-1 bg-neutral-50 dark:bg-neutral-900 flex justify-center items-center">
