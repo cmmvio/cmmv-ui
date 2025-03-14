@@ -388,6 +388,10 @@ const props = defineProps({
     filters: {
         type: Object as PropType<TableFilter>,
         default: () => ({})
+    },
+    apiHeaders: {
+        type: Object as PropType<Record<string, string>>,
+        default: () => ({})
     }
 });
 
@@ -605,6 +609,7 @@ const fetchData = async () => {
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
+                ...props.apiHeaders
             },
             ...props.fetchOptions
         };
