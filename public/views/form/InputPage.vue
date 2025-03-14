@@ -664,7 +664,7 @@ const currencyOptions = [
             </template>
         </card-docs>
 
-        <PagePagination previous="Form" previousLink="/form" next="Number Input" nextLink="/number-input" />
+        <PagePagination previous="Form" previousLink="/form" next="Location" nextLink="/location" />
     </BaseLayout>
 </template>
 

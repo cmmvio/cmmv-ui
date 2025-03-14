@@ -52,6 +52,7 @@ declare module 'vue' {
     CList: typeof import('./src/components/data/CList.vue')['default']
     CListItem: typeof import('./src/components/layout/CListItem.vue')['default']
     CLoader: typeof import('./src/components/components/CLoader.vue')['default']
+    CLocation: typeof import('./src/components/forms/CLocation.vue')['default']
     CMenu: typeof import('./src/components/editor/CMenu.vue')['default']
     CMenuList: typeof import('./src/components/editor/CMenuList.vue')['default']
     CNavbar: typeof import('./src/components/layout/CNavbar.vue')['default']

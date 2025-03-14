@@ -58,6 +58,7 @@ import AutocompletePage from "./views/form/AutocompletePage.vue";
 import FormPage from "./views/form/FormPage.vue";
 import FormBuilderPage from "./views/form/FormBuilderPage.vue";
 import InputPage from "./views/form/InputPage.vue";
+import LocationPage from './views/form/LocationPage.vue';
 import NumberInputPage from "./views/form/NumberInputPage.vue";
 import OtpInputPage from "./views/form/OtpInputPage.vue";
 import CheckboxPage from "./views/form/CheckboxPage.vue";
@@ -151,6 +152,7 @@ const routes = [
 	{ path: '/form', component: FormPage },
 	{ path: '/form-builder', component: FormBuilderPage },
 	{ path: '/input', component: InputPage },
+    { path: '/location', component: LocationPage },
     { path: '/number-input', component: NumberInputPage },
     { path: '/otp-input', component: OtpInputPage },
     { path: '/password-input', component: PasswordInputPage },

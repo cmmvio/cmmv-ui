@@ -298,11 +298,9 @@ import TableDocs from "../../components/TableDocs.vue";
 import PagePagination from "../../layout/PagePagination.vue";
 import CRadioColorPicker from "@components/forms/CRadioColorPicker.vue";
 
-// Basic example
 const selectedColor = ref("");
-
-// Custom colors example
 const selectedThemeColor = ref("");
+
 const themeColors = [
     { name: 'Primary', value: 'primary', bgClass: 'bg-indigo-600' },
     { name: 'Success', value: 'success', bgClass: 'bg-green-600' },
@@ -311,23 +309,9 @@ const themeColors = [
     { name: 'Info', value: 'info', bgClass: 'bg-sky-500' },
 ];
 
-// With labels example
-const selectedColorWithLabel = ref("");
-const brandColors = [
-    { name: 'Brand Blue', value: 'brand-blue', bgClass: 'bg-blue-700' },
-    { name: 'Brand Green', value: 'brand-green', bgClass: 'bg-emerald-600' },
-    { name: 'Brand Purple', value: 'brand-purple', bgClass: 'bg-violet-700' },
-];
-
-// Different sizes
 const smallColorSize = ref("");
 const mediumColorSize = ref("");
 const largeColorSize = ref("");
-
-// Custom styled
-const customStyledColor = ref("");
-
-// Disabled
 const disabledColor = ref("");
 </script>
 

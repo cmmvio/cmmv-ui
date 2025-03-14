@@ -233,8 +233,8 @@ const quantity = ref(5);
         </card-docs>
 
         <PagePagination
-            previous="Input"
-            previousLink="/input"
+            previous="Location"
+            previousLink="/location"
             next="OTP Input"
             nextLink="/otp-input"
         />

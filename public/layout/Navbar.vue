@@ -229,6 +229,7 @@ const navbarItems = [
             { name: "Form", uri: "/form" },
             { name: "Form Builder", uri: "/form-builder" },
             { name: "Input", uri: "/input" },
+            { name: "Location", uri: "/location" },
             { name: "Number Input", uri: "/number-input" },
             { name: "OTP Input", uri: "/otp-input" },
             { name: "Password Input", uri: "/password-input" },

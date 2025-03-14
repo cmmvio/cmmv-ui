@@ -479,7 +479,7 @@ const priceBRL = ref(2000);
             </template>
         </card-docs>
 
-        <PagePagination previous="Radio" previousLink="/radio" next="Textarea" nextLink="/textarea" />
+        <PagePagination previous="Radio Color Picker" previousLink="/radio-color-picker" next="Textarea" nextLink="/textarea" />
     </BaseLayout>
 </template>
 
