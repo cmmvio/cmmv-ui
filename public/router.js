@@ -64,6 +64,7 @@ import CheckboxPage from "./views/form/CheckboxPage.vue";
 import TextareaPage from "./views/form/TextareaPage.vue";
 import TogglePage from "./views/form/TogglePage.vue";
 import RadioPage from "./views/form/RadioPage.vue";
+import RadioColorPickerPage from './views/form/RadioColorPickerPage.vue';
 import SliderPage from "./views/form/SliderPage.vue";
 import ComboboxPage from "./views/form/ComboboxPage.vue";
 import TimepickerPage from "./views/form/TimepickerPage.vue";
@@ -155,6 +156,7 @@ const routes = [
     { path: '/password-input', component: PasswordInputPage },
     { path: '/phone-input', component: PhoneInputPage },
 	{ path: '/radio', component: RadioPage },
+    { path: '/radio-color-picker', component: RadioColorPickerPage },
     { path: '/slider', component: SliderPage },
     { path: '/textarea', component: TextareaPage },
     { path: '/timepicker', component: TimepickerPage },

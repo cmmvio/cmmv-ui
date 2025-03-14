@@ -60,6 +60,12 @@
                     <td>Helper text displayed below the input field.</td>
                 </tr>
                 <tr>
+                    <td>placeholder</td>
+                    <td>String</td>
+                    <td><code>""</code></td>
+                    <td>Placeholder text for the input field.</td>
+                </tr>
+                <tr>
                     <td>id</td>
                     <td>String</td>
                     <td><code>"number-input"</code></td>
@@ -71,19 +77,49 @@
                     <td><code>"md"</code></td>
                     <td>Size of the input field: <code>sm</code>, <code>md</code>, <code>lg</code>.</td>
                 </tr>
+                <tr>
+                    <td>rounded</td>
+                    <td>String</td>
+                    <td><code>"default"</code></td>
+                    <td>Border radius: <code>none</code>, <code>default</code>, <code>full</code>.</td>
+                </tr>
+                <tr>
+                    <td>variant</td>
+                    <td>String</td>
+                    <td><code>"default"</code></td>
+                    <td>Styling variant: <code>default</code>, <code>outlined</code>, <code>filled</code>.</td>
+                </tr>
+                <tr>
+                    <td>bgColor</td>
+                    <td>String</td>
+                    <td><code>"bg-white dark:bg-neutral-900"</code></td>
+                    <td>Background color class.</td>
+                </tr>
+                <tr>
+                    <td>textColor</td>
+                    <td>String</td>
+                    <td><code>""</code></td>
+                    <td>Text color class.</td>
+                </tr>
+                <tr>
+                    <td>required</td>
+                    <td>Boolean</td>
+                    <td><code>false</code></td>
+                    <td>Marks the field as required.</td>
+                </tr>
             </tbody>
         </table-docs>
 
         <h3>Basic Example</h3>
 
         <card-docs>
-            <div class="mx-auto p-4 flex flex-col items-center">
-                <c-number-input v-model="quantity" :min="1" :max="10" />
+            <div class="mx-auto p-4">
+                <c-number-input v-model="quantity" :min="1" :max="10" label="Quantity" />
             </div>
 
             <template #code>
 <pre><code class="code-highlight language-html">&lt;template&gt;
-    &lt;c-number-input v-model="quantity" :min="1" :max="10" /&gt;
+    &lt;c-number-input v-model="quantity" :min="1" :max="10" label="Quantity" /&gt;
 &lt;/template&gt;
 
 &lt;script setup&gt;
@@ -101,13 +137,15 @@ const quantity = ref(5);
         </p>
 
         <card-docs>
-            <div class="mx-auto p-4 flex flex-col items-center">
+            <div class="mx-auto p-4">
                 <c-number-input
                     v-model="quantityLabelHelper"
                     label="Choose quantity:"
                     helperText="Select a value between 1 and 100."
+                    placeholder="Enter a number"
                     :min="1"
                     :max="100"
+                    required
                 />
             </div>
 
@@ -117,8 +155,10 @@ const quantity = ref(5);
         v-model="quantity"
         label="Choose quantity:"
         helperText="Select a value between 1 and 100."
+        placeholder="Enter a number"
         :min="1"
         :max="100"
+        required
     /&gt;
 &lt;/template&gt;
 
@@ -137,13 +177,27 @@ const quantity = ref(5);
         </p>
 
         <card-docs>
-            <div class="mx-auto p-4 flex flex-col items-center">
-                <c-number-input v-model="quantityCustomStep" :min="0" :max="50" :step="5" />
+            <div class="mx-auto p-4">
+                <c-number-input
+                    v-model="quantityCustomStep"
+                    :min="0"
+                    :max="50"
+                    :step="5"
+                    label="Step by 5"
+                    helperText="Increments/decrements by 5"
+                />
             </div>
 
             <template #code>
 <pre><code class="code-highlight language-html">&lt;template&gt;
-    &lt;c-number-input v-model="quantity" :min="0" :max="50" :step="5" /&gt;
+    &lt;c-number-input
+        v-model="quantity"
+        :min="0"
+        :max="50"
+        :step="5"
+        label="Step by 5"
+        helperText="Increments/decrements by 5"
+    /&gt;
 &lt;/template&gt;
 
 &lt;script setup&gt;
@@ -161,13 +215,13 @@ const quantity = ref(5);
         </p>
 
         <card-docs>
-            <div class="mx-auto p-4 flex flex-col items-center">
-                <c-number-input v-model="quantityDisabled" :min="1" :max="10" disabled />
+            <div class="mx-auto p-4">
+                <c-number-input v-model="quantityDisabled" :min="1" :max="10" disabled label="Disabled input" />
             </div>
 
             <template #code>
 <pre><code class="code-highlight language-html">&lt;template&gt;
-    &lt;c-number-input v-model="quantity" :min="1" :max="10" disabled /&gt;
+    &lt;c-number-input v-model="quantity" :min="1" :max="10" disabled label="Disabled input" /&gt;
 &lt;/template&gt;
 
 &lt;script setup&gt;
@@ -198,6 +252,10 @@ const quantity = ref(5);
 const quantityLabelHelper = ref(5);
 const quantityCustomStep = ref(5);
 const quantityDisabled = ref(5);
+const quantitySmall = ref(5);
+const quantityOutlined = ref(5);
+const quantityFilled = ref(5);
+const quantityRounded = ref(5);
 </script>
 
 <style scoped>

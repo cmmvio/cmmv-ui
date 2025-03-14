@@ -3,7 +3,18 @@
         <div class="relative">
             <div v-if="isActive" class="fixed z-40 bg-transparent" @click="closeDropdown"></div>
 
-            <div class="relative flex items-center z-30" @click.prevent.stop="toggleDropdown">
+            <div class="relative z-40" v-if="label">
+                <label :for="id"
+                    class="c-dropdown-label block text-sm mb-1 z-40"
+                    :class="[
+                        hasError ? 'text-red-500' : (textColor ? textColor : 'text-gray-500 dark:text-gray-400'),
+                        customClass
+                    ]">
+                    {{ label }} <span v-if="required" class="text-red-500">*</span>
+                </label>
+            </div>
+
+            <div class="relative flex items-center z-20 min-h-[38px]" @click.prevent.stop="toggleDropdown">
                 <div v-if="hasIcon" class="absolute inset-y-0 left-0 flex items-center pl-3 z-30">
                     <slot name="icon"></slot>
                 </div>
@@ -11,18 +22,21 @@
                 <div v-if="searchable && !selectedOption" class="absolute z-20 w-full">
                     <input type="text"
                         ref="searchInputRef"
-                        :placeholder="(isActive || !selectedLabel ? placeholder : '') + (required ? ' *' : '')"
+                        :placeholder="placeholder + (required ? ' *' : '')"
                         v-model="searchQuery"
                         :class="[sizes[size] || sizes['md'], roundedStyles[rounded], variantStyles[variant], bgColor ? bgColor : variantColors[variant], textColor,
-                        { 'opacity-50': disabled || isLoading, 'cursor-not-allowed': disabled || isLoading, 'pl-10': hasIcon }, customClass, 'w-full']"
-                        class="c-dropdown-field block w-full border shadow-sm pt-3 pb-2 outline-none"
+                        { 'opacity-50': disabled || isLoading, 'cursor-not-allowed': disabled || isLoading, 'pl-10': hasIcon }, customClass, 'w-full',
+                        { 'ring-red-500 ring-2': hasError }]"
+                        class="c-dropdown-field block w-full border shadow-sm outline-none min-h-[38px]"
                         :disabled="disabled || isLoading" @click.stop @focus="activateDropdown" @blur="handleBlur" @keydown="handleKeyDown" />
                 </div>
 
                 <button :id="id" type="button"
                     :class="[sizes[size] || sizes['md'], roundedStyles[rounded], variantStyles[variant], bgColor ? bgColor : variantColors[variant], textColor,
-                    { 'opacity-50': disabled || isLoading, 'cursor-not-allowed': disabled || isLoading, 'pl-10': hasIcon, 'invisible': searchable && !selectedOption }, customClass, 'w-full']"
-                    class="c-dropdown-field block w-full border shadow-sm pt-2 pb-2 outline-none text-left h-full"
+                    { 'opacity-50': disabled || isLoading, 'cursor-not-allowed': disabled || isLoading, 'pl-10': hasIcon, 'invisible': searchable && !selectedOption },
+                    customClass, 'w-full',
+                    { 'ring-red-500 ring-2': hasError }]"
+                    class="c-dropdown-field block w-full border shadow-sm outline-none text-left h-full min-h-[38px]"
                     :disabled="disabled || isLoading"
                     @focus="activateDropdown"
                     @click.prevent.stop
@@ -164,12 +178,23 @@
                 </div>
             </transition>
         </div>
+
+        <div class="mt-1" v-if="!hiddenHint && (hasError || hint)">
+            <p v-if="hasError" class="text-xs text-red-500">{{ errorMessage }}</p>
+            <p v-else-if="hint && (hintFixed || isActive)" class="text-xs text-gray-500">{{ hint }}</p>
+        </div>
     </div>
 </template>
 
 <style scoped>
 .c-dropdown {
     position: relative;
+}
+
+.c-dropdown-label {
+    /* Estilos simples para o label fixo */
+    display: block;
+    margin-bottom: 0.25rem;
 }
 
 .c-dropdown ul {
@@ -182,16 +207,8 @@
     transition: background-color 0.2s;
 }
 
-.c-dropdown-label {
-    transform: translate(0, -50%);
-    z-index: 1;
-    left: 0.75rem;
-}
-
-.c-dropdown-label--active {
-    transform: translate(0, -2rem) scale(0.85);
-    top: 1.3rem;
-    left: 0.3rem;
+.scale-75 {
+    transform: scale(0.75);
 }
 
 .rotate-180 {
@@ -292,7 +309,7 @@ const props = defineProps({
     id: {
         type: String,
         required: false,
-        default: null
+        default: () => `c-combobox-${Math.random().toString(36).substr(2, 9)}`
     },
     bgColor: {
         type: String,
@@ -344,6 +361,14 @@ const props = defineProps({
     required: {
         type: Boolean,
         default: false
+    },
+    hasError: {
+        type: Boolean,
+        default: false
+    },
+    rules: {
+        type: Array,
+        default: () => []
     }
 });
 
@@ -595,6 +620,11 @@ const handleBlur = () => {
         }
 
         closeDropdown();
+
+        // Valida o campo quando perde o foco
+        if (props.rules && props.rules.length > 0) {
+            validate();
+        }
     }, 200);
 };
 
@@ -628,6 +658,10 @@ const selectOption = (option: DropdownOption) => {
 
     if (props.searchable)
         searchQuery.value = option.label;
+
+    // Limpa erros quando uma opção válida é selecionada
+    errorMessage.value = '';
+    hasError.value = false;
 
     isActive.value = false;
     activeSubItem.value = null;
@@ -699,9 +733,9 @@ const toggleCheck = (option: DropdownOption) => {
 };
 
 const sizes = {
-    sm: "px-2 py-1 text-xs",
-    md: "px-3 py-2 text-sm",
-    lg: "px-5 py-4 text-base"
+    sm: "px-2 py-1 text-xs min-h-[32px]",
+    md: "px-3 py-2 text-sm min-h-[38px]",
+    lg: "px-5 py-4 text-base min-h-[46px]"
 };
 
 const roundedStyles = {
@@ -819,12 +853,37 @@ const shouldKeepOpen = computed(() => {
     return props.searchable;
 });
 
+const validate = (): boolean => {
+    errorMessage.value = '';
+    hasError.value = false;
+
+    // Verificar se é obrigatório e não tem valor
+    if (props.required && (!props.modelValue || props.modelValue === '')) {
+        errorMessage.value = 'This field is required';
+        hasError.value = true;
+        return false;
+    }
+
+    // Verificar regras personalizadas
+    for (const rule of props.rules) {
+        const error = (rule as (value: any) => string | boolean)(props.modelValue);
+        if (error !== true && error) {
+            errorMessage.value = error as string;
+            hasError.value = true;
+            return false;
+        }
+    }
+
+    return true;
+};
+
 defineExpose({
     value: props.modelValue,
     refresh: refreshOptions,
     isLoading,
     hasError,
     errorMessage,
-    searchQuery
+    searchQuery,
+    validate
 });
 </script>

@@ -5,20 +5,21 @@
 
             <div class="relative">
                 <label v-if="label" :for="id"
-                    class="c-chips-input-label absolute text-sm transition-all duration-200 ease-in-out pointer-events-none"
+                    class="c-chips-input-label text-sm"
                     :class="[{
+                        'absolute transition-all duration-200 ease-in-out pointer-events-none': floatingLabel,
                         'c-chips-input-label--active': floatingLabel && (inputFocused || selectedChips.length > 0),
-                        'top-[50%] -translate-y-1/2 left-1': !inputFocused && selectedChips.length === 0,
-                        'top-1 left-1 text-xs': inputFocused || selectedChips.length > 0,
-                        'scale-75 origin-left': (inputFocused || selectedChips.length > 0) && !floatingLabel,
-                        'pl-10': hasIcon && (!inputFocused && selectedChips.length === 0)
+                        'top-[50%] -translate-y-1/2 left-1': floatingLabel && (!inputFocused && selectedChips.length === 0),
+                        'top-1 left-1 text-xs': floatingLabel && (inputFocused || selectedChips.length > 0),
+                        'pl-10': hasIcon && floatingLabel && (!inputFocused && selectedChips.length === 0),
+                        'block mb-1': !floatingLabel
                     },
                     textColor ? textColor : 'text-neutral-500 dark:text-neutral-400',
-                    bgColor ? bgColor : variantColors[variant]]">
+                    !disabled && floatingLabel ? (bgColor ? bgColor : variantColors[variant]) : '']">
                     {{ label }} <span v-if="required" class="text-red-500">*</span>
                 </label>
 
-                <div class="flex items-center border rounded-md min-h-[42px] cursor-text overflow-hidden"
+                <div class="flex items-center border rounded-md min-h-[38px] cursor-text overflow-hidden"
                     :class="[roundedStyles[rounded], variantStyles[variant], bgColor ? bgColor : variantColors[variant],
                     { 'ring-red-500 ring-2': hasError, 'opacity-50': disabled, 'cursor-not-allowed': disabled }]"
                     @click="focusInput">
@@ -28,7 +29,7 @@
                     </div>
 
                     <div class="flex flex-wrap items-center gap-0.5 p-1 flex-grow overflow-x-auto min-h-[36px]"
-                         :class="{'mt-4': !floatingLabel && label && selectedChips.length > 0, 'mt-3': !floatingLabel && label && selectedChips.length === 0}">
+                         :class="{'mt-4': floatingLabel && label && selectedChips.length > 0, 'mt-3': floatingLabel && label && selectedChips.length === 0}">
                         <c-badge
                             v-for="(chip, index) in selectedChips"
                             :key="index"
@@ -507,11 +508,10 @@ defineExpose({
 
 <style scoped>
 .c-chips-input-label {
-    transform: translate(0, -50%);
     z-index: 1;
-    left: 0.60rem;
 }
 
+/* Apenas aplicado quando floatingLabel=true */
 .c-chips-input-label--active {
     transform: translate(0, -2rem) scale(0.85);
     top: 1.3rem;

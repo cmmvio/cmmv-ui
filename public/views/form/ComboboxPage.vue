@@ -325,14 +325,14 @@ const disabledExample = ref(1);
                     <c-combobox v-model="languageValue" label="Languages Dropdown" :options="languageOptions">
                         <template #selected="{ data }">
                             <div class="flex flex-1 -mt-1">
-                                <c-flag :iso="data.iso" size="sm" riyb />
+                                <c-flag :iso="data.iso" size="sx" riyb />
                                 <div class="ml-2 mt-0.5">{{ data.label }}</div>
                             </div>
                         </template>
 
                         <template #option="{ data }">
                             <div class="flex flex-1">
-                                <c-flag :iso="data.iso" size="sm" riyb />
+                                <c-flag :iso="data.iso" size="sx" riyb />
                                 <div class="ml-2 mt-0.5">{{ data.label }}</div>
                             </div>
                         </template>

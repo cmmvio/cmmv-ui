@@ -64,6 +64,7 @@ const props = defineProps({
 const Flag = shallowRef(null);
 
 const sizes: Record<string, string> = {
+    sx: "w-5",
     sm: "w-8",
     md: "w-10",
     lg: "w-12",

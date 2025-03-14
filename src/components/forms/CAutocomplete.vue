@@ -1,60 +1,63 @@
 <template>
     <div class="c-autocomplete relative w-full">
-        <div class="relative">
-            <label :for="id"
-                class="c-autocomplete-label absolute text-sm transition-all duration-200 ease-in-out pointer-events-none drop-shadow-xs"
-                :class="[{
-                    'c-autocomplete-label--active': floatingLabel && (isActive || currentInput),
-                    'top-[50%] -translate-y-1/2 left-1': (!isActive && !currentInput),
-                    'top-[30%]': !isActive && hasError,
-                    'scale-75 origin-left text-xs top-1 left-1': (isActive || (currentInput !== undefined && currentInput !== '')) && !floatingLabel,
-                    'pl-10': hasIcon && (!isActive && !currentInput)
-                },
-                textColor ? textColor : 'text-neutral-500 dark:text-neutral-400',
-                bgColor ? bgColor : variantColors[variant]]">
-                {{ label }} <span v-if="required" class="text-red-500">*</span>
-            </label>
+        <label v-if="label" :for="id"
+            class="c-autocomplete-label text-sm"
+            :class="[{
+                'absolute transition-all duration-200 ease-in-out pointer-events-none drop-shadow-xs': floatingLabel,
+                'c-autocomplete-label--active': floatingLabel && (isActive || currentInput),
+                'top-[50%] -translate-y-1/2 left-1': floatingLabel && (!isActive && !currentInput),
+                'top-[30%]': floatingLabel && !isActive && hasError,
+                'pl-10': hasIcon && floatingLabel && (!isActive && !currentInput),
+                'block mb-1': !floatingLabel
+            },
+            textColor ? textColor : 'text-neutral-500 dark:text-neutral-400',
+            !disabled && floatingLabel ? (bgColor ? bgColor : variantColors[variant]) : '']">
+            {{ label }} <span v-if="required" class="text-red-500">*</span>
+        </label>
 
-            <div class="relative flex items-center">
-                <div v-if="hasIcon" class="absolute inset-y-0 left-0 flex items-center pl-3 z-30">
-                    <slot name="icon"></slot>
-                </div>
-
-                <input :id="id" type="text"
-                    :class="[sizes[size], roundedStyles[rounded], variantStyles[variant], bgColor ? bgColor : variantColors[variant], textColor,
-                    { 'ring-red-500 ring-2': hasError, 'opacity-50': disabled, 'cursor-not-allowed': disabled, 'pl-10': hasIcon },
-                    { 'pt-4': !hasIcon, 'pb-3': hasIcon, 'pt-3': hasIcon }]"
-                    class="c-autocomplete-field block w-full shadow-sm outline-none"
-                    :placeholder="isActive ? placeholder : ''" :value="currentInput" @input="handleInput"
-                    @change="handleInput" @focus="activateLabel" @blur="deactivateLabel" @keydown="handleKeyDown"
-                    :disabled="disabled"
-                    :aria-invalid="hasError" />
-
-                <button v-if="clearable && currentInput" type="button"
-                    class="absolute inset-y-0 right-0 flex items-center px-2 text-neutral-400 hover:text-neutral-600"
-                    @click="clearInput">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
-                        <path fill-rule="evenodd"
-                            d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z"
-                            clip-rule="evenodd" />
-                    </svg>
-                </button>
+        <div class="relative flex items-center">
+            <div v-if="hasIcon" class="absolute inset-y-0 left-0 flex items-center pl-3 z-30">
+                <slot name="icon"></slot>
             </div>
 
-            <transition name="fade">
-                <div v-if="isActive && isFocus && filteredOptions.length > 0"
-                    class="absolute z-50 w-full bg-white border border-neutral-300 dark:bg-neutral-800 dark:border-neutral-900 mt-2 max-h-40 overflow-auto shadow-lg rounded-md">
-                    <ul>
-                        <li v-for="(option, index) in filteredOptions" :key="option.value"
-                            @click="selectOption(option)"
-                            :class="{ 'bg-neutral-200 dark:bg-neutral-900': keyboardSelectedIndex === index }"
-                            class="px-4 py-2 cursor-pointer hover:bg-neutral-200 dark:hover:bg-neutral-900 text-sm">
-                            {{ option.label }}
-                        </li>
-                    </ul>
-                </div>
-            </transition>
+            <input :id="id" type="text"
+                :class="[sizes[size], roundedStyles[rounded], variantStyles[variant],
+                floatingLabel ? (bgColor ? bgColor : variantColors[variant]) : 'bg-transparent',
+                textColor,
+                { 'ring-red-500 ring-2': hasError, 'opacity-50': disabled, 'cursor-not-allowed': disabled, 'pl-10': hasIcon },
+                { 'pt-4': floatingLabel && !hasIcon, 'pb-3': hasIcon, 'pt-3': hasIcon },
+                'min-h-[38px]']"
+                class="c-autocomplete-field block w-full shadow-sm outline-none"
+                :placeholder="floatingLabel ? (isActive ? (placeholder || '') : '') : ((placeholder || '') + (required && placeholder ? ' *' : ''))"
+                :value="currentInput" @input="handleInput"
+                @change="handleInput" @focus="activateLabel" @blur="deactivateLabel" @keydown="handleKeyDown"
+                :disabled="disabled"
+                :aria-invalid="hasError" />
+
+            <button v-if="clearable && currentInput" type="button"
+                class="absolute inset-y-0 right-0 flex items-center px-2 text-neutral-400 hover:text-neutral-600"
+                @click="clearInput">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                    <path fill-rule="evenodd"
+                        d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z"
+                        clip-rule="evenodd" />
+                </svg>
+            </button>
         </div>
+
+        <transition name="fade">
+            <div v-if="isActive && isFocus && filteredOptions.length > 0"
+                class="absolute z-50 w-full bg-white border border-neutral-300 dark:bg-neutral-800 dark:border-neutral-900 mt-2 max-h-40 overflow-auto shadow-lg rounded-md">
+                <ul>
+                    <li v-for="(option, index) in filteredOptions" :key="option.value"
+                        @click="selectOption(option)"
+                        :class="{ 'bg-neutral-200 dark:bg-neutral-900': keyboardSelectedIndex === index }"
+                        class="px-4 py-2 cursor-pointer hover:bg-neutral-200 dark:hover:bg-neutral-900 text-sm">
+                        {{ option.label }}
+                    </li>
+                </ul>
+            </div>
+        </transition>
 
         <div class="mt-1" v-if="!hiddenHint">
             <p v-if="hasError" class="text-xs text-red-500">{{ errorMessage }}</p>
@@ -364,10 +367,6 @@ defineExpose({
     border-radius: 0.375rem;
 }
 
-.c-autocomplete ul {
-    list-style: none;
-}
-
 .c-autocomplete ul li {
     transition: background-color 0.2s;
     list-style: none;
@@ -375,11 +374,10 @@ defineExpose({
 }
 
 .c-autocomplete-label {
-    transform: translate(0, -50%);
     z-index: 1;
-    left: 0.60rem;
 }
 
+/* Apenas aplicado quando floatingLabel=true */
 .c-autocomplete-label--active {
     transform: translate(0, -2rem) scale(0.85);
     top: 1.3rem;
@@ -388,5 +386,16 @@ defineExpose({
 
 .scale-75 {
     transform: scale(0.75);
+}
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
+    transform: translateY(-5px);
 }
 </style>

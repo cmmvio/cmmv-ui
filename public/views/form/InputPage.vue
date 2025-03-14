@@ -106,8 +106,7 @@
                     <td class="border-b px-4 py-2">floatingLabel</td>
                     <td class="border-b px-4 py-2">Boolean</td>
                     <td class="border-b px-4 py-2">false</td>
-                    <td class="border-b px-4 py-2">Determines if the label floats outside the input when it receives
-                        focus.</td>
+                    <td class="border-b px-4 py-2">When true, the label will start inside the input and move outside when it receives focus or has a value. When false (default), the label appears fixed above the input.</td>
                 </tr>
             </tbody>
         </table-docs>
@@ -451,40 +450,34 @@ const phoneMaskFn = (value) => {
         <!-- Floating Label -->
         <h3>Floating Label</h3>
 
-        <p>The <code>CInput</code> component supports two different label behavior styles. By default, the label stays
-            inside
-            the input and scales down when the input receives focus. Alternatively, with <code>floatingLabel</code> set
-            to
-            <code>true</code>, the label completely moves out of the input, floating above it when it receives focus.
+        <p>The <code>CInput</code> component supports two different label behavior styles. By default, the label appears as a fixed text above the input field. Alternatively, with <code>floatingLabel</code> set to <code>true</code>, the label will start inside the input and move outside of it when the input receives focus or has a value.
         </p>
 
-        <p><strong>Note:</strong> When an icon is added to the input using the <code>#icon</code> slot, the label should
-            use the
-            floating behavior to prevent overlapping with the icon.</p>
+        <p><strong>Note:</strong> When an icon is added to the input using the <code>#icon</code> slot, using <code>floatingLabel</code> is recommended to prevent overlapping with the icon.</p>
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
                 <div class="w-full max-w-[400px]">
-                    <c-input v-model="defaultLabel" id="default-label" label="Default Label (inside)" class="mb-4" />
-                    <c-input v-model="floatingLabelValue" id="floating-label" label="Floating Label (outside)"
+                    <c-input v-model="defaultLabel" id="default-label" label="Default Label (fixed above)" class="mb-4" />
+                    <c-input v-model="floatingLabelValue" id="floating-label" label="Floating Label"
                         floatingLabel />
                 </div>
             </div>
 
             <template #code>
                 <pre><code class="code-highlight language-html">&lt;template&gt;
-    &lt;!-- Default label (stays inside the input when focused) --&gt;
+    &lt;!-- Default label (fixed above the input) --&gt;
     &lt;c-input
         v-model="defaultLabel"
         id="default-label"
-        label="Default Label (inside)"
+        label="Default Label (fixed above)"
     /&gt;
 
-    &lt;!-- Floating label (moves outside the input when focused) --&gt;
+    &lt;!-- Floating label (moves from inside to outside when focused) --&gt;
     &lt;c-input
         v-model="floatingLabelValue"
         id="floating-label"
-        label="Floating Label (outside)"
+        label="Floating Label"
         floatingLabel
     /&gt;
 &lt;/template&gt;
@@ -502,23 +495,17 @@ const floatingLabelValue = ref("");
         <h3>Icon</h3>
 
         <p>The Input component does not include a dedicated <code>icon</code> prop. Instead, it utilizes a slot to allow
-            for
-            greater flexibility in customizing the icon within the input field. This approach provides developers with
-            more
-            control over the design and behavior of the icon. By adding an icon through the icon slot, you can
-            seamlessly align
-            it to the left of the input field, enhancing the user experience with contextual cues, such as a magnifying
-            glass
-            for search fields.</p>
+            for greater flexibility in customizing the icon within the input field. This approach provides developers with
+            more control over the design and behavior of the icon. By adding an icon through the icon slot, you can
+            seamlessly align it to the left of the input field, enhancing the user experience with contextual cues, such as a magnifying
+            glass for search fields.</p>
 
-        <p><strong>Note:</strong> When an icon is present, it's recommended to use the <code>floatingLabel</code>
-            property to
-            ensure the label doesn't overlap with the icon.</p>
+        <p><strong>Note:</strong> When an icon is present and the default label behavior is used, the icon will appear next to the input. When using <code>floatingLabel=true</code>, the icon will be positioned inside the input field.</p>
 
         <card-docs>
             <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
                 <div class="w-full max-w-[400px]">
-                    <c-input id="search" label="Search Input" floatingLabel>
+                    <c-input id="search-default" label="Default Label with Icon" v-model="searchQuery">
                         <template #icon>
                             <IconMagnifyingGlass class="w-6 h-6 text-neutral-600 dark:text-white" aria-hidden="true" />
                         </template>
@@ -528,83 +515,26 @@ const floatingLabelValue = ref("");
 
             <template #code>
                 <pre><code class="code-highlight language-html">&lt;template&gt;
-    &lt;c-input id="search" label="Search Input" floatingLabel&gt;
+    &lt;!-- Default label with icon --&gt;
+    &lt;c-input id="search-default" label="Default Label with Icon" v-model="searchQuery"&gt;
         &lt;template #icon&gt;
             &lt;IconMagnifyingGlass class="w-6 h-6 text-neutral-600 dark:text-white" aria-hidden="true" /&gt;
         &lt;/template&gt;
     &lt;/c-input&gt;
-&lt;/template&gt;</code></pre>
-            </template>
-        </card-docs>
 
-        <!-- Custom Colors -->
-        <h3>Custom Colors</h3>
+    &lt;!-- Floating label with icon --&gt;
+    &lt;c-input id="search-floating" label="Search Input with Floating Label" floatingLabel v-model="searchQuery"&gt;
+        &lt;template #icon&gt;
+            &lt;IconMagnifyingGlass class="w-6 h-6 text-neutral-600 dark:text-white" aria-hidden="true" /&gt;
+        &lt;/template&gt;
+    &lt;/c-input&gt;
+&lt;/template&gt;
 
-        <p>The <code>CInput</code> component supports <strong>custom colors</strong> for the input field, label, and
-            border. You
-            can use the following props to style the input field as per your application's design requirements:</p>
+&lt;script setup&gt;
+import { ref } from "vue";
 
-        <ul>
-            <li><strong><code>bgColor</code></strong>: Adjusts the background color of the input.</li>
-            <li><strong><code>textColor</code></strong>: Modifies the color of the input text and label.</li>
-            <li><strong><code>borderColor</code></strong>: Sets the color and styles for the input's border during
-                interactions
-                such as focus.</li>
-        </ul>
-
-        <p>This flexibility allows for dynamic and visually appealing designs, tailored to specific use cases or
-            branding
-            guidelines.</p>
-
-        <table-docs>
-            <thead>
-                <tr>
-                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Prop</th>
-                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Type</th>
-                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Default</th>
-                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="border-b px-4 py-2">bgColor</td>
-                    <td class="border-b px-4 py-2">String</td>
-                    <td class="border-b px-4 py-2">""</td>
-                    <td class="border-b px-4 py-2">Custom background color class for the input.</td>
-                </tr>
-                <tr>
-                    <td class="border-b px-4 py-2">textColor</td>
-                    <td class="border-b px-4 py-2">String</td>
-                    <td class="border-b px-4 py-2">""</td>
-                    <td class="border-b px-4 py-2">Custom text color class for the input and label.</td>
-                </tr>
-                <tr>
-                    <td class="border-b px-4 py-2">borderColor</td>
-                    <td class="border-b px-4 py-2">String</td>
-                    <td class="border-b px-4 py-2">""</td>
-                    <td class="border-b px-4 py-2">Custom border color class for the input.</td>
-                </tr>
-            </tbody>
-        </table-docs>
-
-        <card-docs>
-            <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col items-center space-y-4">
-                <div class="w-full max-w-[400px]">
-                    <c-input id="custom" label="Custom Input" bgColor="bg-blue-600" textColor="text-white"
-                        borderColor="focus:ring focus:ring-purple-700 focus:ring-opacity-50"></c-input>
-                </div>
-            </div>
-
-            <template #code>
-                <pre><code class="code-highlight language-html">&lt;template&gt;
-    &lt;c-input
-        id="custom"
-        label="Custom Input"
-        bgColor="bg-blue-600"
-        textColor="text-white"
-        borderColor="focus:ring focus:ring-purple-700 focus:ring-opacity-50"
-    &gt;&lt;/c-input&gt;
-&lt;/template&gt;</code></pre>
+const searchQuery = ref("");
+&lt;/script&gt;</code></pre>
             </template>
         </card-docs>
 
@@ -629,12 +559,12 @@ const floatingLabelValue = ref("");
                 <div class="w-full max-w-[400px]">
                     <div class="flex items-stretch">
                         <c-input v-model="searchQuery" id="search-with-button" label="Search"
-                            placeholder="Search anything..." customClass="!rounded-r-none !border-r-0">
+                            placeholder="Search anything..." customClass="!rounded-r-none !border-r-0" floatingLabel>
 
                         </c-input>
 
                         <c-button variant="primary" size="lg"
-                            class="!rounded-l-none  w-[100px] px-8 flex items-center justify-center border-neutral-300 dark:border-neutral-700"
+                            class="!rounded-l-none mb-2 w-[100px] px-8 flex items-center justify-center border-neutral-300 dark:border-neutral-700"
                             @click="handleSearch">
                             <IconMagnifyingGlass class="w-6 h-6 text-white mr-2" aria-hidden="true" /> Search
                         </c-button>
@@ -651,12 +581,13 @@ const floatingLabelValue = ref("");
             label="Search"
             placeholder="Search anything..."
             customClass="!rounded-r-none !border-r-0"
+            floatingLabel
         &gt;
         &lt;/c-input&gt;
         &lt;c-button
             variant="primary"
             size="lg"
-            class="!rounded-l-none mb-[1.25rem] w-[100px] px-2 flex items-center justify-center"
+            class="!rounded-l-none mb-6 w-[100px] px-2 flex items-center justify-center"
             @click="handleSearch"
         &gt;
             &lt;IconMagnifyingGlass class="w-6 h-6 text-white mr-2" aria-hidden="true" /&gt; Search
@@ -688,7 +619,7 @@ function handleSearch() {
                 <div class="w-full max-w-[400px]">
                     <div class="flex items-stretch">
                         <c-input v-model="amountValue" id="amount-with-select" label="Amount" type="number"
-                            customClass="!rounded-r-none border-r-1 " size="sm" />
+                            customClass="!rounded-r-none border-r-1" size="sm" floatingLabel />
 
                         <c-combobox v-model="selectedCurrency" :options="currencyOptions" size="md"
                             class="!rounded-l-none min-w-[120px]" customClass="!rounded-l-none border-l-0 h-[46px]" />
@@ -705,7 +636,7 @@ function handleSearch() {
             label="Amount"
             type="number"
             floatingLabel
-            customClass="!rounded-r-none border-r-1 -mt-1"
+            customClass="!rounded-r-none border-r-1"
         /&gt;
 
         &lt;c-combobox

@@ -66,6 +66,12 @@
                     <td class="border-b px-4 py-2">400</td>
                     <td class="border-b px-4 py-2">Duration of the animation in milliseconds.</td>
                 </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">collapsed</td>
+                    <td class="border-b px-4 py-2">Boolean</td>
+                    <td class="border-b px-4 py-2">false</td>
+                    <td class="border-b px-4 py-2">Enables compact mode with reduced padding, smaller header (48px height), and smaller text.</td>
+                </tr>
             </tbody>
         </table-docs>
 
@@ -139,6 +145,89 @@
 import { ref } from 'vue';
 
 const showDialog = ref(false);
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
+
+        <h3>Collapsed Dialog</h3>
+
+        <p>
+            The <code>collapsed</code> prop creates a more compact dialog with reduced padding, smaller header height (48px),
+            and smaller text size. This is useful for informational dialogs or when you need to display content in a more space-efficient manner.
+        </p>
+
+        <card-docs>
+            <c-dialog v-model="collapsedDialog" class="m-auto" animation="slide-down" closable collapsed>
+                <template #activator>
+                    <div class="flex items-center justify-center gap-x-4">
+                        <c-button @click="collapsedDialog = true" size="2xl">Open Collapsed Dialog</c-button>
+                    </div>
+                </template>
+
+                <template #header>
+                    <h3 class="font-bold !text-sm">Compact Header</h3>
+                </template>
+
+                <template #content>
+                    <div class="space-y-2">
+                        <h4 class="font-medium">Efficient Space Usage</h4>
+                        <p class="mb-0 text-sm opacity-75">This dialog uses the collapsed mode for a more compact appearance. Notice the reduced padding, smaller header height, and slightly smaller text size.</p>
+                        <p class="mb-0 text-sm opacity-75">The collapsed mode is perfect for:</p>
+                        <ul class="list-disc pl-5 text-sm opacity-75">
+                            <li>Information dialogs</li>
+                            <li>Quick confirmation prompts</li>
+                            <li>Notifications with action buttons</li>
+                            <li>Mobile-friendly interfaces</li>
+                        </ul>
+                    </div>
+                </template>
+
+                <template #actions>
+                    <c-button variant="outline" size="sm" @click="collapsedDialog = false">Cancel</c-button>
+                    <c-button size="sm" @click="collapsedDialog = false">Confirm</c-button>
+                </template>
+            </c-dialog>
+
+            <template #code>
+                <pre><code class="code-highlight language-vue">&lt;template&gt;
+    &lt;c-dialog
+        v-model="collapsedDialog"
+        closable
+        collapsed
+        animation="slide-down"
+    &gt;
+        &lt;template #activator&gt;
+            &lt;c-button @click="collapsedDialog = true"&gt;Open Collapsed Dialog&lt;/c-button&gt;
+        &lt;/template&gt;
+
+        &lt;template #header&gt;
+            &lt;h3 class="font-bold"&gt;Compact Header&lt;/h3&gt;
+        &lt;/template&gt;
+
+        &lt;template #content&gt;
+            &lt;div class="space-y-2"&gt;
+                &lt;h4 class="font-medium"&gt;Efficient Space Usage&lt;/h4&gt;
+                &lt;p class="text-sm"&gt;This dialog uses the collapsed mode for a more compact appearance.&lt;/p&gt;
+                &lt;p class="text-sm"&gt;The collapsed mode is perfect for:&lt;/p&gt;
+                &lt;ul class="list-disc pl-5 text-sm"&gt;
+                    &lt;li&gt;Information dialogs&lt;/li&gt;
+                    &lt;li&gt;Quick confirmation prompts&lt;/li&gt;
+                    &lt;li&gt;Notifications with action buttons&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+        &lt;/template&gt;
+
+        &lt;template #actions&gt;
+            &lt;c-button variant="outline" size="sm" @click="collapsedDialog = false"&gt;Cancel&lt;/c-button&gt;
+            &lt;c-button size="sm" @click="collapsedDialog = false"&gt;Confirm&lt;/c-button&gt;
+        &lt;/template&gt;
+    &lt;/c-dialog&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref } from 'vue';
+
+const collapsedDialog = ref(false);
 &lt;/script&gt;</code></pre>
             </template>
         </card-docs>
@@ -645,6 +734,7 @@ import PagePagination from "../../layout/PagePagination.vue";
 const showDialog = ref(false);
 const fullscreenDialog = ref(false);
 const modalDialog = ref(false);
+const collapsedDialog = ref(false);
 const animationDialog = ref(false);
 const currentAnimation = ref('zoom');
 const instagramDialog = ref(false);

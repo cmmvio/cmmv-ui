@@ -653,6 +653,479 @@ const rolePermissionsData = ref({
             </template>
         </card-docs>
 
+        <h3>Multi-Tab Form Example</h3>
+
+        <p class="mb-4">
+            This example demonstrates how to create a form with multiple tabs to organize complex forms into logical sections.
+            The form uses the new tabs type to create a tabbed interface within the form builder.
+        </p>
+
+        <card-docs>
+            <div class="max-w-[800px] m-auto">
+                <c-form-builder v-model="tabsFormData" :schema="tabsFormSchema" @submit="handleTabsFormSubmit" />
+            </div>
+
+            <div class="mt-4">
+                <div class="p-4 bg-neutral-50 dark:bg-neutral-800 rounded-md">
+                    <h4 class="text-sm font-medium mb-2">Multi-Tab Form Data (modelValue)</h4>
+                    <pre
+                        class="whitespace-pre-wrap text-xs overflow-auto max-h-[500px] p-2 rounded bg-white dark:bg-neutral-900">{{ JSON.stringify(tabsFormData, null, 2) }}</pre>
+                </div>
+            </div>
+
+            <template #code>
+                <pre><code class="code-highlight language-html">&lt;div class="max-w-[800px] m-auto"&gt;
+    &lt;c-form-builder
+        v-model="tabsFormData"
+        :schema="tabsFormSchema"
+        @submit="handleTabsFormSubmit"
+    /&gt;
+&lt;/div&gt;
+
+&lt;script setup lang="ts"&gt;
+    const tabsFormData = ref({
+        projectName: "",
+        projectDescription: "",
+        startDate: null,
+        endDate: null,
+        clientName: "",
+        clientEmail: "",
+        clientPhone: "",
+        budget: 0,
+        teamMembers: [],
+        tasks: [],
+        priority: "",
+        status: ""
+    });
+&lt;/script&gt;</code></pre>
+            </template>
+
+            <template #schema>
+                <pre><code class="code-highlight language-json">{
+    projectHeader: {
+        type: "header",
+        label: "Project Management",
+        size: 12,
+        props: {
+            variant: "primary"
+        }
+    },
+    projectName: {
+        type: "input",
+        label: "Project Name",
+        placeholder: "Enter project name",
+        required: true,
+        size: 8
+    },
+    status: {
+        type: "combobox",
+        label: "Status",
+        placeholder: "Select status",
+        size: 4,
+        items: [
+            { value: "planning", label: "Planning" },
+            { value: "inProgress", label: "In Progress" },
+            { value: "onHold", label: "On Hold" },
+            { value: "completed", label: "Completed" }
+        ]
+    },
+    projectDescription: {
+        type: "textarea",
+        label: "Description",
+        placeholder: "Project description",
+        required: true,
+        size: 12,
+        maxlength: 500,
+        lengthCount: true
+    },
+    formTabs: {
+        type: "tabs",
+        label: "Project Details",
+        size: 12,
+        items: {
+            details: {
+                label: "Timeline & Budget",
+                schema: {
+                    startDate: {
+                        type: "date",
+                        label: "Start Date",
+                        placeholder: "Select start date",
+                        required: true,
+                        size: 6
+                    },
+                    endDate: {
+                        type: "date",
+                        label: "End Date",
+                        placeholder: "Select end date",
+                        size: 6
+                    },
+                    budget: {
+                        type: "currency",
+                        label: "Budget",
+                        currencyCode: "USD",
+                        showCurrencySymbol: true,
+                        size: 6
+                    },
+                    priority: {
+                        type: "combobox",
+                        label: "Priority",
+                        placeholder: "Select priority",
+                        size: 6,
+                        items: [
+                            { value: "low", label: "Low" },
+                            { value: "medium", label: "Medium" },
+                            { value: "high", label: "High" },
+                            { value: "urgent", label: "Urgent" }
+                        ]
+                    }
+                }
+            },
+            client: {
+                label: "Client Information",
+                schema: {
+                    clientName: {
+                        type: "input",
+                        label: "Client Name",
+                        placeholder: "Enter client name",
+                        size: 12
+                    },
+                    clientEmail: {
+                        type: "input",
+                        label: "Client Email",
+                        placeholder: "client@example.com",
+                        size: 6,
+                        props: {
+                            type: "email"
+                        }
+                    },
+                    clientPhone: {
+                        type: "input",
+                        label: "Client Phone",
+                        placeholder: "(123) 456-7890",
+                        size: 6
+                    }
+                }
+            },
+            team: {
+                label: "Team & Tasks",
+                schema: {
+                    teamMembers: {
+                        type: "chips",
+                        label: "Team Members",
+                        placeholder: "Add team members",
+                        size: 12,
+                        allowCustom: true
+                    },
+                    tasks: {
+                        type: "custom",
+                        label: "Tasks",
+                        size: 12,
+                        props: {
+                            description: "Use the project management module to add detailed tasks."
+                        }
+                    }
+                }
+            }
+        }
+    },
+    notes: {
+        type: "wysiwyg",
+        label: "Additional Notes",
+        placeholder: "Enter any additional notes about the project...",
+        size: 12
+    },
+    submit: {
+        type: "submit",
+        label: "Save Project",
+        size: 12
+    }
+}</code></pre>
+            </template>
+        </card-docs>
+
+        <h3>Nested Tabs Form Example</h3>
+
+        <p class="mb-4">
+            This advanced example demonstrates how to create a form with nested tabs, allowing for even more complex
+            form organization. This is particularly useful for applications that require extensive data collection
+            organized in hierarchical categories.
+        </p>
+
+        <card-docs>
+            <div class="max-w-[800px] m-auto">
+                <c-form-builder v-model="nestedTabsFormData" :schema="nestedTabsFormSchema" @submit="handleNestedTabsFormSubmit" />
+            </div>
+
+            <div class="mt-4">
+                <div class="p-4 bg-neutral-50 dark:bg-neutral-800 rounded-md">
+                    <h4 class="text-sm font-medium mb-2">Nested Tabs Form Data (modelValue)</h4>
+                    <pre
+                        class="whitespace-pre-wrap text-xs overflow-auto max-h-[500px] p-2 rounded bg-white dark:bg-neutral-900">{{ JSON.stringify(nestedTabsFormData, null, 2) }}</pre>
+                </div>
+            </div>
+
+            <template #code>
+                <pre><code class="code-highlight language-html">&lt;div class="max-w-[800px] m-auto"&gt;
+    &lt;c-form-builder
+        v-model="nestedTabsFormData"
+        :schema="nestedTabsFormSchema"
+        @submit="handleNestedTabsFormSubmit"
+    /&gt;
+&lt;/div&gt;
+
+&lt;script setup lang="ts"&gt;
+    const nestedTabsFormData = ref({
+        appName: "",
+        appVersion: "",
+        appEnvironment: "",
+        theme: "",
+        primaryColor: "",
+        fontFamily: "",
+        defaultLanguage: "",
+        timezone: "",
+        dateFormat: "",
+        timeFormat: "",
+        authMethod: "",
+        sessionTimeout: "",
+        passwordMinLength: "",
+        requireUppercase: false,
+        requireNumbers: false,
+        requireSpecialChars: false,
+        enableMFA: false,
+        mfaMethod: "",
+        enableAPI: false,
+        apiKey: "",
+        integrationNotes: ""
+    });
+
+    const nestedTabsFormSchema = ref({
+        mainHeader: {
+            type: "header",
+            label: "Application Configuration",
+            size: 12,
+            props: {
+                variant: "primary"
+            }
+        },
+        appName: {
+            type: "input",
+            label: "Application Name",
+            placeholder: "Enter application name",
+            required: true,
+            size: 12
+        },
+        mainTabs: {
+            type: "tabs",
+            label: "Configuration Sections",
+            size: 12,
+            items: {
+                general: {
+                    label: "General",
+                    schema: {
+                        appVersion: {
+                            type: "input",
+                            label: "Version",
+                            placeholder: "1.0.0",
+                            size: 6
+                        },
+                        appEnvironment: {
+                            type: "combobox",
+                            label: "Environment",
+                            size: 6,
+                            items: [
+                                { value: "dev", label: "Development" },
+                                { value: "test", label: "Testing" },
+                                { value: "prod", label: "Production" }
+                            ]
+                        },
+                        generalSettings: {
+                            type: "tabs",
+                            label: "Settings",
+                            size: 12,
+                            items: {
+                                appearance: {
+                                    label: "Appearance",
+                                    schema: {
+                                        theme: {
+                                            type: "combobox",
+                                            label: "Theme",
+                                            size: 6,
+                                            items: [
+                                                { value: "light", label: "Light" },
+                                                { value: "dark", label: "Dark" },
+                                                { value: "auto", label: "Auto" }
+                                            ]
+                                        },
+                                        primaryColor: {
+                                            type: "input",
+                                            label: "Primary Color",
+                                            placeholder: "#3b82f6",
+                                            size: 6
+                                        },
+                                        fontFamily: {
+                                            type: "input",
+                                            label: "Font Family",
+                                            placeholder: "Inter, sans-serif",
+                                            size: 12
+                                        }
+                                    }
+                                },
+                                localization: {
+                                    label: "Localization",
+                                    schema: {
+                                        defaultLanguage: {
+                                            type: "combobox",
+                                            label: "Default Language",
+                                            size: 6,
+                                            items: [
+                                                { value: "en", label: "English" },
+                                                { value: "es", label: "Spanish" },
+                                                { value: "fr", label: "French" },
+                                                { value: "de", label: "German" }
+                                            ]
+                                        },
+                                        timezone: {
+                                            type: "combobox",
+                                            label: "Default Timezone",
+                                            size: 6,
+                                            items: [
+                                                { value: "utc", label: "UTC" },
+                                                { value: "est", label: "Eastern (EST)" },
+                                                { value: "cst", label: "Central (CST)" },
+                                                { value: "pst", label: "Pacific (PST)" }
+                                            ]
+                                        },
+                                        dateFormat: {
+                                            type: "input",
+                                            label: "Date Format",
+                                            placeholder: "MM/DD/YYYY",
+                                            size: 6
+                                        },
+                                        timeFormat: {
+                                            type: "input",
+                                            label: "Time Format",
+                                            placeholder: "HH:mm",
+                                            size: 6
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                security: {
+                    label: "Security",
+                    schema: {
+                        authMethod: {
+                            type: "combobox",
+                            label: "Authentication Method",
+                            size: 6,
+                            items: [
+                                { value: "jwt", label: "JWT" },
+                                { value: "oauth2", label: "OAuth 2.0" },
+                                { value: "saml", label: "SAML" }
+                            ]
+                        },
+                        sessionTimeout: {
+                            type: "input",
+                            label: "Session Timeout (minutes)",
+                            placeholder: "30",
+                            size: 6
+                        },
+                        securityTabs: {
+                            type: "tabs",
+                            label: "Security Settings",
+                            size: 12,
+                            items: {
+                                password: {
+                                    label: "Password Policy",
+                                    schema: {
+                                        passwordMinLength: {
+                                            type: "input",
+                                            label: "Minimum Length",
+                                            placeholder: "8",
+                                            size: 6
+                                        },
+                                        requireUppercase: {
+                                            type: "toggle",
+                                            label: "Require Uppercase",
+                                            size: 6
+                                        },
+                                        requireNumbers: {
+                                            type: "toggle",
+                                            label: "Require Numbers",
+                                            size: 6
+                                        },
+                                        requireSpecialChars: {
+                                            type: "toggle",
+                                            label: "Require Special Characters",
+                                            size: 6
+                                        }
+                                    }
+                                },
+                                mfa: {
+                                    label: "Multi-Factor Auth",
+                                    schema: {
+                                        enableMFA: {
+                                            type: "toggle",
+                                            label: "Enable MFA",
+                                            size: 6
+                                        },
+                                        mfaMethod: {
+                                            type: "combobox",
+                                            label: "MFA Method",
+                                            size: 6,
+                                            items: [
+                                                { value: "app", label: "Authenticator App" },
+                                                { value: "sms", label: "SMS" },
+                                                { value: "email", label: "Email" }
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                integrations: {
+                    label: "Integrations",
+                    schema: {
+                        enableAPI: {
+                            type: "toggle",
+                            label: "Enable API",
+                            size: 6
+                        },
+                        apiKey: {
+                            type: "input",
+                            label: "API Key",
+                            placeholder: "Enter your API key",
+                            size: 6
+                        },
+                        integrationNotes: {
+                            type: "textarea",
+                            label: "Integration Notes",
+                            placeholder: "Additional integration details...",
+                            size: 12
+                        }
+                    }
+                }
+            }
+        },
+        submit: {
+            type: "submit",
+            label: "Save Configuration",
+            size: 12
+        }
+    });
+
+    const handleNestedTabsFormSubmit = (data) => {
+        console.log("Nested tabs form submitted:", data);
+        alert("Configuration saved successfully!");
+    };
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
+
         <h3>Props</h3>
 
         <table-docs>
@@ -975,10 +1448,7 @@ const schema = ref({
         type: "input",
         label: "Zip/Postal Code",
         placeholder: "22222-222",
-        size: 6,
-        props: {
-            mask: "#####-###"
-        }
+        size: 12
     },
     username: {
         type: "input",
@@ -1535,6 +2005,19 @@ const blogPostSchema = ref({
             variant: "secondary"
         }
     },
+    authorPassword: {
+        type: "password",
+        label: "Author Password",
+        placeholder: "Verify your identity",
+        required: true,
+        size: 12,
+        requireUppercase: true,
+        requireLowercase: true,
+        requireNumbers: true,
+        requireSpecialChars: true,
+        minLength: 8,
+        showStrengthBar: true
+    },
     publishNow: {
         type: "toggle",
         label: "Publish Immediately",
@@ -1557,5 +2040,413 @@ const handleBlogPostSubmit = (data) => {
     console.log("Blog post submitted:", data);
     // In a real application, you would save the blog post data to a database
 };
-</script>
 
+const tabsFormData = ref({
+    projectName: "",
+    projectDescription: "",
+    startDate: null,
+    endDate: null,
+    clientName: "",
+    clientEmail: "",
+    clientPhone: "",
+    budget: 0,
+    teamMembers: [],
+    tasks: [],
+    priority: "",
+    status: ""
+});
+
+const tabsFormSchema = ref({
+    projectHeader: {
+        type: "header",
+        label: "Project Management",
+        size: 12,
+        props: {
+            variant: "primary"
+        }
+    },
+    projectName: {
+        type: "input",
+        label: "Project Name",
+        placeholder: "Enter project name",
+        required: true,
+        size: 8
+    },
+    status: {
+        type: "combobox",
+        label: "Status",
+        placeholder: "Select status",
+        size: 4,
+        items: [
+            { value: "planning", label: "Planning" },
+            { value: "inProgress", label: "In Progress" },
+            { value: "onHold", label: "On Hold" },
+            { value: "completed", label: "Completed" }
+        ]
+    },
+    projectDescription: {
+        type: "textarea",
+        label: "Description",
+        placeholder: "Project description",
+        required: true,
+        size: 12,
+        maxlength: 500,
+        lengthCount: true
+    },
+    formTabs: {
+        type: "tabs",
+        label: "Project Details",
+        size: 12,
+        items: {
+            details: {
+                label: "Timeline & Budget",
+                schema: {
+                    startDate: {
+                        type: "date",
+                        label: "Start Date",
+                        placeholder: "Select start date",
+                        required: true,
+                        size: 6
+                    },
+                    endDate: {
+                        type: "date",
+                        label: "End Date",
+                        placeholder: "Select end date",
+                        size: 6
+                    },
+                    budget: {
+                        type: "currency",
+                        label: "Budget",
+                        currencyCode: "USD",
+                        showCurrencySymbol: true,
+                        size: 6
+                    },
+                    priority: {
+                        type: "combobox",
+                        label: "Priority",
+                        placeholder: "Select priority",
+                        size: 6,
+                        items: [
+                            { value: "low", label: "Low" },
+                            { value: "medium", label: "Medium" },
+                            { value: "high", label: "High" },
+                            { value: "urgent", label: "Urgent" }
+                        ]
+                    }
+                }
+            },
+            client: {
+                label: "Client Information",
+                schema: {
+                    clientName: {
+                        type: "input",
+                        label: "Client Name",
+                        placeholder: "Enter client name",
+                        size: 12
+                    },
+                    clientEmail: {
+                        type: "input",
+                        label: "Client Email",
+                        placeholder: "client@example.com",
+                        size: 6,
+                        props: {
+                            type: "email"
+                        }
+                    },
+                    clientPhone: {
+                        type: "input",
+                        label: "Client Phone",
+                        placeholder: "(123) 456-7890",
+                        size: 6
+                    }
+                }
+            },
+            team: {
+                label: "Team & Tasks",
+                schema: {
+                    teamMembers: {
+                        type: "chips",
+                        label: "Team Members",
+                        placeholder: "Add team members",
+                        size: 12,
+                        allowCustom: true
+                    },
+                    tasks: {
+                        type: "custom",
+                        label: "Tasks",
+                        size: 12,
+                        props: {
+                            description: "Use the project management module to add detailed tasks."
+                        }
+                    }
+                }
+            }
+        }
+    },
+    notes: {
+        type: "wysiwyg",
+        label: "Additional Notes",
+        placeholder: "Enter any additional notes about the project...",
+        size: 12
+    },
+    submit: {
+        type: "submit",
+        label: "Save Project",
+        size: 12
+    }
+});
+
+const handleTabsFormSubmit = (data) => {
+    console.log("Multi-tab form submitted:", data);
+    alert("Form submitted successfully!");
+};
+
+const nestedTabsFormData = ref({
+    appName: "",
+    appVersion: "",
+    appEnvironment: "",
+    theme: "",
+    primaryColor: "",
+    fontFamily: "",
+    defaultLanguage: "",
+    timezone: "",
+    dateFormat: "",
+    timeFormat: "",
+    authMethod: "",
+    sessionTimeout: "",
+    passwordMinLength: "",
+    requireUppercase: false,
+    requireNumbers: false,
+    requireSpecialChars: false,
+    enableMFA: false,
+    mfaMethod: "",
+    enableAPI: false,
+    apiKey: "",
+    integrationNotes: ""
+});
+
+const nestedTabsFormSchema = ref({
+    mainHeader: {
+        type: "header",
+        label: "Application Configuration",
+        size: 12,
+        props: {
+            variant: "primary"
+        }
+    },
+    appName: {
+        type: "input",
+        label: "Application Name",
+        placeholder: "Enter application name",
+        required: true,
+        size: 12
+    },
+    mainTabs: {
+        type: "tabs",
+        label: "Configuration Sections",
+        size: 12,
+        items: {
+            general: {
+                label: "General",
+                schema: {
+                    appVersion: {
+                        type: "input",
+                        label: "Version",
+                        placeholder: "1.0.0",
+                        size: 6
+                    },
+                    appEnvironment: {
+                        type: "combobox",
+                        label: "Environment",
+                        size: 6,
+                        items: [
+                            { value: "dev", label: "Development" },
+                            { value: "test", label: "Testing" },
+                            { value: "prod", label: "Production" }
+                        ]
+                    },
+                    generalSettings: {
+                        type: "tabs",
+                        label: "Settings",
+                        size: 12,
+                        items: {
+                            appearance: {
+                                label: "Appearance",
+                                schema: {
+                                    theme: {
+                                        type: "combobox",
+                                        label: "Theme",
+                                        size: 6,
+                                        items: [
+                                            { value: "light", label: "Light" },
+                                            { value: "dark", label: "Dark" },
+                                            { value: "auto", label: "Auto" }
+                                        ]
+                                    },
+                                    primaryColor: {
+                                        type: "input",
+                                        label: "Primary Color",
+                                        placeholder: "#3b82f6",
+                                        size: 6
+                                    },
+                                    fontFamily: {
+                                        type: "input",
+                                        label: "Font Family",
+                                        placeholder: "Inter, sans-serif",
+                                        size: 12
+                                    }
+                                }
+                            },
+                            localization: {
+                                label: "Localization",
+                                schema: {
+                                    defaultLanguage: {
+                                        type: "combobox",
+                                        label: "Default Language",
+                                        size: 6,
+                                        items: [
+                                            { value: "en", label: "English" },
+                                            { value: "es", label: "Spanish" },
+                                            { value: "fr", label: "French" },
+                                            { value: "de", label: "German" }
+                                        ]
+                                    },
+                                    timezone: {
+                                        type: "combobox",
+                                        label: "Default Timezone",
+                                        size: 6,
+                                        items: [
+                                            { value: "utc", label: "UTC" },
+                                            { value: "est", label: "Eastern (EST)" },
+                                            { value: "cst", label: "Central (CST)" },
+                                            { value: "pst", label: "Pacific (PST)" }
+                                        ]
+                                    },
+                                    dateFormat: {
+                                        type: "input",
+                                        label: "Date Format",
+                                        placeholder: "MM/DD/YYYY",
+                                        size: 6
+                                    },
+                                    timeFormat: {
+                                        type: "input",
+                                        label: "Time Format",
+                                        placeholder: "HH:mm",
+                                        size: 6
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            security: {
+                label: "Security",
+                schema: {
+                    authMethod: {
+                        type: "combobox",
+                        label: "Authentication Method",
+                        size: 6,
+                        items: [
+                            { value: "jwt", label: "JWT" },
+                            { value: "oauth2", label: "OAuth 2.0" },
+                            { value: "saml", label: "SAML" }
+                        ]
+                    },
+                    sessionTimeout: {
+                        type: "input",
+                        label: "Session Timeout (minutes)",
+                        placeholder: "30",
+                        size: 6
+                    },
+                    securityTabs: {
+                        type: "tabs",
+                        label: "Security Settings",
+                        size: 12,
+                        items: {
+                            password: {
+                                label: "Password Policy",
+                                schema: {
+                                    passwordMinLength: {
+                                        type: "input",
+                                        label: "Minimum Length",
+                                        placeholder: "8",
+                                        size: 6
+                                    },
+                                    requireUppercase: {
+                                        type: "toggle",
+                                        label: "Require Uppercase",
+                                        size: 6
+                                    },
+                                    requireNumbers: {
+                                        type: "toggle",
+                                        label: "Require Numbers",
+                                        size: 6
+                                    },
+                                    requireSpecialChars: {
+                                        type: "toggle",
+                                        label: "Require Special Characters",
+                                        size: 6
+                                    }
+                                }
+                            },
+                            mfa: {
+                                label: "Multi-Factor Auth",
+                                schema: {
+                                    enableMFA: {
+                                        type: "toggle",
+                                        label: "Enable MFA",
+                                        size: 6
+                                    },
+                                    mfaMethod: {
+                                        type: "combobox",
+                                        label: "MFA Method",
+                                        size: 6,
+                                        items: [
+                                            { value: "app", label: "Authenticator App" },
+                                            { value: "sms", label: "SMS" },
+                                            { value: "email", label: "Email" }
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            integrations: {
+                label: "Integrations",
+                schema: {
+                    enableAPI: {
+                        type: "toggle",
+                        label: "Enable API",
+                        size: 6
+                    },
+                    apiKey: {
+                        type: "input",
+                        label: "API Key",
+                        placeholder: "Enter your API key",
+                        size: 6
+                    },
+                    integrationNotes: {
+                        type: "textarea",
+                        label: "Integration Notes",
+                        placeholder: "Additional integration details...",
+                        size: 12
+                    }
+                }
+            }
+        }
+    },
+    submit: {
+        type: "submit",
+        label: "Save Configuration",
+        size: 12
+    }
+});
+
+const handleNestedTabsFormSubmit = (data) => {
+    console.log("Nested tabs form submitted:", data);
+    alert("Configuration saved successfully!");
+};
+</script>

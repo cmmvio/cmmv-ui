@@ -1,45 +1,79 @@
 <template>
-    <div class="flex flex-col items-center">
-        <label v-if="label" :for="id" class="mb-2 text-sm font-medium text-neutral-900 dark:text-white">
-            {{ label }}
+    <div class="c-number-input relative w-full">
+        <label v-if="label" :for="id"
+            class="c-number-input-label text-sm"
+            :class="[
+                'block mb-1',
+                textColor ? textColor : 'text-neutral-500 dark:text-neutral-400'
+            ]">
+            {{ label }} <span v-if="required" class="text-red-500">*</span>
         </label>
 
-        <div class="relative flex items-center" :class="sizeClasses">
+        <div class="relative flex items-center">
             <button type="button"
-                class="border border-neutral-300 dark:border-neutral-900 bg-neutral-100 dark:bg-neutral-800 dark:hover:bg-neutral-700 hover:bg-neutral-200 p-3 focus:ring-2 focus:outline-none"
-                :class="['rounded-l-lg', disabled ? 'opacity-50 cursor-not-allowed' : '']" @click="decrement"
+                class="absolute left-0 h-full px-3 flex items-center justify-center z-10 border rounded-l-md border-neutral-300 dark:border-neutral-700"
+                :class="[
+                    'text-neutral-700 dark:text-neutral-300',
+                    disabled ? 'opacity-50 cursor-not-allowed' : 'hover:bg-neutral-100 dark:hover:bg-neutral-800'
+                ]"
+                @click="decrement"
                 :disabled="disabled || internalValue <= min">
-                <svg class="w-3 h-3 text-neutral-900 dark:text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
-                    viewBox="0 0 18 2">
+                <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M1 1h16" />
                 </svg>
             </button>
 
-            <input :id="id" type="text" v-model="valueInput"
-                class="bg-neutral-50 dark:bg-neutral-800 border-x-0 border-t border-b dark:border-neutral-900 text-center text-neutral-900 dark:text-white focus:ring-blue-500 focus:border-blue-500 block w-full py-2 outline-none"
-                :class="[inputClasses, disabled ? 'opacity-50 cursor-not-allowed' : '']" :disabled="disabled"
-                @blur="applyLimits" @keydown="preventNonNumeric" @keyup="preventNonNumeric" />
+            <input :id="id"
+                type="text"
+                v-model="valueInput"
+                :placeholder="placeholder + (required ? ' *' : '')"
+                :class="[
+                    sizes[size],
+                    roundedStyles[rounded],
+                    bgColor ? bgColor : 'bg-white dark:bg-neutral-900',
+                    textColor ? textColor : 'text-neutral-900 dark:text-white',
+                    { 'ring-red-500 ring-2': hasError, 'opacity-50': disabled, 'cursor-not-allowed': disabled },
+                    customClass,
+                    'min-h-[38px] pl-10 pr-10'
+                ]"
+                class="c-number-input-field block w-full border shadow-sm outline-none text-center"
+                :disabled="disabled"
+                @blur="applyLimits"
+                @keydown="preventNonNumeric"
+                @keyup="preventNonNumeric" />
 
             <button type="button"
-                class="border border-neutral-300 dark:border-neutral-900 bg-neutral-100 dark:bg-neutral-800 dark:hover:bg-neutral-700 hover:bg-neutral-200 p-3 focus:ring-2 focus:outline-none"
-                :class="['rounded-r-lg', disabled ? 'opacity-50 cursor-not-allowed' : '']" @click="increment"
+                class="absolute right-0 h-full px-3 flex items-center justify-center z-10 border rounded-r-md border-neutral-300 dark:border-neutral-700"
+                :class="[
+                    'text-neutral-700 dark:text-neutral-300',
+                    disabled ? 'opacity-50 cursor-not-allowed' : 'hover:bg-neutral-100 dark:hover:bg-neutral-800'
+                ]"
+                @click="increment"
                 :disabled="disabled || internalValue >= max">
-                <svg class="w-3 h-3 text-neutral-900 dark:text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
-                    viewBox="0 0 18 18">
+                <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M9 1v16M1 9h16" />
                 </svg>
             </button>
         </div>
 
-        <p v-if="helperText" class="mt-2 text-sm text-neutral-500 dark:text-neutral-400">
-            {{ helperText }}
-        </p>
+        <div class="mt-1" v-if="!hiddenHint">
+            <p v-if="hasError" class="text-xs text-red-500">{{ errorMessage }}</p>
+            <p v-else-if="helperText" class="text-xs text-neutral-500 dark:text-neutral-400">{{ helperText }}</p>
+        </div>
     </div>
 </template>
 
 <style scoped>
+.c-number-input {
+    position: relative;
+}
+
+.c-number-input-label {
+    z-index: 1;
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -52,7 +86,7 @@ input[type=number] {
 </style>
 
 <script setup lang="ts">
-import { ref, defineProps, defineEmits, computed, watch } from "vue";
+import { ref, computed, watch } from "vue";
 
 const props = defineProps({
     modelValue: {
@@ -83,6 +117,10 @@ const props = defineProps({
         type: String,
         default: ""
     },
+    placeholder: {
+        type: String,
+        default: ""
+    },
     id: {
         type: String,
         default: "number-input"
@@ -90,6 +128,33 @@ const props = defineProps({
     size: {
         type: String,
         default: "md"
+    },
+    rounded: {
+        type: String,
+        default: "default"
+    },
+    bgColor: {
+        type: String,
+        required: false,
+        default: "bg-white dark:bg-neutral-900"
+    },
+    textColor: {
+        type: String,
+        required: false,
+        default: ""
+    },
+    customClass: {
+        type: String,
+        required: false,
+        default: ""
+    },
+    required: {
+        type: Boolean,
+        default: false
+    },
+    hiddenHint: {
+        type: Boolean,
+        default: false
     }
 });
 
@@ -97,6 +162,8 @@ const emit = defineEmits(["update:modelValue", "change"]);
 
 const internalValue = ref(props.modelValue);
 const valueInput = ref(props.modelValue?.toString());
+const hasError = ref(false);
+const errorMessage = ref<string | null>(null);
 
 watch(() => props.modelValue, (newValue) => {
     internalValue.value = newValue;
@@ -157,15 +224,15 @@ const preventNonNumeric = (event: KeyboardEvent) => {
     applyLimits();
 };
 
-const sizeClasses = computed(() => ({
-    sm: "max-w-[6rem]",
-    md: "max-w-[8rem]",
-    lg: "max-w-[10rem]"
-}[props.size] || "max-w-[8rem]"));
+const sizes: Record<string, string> = {
+    sm: "px-2 py-1 text-xs",
+    md: "px-2 py-1 text-sm",
+    lg: "px-2 py-2 text-base",
+};
 
-const inputClasses = computed(() => ({
-    sm: "text-xs py-2",
-    md: "text-sm py-2",
-    lg: "text-base py-1"
-}[props.size] || "text-sm py-2"));
+const roundedStyles: Record<string, string> = {
+    none: "rounded-none",
+    default: "rounded-md",
+    full: "rounded-full",
+};
 </script>

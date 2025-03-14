@@ -1,19 +1,22 @@
 <template>
     <div class="c-textarea relative w-full">
-        <label :for="id"
-            class="c-textarea-label absolute text-sm transition-all duration-200 ease-in-out pointer-events-none drop-shadow-xs"
+        <label v-if="label" :for="id"
+            class="c-textarea-label text-sm"
             :class="[{
+                'absolute transition-all duration-200 ease-in-out pointer-events-none drop-shadow-xs': floatingLabel,
                 'c-textarea-label--active': floatingLabel && (isActive || currentValue),
-                'top-[50%] -translate-y-1/2 left-3': (!isActive && !currentValue),
-                'top-[30%]': !isActive && hasError,
-                'scale-75 origin-left text-xs top-1 left-1': (isActive || (currentValue !== undefined && currentValue !== '')) && !floatingLabel,
+                'top-[50%] -translate-y-1/2 left-3': floatingLabel && (!isActive && !currentValue),
+                'top-[30%]': floatingLabel && !isActive && hasError,
+                'block mb-1': !floatingLabel
             },
             textColor ? textColor : 'text-neutral-500 dark:text-neutral-400',
-            bgColor ? bgColor : variantColors[variant], 'px-1']">
+            floatingLabel ? (bgColor ? bgColor : variantColors[variant]) : '', floatingLabel ? 'px-1' : '']">
             {{ label }} <span v-if="required" class="text-red-500">*</span>
         </label>
 
-        <textarea ref="textarea" :id="id" :name="name" :placeholder="isActive ? placeholder : ''" :maxlength="maxlength"
+        <textarea ref="textarea" :id="id" :name="name"
+            :placeholder="floatingLabel ? (isActive ? placeholder : '') : (placeholder + (required && placeholder ? ' *' : ''))"
+            :maxlength="maxlength"
             :value="currentValue" :class="[
                 sizes[size],
                 roundedStyles[rounded],
@@ -25,9 +28,13 @@
                     'ring-red-500 ring-2': hasError,
                     'opacity-50': disabled,
                     'resize-none': !resize,
-                    'c-textarea-custom-resize': resize
-                }
-            ]" class="c-textarea-field block w-full pt-5 pb-2 outline-none min-h-[80px]" @input="handleInput" @focus="activateLabel"
+                    'c-textarea-custom-resize': resize,
+                    'pt-5 pb-2': floatingLabel,
+                    'py-2': !floatingLabel
+                },
+                'c-textarea-field block w-full outline-none min-h-[80px]'
+            ]"
+            @input="handleInput" @focus="activateLabel"
             @blur="deactivateLabel" :disabled="disabled" :aria-invalid="hasError" />
 
         <div v-if="lengthCount" class="absolute bottom-1 right-3 text-xs text-neutral-500">
@@ -47,10 +54,10 @@
 }
 
 .c-textarea-label {
-    transform: translate(0, -50%);
     z-index: 1;
 }
 
+/* Apenas aplicado quando floatingLabel=true */
 .c-textarea-label--active {
     transform: translate(0, -2rem) scale(0.85);
     top: 1.3rem;

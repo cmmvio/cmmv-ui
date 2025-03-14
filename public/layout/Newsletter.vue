@@ -5,13 +5,17 @@
             new component is added to CMMV? Sign up for our newsletter and you'll be among the first to find out about
             new features, components, versions, and tools.</p>
 
-        <div class="flex items-center mt-2 mb-2">
+        <div class="mt-2 mb-2">
             <c-form class="flex w-full">
-                <c-input id="custom" label="Your email address..." class="flex-1 mr-6"></c-input>
+                <div class="flex-1 mr-6">
+                    <c-input id="custom" label="Your email address..."></c-input>
+                </div>
 
-                <c-button size="md" type="button" class="shrink-0 h-11 px-7">
-                    Subscribe
-                </c-button>
+                <div class="flex items-end">
+                    <c-button size="md" type="button" class="shrink-0 h-[38px] px-7">
+                        Subscribe
+                    </c-button>
+                </div>
             </c-form>
         </div>
 

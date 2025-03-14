@@ -4,10 +4,10 @@
             class="relative z-10 flex items-center justify-center border rounded transition-all duration-200 overflow-hidden"
             :class="[
                 sizes[size].box,
-                (isChecked && !hasError) || indeterminate ? bgColor : 'bg-white',
-                isChecked || indeterminate ? borderColor : 'border-gray-300',
+                (isChecked && !hasError) || indeterminate ? bgColor : uncheckedBgColor,
+                isChecked || indeterminate ? borderColor : 'border-gray-300 dark:border-gray-600',
                 disabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer',
-                hasError ? 'ring-1 ring-red-500 border-red-500 bg-red-300' : ''
+                hasError ? 'ring-1 ring-red-500 border-red-500 bg-red-300 dark:bg-red-900' : ''
             ]">
             <svg v-if="isChecked && !indeterminate" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4"
                 :class="textColor" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
@@ -23,7 +23,7 @@
         <span v-if="label" :class="[
             'ml-2',
             sizes[size].label,
-            hasError ? 'text-red-500' : ''
+            hasError ? 'text-red-500' : 'text-neutral-900 dark:text-neutral-200'
         ]">
             {{ label }} <span v-if="required" class="text-red-500">*</span>
         </span>
@@ -78,6 +78,11 @@ const props = defineProps({
         type: String,
         required: false,
         default: "bg-blue-600",
+    },
+    uncheckedBgColor: {
+        type: String,
+        required: false,
+        default: "bg-white dark:bg-neutral-800",
     },
     borderColor: {
         type: String,

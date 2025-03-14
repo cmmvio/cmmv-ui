@@ -14,213 +14,112 @@
 
         <div class="grid grid-cols-12 gap-4">
             <template v-for="(item, key) in schema" :key="key">
-                <slot :name="key" v-bind="{
-                    value: formData[key],
-                    field: item,
-                    update: (value) => updateField(key, value)
-                }">
-                    <div :class="[`col-span-${item.size || 12}`]">
-                        <!-- Input -->
-                        <c-input v-if="item.type === 'input'" v-model="formData[key]" :label="item.label"
-                            :placeholder="item.placeholder" :required="item.required" v-bind="item.props || {}"
-                            @update:modelValue="(value) => updateField(key as string, value)"
-                            :rules="item.rules || item.props?.rules || []"
-                            :ref="el => { if (el) fieldRefs[key as string] = el; }" />
+                <div v-if="item && item.type === 'tabs'" class="col-span-12">
+                    <c-tabs
+                        :tabs="convertTabsToFormat(item.items)"
+                        :styleType="item.props?.styleType || 'default'"
+                        :modelValue="getTabIndexForTabsConfig(item.items)"
+                        @tab-change="(index) => !isInsideCodePreview && handleTabChange(index, item.items)"
+                        ref="tabsComponent"
+                    >
+                        <template v-for="(tab, tabKey) in item.items" :key="tabKey" #[`tab-${tabKey}`]>
+                            <div class="grid grid-cols-12 gap-4">
+                                <template v-for="(field, fieldKey) in tab.schema || {}" :key="`${tabKey}-${fieldKey}`">
+                                    <c-form-builder-item
+                                        :field="field"
+                                        :value="formData[fieldKey]"
+                                        :field-name="String(fieldKey)"
+                                        :disabled="isSubmitButton(field) && !isFormValid"
+                                        @update:value="(value) => updateField(fieldKey, value)"
+                                        @validate="(fieldName, isValid) => handleFieldValidation(fieldName, isValid)"
+                                        @submit="handleSubmitButtonClick"
+                                    >
+                                        <!-- Forward slots para item-selected -->
+                                        <template v-if="$slots && $slots[`${fieldKey}-selected`]" #selected="slotProps">
+                                            <slot :name="`${fieldKey}-selected`" v-bind="slotProps"></slot>
+                                        </template>
 
-                        <!-- Combobox/Select -->
-                        <c-combobox v-if="item.type === 'combobox' || item.type === 'select'" v-model="formData[key]"
-                            :label="item.label" :placeholder="item.placeholder" :required="item.required"
-                            :options="item.items" :remoteDataPrimaryKey="item.remoteDataPrimaryKey"
-                            :remoteDataLabelKey="item.remoteDataLabelKey" :remoteDataKeyValue="item.remoteDataKeyValue"
-                            :rules="item.rules || item.props?.rules || []" v-bind="item.props || {}"
-                            @update:modelValue="(value) => updateField(key as string, value)"
-                            :ref="el => { if (el) fieldRefs[key as string] = el; }">
-                            <!-- Forward the selected slot -->
-                            <template v-if="$slots[`${key}-selected`]" #selected="slotProps">
-                                <slot :name="`${key}-selected`" v-bind="slotProps"></slot>
-                            </template>
-                            <!-- Forward the option slot -->
-                            <template v-if="$slots[`${key}-option`]" #option="slotProps">
-                                <slot :name="`${key}-option`" v-bind="slotProps"></slot>
-                            </template>
-                            <!-- Forward the subitem slot -->
-                            <template v-if="$slots[`${key}-subitem`]" #subitem="slotProps">
-                                <slot :name="`${key}-subitem`" v-bind="slotProps"></slot>
-                            </template>
-                        </c-combobox>
+                                        <!-- Forward slots para item-option -->
+                                        <template v-if="$slots && $slots[`${fieldKey}-option`]" #option="slotProps">
+                                            <slot :name="`${fieldKey}-option`" v-bind="slotProps"></slot>
+                                        </template>
 
-                        <!-- Checkbox -->
-                        <c-checkbox v-if="item.type === 'checkbox'" v-model="formData[key]" :label="item.label"
-                            :required="item.required" v-bind="item.props || {}"
-                            :rules="item.rules || item.props?.rules || []"
-                            @update:modelValue="(value) => updateField(key as string, value)"
-                            :ref="el => { if (el) fieldRefs[key as string] = el; }" />
+                                        <!-- Forward slots para item-subitem -->
+                                        <template v-if="$slots && $slots[`${fieldKey}-subitem`]" #subitem="slotProps">
+                                            <slot :name="`${fieldKey}-subitem`" v-bind="slotProps"></slot>
+                                        </template>
 
-                        <!-- Radio -->
-                        <c-radio v-if="item.type === 'radio'" v-model="formData[key]" :label="item.label"
-                            :value="item.value" v-bind="item.props || {}" :required="item.required"
-                            :rules="item.rules || item.props?.rules || []"
-                            @update:modelValue="(value) => updateField(key as string, value)"
-                            :ref="el => { if (el) fieldRefs[key as string] = el; }" />
+                                        <!-- Forward slots para custom -->
+                                        <template v-if="$slots && $slots[fieldKey]" #custom="slotProps">
+                                            <slot :name="fieldKey" v-bind="slotProps"></slot>
+                                        </template>
+                                        <template v-else-if="$slots && $slots[toKebabCase(String(fieldKey))]" #custom="slotProps">
+                                            <slot :name="toKebabCase(String(fieldKey))" v-bind="slotProps"></slot>
+                                        </template>
+                                        <template v-else-if="$slots && $slots[toCamelCase(String(fieldKey))]" #custom="slotProps">
+                                            <slot :name="toCamelCase(String(fieldKey))" v-bind="slotProps"></slot>
+                                        </template>
 
-                        <!-- Datepicker -->
-                        <c-datepicker v-if="item.type === 'date' || item.type === 'datepicker'" v-model="formData[key]"
-                            :label="item.label" :placeholder="item.placeholder" :required="item.required"
-                            :rules="item.rules || item.props?.rules || []" v-bind="item.props || {}"
-                            @update:modelValue="(value) => updateField(key as string, value)"
-                            :ref="el => { if (el) fieldRefs[key as string] = el; }" />
-
-                        <!-- Autocomplete -->
-                        <c-autocomplete v-if="item.type === 'autocomplete'" v-model="formData[key]" :label="item.label"
-                            :placeholder="item.placeholder" :required="item.required" :options="item.options || []"
-                            :rules="item.rules || item.props?.rules || []" v-bind="item.props || {}"
-                            @update:modelValue="(value) => updateField(key as string, value)"
-                            :ref="el => { if (el) fieldRefs[key as string] = el; }" />
-
-                        <!-- Chips Input -->
-                        <c-chips-input v-if="item.type === 'chips' || item.type === 'chipsinput'"
-                            v-model="formData[key]"
-                            :label="item.label"
-                            :placeholder="item.placeholder"
-                            :required="item.required"
-                            :options="item.options || []"
-                            :minTags="item.minTags"
-                            :maxTags="item.maxTags"
-                            :duplicates="item.duplicates"
-                            :allowCustom="item.allowCustom !== false"
-                            :chipBgColor="item.chipBgColor"
-                            :chipTextColor="item.chipTextColor"
-                            :rules="item.rules || item.props?.rules || []"
-                            v-bind="item.props || {}"
-                            @update:modelValue="(value) => updateField(key as string, value)"
-                            @add="(chip) => item.onAdd && item.onAdd(chip)"
-                            @remove="(chip) => item.onRemove && item.onRemove(chip)"
-                            @clear="() => item.onClear && item.onClear()"
-                            :ref="el => { if (el) fieldRefs[key as string] = el; }" />
-
-                        <!-- Currency Input -->
-                        <c-currency-input v-if="item.type === 'currency'"
-                            v-model="formData[key]"
-                            :label="item.label"
-                            :placeholder="item.placeholder"
-                            :required="item.required"
-                            :currency-code="item.currencyCode || 'USD'"
-                            :show-currency-symbol="item.showCurrencySymbol !== false"
-                            :hint="item.hint"
-                            :error="item.error"
-                            :disabled="item.disabled"
-                            :readonly="item.readonly"
-                            :variant="item.variant"
-                            :rounded="item.rounded"
-                            :floating-label="item.floatingLabel"
-                            :rules="item.rules || item.props?.rules || []"
-                            v-bind="item.props || {}"
-                            @update:modelValue="(value) => updateField(key as string, parseFloat(value))"
-                            :ref="el => { if (el) fieldRefs[key as string] = el; }" />
-
-                        <!-- File Upload -->
-                        <c-file-upload v-if="item.type === 'file' || item.type === 'fileupload'" v-model="formData[key]"
-                            :accept="item.accept" :multiple="item.multiple" :max-files="item.maxFiles"
-                            :max-file-size="item.maxFileSize" :auto-upload="item.autoUpload" :url="item.url"
-                            :method="item.method" :headers="item.headers" :with-credentials="item.withCredentials"
-                            :form-data-name="item.formDataName" :disabled="item.disabled"
-                            :dropzone-text="item.dropzoneText" :browse-button-text="item.browseButtonText"
-                            :upload-button-text="item.uploadButtonText" :required="item.required"
-                            v-bind="item.props || {}"
-                            @upload-success="(file) => handleFileUploadSuccess(key as string, file)"
-                            :ref="el => { if (el) fieldRefs[key as string] = el; }" />
-
-                        <!-- Number Input -->
-                        <c-number-input v-if="item.type === 'number'" v-model="formData[key]" :label="item.label"
-                            :min="item.min" :max="item.max" :step="item.step" :disabled="item.disabled"
-                            :helper-text="item.helperText" v-bind="item.props || {}"
-                            @update:modelValue="(value) => updateField(key as string, value)"
-                            :ref="el => { if (el) fieldRefs[key as string] = el; }" />
-
-                        <!-- Textarea -->
-                        <c-textarea v-if="item.type === 'textarea'" v-model="formData[key]" :label="item.label"
-                            :placeholder="item.placeholder" :required="item.required" :maxlength="item.maxlength"
-                            :length-count="item.lengthCount" :resize="item.resize !== false"
-                            :autoresize="item.autoresize !== false" :rules="item.rules || item.props?.rules || []"
-                            v-bind="item.props || {}" @update:modelValue="(value) => updateField(key as string, value)"
-                            :ref="el => { if (el) fieldRefs[key as string] = el; }" />
-
-                        <!-- Timepicker -->
-                        <c-timepicker v-if="item.type === 'time' || item.type === 'timepicker'" v-model="formData[key]"
-                            :label="item.label" :min-time="item.minTime" :max-time="item.maxTime"
-                            :disabled="item.disabled" v-bind="item.props || {}"
-                            @update:modelValue="(value) => updateField(key as string, value)"
-                            :ref="el => { if (el) fieldRefs[key as string] = el; }" />
-
-                        <!-- Toggle -->
-                        <c-toggle v-if="item.type === 'toggle'" v-model="formData[key]" :label="item.label"
-                            :disabled="item.disabled" v-bind="item.props || {}"
-                            @update:modelValue="(value) => updateField(key as string, value)"
-                            :ref="el => { if (el) fieldRefs[key as string] = el; }" />
-
-                        <!-- Header Component -->
-                        <div v-if="item.type === 'header'" :class="`col-span-${item.size || 12}`">
-                            <div :class="[
-                                'mb-3 pb-2 font-medium text-lg border-b',
-                                item.props?.variant === 'primary' ? 'text-primary-600 border-neutral-200 dark:border-neutral-900' :
-                                item.props?.variant === 'secondary' ? 'text-secondary-600 border-neutral-200 dark:border-neutral-800' :
-                                'text-neutral-700 dark:text-neutral-200 border-neutral-200 dark:border-neutral-900'
-                            ]">
-
-                                {{ item.label }}
+                                        <!-- Forward slots para custom-object -->
+                                        <template v-if="field && field.type === 'custom-object' && field.props?.templateName && $slots && $slots[field.props.templateName]" #custom-object="slotProps">
+                                            <slot :name="field.props.templateName" v-bind="{
+                                                data: slotProps.data,
+                                                key: slotProps.key,
+                                                formData: formData
+                                            }"></slot>
+                                        </template>
+                                    </c-form-builder-item>
+                                </template>
                             </div>
-                        </div>
+                        </template>
+                    </c-tabs>
+                </div>
 
-                        <!-- Custom Component for Slots -->
-                        <div v-if="item.type === 'custom'" :class="`col-span-${item.size || 12}`">
-                            <slot v-if="$slots[key]" :name="key" v-bind="{
-                                data: typeof item.props?.data === 'function' ? item.props?.data() : item.props?.data
-                            }"></slot>
-                            <slot v-else-if="$slots[toKebabCase(String(key))]" :name="toKebabCase(String(key))" v-bind="{
-                                data: typeof item.props?.data === 'function' ? item.props?.data() : item.props?.data
-                            }"></slot>
-                            <slot v-else-if="$slots[toCamelCase(String(key))]" :name="toCamelCase(String(key))" v-bind="{
-                                data: typeof item.props?.data === 'function' ? item.props?.data() : item.props?.data
-                            }"></slot>
-                        </div>
+                <!-- Normal field handling -->
+                <c-form-builder-item v-else
+                    :field="item"
+                    :value="formData[key]"
+                    :field-name="String(key)"
+                    :disabled="isSubmitButton(item) && !isFormValid"
+                    @update:value="(value) => updateField(key, value)"
+                    @validate="(fieldName, isValid) => handleFieldValidation(fieldName, isValid)"
+                    @submit="handleSubmitButtonClick"
+                >
+                    <!-- Forward slots para item-selected -->
+                    <template v-if="$slots && $slots[`${key}-selected`]" #selected="slotProps">
+                        <slot :name="`${key}-selected`" v-bind="slotProps"></slot>
+                    </template>
 
-                        <!-- Custom Object Component - for multiple items with the same structure -->
-                        <div v-if="item.type === 'custom-object'" :class="`col-span-${item.size || 12}`">
-                            <template v-if="item.props?.items && item.props?.templateName">
-                                <div v-for="(itemData, itemKey) in item.props.items" :key="itemKey">
-                                    <slot :name="item.props.templateName" v-bind="{
-                                        data: itemData,
-                                        key: itemKey,
-                                        formData: formData,
-                                    }"></slot>
-                                </div>
-                            </template>
-                        </div>
+                    <!-- Forward slots para item-option -->
+                    <template v-if="$slots && $slots[`${key}-option`]" #option="slotProps">
+                        <slot :name="`${key}-option`" v-bind="slotProps"></slot>
+                    </template>
 
-                        <!-- Password Input -->
-                        <c-password-input v-if="item.type === 'password'" v-model="formData[key]"
-                            :label="item.label" :placeholder="item.placeholder" :required="item.required"
-                            :require-uppercase="item.requireUppercase" :require-lowercase="item.requireLowercase"
-                            :require-numbers="item.requireNumbers" :require-special-chars="item.requireSpecialChars"
-                            :min-length="item.minLength" :show-strength-bar="item.showStrengthBar"
-                            :show-requirements="item.showRequirements" :rules="item.rules || item.props?.rules || []"
-                            v-bind="item.props || {}" @update:modelValue="(value) => updateField(key as string, value)"
-                            :ref="el => { if (el) fieldRefs[key as string] = el; }" />
+                    <!-- Forward slots para item-subitem -->
+                    <template v-if="$slots && $slots[`${key}-subitem`]" #subitem="slotProps">
+                        <slot :name="`${key}-subitem`" v-bind="slotProps"></slot>
+                    </template>
 
-                        <!-- WYSIWYG Editor -->
-                        <c-wysiwyg-editor v-if="item.type === 'wysiwyg' || item.type === 'richtext' || item.type === 'editor'"
-                            v-model="formData[key]" :label="item.label" :placeholder="item.placeholder"
-                            :required="item.required" :disabled="item.disabled" :output-format="item.outputFormat"
-                            :rules="item.rules || item.props?.rules || []" v-bind="item.props || {}"
-                            @update:modelValue="(value) => updateField(key as string, value)"
-                            :ref="el => { if (el) fieldRefs[key as string] = el; }" />
+                    <!-- Forward slots para custom -->
+                    <template v-if="$slots && $slots[key]" #custom="slotProps">
+                        <slot :name="key" v-bind="slotProps"></slot>
+                    </template>
+                    <template v-else-if="$slots && $slots[toKebabCase(String(key))]" #custom="slotProps">
+                        <slot :name="toKebabCase(String(key))" v-bind="slotProps"></slot>
+                    </template>
+                    <template v-else-if="$slots && $slots[toCamelCase(String(key))]" #custom="slotProps">
+                        <slot :name="toCamelCase(String(key))" v-bind="slotProps"></slot>
+                    </template>
 
-                        <c-button v-if="item.type === 'submit'" class="w-full pb-4 pt-4" type="submit"
-                            buttonType="button" size="2xl" @click="handleSubmitButtonClick" :disabled="!isFormValid">
-                            {{ item.label || 'Submit' }}
-                        </c-button>
-                    </div>
-                </slot>
+                    <!-- Forward slots para custom-object -->
+                    <template v-if="item && item.type === 'custom-object' && item.props?.templateName && $slots && $slots[item.props.templateName]" #custom-object="slotProps">
+                        <slot :name="item.props.templateName" v-bind="{
+                            data: slotProps.data,
+                            key: slotProps.key,
+                            formData: formData
+                        }"></slot>
+                    </template>
+                </c-form-builder-item>
             </template>
         </div>
     </div>
@@ -229,17 +128,23 @@
 <script setup lang="ts">
 import { defineProps, defineEmits, ref, watch, onMounted, computed } from "vue";
 import type { PropType } from "vue";
-import CAlert from "@components/layout/CAlert.vue";
-import CAutocomplete from "./CAutocomplete.vue";
-import CFileUpload from "./CFileUpload.vue";
-import CNumberInput from "./CNumberInput.vue";
-import CTextarea from "./CTextarea.vue";
-import CTimepicker from "./CTimepicker.vue";
-import CToggle from "./CToggle.vue";
-import CChipsInput from "./CChipsInput.vue";
-import CCurrencyInput from "./CCurrencyInput.vue";
-import CPasswordInput from "./CPasswordInput.vue";
-import CWysiwygEditor from "./CWysiwygEditor.vue";
+
+const isSubmitButton = (item: any) => item && item.type === 'submit';
+
+const safeString = (value: any): string => {
+  if (value === undefined || value === null) {
+    return '';
+  }
+  return String(value);
+};
+
+const toKebabCase = (str: string | number): string => {
+  return safeString(str).replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
+};
+
+const toCamelCase = (str: string | number): string => {
+  return safeString(str).replace(/-([a-z])/g, (_, char) => char.toUpperCase());
+};
 
 interface BaseFieldProps {
     label?: string;
@@ -396,6 +301,21 @@ interface WysiwygEditorFieldProps extends BaseFieldProps {
     outputFormat?: 'html' | 'markdown';
 }
 
+interface TabItem {
+    id?: string;
+    label: string;
+    type?: string;
+    schema?: Record<string, any>;
+    items?: Record<string, any>;
+    icon?: any;
+}
+
+interface TabsFieldProps extends BaseFieldProps {
+    type: 'tabs';
+    label?: string;
+    items: Record<string, TabItem>;
+}
+
 type FieldProps =
     | InputFieldProps
     | ComboboxFieldProps
@@ -416,11 +336,25 @@ type FieldProps =
     | CurrencyInputFieldProps
     | PasswordInputFieldProps
     | WysiwygEditorFieldProps
+    | TabsFieldProps
 
-interface IFormBuilderSchema {
+interface FormBuilderSchema {
     [key: string]: FieldProps & {
         props?: Record<string, any>;
     };
+}
+
+// Interface para uma tab
+interface TabConfig {
+    id: string;
+    title: string;
+    icon?: any;
+    schema: FormBuilderSchema;
+}
+
+// Interface para o tipo tabs
+interface TabsConfig {
+    [key: string]: TabConfig;
 }
 
 const props = defineProps({
@@ -429,8 +363,12 @@ const props = defineProps({
         required: true
     },
     schema: {
-        type: Object as PropType<IFormBuilderSchema>,
+        type: Object as PropType<FormBuilderSchema>,
         required: true
+    },
+    tabs: {
+        type: Object as PropType<TabsConfig>,
+        default: () => ({})
     }
 });
 
@@ -441,9 +379,46 @@ const fieldValidity = ref<Record<string, boolean>>({});
 const showValidationAlert = ref(false);
 const invalidFields = ref<Record<string, string>>({});
 
+// Track the active tab
+const activeTab = ref('');
+
+// Detect if we're inside a CodePreview component to prevent infinite loops
+const isInsideCodePreview = ref(false);
+
+// Verifica se o formulário tem tabs
+const hasTabs = computed(() => {
+    return props.tabs && Object.keys(props.tabs).length > 0;
+});
+
+// Cria a configuração de tabs para o componente CTabs
+const tabsConfig = computed(() => {
+    if (!hasTabs.value || !props.tabs) return [];
+
+    return Object.keys(props.tabs).map(tabKey => {
+        const tab = props.tabs[tabKey];
+        if (!tab) return { id: `tab-${tabKey}`, title: `Tab ${tabKey}` };
+
+        return {
+            id: tab.id || `tab-${tabKey}`,
+            title: tab.title || `Tab ${tabKey}`,
+            icon: tab.icon
+        };
+    }).filter(tab => tab.id && tab.title); // Garante que só tabs com id e title válidos sejam retornados
+});
+
 const updateField = (key: string | number, value: any) => {
-    if (props.schema[key]?.type === 'chips' || props.schema[key]?.type === 'chipsinput') {
-        if (Array.isArray(value) && value.length > 0 && typeof value[0] === 'object' && 'label' in value[0]) {
+    const fieldInSchema = props.schema?.[key];
+    const fieldInTabs = findFieldInTabs(key);
+    const field = fieldInSchema || fieldInTabs;
+
+    if (!field) {
+        formData.value[key] = value;
+        emit("update:modelValue", { ...formData.value });
+        return;
+    }
+
+    if ((field.type === 'chips' || field.type === 'chipsinput')) {
+        if (Array.isArray(value) && value.length > 0 && typeof value[0] === 'object' && value[0] !== null && 'label' in value[0]) {
             formData.value[key] = value.map(item => item.label);
         } else {
             formData.value[key] = value;
@@ -452,25 +427,47 @@ const updateField = (key: string | number, value: any) => {
         formData.value[key] = value;
     }
 
-    validateField(key);
     emit("update:modelValue", { ...formData.value });
     checkFormValidity();
+};
+
+// Função para encontrar um campo em todas as tabs
+const findFieldInTabs = (key: string | number) => {
+    if (!hasTabs.value) return undefined;
+
+    for (const tabKey in props.tabs) {
+        const tab = props.tabs[tabKey];
+        if (tab.schema && key in tab.schema) {
+            return tab.schema[key];
+        }
+    }
+    return undefined;
+};
+
+// Handler para validação de campos
+const handleFieldValidation = (fieldName: string, isValid: boolean) => {
+    fieldValidity.value[fieldName] = isValid;
+
+    if (!isValid) {
+        const field = props.schema[fieldName] || findFieldInTabs(fieldName);
+        invalidFields.value[fieldName] = "Field validation failed";
+    } else {
+        delete invalidFields.value[fieldName];
+    }
 };
 
 watch(() => props.modelValue, (newValue) => {
     if (newValue && Object.keys(newValue).length > 0) {
         const processedData = { ...newValue };
 
-        for (const key in props.schema) {
-            if ((props.schema[key].type === 'chips' || props.schema[key].type === 'chipsinput') &&
-                key in processedData && Array.isArray(processedData[key])) {
+        // Processa o schema padrão
+        processChipsInputs(processedData, props.schema);
 
-                if (processedData[key].length > 0 && typeof processedData[key][0] === 'string') {
-                    processedData[key] = processedData[key].map((label: string) => ({
-                        value: `${label}-${Date.now()}`,
-                        label: label
-                    }));
-                }
+        // Processa schemas das tabs
+        if (hasTabs.value) {
+            for (const tabKey in props.tabs) {
+                const tab = props.tabs[tabKey];
+                processChipsInputs(processedData, tab.schema);
             }
         }
 
@@ -478,19 +475,55 @@ watch(() => props.modelValue, (newValue) => {
     }
 }, { deep: true });
 
-onMounted(() => {
-    const processedData = { ...props.modelValue };
+// Função para processar campos de chips
+const processChipsInputs = (data: Record<string, any>, schema: FormBuilderSchema) => {
+    if (!schema) return;
 
-    for (const key in props.schema) {
-        if ((props.schema[key].type === 'chips' || props.schema[key].type === 'chipsinput') &&
-            key in processedData && Array.isArray(processedData[key])) {
+    for (const key in schema) {
+        const field = schema[key];
+        if (!field) continue;
 
-            if (processedData[key].length > 0 && typeof processedData[key][0] === 'string') {
-                processedData[key] = processedData[key].map((label: string) => ({
+        if ((field.type === 'chips' || field.type === 'chipsinput') &&
+            key in data && Array.isArray(data[key])) {
+
+            if (data[key].length > 0 && typeof data[key][0] === 'string') {
+                data[key] = data[key].map((label: string) => ({
                     value: `${label}-${Date.now()}`,
                     label: label
                 }));
             }
+        }
+    }
+};
+
+onMounted(() => {
+    // Check if this component is inside a CodePreview component
+    const codePreviewContainer = document.querySelector('.code-preview-container');
+    if (codePreviewContainer) {
+        isInsideCodePreview.value = true;
+    }
+
+    // Set initial activeTab if tabs exist in schema and none is already set
+    if (activeTab.value === '') {
+        const tabItems = Object.entries(props.schema).find(([_, item]) => item && item.type === 'tabs');
+        if (tabItems && tabItems[1].items) {
+            const [firstTabKey] = Object.keys(tabItems[1].items);
+            if (firstTabKey) {
+                activeTab.value = String(firstTabKey);
+            }
+        }
+    }
+
+    const processedData = { ...props.modelValue };
+
+    // Processa o schema padrão
+    processChipsInputs(processedData, props.schema);
+
+    // Processa schemas das tabs
+    if (hasTabs.value) {
+        for (const tabKey in props.tabs) {
+            const tab = props.tabs[tabKey];
+            processChipsInputs(processedData, tab.schema);
         }
     }
 
@@ -502,8 +535,22 @@ onMounted(() => {
 });
 
 const initializeFieldValidity = () => {
-    Object.keys(props.schema).forEach(key => {
-        const isRequired = props.schema[key].required === true;
+    // Inicializa a validade dos campos do schema padrão
+    initializeSchemaValidity(props.schema);
+
+    // Inicializa a validade dos campos das tabs
+    if (hasTabs.value) {
+        for (const tabKey in props.tabs) {
+            const tab = props.tabs[tabKey];
+            initializeSchemaValidity(tab.schema);
+        }
+    }
+};
+
+// Inicializa a validade para um schema específico
+const initializeSchemaValidity = (schema: FormBuilderSchema) => {
+    Object.keys(schema).forEach(key => {
+        const isRequired = schema[key].required === true;
         const hasValue = key in formData.value &&
             formData.value[key] !== undefined &&
             formData.value[key] !== null &&
@@ -514,16 +561,67 @@ const initializeFieldValidity = () => {
 };
 
 const getFieldLabel = (key: string): string => {
-    return props.schema[key]?.label || key;
+    // Tenta encontrar o campo no schema padrão
+    if (props.schema[key]?.label) {
+        return props.schema[key].label;
+    }
+
+    // Tenta encontrar o campo nas tabs
+    const field = findFieldInTabs(key);
+    if (field?.label) {
+        return field.label;
+    }
+
+    return key;
+};
+
+const validate = (): boolean => {
+    invalidFields.value = {};
+    let isValid = true;
+
+    // Valida campos do schema padrão
+    for (const key in props.schema) {
+        if (props.schema[key].type === 'submit') continue;
+
+        const fieldValid = validateField(key);
+        isValid = isValid && fieldValid;
+    }
+
+    // Valida campos das tabs
+    if (hasTabs.value) {
+        for (const tabKey in props.tabs) {
+            const tab = props.tabs[tabKey];
+            for (const key in tab.schema) {
+                if (tab.schema[key].type === 'submit') continue;
+
+                const fieldValid = validateField(key);
+                isValid = isValid && fieldValid;
+            }
+        }
+    }
+
+    return isValid;
 };
 
 const validateField = (key: string | number): boolean => {
-    if (props.schema[key]?.type === 'submit') {
+    let field: FieldProps | undefined;
+
+    // Procura o campo no schema padrão
+    if (key in props.schema) {
+        field = props.schema[key];
+    } else {
+        // Procura o campo nas tabs
+        field = findFieldInTabs(key);
+    }
+
+    if (!field) return true;
+
+    if (isSubmitButton(field)) {
         fieldValidity.value[key] = true;
         return true;
     }
 
-    const isRequired = props.schema[key]?.required === true;
+    const isRequired = field.required === true;
     const isEmpty = formData.value[key] === undefined ||
         formData.value[key] === null ||
         formData.value[key] === '';
@@ -534,42 +632,12 @@ const validateField = (key: string | number): boolean => {
         return false;
     }
 
-    if (fieldRefs.value[key] && props.schema[key]?.props?.rules && fieldRefs.value[key].validate) {
-        try {
-            const validationResult = fieldRefs.value[key].validate();
-            console.log(validationResult);
-
-            if (!validationResult)
-                invalidFields.value[key] = "Custom rules validation failed";
-            else
-                delete invalidFields.value[key];
-
-            return fieldValidity.value[key];
-        } catch (error) {
-            console.error(`Error validating field ${key}:`, error);
-            fieldValidity.value[key] = false;
-            invalidFields.value[key] = "Validation error: " + (error instanceof Error ? error.message : String(error));
-            return false;
-        }
+    // Para outros casos, confiamos na validação do componente individual
+    if (!(key in fieldValidity.value) || fieldValidity.value[key] === undefined) {
+        fieldValidity.value[key] = true;
     }
 
-    fieldValidity.value[key] = true;
-    delete invalidFields.value[key];
-    return true;
-};
-
-const validate = (): boolean => {
-    invalidFields.value = {};
-    let isValid = true;
-
-    for (const key in props.schema) {
-        if (props.schema[key].type === 'submit') continue;
-
-        const fieldValid = validateField(key);
-        isValid = isValid && fieldValid;
-    }
-
-    return isValid;
+    return fieldValidity.value[key];
 };
 
 const checkFormValidity = () => {
@@ -579,73 +647,61 @@ const checkFormValidity = () => {
 const isFormValid = computed((): boolean => {
     if (Object.keys(fieldValidity.value).length === 0) return false;
 
+    // Verifica a validade de todos os campos
     for (const key in fieldValidity.value) {
-        if (props.schema[key]?.type === 'submit') continue;
+        // Ignora botões de submit - usando a função auxiliar segura
+        if (isSubmitButton(props.schema?.[key]) || isSubmitButton(findFieldInTabs(key))) {
+            continue;
+        }
 
-        if (!fieldValidity.value[key])
+        if (!fieldValidity.value[key]) {
             return false;
+        }
     }
 
     return true;
 });
 
-const handleFileSelected = (key: string, fileInfo: any) => {
-    validateField(key);
-};
-
-const handleFileUploadSuccess = (key: string, fileInfo: any) => {
-    validateField(key);
-
-    if (fileInfo.content && formData.value[key]) {
-        const fileIndex = formData.value[key].findIndex(f =>
-            f.name === fileInfo.file.name &&
-            f.size === fileInfo.file.size
-        );
-
-        if (fileIndex !== -1) {
-            if (!formData.value[key][fileIndex].content && fileInfo.content)
-                formData.value[key][fileIndex].content = fileInfo.content;
-
-            formData.value[key][fileIndex].status = 'success';
-        }
-
-        emit("update:modelValue", { ...formData.value });
-    }
-};
-
 const reset = () => {
     formData.value = { ...props.modelValue };
-
-    for (const key in fieldRefs.value) {
-        if (fieldRefs.value[key] && fieldRefs.value[key].reset)
-            fieldRefs.value[key].reset();
-    }
-
-    initializeFieldValidity();
     invalidFields.value = {};
-};
-
-
-const toggleValidationAlert = () => {
-    showValidationAlert.value = !showValidationAlert.value;
-
-    if (showValidationAlert.value)
-        checkFormValidity();
+    initializeFieldValidity();
 };
 
 const handleSubmitButtonClick = () => {
-    if (validate())
+    if (validate()) {
         emit("submit", formData.value);
-    else
+    } else {
         showValidationAlert.value = true;
+    }
 };
 
-const toKebabCase = (str: string): string => {
-    return str.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
+const convertTabsToFormat = (tabs: Record<string, TabItem>): { title: string; id: string | number; icon?: object }[] => {
+    return Object.keys(tabs).map(tabKey => {
+        const tab = tabs[tabKey];
+        return {
+            id: `tab-${tabKey}`,
+            title: tab.label || `Tab ${tabKey}`,
+            icon: tab.icon
+        };
+    });
 };
 
-const toCamelCase = (str: string): string => {
-    return str.replace(/-([a-z])/g, (_, char) => char.toUpperCase());
+const handleTabChange = (index: number, tabItems: Record<string, TabItem>) => {
+    const tabKey = Object.keys(tabItems)[index];
+    activeTab.value = String(tabKey);
+};
+
+// Método para converter o índice de tab para o nome da chave
+const getActiveTabIndex = (tabItems: Record<string, TabItem>) => {
+    const keys = Object.keys(tabItems);
+    return keys.findIndex(key => key === activeTab.value);
+};
+
+// Método para calcular o índice da tab ativa com base na propriedade activeTab
+const getTabIndexForTabsConfig = (tabs: Record<string, TabItem>) => {
+    if (!activeTab.value) return 0;
+    return Math.max(0, getActiveTabIndex(tabs));
 };
 
 defineExpose({

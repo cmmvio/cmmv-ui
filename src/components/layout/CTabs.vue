@@ -51,7 +51,7 @@
                     @mouseleave="endDrag"
                     :class="[
                         styleType === 'bar' ? 'divide-x divide-neutral-200 dark:divide-neutral-900 rounded-lg shadow border border-neutral-200 dark:border-neutral-900' : '',
-                        styleType === 'default' ? 'border-b border-neutral-200' : '',
+                        styleType === 'default' ? 'border-b border-neutral-200 dark:border-neutral-900' : '',
                         scrollable && styleType === 'bar' ? (canScrollLeft ? 'rounded-l-none' : '') + ' ' + (canScrollRight ? 'rounded-r-none' : '') : '',
                     ]"
                     aria-label="Tabs">
@@ -121,7 +121,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, nextTick, watch } from "vue";
+import { ref, computed, onMounted, nextTick, watch, defineEmits } from "vue";
+
+const emit = defineEmits(['update:tab', 'tab-change']);
 
 const selectedTab = ref<number>(0);
 const tabsNav = ref<HTMLElement | null>(null);
@@ -140,6 +142,10 @@ const props = defineProps({
     tabs: {
         type: Array as () => { title: string; id: string | number; icon?: object }[],
         required: true,
+    },
+    modelValue: {
+        type: Number,
+        default: 0
     },
     styleType: {
         type: String,
@@ -271,6 +277,10 @@ const selectTab = (index: number) => {
 
     selectedTab.value = index;
     scrollSelectedTabIntoView();
+
+    // Emit events for external components
+    emit('update:tab', index);
+    emit('tab-change', index);
 };
 
 const checkScroll = () => {
@@ -374,6 +384,11 @@ onMounted(() => {
                 scrollSelectedTabIntoView();
             });
         }, { deep: true });
+
+        // Sincronizar com modelValue se fornecido
+        watch(() => props.modelValue, (newValue) => {
+            selectedTab.value = newValue;
+        }, { immediate: true });
     });
 });
 

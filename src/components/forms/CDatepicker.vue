@@ -1,12 +1,16 @@
 <template>
     <div class="c-datepicker relative w-full">
+        <label v-if="label" :for="id" class="c-datepicker-label block mb-1 text-sm" :class="textColor ? textColor : 'text-neutral-500 dark:text-neutral-400'">
+            {{ label }} <span v-if="required" class="text-red-500">*</span>
+        </label>
+
         <div class="relative">
             <div v-if="showCalendar" class="fixed z-40 bg-transparent" @click="closeCalendar"></div>
 
             <div class="relative flex items-center z-30" @click="toggleCalendar">
                 <input ref="inputRef" type="text" :value="formattedDate"
                     :placeholder="placeholder + (required ? ' *' : '')" :disabled="disabled"
-                    class="c-datepicker-field block w-full border shadow-sm outline-none text-left px-3 py-2 text-sm rounded-md"
+                    class="c-datepicker-field block w-full border shadow-sm outline-none text-left px-3 py-2 text-sm rounded-md min-h-[38px]"
                     :class="[
                         sizes[size],
                         disabled ? 'bg-neutral-100 dark:bg-neutral-800 cursor-not-allowed' : 'bg-white dark:bg-neutral-900 cursor-pointer',
@@ -290,6 +294,20 @@ const props = defineProps({
     required: {
         type: Boolean,
         default: false
+    },
+    label: {
+        type: String,
+        required: false
+    },
+    id: {
+        type: String,
+        required: false,
+        default: null
+    },
+    textColor: {
+        type: String,
+        required: false,
+        default: ""
     }
 });
 
@@ -810,7 +828,7 @@ const validate = () => {
 
 const sizes = {
     sm: "px-2 py-1 text-xs",
-    md: "px-3 py-1 text-sm h-[42px]",
+    md: "px-3 py-1 text-sm",
     lg: "px-5 py-4 text-base"
 };
 

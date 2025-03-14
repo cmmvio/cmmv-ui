@@ -1,36 +1,68 @@
 <template>
-    <div class="max-w-[8rem]">
-        <label :for="id" class="block mb-2 text-sm font-medium text-neutral-900 dark:text-white">
-            {{ label }}
+    <div class="c-timepicker relative w-full">
+        <label v-if="label" :for="id"
+            class="c-timepicker-label text-sm"
+            :class="[
+                'block mb-1',
+                textColor ? textColor : 'text-neutral-500 dark:text-neutral-400'
+            ]">
+            {{ label }} <span v-if="required" class="text-red-500">*</span>
         </label>
-        <div class="relative">
-            <div class="absolute inset-y-0 end-0 top-0 flex items-center pe-3.5 pointer-events-none">
-                <svg class="w-4 h-4 text-neutral-500 dark:text-neutral-400" aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                    <path fill-rule="evenodd"
-                        d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm11-4a1 1 0 1 0-2 0v4a1 1 0 0 0 .293.707l3 3a1 1 0 0 0 1.414-1.414L13 11.586V8Z"
-                        clip-rule="evenodd" />
-                </svg>
-            </div>
 
+        <div class="relative">
             <input :id="id" type="time"
-                class="bg-neutral-50 border border-neutral-300 text-neutral-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-neutral-800 dark:border-neutral-900 dark:placeholder-neutral-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                :value="modelValue" :min="minTime" :max="maxTime" :disabled="disabled" @input="updateValue($event)" />
+                :class="[
+                    sizes[size],
+                    roundedStyles[rounded],
+                    variantStyles[variant],
+                    bgColor ? bgColor : 'bg-white dark:bg-neutral-900',
+                    textColor ? textColor : 'text-neutral-900 dark:text-white',
+                    { 'ring-red-500 ring-2': hasError, 'opacity-50': disabled, 'cursor-not-allowed': disabled },
+                    customClass,
+                    'min-h-[38px]'
+                ]"
+                class="c-timepicker-field block w-full border shadow-sm outline-none"
+                :placeholder="placeholder"
+                :value="modelValue"
+                :min="minTime"
+                :max="maxTime"
+                :disabled="disabled"
+                @input="updateValue($event)"
+                :aria-invalid="hasError" />
+        </div>
+
+        <div class="mt-1" v-if="!hiddenHint">
+            <p v-if="hasError" class="text-xs text-red-500">{{ errorMessage }}</p>
+            <p v-else-if="helperText" class="text-xs text-neutral-500 dark:text-neutral-400">{{ helperText }}</p>
         </div>
     </div>
 </template>
 
+<style scoped>
+.c-timepicker {
+    position: relative;
+}
+
+.c-timepicker-label {
+    z-index: 1;
+}
+</style>
+
 <script setup lang="ts">
-import { defineProps, defineEmits } from "vue";
+import { ref } from "vue";
 
 const props = defineProps({
     modelValue: {
         type: String,
-        default: "00:00"
+        default: ""
     },
     label: {
         type: String,
-        default: "Select time:"
+        default: ""
+    },
+    placeholder: {
+        type: String,
+        default: "Select time"
     },
     id: {
         type: String,
@@ -38,22 +70,89 @@ const props = defineProps({
     },
     minTime: {
         type: String,
-        default: "09:00"
+        default: ""
     },
     maxTime: {
         type: String,
-        default: "18:00"
+        default: ""
     },
     disabled: {
+        type: Boolean,
+        default: false
+    },
+    format: {
+        type: String,
+        default: "24h" // 12h or 24h
+    },
+    step: {
+        type: Number,
+        default: 30
+    },
+    size: {
+        type: String,
+        default: "md"
+    },
+    rounded: {
+        type: String,
+        default: "default"
+    },
+    variant: {
+        type: String,
+        default: "default"
+    },
+    bgColor: {
+        type: String,
+        required: false,
+        default: "bg-white dark:bg-neutral-900"
+    },
+    textColor: {
+        type: String,
+        required: false,
+        default: ""
+    },
+    customClass: {
+        type: String,
+        required: false,
+        default: ""
+    },
+    required: {
+        type: Boolean,
+        default: false
+    },
+    helperText: {
+        type: String,
+        default: ""
+    },
+    hiddenHint: {
         type: Boolean,
         default: false
     }
 });
 
 const emit = defineEmits(["update:modelValue"]);
+const hasError = ref(false);
+const errorMessage = ref<string | null>(null);
 
 const updateValue = (event: Event) => {
     const target = event.target as HTMLInputElement;
     emit("update:modelValue", target.value);
+};
+
+const sizes: Record<string, string> = {
+    sm: "px-2 py-1 text-xs",
+    md: "px-2 py-1 text-sm",
+    lg: "px-2 py-2 text-base",
+};
+
+const roundedStyles: Record<string, string> = {
+    none: "rounded-none",
+    default: "rounded-md",
+    full: "rounded-full",
+};
+
+const variantStyles: Record<string, string> = {
+    default: "border border-neutral-300 dark:border-neutral-700",
+    outlined: "border-2 border-neutral-700",
+    filled: "border-1 border-neutral-900 shadow-md",
 };
 </script>

@@ -8,25 +8,36 @@
             :style="{ display: fullscreen ? 'block !important' : 'flex !important' }"
             @update:modelValue="handleOverlayClose">
             <c-card :maxWidth="fullscreen ? '100%' : cardMaxWidth" :minHeight="fullscreen ? '100vh' : 'auto'"
-                :class="['dialog-card', animationClass, { 'w-full h-full relative': fullscreen }]" :bgColor="cardBgColor"
+                :class="['dialog-card', animationClass, { 'w-full h-full relative': fullscreen, 'dialog-collapsed': collapsed }]" :bgColor="cardBgColor"
                 :textColor="cardTextColor" :borderColor="cardBorderColor" :closable="closable" :hover="false" actions
                 @close="handleClose" :rounded="fullscreen ? 'none' : 'default'">
                 <template v-if="$slots.header" #header>
-                    <div class="px-4 py-4 flex justify-between items-center relative border-b bottom-0" :class="[
-                        cardBorderColor,
-                        fullscreen ? '' : 'rounded-t-md',
-                        headerBgColor ? headerBgColor : cardBgColor]">
-                        <div>
+                    <div class="flex justify-between items-center relative border-b bottom-0"
+                         :class="[
+                           cardBorderColor,
+                           fullscreen ? '' : 'rounded-t-md',
+                           headerBgColor ? headerBgColor : cardBgColor,
+                           collapsed ? 'py-0 px-3' : 'px-4 py-3'
+                         ]"
+                         :style="collapsed ? 'height: 44px' : ''">
+                        <div class="flex items-center">
                             <slot name="header"></slot>
                         </div>
 
-                        <div class="top-2 right-1 absolute">
-                            <c-button type="button" rounded="full" size="md" variant="flat" v-if="closable"
-                                @click="handleClose"
-                                :bgColor="[headerBgColor ? headerBgColor : cardBgColor, 'bg-opacity-50 hover:bg-opacity-100'].join(' ')"
-                                class="text-neutral-500 hover:text-neutral-700 dark:hover:text-neutral-300"
-                                aria-label="Close">
-                                <IconXMark :class="cardTextColor ? cardTextColor : 'text-white'" />
+                        <div class="ml-auto flex">
+                            <c-button type="button"
+                                      :rounded="collapsed ? 'md' : 'full'"
+                                      :size="collapsed ? 'sm' : 'md'"
+                                      variant="flat"
+                                      v-if="closable"
+                                      @click="handleClose"
+                                      :bgColor="[headerBgColor ? headerBgColor : cardBgColor, 'bg-opacity-50 hover:bg-opacity-100'].join(' ')"
+                                      class="text-neutral-500 hover:text-neutral-700 dark:hover:text-neutral-300 justify-center"
+                                      aria-label="Close">
+                                <IconXMark
+                                    :class="[cardTextColor ? cardTextColor : 'text-white']"
+                                    :size="collapsed ? 'sm' : 'md'"
+                                />
                             </c-button>
                         </div>
                     </div>
@@ -34,16 +45,23 @@
 
                 <template v-if="$slots.content" v-slot:content>
                     <div
-                        class="px-4 py-3 w-full mb-1"
-                        :class="{'pb-16' : $slots.actions}"
+                        class="w-full mb-1"
+                        :class="{
+                            'pb-16': $slots.actions,
+                            'px-4 py-3': !collapsed,
+                            'px-3 py-2': collapsed
+                        }"
                     >
                         <slot name="content"></slot>
                     </div>
                 </template>
 
                 <template v-if="$slots.actions" v-slot:actions>
-                    <div class="flex justify-end space-x-2 px-4 py-3 border-t bottom-0 absolute w-full"
-                        :class="cardBorderColor">
+                    <div class="flex justify-end space-x-2 border-t bottom-0 absolute w-full"
+                        :class="[
+                            cardBorderColor,
+                            collapsed ? 'px-3 py-2' : 'px-4 py-3'
+                        ]">
                         <slot name="actions"></slot>
                     </div>
                 </template>
@@ -258,6 +276,19 @@
     will-change: transform, opacity;
 }
 
+/* Collapsed mode - todas fontes reduzidas */
+.dialog-collapsed :deep(h1),
+.dialog-collapsed :deep(h2),
+.dialog-collapsed :deep(h3),
+.dialog-collapsed :deep(h4) {
+    font-size: 0.95em;
+}
+
+.dialog-collapsed :deep(p),
+.dialog-collapsed :deep(div) {
+    font-size: 0.9em;
+}
+
 /* Dialog overlay backdrop blur */
 .dialog-backdrop {
     backdrop-filter: blur(4px);
@@ -332,6 +363,10 @@ const props = defineProps({
     animationDuration: {
         type: Number,
         default: 400
+    },
+    collapsed: {
+        type: Boolean,
+        default: false
     }
 });
 

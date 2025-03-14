@@ -1,17 +1,20 @@
 <template>
-    <div class="c-input relative w-full">
-        <label :for="id"
-            class="c-input-label absolute text-sm transition-all duration-200 ease-in-out drop-shadow-xs pointer-events-none"
+    <div class="c-input relative w-full mb-2">
+        <label v-if="label" :for="id"
+            class="c-input-label text-sm"
             :class="[{
+                'absolute transition-all duration-200 ease-in-out drop-shadow-xs pointer-events-none': floatingLabel,
                 'c-input-label--active': floatingLabel && (isActive || currentValue),
-                'top-[50%] -translate-y-1/2 left-3': (!isActive && !currentValue),
-                'top-[30%]': !isActive && hasError,
-                'scale-75 origin-left text-xs top-1 left-1': (isActive || (currentValue !== undefined && currentValue !== '')) && !floatingLabel,
-                'pl-10': hasIcon && (!isActive && !currentValue),
-                'ml-10 -mt-2': hasIcon && ((isActive || currentValue) &&!floatingLabel)
+                'top-[50%] -translate-y-1/2 left-3': floatingLabel && (!isActive && !currentValue),
+                'top-[30%]': floatingLabel && !isActive && hasError,
+                'block mb-1': !floatingLabel,
+                'pl-10': hasIcon && floatingLabel && (!isActive && !currentValue),
+                'ml-10 -mt-2': hasIcon && floatingLabel && ((isActive || currentValue))
             },
             textColor ? textColor : 'text-gray-500 dark:text-gray-400',
-            !disabled ? (bgColor ? bgColor : variantColors[variant]) : '', 'px-1', customClass]">
+            !disabled && floatingLabel ? (bgColor ? bgColor : variantColors[variant]) : '',
+            floatingLabel ? 'px-1' : '',
+            customClass]">
             {{ label }} <span v-if="required" class="text-red-500">*</span>
         </label>
 
@@ -20,33 +23,45 @@
                 <slot name="icon"></slot>
             </div>
 
-            <input :id="id" :type="inputType" :name="name" :placeholder="isActive ? placeholder : ''"
+            <input :id="id" :type="inputType" :name="name"
+                :placeholder="floatingLabel ? (isActive ? (placeholder || '') : '') : ((placeholder || '') + (required && placeholder ? ' *' : ''))"
                 :value="modelValue"
-                :class="[sizes[size], roundedStyles[rounded], variantStyles[variant], bgColor ? bgColor : variantColors[variant], textColor,
+                :class="[sizes[size], roundedStyles[rounded], variantStyles[variant],
+                floatingLabel ? (bgColor ? bgColor : variantColors[variant]) : 'bg-transparent',
+                textColor,
                 { 'ring-red-500 ring-2': hasError, 'opacity-30': disabled, 'cursor-not-allowed': disabled, 'pl-12': hasIcon }, customClass,
-                { 'pt-4': !hasIcon, 'pb-3': hasIcon, 'pt-3': hasIcon, 'px-2': currencyMask }, shadow]"
+                { 'pt-4': floatingLabel && !hasIcon, 'pb-3': hasIcon, 'pt-3': hasIcon, 'px-2': currencyMask }, shadow,
+                'min-h-[38px]']"
                 class="c-input-field block w-full border pb-1 outline-none" @keyup="handleInput"
                 @change="handleInput" @focus="activateLabel" @blur="deactivateLabel" :disabled="disabled"
                 :aria-invalid="hasError"
                 v-money3="currencyMask ? currencyMask : undefined"
                 v-if="currencyMask" />
 
-            <input :id="id" :type="inputType" :name="name" :placeholder="isActive ? placeholder : ''"
+            <input :id="id" :type="inputType" :name="name"
+                :placeholder="floatingLabel ? (isActive ? (placeholder || '') : '') : ((placeholder || '') + (required && placeholder ? ' *' : ''))"
                 :value="modelValue"
-                :class="[sizes[size], roundedStyles[rounded], variantStyles[variant], bgColor ? bgColor : variantColors[variant], textColor,
+                :class="[sizes[size], roundedStyles[rounded], variantStyles[variant],
+                floatingLabel ? (bgColor ? bgColor : variantColors[variant]) : 'bg-transparent',
+                textColor,
                 { 'ring-red-500 ring-2': hasError, 'opacity-30': disabled, 'cursor-not-allowed': disabled, 'pl-12': hasIcon }, customClass,
-                { 'pt-4': !hasIcon, 'pb-3': hasIcon, 'pt-3': hasIcon }, shadow]"
+                { 'pt-4': floatingLabel && !hasIcon, 'pb-3': hasIcon, 'pt-3': hasIcon }, shadow,
+                'min-h-[38px]']"
                 class="c-input-field block w-full border pb-1 outline-none" @keyup="handleInput"
                 @change="handleInput" @focus="activateLabel" @blur="deactivateLabel" :disabled="disabled"
                 :aria-invalid="hasError"
                 v-mask="mask || undefined"
                 v-else-if="mask" />
 
-            <input :id="id" :type="inputType" :name="name" :placeholder="isActive ? placeholder : ''"
+            <input :id="id" :type="inputType" :name="name"
+                :placeholder="floatingLabel ? (isActive ? (placeholder || '') : '') : ((placeholder || '') + (required && placeholder ? ' *' : ''))"
                 :value="modelValue"
-                :class="[sizes[size], roundedStyles[rounded], variantStyles[variant], bgColor ? bgColor : variantColors[variant], textColor,
+                :class="[sizes[size], roundedStyles[rounded], variantStyles[variant],
+                floatingLabel ? (bgColor ? bgColor : variantColors[variant]) : 'bg-transparent',
+                textColor,
                 { 'ring-red-500 ring-2': hasError, 'opacity-30': disabled, 'cursor-not-allowed': disabled, 'pl-12': hasIcon }, customClass,
-                { 'pt-4': !hasIcon, 'pb-3': hasIcon, 'pt-3': hasIcon }, shadow]"
+                { 'pt-4': floatingLabel && !hasIcon, 'pb-3': hasIcon, 'pt-3': hasIcon }, shadow,
+                'min-h-[38px]']"
                 class="c-input-field block w-full border pb-1 outline-none" @keyup="handleInput"
                 @change="handleInput" @focus="activateLabel" @blur="deactivateLabel" :disabled="disabled"
                 :aria-invalid="hasError"
@@ -102,10 +117,10 @@ input[type=number] {
 }
 
 .c-input-label {
-    transform: translate(0, -50%);
     z-index: 1;
 }
 
+/* Apenas aplicado quando floatingLabel=true */
 .c-input-label--active {
     transform: translate(0, -2rem) scale(0.85);
     top: 1.3rem;

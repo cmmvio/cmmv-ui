@@ -89,7 +89,7 @@
                     <td class="py-3 px-4 text-sm">floatingLabel</td>
                     <td class="py-3 px-4 text-sm font-mono">Boolean</td>
                     <td class="py-3 px-4 text-sm font-mono">false</td>
-                    <td class="py-3 px-4 text-sm">Use floating label style</td>
+                    <td class="py-3 px-4 text-sm">When true, the label will start inside the input and move outside when it receives focus. When false (default), the label appears fixed above the input.</td>
                 </tr>
                 <tr class="border-b border-gray-200">
                     <td class="py-3 px-4 text-sm">currencyCode</td>
@@ -107,10 +107,9 @@
         </table-docs>
 
         <card-docs>
-            <div class="p-4 bg-gray-100 rounded-lg">
-                <c-currency-input v-model="basic" label="Amount" placeholder="Enter amount" showCurrencySymbol />
-            </div>
-            <div class="mt-4 bg-gray-50 p-4 rounded">
+            <c-currency-input v-model="basic" label="Amount" placeholder="Enter amount" showCurrencySymbol />
+
+            <div class="mt-4 bg-gray-50 dark:bg-neutral-900 p-4 rounded">
                 <pre class="text-xs">{{ basic }}</pre>
             </div>
             <template #code>
@@ -123,18 +122,16 @@
         </card-docs>
 
         <card-docs>
-            <div class="p-4 bg-gray-100 rounded-lg space-y-4">
-                <c-currency-input v-model="usd" label="Dollar (USD)" currency-code="USD"
-                    placeholder="Enter USD amount" showCurrencySymbol />
-                <c-currency-input v-model="eur" label="Euro (EUR)" currency-code="EUR" placeholder="Enter EUR amount" showCurrencySymbol />
-                <c-currency-input v-model="gbp" label="Pound (GBP)" currency-code="GBP"
-                    placeholder="Enter GBP amount" showCurrencySymbol />
-                <c-currency-input v-model="jpy" label="Yen (JPY)" currency-code="JPY"
-                    placeholder="Enter JPY amount" showCurrencySymbol />
-                <c-currency-input v-model="brl" label="Real (BRL)" currency-code="BRL"
-                    placeholder="Enter BRL amount" showCurrencySymbol />
-            </div>
-            <div class="mt-4 bg-gray-50 p-4 rounded">
+            <c-currency-input v-model="usd" label="Dollar (USD)" currency-code="USD"
+                placeholder="Enter USD amount" showCurrencySymbol />
+            <c-currency-input v-model="eur" label="Euro (EUR)" currency-code="EUR" placeholder="Enter EUR amount" showCurrencySymbol />
+            <c-currency-input v-model="gbp" label="Pound (GBP)" currency-code="GBP"
+                placeholder="Enter GBP amount" showCurrencySymbol />
+            <c-currency-input v-model="jpy" label="Yen (JPY)" currency-code="JPY"
+                placeholder="Enter JPY amount" showCurrencySymbol />
+            <c-currency-input v-model="brl" label="Real (BRL)" currency-code="BRL"
+                placeholder="Enter BRL amount" showCurrencySymbol />
+            <div class="mt-4 bg-gray-50 dark:bg-neutral-900 p-4 rounded">
                 <p>USD: <code>{{ usd }}</code></p>
                 <p>EUR: <code>{{ eur }}</code></p>
                 <p>GBP: <code>{{ gbp }}</code></p>
