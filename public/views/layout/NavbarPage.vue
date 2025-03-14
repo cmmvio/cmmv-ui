@@ -182,6 +182,38 @@
                         The <code>expandOnHover</code> prop (works with collapsed mode) expands the navbar when the user hovers over it.
                     </td>
                 </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">useRouter</td>
+                    <td class="border-b px-4 py-2">Boolean</td>
+                    <td class="border-b px-4 py-2">false</td>
+                    <td class="border-b px-4 py-2">
+                        When the <code>useRouter</code> prop is set to true, the component uses Vue Router for navigation, rendering links as <code>&lt;router-link&gt;</code> components.
+                    </td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">exactPath</td>
+                    <td class="border-b px-4 py-2">Boolean</td>
+                    <td class="border-b px-4 py-2">false</td>
+                    <td class="border-b px-4 py-2">
+                        When using Vue Router, the <code>exactPath</code> prop determines if the active link should match exactly or allow partial matching.
+                    </td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">fixed</td>
+                    <td class="border-b px-4 py-2">Boolean</td>
+                    <td class="border-b px-4 py-2">false</td>
+                    <td class="border-b px-4 py-2">
+                        The <code>fixed</code> prop enables a special display mode with full-width dividers, no horizontal padding, and support for subheaders. Ideal for application sidebars.
+                    </td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">fixedHeader</td>
+                    <td class="border-b px-4 py-2">String</td>
+                    <td class="border-b px-4 py-2">null</td>
+                    <td class="border-b px-4 py-2">
+                        When using <code>fixed</code> mode, this property adds a prominent header at the top of the navbar.
+                    </td>
+                </tr>
             </tbody>
         </table-docs>
 
@@ -233,6 +265,123 @@ const items = [
             </template>
         </card-docs>
 
+        <h3>With Dividers and Spacers</h3>
+
+        <p>
+            The <code>CNavbar</code> component supports dividers and spacers to organize the menu items.
+            Dividers create visual separation between items, while spacers push subsequent items to the end of the container.
+        </p>
+
+        <card-docs >
+            <div class="mb-6 h-[200px]">
+                <c-navbar hoverBgColor="hover:bg-neutral-100 dark:hover:bg-neutral-700" mode="horizontal"
+                    :items="itemsWithDividersAndSpacers" />
+            </div>
+
+            <template #code>
+                <pre><code class="code-highlight language-html">&lt;c-navbar
+  mode="horizontal"
+  :items="items"
+/&gt;
+
+&lt;script setup&gt;
+import IconUser from '@components/icons/IconUser.vue';
+import IconStar from '@components/icons/IconStar.vue';
+import IconCog8Tooth from '@components/icons/IconCog8Tooth.vue';
+
+const items = [
+  {
+    text: 'Home',
+    href: '#',
+    icon: IconUser
+  },
+  {
+    text: 'Components',
+    icon: IconStar,
+    children: [
+      { text: 'Button', href: '#button' },
+      { text: 'Card', href: '#card' },
+      { divider: true },
+      { text: 'Modal', href: '#modal' }
+    ]
+  },
+  { divider: true },  // Adds a vertical divider
+  {
+    text: 'Users',
+    href: '#',
+    icon: IconUser
+  },
+  { spacer: true },   // Pushes the following items to the right
+  {
+    text: 'Settings',
+    href: '#settings',
+    icon: IconCog8Tooth
+  }
+];
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
+
+        <h3>Vue Router Integration</h3>
+
+        <p>
+            The <code>CNavbar</code> component can integrate with Vue Router for navigation in single-page applications.
+            When <code>useRouter</code> is set to true, links are rendered as <code>&lt;router-link&gt;</code> components.
+        </p>
+
+        <card-docs>
+            <div class="mb-6 h-[200px]">
+                <div class="p-4 bg-neutral-100 dark:bg-neutral-800 rounded-md text-center">
+                    <p class="text-sm text-neutral-700 dark:text-neutral-300">Note: This example would work with Vue Router enabled.</p>
+                    <c-navbar
+                        mode="horizontal"
+                        :items="routerItems"
+                        :useRouter="true"
+                        :exactPath="true"
+                        hoverBgColor="hover:bg-neutral-100 dark:hover:bg-neutral-700"
+                        class="w-full mt-2"
+                    />
+                </div>
+            </div>
+
+            <template #code>
+                <pre><code class="code-highlight language-html">&lt;c-navbar
+  mode="horizontal"
+  :items="items"
+  :useRouter="true"
+  :exactPath="true"
+/&gt;
+
+&lt;script setup&gt;
+import IconHome from '@components/icons/IconHome.vue';
+import IconComponent from '@components/icons/IconComponent.vue';
+import IconUsers from '@components/icons/IconUsers.vue';
+
+const items = [
+  {
+    text: 'Home',
+    href: '/',  // Vue Router path
+    icon: IconHome
+  },
+  {
+    text: 'Components',
+    icon: IconComponent,
+    children: [
+      { text: 'Button', href: '/components/button' },
+      { text: 'Card', href: '/components/card' },
+      { text: 'Modal', href: '/components/modal' }
+    ]
+  },
+  {
+    text: 'Users',
+    href: '/users',
+    icon: IconUsers
+  }
+];
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
+
         <h3>Vertical Mode</h3>
 
         <p>
@@ -245,7 +394,7 @@ const items = [
                 <div
                     class="flex min-h-[200px] border border-neutral-200 dark:border-neutral-700 rounded-lg overflow-hidden">
                     <div class="bg-white dark:bg-neutral-800 border-r border-neutral-200 dark:border-neutral-700">
-                        <c-navbar mode="vertical" :items="verticalItems" :showIcons="true" />
+                        <c-navbar mode="vertical" :items="verticalItems" :showIcons="true" class="p-2" />
                     </div>
                     <div class="flex-1 bg-neutral-50 dark:bg-neutral-900 flex justify-center items-center">
                         <p class="text-neutral-700 dark:text-neutral-200">Content area</p>
@@ -312,6 +461,7 @@ const items = [
                             :collapsed="true"
                             :expandOnHover="true"
                             iconClass="text-blue-500 dark:text-blue-400"
+                            class="p-2"
                         />
                     </div>
                     <div class="flex-1 bg-neutral-50 dark:bg-neutral-900 flex justify-center items-center">
@@ -387,6 +537,7 @@ const items = [
                             :collapsed="true"
                             :expandOnHover="false"
                             iconClass="text-indigo-500 dark:text-indigo-400"
+                            class="p-2"
                         />
                     </div>
                     <div class="flex-1 bg-neutral-50 dark:bg-neutral-900 flex justify-center items-center">
@@ -569,7 +720,7 @@ const items = [
             <template #code>
                 <pre><code class="language-js">{
     text: 'Home', // Required: Display text
-    href: '/home', // Optional: Link URL
+    href: '/home', // Optional: Link URL or router path
     icon: IconComponent, // Optional: Icon component
     active: false, // Optional: Whether item is active
     class: '', // Optional: Additional CSS classes
@@ -580,8 +731,13 @@ const items = [
             href: '/profile',
             icon: IconProfile,
             active: false
-        }
-    ]
+        },
+        { divider: true } // Optional: Adds a divider line
+    ],
+    divider: true, // Optional: Creates a divider instead of an item
+    spacer: true, // Optional: Creates a flexible space, pushing items after it to the end
+    header: 'Section Title', // Optional: Creates a header text (normal mode)
+    subheader: 'SECTION TITLE' // Optional: Creates a section with children (fixed mode)
 }</code></pre>
             </template>
         </card-docs>
@@ -602,9 +758,9 @@ const items = [
                     class="bg-neutral-100 dark:bg-neutral-800 min-h-[400px] max-w-[600px] flex flex-col sm:w-full m-auto relative overflow-hidden">
 
                     <c-sidebar v-model="showSidebarNavbar" absolute shadow="" width="w-64"
-                        class="w-full rounded-none overflow-hidden" bgColor="bg-white dark:bg-zinc-800">
+                        class="w-full rounded-none overflow-hidden" bgColor="bg-white dark:bg-neutral-800">
                         <template #title>Navigation</template>
-                        <c-navbar mode="vertical" :items="verticalItems" />
+                        <c-navbar mode="vertical" :items="verticalItems" class="p-2" />
                     </c-sidebar>
 
                     <c-toolbar class="bg-blue-600 text-white shadow-md">
@@ -666,8 +822,10 @@ const items = [
 import { ref } from 'vue';
 import IconUser from '@components/icons/IconUser.vue';
 import IconStar from '@components/icons/IconStar.vue';
+import IconHeart from '@components/icons/IconHeart.vue';
+import IconCog8Tooth from '@components/icons/IconCog8Tooth.vue';
 
-const showSidebar = ref(false);
+const showSidebarNavbar = ref(false);
 
 const navItems = [
   {
@@ -691,14 +849,81 @@ const navItems = [
     icon: IconUser
   }
 ];
-
-const showSidebarNavbar = ref(false);
-
-// ... existing code ...
 &lt;/script&gt;</code></pre>
             </template>
         </card-docs>
 
+        <h3>Fixed Sidebar with Subheaders</h3>
+
+        <p>
+            The <code>fixed</code> mode provides a specialized sidebar layout with sections, subheaders, and optimized spacing.
+            This mode is ideal for application dashboards and complex navigation structures.
+        </p>
+
+        <card-docs>
+            <div>
+                <div
+                    class="flex max-h-[600px] border border-neutral-200 dark:border-neutral-700 rounded-lg overflow-hidden">
+                    <div class="bg-white dark:bg-neutral-800 border-r border-neutral-200 dark:border-neutral-700 w-56 overflow-hidden">
+                        <c-navbar
+                            mode="vertical"
+                            :items="fixedMenuItems"
+                            :showIcons="true"
+                            :fixed="true"
+                            fixedHeader="Application"
+                            height="h-full"
+                        />
+                    </div>
+                    <div class="flex-1 bg-neutral-50 dark:bg-neutral-900 flex justify-center items-center">
+                        <p class="text-neutral-700 dark:text-neutral-200">Main content area</p>
+                    </div>
+                </div>
+            </div>
+
+            <template #code>
+                <pre><code class="code-highlight language-html">&lt;c-navbar
+  mode="vertical"
+  :items="items"
+  :showIcons="true"
+  :fixed="true"
+  fixedHeader="Application"
+/&gt;
+
+&lt;script setup&gt;
+import IconUser from '@components/icons/IconUser.vue';
+import IconStar from '@components/icons/IconStar.vue';
+import IconCog8Tooth from '@components/icons/IconCog8Tooth.vue';
+
+const items = [
+  {
+    subheader: "MANAGEMENT",
+    children: [
+      { text: "Dashboard", href: "#dashboard", icon: IconUser },
+      { text: "Projects", href: "#projects", icon: IconStar, active: true },
+      { text: "Tasks", href: "#tasks", icon: IconUser }
+    ]
+  },
+  { divider: true },
+  {
+    subheader: "SETTINGS",
+    children: [
+      { text: "Profile", href: "#profile", icon: IconUser },
+      { text: "Security", href: "#security", icon: IconCog8Tooth },
+      { text: "Preferences", href: "#preferences", icon: IconStar }
+    ]
+  },
+  { divider: true },
+  {
+    subheader: "SYSTEM",
+    children: [
+      { text: "Help", href: "#help", icon: IconUser },
+      { text: "About", href: "#about", icon: IconStar }
+    ]
+  }
+];
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
 
         <PagePagination previous="Dropdown" previousLink="/dropdown" next="Sidebar" nextLink="/sidebar" />
     </BaseLayout>
@@ -713,6 +938,7 @@ import PagePagination from "../../layout/PagePagination.vue";
 import IconUser from "@components/icons/IconUser.vue";
 import IconStar from "@components/icons/IconStar.vue";
 import IconHeart from "@components/icons/IconHeart.vue";
+import IconCog8Tooth from "@components/icons/IconCog8Tooth.vue";
 
 
 const horizontalItems = [
@@ -730,6 +956,67 @@ const horizontalItems = [
         text: 'Users',
         href: '#users',
         icon: IconUser
+    }
+];
+
+// Items with dividers and spacers
+const itemsWithDividersAndSpacers = [
+    {
+        text: 'Home',
+        href: '#',
+        icon: IconUser
+    },
+    {
+        text: 'Components',
+        icon: IconStar,
+        children: [
+            { text: 'Button', href: '#button' },
+            { text: 'Card', href: '#card' },
+            { divider: true },
+            { text: 'Modal', href: '#modal' }
+        ]
+    },
+    { divider: true },
+    {
+        text: 'Users',
+        href: '#users',
+        icon: IconUser
+    },
+    { spacer: true },
+    {
+        text: 'Settings',
+        href: '#settings',
+        icon: IconCog8Tooth
+    }
+];
+
+// Router integration example
+const routerItems = [
+    {
+        text: 'Home',
+        href: '/',
+        icon: IconUser
+    },
+    {
+        text: 'Components',
+        icon: IconStar,
+        children: [
+            { text: 'Button', href: '/components/button' },
+            { text: 'Card', href: '/components/card' },
+            { text: 'Modal', href: '/components/modal' }
+        ]
+    },
+    {
+        text: 'Users',
+        href: '/users',
+        icon: IconUser,
+        active: true
+    },
+    { spacer: true },
+    {
+        text: 'Settings',
+        href: '/settings',
+        icon: IconCog8Tooth
     }
 ];
 
@@ -771,6 +1058,7 @@ const verticalItems = [
             { text: 'Modal', href: '#modal' }
         ]
     },
+    { divider: true },
     {
         text: 'Users',
         href: '#users',
@@ -781,6 +1069,49 @@ const verticalItems = [
         text: 'Favorites',
         href: '#favorites',
         icon: IconHeart
+    }
+];
+
+const fixedMenuItems = [
+    {
+        subheader: "DATABASE MANAGEMENT",
+        children: [
+            { text: "Schema Visualizer", href: "#schema" },
+            { text: "Tables", href: "#tables", active: true },
+            { text: "Functions", href: "#functions" },
+            { text: "Triggers", href: "#triggers" },
+            { text: "Enumerated Types", href: "#types" },
+            { text: "Extensions", href: "#extensions" },
+            { text: "Indexes", href: "#indexes" },
+            { text: "Publications", href: "#publications" }
+        ]
+    },
+    { divider: true },
+    {
+        subheader: "ACCESS CONTROL",
+        children: [
+            { text: "Roles", href: "#roles" },
+            { text: "Policies", href: "#policies", icon: IconStar }
+        ]
+    },
+    { divider: true },
+    {
+        subheader: "PLATFORM",
+        children: [
+            { text: "Backups", href: "#backups" },
+            { text: "Migrations", href: "#migrations" },
+            { text: "Wrappers", href: "#wrappers", icon: IconStar },
+            { text: "Webhooks", href: "#webhooks", icon: IconStar }
+        ]
+    },
+    { divider: true },
+    {
+        subheader: "TOOLS",
+        children: [
+            { text: "Security Advisor", href: "#security", icon: IconStar },
+            { text: "Performance Advisor", href: "#performance", icon: IconStar },
+            { text: "Query Performance", href: "#query", icon: IconStar }
+        ]
     }
 ];
 

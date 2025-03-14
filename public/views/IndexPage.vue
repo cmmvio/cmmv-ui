@@ -77,6 +77,8 @@
 
         <h3>Core Principles</h3>
 
+        <br/>
+
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
             <div class="border border-neutral-200 dark:border-neutral-700 rounded-lg p-6">
                 <h4 class="text-base font-semibold mb-3">Contract-First Development</h4>

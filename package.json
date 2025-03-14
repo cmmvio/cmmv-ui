@@ -10,7 +10,7 @@
         "clean:server": "./clean_dist.sh",
         "dev": "vite",
         "build": "pnpm run clean && pnpm run build:module",
-        "build:module": "vue-tsc && vite build --mode module && pnpm run clean:server",
+        "build:module": "vite build --mode module && pnpm run clean:server",
         "build:docs": "export NODE_ENV=production && pnpm run clean && pnpm run type-check && vite build --mode docs",
         "preview": "export NODE_ENV=production && vite preview",
         "test": "vitest",
