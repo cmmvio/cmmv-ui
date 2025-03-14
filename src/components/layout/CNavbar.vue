@@ -1,6 +1,6 @@
 <template>
     <nav :class="[
-        'c-navbar transition-all duration-300 overflow-visible',
+        'c-navbar transition-all duration-300 overflow-visible relative',
         mode === 'horizontal' ? 'flex items-center' : 'flex flex-col',
         elevated ? 'shadow-md' : '',
         borderColor,
@@ -153,8 +153,8 @@
         </div>
 
         <div v-else
-            class="w-full select-none text-neutral-700 dark:text-neutral-200"
-            :class="[fixed ? 'px-0 h-[calc(100%-3rem)] c-navbar-scroll' : '']"
+            class="w-full h-full select-none text-neutral-700 dark:text-neutral-200"
+            :class="[fixed ? 'px-0 c-navbar-scroll' : '']"
         >
             <ul :class="{'overflow-y-auto': fixed}" class="h-full">
                 <template v-for="(item, index) in items" :key="index">
@@ -209,7 +209,7 @@
                     </li>
 
                     <!-- Spacer in vertical mode -->
-                    <li v-else-if="item.spacer" class="flex-grow h-4"></li>
+                    <li v-else-if="item.spacer" class="flex-grow"></li>
 
                     <!-- Header item in vertical mode (not fixed mode) -->
                     <li v-else-if="item.header && !fixed" class="mb-2 px-2">
@@ -399,6 +399,8 @@
                 </template>
             </ul>
         </div>
+
+        <slot name="footer"></slot>
     </nav>
 </template>
 
