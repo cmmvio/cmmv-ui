@@ -1,6 +1,6 @@
 <template>
     <nav :class="[
-        'c-navbar transition-all duration-300 overflow-visible relative',
+        'c-navbar transition-all duration-300 overflow-visible',
         mode === 'horizontal' ? 'flex items-center' : 'flex flex-col',
         elevated ? 'shadow-md' : '',
         borderColor,
