@@ -1,3 +1,12 @@
+## [0.3.2](https://github.com/cmmvio/cmmv-ui/compare/v0.3.1...v0.3.2) (2025-03-14)
+
+
+### Features
+
+* template footer ([eeef905](https://github.com/cmmvio/cmmv-ui/commit/eeef9055ffcc27d4a789df63568e2a589e2aac09))
+
+
+
 ## [0.3.1](https://github.com/cmmvio/cmmv-ui/compare/v0.3.0...v0.3.1) (2025-03-14)
 
 
