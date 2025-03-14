@@ -17,7 +17,7 @@ export default defineConfig(({ mode }) => {
 
         vue: {
             compilerOptions: {//@ts-ignore
-              isCustomElement: tag => tag.startsWith('icon-'),
+                isCustomElement: tag => tag.startsWith('icon-'),
             },
         },
 
@@ -70,28 +70,28 @@ export default defineConfig(({ mode }) => {
                 rollupOptions: {
                     input: 'index.html',
                     output: {
-                        preserveModules: true,
+                        //preserveModules: true,
                     },
                 },
-              }
+            }
             : {
                 cssCodeSplit: true,
-                  lib: {
-                      entry: 'src/module.ts',
-                      name: 'CmmvUI',
-                      fileName: (format) => `cmmv-ui.${format}.js`,
-                      formats: ['es', 'cjs'],
-                  },
-                  rollupOptions: {
-                      external: ['vue'],
-                      output: {
+                lib: {
+                    entry: 'src/module.ts',
+                    name: 'CmmvUI',
+                    fileName: (format) => `cmmv-ui.${format}.js`,
+                    formats: ['es', 'cjs'],
+                },
+                rollupOptions: {
+                    external: ['vue'],
+                    output: {
                         globals: {
                             vue: 'Vue',
                         },
-                        preserveModules: true,
+                        //preserveModules: true,
                         preserveModulesRoot: 'src',
-                      },
-                  },
-              },
+                    },
+                },
+            },
     };
 });

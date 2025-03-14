@@ -1,7 +1,7 @@
 {
     "editor.formatOnSave": true,
     "vetur.validation.template": false,
-    "explorer.fileNesting.enabled": true,
+    "explorer.fileNesting.enabled": false,
     "explorer.fileNesting.patterns": {
         "tsconfig.json": "tsconfig.*.json, env.d.ts",
         "vite.config.*": "jsconfig*, vitest.config.*, cypress.config.*, playwright.config.*",
