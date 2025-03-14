@@ -1,3 +1,12 @@
+## [0.3.3](https://github.com/cmmvio/cmmv-ui/compare/v0.3.2...v0.3.3) (2025-03-14)
+
+
+### Bug Fixes
+
+* relative ([d2d6b0e](https://github.com/cmmvio/cmmv-ui/commit/d2d6b0e572cd448296f78b0d14684b6a8b60494d))
+
+
+
 ## [0.3.2](https://github.com/cmmvio/cmmv-ui/compare/v0.3.1...v0.3.2) (2025-03-14)
 
 
