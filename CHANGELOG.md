@@ -1,3 +1,14 @@
+# [0.3.0](https://github.com/cmmvio/cmmv-ui/compare/v0.2.3...v0.3.0) (2025-03-14)
+
+
+### Bug Fixes
+
+* build ([2403989](https://github.com/cmmvio/cmmv-ui/commit/24039895fd49f8844e0307cf261bf6f15e7ea4c2))
+* dependencies ([0f4f7d9](https://github.com/cmmvio/cmmv-ui/commit/0f4f7d920fef8425052ba6ea5ce76ddc8a1c1b91))
+* remove preserveModules ([cb64378](https://github.com/cmmvio/cmmv-ui/commit/cb64378e503d9282f66975fcfc7376031557edfb))
+
+
+
 ## [0.2.3](https://github.com/cmmvio/cmmv-ui/compare/v0.2.2...v0.2.3) (2025-03-11)
 
 
