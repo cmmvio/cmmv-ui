@@ -1,6 +1,16 @@
 declare module '@xterm/xterm' {
+    export interface ITerminalOptions {
+        bellStyle?: 'none' | 'sound' | 'visual';
+        [key: string]: any;
+    }
+
+    export interface ITerminalAddon {
+        activate(terminal: Terminal): void;
+        dispose(): void;
+    }
+
     export class Terminal {
-        constructor(options?: any);
+        constructor(options?: ITerminalOptions);
         open(container: HTMLElement): void;
         write(data: string): void;
         writeln(data: string): void;
@@ -10,57 +20,79 @@ declare module '@xterm/xterm' {
         blur(): void;
         resize(cols: number, rows: number): void;
         refresh(start: number, end: number): void;
-        loadAddon(addon: any): void;
-        dispose(): void;
-        onData(callback: (data: string) => void): void;
-        onTitleChange(callback: (title: string) => void): void;
-        onResize(callback: (size: { cols: number; rows: number }) => void): void;
-        options: any;
-        rows: number;
+        loadAddon(addon: ITerminalAddon): void;
+        [key: string]: any;
     }
 }
 
 declare module '@xterm/addon-attach' {
-    export class AttachAddon {
+    import { Terminal } from '@xterm/xterm';
+
+    export class AttachAddon implements ITerminalAddon {
         constructor(socket: WebSocket);
+        activate(terminal: Terminal): void;
+        dispose(): void;
     }
 }
 
 declare module '@xterm/addon-fit' {
-    export class FitAddon {
+    import { Terminal } from '@xterm/xterm';
+
+    export class FitAddon implements ITerminalAddon {
         constructor();
+        activate(terminal: Terminal): void;
+        dispose(): void;
         fit(): void;
     }
 }
 
 declare module '@xterm/addon-web-links' {
-    export class WebLinksAddon {
+    import { Terminal } from '@xterm/xterm';
+
+    export class WebLinksAddon implements ITerminalAddon {
         constructor();
+        activate(terminal: Terminal): void;
+        dispose(): void;
     }
 }
 
 declare module '@xterm/addon-search' {
-    export class SearchAddon {
+    import { Terminal } from '@xterm/xterm';
+
+    export class SearchAddon implements ITerminalAddon {
         constructor();
+        activate(terminal: Terminal): void;
+        dispose(): void;
     }
 }
 
 declare module '@xterm/addon-unicode11' {
-    export class Unicode11Addon {
+    import { Terminal } from '@xterm/xterm';
+
+    export class Unicode11Addon implements ITerminalAddon {
         constructor();
+        activate(terminal: Terminal): void;
+        dispose(): void;
     }
 }
 
 declare module '@xterm/addon-webgl' {
-    export class WebglAddon {
+    import { Terminal } from '@xterm/xterm';
+
+    export class WebglAddon implements ITerminalAddon {
         constructor();
+        activate(terminal: Terminal): void;
         dispose(): void;
     }
 }
 
 declare module '@xterm/addon-clipboard' {
-    export class ClipboardAddon {
+    import { Terminal } from '@xterm/xterm';
+
+    export class ClipboardAddon implements ITerminalAddon {
         constructor();
+        activate(terminal: Terminal): void;
+        dispose(): void;
     }
 }
 
