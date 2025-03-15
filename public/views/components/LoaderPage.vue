@@ -313,7 +313,7 @@
         <c-card variant="flat" class="m-auto mt-4 px-4 py-10 items-center">
             <div
                 class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 2xl:grid-cols-10 gap-4">
-                <div v-for="loader in resolvedIcons" :key="loader.name"
+                <div v-for="loader in resolvedLoaders" :key="loader.name"
                     class="relative flex flex-col items-center justify-center cursor-pointer group"
                     @click="copyToClipboard(loader.code)">
                     <c-tooltip :content="loader.name" position="top">
@@ -336,8 +336,8 @@
 </template>
 
 <script setup>
-import { ref, markRaw, reactive, onMounted } from "vue";
-import LoaderList from "@composables/LoaderList.ts";
+import { ref, markRaw, reactive, onMounted, computed } from "vue";
+import LoadersList from "@composables/LoaderList.ts";
 import BaseLayout from "../../layout/BaseLayout.vue";
 import TableDocs from "../../components/TableDocs.vue";
 import CardDocs from "../../components/CardDocs.vue";
@@ -351,41 +351,28 @@ import Loader270Ring from "@components/loader/Loader270Ring.vue";
 import Loader3DotsBounce from "@components/loader/Loader3DotsBounce.vue";
 import Loader6DotsScaleMiddle from "@components/loader/Loader6DotsScaleMiddle.vue";
 import Loader90Ring from "@components/loader/Loader90Ring.vue";
-import * as Icons from "../../../src";
 
 const notification = ref(null);
-const loaders = LoaderList;
-const resolvedIcons = reactive([]);
+const loaders = LoadersList;
+const resolvedLoaders = reactive([]);
+
+const loaderComponents = import.meta.glob('@components/loader/*.vue');
 
 onMounted(async () => {
-    if (process.env.NODE_ENV === "production") {
-        for (const loader of loaders) {
-            if (loader.path) {
-                try {
-                    const loaderName = loader.path.replace("components/loader/", "").replace(".vue", "");
-                    if (Icons.components && Icons.components[loaderName]) {
-                        resolvedIcons.push({
-                            ...loader,
-                            component: markRaw(Icons.components[loaderName]),
-                        });
-                    }
-                } catch (e) {
-                    console.warn(`Não foi possível carregar o loader: ${loader.name}`);
-                }
-            }
-        }
-    } else {
-        for (const loader of loaders) {
-            if (loader.path) {
-                try {
-                    const imported = await import(`../../../src/${loader.path}`);
-                    resolvedIcons.push({
+    for (const loader of loaders) {
+        if (loader.path) {
+            try {
+                const path = `/src/${loader.path}`;
+                const module = loaderComponents[path];
+                if (module) {
+                    const imported = await module();
+                    resolvedLoaders.push({
                         ...loader,
                         component: markRaw(imported.default),
                     });
-                } catch (e) {
-                    console.warn(`Falha ao importar loader: ${loader.path}`, e);
                 }
+            } catch (e) {
+                console.warn(`Failed to import loader: ${loader.path}`, e);
             }
         }
     }

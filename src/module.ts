@@ -1,12 +1,18 @@
 import { defineAsyncComponent } from "vue";
 import { createHead } from '@vueuse/head'
 
-const modules = import.meta.glob('./components/**/*.vue');
+const modules = import.meta.glob([
+    './components/**/*.vue',
+    './components/icons/*.{vue,ts,js}'
+]);
+
+const iconComponents = import.meta.glob('@components/icons/*.vue');
+const loaderComponents = import.meta.glob('@components/loader/*.vue');
 
 const components: Record<string, any> = {};
 
 for (const path in modules) {
-    const name = path.split('/').pop()?.replace('.vue', '') as string;
+    const name = path.split('/').pop()?.replace(/\.(vue|ts|js)$/, '') as string;
     components[name] = (modules[path] as any).default;
 }
 
@@ -27,11 +33,29 @@ const install = (app: any) => {
     app.use(head)
 
     for (const path in modules) {
-        const name = path.split('/').pop()?.replace('.vue', '') as string;
+        const name = path.split('/').pop()?.replace(/\.(vue|ts|js)$/, '') as string;
 
         app.component(
             name,
             defineAsyncComponent(() => modules[path]().then((mod: any) => mod.default))
+        );
+    }
+
+    for (const path in iconComponents) {
+        const name = path.split('/').pop()?.replace(/\.(vue|ts|js)$/, '') as string;
+
+        app.component(
+            name,
+            defineAsyncComponent(() => iconComponents[path]().then((mod: any) => mod.default))
+        );
+    }
+
+    for (const path in loaderComponents) {
+        const name = path.split('/').pop()?.replace(/\.(vue|ts|js)$/, '') as string;
+
+        app.component(
+            name,
+            defineAsyncComponent(() => loaderComponents[path]().then((mod: any) => mod.default))
         );
     }
 };
