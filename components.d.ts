@@ -41,7 +41,6 @@ declare module 'vue' {
     CForm: typeof import('./src/components/forms/CForm.vue')['default']
     CFormBuilder: typeof import('./src/components/forms/CFormBuilder.vue')['default']
     CFormBuilderItem: typeof import('./src/components/forms/CFormBuilderItem.vue')['default']
-    CFormBuilderTab: typeof import('./src/components/forms/CFormBuilderTab.vue')['default']
     CFormStepper: typeof import('./src/components/forms/CFormStepper.vue')['default']
     CGraphBox: typeof import('./src/components/graph/CGraphBox.vue')['default']
     CGraphLink: typeof import('./src/components/graph/CGraphLink.vue')['default']

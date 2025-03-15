@@ -594,13 +594,4 @@ const handleItemClick = (item: NavbarItem) => {
 .dark .c-navbar-fixed ul li a:hover {
     background-color: rgba(255, 255, 255, 0.05);
 }
-
-:deep(.c-navbar-scroll)::-webkit-scrollbar,
-:deep() .c-navbar-scroll::-webkit-scrollbar,
-.c-navbar-scroll::-webkit-scrollbar,
-.c-navbar-scroll tbody::-webkit-scrollbar {
-    height: 4px;
-    width: 4px;
-}
-
 </style>

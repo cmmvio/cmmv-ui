@@ -37,7 +37,7 @@
                     customClass,
                     'min-h-[38px] pl-10 pr-10'
                 ]"
-                class="c-number-input-field block w-full border shadow-sm outline-none text-center"
+                class="c-number-input-field block w-full border border-neutral-300 dark:border-neutral-700 shadow-sm outline-none text-center"
                 :disabled="disabled"
                 @blur="applyLimits"
                 @keydown="preventNonNumeric"

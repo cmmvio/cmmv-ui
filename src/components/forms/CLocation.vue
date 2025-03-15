@@ -27,7 +27,7 @@
 
             <input :id="id" type="text"
                 :class="[sizes[size], roundedStyles[rounded], variantStyles[variant],
-                floatingLabel ? (bgColor ? bgColor : variantColors[variant]) : 'bg-transparent',
+                (bgColor ? bgColor : variantColors[variant]),
                 textColor,
                 { 'ring-red-500 ring-2': hasError, 'opacity-50': disabled, 'cursor-not-allowed': disabled, 'pl-10': true },
                 { 'pt-4': floatingLabel, 'pb-3': true, 'pt-3': true },

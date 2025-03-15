@@ -1,7 +1,7 @@
 <template>
     <div class="c-wysiwyg-editor" v-if="editor">
         <div
-            class="toolbar flex flex-wrap gap-1 p-2 border border-neutral-300 dark:border-neutral-700 rounded-t-md bg-neutral-50 dark:bg-neutral-800 shadow-sm">
+            class="toolbar flex flex-wrap gap-1 p-2 border border-neutral-300 dark:border-neutral-900 rounded-t-md bg-neutral-50 dark:bg-neutral-800 shadow-sm">
 
             <div class="toolbar-group flex">
                 <c-button
@@ -217,7 +217,7 @@
         </div>
 
         <!-- Editor -->
-        <div class="editor-content p-4 border border-t-0 rounded-b-md border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-900 min-h-[200px] overflow-auto focus:outline-none shadow-sm"
+        <div class="editor-content p-4 border border-t-0 rounded-b-md border-neutral-300 dark:border-neutral-900 bg-white dark:bg-neutral-900 min-h-[200px] overflow-auto focus:outline-none shadow-sm"
             :class="{ 'editor-disabled': disabled }">
             <editor-content v-if="editor" :editor="editor" />
             <div v-else class="flex items-center justify-center h-full text-neutral-400">

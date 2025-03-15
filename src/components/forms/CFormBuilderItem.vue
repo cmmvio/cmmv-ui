@@ -172,6 +172,18 @@
             v-bind="field.props || {}" @update:modelValue="updateValue"
             :ref="el => { if (el) fieldRef = el; }" />
 
+        <!-- Location Input -->
+        <c-location v-if="field.type === 'location'" v-model="localValue"
+            :label="field.label" :placeholder="field.placeholder" :required="field.required"
+            :country="field.country" :types="field.types" :component-restrictions="field.componentRestrictions"
+            :fetch-details="field.fetchDetails !== false" :debounce-timeout="field.debounceTimeout"
+            :prefer-google="field.preferGoogle" :clearable="field.clearable !== false"
+            :rules="field.rules || field.props?.rules || []" v-bind="field.props || {}"
+            @update:modelValue="updateValue" @place-changed="field.onPlaceChanged && field.onPlaceChanged($event)"
+            @no-results-found="field.onNoResultsFound && field.onNoResultsFound($event)"
+            @error="field.onError && field.onError($event)"
+            :ref="el => { if (el) fieldRef = el; }" />
+
         <!-- Timepicker -->
         <c-timepicker v-if="field.type === 'time' || field.type === 'timepicker'" v-model="localValue"
             :label="field.label" :min-time="field.minTime" :max-time="field.maxTime"
@@ -247,7 +259,6 @@
 <script setup lang="ts">
 import { defineProps, defineEmits, ref, watch, computed } from "vue";
 import type { PropType } from "vue";
-import CSlider from "@components/forms/CSlider.vue";
 
 interface BaseFieldProps {
     label?: string;
@@ -349,6 +360,20 @@ interface TextareaFieldProps extends BaseFieldProps {
     autoresize?: boolean;
 }
 
+interface LocationFieldProps extends BaseFieldProps {
+    type: 'location';
+    country?: string;
+    types?: string[];
+    componentRestrictions?: Record<string, any>;
+    fetchDetails?: boolean;
+    debounceTimeout?: number;
+    preferGoogle?: boolean;
+    clearable?: boolean;
+    onPlaceChanged?: (place: any) => void;
+    onNoResultsFound?: (query: string) => void;
+    onError?: (error: any) => void;
+}
+
 interface TimepickerFieldProps extends BaseFieldProps {
     type: 'time' | 'timepicker';
     minTime?: string;
@@ -444,6 +469,7 @@ type FieldProps =
     | FileUploadFieldProps
     | NumberInputFieldProps
     | TextareaFieldProps
+    | LocationFieldProps
     | TimepickerFieldProps
     | ToggleFieldProps
     | SubmitButtonProps

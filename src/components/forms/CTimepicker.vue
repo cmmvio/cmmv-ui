@@ -21,7 +21,7 @@
                     customClass,
                     'min-h-[38px]'
                 ]"
-                class="c-timepicker-field block w-full border shadow-sm outline-none"
+                class="c-timepicker-field block w-full border border-neutral-300 dark:border-neutral-900 shadow-sm outline-none"
                 :placeholder="placeholder"
                 :value="modelValue"
                 :min="minTime"

@@ -27,7 +27,7 @@
                 :placeholder="floatingLabel ? (isActive ? (placeholder || '') : '') : ((placeholder || '') + (required && placeholder ? ' *' : ''))"
                 :value="modelValue"
                 :class="[sizes[size], roundedStyles[rounded], variantStyles[variant],
-                floatingLabel ? (bgColor ? bgColor : variantColors[variant]) : 'bg-transparent',
+                (bgColor ? bgColor : variantColors[variant]),
                 textColor,
                 { 'ring-red-500 ring-2': hasError, 'opacity-30': disabled, 'cursor-not-allowed': disabled, 'pl-12': hasIcon }, customClass,
                 { 'pt-4': floatingLabel && !hasIcon, 'pb-3': hasIcon, 'pt-3': hasIcon, 'px-2': currencyMask }, shadow,
@@ -42,7 +42,7 @@
                 :placeholder="floatingLabel ? (isActive ? (placeholder || '') : '') : ((placeholder || '') + (required && placeholder ? ' *' : ''))"
                 :value="modelValue"
                 :class="[sizes[size], roundedStyles[rounded], variantStyles[variant],
-                floatingLabel ? (bgColor ? bgColor : variantColors[variant]) : 'bg-transparent',
+                (bgColor ? bgColor : variantColors[variant]),
                 textColor,
                 { 'ring-red-500 ring-2': hasError, 'opacity-30': disabled, 'cursor-not-allowed': disabled, 'pl-12': hasIcon }, customClass,
                 { 'pt-4': floatingLabel && !hasIcon, 'pb-3': hasIcon, 'pt-3': hasIcon }, shadow,
@@ -57,7 +57,7 @@
                 :placeholder="floatingLabel ? (isActive ? (placeholder || '') : '') : ((placeholder || '') + (required && placeholder ? ' *' : ''))"
                 :value="modelValue"
                 :class="[sizes[size], roundedStyles[rounded], variantStyles[variant],
-                floatingLabel ? (bgColor ? bgColor : variantColors[variant]) : 'bg-transparent',
+                (bgColor ? bgColor : variantColors[variant]),
                 textColor,
                 { 'ring-red-500 ring-2': hasError, 'opacity-30': disabled, 'cursor-not-allowed': disabled, 'pl-12': hasIcon }, customClass,
                 { 'pt-4': floatingLabel && !hasIcon, 'pb-3': hasIcon, 'pt-3': hasIcon }, shadow,
