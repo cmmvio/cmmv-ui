@@ -1,3 +1,12 @@
+# [0.4.0](https://github.com/cmmvio/cmmv-ui/compare/v0.3.4...v0.4.0) (2025-03-15)
+
+
+### Features
+
+* location input ([8e17b55](https://github.com/cmmvio/cmmv-ui/commit/8e17b552a663c9febdabc661a2428d29430f5673))
+
+
+
 ## [0.3.4](https://github.com/cmmvio/cmmv-ui/compare/v0.3.3...v0.3.4) (2025-03-14)
 
 
