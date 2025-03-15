@@ -372,9 +372,10 @@ const validate = (showError = true) => {
         //@ts-ignore
         const error = rule(currentValue.value);
 
-        if (error) {
+        if (error !== true) {
             if (showError)
                 validateShowError();
+
             return false;
         }
     }

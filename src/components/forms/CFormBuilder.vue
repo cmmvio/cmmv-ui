@@ -554,14 +554,14 @@ const getFieldLabel = (key: string): string => {
     return key;
 };
 
-const validate = (): boolean => {
+const validate = (showError = false): boolean => {
     invalidFields.value = {};
     let isValid = true;
 
     for (const key in props.schema) {
         if (props.schema[key].type === 'submit') continue;
 
-        const fieldValid = validateField(key);
+        const fieldValid = validateField(key, showError);
         isValid = isValid && fieldValid;
     }
 
@@ -571,7 +571,7 @@ const validate = (): boolean => {
             for (const key in tab.schema) {
                 if (tab.schema[key].type === 'submit') continue;
 
-                const fieldValid = validateField(key);
+                const fieldValid = validateField(key, showError);
                 isValid = isValid && fieldValid;
             }
         }
@@ -580,7 +580,7 @@ const validate = (): boolean => {
     return isValid;
 };
 
-const validateField = (key: string | number): boolean => {
+const validateField = (key: string | number, showError = false): boolean => {
     let field: FieldProps | undefined;
 
     if (key in props.schema)
@@ -597,7 +597,7 @@ const validateField = (key: string | number): boolean => {
 
     const componentRef = fieldRefs.value[key];
     if (componentRef && typeof componentRef.validate === 'function') {
-        const isComponentValid = componentRef.validate(false);
+        const isComponentValid = componentRef.validate(showError);
         fieldValidity.value[key] = isComponentValid;
 
         if (!isComponentValid)
@@ -610,7 +610,7 @@ const validateField = (key: string | number): boolean => {
 };
 
 const checkFormValidity = () => {
-    validate();
+    //validate();
 };
 
 const isFormValid = computed((): boolean => {
@@ -634,7 +634,7 @@ const reset = () => {
 };
 
 const handleSubmitButtonClick = () => {
-    if (validate())
+    if (validate(true))
         emit("submit", formData.value);
     else
         showValidationAlert.value = true;

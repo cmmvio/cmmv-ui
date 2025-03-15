@@ -249,7 +249,7 @@
 
         <!-- Submit Button -->
         <c-button v-if="field.type === 'submit'" class="w-full pb-4 pt-4" type="submit"
-            buttonType="button" size="2xl" @click="$emit('submit')" :disabled="disabled"
+            buttonType="button" size="2xl" @click="$emit('submit')"
             v-bind="field.props || {}">
             {{ field.label || 'Submit' }}
         </c-button>
@@ -566,12 +566,7 @@ const handleFileUploadSuccess = (fileInfo: any) => {
 const validate = (showError = true): boolean => {
     if (fieldRef.value && fieldRef.value.validate) {
         try {
-            console.log('aki')
             const result = fieldRef.value.validate(showError);
-
-            if(!result)
-                console.log('validate', props.fieldName, result);
-
             emit('validate', props.fieldName, result);
             return result;
         } catch (error) {

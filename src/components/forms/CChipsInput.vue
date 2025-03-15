@@ -464,7 +464,8 @@ const validateShowError = (showError = true) => {
 
     for (const rule of props.rules) {
         const error = rule(selectedChips.value);
-        if (error) {
+
+        if (error !== true) {
             if (showError)
                 errorMessage.value = typeof error === 'string' ? error : 'Invalid value';
 

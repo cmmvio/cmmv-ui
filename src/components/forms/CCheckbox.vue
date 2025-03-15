@@ -114,12 +114,10 @@ const internalChecked = ref(
 watch(
     () => props.modelValue,
     (newValue) => {
-        if (Array.isArray(newValue)) {
+        if (Array.isArray(newValue))
             internalChecked.value = newValue.includes(props.value);
-        } else if (newValue !== undefined) {
+        else if (newValue !== undefined)
             internalChecked.value = newValue;
-        }
-        validate();
     }
 );
 
@@ -141,18 +139,14 @@ const isChecked = computed({
         }
 
         internalChecked.value = value;
-
-        validate();
     },
 });
 
 const hasError = ref(false);
 
 const toggle = () => {
-    if (!props.disabled && !props.ignoreClick) {
+    if (!props.disabled && !props.ignoreClick)
         isChecked.value = !isChecked.value;
-        validate();
-    }
 };
 
 const validate = (showError = true) => {

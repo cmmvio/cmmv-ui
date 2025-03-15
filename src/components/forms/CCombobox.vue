@@ -110,11 +110,6 @@
                         Loading...
                     </div>
 
-                    <div v-else-if="hasError" class="p-4 text-red-500 text-center">
-                        <div class="mb-1 font-medium">Error loading options</div>
-                        <div class="text-sm">{{ errorMessage }}</div>
-                    </div>
-
                     <div v-else-if="filteredOptions.length === 0" class="p-4 text-neutral-500 text-center">
                         No options available
                     </div>
@@ -621,10 +616,8 @@ const handleBlur = () => {
 
         closeDropdown();
 
-        // Valida o campo quando perde o foco
-        if (props.rules && props.rules.length > 0) {
+        if (props.rules && props.rules.length > 0)
             validate();
-        }
     }, 200);
 };
 
@@ -659,7 +652,6 @@ const selectOption = (option: DropdownOption) => {
     if (props.searchable)
         searchQuery.value = option.label;
 
-    // Limpa erros quando uma opção válida é selecionada
     errorMessage.value = '';
     hasError.value = false;
 
@@ -868,6 +860,7 @@ const validate = (showError = true): boolean => {
 
     for (const rule of props.rules) {
         const error = (rule as (value: any) => string | boolean)(props.modelValue);
+
         if (error !== true && error) {
             if (showError) {
                 errorMessage.value = error as string;

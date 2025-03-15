@@ -1461,7 +1461,7 @@ const schema = ref({
         label: "Username",
         placeholder: "Choose a username",
         required: true,
-        size: 6,
+        size: 12,
     },
     password: {
         type: "password",

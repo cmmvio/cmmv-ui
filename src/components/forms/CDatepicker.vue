@@ -781,6 +781,7 @@ const validate = (showError = true) => {
             hasError.value = true;
             errorMessage.value = 'This field is required';
         }
+
         return false;
     }
 
@@ -789,7 +790,7 @@ const validate = (showError = true) => {
     for (const rule of props.rules) {//@ts-ignore
         const error = rule(props.modelValue);
 
-        if (error) {
+        if (error !== true) {
             if (showError) {
                 hasError.value = true;
                 errorMessage.value = error;
@@ -820,12 +821,10 @@ watch(() => props.modelValue, (newValue) => {
             ? new Date(newValue[1].getTime())
             : null;
 
-        // Atualizar calendários se datas mudarem externamente
         if (startDate.value) {
             startCalendarMonth.value = startDate.value.getMonth();
             startCalendarYear.value = startDate.value.getFullYear();
 
-            // Configurar calendário final
             const endDateToShow = endDate.value || startDate.value;
             if (endDateToShow.getMonth() === 11) {
                 endCalendarMonth.value = 0;
@@ -839,8 +838,6 @@ watch(() => props.modelValue, (newValue) => {
 });
 
 onMounted(() => {
-    validate();
-
     if (props.range && Array.isArray(props.modelValue)) {
         startDate.value = props.modelValue.length > 0 && isValidDate(props.modelValue[0])
             ? new Date(props.modelValue[0].getTime())
@@ -850,7 +847,6 @@ onMounted(() => {
             ? new Date(props.modelValue[1].getTime())
             : null;
 
-        // Configurar os calendários iniciais
         if (startDate.value) {
             startCalendarMonth.value = startDate.value.getMonth();
             startCalendarYear.value = startDate.value.getFullYear();
@@ -860,7 +856,6 @@ onMounted(() => {
             endCalendarMonth.value = endDate.value.getMonth();
             endCalendarYear.value = endDate.value.getFullYear();
         } else {
-            // Se não houver data final, mostrar o mês seguinte ao da data inicial
             if (startDate.value) {
                 if (startCalendarMonth.value === 11) {
                     endCalendarMonth.value = 0;
