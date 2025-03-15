@@ -1,3 +1,13 @@
+## [0.4.6](https://github.com/cmmvio/cmmv-ui/compare/v0.4.5...v0.4.6) (2025-03-15)
+
+
+### Bug Fixes
+
+* form builder validation ([5c0edbb](https://github.com/cmmvio/cmmv-ui/commit/5c0edbb83c42ad4b1ebc82fda21a41ac55ad6106))
+* validation from rule ([27695be](https://github.com/cmmvio/cmmv-ui/commit/27695be874963cf8acee567a196123d5c2843ea4))
+
+
+
 ## [0.4.5](https://github.com/cmmvio/cmmv-ui/compare/v0.4.4...v0.4.5) (2025-03-15)
 
 
