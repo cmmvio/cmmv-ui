@@ -19,6 +19,7 @@ import BadgePage from "./views/components/BadgePage.vue";
 import LoaderPage from "./views/components/LoaderPage.vue";
 import RatingPage from "./views/components/RatingPage.vue";
 import SystemBarPage from "./views/components/SystemBarPage.vue";
+import VideoPage from "./views/components/VideoPage.vue";
 
 //Data
 import ChartBarPage from "./views/data/ChartBarPage.vue";
@@ -96,6 +97,7 @@ const routes = [
     { path: '/first-steps', component: FirstStepsPage },
     { path: '/style-guide', component: StyleGuidePage },
     { path: '/custom-theme', component: CustomThemePage },
+
     //Components
     { path: '/ai-chat', component: AIChatPage },
     { path: '/badge', component: BadgePage },
@@ -104,12 +106,13 @@ const routes = [
     { path: '/flags', component: FlagsPage },
     { path: '/icon', component: IconPage },
     { path: '/image', component: ImagePage },
-	{ path: '/loader', component: LoaderPage },
+    { path: '/loader', component: LoaderPage },
     { path: '/progress-bar', component: ProgressBarPage },
     { path: '/progress-circular', component: ProgressCircularPage },
     { path: '/rating', component: RatingPage },
     { path: '/system-bar', component: SystemBarPage },
     { path: '/tooltip', component: TooltipPage },
+    { path: '/video', component: VideoPage },
 
     //Data
     { path: '/chart-bar', component: ChartBarPage },
@@ -131,12 +134,12 @@ const routes = [
     { path: '/menu', component: MenuPage },
     { path: '/terminal', component: TerminalPage },
 
-	//Layout
+    //Layout
     { path: '/accordion', component: AccordionPage },
     { path: '/alert', component: AlertPage },
     { path: '/avatar', component: AvatarPage },
-	{ path: '/breadcrumb', component: BreadcrumbPage },
-	{ path: '/card', component: CardPage },
+    { path: '/breadcrumb', component: BreadcrumbPage },
+    { path: '/card', component: CardPage },
     { path: '/dropdown', component: DropdownPage },
     { path: '/navbar', component: NavbarPage },
     { path: '/sidebar', component: SidebarPage },
@@ -146,7 +149,7 @@ const routes = [
     { path: '/tabs', component: TabsPage },
     { path: '/toolbar', component: ToolbarPage },
 
-	//Form
+    //Form
     { path: '/autocomplete', component: AutocompletePage },
     { path: '/checkbox', component: CheckboxPage },
     { path: '/chips-input', component: ChipsInputPage },
@@ -154,15 +157,15 @@ const routes = [
     { path: '/currency-input', component: CurrencyInputPage },
     { path: '/datepicker', component: DatepickerPage },
     { path: '/file-upload', component: FileUploadPage },
-	{ path: '/form', component: FormPage },
-	{ path: '/form-builder', component: FormBuilderPage },
-	{ path: '/input', component: InputPage },
+    { path: '/form', component: FormPage },
+    { path: '/form-builder', component: FormBuilderPage },
+    { path: '/input', component: InputPage },
     { path: '/location', component: LocationPage },
     { path: '/number-input', component: NumberInputPage },
     { path: '/otp-input', component: OtpInputPage },
     { path: '/password-input', component: PasswordInputPage },
     { path: '/phone-input', component: PhoneInputPage },
-	{ path: '/radio', component: RadioPage },
+    { path: '/radio', component: RadioPage },
     { path: '/radio-color-picker', component: RadioColorPickerPage },
     { path: '/slider', component: SliderPage },
     { path: '/textarea', component: TextareaPage },

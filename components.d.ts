@@ -87,6 +87,7 @@ declare module 'vue' {
     CTreeView: typeof import('./src/components/editor/CTreeView.vue')['default']
     CTreeViewContextMenu: typeof import('./src/components/editor/CTreeViewContextMenu.vue')['default']
     CTreeViewItem: typeof import('./src/components/editor/CTreeViewItem.vue')['default']
+    CVideo: typeof import('./src/components/components/CVideo.vue')['default']
     CWysiwygEditor: typeof import('./src/components/forms/CWysiwygEditor.vue')['default']
     FABold: typeof import('./src/components/fontawesome/FABold.vue')['default']
     FACircleUser: typeof import('./src/components/fontawesome/FACircleUser.vue')['default']

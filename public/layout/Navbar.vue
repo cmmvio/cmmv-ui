@@ -184,7 +184,8 @@ const navbarItems = [
             { name: "Progress Circular", uri: "/progress-circular" },
             { name: "Rating", uri: "/rating" },
             { name: "System Bar", uri: "/system-bar" },
-            { name: "Tooltip", uri: "/tooltip" }
+            { name: "Tooltip", uri: "/tooltip" },
+            { name: "Video", uri: "/video" }
         ],
     },
     {
