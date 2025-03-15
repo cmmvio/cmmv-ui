@@ -1,3 +1,12 @@
+## [0.4.5](https://github.com/cmmvio/cmmv-ui/compare/v0.4.4...v0.4.5) (2025-03-15)
+
+
+### Bug Fixes
+
+* componentes loader ([db00089](https://github.com/cmmvio/cmmv-ui/commit/db000892a9f64290b2a57a74170907e327a7fc82))
+
+
+
 ## [0.4.4](https://github.com/cmmvio/cmmv-ui/compare/v0.4.3...v0.4.4) (2025-03-15)
 
 
