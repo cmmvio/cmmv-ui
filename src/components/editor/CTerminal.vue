@@ -166,7 +166,7 @@ const initTerminal = () => {
         cursorBlink: props.cursorBlink,
         cursorStyle: props.cursorStyle,
         scrollback: props.scrollback,
-        bellStyle: props.bellStyle,
+        //bellStyle: props.bellStyle,
         allowTransparency: true,
         allowProposedApi: true
     });

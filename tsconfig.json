@@ -1,32 +1,13 @@
 {
     "compilerOptions": {
-        "target": "ES2020",
-        "module": "ESNext",
-        "moduleResolution": "node",
-        "strict": true,
-        "jsx": "preserve",
-        "sourceMap": true,
-        "resolveJsonModule": true,
-        "esModuleInterop": true,
-        "skipLibCheck": true,
         "noImplicitAny": false,
-        "noCheck": true,
-        "lib": ["ESNext", "DOM"],
-        "types": ["node", "vue", "@vue/test-utils", "vitest/globals"]
+        "moduleResolution": "node",
+        "module": "ESNext",
     },
-    "include": [
-        "src/**/*.ts",
-        "src/**/*.d.ts",
-        "src/**/*.vue"
-    ],
-    "files": ["src/module.ts"],
-    "exclude": [
-        "node_modules",
-        "dist",
-        "build",
-        "public",
-        "**/*.spec.ts",
-        "types/vitest.d.ts",
-
-    ]
+	"files": [],
+	"references": [
+		{ "path": "./tsconfig.node.json" },
+		{ "path": "./tsconfig.app.json" },
+		{ "path": "./tsconfig.vitest.json" }
+	]
 }

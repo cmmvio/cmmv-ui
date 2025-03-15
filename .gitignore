@@ -19,6 +19,7 @@ lerna-debug.log*
 yarn.lock
 pnpm-lock.yaml
 
+
 # OS
 .DS_Store
 
@@ -55,3 +56,4 @@ docs/index*.json
 public/sitemap.xml
 docs/*.json
 docs/**/*.json
+pnpm-lock.yaml

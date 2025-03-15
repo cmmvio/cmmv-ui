@@ -321,15 +321,11 @@ const zoomImage = (src) => {
     zoomedImageSrc.value = src;
     zoomActive.value = true;
     emit('zoom', src);
-
-    document.body.style.overflow = 'hidden';
 };
 
 const closeZoom = () => {
     zoomActive.value = false;
     emit('zoom-close');
-
-    document.body.style.overflow = '';
 };
 
 const handleSingleImageLoaded = () => {
@@ -441,10 +437,6 @@ watch(() => props.startIndex, (newIndex) => {
     if (isGallery.value && newIndex >= 0 && newIndex < normalizedSrcs.value.length) {
         currentGalleryIndex.value = newIndex;
     }
-});
-
-watch(() => zoomActive.value, (isActive) => {
-    document.body.style.overflow = isActive ? 'hidden' : '';
 });
 </script>
 
