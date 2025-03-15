@@ -1,3 +1,12 @@
+## [0.4.3](https://github.com/cmmvio/cmmv-ui/compare/v0.4.2...v0.4.3) (2025-03-15)
+
+
+### Bug Fixes
+
+* icons, loaders ([e3a1867](https://github.com/cmmvio/cmmv-ui/commit/e3a1867c080b8c3b6533ee0ffc4c73c5c31836ea))
+
+
+
 ## [0.4.2](https://github.com/cmmvio/cmmv-ui/compare/v0.4.1...v0.4.2) (2025-03-15)
 
 
