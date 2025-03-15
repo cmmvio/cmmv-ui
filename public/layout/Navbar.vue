@@ -213,6 +213,7 @@ const navbarItems = [
         children: [
             { name: "Code Editor", uri: "/code-editor" },
             { name: "Menu", uri: "/menu" },
+            { name: "Terminal", uri: "/terminal" },
             { name: "Tree View", uri: "/tree-view" },
         ]
     },

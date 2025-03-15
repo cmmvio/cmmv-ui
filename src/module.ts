@@ -11,7 +11,7 @@ for (const path in modules) {
 }
 
 const head = createHead({
-    titleTemplate: '%s | CMMV UI',
+    titleTemplate: '%s | CMMV UI',//@ts-ignore
     htmlAttrs: {
         lang: 'en'
     },

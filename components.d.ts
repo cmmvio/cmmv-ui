@@ -77,6 +77,7 @@ declare module 'vue' {
     CSystemBar: typeof import('./src/components/components/CSystemBar.vue')['default']
     CTable: typeof import('./src/components/data/CTable.vue')['default']
     CTabs: typeof import('./src/components/layout/CTabs.vue')['default']
+    CTerminal: typeof import('./src/components/editor/CTerminal.vue')['default']
     CTextarea: typeof import('./src/components/forms/CTextarea.vue')['default']
     CTimepicker: typeof import('./src/components/forms/CTimepicker.vue')['default']
     CToggle: typeof import('./src/components/forms/CToggle.vue')['default']

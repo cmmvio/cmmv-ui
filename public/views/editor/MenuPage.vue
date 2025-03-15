@@ -325,7 +325,7 @@ const iconMenuItems = [
             </template>
         </card-docs>
 
-        <PagePagination previous="Code Editor" previousLink="/code-editor" next="Tree View" nextLink="/tree-view" />
+        <PagePagination previous="Code Editor" previousLink="/code-editor" next="Terminal" nextLink="/terminal" />
     </BaseLayout>
 </template>
 

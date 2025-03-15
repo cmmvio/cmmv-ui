@@ -39,6 +39,7 @@ import TablePage from "./views/data/TablePage.vue";
 import CodeEditorPage from "./views/editor/CodeEditorPage.vue";
 import TreeViewPage from "./views/editor/TreeViewPage.vue";
 import MenuPage from "./views/editor/MenuPage.vue";
+import TerminalPage from "./views/editor/TerminalPage.vue";
 
 //Layout
 import AccordionPage from "./views/layout/AccordionPage.vue";
@@ -128,6 +129,7 @@ const routes = [
     { path: '/code-editor', component: CodeEditorPage },
     { path: '/tree-view', component: TreeViewPage },
     { path: '/menu', component: MenuPage },
+    { path: '/terminal', component: TerminalPage },
 
 	//Layout
     { path: '/accordion', component: AccordionPage },

@@ -539,7 +539,7 @@ const items = [
             </template>
         </card-docs>
 
-        <PagePagination previous="Menu" previousLink="/menu" next="Autocomplete" nextLink="/autocomplete" />
+        <PagePagination previous="Terminal" previousLink="/terminal" next="Autocomplete" nextLink="/autocomplete" />
     </BaseLayout>
 </template>
 
