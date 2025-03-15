@@ -1,5 +1,10 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="Combobox Component"
+            description="Learn how to use the CCombobox component in CMMV UI. A flexible combobox component combining dropdown selection with text input, supporting search, filtering, and custom item rendering."
+            :keywords="['combobox', 'component', 'ui', 'dropdown', 'select', 'input', 'search']"
+        />
         <h1>Combobox</h1>
 
         <p>

@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="Speed Dial Component"
+            description="Learn how to use the CSpeedDial component in CMMV UI. A floating action button that expands to reveal additional action buttons with customizable animations and positioning."
+            :keywords="['speed dial', 'component', 'ui', 'floating action button', 'fab', 'actions']"
+        />
+
         <h1>Speed Dial</h1>
 
         <p>

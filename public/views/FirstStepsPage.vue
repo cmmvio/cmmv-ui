@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="First Steps"
+            description="Learn how to set up a new project with CMMV UI using Vue 3 and Vite. This guide covers installation, configuration, and basic usage of components."
+            :keywords="['vue3', 'vite', 'setup', 'installation', 'configuration', 'getting started']"
+        />
+
         <h1>First Steps</h1>
 
         <p>

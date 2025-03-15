@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="Pagination Component"
+            description="Learn how to use the CPagination component in CMMV UI. A pagination component for navigating through large datasets with customizable styles, layouts, and interactive features."
+            :keywords="['pagination', 'component', 'ui', 'navigation', 'data display', 'page controls']"
+        />
+
         <h1>Pagination</h1>
 
         <p>The <code>CPagination (alias: c-pagination)</code> component provides a flexible pagination interface for

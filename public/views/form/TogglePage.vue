@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="Toggle Component"
+            description="Learn how to use the CToggle component in CMMV UI. A switch/toggle component for boolean input with customizable styles, labels, and states for on/off controls."
+            :keywords="['toggle', 'component', 'ui', 'switch', 'boolean input', 'form control']"
+        />
+
         <h1>Toggle</h1>
 
         <p>The <code>CToggle (alias: c-toggle)</code> component in the <code>@cmmv/ui</code> framework provides a

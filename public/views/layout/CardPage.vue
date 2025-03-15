@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="Card Component"
+            description="Learn how to use the CCard component in CMMV UI. A versatile card component for displaying content in a contained format with customizable headers, footers, and content sections."
+            :keywords="['card', 'component', 'ui', 'container', 'content display', 'layout']"
+        />
+
         <h1>Card</h1>
 
         <p>

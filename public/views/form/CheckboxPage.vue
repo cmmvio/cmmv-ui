@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="Checkbox Component"
+            description="Learn how to use the CCheckbox component in CMMV UI. A versatile checkbox component with customizable styles, states, and group functionality for multiple selections."
+            :keywords="['checkbox', 'component', 'ui', 'form input', 'selection', 'toggle']"
+        />
+
         <h1>Checkbox</h1>
 
         <p>

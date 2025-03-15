@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="Sidebar Component"
+            description="Learn how to use the CSidebar component in CMMV UI. A flexible sidebar component for creating collapsible side panels with customizable content, positioning, and transitions."
+            :keywords="['sidebar', 'component', 'ui', 'navigation', 'panel', 'drawer']"
+        />
+
         <h1>Sidebar</h1>
 
         <p>
@@ -70,7 +76,7 @@
                         Navigation
                     </template>
 
-                    <ul class="space-y-2 text-neutral-700 dark:text-neutral-300">
+                    <ul class="space-y-2 text-neutral-700 dark:text-neutral-300 p-2">
                         <li><a href="#"
                                 class="block p-2 hover:bg-neutral-100 dark:hover:bg-neutral-700 rounded">Dashboard</a>
                         </li>
@@ -140,12 +146,12 @@ const showSidebar = ref(false);
 
         <card-docs>
             <div class="mx-auto p-4 sm:p-6 flex flex-col items-center">
-                <c-sidebar v-model="showRightSidebar" side="right" bgColor="bg-neutral-100 dark:bg-zinc-800">
+                <c-sidebar fixed v-model="showRightSidebar" side="right" bgColor="bg-neutral-100 dark:bg-zinc-800">
                     <template #title>
                         Right Sidebar
                     </template>
 
-                    <p class="text-neutral-700 dark:text-neutral-300">Content inside the sidebar...</p>
+                    <p class="text-neutral-700 dark:text-neutral-300 p-2">Content inside the sidebar...</p>
 
                     <template #footer>
                         <p class="text-center text-neutral-500 text-sm">Footer content</p>
@@ -196,12 +202,12 @@ const showSidebar = ref(false);
         <card-docs>
             <div class="mx-auto p-4 sm:p-6 flex flex-col items-center">
                 <c-sidebar v-model="showWideSidebar" side="left" width="w-96" bgColor="bg-neutral-100 dark:bg-zinc-800"
-                    bgColorOverlay="bg-black/70">
+                    bgColorOverlay="bg-black/70" fixed>
                     <template #title>
                         Wide Sidebar
                     </template>
 
-                    <p class="text-neutral-700 dark:text-neutral-300">This sidebar is wider than usual.</p>
+                    <p class="text-neutral-700 dark:text-neutral-300 p-2">This sidebar is wider than usual.</p>
                 </c-sidebar>
 
                 <button @click="showWideSidebar = true"
@@ -248,7 +254,8 @@ const showSidebar = ref(false);
                 class="relative mx-auto flex flex-col justify-center items-center w-full min-h-[400px] overflow-hidden">
                 <c-sidebar ref="cardSidebar" absolute shadow="" rounded="md" width="w-48" class="rounded-l-md">
                     <template #title>Panel</template>
-                    <p class="text-neutral-700 dark:text-neutral-300">This is a floating sidebar inside the card.</p>
+                    <p class="text-neutral-700 dark:text-neutral-300 p-2">This is a floating sidebar inside the card.
+                    </p>
                 </c-sidebar>
 
                 <button @click="openCardSidebar"
@@ -309,7 +316,7 @@ const openCardSidebar = () => {
                     <c-sidebar v-model="showSidebarToolbar" absolute shadow="" rounded="md" width="w-48"
                         class="rounded-l-md w-full">
                         <template #title>Panel</template>
-                        <p class="text-neutral-700 dark:text-neutral-300">This is a floating sidebar inside the card.
+                        <p class="text-neutral-700 dark:text-neutral-300 p-2">This is a floating sidebar inside the card.
                         </p>
                     </c-sidebar>
 

@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="List Component"
+            description="Learn how to use the CList component in CMMV UI. A versatile list component for displaying and managing collections of items with customizable layouts, styles, and interactive features."
+            :keywords="['list', 'component', 'ui', 'data display', 'collection', 'items']"
+        />
+
         <h1>List</h1>
 
         <p>

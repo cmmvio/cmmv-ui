@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="WYSIWYG Editor Component"
+            description="Learn how to use the CWysiwygEditor component in CMMV UI. A rich text editor component with formatting tools, image uploads, and customizable toolbar options for content creation."
+            :keywords="['wysiwyg editor', 'component', 'ui', 'rich text', 'text editor', 'content editor']"
+        />
+
         <h1>WYSIWYG Editor</h1>
 
         <p>The <code>CWysiwygEditor (alias: c-wysiwyg-editor)</code> component provides a rich text editor with a comprehensive set of formatting options. This component is built on top of <a href="https://tiptap.dev/" target="_blank" rel="noopener noreferrer">TipTap</a>, a headless and extendable rich text editor for Vue.</p>

@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="Rating Component"
+            description="Learn how to use the CRating component in CMMV UI. A flexible rating component for collecting user feedback with customizable icons, scales, and interaction modes."
+            :keywords="['rating', 'component', 'ui', 'star rating', 'feedback', 'user input']"
+        />
+
         <h1>Rating</h1>
 
         <p>

@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="AI Chat Component"
+            description="Learn how to use the CAIChat component in CMMV UI. An advanced chat interface component designed for AI interactions, with support for markdown, code highlighting, and real-time responses."
+            :keywords="['ai chat', 'component', 'ui', 'chat interface', 'markdown', 'code highlighting']"
+        />
+
         <h1>AI Chat</h1>
 
         <p>
@@ -259,8 +265,6 @@ import BaseLayout from "../../layout/BaseLayout.vue";
 import TableDocs from "../../components/TableDocs.vue";
 import CardDocs from "../../components/CardDocs.vue";
 import PagePagination from "../../layout/PagePagination.vue";
-import CAIChat from "@components/components/CAIChat.vue";
-import CCard from "@components/layout/CCard.vue";
 
 const basicExampleMessages = ref([
     {

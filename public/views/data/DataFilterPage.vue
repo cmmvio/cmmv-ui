@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="Data Filter Component"
+            description="Learn how to use the CDataFilter component in CMMV UI. A powerful data filtering component for managing and filtering large datasets with customizable filters and search capabilities."
+            :keywords="['data filter', 'component', 'ui', 'filtering', 'search', 'data management']"
+        />
+
         <h1>DataFilter</h1>
 
         <p>

@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="Textarea Component"
+            description="Learn how to use the CTextarea component in CMMV UI. A flexible textarea component with auto-resize, character count, and customizable styling for multiline text input."
+            :keywords="['textarea', 'component', 'ui', 'multiline input', 'text input', 'form control']"
+        />
+
         <h1>Textarea</h1>
 
         <p>The <code>CTextarea (alias: c-textarea)</code> component in the <code>@cmmv/ui</code> framework provides a

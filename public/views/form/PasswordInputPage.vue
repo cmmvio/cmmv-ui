@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="Password Input Component"
+            description="Learn how to use the CPasswordInput component in CMMV UI. A secure password input component with visibility toggle, strength meter, and validation features for password management."
+            :keywords="['password input', 'component', 'ui', 'security', 'password strength', 'validation']"
+        />
+
         <h1>Password Input</h1>
 
         <p>The <code>CPasswordInput (alias: c-password-input)</code> component extends the standard input field with specialized features for password management, including strength evaluation, requirement validation, and visual feedback. It offers a comprehensive solution for creating secure password fields with built-in validation rules and visual indicators of password strength.</p>

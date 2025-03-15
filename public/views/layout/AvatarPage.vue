@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="Avatar Component"
+            description="Learn how to use the CAvatar component in CMMV UI. A flexible avatar component for displaying user profile images or initials with various sizes and styles."
+            :keywords="['avatar', 'component', 'ui', 'profile', 'user image', 'initials']"
+        />
+
         <h1>Avatar</h1>
 
         <p>

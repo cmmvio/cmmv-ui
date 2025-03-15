@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="Chips Input Component"
+            description="Learn how to use the CChipsInput component in CMMV UI. A dynamic chips input component for managing multiple values with tags, autocomplete suggestions, and customizable styling."
+            :keywords="['chips input', 'component', 'ui', 'tags', 'multiple values', 'input']"
+        />
+
         <h1>Chips Input</h1>
 
         <p>

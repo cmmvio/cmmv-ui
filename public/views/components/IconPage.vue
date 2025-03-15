@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="Icon Component"
+            description="Learn how to use the CIcon component in CMMV UI. A comprehensive icon system with support for multiple icon libraries, custom icons, and various styling options."
+            :keywords="['icon', 'component', 'ui', 'svg', 'icon library', 'customization']"
+        />
+
         <h1>Icon</h1>
 
         <p>

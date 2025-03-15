@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="Chart Polar Component"
+            description="Learn how to use the CChartPolar component in CMMV UI. A polar chart component for visualizing cyclic or periodic data with customizable angles, radii, and interactive features."
+            :keywords="['polar chart', 'component', 'ui', 'data visualization', 'charts', 'graphs']"
+        />
+
         <h1>Polar Area Chart</h1>
 
         <p>

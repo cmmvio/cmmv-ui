@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="Menu Component"
+            description="Learn how to use the CMenu component in CMMV UI. A versatile menu component for creating dropdown menus, context menus, and navigation menus with customizable items and interactive features."
+            :keywords="['menu', 'component', 'ui', 'dropdown', 'context menu', 'navigation']"
+        />
+
         <h1>Menu</h1>
 
         <p>

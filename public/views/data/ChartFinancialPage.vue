@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="Chart Financial Component"
+            description="Learn how to use the CChartFinancial component in CMMV UI. A financial chart component for visualizing stock market data with candlesticks, OHLC, and interactive features for financial analysis."
+            :keywords="['financial chart', 'component', 'ui', 'data visualization', 'charts', 'candlestick', 'OHLC', 'stock market']"
+        />
+
         <h1>Financial Chart</h1>
 
         <p>

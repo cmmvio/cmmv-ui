@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="Progress Bar Component"
+            description="Learn how to use the CProgressBar component in CMMV UI. A customizable progress bar for displaying progress, loading states, and completion percentages with various styles and animations."
+            :keywords="['progress bar', 'component', 'ui', 'loading', 'progress indicator', 'animation']"
+        />
+
         <h1>Progress Bar</h1>
 
         <p>The <code>CProgressBar (alias: c-progress-bar)</code> component is a flexible and customizable progress

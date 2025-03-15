@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="Button Component"
+            description="Learn how to use the CButton component in CMMV UI. A versatile button element with customizable properties, styling, and behavior, supporting different sizes, variants, and interaction states."
+            :keywords="['button', 'component', 'ui', 'ripple effect', 'interaction', 'customizable']"
+        />
+
         <h1>Button</h1>
 
         <p>The <code>CButton (alias: c-button)</code> component in the <code>@cmmv/ui</code> framework provides a

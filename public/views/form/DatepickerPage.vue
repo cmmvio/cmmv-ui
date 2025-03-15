@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="Datepicker Component"
+            description="Learn how to use the CDatepicker component in CMMV UI. A comprehensive date picker component with calendar view, range selection, and extensive customization options for date input."
+            :keywords="['datepicker', 'component', 'ui', 'calendar', 'date selection', 'date input']"
+        />
+
         <h1>Datepicker</h1>
 
         <p>The <code>CDatepicker (alias: c-datepicker)</code> component allows users to select a date through an

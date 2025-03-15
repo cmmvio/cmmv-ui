@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="Breadcrumb Component"
+            description="Learn how to use the CBreadcrumb component in CMMV UI. A navigation component for displaying hierarchical page paths and enabling easy navigation through website structure."
+            :keywords="['breadcrumb', 'component', 'ui', 'navigation', 'hierarchy', 'page path']"
+        />
+
         <h1>Breadcrumb</h1>
 
         <p>

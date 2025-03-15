@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="Image Component"
+            description="Learn how to use the CImage component in CMMV UI. An enhanced image component with support for lazy loading, placeholders, error handling, and various display modes."
+            :keywords="['image', 'component', 'ui', 'lazy loading', 'responsive images', 'image handling']"
+        />
+
         <h1>Image</h1>
 
         <p>
@@ -608,9 +614,7 @@ import BaseLayout from "../../layout/BaseLayout.vue";
 import TableDocs from "../../components/TableDocs.vue";
 import PagePagination from "../../layout/PagePagination.vue";
 import CardDocs from "../../components/CardDocs.vue";
-import CImage from "@components/components/CImage.vue";
 
-// Array of image URLs for the carousel examples (mantido para referência)
 const carouselImages = ref([
     '/images/freepik__the-style-is-candid-image-photography-with-natural__78231.jpeg',
     'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?q=80&w=800',

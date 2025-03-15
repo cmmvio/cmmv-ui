@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="Chart Doughnut Component"
+            description="Learn how to use the CChartDoughnut component in CMMV UI. A doughnut chart component for visualizing proportional data with customizable rings, colors, and interactive features."
+            :keywords="['doughnut chart', 'component', 'ui', 'data visualization', 'charts', 'graphs']"
+        />
+
         <h1>Doughnut Chart</h1>
 
         <p>

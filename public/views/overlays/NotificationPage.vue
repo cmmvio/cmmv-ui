@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="Notification Component"
+            description="Learn how to use the CNotification component in CMMV UI. A flexible notification system for displaying toast messages, alerts, and feedback with customizable positioning and animations."
+            :keywords="['notification', 'component', 'ui', 'toast', 'alert', 'feedback']"
+        />
+
         <h1>Notification</h1>
 
         <p>

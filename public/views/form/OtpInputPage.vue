@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="OTP Input Component"
+            description="Learn how to use the COtpInput component in CMMV UI. A specialized input component for one-time passwords and verification codes with auto-focus and validation features."
+            :keywords="['otp input', 'component', 'ui', 'verification code', 'one-time password', 'authentication']"
+        />
+
         <h1>OTP Input</h1>
 
         <p>The <code>COtpInput (alias: c-otp-input)</code> component in the <code>@cmmv/ui</code> framework provides a

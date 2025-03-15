@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="Autocomplete Component"
+            description="Learn how to use the CAutocomplete component in CMMV UI. An intelligent autocomplete input component with search suggestions, keyboard navigation, and customizable filtering options."
+            :keywords="['autocomplete', 'component', 'ui', 'search', 'suggestions', 'input']"
+        />
+
         <h1>Autocomplete</h1>
 
         <p>

@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="Currency Input Component"
+            description="Learn how to use the CCurrencyInput component in CMMV UI. A specialized input component for handling currency values with formatting, validation, and localization support."
+            :keywords="['currency input', 'component', 'ui', 'money', 'numeric input', 'formatting']"
+        />
+
         <h1>Currency Input</h1>
 
         <p>

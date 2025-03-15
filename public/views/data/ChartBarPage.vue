@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="Chart Bar Component"
+            description="Learn how to use the CChartBar component in CMMV UI. A bar chart component for comparing data across categories with customizable bars, colors, and interactive features."
+            :keywords="['bar chart', 'component', 'ui', 'data visualization', 'charts', 'graphs', 'comparison']"
+        />
+
         <h1>Bar Chart</h1>
 
         <p>

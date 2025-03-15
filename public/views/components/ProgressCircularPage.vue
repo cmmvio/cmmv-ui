@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="Progress Circular Component"
+            description="Learn how to use the CProgressCircular component in CMMV UI. A circular progress indicator for displaying progress or loading states with customizable size, color, and animation options."
+            :keywords="['progress circular', 'component', 'ui', 'spinner', 'loading', 'circular progress']"
+        />
+
         <h1>Progress Circular</h1>
 
         <p>The <code>CProgressCircular (alias: c-progress-circular)</code> component is a flexible and customizable

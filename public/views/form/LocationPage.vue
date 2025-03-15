@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="Location Component"
+            description="Learn how to use the CLocation component in CMMV UI. An advanced location input component with address autocomplete, map integration, and support for multiple geocoding services."
+            :keywords="['location', 'component', 'ui', 'address', 'geocoding', 'maps']"
+        />
+
         <h1>Location Input</h1>
 
         <p>
@@ -7,7 +13,7 @@
             Google Places API. It extends the <code>CAutocomplete</code> component with specific functionality for addresses and places.
         </p>
 
-        <div class="p-4 bg-amber-100 dark:bg-amber-900 rounded-md mb-6 border-l-4 border-amber-500">
+        <div class="p-4 bg-amber-100 dark:bg-amber-900 rounded-md mb-6 border-l-4 border-amber-500 text-xs">
             <h3 class="text-amber-800 dark:text-amber-200 font-medium">Important: Loading the Google Maps API</h3>
             <p class="mt-2">
                 This component uses OpenStreetMap's Nominatim API by default, which does not require an API key.
@@ -15,7 +21,7 @@
                 you need to load the Google Maps API in your HTML before using it with the <code>preferGoogle</code> prop.
                 Add the following script to your main HTML file (like index.html):
             </p>
-            <pre class="bg-amber-50 dark:bg-amber-950 p-3 rounded mt-2 overflow-auto">
+            <pre class="bg-amber-50 dark:bg-amber-950 p-3 rounded mt-2 overflow-hidden">
 &lt;script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"&gt;&lt;/script&gt;</pre>
             <p class="mt-2">
                 Replace <code>YOUR_API_KEY</code> with your Google Maps API key. Make sure to enable the "Places" library in the Google Cloud Platform console.

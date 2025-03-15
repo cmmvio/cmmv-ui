@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="Chart Pie Component"
+            description="Learn how to use the CChartPie component in CMMV UI. A pie chart component for visualizing proportional data with customizable slices, colors, and interactive features."
+            :keywords="['pie chart', 'component', 'ui', 'data visualization', 'charts', 'graphs']"
+        />
+
         <h1>Pie Chart</h1>
 
         <p>

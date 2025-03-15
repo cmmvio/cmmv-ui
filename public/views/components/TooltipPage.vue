@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="Tooltip Component"
+            description="Learn how to use the CTooltip component in CMMV UI. An informative tooltip component for displaying additional information or hints with customizable positioning and styling."
+            :keywords="['tooltip', 'component', 'ui', 'popup', 'hint', 'information']"
+        />
+
         <h1>Tooltip</h1>
 
         <p>The <code>CTooltip (alias: c-tooltip)</code> component in the <code>@cmmv/ui</code> framework provides an

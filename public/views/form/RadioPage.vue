@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="Radio Component"
+            description="Learn how to use the CRadio component in CMMV UI. A customizable radio button component with group functionality, custom styles, and various states for single selection inputs."
+            :keywords="['radio', 'component', 'ui', 'radio button', 'selection', 'form input']"
+        />
+
         <h1>Radio</h1>
 
         <p>

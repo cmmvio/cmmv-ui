@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="Chart Line Component"
+            description="Learn how to use the CChartLine component in CMMV UI. A line chart component for visualizing trends and continuous data over time with customizable lines, points, and interactive features."
+            :keywords="['line chart', 'component', 'ui', 'data visualization', 'charts', 'graphs', 'trends']"
+        />
+
         <h1>Line Chart</h1>
 
         <p>
@@ -25,11 +31,7 @@
 
             <template #code>
                 <pre><code class="code-highlight language-html">&lt;template&gt;
-    &lt;c-chart-line
-        :data="chartData"
-        title="Monthly Sales"
-        height="300px"
-    /&gt;
+    &lt;c-chart-line :data="chartData" title="Monthly Sales" height="300px" /&gt;
 &lt;/template&gt;
 
 &lt;script setup&gt;
@@ -62,11 +64,7 @@ datasets: [
 
             <template #code>
                 <pre><code class="code-highlight language-html">&lt;template&gt;
-    &lt;c-chart-line
-        :data="chartData"
-        title="Sales Comparison"
-        height="300px"
-    /&gt;
+    &lt;c-chart-line :data="chartData" title="Sales Comparison" height="300px" /&gt;
 &lt;/template&gt;
 
 &lt;script setup&gt;

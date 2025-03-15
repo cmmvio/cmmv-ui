@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="Dialog Component"
+            description="Learn how to use the CDialog component in CMMV UI. A versatile modal dialog component for displaying content, forms, and interactive elements with customizable transitions and styling."
+            :keywords="['dialog', 'component', 'ui', 'modal', 'popup', 'overlay']"
+        />
+
         <h1>Dialog</h1>
 
         <p>

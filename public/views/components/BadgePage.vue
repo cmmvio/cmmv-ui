@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="Badge Component"
+            description="Learn how to use the CBadge component in CMMV UI. A flexible badge component for displaying status, counts, or labels with various styles and positions."
+            :keywords="['badge', 'component', 'ui', 'status', 'label', 'notification']"
+        />
+
         <h1>Badge</h1>
 
         <p>

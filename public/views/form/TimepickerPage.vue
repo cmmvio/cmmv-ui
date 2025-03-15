@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="Timepicker Component"
+            description="Learn how to use the CTimepicker component in CMMV UI. A time selection component with 12/24 hour format support, minute intervals, and customizable time restrictions."
+            :keywords="['timepicker', 'component', 'ui', 'time selection', 'time input', 'form control']"
+        />
+
         <h1>TimePicker</h1>
 
         <p>

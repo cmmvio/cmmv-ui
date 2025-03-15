@@ -1,5 +1,11 @@
 <template>
   <BaseLayout>
+    <c-seo
+      section="Phone Input Component"
+      description="Learn how to use the CPhoneInput component in CMMV UI. An international phone number input component with country selection, formatting, and validation for phone numbers."
+      :keywords="['phone input', 'component', 'ui', 'international', 'phone number', 'validation']"
+    />
+
     <h1>Phone Input</h1>
 
     <p>

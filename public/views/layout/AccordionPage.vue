@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="Accordion Component"
+            description="Learn how to use the CAccordion component in CMMV UI. A collapsible content component for organizing and displaying information in expandable sections."
+            :keywords="['accordion', 'component', 'ui', 'collapsible', 'expandable', 'sections']"
+        />
+
         <h1>Accordion</h1>
 
         <p>

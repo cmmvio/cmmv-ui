@@ -285,7 +285,7 @@ const props = defineProps({
     },
     bgHeaderColor: {
         type: String,
-        default: "bg-neutral-100 dark:bg-gray-800",
+        default: "bg-neutral-100 dark:bg-neutral-900",
     },
     bgCaptionColor: {
         type: String,

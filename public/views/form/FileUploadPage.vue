@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="File Upload Component"
+            description="Learn how to use the CFileUpload component in CMMV UI. A versatile file upload component with drag and drop support, preview capabilities, and progress tracking for file uploads."
+            :keywords="['file upload', 'component', 'ui', 'drag and drop', 'file input', 'upload']"
+        />
+
         <h1>File Upload</h1>
 
         <p>The <code>CFileUpload (alias: c-file-upload)</code> component offers a complete solution for file uploads,

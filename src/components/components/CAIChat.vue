@@ -1,76 +1,95 @@
 <template>
-    <div
-        class="flex flex-col h-full bg-white dark:bg-neutral-900 rounded-lg overflow-hidden border border-neutral-200 dark:border-neutral-700">
-        <div ref="chatContainer" class="flex-1 overflow-y-auto p-4 space-y-4 relative"
-            :class="{ 'pb-20': isResponding }">
+    <div class="flex flex-col h-full">
+        <!-- Chat Container -->
+        <div ref="chatContainer" class="flex-1 overflow-y-auto space-y-6 px-4 py-6">
             <template v-for="(message, index) in messages" :key="index">
-                <div v-if="message.role === 'user'" class="flex justify-end mb-4">
-                    <div class="bg-blue-500 text-white rounded-2xl rounded-tr-sm px-4 py-2 max-w-[80%] shadow-sm">
-                        <p class="whitespace-pre-wrap">{{ message.content }}</p>
+                <!-- User Message -->
+                <div v-if="message.role === 'user'" class="flex items-start space-x-4">
+                    <div class="flex-shrink-0 w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white text-sm font-medium">
+                        U
+                    </div>
+                    <div class="flex-1 space-y-1">
+                        <div class="text-sm text-neutral-900 dark:text-neutral-100 whitespace-pre-wrap">
+                            {{ message.content }}
+                        </div>
                     </div>
                 </div>
 
-                <div v-else class="flex mb-4">
-                    <div
-                        class="bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-100 rounded-2xl rounded-tl-sm px-4 py-2 max-w-[80%] shadow-sm">
-                        <div v-if="message.isTyping" class="flex space-x-2 items-center py-2">
-                            <div class="w-2 h-2 bg-neutral-500 rounded-full animate-bounce"></div>
-                            <div class="w-2 h-2 bg-neutral-500 rounded-full animate-bounce"
-                                style="animation-delay: 0.2s"></div>
-                            <div class="w-2 h-2 bg-neutral-500 rounded-full animate-bounce"
-                                style="animation-delay: 0.4s"></div>
+                <!-- Assistant Message -->
+                <div v-else class="flex items-start space-x-4">
+                    <div class="flex-shrink-0 w-8 h-8 rounded-full bg-neutral-200 dark:bg-neutral-700 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-neutral-700 dark:text-neutral-300" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
+                        </svg>
+                    </div>
+                    <div class="flex-1 space-y-1">
+                        <div v-if="message.isTyping" class="flex space-x-1">
+                            <div class="w-1.5 h-1.5 bg-neutral-400 dark:bg-neutral-500 rounded-full animate-bounce"></div>
+                            <div class="w-1.5 h-1.5 bg-neutral-400 dark:bg-neutral-500 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+                            <div class="w-1.5 h-1.5 bg-neutral-400 dark:bg-neutral-500 rounded-full animate-bounce" style="animation-delay: 0.4s"></div>
                         </div>
-                        <div v-else class="markdown-body" v-html="formatMessage(message.content)"></div>
+                        <div v-else class="prose dark:prose-invert max-w-none text-sm text-neutral-800 dark:text-neutral-200">
+                            <div class="markdown-body" v-html="formatMessage(message.content)"></div>
+                        </div>
                     </div>
                 </div>
             </template>
         </div>
 
-        <c-button v-if="showScrollButton" @click="scrollToBottom" variant="secondary" size="sm"
-            class="absolute bottom-0 left-1/2 z-10 h-8 w-8 flex justify-center bg-neutral-200 dark:bg-neutral-800/80 shadow-sm"
-            aria-label="Scroll to bottom">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M7.41 8.59L12 13.17L16.59 8.59L18 10L12 16L6 10L7.41 8.59Z" />
-            </svg>
-        </c-button>
-
-        <div class="border-t border-neutral-200 dark:border-neutral-700 p-4 bg-white dark:bg-neutral-800 relative">
-            <div v-if="!isResponding && suggestions.length > 0" class="flex flex-wrap gap-2 mb-3 px-2">
-                <c-badge v-for="(suggestion, idx) in suggestions" :key="idx" @click="selectSuggestion(suggestion)"
-                    bgColor="bg-neutral-100 dark:bg-neutral-700" textColor="text-neutral-700 dark:text-neutral-200"
-                    rounded="rounded-full"
-                    customClass="px-3 py-1 text-sm cursor-pointer hover:bg-neutral-200 dark:hover:bg-neutral-600 transition-colors">
-                    {{ suggestion }}
-                </c-badge>
-            </div>
-
-            <div v-if="isResponding" class="flex justify-center mb-3">
-                <c-button @click="stopGenerating" variant="danger" size="sm" class="px-4">
-                    Stop generating
-                </c-button>
-            </div>
-
-            <div class="flex items-end gap-2">
-                <div class="c-textarea relative w-full">
-                    <textarea ref="inputField" v-model="userInput" @keydown.enter.prevent="sendMessage"
-                        :placeholder="isResponding ? '' : 'Type a message...'" :class="[
-                            'px-3 py-2 text-sm',
-                            'rounded-md',
-                            'border border-neutral-300 dark:border-neutral-700',
-                            'bg-white dark:bg-neutral-900 text-neutral-800 dark:text-neutral-100',
-                            {
-                                'opacity-50': isResponding,
-                                'resize-none': true
-                            }
-                        ]" class="c-textarea-field block w-full outline-none" :disabled="isResponding"
-                        :rows="inputRows" style="overflow-y: hidden; min-height: 40px;" />
+        <!-- Input Area -->
+        <div class="border-t border-neutral-200 dark:border-neutral-800">
+            <div class="px-4 py-3 relative">
+                <!-- Suggestions -->
+                <div v-if="!isResponding && suggestions.length > 0" class="flex flex-wrap gap-2 mb-3">
+                    <button v-for="(suggestion, idx) in suggestions" :key="idx"
+                        @click="selectSuggestion(suggestion)"
+                        class="px-2.5 py-1 text-xs rounded-md bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors">
+                        {{ suggestion }}
+                    </button>
                 </div>
-                <c-button @click="sendMessage" variant="primary" size="md" :disabled="!userInput.trim() || isResponding"
-                    class="flex-shrink-0 h-10 w-10 flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M2.01 21L23 12L2.01 3L2 10L17 12L2 14L2.01 21Z" />
-                    </svg>
-                </c-button>
+
+                <!-- Stop Generating Button -->
+                <div v-if="isResponding" class="flex justify-center mb-3">
+                    <button @click="stopGenerating"
+                        class="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium rounded-md text-red-700 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-500/10 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
+                        </svg>
+                        Stop generating
+                    </button>
+                </div>
+
+                <!-- Input Field -->
+                <div class="relative flex items-end gap-2 group">
+                    <div class="flex-1 relative">
+                        <div class="relative">
+                            <textarea ref="inputField" v-model="userInput"
+                                @keydown.enter.prevent="sendMessage"
+                                :placeholder="isResponding ? '' : 'Send a message...'"
+                                :disabled="isResponding"
+                                :rows="inputRows"
+                                class="block w-full resize-none rounded-lg pl-3 pr-12 py-3 bg-neutral-50 dark:bg-neutral-800/50 text-neutral-900 dark:text-neutral-100 placeholder-neutral-400 dark:placeholder-neutral-500 text-sm border border-transparent hover:border-neutral-200 dark:hover:border-neutral-700 focus:border-blue-500/50 dark:focus:border-blue-400/50 focus:ring-2 focus:ring-blue-500/20 dark:focus:ring-blue-400/20 transition-all"
+                                style="min-height: 44px; max-height: 200px;"
+                            ></textarea>
+
+                            <!-- Send Button -->
+                            <div class="absolute right-1 bottom-1 flex items-center">
+                                <button @click="sendMessage"
+                                    :disabled="!userInput.trim() || isResponding"
+                                    class="p-1.5 rounded-md text-neutral-400 dark:text-neutral-500 hover:text-neutral-900 dark:hover:text-neutral-300 hover:bg-neutral-200/50 dark:hover:bg-neutral-700/50 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent transition-colors">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" class="h-4 w-4 m-1 transition-transform group-hover:translate-x-px">
+                                        <path d="M.5 1.163A1 1 0 0 1 1.97.28l12.868 6.837a1 1 0 0 1 0 1.766L1.969 15.72A1 1 0 0 1 .5 14.836V10.33a1 1 0 0 1 .816-.983L8.5 8 1.316 6.653A1 1 0 0 1 .5 5.67V1.163Z" fill="currentColor"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Keyboard Shortcut Hint -->
+                        <div class="absolute right-0 -bottom-5 flex items-center justify-end px-2 pointer-events-none">
+                            <span class="text-xs text-neutral-400 dark:text-neutral-500">Press Enter to send</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -314,127 +333,114 @@ onMounted(() => {
 });
 </script>
 
-<style scoped>
-.c-textarea-field {
-    transition: none;
-    line-height: 1.5;
-    overflow-y: hidden;
-}
-
-.c-textarea-field:focus {
-    border-color: inherit;
-    box-shadow: none;
-}
-
+<style>
 .markdown-body {
-    line-height: 1.6;
+    font-size: 0.875rem;
+    line-height: 1.5;
 }
 
 .markdown-body h1 {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: 600;
-    margin-top: 1.5rem;
-    margin-bottom: 1rem;
+    margin: 1.5rem 0 1rem;
+    color: inherit;
 }
 
 .markdown-body h2 {
-    font-size: 1.25rem;
+    font-size: 1.125rem;
     font-weight: 600;
-    margin-top: 1.5rem;
-    margin-bottom: 0.75rem;
+    margin: 1.25rem 0 0.75rem;
+    color: inherit;
 }
 
 .markdown-body h3 {
-    font-size: 1.125rem;
+    font-size: 1rem;
     font-weight: 600;
-    margin-top: 1.25rem;
-    margin-bottom: 0.75rem;
+    margin: 1rem 0 0.75rem;
+    color: inherit;
 }
 
 .markdown-body p {
-    margin-bottom: 1rem;
+    margin: 0 0 1rem;
 }
 
 .markdown-body ul,
 .markdown-body ol {
-    margin-bottom: 1rem;
+    margin: 0 0 1rem;
     padding-left: 1.5rem;
 }
 
-.markdown-body ul {
-    list-style-type: disc;
-}
-
-.markdown-body ol {
-    list-style-type: decimal;
-}
-
 .markdown-body li {
-    margin-bottom: 0.25rem;
+    margin: 0.25rem 0;
 }
 
 .markdown-body code {
-    font-family: monospace;
-    background-color: rgba(0, 0, 0, 0.05);
-    padding: 0.2rem 0.4rem;
-    border-radius: 0.25rem;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
     font-size: 0.875em;
+    color: inherit;
+    background-color: rgba(0, 0, 0, 0.04);
+    padding: 0.2em 0.4em;
+    border-radius: 0.25rem;
+}
+
+.dark .markdown-body code {
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .markdown-body pre {
-    margin-bottom: 1rem;
+    margin: 1rem 0;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.04);
+    border-radius: 0.5rem;
     overflow-x: auto;
-    border-radius: 0.375rem;
+}
+
+.dark .markdown-body pre {
+    background-color: rgba(255, 255, 255, 0.05);
 }
 
 .markdown-body pre code {
-    display: block;
-    padding: 1rem;
-    background-color: #f6f8fa;
-    border-radius: 0.375rem;
+    background: none;
+    padding: 0;
     font-size: 0.875em;
-    line-height: 1.5;
-}
-
-.dark .markdown-body pre code {
-    background-color: #1e1e1e;
+    color: inherit;
 }
 
 .markdown-body blockquote {
-    border-left: 4px solid #ddd;
+    margin: 1rem 0;
     padding-left: 1rem;
-    color: #666;
-    margin-bottom: 1rem;
+    border-left: 3px solid rgba(0, 0, 0, 0.1);
+    color: rgba(0, 0, 0, 0.5);
 }
 
 .dark .markdown-body blockquote {
-    border-left-color: #444;
-    color: #aaa;
+    border-left-color: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.5);
 }
 
 .markdown-body table {
-    border-collapse: collapse;
     width: 100%;
-    margin-bottom: 1rem;
+    margin: 1rem 0;
+    border-collapse: collapse;
 }
 
-.markdown-body table th,
-.markdown-body table td {
-    border: 1px solid #ddd;
+.markdown-body th,
+.markdown-body td {
     padding: 0.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.dark .markdown-body table th,
-.dark .markdown-body table td {
-    border-color: #444;
+.dark .markdown-body th,
+.dark .markdown-body td {
+    border-color: rgba(255, 255, 255, 0.1);
 }
 
-.markdown-body table th {
-    background-color: #f6f8fa;
+.markdown-body th {
     font-weight: 600;
+    background-color: rgba(0, 0, 0, 0.04);
 }
 
-.dark .markdown-body table th {
-    background-color: #333;
+.dark .markdown-body th {
+    background-color: rgba(255, 255, 255, 0.05);
 }
 </style>

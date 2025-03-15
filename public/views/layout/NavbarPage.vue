@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="Navbar Component"
+            description="Learn how to use the CNavbar component in CMMV UI. A comprehensive navigation bar component for creating responsive website headers with menus, branding, and interactive elements."
+            :keywords="['navbar', 'component', 'ui', 'navigation', 'header', 'menu']"
+        />
+
         <h1>Navbar</h1>
 
         <p>

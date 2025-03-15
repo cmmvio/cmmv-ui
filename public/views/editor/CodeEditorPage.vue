@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="Code Editor Component"
+            description="Learn how to use the CCodeEditor component in CMMV UI. A powerful code editor component with syntax highlighting, line numbers, and advanced editing features for multiple programming languages."
+            :keywords="['code editor', 'component', 'ui', 'syntax highlighting', 'programming', 'editor']"
+        />
+
         <h1>Code Editor</h1>
 
         <p>

@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="System Bar Component"
+            description="Learn how to use the CSystemBar component in CMMV UI. A system bar component for displaying system-level information, status, or actions with customizable styling and positioning."
+            :keywords="['system bar', 'component', 'ui', 'status bar', 'navigation', 'header']"
+        />
+
         <h1>System Bar</h1>
 
         <p>

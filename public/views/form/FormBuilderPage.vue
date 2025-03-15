@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="Form Builder Component"
+            description="Learn how to use the CFormBuilder component in CMMV UI. A powerful form builder component for dynamically creating and managing complex forms with drag-and-drop functionality and extensive customization options."
+            :keywords="['form builder', 'component', 'ui', 'dynamic forms', 'drag and drop', 'form generation']"
+        />
+
         <h1>Form Builder</h1>
 
         <p>The <code>CFormBuilder (alias: c-form-builder)</code> component in the <code>@cmmv/ui</code> framework

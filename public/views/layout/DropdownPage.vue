@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="Dropdown Component"
+            description="Learn how to use the CDropdown component in CMMV UI. A flexible dropdown menu component for displaying contextual options and actions with customizable triggers and positioning."
+            :keywords="['dropdown', 'component', 'ui', 'menu', 'contextual', 'navigation']"
+        />
+
         <h1>Dropdown</h1>
 
         <p>

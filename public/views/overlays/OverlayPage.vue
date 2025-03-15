@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="Overlay Component"
+            description="Learn how to use the COverlay component in CMMV UI. A foundational overlay component for creating modal backgrounds, loading screens, and interactive overlays with customizable opacity and blur effects."
+            :keywords="['overlay', 'component', 'ui', 'backdrop', 'modal background', 'loading screen']"
+        />
+
         <h1>Overlay</h1>
 
         <p>

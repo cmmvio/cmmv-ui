@@ -1,8 +1,8 @@
 <template>
-    <div class="p-4 select-none text-slate-700 dark:text-slate-200">
+    <div class="p-4 select-none text-neutral-700 dark:text-neutral-200">
         <div class="mb-4 flex items-center justify-between lg:hidden">
             <h2 class="text-base font-bold">Menu</h2>
-            <button @click="$emit('close')" class="p-1.5 rounded-lg hover:bg-neutral-100 dark:hover:bg-zinc-700/70">
+            <button @click="$emit('close')" class="p-1.5 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800">
                 <IconXMark class="h-5 w-5" />
             </button>
         </div>
@@ -14,13 +14,13 @@
                 </div>
 
                 <input type="search" placeholder="Search components..."
-                    class="pl-10 pr-4 py-2 w-full bg-neutral-100 dark:bg-zinc-700/50 border-0 rounded-lg text-sm transition-all duration-200"
+                    class="pl-10 pr-4 py-2 w-full bg-neutral-100 dark:bg-neutral-800 border-0 rounded-lg text-sm transition-all duration-200"
                     v-model="searchQuery" @keydown.esc="clearSearch">
 
                 <div v-if="searchQuery && filteredResults.length > 0"
-                    class="absolute z-50 mt-1 w-full bg-white dark:bg-zinc-800 rounded-lg shadow-lg border border-neutral-200 dark:border-zinc-700 overflow-hidden max-h-[300px] overflow-y-auto">
+                    class="absolute z-50 mt-1 w-full bg-white dark:bg-neutral-800 rounded-lg shadow-lg border border-neutral-200 dark:border-neutral-700 overflow-hidden max-h-[300px] overflow-y-auto">
                     <div v-for="(result, index) in filteredResults" :key="index"
-                        class="px-3 py-2 hover:bg-neutral-100 dark:hover:bg-zinc-700/70 cursor-pointer"
+                        class="px-3 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-800 cursor-pointer"
                         @click="navigateTo(result)">
                         <div class="flex items-center">
                             <div>
@@ -33,13 +33,13 @@
                     </div>
                 </div>
                 <div v-else-if="searchQuery && filteredResults.length === 0"
-                    class="absolute z-50 mt-1 w-full bg-white dark:bg-zinc-800 rounded-lg shadow-lg border border-neutral-200 dark:border-zinc-700 py-3 px-4 text-center">
+                    class="absolute z-50 mt-1 w-full bg-white dark:bg-neutral-800 rounded-lg shadow-lg border border-neutral-200 dark:border-neutral-700 py-3 px-4 text-center">
                     <span class="text-neutral-500 dark:text-neutral-400 text-sm">Nenhum resultado encontrado</span>
                 </div>
             </div>
         </div>
         <div v-if="!searchQuery" v-for="(item, key) in navbarItems" :key="key" class="mb-1">
-            <div class="flex items-center px-3 py-2.5 rounded-lg hover:bg-neutral-100 dark:hover:bg-zinc-700/70 transition-colors duration-200 cursor-pointer group"
+            <div class="flex items-center px-3 py-2.5 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-700/70 transition-colors duration-200 cursor-pointer group"
                 :id="item?.name.replace(/\s/g, '_')" @click.stop="toggle(item.name?.replace(/\s/g, '_'))">
                 <div class="flex flex-1 items-center">
                     <div class="mr-4 text-neutral-500 dark:text-neutral-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200 flex-shrink-0"
@@ -62,8 +62,8 @@
                 :id="`${item?.name.replace(/\s/g, '_')}_contents`" class="py-1 pl-10 pr-3 mb-1 transition duration-200">
                 <div v-for="(child) in item.children" :key="child.name" class="mb-1">
                     <a :href="child.uri"
-                        class="block py-2 px-3 rounded-md text-sm hover:bg-neutral-100 dark:hover:bg-zinc-700/50 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
-                        :class="{ 'bg-blue-50 dark:bg-blue-900/10 text-blue-700 dark:text-blue-400 font-medium': isCurrentPath(child.uri) }">
+                        class="block py-2 px-3 rounded-md text-sm hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:text-neutral-600 dark:hover:text-neutral-400 transition-colors duration-200"
+                        :class="{ 'bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 font-medium': isCurrentPath(child.uri) }">
                         {{ child.name }}
                     </a>
                 </div>
@@ -162,7 +162,9 @@ const navbarItems = [
         icon: IconBolt,
         children: [
             { name: "Introduction", uri: "/introduction" },
-            { name: "First steps", uri: "/first-steps" }
+            { name: "First steps", uri: "/first-steps" },
+            { name: "Style Guide", uri: "/style-guide" },
+            { name: "Custom Theme", uri: "/custom-theme" }
         ],
     },
     {

@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="Alert Component"
+            description="Learn how to use the CAlert component in CMMV UI. A versatile alert component for displaying important messages, notifications, and feedback with various styles and types."
+            :keywords="['alert', 'component', 'ui', 'notification', 'message', 'feedback']"
+        />
+
         <h1>Alert</h1>
 
         <p>The <code>CAlert (alias: c-alert)</code> component provides a customizable alert message box for your

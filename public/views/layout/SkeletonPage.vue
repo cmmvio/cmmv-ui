@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="Skeleton Component"
+            description="Learn how to use the CSkeleton component in CMMV UI. A loading placeholder component for creating smooth content loading states with customizable shapes and animations."
+            :keywords="['skeleton', 'component', 'ui', 'loading', 'placeholder', 'animation']"
+        />
+
         <h1>Skeleton</h1>
 
         <p>

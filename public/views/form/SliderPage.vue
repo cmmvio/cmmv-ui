@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="Slider Component"
+            description="Learn how to use the CSlider component in CMMV UI. An interactive slider component for selecting numeric values or ranges with customizable marks, steps, and tooltips."
+            :keywords="['slider', 'component', 'ui', 'range input', 'numeric input', 'interactive']"
+        />
+
         <h1>Slider</h1>
 
         <p>

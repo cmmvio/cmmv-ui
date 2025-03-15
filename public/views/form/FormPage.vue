@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="Form Component"
+            description="Learn how to use the CForm component in CMMV UI. A flexible form component for handling form submissions, validation, and data management with built-in features and customization options."
+            :keywords="['form', 'component', 'ui', 'validation', 'form handling', 'data management']"
+        />
+
         <h1>Form</h1>
 
         <p>

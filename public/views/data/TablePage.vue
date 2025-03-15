@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="Table Component"
+            description="Learn how to use the CTable component in CMMV UI. A powerful table component with sorting, filtering, pagination, and customizable styling for displaying and managing tabular data."
+            :keywords="['table', 'component', 'ui', 'data display', 'sorting', 'filtering', 'pagination']"
+        />
+
         <h1>Table</h1>
 
         <p>

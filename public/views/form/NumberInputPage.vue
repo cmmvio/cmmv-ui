@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="Number Input Component"
+            description="Learn how to use the CNumberInput component in CMMV UI. A specialized input component for numeric values with formatting, validation, and step controls for precise number input."
+            :keywords="['number input', 'component', 'ui', 'numeric', 'stepper', 'validation']"
+        />
+
         <h1>Number Input</h1>
 
         <p>

@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="Tabs Component"
+            description="Learn how to use the CTabs component in CMMV UI. A tabbed interface component for organizing and displaying content in multiple panels with customizable styles and animations."
+            :keywords="['tabs', 'component', 'ui', 'navigation', 'panels', 'content organization']"
+        />
+
         <h1>Tabs</h1>
 
         <p>

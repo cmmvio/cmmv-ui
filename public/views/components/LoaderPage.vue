@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="Loader Component"
+            description="Learn how to use the CLoader component in CMMV UI. A versatile loading indicator with multiple styles, sizes, and animations for showing loading states in your application."
+            :keywords="['loader', 'component', 'ui', 'loading', 'spinner', 'animation']"
+        />
+
         <h1>Loader</h1>
 
         <p>

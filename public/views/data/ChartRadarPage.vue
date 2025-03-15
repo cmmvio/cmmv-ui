@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="Chart Radar Component"
+            description="Learn how to use the CChartRadar component in CMMV UI. A versatile radar chart component for visualizing multivariate data with customizable axes, colors, and interactive features."
+            :keywords="['radar chart', 'component', 'ui', 'data visualization', 'charts', 'graphs']"
+        />
+
         <h1>Radar Chart</h1>
 
         <p>

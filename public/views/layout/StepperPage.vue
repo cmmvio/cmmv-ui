@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="Stepper Component"
+            description="Learn how to use the CStepper component in CMMV UI. A step-by-step navigation component for guiding users through multi-step processes with progress tracking and validation."
+            :keywords="['stepper', 'component', 'ui', 'wizard', 'steps', 'progress']"
+        />
+
         <h1>Stepper</h1>
 
         <p>The <code>CStepper (alias: c-stepper)</code> component in the <code>@cmmv/ui</code> framework provides a

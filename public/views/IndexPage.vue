@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            title="CMMV UI - Vue 3 Component Library"
+            description="Contract-Model-Model-View (CMMV) is a Vue 3 component library designed to create highly modular, maintainable, and scalable frontend applications."
+            :keywords="['cmmv', 'vue3', 'component library', 'ui framework', 'typescript', 'tailwind']"
+        />
+
         <p align="center">
             <img src="https://raw.githubusercontent.com/cmmvio/docs.cmmv.io/main/public/assets/logo_CMMV2_icon.png"
                 width="300" alt="CMMV Logo" />

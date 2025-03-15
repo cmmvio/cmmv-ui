@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="Data Table Component"
+            description="Learn how to use the CDataTable component in CMMV UI. An advanced data table component with sorting, filtering, pagination, row selection, and extensive customization options for managing complex datasets."
+            :keywords="['data table', 'component', 'ui', 'data management', 'sorting', 'filtering', 'pagination', 'selection']"
+        />
+
         <h1>DataTable</h1>
 
         <p>

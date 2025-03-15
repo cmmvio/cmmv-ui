@@ -67,6 +67,7 @@ declare module 'vue' {
     CRadio: typeof import('./src/components/forms/CRadio.vue')['default']
     CRadioColorPicker: typeof import('./src/components/forms/CRadioColorPicker.vue')['default']
     CRating: typeof import('./src/components/components/CRating.vue')['default']
+    CSeo: typeof import('./src/components/layout/CSeo.vue')['default']
     CSidebar: typeof import('./src/components/layout/CSidebar.vue')['default']
     CSkeleton: typeof import('./src/components/layout/CSkeleton.vue')['default']
     CSlider: typeof import('./src/components/forms/CSlider.vue')['default']

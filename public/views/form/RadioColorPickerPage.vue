@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="Radio Color Picker Component"
+            description="Learn how to use the CRadioColorPicker component in CMMV UI. A specialized radio button component for color selection with visual color swatches and customizable options."
+            :keywords="['color picker', 'component', 'ui', 'color selection', 'radio button', 'customization']"
+        />
+
         <h1>Radio Color Picker</h1>
 
         <p>

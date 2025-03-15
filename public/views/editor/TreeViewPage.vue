@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="Tree View Component"
+            description="Learn how to use the CTreeView component in CMMV UI. A hierarchical tree view component for displaying and managing nested data structures with customizable nodes and interactive features."
+            :keywords="['tree view', 'component', 'ui', 'hierarchical', 'nested data', 'navigation']"
+        />
+
         <h1>TreeView</h1>
 
         <p>

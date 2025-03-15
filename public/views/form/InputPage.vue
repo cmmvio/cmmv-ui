@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="Input Component"
+            description="Learn how to use the CInput component in CMMV UI. A flexible text input component with various types, validation, masking, and extensive customization options for form inputs."
+            :keywords="['input', 'component', 'ui', 'text input', 'form control', 'validation']"
+        />
+
         <h1>Input</h1>
 
         <p>The <code>CInput (alias: c-input)</code> component in the <code>@cmmv/ui</code> framework provides a flexible

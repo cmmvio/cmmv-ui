@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="Toolbar Component"
+            description="Learn how to use the CToolbar component in CMMV UI. A versatile toolbar component for creating application headers and action bars with customizable content and responsive behavior."
+            :keywords="['toolbar', 'component', 'ui', 'header', 'app bar', 'navigation']"
+        />
+
         <h1>Toolbar</h1>
 
         <p>The <code>CToolbar (alias: c-toolbar)</code> component provides a structured layout for application toolbars.

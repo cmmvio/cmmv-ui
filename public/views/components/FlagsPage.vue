@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="Flags Component"
+            description="Learn how to use the CFlags component in CMMV UI. A comprehensive flag component for displaying country flags and icons with support for multiple flag libraries and customization options."
+            :keywords="['flags', 'component', 'ui', 'country flags', 'icons', 'internationalization']"
+        />
+
         <h1>Flags</h1>
 
         <p>The <code>CFlag (alias: c-flag)</code> component in the <code>@cmmv/ui</code> framework provides an easy way
@@ -263,7 +269,6 @@ import BaseLayout from "../../layout/BaseLayout.vue";
 import TableDocs from "../../components/TableDocs.vue";
 import CardDocs from "../../components/CardDocs.vue";
 import PagePagination from "../../layout/PagePagination.vue";
-import CButton from "@components/components/CButton.vue";
 import { ref, computed } from "vue";
 
 const countries = Countries;

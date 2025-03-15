@@ -1,5 +1,11 @@
 <template>
     <BaseLayout>
+        <c-seo
+            section="Button Groups Component"
+            description="Learn how to use the CButtonGroup component in CMMV UI. A component for grouping related buttons together with consistent styling and spacing, supporting various layouts and interactions."
+            :keywords="['button groups', 'component', 'ui', 'button layout', 'grouped buttons', 'interaction']"
+        />
+
         <h1>Button Groups</h1>
 
         <p>The <code>CButtonGroups (alias: c-button-groups)</code> component in the <code>@cmmv/ui</code> framework
@@ -508,6 +514,4 @@ import BaseLayout from "../../layout/BaseLayout.vue";
 import TableDocs from "../../components/TableDocs.vue";
 import CardDocs from "../../components/CardDocs.vue";
 import PagePagination from "../../layout/PagePagination.vue";
-import CButtonGroups from "@components/components/CButtonGroups.vue";
-import CButton from "@components/components/CButton.vue";
 </script>
