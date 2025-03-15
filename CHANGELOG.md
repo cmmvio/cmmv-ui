@@ -1,3 +1,20 @@
+## [0.4.7](https://github.com/cmmvio/cmmv-ui/compare/v0.4.6...v0.4.7) (2025-03-15)
+
+
+### Bug Fixes
+
+* remove vue-tsc checke ([132bec4](https://github.com/cmmvio/cmmv-ui/commit/132bec41f99e9bbfee73dbe0f113362003444e2f))
+* tests ([c0f4f61](https://github.com/cmmvio/cmmv-ui/commit/c0f4f614ae7d75bba6676174ed08719bdff98d15))
+
+
+### Features
+
+* componente video ([1339889](https://github.com/cmmvio/cmmv-ui/commit/133988948a1e96b44e5d986978a48fe44fef9b36))
+* components test part 1 ([18034f9](https://github.com/cmmvio/cmmv-ui/commit/18034f9955ea3ed333f98084ae5b77a7e90c20aa))
+* zoom image ([6aa1857](https://github.com/cmmvio/cmmv-ui/commit/6aa1857fd7c9797e689f15ea9c16e766746f1181))
+
+
+
 ## [0.4.6](https://github.com/cmmvio/cmmv-ui/compare/v0.4.5...v0.4.6) (2025-03-15)
 
 
