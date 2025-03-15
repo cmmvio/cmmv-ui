@@ -23,12 +23,14 @@
                                 'w-full h-full',
                                 roundedClass,
                                 objectFitClass,
-                                transitionClass
+                                transitionClass,
+                                { 'cursor-zoom-in': allowZoom }
                             ]"
                             :style="{ objectPosition: backgroundPosition }"
                             :loading="lazyLoad ? 'lazy' : 'eager'"
                             :width="width"
                             :height="height"
+                            @click="allowZoom && zoomImage(imgSrc)"
                         />
                     </div>
                 </div>
@@ -82,7 +84,8 @@
                     objectFitClass,
                     loading ? 'opacity-50' : 'opacity-100',
                     transitionClass,
-                    customClass
+                    customClass,
+                    { 'cursor-zoom-in': allowZoom }
                 ]"
                 :style="imgStyle"
                 @load="handleSingleImageLoaded"
@@ -90,6 +93,7 @@
                 :loading="lazyLoad ? 'lazy' : 'eager'"
                 :width="width"
                 :height="height"
+                @click="allowZoom && !loading && !error && zoomImage(singleSrc)"
             />
 
             <div v-if="loading && showLoader" class="absolute inset-0 flex items-center justify-center">
@@ -108,11 +112,33 @@
             {{ caption }}
         </div>
     </div>
+
+    <!-- Overlay para zoom da imagem -->
+    <c-overlay v-model="zoomActive" bg-color="#000" :opacity="80" :z-index="100">
+        <div class="relative max-w-[90vw] max-h-[90vh] flex items-center justify-center">
+            <img
+                :src="zoomedImageSrc"
+                :alt="alt"
+                class="max-w-[50vw] max-h-[80vh] object-contain shadow-xl"
+                :class="roundedClass"
+            />
+            <button
+                @click="closeZoom"
+                class="absolute top-3 right-3 bg-white/80 hover:bg-white text-gray-800 rounded-full p-2 shadow-lg transition-all"
+                aria-label="Close zoom"
+            >
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+    </c-overlay>
 </template>
 
 <script setup>
 import { ref, computed, defineProps, defineEmits, onMounted, watch } from "vue";
 import CLoader from "./CLoader.vue";
+import COverlay from "../overlays/COverlay.vue";
 import IconExclamationCircle from "@components/icons/IconExclamationCircle.vue";
 
 const props = defineProps({
@@ -208,16 +234,19 @@ const props = defineProps({
         type: Number,
         default: 0,
     },
-    customClass: {
-        type: String,
-        default: "",
+    allowZoom: {
+        type: Boolean,
+        default: false
     }
 });
 
-const emit = defineEmits(['load', 'error', 'change']);
+const emit = defineEmits(['load', 'error', 'change', 'zoom', 'zoom-close']);
 
 const loading = ref(true);
 const error = ref(false);
+
+const zoomActive = ref(false);
+const zoomedImageSrc = ref('');
 
 const currentGalleryIndex = ref(props.startIndex || 0);
 const isDragging = ref(false);
@@ -285,6 +314,23 @@ const imgStyle = computed(() => {
 
     return style;
 });
+
+const zoomImage = (src) => {
+    if (!props.allowZoom) return;
+
+    zoomedImageSrc.value = src;
+    zoomActive.value = true;
+    emit('zoom', src);
+
+    document.body.style.overflow = 'hidden';
+};
+
+const closeZoom = () => {
+    zoomActive.value = false;
+    emit('zoom-close');
+
+    document.body.style.overflow = '';
+};
 
 const handleSingleImageLoaded = () => {
     loading.value = false;
@@ -395,6 +441,10 @@ watch(() => props.startIndex, (newIndex) => {
     if (isGallery.value && newIndex >= 0 && newIndex < normalizedSrcs.value.length) {
         currentGalleryIndex.value = newIndex;
     }
+});
+
+watch(() => zoomActive.value, (isActive) => {
+    document.body.style.overflow = isActive ? 'hidden' : '';
 });
 </script>
 

@@ -22,6 +22,7 @@ import jsonWorker from 'monaco-editor/esm/vs/language/json/json.worker?worker';
 import cssWorker from 'monaco-editor/esm/vs/language/css/css.worker?worker';
 import htmlWorker from 'monaco-editor/esm/vs/language/html/html.worker?worker';
 import tsWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker';
+import * as monacoThemesList from 'monaco-themes/themes/themelist.json';
 
 // Configure workers
 self.MonacoEnvironment = {
@@ -341,11 +342,163 @@ const formatCode = () => {
     monacoEditor.value?.getAction('editor.action.formatDocument')?.run();
 };
 
+// Definição de temas personalizados
+const defineMonacoThemes = () => {
+    // Tema GitHub Light
+    monaco.editor.defineTheme('github-light', {
+        base: 'vs',
+        inherit: true,
+        rules: [
+            { token: 'comment', foreground: '6a737d', fontStyle: 'italic' },
+            { token: 'keyword', foreground: 'd73a49' },
+            { token: 'string', foreground: '032f62' },
+            { token: 'number', foreground: '005cc5' },
+            { token: 'regexp', foreground: '032f62' },
+            { token: 'type', foreground: '6f42c1' },
+            { token: 'class', foreground: '6f42c1' },
+            { token: 'function', foreground: '6f42c1' },
+            { token: 'variable', foreground: '24292e' },
+            { token: 'variable.predefined', foreground: '005cc5' }
+        ],
+        colors: {
+            'editor.foreground': '#24292e',
+            'editor.background': '#ffffff',
+            'editor.selectionBackground': '#c8c8fa',
+            'editor.lineHighlightBackground': '#f1f8ff',
+            'editorCursor.foreground': '#24292e',
+            'editorWhitespace.foreground': '#d1d5da'
+        }
+    });
+
+    // Tema GitHub Dark
+    monaco.editor.defineTheme('github-dark', {
+        base: 'vs-dark',
+        inherit: true,
+        rules: [
+            { token: 'comment', foreground: '6a737d', fontStyle: 'italic' },
+            { token: 'keyword', foreground: 'ff7b72' },
+            { token: 'string', foreground: 'a5d6ff' },
+            { token: 'number', foreground: '79c0ff' },
+            { token: 'regexp', foreground: 'a5d6ff' },
+            { token: 'type', foreground: 'd2a8ff' },
+            { token: 'class', foreground: 'd2a8ff' },
+            { token: 'function', foreground: 'd2a8ff' },
+            { token: 'variable', foreground: 'c9d1d9' },
+            { token: 'variable.predefined', foreground: '79c0ff' }
+        ],
+        colors: {
+            'editor.foreground': '#c9d1d9',
+            'editor.background': '#0d1117',
+            'editor.selectionBackground': '#3b5070',
+            'editor.lineHighlightBackground': '#161b22',
+            'editorCursor.foreground': '#c9d1d9',
+            'editorWhitespace.foreground': '#484f58'
+        }
+    });
+
+    // Tema Monokai
+    monaco.editor.defineTheme('monokai', {
+        base: 'vs-dark',
+        inherit: true,
+        rules: [
+            { token: 'comment', foreground: '88846f', fontStyle: 'italic' },
+            { token: 'keyword', foreground: 'f92672' },
+            { token: 'string', foreground: 'e6db74' },
+            { token: 'number', foreground: 'ae81ff' },
+            { token: 'regexp', foreground: 'e6db74' },
+            { token: 'type', foreground: '66d9ef', fontStyle: 'italic' },
+            { token: 'class', foreground: 'a6e22e' },
+            { token: 'function', foreground: 'a6e22e' },
+            { token: 'variable', foreground: 'f8f8f2' },
+            { token: 'variable.predefined', foreground: '66d9ef' }
+        ],
+        colors: {
+            'editor.foreground': '#f8f8f2',
+            'editor.background': '#272822',
+            'editor.selectionBackground': '#49483e',
+            'editor.lineHighlightBackground': '#3e3d32',
+            'editorCursor.foreground': '#f8f8f0',
+            'editorWhitespace.foreground': '#3b3a32'
+        }
+    });
+};
+
+// Método para aplicar um tema ao editor
+const applyTheme = (themeName: string) => {
+    if (monacoEditor.value) {
+        monaco.editor.setTheme(themeName);
+    }
+};
+
+// Substitua ou adicione este método para carregar os temas do pacote monaco-themes
+const loadMonacoThemes = async () => {
+  try {
+    // Carrega dinamicamente apenas os temas mais populares para evitar problemas
+    const popularThemes = [
+      'Active4D.json',
+      'Cobalt2.json',
+      'Dracula.json',
+      'Monokai.json',
+      'Solarized-dark.json',
+      'Solarized-light.json',
+      'Tomorrow-Night-Blue.json',
+      'Tomorrow-Night-Bright.json',
+      'Twilight.json'
+    ];
+
+    for (const themeName of popularThemes) {
+      try {
+        // Remove a extensão .json para obter o ID do tema
+        const themeId = themeName.replace('.json', '').toLowerCase().replace(/\s+/g, '-');
+
+        // Carrega o tema dinamicamente
+        const themeData = await import(`monaco-themes/themes/${themeName}`);
+
+        // Registra o tema no Monaco Editor
+        monaco.editor.defineTheme(themeId, themeData);
+        console.log(`Theme loaded: ${themeId}`);
+      } catch (themeError) {
+        console.warn(`Failed to load theme: ${themeName}`, themeError);
+      }
+    }
+
+    console.log('Monaco themes loaded successfully');
+  } catch (error) {
+    console.error('Error loading Monaco themes:', error);
+  }
+};
+
+// Atualize a lista de temas disponíveis
+const getAvailableThemes = () => [
+  // Temas padrão do Monaco
+  'vs',                    // Light theme (padrão)
+  'vs-dark',               // Dark theme
+  'hc-black',              // High contrast dark
+
+  // Temas personalizados definidos manualmente
+  'github-light',          // GitHub light
+  'github-dark',           // GitHub dark
+  'monokai',               // Monokai
+
+  // Temas do monaco-themes (apenas os que carregamos)
+  'active4d',
+  'cobalt2',
+  'dracula',
+  'monokai',
+  'solarized-dark',
+  'solarized-light',
+  'tomorrow-night-blue',
+  'tomorrow-night-bright',
+  'twilight'
+];
+
 // Lifecycle hooks
-onMounted(() => {
-    initMonaco();
-    observeDarkModeChanges();
-    updateTheme();
+onMounted(async () => {
+  defineMonacoThemes(); // Registra os temas personalizados definidos manualmente
+  await loadMonacoThemes(); // Carrega os temas do pacote monaco-themes (espera completar)
+  initMonaco();
+  observeDarkModeChanges();
+  updateTheme();
 });
 
 onBeforeUnmount(() => {
@@ -377,8 +530,9 @@ defineExpose({
         updateLanguage();
     },
     setTheme: (theme: string) => {
-        monaco.editor.setTheme(theme);
-    }
+        applyTheme(theme);
+    },
+    getAvailableThemes // Expõe a lista de temas disponíveis
 });
 </script>
 

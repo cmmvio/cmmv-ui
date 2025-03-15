@@ -451,6 +451,114 @@ class UserService {
             </template>
         </card-docs>
 
+        <h3>Theme Selector</h3>
+
+        <p>
+            The <code>CCodeEditor</code> supports multiple themes including custom themes from the
+            <code>monaco-themes</code> package. The example below demonstrates how to change themes
+            dynamically using a dropdown and the <code>setTheme</code> method exposed by the component.
+        </p>
+
+        <card-docs padding="p-0">
+            <div class="w-full">
+                <div class="p-4 flex items-center gap-4">
+                    <span class="text-sm font-medium">Select Theme:</span>
+                    <c-combobox
+                        v-model="selectedTheme"
+                        :options="themeOptions"
+                        size="sm"
+                        class="w-64"
+                        @update:modelValue="changeTheme"
+                    />
+                </div>
+                <c-code-editor
+                    v-model="themeSelectorValue"
+                    language="typescript"
+                    height="300px"
+                    class="w-full"
+                    ref="themeEditor">
+                </c-code-editor>
+            </div>
+
+            <template #code>
+                <pre><code class="code-highlight language-html">&lt;template&gt;
+  &lt;div class="flex items-center gap-4 mb-4"&gt;
+    &lt;span class="text-sm font-medium"&gt;Select Theme:&lt;/span&gt;
+    &lt;c-combobox
+      v-model="selectedTheme"
+      :options="themeOptions"
+      size="sm"
+      class="w-64"
+      @update:modelValue="changeTheme"
+    /&gt;
+  &lt;/div&gt;
+
+  &lt;c-code-editor
+    v-model="code"
+    language="typescript"
+    height="300px"
+    ref="codeEditor"
+  &gt;&lt;/c-code-editor&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref, onMounted } from 'vue';
+
+const code = ref(`// Example TypeScript code to showcase themes
+interface Theme {
+  id: string;
+  name: string;
+  type: 'light' | 'dark' | 'hc';
+}
+
+class ThemeManager {
+  private currentTheme: Theme | null = null;
+  private availableThemes: Theme[] = [];
+
+  constructor() {
+    // Initialize with system preference
+    this.detectSystemTheme();
+  }
+
+  public setTheme(themeId: string): void {
+    console.log(\`Changing theme to \${themeId}\`);
+    // Implementation details...
+  }
+
+  private detectSystemTheme(): void {
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const defaultTheme = prefersDark ? 'vs-dark' : 'vs';
+    this.setTheme(defaultTheme);
+  }
+}`);
+
+const codeEditor = ref(null);
+const selectedTheme = ref('vs-dark');
+const themeOptions = ref([]);
+
+onMounted(async () => {
+  // Wait for editor to be fully mounted
+  await new Promise(resolve => setTimeout(resolve, 1000));
+
+  // Get available themes from editor
+  if (codeEditor.value) {
+    const themes = codeEditor.value.getAvailableThemes();
+    themeOptions.value = themes.map(theme => ({
+      value: theme,
+      label: theme.charAt(0).toUpperCase() + theme.slice(1).replace(/-/g, ' ')
+    }));
+  }
+});
+
+const changeTheme = (themeId) => {
+  if (codeEditor.value) {
+    codeEditor.value.setTheme(themeId);
+  }
+};
+&lt;/script&gt;</code></pre>
+            </template>
+        </card-docs>
+
         <h3>Custom Options</h3>
 
         <p>
@@ -581,6 +689,58 @@ const customEditorOptions = {
     renderLineHighlight: 'all',
     roundedSelection: false,
     links: true
+};
+
+const themeSelectorValue = ref(`// Example TypeScript code to showcase themes
+interface Theme {
+  id: string;
+  name: string;
+  type: 'light' | 'dark' | 'hc';
+}
+
+class ThemeManager {
+  private currentTheme: Theme | null = null;
+  private availableThemes: Theme[] = [];
+
+  constructor() {
+    // Initialize with system preference
+    this.detectSystemTheme();
+  }
+
+  public setTheme(themeId: string): void {
+    console.log(\`Changing theme to \${themeId}\`);
+    // Implementation details...
+  }
+
+  private detectSystemTheme(): void {
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const defaultTheme = prefersDark ? 'vs-dark' : 'vs';
+    this.setTheme(defaultTheme);
+  }
+}`);
+
+const themeEditor = ref(null);
+const selectedTheme = ref('vs-dark');
+const themeOptions = ref([]);
+
+onMounted(async () => {
+  // Wait for editor to be fully mounted
+  await new Promise(resolve => setTimeout(resolve, 1000));
+
+  // Get available themes from editor
+  if (themeEditor.value) {
+    const themes = themeEditor.value.getAvailableThemes();
+    themeOptions.value = themes.map(theme => ({
+      value: theme,
+      label: theme.charAt(0).toUpperCase() + theme.slice(1).replace(/-/g, ' ')
+    }));
+  }
+});
+
+const changeTheme = (themeId) => {
+  if (themeEditor.value) {
+    themeEditor.value.setTheme(themeId);
+  }
 };
 </script>
 

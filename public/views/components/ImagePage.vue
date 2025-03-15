@@ -156,6 +156,51 @@
                     <td class="border-b px-4 py-2">0</td>
                     <td class="border-b px-4 py-2">Initial image index to display in gallery mode.</td>
                 </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">allowZoom</td>
+                    <td class="border-b px-4 py-2">Boolean</td>
+                    <td class="border-b px-4 py-2">false</td>
+                    <td class="border-b px-4 py-2">Enables zoom functionality. When true, clicking on the image will show an expanded view in an overlay.</td>
+                </tr>
+            </tbody>
+        </table-docs>
+
+        <h3>Events</h3>
+
+        <table-docs>
+            <thead>
+                <tr>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Event</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Payload</th>
+                    <th class="border-b px-4 py-2 font-semibold text-neutral-800 dark:text-white">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="border-b px-4 py-2">load</td>
+                    <td class="border-b px-4 py-2">-</td>
+                    <td class="border-b px-4 py-2">Emitted when the image is successfully loaded.</td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">error</td>
+                    <td class="border-b px-4 py-2">-</td>
+                    <td class="border-b px-4 py-2">Emitted when the image fails to load.</td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">change</td>
+                    <td class="border-b px-4 py-2">index: Number</td>
+                    <td class="border-b px-4 py-2">Emitted when the current image changes in gallery mode, with the new index as payload.</td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">zoom</td>
+                    <td class="border-b px-4 py-2">src: String</td>
+                    <td class="border-b px-4 py-2">Emitted when an image is zoomed, with the image source URL as payload.</td>
+                </tr>
+                <tr>
+                    <td class="border-b px-4 py-2">zoom-close</td>
+                    <td class="border-b px-4 py-2">-</td>
+                    <td class="border-b px-4 py-2">Emitted when the zoomed image view is closed.</td>
+                </tr>
             </tbody>
         </table-docs>
 
@@ -604,6 +649,124 @@
             </template>
         </card-docs>
 
+        <h3>Zoomable Images with Animations</h3>
+
+        <p>
+            Enable image zoom functionality with the <code>allowZoom</code> prop. When enabled, images display a zoom-in
+            cursor indicator and expand to a larger view in an overlay when clicked. The zoom transitions feature smooth
+            animations for both opening and closing, enhancing the user experience.
+        </p>
+
+        <card-docs>
+            <div class="mx-auto px-4 py-5 sm:p-6 flex flex-col md:flex-row gap-6 justify-center">
+                <!-- Container para a imagem única - SOLUÇÃO DEFINITIVA -->
+                <div class="w-full md:w-[400px] flex flex-col">
+                    <p class="text-center mb-2 text-sm text-neutral-600 dark:text-neutral-300">Single Image with Zoom</p>
+                    <div class="w-full bg-neutral-100 dark:bg-neutral-800 rounded-md">
+                        <c-image
+                            ref="singleZoomImage"
+                            src="/images/freepik__the-style-is-candid-image-photography-with-natural__78231.jpeg"
+                            alt="Zoomable landscape image"
+                            :allow-zoom="true"
+                            rounded="md"
+                            :cover="true"
+                            style="display: block; height: 100%; width: 100%;"
+                            caption="Click on the image to zoom"
+                            :key="'zoom-single-example-' + Date.now()"
+                        />
+                    </div>
+                </div>
+            </div>
+
+            <template #code>
+                <pre><code class="code-highlight language-html">&lt;template&gt;
+    &lt;div class="flex gap-6"&gt;
+        &lt;!-- Single Image with Zoom --&gt;
+        &lt;div class="w-[400px]"&gt;
+            &lt;div class="h-[225px] w-full bg-neutral-100 dark:bg-neutral-800 rounded-md"&gt;
+                &lt;c-image
+                    src="/path/to/image.jpg"
+                    alt="Zoomable landscape image"
+                    :allow-zoom="true"
+                    rounded="md"
+                    :cover="true"
+                    style="display: block; height: 100%; width: 100%;"
+                    caption="Click on the image to zoom"
+                /&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Gallery with Zoom --&gt;
+        &lt;div class="w-[400px]"&gt;
+            &lt;div class="h-[225px] w-full bg-neutral-100 dark:bg-neutral-800 rounded-md"&gt;
+                &lt;c-image
+                    :src="[
+                        '/path/to/image1.jpg',
+                        '/path/to/image2.jpg',
+                        '/path/to/image3.jpg'
+                    ]"
+                    alt="Zoomable gallery"
+                    :allow-zoom="true"
+                    :cover="true"
+                    rounded="md"
+                    style="display: block; height: 100%; width: 100%;"
+                    caption="Navigate through images and click any to zoom"
+                    @zoom="handleZoom"
+                    @zoom-close="handleZoomClose"
+                /&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/template&gt;</code></pre>
+            </template>
+        </card-docs>
+
+        <h3>Zoomable Gallery with Navigation</h3>
+
+        <p>
+            When using <code>allowZoom</code> with gallery images, you can navigate between images while in zoom mode.
+            This creates a seamless viewing experience, allowing users to browse through high-resolution images without
+            exiting the zoomed view. Navigation controls include arrow buttons, indicator dots, and keyboard shortcuts.
+        </p>
+
+        <card-docs>
+            <div class="mx-auto px-4 py-5 sm:p-6">
+                <div class="max-w-lg mx-auto">
+                    <c-image
+                        :src="galleryWithNavigation"
+                        alt="Zoomable gallery with navigation"
+                        :allow-zoom="true"
+                        :aspect-ratio="16/9"
+                        :cover="true"
+                        rounded="md"
+                        caption="Click any image to zoom, then use arrows to navigate without exiting zoom mode"
+                        :key="'gallery-with-navigation-' + Date.now()"
+                    />
+                </div>
+            </div>
+
+            <template #code>
+                <pre><code class="code-highlight language-html">&lt;template&gt;
+    &lt;div class="max-w-lg mx-auto"&gt;
+        &lt;c-image
+            :src="[
+                '/path/to/image1.jpg',
+                '/path/to/image2.jpg',
+                '/path/to/image3.jpg',
+                '/path/to/image4.jpg'
+            ]"
+            alt="Zoomable gallery with navigation"
+            :allow-zoom="true"
+            :aspect-ratio="16/9"
+            :cover="true"
+            rounded="md"
+            caption="Click any image to zoom, then use arrows to navigate without exiting zoom mode"
+        /&gt;
+    &lt;/div&gt;
+&lt;/template&gt;</code></pre>
+            </template>
+        </card-docs>
+
         <PagePagination previous="Icon" previousLink="/icon" next="Loader" nextLink="/loader" />
     </BaseLayout>
 </template>
@@ -615,12 +778,43 @@ import TableDocs from "../../components/TableDocs.vue";
 import PagePagination from "../../layout/PagePagination.vue";
 import CardDocs from "../../components/CardDocs.vue";
 
+// Use a função timestamp para garantir chaves verdadeiramente únicas
+const timestamp = Date.now();
+
+// Separe cada conjunto de imagens para evitar compartilhamento de estado
+const zoomGalleryImages = ref([
+    '/images/freepik__the-style-is-candid-image-photography-with-natural__78231.jpeg',
+    'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?q=80&w=800',
+    'https://images.unsplash.com/photo-1433086966358-54859d0ed716?q=80&w=800'
+]);
+
+const galleryWithNavigation = ref([
+    '/images/freepik__the-style-is-candid-image-photography-with-natural__78231.jpeg',
+    'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?q=80&w=800',
+    'https://images.unsplash.com/photo-1433086966358-54859d0ed716?q=80&w=800',
+    'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=800'
+]);
+
 const carouselImages = ref([
     '/images/freepik__the-style-is-candid-image-photography-with-natural__78231.jpeg',
     'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?q=80&w=800',
     'https://images.unsplash.com/photo-1433086966358-54859d0ed716?q=80&w=800',
     'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=800'
 ]);
+
+// Adicione estas funções se não estiverem já definidas
+const logZoomEvent = (src) => {
+    console.log('Image zoomed:', src);
+};
+
+const logZoomCloseEvent = () => {
+    console.log('Zoom view closed');
+};
+
+// Referências para componentes
+const singleZoomImage = ref(null);
+const galleryZoomImage = ref(null);
+const carouselGalleryImage = ref(null);
 </script>
 
 <style scoped>
