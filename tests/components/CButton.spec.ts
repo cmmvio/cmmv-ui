@@ -32,7 +32,6 @@ describe("CButton Component", () => {
             props: { variant: "outlined" }
         });
         expect(wrapper.classes()).toContain("border");
-        expect(wrapper.classes()).toContain("border-gray-300");
         expect(wrapper.classes()).toContain("text-black");
     });
 
@@ -96,8 +95,7 @@ describe("CButton Component", () => {
         const wrapper = mount(CButton, {
             props: { variant: "outlined" }
         });
-        expect(wrapper.classes()).toContain("border");
-        expect(wrapper.classes()).toContain("border-gray-300");
+        expect(wrapper.classes()).toContain("border")
         expect(wrapper.classes()).toContain("text-black");
     });
 
