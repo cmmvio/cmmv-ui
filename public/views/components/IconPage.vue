@@ -326,41 +326,36 @@ const filteredBrandIcons = computed(() => {
 });
 
 onMounted(async () => {
-    for (const icon of iconsBrands) {
-        if (icon.path) {
-            try {
-                const path = `/src/${icon.path}`;
-                const module = iconComponents[path];
-                if (module) {
-                    const imported = await module();
-                    resolvedBrandsIcons.push({
-                        ...icon,
-                        component: markRaw(imported.default),
-                    });
+    // Carrega ícones de marca e regulares em paralelo
+    const loadIcons = async (iconList, targetArray) => {
+        const promises = iconList.map(async (icon) => {
+            if (icon.path) {
+                try {
+                    const path = `/src/${icon.path}`;
+                    const module = iconComponents[path];
+                    if (module) {
+                        const imported = await module();
+                        return {
+                            ...icon,
+                            component: markRaw(imported.default),
+                        };
+                    }
+                } catch (e) {
+                    console.warn(`Failed to import icon: ${icon.path}`, e);
                 }
-            } catch (e) {
-                console.warn(`Failed to import brand icon: ${icon.path}`, e);
             }
-        }
-    }
+            return null;
+        });
 
-    for (const icon of icons) {
-        if (icon.path) {
-            try {
-                const path = `/src/${icon.path}`;
-                const module = iconComponents[path];
-                if (module) {
-                    const imported = await module();
-                    resolvedIcons.push({
-                        ...icon,
-                        component: markRaw(imported.default),
-                    });
-                }
-            } catch (e) {
-                console.warn(`Failed to import icon: ${icon.path}`, e);
-            }
-        }
-    }
+        const results = await Promise.all(promises);
+        targetArray.push(...results.filter(Boolean));
+    };
+
+    // Carrega todos os tipos de ícones em paralelo
+    await Promise.all([
+        loadIcons(iconsBrands, resolvedBrandsIcons),
+        loadIcons(icons, resolvedIcons)
+    ]);
 });
 
 function copyToClipboard(code) {

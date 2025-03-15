@@ -4,16 +4,26 @@ import { createHead } from '@vueuse/head'
 const modules = import.meta.glob([
     './components/**/*.vue',
     './components/icons/*.{vue,ts,js}'
-]);
+], { eager: true });
 
-const iconComponents = import.meta.glob('@components/icons/*.vue');
-const loaderComponents = import.meta.glob('@components/loader/*.vue');
+const iconComponents = import.meta.glob('@components/icons/*.vue', { eager: true });
+const loaderComponents = import.meta.glob('@components/loader/*.vue', { eager: true });
 
 const components: Record<string, any> = {};
 
 for (const path in modules) {
     const name = path.split('/').pop()?.replace(/\.(vue|ts|js)$/, '') as string;
     components[name] = (modules[path] as any).default;
+}
+
+for (const path in iconComponents) {
+    const name = path.split('/').pop()?.replace(/\.(vue|ts|js)$/, '') as string;
+    components[name] = (iconComponents[path] as any).default;
+}
+
+for (const path in loaderComponents) {
+    const name = path.split('/').pop()?.replace(/\.(vue|ts|js)$/, '') as string;
+    components[name] = (loaderComponents[path] as any).default;
 }
 
 const head = createHead({
@@ -32,31 +42,16 @@ const head = createHead({
 const install = (app: any) => {
     app.use(head)
 
-    for (const path in modules) {
-        const name = path.split('/').pop()?.replace(/\.(vue|ts|js)$/, '') as string;
-
-        app.component(
-            name,
-            defineAsyncComponent(() => modules[path]().then((mod: any) => mod.default))
-        );
+    for (const [name, component] of Object.entries(components)) {
+        app.component(name, component);
     }
 
-    for (const path in iconComponents) {
-        const name = path.split('/').pop()?.replace(/\.(vue|ts|js)$/, '') as string;
-
-        app.component(
-            name,
-            defineAsyncComponent(() => iconComponents[path]().then((mod: any) => mod.default))
-        );
+    for (const [name, component] of Object.entries(iconComponents)) {
+        app.component(name, component);
     }
 
-    for (const path in loaderComponents) {
-        const name = path.split('/').pop()?.replace(/\.(vue|ts|js)$/, '') as string;
-
-        app.component(
-            name,
-            defineAsyncComponent(() => loaderComponents[path]().then((mod: any) => mod.default))
-        );
+    for (const [name, component] of Object.entries(loaderComponents)) {
+        app.component(name, component);
     }
 };
 
