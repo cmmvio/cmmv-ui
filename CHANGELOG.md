@@ -1,3 +1,12 @@
+## [0.4.1](https://github.com/cmmvio/cmmv-ui/compare/v0.4.0...v0.4.1) (2025-03-15)
+
+
+### Bug Fixes
+
+* backgrounds and colors ([267ce62](https://github.com/cmmvio/cmmv-ui/commit/267ce623894ba696483f8498a248c71dab1d14dd))
+
+
+
 # [0.4.0](https://github.com/cmmvio/cmmv-ui/compare/v0.3.4...v0.4.0) (2025-03-15)
 
 
