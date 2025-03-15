@@ -1,3 +1,18 @@
+## [0.4.2](https://github.com/cmmvio/cmmv-ui/compare/v0.4.1...v0.4.2) (2025-03-15)
+
+
+### Bug Fixes
+
+* imports ([acd9737](https://github.com/cmmvio/cmmv-ui/commit/acd973732870c8a71ea9fe14ba5282f6c4e9a3fd))
+
+
+### Features
+
+* include seo componente ([4f2cfa6](https://github.com/cmmvio/cmmv-ui/commit/4f2cfa66ff24445ffd1c6dcbc7159957c02188bd))
+* terminal ([4213d52](https://github.com/cmmvio/cmmv-ui/commit/4213d5219a31a764a452e2410fe027d717e9e42a))
+
+
+
 ## [0.4.1](https://github.com/cmmvio/cmmv-ui/compare/v0.4.0...v0.4.1) (2025-03-15)
 
 
