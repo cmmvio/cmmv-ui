@@ -9,11 +9,11 @@ importers:
   .:
     dependencies:
       '@cmmv/core':
-        specifier: ^0.8.34
-        version: 0.8.34
+        specifier: ^0.8.35
+        version: 0.8.35
       '@cmmv/http':
-        specifier: ^0.8.34
-        version: 0.8.34
+        specifier: ^0.8.35
+        version: 0.8.35
       '@heroicons/vue':
         specifier: ^2.2.0
         version: 2.2.0(vue@3.5.13(typescript@5.6.3))
@@ -258,9 +258,6 @@ importers:
       vitest:
         specifier: ^2.1.9
         version: 2.1.9(@types/node@22.13.10)(jsdom@25.0.1)(terser@5.39.0)
-      vue-tsc:
-        specifier: ^2.2.8
-        version: 2.2.8(typescript@5.6.3)
 
 packages:
 
@@ -428,8 +425,8 @@ packages:
   '@cmmv/cookie-parser@0.9.1':
     resolution: {integrity: sha512-O7EqquCBdQYn+AFDDv1JPT92CuaayfhHh3G8D+luPhnzVtwK3u/RWT+fdznuWcT1rabvHEOFWKikd5aRX2LoYw==}
 
-  '@cmmv/core@0.8.34':
-    resolution: {integrity: sha512-eDxlj5HSPKKlkTE/u5VrQmoypdlZplPBSSSPe7DVo+a80EQE+pKWj4TUonspDFCUO4dVbSZ7smwGHvMMiEEJQA==}
+  '@cmmv/core@0.8.35':
+    resolution: {integrity: sha512-TvoumdDcrtsnRnmLT9hwVQ/w81tRFtbl6LBGOyqFq/dE3Mj+3HZ+joRFUEqTFiPxsBB3hTEpj7BoEefLFuv8Gg==}
 
   '@cmmv/cors@0.9.1':
     resolution: {integrity: sha512-T8hBR4eeA9Iov87FvN4bc8ZzyArX4ghbOTc/uwVWaxQcHc4IU4hEK7jWMgdQxdtxf2zNVS2k89gbwxBzgzI3Aw==}
@@ -440,8 +437,8 @@ packages:
   '@cmmv/helmet@0.9.1':
     resolution: {integrity: sha512-oV+5Px87EIuHoUswhtI85f5Laawt2xUe/PA5d4oQmIbh6QQ57O9EIiegSoDeE7OrMoTsxXnLMv/uSSUxf17caA==}
 
-  '@cmmv/http@0.8.34':
-    resolution: {integrity: sha512-sd2JXmM5ZNxoT27qDnXxqsaw0136t8xuSzNxGzLcteHXYIKk8vI2XbCsZbi2S0WU2X2EbRsL895VgS/cf0HTDQ==}
+  '@cmmv/http@0.8.35':
+    resolution: {integrity: sha512-bXc5Prk56Ad+fSEQ25MHuJc6+7NtoCldjiYhQFdy/UNnPHdtOGUg+sTVT4jN16IvBg8iQDlRx9iGQ77D2zO5BQ==}
 
   '@cmmv/server-static@0.9.1':
     resolution: {integrity: sha512-QDggceyspYX18Un/BtOXeSAAYMLxjE8aw/EtAzg5hfTdMVGkyMAl6Y6dO455zCydShwOdMY9flcilyIq9lhFWg==}
@@ -2665,8 +2662,8 @@ packages:
   ee-first@1.1.1:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
 
-  electron-to-chromium@1.5.118:
-    resolution: {integrity: sha512-yNDUus0iultYyVoEFLnQeei7LOQkL8wg8GQpkPCRrOlJXlcCwa6eGKZkxQ9ciHsqZyYbj8Jd94X1CTPzGm+uIA==}
+  electron-to-chromium@1.5.119:
+    resolution: {integrity: sha512-Ku4NMzUjz3e3Vweh7PhApPrZSS4fyiCIbcIrG9eKrriYVLmbMepETR/v6SU7xPm98QTqMSYiCwfO89QNjXLkbQ==}
 
   emoji-regex@10.4.0:
     resolution: {integrity: sha512-EC+0oUMY1Rqm4O6LLrgjtYDvcVYTy7chDnM4Q7030tP4Kwj3u/pR6gP9ygnp2CJMK5Gq+9Q2oqmrFJAz01DXjw==}
@@ -3703,13 +3700,13 @@ packages:
   mz@2.7.0:
     resolution: {integrity: sha512-z81GNO7nnYMEhrGh9LeymoE4+Yr0Wn5McHIZMK5cfQCl+NDX08sCZgUc9/6MHni9IWuFLm1Z3HTCXu2z9fN62Q==}
 
-  nanoid@3.3.9:
-    resolution: {integrity: sha512-SppoicMGpZvbF1l3z4x7No3OlIjP7QJvC9XR7AhZr1kL133KHnKPztkKDc+Ir4aJ/1VhTySrtKhrsycmrMQfvg==}
+  nanoid@3.3.10:
+    resolution: {integrity: sha512-vSJJTG+t/dIKAUhUDw/dLdZ9s//5OxcHqLaDWWrW4Cdq7o6tdLIczUkMXt2MBNmk6sJRZBZRXVixs7URY1CmIg==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
-  nanoid@5.1.3:
-    resolution: {integrity: sha512-zAbEOEr7u2CbxwoMRlz/pNSpRP0FdAU4pRaYunCdEezWohXFs+a0Xw7RfkKaezMsmSM1vttcLthJtwRnVtOfHQ==}
+  nanoid@5.1.4:
+    resolution: {integrity: sha512-GTFcMIDgR7tqji/LpSY8rtg464VnJl/j6ypoehYnuGb+Y8qZUdtKB8WVCXon0UEZgFDbuUxpIl//6FHLHgXSNA==}
     engines: {node: ^18 || >=20}
     hasBin: true
 
@@ -4607,8 +4604,8 @@ packages:
     resolution: {integrity: sha512-FVDYdxtnj0G6Qm/DhNPSb8Ju59ULcup3tuJxkFb5K8Bv2pUXILbf0xZWU8PX8Ov19OXljbUyveOFwRMwkXzO+A==}
     engines: {node: '>=16'}
 
-  tr46@5.0.0:
-    resolution: {integrity: sha512-tk2G5R2KRwBd+ZN0zaEXpmzdKyOYksXwywulIX95MBODjSzMIuQnQ3m8JxgbhnL1LeVo7lqQKsYa1O3Htl7K5g==}
+  tr46@5.1.0:
+    resolution: {integrity: sha512-IUWnUK7ADYR5Sl1fZlO1INDUhVhatWl7BtJWsIhwJ0UAK7ilzzIa8uIqOO/aYVWHZPJkKbEL+362wrzoeRF7bw==}
     engines: {node: '>=18'}
 
   ts-api-utils@2.0.1:
@@ -5084,8 +5081,8 @@ packages:
     resolution: {integrity: sha512-QaKxh0eNIi2mE9p2vEdzfagOKHCcj1pJ56EEHGQOVxp8r9/iszLUUV7v89x9O1p/T+NlTM5W7jW6+cz4Fq1YVg==}
     engines: {node: '>=18'}
 
-  whatwg-url@14.1.1:
-    resolution: {integrity: sha512-mDGf9diDad/giZ/Sm9Xi2YcyzaFpbdLpJPr+E9fSkyQ7KpQD4SdFcugkRQYzhmfI4KeV4Qpnn2sKPdo+kmsgRQ==}
+  whatwg-url@14.2.0:
+    resolution: {integrity: sha512-De72GdQZzNTUBBChsXueQUnPKDkg/5A5zp7pFDuQAj5UFoENpiACU0wlCvzpAGnTkj++ihpKwKyYewn/XNUbKw==}
     engines: {node: '>=18'}
 
   which@2.0.2:
@@ -5415,7 +5412,7 @@ snapshots:
 
   '@cmmv/cli@0.7.4(@swc/types@0.1.19)(@types/node@22.13.10)(conventional-commits-filter@5.0.0)(eslint@9.21.0(jiti@2.4.2))':
     dependencies:
-      '@cmmv/core': 0.8.34
+      '@cmmv/core': 0.8.35
       '@commitlint/cli': 19.8.0(@types/node@22.13.10)(typescript@5.8.2)
       '@commitlint/config-angular': 19.8.0
       '@commitlint/config-conventional': 19.8.0
@@ -5477,7 +5474,7 @@ snapshots:
       on-headers: 1.0.2
       vary: 1.1.2
 
-  '@cmmv/core@0.8.34':
+  '@cmmv/core@0.8.35':
     dependencies:
       class-transformer: 0.5.1
       class-validator: 0.14.1
@@ -5504,7 +5501,7 @@ snapshots:
     dependencies:
       helmet: 8.0.0
 
-  '@cmmv/http@0.8.34':
+  '@cmmv/http@0.8.35':
     dependencies:
       '@cmmv/body-parser': 0.9.1
       '@cmmv/compression': 0.9.1
@@ -6869,7 +6866,7 @@ snapshots:
       '@vue/devtools-kit': 7.7.2
       '@vue/devtools-shared': 7.7.2
       mitt: 3.0.1
-      nanoid: 5.1.3
+      nanoid: 5.1.4
       pathe: 2.0.3
       vite-hot-client: 0.2.4(vite@6.2.2(@types/node@22.13.10)(jiti@2.4.2)(terser@5.39.0)(yaml@2.7.0))
       vue: 3.5.13(typescript@5.6.3)
@@ -6915,6 +6912,7 @@ snapshots:
       path-browserify: 1.0.1
     optionalDependencies:
       typescript: 5.6.3
+    optional: true
 
   '@vue/reactivity@3.5.13':
     dependencies:
@@ -7146,7 +7144,8 @@ snapshots:
 
   alien-signals@0.4.14: {}
 
-  alien-signals@1.0.4: {}
+  alien-signals@1.0.4:
+    optional: true
 
   ansi-colors@4.1.3: {}
 
@@ -7255,7 +7254,7 @@ snapshots:
   browserslist@4.24.4:
     dependencies:
       caniuse-lite: 1.0.30001704
-      electron-to-chromium: 1.5.118
+      electron-to-chromium: 1.5.119
       node-releases: 2.0.19
       update-browserslist-db: 1.1.3(browserslist@4.24.4)
 
@@ -7620,7 +7619,7 @@ snapshots:
   data-urls@5.0.0:
     dependencies:
       whatwg-mimetype: 4.0.0
-      whatwg-url: 14.1.1
+      whatwg-url: 14.2.0
 
   date-fns@4.1.0: {}
 
@@ -7710,7 +7709,7 @@ snapshots:
 
   ee-first@1.1.1: {}
 
-  electron-to-chromium@1.5.118: {}
+  electron-to-chromium@1.5.119: {}
 
   emoji-regex@10.4.0: {}
 
@@ -8478,7 +8477,7 @@ snapshots:
       webidl-conversions: 7.0.0
       whatwg-encoding: 3.1.1
       whatwg-mimetype: 4.0.0
-      whatwg-url: 14.1.1
+      whatwg-url: 14.2.0
       ws: 8.18.1
       xml-name-validator: 5.0.0
     transitivePeerDependencies:
@@ -8767,9 +8766,9 @@ snapshots:
       object-assign: 4.1.1
       thenify-all: 1.6.0
 
-  nanoid@3.3.9: {}
+  nanoid@3.3.10: {}
 
-  nanoid@5.1.3: {}
+  nanoid@5.1.4: {}
 
   natural-compare@1.4.0: {}
 
@@ -9070,7 +9069,7 @@ snapshots:
 
   postcss@8.5.3:
     dependencies:
-      nanoid: 3.3.9
+      nanoid: 3.3.10
       picocolors: 1.1.1
       source-map-js: 1.2.1
 
@@ -9718,7 +9717,7 @@ snapshots:
     dependencies:
       tldts: 6.1.84
 
-  tr46@5.0.0:
+  tr46@5.1.0:
     dependencies:
       punycode: 2.3.1
 
@@ -10114,6 +10113,7 @@ snapshots:
       '@volar/typescript': 2.4.12
       '@vue/language-core': 2.2.8(typescript@5.6.3)
       typescript: 5.6.3
+    optional: true
 
   vue@3.5.13(typescript@5.6.3):
     dependencies:
@@ -10145,9 +10145,9 @@ snapshots:
 
   whatwg-mimetype@4.0.0: {}
 
-  whatwg-url@14.1.1:
+  whatwg-url@14.2.0:
     dependencies:
-      tr46: 5.0.0
+      tr46: 5.1.0
       webidl-conversions: 7.0.0
 
   which@2.0.2:

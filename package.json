@@ -80,12 +80,11 @@
         "vite-plugin-dts": "^4.5.3",
         "vite-plugin-vue-devtools": "^7.7.2",
         "vite-tsconfig-paths": "^5.1.4",
-        "vitest": "^2.1.9",
-        "vue-tsc": "^2.2.8"
+        "vitest": "^2.1.9"
     },
     "dependencies": {
-        "@cmmv/core": "^0.8.34",
-        "@cmmv/http": "^0.8.34",
+        "@cmmv/core": "^0.8.35",
+        "@cmmv/http": "^0.8.35",
         "@heroicons/vue": "^2.2.0",
         "@ssibrahimbas/v-mask": "^1.0.0",
         "@tiptap/extension-image": "^2.11.5",

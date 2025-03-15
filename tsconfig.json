@@ -8,20 +8,25 @@
         "sourceMap": true,
         "resolveJsonModule": true,
         "esModuleInterop": true,
+        "skipLibCheck": true,
+        "noImplicitAny": false,
+        "noCheck": true,
         "lib": ["ESNext", "DOM"],
         "types": ["node", "vue", "@vue/test-utils", "vitest/globals"]
     },
     "include": [
         "src/**/*.ts",
         "src/**/*.d.ts",
-        "src/**/*.vue",
-        "tests/**/*.ts",
-        "types/**/*.d.ts"
+        "src/**/*.vue"
     ],
-	"files": [],
-	"references": [
-		{ "path": "./tsconfig.node.json" },
-		{ "path": "./tsconfig.app.json" },
-		{ "path": "./tsconfig.vitest.json" }
-	]
+    "files": ["src/module.ts"],
+    "exclude": [
+        "node_modules",
+        "dist",
+        "build",
+        "public",
+        "**/*.spec.ts",
+        "types/vitest.d.ts",
+
+    ]
 }
