@@ -97,14 +97,12 @@
 <script setup lang="ts">
 import { ref, computed, defineExpose, watch, onMounted, onUnmounted } from 'vue';
 
-// Declaração simplificada para o Google Maps API
 declare global {
   interface Window {
     google: any;
   }
 }
 
-// Interfaces para trabalhar com os dados de localização
 interface GooglePlacePrediction {
     description: string;
     place_id: string;
@@ -133,7 +131,6 @@ interface PlaceDetails {
     place_id: string;
 }
 
-// Interface para os resultados da API Nominatim (OpenStreetMap)
 interface NominatimResult {
     place_id: string;
     osm_id: number;
@@ -815,7 +812,7 @@ const validateShowError = () => {
     }
 };
 
-const validate = () => {
+const validate = (showError = true) => {
     errorMessage.value = null;
 
     for (const rule of props.rules) {
@@ -823,12 +820,14 @@ const validate = () => {
         const error = rule(currentValue.value);
 
         if (error) {
-            validateShowError();
-            return true;
+            if (showError)
+                validateShowError();
+
+            return false;
         }
     }
 
-    return false;
+    return true;
 };
 
 const activateLabel = () => {

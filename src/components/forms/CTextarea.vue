@@ -57,7 +57,6 @@
     z-index: 1;
 }
 
-/* Apenas aplicado quando floatingLabel=true */
 .c-textarea-label--active {
     transform: translate(0, -2rem) scale(0.85);
     top: 1.3rem;
@@ -101,7 +100,6 @@
                      linear-gradient(45deg, transparent calc(50% - 1px), rgba(180, 180, 180, 0.5) calc(50% - 1px), rgba(180, 180, 180, 0.5) 50%, transparent 50%);
 }
 
-/* Completely hide default resize handle */
 .c-textarea-custom-resize::-webkit-resizer {
     display: none !important;
     visibility: hidden !important;
@@ -389,15 +387,24 @@ const autoresizeTextarea = () => {
     }
 };
 
-const validate = () => {
+const validate = (showError = true) => {
     errorMessage.value = null;
+
+    if (props.required && !currentValue.value) {
+        if (showError)
+            errorMessage.value = "Required field";
+
+        return false;
+    }
 
     for (const rule of props.rules) {
         //@ts-ignore
         const error = rule(currentValue.value);
 
         if (error) {
-            errorMessage.value = error;
+            if (showError)
+                errorMessage.value = error;
+
             return false;
         }
     }

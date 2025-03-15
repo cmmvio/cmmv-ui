@@ -348,8 +348,16 @@ const strengthTextColorClass = computed(() => {
     return 'text-green-600';
 });
 
-const validate = () => {
-    return inputRef.value?.validate();
+const validate = (showError = true) => {
+    let valid = true;
+
+    if (props.requireUppercase && !hasUppercase.value) valid = false;
+    if (props.requireLowercase && !hasLowercase.value) valid = false;
+    if (props.requireNumbers && !hasNumber.value) valid = false;
+    if (props.requireSpecialChars && !hasSpecialChar.value) valid = false;
+    if (props.minLength > 0 && !hasMinLength.value) valid = false;
+
+    return valid;
 };
 
 const isValid = computed(() => {

@@ -48,7 +48,7 @@ const collectInputs = () => {
 };
 
 const validateForm = () => {
-    const errors = inputComponents.value.map((input) => input.validate());
+    const errors = inputComponents.value.map((input) => input.validate(false));
     const formIsValid = errors.every((error) => !error);
 
     isValid.value = formIsValid;
@@ -59,7 +59,7 @@ const watchInputs = () => {
     inputComponents.value.forEach((input) => {
         if (input && typeof input.value !== "undefined") {
             watch(
-                () => input.value, 
+                () => input.value,
                 () => validateForm(),
                 { immediate: true }
             );

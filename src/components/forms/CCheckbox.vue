@@ -155,11 +155,13 @@ const toggle = () => {
     }
 };
 
-const validate = () => {
+const validate = (showError = true) => {
     hasError.value = false;
 
     if (props.required && !isChecked.value) {
-        hasError.value = true;
+        if (showError)
+            hasError.value = true;
+
         return false;
     }
 
@@ -168,7 +170,9 @@ const validate = () => {
         const error = rule(isChecked.value);
 
         if (error) {
-            hasError.value = true;
+            if (showError)
+                hasError.value = true;
+
             return false;
         }
     }

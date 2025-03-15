@@ -318,13 +318,11 @@ const isValidDate = (date: any): date is Date => {
 };
 
 const getSafeDate = (value: any): Date => {
-    if (isValidDate(value)) {
+    if (isValidDate(value))
         return value;
-    }
 
-    if (Array.isArray(value) && value.length > 0 && isValidDate(value[0])) {
+    if (Array.isArray(value) && value.length > 0 && isValidDate(value[0]))
         return value[0];
-    }
 
     return new Date();
 };
@@ -343,18 +341,15 @@ const startDate = ref<Date | null>(null);
 const endDate = ref<Date | null>(null);
 const selectionPhase = ref<'start' | 'end'>('start');
 
-// Variáveis para o calendário de data inicial
 const startCalendarMonth = ref(initialDate.getMonth());
 const startCalendarYear = ref(initialDate.getFullYear());
-
-// Variáveis para o calendário de data final
 const endCalendarMonth = ref(initialDate.getMonth());
 const endCalendarYear = ref(initialDate.getFullYear() + (initialDate.getMonth() === 11 ? 1 : 0));
-if (endCalendarMonth.value === 11) {
+
+if (endCalendarMonth.value === 11)
     endCalendarMonth.value = 0;
-} else {
+else
     endCalendarMonth.value += 1;
-}
 
 const userLocale = navigator.language || 'en-US';
 
@@ -386,14 +381,12 @@ const formattedDate = computed(() => {
         if (props.modelValue.length === 0) return '';
 
         const start = props.modelValue[0];
-        if (props.modelValue.length === 1 && isValidDate(start)) {
+        if (props.modelValue.length === 1 && isValidDate(start))
             return formatDate(start, props.format);
-        }
 
         const end = props.modelValue[1];
-        if (isValidDate(start) && isValidDate(end)) {
+        if (isValidDate(start) && isValidDate(end))
             return `${formatDate(start, props.format)} - ${formatDate(end, props.format)}`;
-        }
 
         return '';
     }
@@ -406,7 +399,6 @@ const formattedDate = computed(() => {
 });
 
 const calendarDays = computed<CalendarDay[]>(() => {
-    // Lógica para o calendário único (quando !range)
     const days: CalendarDay[] = [];
     const firstDay = new Date(currentYear.value, currentMonth.value, 1);
     const lastDay = new Date(currentYear.value, currentMonth.value + 1, 0);
@@ -435,7 +427,6 @@ const calendarDays = computed<CalendarDay[]>(() => {
     return days;
 });
 
-// Calendário para data inicial
 const startCalendarDays = computed<CalendarDay[]>(() => {
     const days: CalendarDay[] = [];
     const firstDay = new Date(startCalendarYear.value, startCalendarMonth.value, 1);
@@ -465,7 +456,6 @@ const startCalendarDays = computed<CalendarDay[]>(() => {
     return days;
 });
 
-// Calendário para data final
 const endCalendarDays = computed<CalendarDay[]>(() => {
     const days: CalendarDay[] = [];
     const firstDay = new Date(endCalendarYear.value, endCalendarMonth.value, 1);
@@ -504,11 +494,9 @@ const toggleCalendar = () => {
         if (props.range && Array.isArray(props.modelValue)) {
             if (props.modelValue.length >= 1 && isValidDate(props.modelValue[0])) {
                 startDate.value = new Date(props.modelValue[0].getTime());
-                // Configurar o calendário inicial para mostrar o mês da data inicial
                 startCalendarMonth.value = startDate.value.getMonth();
                 startCalendarYear.value = startDate.value.getFullYear();
 
-                // Configurar o calendário final para mostrar o mês seguinte
                 if (startCalendarMonth.value === 11) {
                     endCalendarMonth.value = 0;
                     endCalendarYear.value = startCalendarYear.value + 1;
@@ -519,8 +507,6 @@ const toggleCalendar = () => {
             }
             if (props.modelValue.length >= 2 && isValidDate(props.modelValue[1])) {
                 endDate.value = new Date(props.modelValue[1].getTime());
-
-                // Se já temos uma data final, configurar o calendário final para mostrar o mês correspondente
                 endCalendarMonth.value = endDate.value.getMonth();
                 endCalendarYear.value = endDate.value.getFullYear();
             }
@@ -537,13 +523,10 @@ const toggleCalendar = () => {
 };
 
 const closeCalendar = () => {
-    // Se estivermos no modo range e ambas as datas não estiverem selecionadas, não fechamos o calendário
     if (props.range && (!startDate.value || !endDate.value)) {
-        // Permitimos fechar manualmente apenas se o botão "Close" for clicado
         if (event && (event.target as HTMLElement).textContent === 'Close') {
             showCalendar.value = false;
             document.removeEventListener('click', handleClickOutside);
-            // Restaurar valores anteriores se existirem
             if (Array.isArray(props.modelValue)) {
                 startDate.value = props.modelValue.length > 0 && isValidDate(props.modelValue[0])
                     ? new Date(props.modelValue[0].getTime())
@@ -567,20 +550,18 @@ const handleClickOutside = (event: MouseEvent) => {
     const isInputClick = inputRef.value && inputRef.value.contains(target);
     const isCalendarClick = calendarRef.value && calendarRef.value.contains(target);
 
-    if (!isInputClick && !isCalendarClick) {
+    if (!isInputClick && !isCalendarClick)
         closeCalendar();
-    }
 };
 
 const prevMonth = (calendar?: 'start' | 'end') => {
     if (!calendar) {
-        // Calendário único
-    if (currentMonth.value === 0) {
-        currentMonth.value = 11;
-        currentYear.value--;
-    } else {
-        currentMonth.value--;
-    }
+        if (currentMonth.value === 0) {
+            currentMonth.value = 11;
+            currentYear.value--;
+        } else {
+            currentMonth.value--;
+        }
     } else if (calendar === 'start') {
         if (startCalendarMonth.value === 0) {
             startCalendarMonth.value = 11;
@@ -589,7 +570,6 @@ const prevMonth = (calendar?: 'start' | 'end') => {
             startCalendarMonth.value--;
         }
 
-        // Ajustar o calendário final se necessário
         if (startCalendarYear.value === endCalendarYear.value &&
             startCalendarMonth.value >= endCalendarMonth.value) {
             if (endCalendarMonth.value === 11) {
@@ -607,7 +587,6 @@ const prevMonth = (calendar?: 'start' | 'end') => {
             endCalendarMonth.value--;
         }
 
-        // Não permitir que o calendário final seja anterior ao inicial
         if (endCalendarYear.value < startCalendarYear.value ||
             (endCalendarYear.value === startCalendarYear.value &&
              endCalendarMonth.value < startCalendarMonth.value)) {
@@ -620,7 +599,7 @@ const prevMonth = (calendar?: 'start' | 'end') => {
 
 const nextMonth = (calendar?: 'start' | 'end') => {
     if (!calendar) {
-        // Calendário único
+
     if (currentMonth.value === 11) {
         currentMonth.value = 0;
         currentYear.value++;
@@ -635,7 +614,6 @@ const nextMonth = (calendar?: 'start' | 'end') => {
             startCalendarMonth.value++;
         }
 
-        // Ajustar o calendário final se necessário
         if (startCalendarYear.value > endCalendarYear.value ||
             (startCalendarYear.value === endCalendarYear.value &&
              startCalendarMonth.value >= endCalendarMonth.value)) {
@@ -682,9 +660,9 @@ const selectDate = (date: Date) => {
     emit('update:modelValue', newDate);
     validate();
 
-            setTimeout(() => {
-                closeCalendar();
-            }, 100);
+    setTimeout(() => {
+        closeCalendar();
+    }, 100);
 };
 
 const selectStartDate = (date: Date) => {
@@ -693,10 +671,8 @@ const selectStartDate = (date: Date) => {
     const newDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
     startDate.value = newDate;
 
-    // Se a data final já existir e for anterior à nova data inicial
-    if (endDate.value && endDate.value < newDate) {
+    if (endDate.value && endDate.value < newDate)
         endDate.value = null;
-    }
 
     emit('update:modelValue', endDate.value ? [newDate, endDate.value] : [newDate]);
     validate();
@@ -711,7 +687,6 @@ const selectEndDate = (date: Date) => {
     emit('update:modelValue', [startDate.value, newDate]);
         validate();
 
-    // Fechar o calendário apenas quando ambas as datas estiverem selecionadas
     if (startDate.value && endDate.value) {
         setTimeout(() => {
             closeCalendar();
@@ -725,20 +700,16 @@ const selectToday = () => {
     if (!isDateInRange(today)) return;
 
     if (props.range) {
-        // No modo range, define a data atual como data inicial ou final,
-        // dependendo do estado atual
         if (!startDate.value) {
             selectStartDate(today);
         } else if (!endDate.value && today >= startDate.value) {
             selectEndDate(today);
         } else {
-            // Se ambas as datas já existirem, reinicie e use hoje como data inicial
             startDate.value = today;
             endDate.value = null;
             emit('update:modelValue', [today]);
         }
 
-        // Atualizar os calendários para mostrar o mês atual
         startCalendarMonth.value = today.getMonth();
         startCalendarYear.value = today.getFullYear();
 
@@ -750,10 +721,9 @@ const selectToday = () => {
             endCalendarYear.value = startCalendarYear.value;
         }
     } else {
-        // Modo único, comportamento original
         currentMonth.value = today.getMonth();
         currentYear.value = today.getFullYear();
-    selectDate(today);
+        selectDate(today);
     }
 };
 
@@ -802,13 +772,15 @@ const formatDate = (date: Date, format: string) => {
         .replace('yy', year.toString().slice(-2));
 };
 
-const validate = () => {
+const validate = (showError = true) => {
     hasError.value = false;
     errorMessage.value = null;
 
     if (props.required && !props.modelValue) {
-        hasError.value = true;
-        errorMessage.value = 'This field is required';
+        if (showError) {
+            hasError.value = true;
+            errorMessage.value = 'This field is required';
+        }
         return false;
     }
 
@@ -816,9 +788,13 @@ const validate = () => {
 
     for (const rule of props.rules) {//@ts-ignore
         const error = rule(props.modelValue);
+
         if (error) {
-            hasError.value = true;
-            errorMessage.value = error;
+            if (showError) {
+                hasError.value = true;
+                errorMessage.value = error;
+            }
+
             return false;
         }
     }

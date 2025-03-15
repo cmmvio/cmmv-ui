@@ -218,10 +218,9 @@ const borderColorClass = computed(() => props.borderColor);
 const hasError = computed(() => !!errorMessage.value);
 
 const handleKeyDown = (event: KeyboardEvent) => {
-    // Caso especial: se a tecla for ArrowDown e o campo estiver em foco mas a lista não estiver visível
     if (event.key === 'ArrowDown' && isFocus.value && (!isActive || !filteredOptions.value.length)) {
         event.preventDefault();
-        isActive.value = true; // Força a abertura da lista
+        isActive.value = true;
         return;
     }
 
@@ -298,26 +297,35 @@ const validateShowError = () => {
     for (const rule of props.rules) {
         //@ts-ignore
         const error = rule(currentValue.value);
-
+        console.log('validateShowError', error);
         if (error)
             errorMessage.value = error;
     }
 };
 
-const validate = () => {
+const validate = (showError = true) => {
     errorMessage.value = null;
+
+    if (props.required && !currentValue.value) {
+        if (showError)
+            errorMessage.value = "Required field";
+
+        return false;
+    }
 
     for (const rule of props.rules) {
         //@ts-ignore
         const error = rule(currentValue.value);
 
         if (error) {
-            validateShowError();
-            return true;
+            if (showError)
+                validateShowError();
+
+            return false;
         }
     }
 
-    return false;
+    return true;
 };
 
 const selectOption = (option: { value: string | number; label: string }) => {
@@ -325,12 +333,12 @@ const selectOption = (option: { value: string | number; label: string }) => {
     currentInput.value = option.label;
     emit("update:modelValue", option.value);
 
-    if (!validate() || !changed.value)
-        errorMessage.value = null;
+    if (!validate())
+        currentValue.value = '';
 
     changed.value = true;
 
-    isActive.value = true;
+    isActive.value = false;
     isFocus.value = false;
     keyboardSelectedIndex.value = -1;
 };

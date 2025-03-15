@@ -88,7 +88,7 @@ const props = defineProps({
 
 const currentValue = ref(props.modelValue);
 const emit = defineEmits(['update:modelValue']);
-
+const errorMessage = ref('');
 const currency = computed(() => {
     return getCurrencyByCode(props.currencyCode || 'USD') || getDefaultCurrencyMask();
 });
@@ -126,4 +126,15 @@ const updateValue = (value: string) => {
     const unformattedValue = unformat(value);
     emit('update:modelValue', unformattedValue);
 };
+
+const validate = (showError = true) => {
+    if (props.required && !currentValue.value) {
+        if (showError)
+            errorMessage.value = "Required field";
+
+        return false;
+    }
+
+    return true;
+}
 </script>

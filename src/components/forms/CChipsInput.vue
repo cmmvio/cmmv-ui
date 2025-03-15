@@ -16,7 +16,7 @@
                     },
                     textColor ? textColor : 'text-neutral-500 dark:text-neutral-400',
                     !disabled && floatingLabel ? (bgColor ? bgColor : variantColors[variant]) : '']">
-                    {{ label }} <span v-if="required" class="text-red-500">*</span>
+                    {{ label }} <span v-if="required || minTags > 0" class="text-red-500">*</span>
                 </label>
 
                 <div class="flex items-center border rounded-md min-h-[38px] cursor-text overflow-hidden"
@@ -320,9 +320,8 @@ const handleKeyDown = (event: KeyboardEvent) => {
         addCustomChip();
     }
 
-    if (event.key === 'Backspace' && !inputValue.value && selectedChips.value.length > 0) {
+    if (event.key === 'Backspace' && !inputValue.value && selectedChips.value.length > 0)
         removeChip(selectedChips.value.length - 1);
-    }
 };
 
 const addCustomChip = () => {
@@ -335,9 +334,8 @@ const addCustomChip = () => {
         if (selectedChips.value.length >= props.maxTags)
             return;
 
-        if (!props.duplicates && isDuplicate(label)) {
+        if (!props.duplicates && isDuplicate(label))
             return;
-        }
 
         const newChip = {
             value: `custom-${Date.now()}-${label}`,
@@ -404,9 +402,9 @@ const removeChip = (index: number) => {
         const originalOption = props.options.find(
             option => option.value === removedChip.value
         );
-        if (originalOption && !availableOptions.value.some(option => option.value === removedChip.value)) {
+
+        if (originalOption && !availableOptions.value.some(option => option.value === removedChip.value))
             availableOptions.value.push(originalOption);
-        }
     }
 
     validateShowError();
@@ -429,9 +427,9 @@ const clearAll = () => {
             const originalOption = props.options.find(
                 option => option.value === chip.value
             );
-            if (originalOption && !availableOptions.value.some(option => option.value === chip.value)) {
+
+            if (originalOption && !availableOptions.value.some(option => option.value === chip.value))
                 availableOptions.value.push(originalOption);
-            }
         }
     });
 
@@ -442,40 +440,43 @@ const clearAll = () => {
     validateShowError();
 
     nextTick(() => {
-        if (inputRef.value) {
+        if (inputRef.value)
             inputRef.value.focus();
-        }
     });
 };
 
-const validateShowError = () => {
+const validateShowError = (showError = true) => {
     errorMessage.value = null;
 
-    if (!changed.value) return false;
-
     if (selectedChips.value.length < props.minTags) {
-        errorMessage.value = `Minimum ${props.minTags} tags required`;
-        return true;
+        if (showError)
+            errorMessage.value = `Minimum ${props.minTags} tags required`;
+
+        return false;
     }
 
     if (selectedChips.value.length > props.maxTags) {
-        errorMessage.value = `Maximum ${props.maxTags} tags allowed`;
-        return true;
+        if (showError)
+            errorMessage.value = `Maximum ${props.maxTags} tags allowed`;
+
+        return false;
     }
 
     for (const rule of props.rules) {
         const error = rule(selectedChips.value);
         if (error) {
-            errorMessage.value = typeof error === 'string' ? error : 'Invalid value';
-            return true;
+            if (showError)
+                errorMessage.value = typeof error === 'string' ? error : 'Invalid value';
+
+            return false;
         }
     }
 
-    return false;
+    return true;
 };
 
-const validate = () => {
-    return validateShowError();
+const validate = (showError = true) => {
+    return validateShowError(showError);
 };
 
 const roundedStyles = {
@@ -511,7 +512,6 @@ defineExpose({
     z-index: 1;
 }
 
-/* Apenas aplicado quando floatingLabel=true */
 .c-chips-input-label--active {
     transform: translate(0, -2rem) scale(0.85);
     top: 1.3rem;

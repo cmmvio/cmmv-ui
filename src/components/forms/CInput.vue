@@ -358,20 +358,28 @@ const validateShowError = () => {
     }
 };
 
-const validate = () => {
+const validate = (showError = true) => {
     errorMessage.value = null;
+
+    if (props.required && !currentValue.value) {
+        if (showError)
+            errorMessage.value = "Required field";
+
+        return false;
+    }
 
     for (const rule of props.rules) {
         //@ts-ignore
         const error = rule(currentValue.value);
 
         if (error) {
-            validateShowError();
-            return true;
+            if (showError)
+                validateShowError();
+            return false;
         }
     }
 
-    return false;
+    return true;
 };
 
 const activateLabel = () => {

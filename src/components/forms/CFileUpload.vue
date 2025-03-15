@@ -208,6 +208,10 @@ const props = defineProps({
     showBrowseButton: {
         type: Boolean,
         default: true
+    },
+    required: {
+        type: Boolean,
+        default: false
     }
 });
 
@@ -620,6 +624,17 @@ watch(selectedFiles, (newFiles, oldFiles) => {
     }
     updateModelValue();
 });
+
+const validate = (showError = true) => {
+    if (props.required && !selectedFiles.value.length) {
+        if (showError)
+            errorMessage.value = "Required field";
+
+        return false;
+    }
+
+    return true;
+}
 </script>
 
 <style scoped>

@@ -853,23 +853,27 @@ const shouldKeepOpen = computed(() => {
     return props.searchable;
 });
 
-const validate = (): boolean => {
+const validate = (showError = true): boolean => {
     errorMessage.value = '';
     hasError.value = false;
 
-    // Verificar se é obrigatório e não tem valor
     if (props.required && (!props.modelValue || props.modelValue === '')) {
-        errorMessage.value = 'This field is required';
-        hasError.value = true;
+        if (showError){
+            errorMessage.value = 'This field is required';
+            hasError.value = true;
+        }
+
         return false;
     }
 
-    // Verificar regras personalizadas
     for (const rule of props.rules) {
         const error = (rule as (value: any) => string | boolean)(props.modelValue);
         if (error !== true && error) {
-            errorMessage.value = error as string;
-            hasError.value = true;
+            if (showError) {
+                errorMessage.value = error as string;
+                hasError.value = true;
+            }
+
             return false;
         }
     }

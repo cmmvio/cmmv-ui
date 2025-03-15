@@ -257,7 +257,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, defineEmits, ref, watch, computed } from "vue";
+import { defineProps, defineEmits, ref, watch, computed, onMounted } from "vue";
 import type { PropType } from "vue";
 
 interface BaseFieldProps {
@@ -502,7 +502,7 @@ const props = defineProps({
     }
 });
 
-const emit = defineEmits(['update:value', 'validate', 'submit']);
+const emit = defineEmits(['update:value', 'validate', 'submit', 'mounted']);
 const fieldRef = ref<any>(null);
 const localValue = ref(props.value);
 
@@ -563,10 +563,15 @@ const handleFileUploadSuccess = (fileInfo: any) => {
     }
 };
 
-const validate = (): boolean => {
+const validate = (showError = true): boolean => {
     if (fieldRef.value && fieldRef.value.validate) {
         try {
-            const result = fieldRef.value.validate();
+            console.log('aki')
+            const result = fieldRef.value.validate(showError);
+
+            if(!result)
+                console.log('validate', props.fieldName, result);
+
             emit('validate', props.fieldName, result);
             return result;
         } catch (error) {
@@ -576,17 +581,13 @@ const validate = (): boolean => {
         }
     }
 
-    if (props.field.required &&
-        (localValue.value === undefined ||
-         localValue.value === null ||
-         localValue.value === '')) {
-        emit('validate', props.fieldName, false);
-        return false;
-    }
-
     emit('validate', props.fieldName, true);
     return true;
 };
+
+onMounted(() => {
+    emit('mounted', fieldRef.value);
+});
 
 defineExpose({
     validate,

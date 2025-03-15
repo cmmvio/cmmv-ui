@@ -1,7 +1,7 @@
 <template>
     <div class="form-builder">
         <c-alert v-if="showValidationAlert && Object.keys(invalidFields).length > 0" type="error" icon
-            title="Validação do Formulário" class="mb-4" :closable="true" @close="showValidationAlert = false">
+            title="Form Validation" class="mb-4" :closable="true" @close="showValidationAlert = false">
             <div>
                 <p class="mb-2">Required fields not filled in or with error:</p>
                 <ul class="list-disc pl-5">
@@ -33,6 +33,7 @@
                                         @update:value="(value) => updateField(fieldKey, value)"
                                         @validate="(fieldName, isValid) => handleFieldValidation(fieldName, isValid)"
                                         @submit="handleSubmitButtonClick"
+                                        @mounted="(el) => registerFieldRef(fieldKey, el)"
                                     >
                                         <!-- Forward slots para item-selected -->
                                         <template v-if="$slots && $slots[`${fieldKey}-selected`]" #selected="slotProps">
@@ -76,7 +77,7 @@
                 </div>
 
                 <!-- Normal field handling -->
-                <c-form-builder-item v-else
+                <c-form-builder-item
                     :field="item"
                     :value="formData[key]"
                     :field-name="String(key)"
@@ -84,6 +85,7 @@
                     @update:value="(value) => updateField(key, value)"
                     @validate="(fieldName, isValid) => handleFieldValidation(fieldName, isValid)"
                     @submit="handleSubmitButtonClick"
+                    @mounted="(el) => registerFieldRef(key, el)"
                 >
                     <!-- Forward slots para item-selected -->
                     <template v-if="$slots && $slots[`${key}-selected`]" #selected="slotProps">
@@ -344,7 +346,6 @@ interface FormBuilderSchema {
     };
 }
 
-// Interface para uma tab
 interface TabConfig {
     id: string;
     title: string;
@@ -352,7 +353,6 @@ interface TabConfig {
     schema: FormBuilderSchema;
 }
 
-// Interface para o tipo tabs
 interface TabsConfig {
     [key: string]: TabConfig;
 }
@@ -379,18 +379,13 @@ const fieldValidity = ref<Record<string, boolean>>({});
 const showValidationAlert = ref(false);
 const invalidFields = ref<Record<string, string>>({});
 
-// Track the active tab
 const activeTab = ref('');
-
-// Detect if we're inside a CodePreview component to prevent infinite loops
 const isInsideCodePreview = ref(false);
 
-// Verifica se o formulário tem tabs
 const hasTabs = computed(() => {
     return props.tabs && Object.keys(props.tabs).length > 0;
 });
 
-// Cria a configuração de tabs para o componente CTabs
 const tabsConfig = computed(() => {
     if (!hasTabs.value || !props.tabs) return [];
 
@@ -403,7 +398,7 @@ const tabsConfig = computed(() => {
             title: tab.title || `Tab ${tabKey}`,
             icon: tab.icon
         };
-    }).filter(tab => tab.id && tab.title); // Garante que só tabs com id e title válidos sejam retornados
+    }).filter(tab => tab.id && tab.title);
 });
 
 const updateField = (key: string | number, value: any) => {
@@ -431,20 +426,18 @@ const updateField = (key: string | number, value: any) => {
     checkFormValidity();
 };
 
-// Função para encontrar um campo em todas as tabs
 const findFieldInTabs = (key: string | number) => {
     if (!hasTabs.value) return undefined;
 
     for (const tabKey in props.tabs) {
         const tab = props.tabs[tabKey];
-        if (tab.schema && key in tab.schema) {
+
+        if (tab.schema && key in tab.schema)
             return tab.schema[key];
-        }
     }
     return undefined;
 };
 
-// Handler para validação de campos
 const handleFieldValidation = (fieldName: string, isValid: boolean) => {
     fieldValidity.value[fieldName] = isValid;
 
@@ -460,10 +453,8 @@ watch(() => props.modelValue, (newValue) => {
     if (newValue && Object.keys(newValue).length > 0) {
         const processedData = { ...newValue };
 
-        // Processa o schema padrão
         processChipsInputs(processedData, props.schema);
 
-        // Processa schemas das tabs
         if (hasTabs.value) {
             for (const tabKey in props.tabs) {
                 const tab = props.tabs[tabKey];
@@ -475,7 +466,6 @@ watch(() => props.modelValue, (newValue) => {
     }
 }, { deep: true });
 
-// Função para processar campos de chips
 const processChipsInputs = (data: Record<string, any>, schema: FormBuilderSchema) => {
     if (!schema) return;
 
@@ -497,13 +487,11 @@ const processChipsInputs = (data: Record<string, any>, schema: FormBuilderSchema
 };
 
 onMounted(() => {
-    // Check if this component is inside a CodePreview component
     const codePreviewContainer = document.querySelector('.code-preview-container');
-    if (codePreviewContainer) {
-        isInsideCodePreview.value = true;
-    }
 
-    // Set initial activeTab if tabs exist in schema and none is already set
+    if (codePreviewContainer)
+        isInsideCodePreview.value = true;
+
     if (activeTab.value === '') {
         const tabItems = Object.entries(props.schema).find(([_, item]) => item && item.type === 'tabs');
         if (tabItems && tabItems[1].items) {
@@ -515,11 +503,8 @@ onMounted(() => {
     }
 
     const processedData = { ...props.modelValue };
-
-    // Processa o schema padrão
     processChipsInputs(processedData, props.schema);
 
-    // Processa schemas das tabs
     if (hasTabs.value) {
         for (const tabKey in props.tabs) {
             const tab = props.tabs[tabKey];
@@ -535,10 +520,8 @@ onMounted(() => {
 });
 
 const initializeFieldValidity = () => {
-    // Inicializa a validade dos campos do schema padrão
     initializeSchemaValidity(props.schema);
 
-    // Inicializa a validade dos campos das tabs
     if (hasTabs.value) {
         for (const tabKey in props.tabs) {
             const tab = props.tabs[tabKey];
@@ -547,7 +530,6 @@ const initializeFieldValidity = () => {
     }
 };
 
-// Inicializa a validade para um schema específico
 const initializeSchemaValidity = (schema: FormBuilderSchema) => {
     Object.keys(schema).forEach(key => {
         const isRequired = schema[key].required === true;
@@ -561,16 +543,13 @@ const initializeSchemaValidity = (schema: FormBuilderSchema) => {
 };
 
 const getFieldLabel = (key: string): string => {
-    // Tenta encontrar o campo no schema padrão
-    if (props.schema[key]?.label) {
+    if (props.schema[key]?.label)
         return props.schema[key].label;
-    }
 
-    // Tenta encontrar o campo nas tabs
     const field = findFieldInTabs(key);
-    if (field?.label) {
+
+    if (field?.label)
         return field.label;
-    }
 
     return key;
 };
@@ -579,7 +558,6 @@ const validate = (): boolean => {
     invalidFields.value = {};
     let isValid = true;
 
-    // Valida campos do schema padrão
     for (const key in props.schema) {
         if (props.schema[key].type === 'submit') continue;
 
@@ -587,7 +565,6 @@ const validate = (): boolean => {
         isValid = isValid && fieldValid;
     }
 
-    // Valida campos das tabs
     if (hasTabs.value) {
         for (const tabKey in props.tabs) {
             const tab = props.tabs[tabKey];
@@ -606,13 +583,10 @@ const validate = (): boolean => {
 const validateField = (key: string | number): boolean => {
     let field: FieldProps | undefined;
 
-    // Procura o campo no schema padrão
-    if (key in props.schema) {
+    if (key in props.schema)
         field = props.schema[key];
-    } else {
-        // Procura o campo nas tabs
+    else
         field = findFieldInTabs(key);
-    }
 
     if (!field) return true;
 
@@ -621,23 +595,18 @@ const validateField = (key: string | number): boolean => {
         return true;
     }
 
-    const isRequired = field.required === true;
-    const isEmpty = formData.value[key] === undefined ||
-        formData.value[key] === null ||
-        formData.value[key] === '';
+    const componentRef = fieldRefs.value[key];
+    if (componentRef && typeof componentRef.validate === 'function') {
+        const isComponentValid = componentRef.validate(false);
+        fieldValidity.value[key] = isComponentValid;
 
-    if (isRequired && isEmpty) {
-        fieldValidity.value[key] = false;
-        invalidFields.value[key] = "Required field not filled";
-        return false;
+        if (!isComponentValid)
+            invalidFields.value[key] = "Field validation failed";
+
+        return isComponentValid;
     }
 
-    // Para outros casos, confiamos na validação do componente individual
-    if (!(key in fieldValidity.value) || fieldValidity.value[key] === undefined) {
-        fieldValidity.value[key] = true;
-    }
-
-    return fieldValidity.value[key];
+    return true;
 };
 
 const checkFormValidity = () => {
@@ -647,16 +616,12 @@ const checkFormValidity = () => {
 const isFormValid = computed((): boolean => {
     if (Object.keys(fieldValidity.value).length === 0) return false;
 
-    // Verifica a validade de todos os campos
     for (const key in fieldValidity.value) {
-        // Ignora botões de submit - usando a função auxiliar segura
-        if (isSubmitButton(props.schema?.[key]) || isSubmitButton(findFieldInTabs(key))) {
+        if (isSubmitButton(props.schema?.[key]) || isSubmitButton(findFieldInTabs(key)))
             continue;
-        }
 
-        if (!fieldValidity.value[key]) {
+        if (!fieldValidity.value[key])
             return false;
-        }
     }
 
     return true;
@@ -669,11 +634,10 @@ const reset = () => {
 };
 
 const handleSubmitButtonClick = () => {
-    if (validate()) {
+    if (validate())
         emit("submit", formData.value);
-    } else {
+    else
         showValidationAlert.value = true;
-    }
 };
 
 const convertTabsToFormat = (tabs: Record<string, TabItem>): { title: string; id: string | number; icon?: object }[] => {
@@ -692,16 +656,19 @@ const handleTabChange = (index: number, tabItems: Record<string, TabItem>) => {
     activeTab.value = String(tabKey);
 };
 
-// Método para converter o índice de tab para o nome da chave
 const getActiveTabIndex = (tabItems: Record<string, TabItem>) => {
     const keys = Object.keys(tabItems);
     return keys.findIndex(key => key === activeTab.value);
 };
 
-// Método para calcular o índice da tab ativa com base na propriedade activeTab
 const getTabIndexForTabsConfig = (tabs: Record<string, TabItem>) => {
     if (!activeTab.value) return 0;
     return Math.max(0, getActiveTabIndex(tabs));
+};
+
+const registerFieldRef = (key: string | number, el: any) => {
+    if (el)
+        fieldRefs.value[key] = el;
 };
 
 defineExpose({
