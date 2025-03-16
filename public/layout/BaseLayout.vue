@@ -69,7 +69,7 @@
 
         <main class="flex flex-wrap mx-auto pt-16 relative">
             <div id="sidebar-menu" :class="[
-                { 'tranneutral-x-0 shadow-2xl': isMenuVisible, '-tranneutral-x-full lg:tranneutral-x-0': !isMenuVisible },
+                { 'translate-x-0 shadow-2xl': isMenuVisible, '-translate-x-full lg:translate-x-0': !isMenuVisible },
                 'bg-white dark:bg-neutral-900 w-72 fixed top-16 bottom-0 z-30 overflow-auto text-neutral-800 pb-10 border-r border-neutral-200 dark:border-neutral-700 transition-all duration-300 ease-in-out'
             ]">
                 <Navbar ref="navbar" :isOpen="isMenuVisible" @close="isMenuVisible = false"></Navbar>
